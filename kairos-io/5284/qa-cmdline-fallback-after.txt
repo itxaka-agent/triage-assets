@@ -1,0 +1,1 @@
+BOOT_IMAGE=(loop0)/boot/vmlinuz console=ttyS0 console=tty1 splash net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=5 rd.emergency=reboot rd.shell=0 systemd.crash_reboot=yes quiet root=LABEL=COS_PASSIVE cos-img/filename=/cOS/passive.img selinux=0

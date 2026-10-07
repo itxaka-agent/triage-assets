@@ -1,0 +1,7 @@
+Warning: Permanently added '[127.0.0.1]:2286' (ED25519) to the list of known hosts.
+BOOT_IMAGE=(loop0)/boot/vmlinuz console=ttyS0 console=tty1 splash net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=5 rd.emergency=reboot rd.shell=0 systemd.crash_reboot=yes quiet root=LABEL=COS_ACTIVE cos-img/filename=/cOS/active.img selinux=0
+
+Hint: You are currently not seeing messages from other users and the system.
+      Users in groups 'adm', 'systemd-journal', 'wheel' can see all messages.
+      Pass -q to turn off this notice.
+-- No entries --
