@@ -1,0 +1,15 @@
+work.sysext.raw
+[{"hierarchy":"/usr/bin","extensions":["work"],"since":1791372506185312},{"hierarchy":"/usr/lib","extensions":["work"],"since":1791372506185737},{"hierarchy":"/usr/local/bin","extensions":[],"since":null},{"hierarchy":"/usr/local/lib","extensions":[],"since":null},{"hierarchy":"/usr/sbin","extensions":[],"since":null},{"hierarchy":"/usr/share","extensions":[],"since":null},{"hierarchy":"/usr/src","extensions":[],"since":null}]
+
+[{"hierarchy":"/usr/bin","extensions":["work"],"since":1791372506185312},{"hierarchy":"/usr/lib","extensions":["work"],"since":1791372506185737},{"hierarchy":"/usr/sbin","extensions":[],"since":null},{"hierarchy":"/usr/share","extensions":[],"since":null},{"hierarchy":"/usr/src","extensions":[],"since":null}]
+
+HIERARCHY EXTENSIONS SINCE
+/opt      -          -
+/usr      -          -
+Hello world
+rc=0
+74:            Environment="SYSTEMD_SYSEXT_HIERARCHIES=/usr/bin:/usr/share:/usr/lib:/usr/include:/usr/src:/usr/sbin"
+120:            Environment="SYSTEMD_SYSEXT_HIERARCHIES=/usr/bin:/usr/share:/usr/lib:/usr/include:/usr/src:/usr/sbin"
+153:            export SYSTEMD_SYSEXT_HIERARCHIES="/usr/bin:/usr/share:/usr/lib:/usr/include:/usr/src:/usr/sbin"
+boot: active_boot
+    secureboot: true
