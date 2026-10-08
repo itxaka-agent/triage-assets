@@ -1,0 +1,110 @@
+######## before-noport
+
+[?2004l[?2004hroot@kairos:~# echo START; systemd-analyze; systemd-analyze critical-chain multi-user.target | head -14; systemd-analyze blame | head -5; systemctl is-active qemu-guest-agent; ls /dev/virtio-ports 2>&1; journalctl -u qemu-guest-agent --no-pager | head -6; echo END
+[?2004lSTART
+[0;1;31mBootup is not yet finished (org.freedesktop.systemd1.Manager.FinishTimestampMonotonic=0).[0m
+[0;1;31mPlease try again later.[0m
+[0;1;31mHint: Use 'systemctl list-jobs' to see active jobs[0m
+Bootup is not yet finished (org.freedesktop.systemd1.Manager.FinishTimestampMonotonic=0).
+Please try again later.
+Hint: Use 'systemctl list-jobs' to see active jobs
+3.117s sys-devices-platform-serial8250-serial8250:0-serial8250:0.8-tty-ttyS8.device
+3.117s dev-ttyS8.device
+3.116s dev-disk-by\x2ddiskseq-9.device
+3.116s dev-disk-by\x2duuid-2026\x2d10\x2d08\x2d16\x2d02\x2d02\x2d50.device
+3.116s sys-devices-pci0000:00-0000:00:03.0-virtio1-block-vda.device
+inactive
+ls: cannot access '/dev/virtio-ports': No such file or directory
+-- No entries --
+END
+[?2004hroot@kairos:~# 
+######## before-port
+
+[?2004l[?2004hroot@kairos:~# echo START; systemd-analyze; systemd-analyze critical-chain multi-user.target | head -14; systemd-analyze blame | head -5; systemctl is-active qemu-guest-agent; ls /dev/virtio-ports 2>&1; journalctl -u qemu-guest-agent --no-pager | head -6; echo END
+[?2004lSTART
+Startup finished in 2.672s (kernel) + 2.289s (initrd) + 2.405s (userspace) = 7.367s 
+multi-user.target reached after 2.351s in userspace.
+The time when unit became active or started is printed after the "@" character.
+The time the unit took to start is printed after the "+" character.
+
+multi-user.target @2.351s
+└─getty.target @2.350s
+  └─cos-setup-boot.service @1.978s +370ms
+    └─basic.target @1.977s
+      └─sockets.target @1.974s
+        └─ssh.socket @1.974s
+          └─sysinit.target @1.960s
+            └─systemd-update-done.service @1.953s +5ms
+              └─ldconfig.service @1.216s +731ms
+                └─local-fs.target @1.203s
+                  └─zfs-mount.service @1.178s +23ms
+2.404s dev-rfkill.device
+2.404s sys-devices-virtual-misc-rfkill.device
+2.396s sys-devices-pci0000:00-0000:00:03.0-virtio1-virtio\x2dports-vport1p1.device
+2.396s dev-vport1p1.device
+2.395s dev-virtio\x2dports-org.qemu.guest_agent.0.device
+active
+org.qemu.guest_agent.0
+Oct 08 14:06:48 kairos systemd[1]: Started qemu-guest-agent.service - QEMU Guest Agent.
+END
+[?2004hroot@kairos:~# 
+######## after-noport
+
+[?2004l[?2004hroot@kairos-cbe5:~# echo START; systemd-analyze; systemd-analyze critical-chain multi-user.target | head -14; systemd-analyze blame | head -5; systemctl is-active qemu-guest-agent; ls /dev/virtio-ports 2>&1; journalctl -u qemu-guest-agent --no-pager | head -6; echo END
+[?2004lSTART
+Startup finished in 2.685s (kernel) + 2.751s (initrd) + 2.343s (userspace) = 7.780s 
+multi-user.target reached after 2.288s in userspace.
+The time when unit became active or started is printed after the "@" character.
+The time the unit took to start is printed after the "+" character.
+
+multi-user.target @2.288s
+└─getty.target @2.285s
+  └─cos-setup-boot.service @1.978s +305ms
+    └─basic.target @1.977s
+      └─sockets.target @1.975s
+        └─ssh.socket @1.975s
+          └─sysinit.target @1.969s
+            └─systemd-update-done.service @1.962s +6ms
+              └─ldconfig.service @1.198s +756ms
+                └─local-fs.target @1.183s
+                  └─zfs-mount.service @1.156s +24ms
+2.897s dev-rfkill.device
+2.897s sys-devices-virtual-misc-rfkill.device
+2.861s dev-ttyS1.device
+2.861s sys-devices-platform-serial8250-serial8250:0-serial8250:0.1-tty-ttyS1.device
+2.861s dev-ttyS6.device
+inactive
+ls: cannot access '/dev/virtio-ports': No such file or directory
+-- No entries --
+END
+[?2004hroot@kairos-cbe5:~# 
+######## after-port
+
+[?2004l[?2004hroot@kairos:~# echo START; systemd-analyze; systemd-analyze critical-chain multi-user.target | head -14; systemd-analyze blame | head -5; systemctl is-active qemu-guest-agent; ls /dev/virtio-ports 2>&1; journalctl -u qemu-guest-agent --no-pager | head -6; echo END
+[?2004lSTART
+Startup finished in 2.675s (kernel) + 3.259s (initrd) + 2.400s (userspace) = 8.335s 
+multi-user.target reached after 2.360s in userspace.
+The time when unit became active or started is printed after the "@" character.
+The time the unit took to start is printed after the "+" character.
+
+multi-user.target @2.360s
+└─getty.target @2.359s
+  └─cos-setup-boot.service @2.059s +298ms
+    └─basic.target @2.059s
+      └─sockets.target @2.058s
+        └─ssh.socket @2.057s
+          └─sysinit.target @2.051s
+            └─systemd-update-done.service @2.044s +6ms
+              └─ldconfig.service @1.259s +779ms
+                └─local-fs.target @1.241s
+                  └─zfs-mount.service @1.208s +31ms
+3.452s sys-devices-virtual-misc-rfkill.device
+3.452s dev-rfkill.device
+3.448s dev-ttyS31.device
+3.448s sys-devices-platform-serial8250-serial8250:0-serial8250:0.31-tty-ttyS31.device
+3.448s dev-ttyS6.device
+active
+org.qemu.guest_agent.0
+Oct 08 14:06:49 kairos systemd[1]: Started qemu-guest-agent.service - QEMU Guest Agent.
+END
+[?2004hroot@kairos:~# 
