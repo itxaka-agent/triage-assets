@@ -1,0 +1,15 @@
+### after after reboot
+bash: line 1: uptime: command not found
+lrwxrwxrwx 1 root root 20 Oct  8 10:11 /etc/hosts -> /usr/local/etc/hosts
+---
+127.0.0.1 localhost kairos-8243
+::1       localhost
+10.0.0.5 registry.internal
+--- persistent:
+127.0.0.1 localhost kairos-8243
+::1       localhost
+10.0.0.5 registry.internal
+
+Hint: You are currently not seeing messages from other users and the system.
+      Users in groups 'adm', 'systemd-journal', 'wheel' can see all messages.
+      Pass -q to turn off this notice.
