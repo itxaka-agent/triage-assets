@@ -1,0 +1,32 @@
+Warning: Permanently added '[127.0.0.1]:2234' (ED25519) to the list of known hosts.
+== product
+Standard PC (i440FX + PIIX, 1996)
+== stages
+1:name: "Enable QEMU tools"
+4:    - name: "Enable QEMU"
+11:    - name: "Enable QEMU"
+18:    - name: "Enable VMWARE"
+24:    - name: "Enable VMWARE"
+== journal
+Oct 08 10:44:09 kairos-0ac4 kairos-agent[1194]: (conditional) Skip 'service manager doesn't match openrc' stage name: Enable QEMU tools.Enable QEMU.0
+Oct 08 10:44:09 kairos-0ac4 kairos-agent[1194]: 2026-10-08T10:44:09Z WRN (conditional) Skip 'service manager doesn't match openrc' stage name: Enable QEMU tools.Enable QEMU.0
+Oct 08 10:44:09 kairos-0ac4 kairos-agent[1194]: Processing stage step 'Enable QEMU tools.Enable QEMU.1'. ( commands: 1, files: 0, ... )
+Oct 08 10:44:09 kairos-0ac4 kairos-agent[1194]: 2026-10-08T10:44:09Z INF Processing stage step 'Enable QEMU tools.Enable QEMU.1'. ( commands: 1, files: 0, ... )
+Oct 08 10:44:09 kairos-0ac4 kairos-agent[1194]: Error on file /system/oem/26_vm.yaml on stage Enable QEMU: 1 error occurred:
+                                                        * failed to run systemctl start qemu-guest-agent: exit status 5
+                                                Failed to start qemu-guest-agent.service: Unit qemu-guest-agent.service not found.
+Oct 08 10:44:09 kairos-0ac4 kairos-agent[1194]: 2026-10-08T10:44:09Z ERR Error on file /system/oem/26_vm.yaml on stage Enable QEMU: 1 error occurred:
+Oct 08 10:44:09 kairos-0ac4 kairos-agent[1194]:         * failed to run systemctl start qemu-guest-agent: exit status 5
+Oct 08 10:44:09 kairos-0ac4 kairos-agent[1194]: Failed to start qemu-guest-agent.service: Unit qemu-guest-agent.service not found.
+                                                : exit status 1)' stage name: Enable QEMU tools.Enable VMWARE.2
+Oct 08 10:44:09 kairos-0ac4 kairos-agent[1194]: : exit status 1)' stage name: Enable QEMU tools.Enable VMWARE.2
+                                                : exit status 1)' stage name: Enable QEMU tools.Enable VMWARE.3
+Oct 08 10:44:09 kairos-0ac4 kairos-agent[1194]: : exit status 1)' stage name: Enable QEMU tools.Enable VMWARE.3
+Oct 08 10:44:09 kairos-0ac4 kairos-agent[1194]:         * failed to run systemctl start qemu-guest-agent: exit status 5
+Oct 08 10:44:09 kairos-0ac4 kairos-agent[1194]: Failed to start qemu-guest-agent.service: Unit qemu-guest-agent.service not found.
+                                                        * failed to run systemctl start qemu-guest-agent: exit status 5
+                                                Failed to start qemu-guest-agent.service: Unit qemu-guest-agent.service not found.
+== status
+Unit vmtoolsd.service could not be found.
+Unit open-vm-tools.service could not be found.
+Unit qemu-guest-agent.service could not be found.

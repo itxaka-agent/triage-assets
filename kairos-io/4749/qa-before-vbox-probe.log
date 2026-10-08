@@ -1,0 +1,38 @@
+Warning: Permanently added '[127.0.0.1]:2231' (ED25519) to the list of known hosts.
+== product
+VirtualBox
+== stages
+1:name: "Enable QEMU tools"
+4:    - name: "Enable QEMU"
+11:    - name: "Enable QEMU"
+18:    - name: "Enable VBOX"
+24:    - name: "Enable VBOX"
+30:    - name: "Enable VMWARE"
+36:    - name: "Enable VMWARE"
+== journal
+                                                : exit status 1)' stage name: Enable QEMU tools.Enable QEMU.0
+Oct 08 10:42:24 kairos-9c82 kairos-agent[1204]: : exit status 1)' stage name: Enable QEMU tools.Enable QEMU.0
+                                                : exit status 1)' stage name: Enable QEMU tools.Enable QEMU.1
+Oct 08 10:42:24 kairos-9c82 kairos-agent[1204]: : exit status 1)' stage name: Enable QEMU tools.Enable QEMU.1
+Oct 08 10:42:25 kairos-9c82 kairos-agent[1204]: (conditional) Skip 'service manager doesn't match openrc' stage name: Enable QEMU tools.Enable VBOX.2
+Oct 08 10:42:25 kairos-9c82 kairos-agent[1204]: 2026-10-08T10:42:25Z WRN (conditional) Skip 'service manager doesn't match openrc' stage name: Enable QEMU tools.Enable VBOX.2
+Oct 08 10:42:25 kairos-9c82 kairos-agent[1204]: Processing stage step 'Enable QEMU tools.Enable VBOX.3'. ( commands: 1, files: 0, ... )
+Oct 08 10:42:25 kairos-9c82 kairos-agent[1204]: 2026-10-08T10:42:25Z INF Processing stage step 'Enable QEMU tools.Enable VBOX.3'. ( commands: 1, files: 0, ... )
+Oct 08 10:42:25 kairos-9c82 kairos-agent[1204]: Error on file /system/oem/26_vm.yaml on stage Enable VBOX: 1 error occurred:
+                                                        * failed to run systemctl start vmtoolsd: exit status 5
+                                                Failed to start vmtoolsd.service: Unit vmtoolsd.service not found.
+Oct 08 10:42:25 kairos-9c82 kairos-agent[1204]: 2026-10-08T10:42:25Z ERR Error on file /system/oem/26_vm.yaml on stage Enable VBOX: 1 error occurred:
+Oct 08 10:42:25 kairos-9c82 kairos-agent[1204]:         * failed to run systemctl start vmtoolsd: exit status 5
+Oct 08 10:42:25 kairos-9c82 kairos-agent[1204]: Failed to start vmtoolsd.service: Unit vmtoolsd.service not found.
+                                                : exit status 1)' stage name: Enable QEMU tools.Enable VMWARE.4
+Oct 08 10:42:25 kairos-9c82 kairos-agent[1204]: : exit status 1)' stage name: Enable QEMU tools.Enable VMWARE.4
+Oct 08 10:42:25 kairos-9c82 kairos-agent[1204]: : exit status 1)' stage name: Enable QEMU tools.Enable VMWARE.5
+                                                : exit status 1)' stage name: Enable QEMU tools.Enable VMWARE.5
+Oct 08 10:42:25 kairos-9c82 kairos-agent[1204]:         * failed to run systemctl start vmtoolsd: exit status 5
+Oct 08 10:42:25 kairos-9c82 kairos-agent[1204]: Failed to start vmtoolsd.service: Unit vmtoolsd.service not found.
+                                                        * failed to run systemctl start vmtoolsd: exit status 5
+                                                Failed to start vmtoolsd.service: Unit vmtoolsd.service not found.
+== status
+Unit vmtoolsd.service could not be found.
+Unit open-vm-tools.service could not be found.
+Unit qemu-guest-agent.service could not be found.

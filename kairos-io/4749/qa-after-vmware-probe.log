@@ -1,0 +1,32 @@
+Warning: Permanently added '[127.0.0.1]:2233' (ED25519) to the list of known hosts.
+== product
+VMware Virtual Platform
+== stages
+1:name: "Enable QEMU tools"
+4:    - name: "Enable QEMU"
+11:    - name: "Enable QEMU"
+18:    - name: "Enable VMWARE"
+24:    - name: "Enable VMWARE"
+== journal
+                                                : exit status 1)' stage name: Enable QEMU tools.Enable QEMU.0
+Oct 08 10:40:50 kairos-5f13 kairos-agent[1193]: : exit status 1)' stage name: Enable QEMU tools.Enable QEMU.0
+                                                : exit status 1)' stage name: Enable QEMU tools.Enable QEMU.1
+Oct 08 10:40:50 kairos-5f13 kairos-agent[1193]: : exit status 1)' stage name: Enable QEMU tools.Enable QEMU.1
+Oct 08 10:40:51 kairos-5f13 kairos-agent[1193]: (conditional) Skip 'service manager doesn't match openrc' stage name: Enable QEMU tools.Enable VMWARE.2
+Oct 08 10:40:51 kairos-5f13 kairos-agent[1193]: 2026-10-08T10:40:51Z WRN (conditional) Skip 'service manager doesn't match openrc' stage name: Enable QEMU tools.Enable VMWARE.2
+Oct 08 10:40:51 kairos-5f13 kairos-agent[1193]: Processing stage step 'Enable QEMU tools.Enable VMWARE.3'. ( commands: 1, files: 0, ... )
+Oct 08 10:40:51 kairos-5f13 kairos-agent[1193]: 2026-10-08T10:40:51Z INF Processing stage step 'Enable QEMU tools.Enable VMWARE.3'. ( commands: 1, files: 0, ... )
+Oct 08 10:40:51 kairos-5f13 kairos-agent[1193]: Error on file /system/oem/26_vm.yaml on stage Enable VMWARE: 1 error occurred:
+                                                        * failed to run systemctl start vmtoolsd: exit status 5
+                                                Failed to start vmtoolsd.service: Unit vmtoolsd.service not found.
+Oct 08 10:40:51 kairos-5f13 kairos-agent[1193]: 2026-10-08T10:40:51Z ERR Error on file /system/oem/26_vm.yaml on stage Enable VMWARE: 1 error occurred:
+Oct 08 10:40:51 kairos-5f13 kairos-agent[1193]:         * failed to run systemctl start vmtoolsd: exit status 5
+Oct 08 10:40:51 kairos-5f13 kairos-agent[1193]: Failed to start vmtoolsd.service: Unit vmtoolsd.service not found.
+Oct 08 10:40:51 kairos-5f13 kairos-agent[1193]:         * failed to run systemctl start vmtoolsd: exit status 5
+Oct 08 10:40:51 kairos-5f13 kairos-agent[1193]: Failed to start vmtoolsd.service: Unit vmtoolsd.service not found.
+                                                        * failed to run systemctl start vmtoolsd: exit status 5
+                                                Failed to start vmtoolsd.service: Unit vmtoolsd.service not found.
+== status
+Unit vmtoolsd.service could not be found.
+Unit open-vm-tools.service could not be found.
+Unit qemu-guest-agent.service could not be found.
