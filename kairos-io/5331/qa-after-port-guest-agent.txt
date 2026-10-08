@@ -1,0 +1,3 @@
+guest-ping {"return": {}}
+
+guest-info {"return": {"version": "8.2.2", "supported_commands": [{"enabled": true, "name": "guest-get-cpustats", "success-response": true}, {"enabled": true, "name": "guest-get-diskstats", "success-response": true}, {"enabled": true, "name": "guest-ssh-remove-authorized-keys", "success-response": true}, {"ena
