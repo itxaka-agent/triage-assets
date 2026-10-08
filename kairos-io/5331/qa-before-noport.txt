@@ -1,0 +1,26 @@
+
+root@kairos:~# echo START; systemd-analyze; systemd-analyze critical-chain multi-user.target | head -8; systemctl status qemu-guest-agent --no-pager | head -8; journalctl -u cos-setup-boot --no-pager | tail -5; echo END
+START
+Startup finished in 2.672s (kernel) + 2.981s (initrd) + 1min 32.612s (userspace) = 1min 38.266s 
+multi-user.target reached after 1min 32.555s in userspace.
+The time when unit became active or started is printed after the "@" character.
+The time the unit took to start is printed after the "+" character.
+
+multi-user.target @1min 32.555s
+└─getty.target @1min 32.555s
+  └─cos-setup-boot.service @2.056s +1min 30.497s
+    └─basic.target @2.055s
+      └─sockets.target @2.054s
+○ qemu-guest-agent.service - QEMU Guest Agent
+     Loaded: loaded (/usr/lib/systemd/system/qemu-guest-agent.service; static)
+     Active: inactive (dead)
+
+Oct 08 14:08:20 kairos systemd[1]: Dependency failed for qemu-guest-agent.service - QEMU Guest Agent.
+Oct 08 14:08:20 kairos systemd[1]: qemu-guest-agent.service: Job qemu-guest-agent.service/start failed with result 'dependency'.
+Oct 08 14:08:20 kairos kairos-agent[1659]:         * failed to run systemctl start qemu-guest-agent: exit status 1
+Oct 08 14:08:20 kairos kairos-agent[1659]: command output:
+Oct 08 14:08:20 kairos kairos-agent[1659]: A dependency job for qemu-guest-agent.service failed. See 'journalctl -xe' for details.
+Oct 08 14:08:20 kairos kairos-agent[1659]: 
+Oct 08 14:08:20 kairos systemd[1]: Finished cos-setup-boot.service - cOS system configuration.
+END
+root@kairos:~# 
