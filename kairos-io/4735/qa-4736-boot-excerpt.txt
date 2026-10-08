@@ -1,0 +1,19 @@
+== before (master d130ee8c), no guest-agent channel
+Failed to start qemu-guest-agent.service: Unit qemu-guest-agent.service not found.
+Startup finished in 2.570s (kernel) + 3.439s (initrd) + 2.745s (userspace) = 8.755s 
+multi-user.target reached after 2.687s in userspace.
+                                                Failed to start qemu-guest-agent.service: Unit qemu-guest-agent.service not found.
+
+== PR 76e7c497, no guest-agent channel
+534 dev-virtio\x2dports-org.qemu.guest_agent.0.device start running
+Oct 08 12:29:12 kairos-38b7 systemd[1]: Dependency failed for qemu-guest-agent.service - QEMU Guest Agent.
+Startup finished in 2.562s (kernel) + 3.003s (initrd) + 1min 32.721s (userspace) = 1min 38.287s 
+multi-user.target reached after 1min 32.694s in userspace.
+
+== PR 76e7c497, with channel
+Startup finished in 2.573s (kernel) + 3.237s (initrd) + 2.554s (userspace) = 8.366s 
+multi-user.target reached after 2.497s in userspace.
+guest-sync: b'{"error": {"class": "GenericError", "desc": "JSON parse error, stray \'\\uFFFD\'"}}\n{"return": 4736}\n'
+guest-ping b'{"return": {}}\n'
+guest-info b'{"return": {"version": "8.2.2", "supported_commands": [{"enabled": true, "name": "guest-get-cpustats", "success-response": true}, {"enabled": true,
+guest-get-osinfo b'{"return": {"name": "Ubuntu", "kernel-release": "7.0.0-38-generic", "version": "24.04.5 LTS (Noble Numbat)", "pretty-name": "Ubuntu 24.04.5 L
