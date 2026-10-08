@@ -1,0 +1,122 @@
+
+[?2004l[?2004hroot@kairos-1374:~# 
+journalctl -b --no-pager | grep -iE 'vmtoolsd|VMWARE|qemu-guest' | cut -c1-200; systemd-analyze; systemd-analyze blame | head -8
+[?2004lOct 08 12:42:09 localhost kernel: DMI: VMware, Inc. VMware Virtual Platform, BIOS unknown 02/02/2022
+Oct 08 12:42:09 localhost kernel: DMI: VMware, Inc. VMware Virtual Platform, BIOS unknown 02/02/2022
+Oct 08 12:42:13 kairos-1374 kernel: input: VirtualPS/2 VMware VMMouse as /devices/platform/i8042/serio1/input/input4
+Oct 08 12:42:13 kairos-1374 kernel: input: VirtualPS/2 VMware VMMouse as /devices/platform/i8042/serio1/input/input3
+Oct 08 12:42:14 kairos-1374 kairos-agent[1633]: (conditional) Skip 'service manager doesn't match openrc' stage name: Enable QEMU tools.Enable VMWARE.4
+Oct 08 12:42:14 kairos-1374 kairos-agent[1633]: 2026-10-08T12:42:14Z WRN (conditional) Skip 'service manager doesn't match openrc' stage name: Enable QEMU tools.Enable VMWARE.4
+Oct 08 12:42:14 kairos-1374 kairos-agent[1633]: 2026-10-08T12:42:14Z INF Processing stage step 'Enable QEMU tools.Enable VMWARE.5'. ( commands: 1, files: 0, ... )
+Oct 08 12:42:14 kairos-1374 kairos-agent[1633]: Processing stage step 'Enable QEMU tools.Enable VMWARE.5'. ( commands: 1, files: 0, ... )
+Oct 08 12:42:14 kairos-1374 kairos-agent[1633]: Error on file /system/oem/26_vm.yaml on stage Enable VMWARE: 1 error occurred:
+                                                        * failed to run systemctl start vmtoolsd: exit status 5
+                                                Failed to start vmtoolsd.service: Unit vmtoolsd.service not found.
+Oct 08 12:42:14 kairos-1374 kairos-agent[1633]: 2026-10-08T12:42:14Z ERR Error on file /system/oem/26_vm.yaml on stage Enable VMWARE: 1 error occurred:
+Oct 08 12:42:14 kairos-1374 kairos-agent[1633]:         * failed to run systemctl start vmtoolsd: exit status 5
+Oct 08 12:42:14 kairos-1374 kairos-agent[1633]: Failed to start vmtoolsd.service: Unit vmtoolsd.service not found.
+Oct 08 12:42:14 kairos-1374 kairos-agent[1633]:         * failed to run systemctl start vmtoolsd: exit status 5
+Oct 08 12:42:14 kairos-1374 kairos-agent[1633]: Failed to start vmtoolsd.service: Unit vmtoolsd.service not found.
+                                                        * failed to run systemctl start vmtoolsd: exit status 5
+                                                Failed to start vmtoolsd.service: Unit vmtoolsd.service not found.
+Startup finished in 2.634s (kernel) + 2.511s (initrd) + 4.502s (userspace) = 9.649s 
+multi-user.target reached after 4.459s in userspace.
+2.738s sys-devices-virtual-misc-rfkill.device
+2.738s dev-rfkill.device
+2.736s sys-devices-platform-serial8250-serial8250:0-serial8250:0.18-tty-ttyS18.device
+2.736s dev-ttyS18.device
+2.730s dev-ttyS26.device
+2.730s sys-devices-platform-serial8250-serial8250:0-serial8250:0.26-tty-ttyS26.device
+2.728s dev-ttyS23.device
+2.728s sys-devices-platform-serial8250-serial8250:0-serial8250:0.23-tty-ttyS23.device
+[?2004hroot@kairos-1374:~# 
+
+[?2004l[?2004hroot@kairos:~# 
+journalctl -b --no-pager | grep -iE 'vmtoolsd|VMWARE|open-vm|26_vm' | cut -c1-220; systemd-detect-virt; systemd-analyze
+[?2004lOct 08 12:45:33 localhost kernel: DMI: VMware, Inc. VMware Virtual Platform, BIOS unknown 02/02/2022
+Oct 08 12:45:33 localhost systemd[1]: Detected virtualization vmware.
+Oct 08 12:45:33 localhost kernel: DMI: VMware, Inc. VMware Virtual Platform, BIOS unknown 02/02/2022
+Oct 08 12:45:33 localhost systemd[1]: Detected virtualization vmware.
+Oct 08 12:45:37 kairos systemd[1]: Detected virtualization vmware.
+Oct 08 12:45:38 kairos systemd[1]: Started vgauth.service - Authentication service for virtual machines hosted on VMware.
+Oct 08 12:45:38 kairos systemd[1]: Started open-vm-tools.service - Service for virtual machines hosted on VMware.
+Oct 08 12:45:38 kairos systemd[1]: open-vm-tools.service: Main process exited, code=exited, status=1/FAILURE
+Oct 08 12:45:38 kairos systemd[1]: open-vm-tools.service: Failed with result 'exit-code'.
+Oct 08 12:45:38 kairos VGAuthService[1371]: Pref_Init: Using '/etc/vmware-tools/vgauth.conf' as preferences filepath
+Oct 08 12:45:38 kairos VGAuthService[1371]: Cannot load message catalog for domain 'VGAuthService', language 'C', catalog dir '/usr/share/open-vm-tools'.
+Oct 08 12:45:38 kairos VGAuthService[1371]: Using '/var/lib/vmware/VGAuth/aliasStore' for alias store root directory
+Oct 08 12:45:38 kairos VGAuthService[1371]: LoadCatalogAndSchema: Using '/etc/vmware-tools/vgauth/schemas' for SAML schemas
+Oct 08 12:45:38 kairos VGAuthService[1371]: ServiceNetworkCreateSocketDir: Created socket directory '/var/run/vmware'
+Oct 08 12:45:39 kairos kairos-agent[1632]: (conditional) Skip 'service manager doesn't match openrc' stage name: Enable QEMU tools.Enable VMWARE.4
+Oct 08 12:45:39 kairos kairos-agent[1632]: 2026-10-08T12:45:39Z WRN (conditional) Skip 'service manager doesn't match openrc' stage name: Enable QEMU tools.Enable VMWARE.4
+Oct 08 12:45:39 kairos kairos-agent[1632]: Processing stage step 'Enable QEMU tools.Enable VMWARE.5'. ( commands: 1, files: 0, ... )
+Oct 08 12:45:39 kairos kairos-agent[1632]: 2026-10-08T12:45:39Z INF Processing stage step 'Enable QEMU tools.Enable VMWARE.5'. ( commands: 1, files: 0, ... )
+Oct 08 12:45:39 kairos systemd[1]: Started open-vm-tools.service - Service for virtual machines hosted on VMware.
+Oct 08 12:45:39 kairos systemd[1]: open-vm-tools.service: Main process exited, code=exited, status=1/FAILURE
+Oct 08 12:45:39 kairos systemd[1]: open-vm-tools.service: Failed with result 'exit-code'.
+vmware
+Startup finished in 2.641s (kernel) + 2.826s (initrd) + 4.401s (userspace) = 9.869s 
+multi-user.target reached after 4.365s in userspace.
+[?2004hroot@kairos:~# 
+
+[?2004l[?2004h[root@kairos ~]# 
+journalctl -b --no-pager | grep -iE 'vmtoolsd|VMWARE|open-vm|26_vm' | cut -c1-220; systemctl status vmtoolsd --no-pager|head
+[?2004lOct 08 12:51:10 localhost kernel: DMI: VMware, Inc. VMware Virtual Platform, BIOS unknown 02/02/2022
+Oct 08 12:51:10 localhost systemd[1]: Detected virtualization vmware.
+Oct 08 12:51:12 kairos systemd[1]: Detected virtualization vmware.
+Oct 08 12:51:13 kairos systemd[1]: Started VGAuth Service for open-vm-tools.
+Oct 08 12:51:13 kairos systemd[1]: Started Service for virtual machines hosted on VMware.
+Oct 08 12:51:13 kairos VGAuthService[1103]: Pref_Init: Using '/etc/vmware-tools/vgauth.conf' as preferences filepath
+Oct 08 12:51:13 kairos systemd[1]: vmtoolsd.service: Main process exited, code=exited, status=1/FAILURE
+Oct 08 12:51:13 kairos systemd[1]: vmtoolsd.service: Failed with result 'exit-code'.
+Oct 08 12:51:13 kairos systemd[1]: vmtoolsd.service: Scheduled restart job, restart counter is at 1.
+Oct 08 12:51:13 kairos kairos-agent[1099]: (conditional) Skip 'service manager doesn't match openrc' stage name: Enable QEMU tools.Enable VMWARE.4
+Oct 08 12:51:13 kairos kairos-agent[1099]: 2026-10-08T12:51:13Z WRN (conditional) Skip 'service manager doesn't match openrc' stage name: Enable QEMU tools.Enable VMWARE.4
+Oct 08 12:51:13 kairos kairos-agent[1099]: Processing stage step 'Enable QEMU tools.Enable VMWARE.5'. ( commands: 1, files: 0, ... )
+Oct 08 12:51:13 kairos kairos-agent[1099]: 2026-10-08T12:51:13Z INF Processing stage step 'Enable QEMU tools.Enable VMWARE.5'. ( commands: 1, files: 0, ... )
+Oct 08 12:51:13 kairos systemd[1]: Stopped Service for virtual machines hosted on VMware.
+Oct 08 12:51:13 kairos systemd[1]: Stopping VGAuth Service for open-vm-tools...
+Oct 08 12:51:13 kairos systemd[1]: Stopped VGAuth Service for open-vm-tools.
+Oct 08 12:51:13 kairos systemd[1]: Started VGAuth Service for open-vm-tools.
+Oct 08 12:51:13 kairos systemd[1]: Started Service for virtual machines hosted on VMware.
+Oct 08 12:51:13 kairos VGAuthService[1180]: Pref_Init: Using '/etc/vmware-tools/vgauth.conf' as preferences filepath
+Oct 08 12:51:13 kairos systemd[1]: vmtoolsd.service: Main process exited, code=exited, status=1/FAILURE
+Oct 08 12:51:13 kairos systemd[1]: vmtoolsd.service: Failed with result 'exit-code'.
+Oct 08 12:51:14 kairos systemd[1]: vmtoolsd.service: Scheduled restart job, restart counter is at 2.
+Oct 08 12:51:14 kairos systemd[1]: Stopped Service for virtual machines hosted on VMware.
+Oct 08 12:51:14 kairos systemd[1]: Stopping VGAuth Service for open-vm-tools...
+Oct 08 12:51:14 kairos systemd[1]: Stopped VGAuth Service for open-vm-tools.
+Oct 08 12:51:14 kairos systemd[1]: Started VGAuth Service for open-vm-tools.
+Oct 08 12:51:14 kairos systemd[1]: Started Service for virtual machines hosted on VMware.
+Oct 08 12:51:14 kairos VGAuthService[1260]: Pref_Init: Using '/etc/vmware-tools/vgauth.conf' as preferences filepath
+Oct 08 12:51:14 kairos systemd[1]: vmtoolsd.service: Main process exited, code=exited, status=1/FAILURE
+Oct 08 12:51:14 kairos systemd[1]: vmtoolsd.service: Failed with result 'exit-code'.
+Oct 08 12:51:14 kairos systemd[1]: vmtoolsd.service: Scheduled restart job, restart counter is at 3.
+Oct 08 12:51:14 kairos systemd[1]: Stopped Service for virtual machines hosted on VMware.
+Oct 08 12:51:14 kairos systemd[1]: Stopping VGAuth Service for open-vm-tools...
+Oct 08 12:51:14 kairos systemd[1]: Stopped VGAuth Service for open-vm-tools.
+Oct 08 12:51:14 kairos systemd[1]: Started VGAuth Service for open-vm-tools.
+Oct 08 12:51:14 kairos systemd[1]: Started Service for virtual machines hosted on VMware.
+Oct 08 12:51:14 kairos VGAuthService[1262]: Pref_Init: Using '/etc/vmware-tools/vgauth.conf' as preferences filepath
+Oct 08 12:51:14 kairos systemd[1]: vmtoolsd.service: Main process exited, code=exited, status=1/FAILURE
+Oct 08 12:51:14 kairos systemd[1]: vmtoolsd.service: Failed with result 'exit-code'.
+Oct 08 12:51:14 kairos systemd[1]: vmtoolsd.service: Scheduled restart job, restart counter is at 4.
+Oct 08 12:51:14 kairos systemd[1]: Stopped Service for virtual machines hosted on VMware.
+Oct 08 12:51:14 kairos systemd[1]: Stopping VGAuth Service for open-vm-tools...
+Oct 08 12:51:14 kairos systemd[1]: Stopped VGAuth Service for open-vm-tools.
+Oct 08 12:51:14 kairos systemd[1]: Started VGAuth Service for open-vm-tools.
+Oct 08 12:51:14 kairos systemd[1]: vmtoolsd.service: Start request repeated too quickly.
+Oct 08 12:51:14 kairos systemd[1]: vmtoolsd.service: Failed with result 'exit-code'.
+Oct 08 12:51:14 kairos systemd[1]: Failed to start Service for virtual machines hosted on VMware.
+Oct 08 12:51:14 kairos VGAuthService[1264]: Pref_Init: Using '/etc/vmware-tools/vgauth.conf' as preferences filepath
+× vmtoolsd.service - Service for virtual machines hosted on VMware
+     Loaded: loaded (/usr/lib/systemd/system/vmtoolsd.service; enabled; preset: enabled)
+     Active: failed (Result: exit-code) since Thu 2026-10-08 12:51:14 UTC; 1min 1s ago
+   Duration: 9ms
+       Docs: https://github.com/vmware/open-vm-tools
+    Process: 1263 ExecStart=/usr/bin/vmtoolsd (code=exited, status=1/FAILURE)
+   Main PID: 1263 (code=exited, status=1/FAILURE)
+        CPU: 7ms
+
+Oct 08 12:51:14 kairos systemd[1]: vmtoolsd.service: Scheduled restart job, restart counter is at 4.
+[?2004h[root@kairos ~]# 

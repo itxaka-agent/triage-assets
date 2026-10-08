@@ -1,0 +1,77 @@
+
+[?2004l[?2004hroot@kairos-5d49:~# 
+systemd-analyze; systemd-analyze blame | head -6
+[?2004lStartup finished in 2.617s (kernel) + 2.857s (initrd) + 4.229s (userspace) = 9.704s 
+multi-user.target reached after 4.189s in userspace.
+3.078s sys-devices-virtual-misc-rfkill.device
+3.078s dev-rfkill.device
+3.045s dev-ttyS21.device
+3.045s sys-devices-platform-serial8250-serial8250:0-serial8250:0.21-tty-ttyS21.device
+3.044s sys-devices-platform-serial8250-serial8250:0-serial8250:0.22-tty-ttyS22.device
+3.044s dev-ttyS22.device
+[?2004hroot@kairos-5d49:~# 
+# AFTER (PR d25e7e46) Ubuntu 24.04, plain QEMU, no guest-agent channel, ~25s after start; systemctl list-jobs
+JOB UNIT                                              TYPE  STATE
+286 getty.target                                      start waiting
+301 cos-setup-boot.service                            start running
+542 dev-virtio\x2dports-org.qemu.guest_agent.0.device start running
+269 kairos-installer.service                          start waiting
+312 systemd-update-utmp-runlevel.service              start waiting
+156 multi-user.target                                 start waiting
+541 qemu-guest-agent.service                          start waiting
+Startup finished in 2.629s (kernel) + 3.123s (initrd) + 1min 32.461s (userspace) = 1min 38.215s (checked ~2min in)
+
+[?2004l[?2004hroot@kairos-ca96:~# 
+systemd-analyze; systemd-analyze blame | head -6; journalctl -b --no-pager | grep -iE 'qemu-guest|open-vm|Enable QEMU' | cut -c1-220
+[?2004lStartup finished in 2.629s (kernel) + 3.123s (initrd) + 1min 32.461s (userspace) = 1min 38.215s 
+multi-user.target reached after 1min 32.432s in userspace.
+1min 30.324s cos-setup-boot.service
+      3.348s dev-rfkill.device
+      3.348s sys-devices-virtual-misc-rfkill.device
+      3.299s dev-ttyS16.device
+      3.299s sys-devices-platform-serial8250-serial8250:0-serial8250:0.16-tty-ttyS16.device
+      3.295s dev-ttyS11.device
+Oct 08 12:47:24 kairos-ca96 systemd[1]: open-vm-tools.service - Service for virtual machines hosted on VMware was skipped because of an unmet condition check (ConditionVirtualization=vmware).
+Oct 08 12:47:25 kairos-ca96 kairos-agent[1636]: (conditional) Skip 'service manager doesn't match openrc' stage name: Enable QEMU tools.Enable QEMU.0
+Oct 08 12:47:25 kairos-ca96 kairos-agent[1636]: 2026-10-08T12:47:25Z WRN (conditional) Skip 'service manager doesn't match openrc' stage name: Enable QEMU tools.Enable QEMU.0
+Oct 08 12:47:25 kairos-ca96 kairos-agent[1636]: Processing stage step 'Enable QEMU tools.Enable QEMU.1'. ( commands: 1, files: 0, ... )
+Oct 08 12:47:25 kairos-ca96 kairos-agent[1636]: 2026-10-08T12:47:25Z INF Processing stage step 'Enable QEMU tools.Enable QEMU.1'. ( commands: 1, files: 0, ... )
+Oct 08 12:47:35 kairos-ca96 kairos-agent[1636]: Still running stage 'Enable QEMU tools.Enable QEMU.1'
+Oct 08 12:47:35 kairos-ca96 kairos-agent[1636]: 2026-10-08T12:47:35Z INF Still running stage 'Enable QEMU tools.Enable QEMU.1'
+Oct 08 12:47:45 kairos-ca96 kairos-agent[1636]: Still running stage 'Enable QEMU tools.Enable QEMU.1'
+Oct 08 12:47:45 kairos-ca96 kairos-agent[1636]: 2026-10-08T12:47:45Z INF Still running stage 'Enable QEMU tools.Enable QEMU.1'
+Oct 08 12:47:55 kairos-ca96 kairos-agent[1636]: Still running stage 'Enable QEMU tools.Enable QEMU.1'
+Oct 08 12:47:55 kairos-ca96 kairos-agent[1636]: 2026-10-08T12:47:55Z INF Still running stage 'Enable QEMU tools.Enable QEMU.1'
+Oct 08 12:48:05 kairos-ca96 kairos-agent[1636]: Still running stage 'Enable QEMU tools.Enable QEMU.1'
+Oct 08 12:48:05 kairos-ca96 kairos-agent[1636]: 2026-10-08T12:48:05Z INF Still running stage 'Enable QEMU tools.Enable QEMU.1'
+Oct 08 12:48:15 kairos-ca96 kairos-agent[1636]: Still running stage 'Enable QEMU tools.Enable QEMU.1'
+Oct 08 12:48:15 kairos-ca96 kairos-agent[1636]: 2026-10-08T12:48:15Z INF Still running stage 'Enable QEMU tools.Enable QEMU.1'
+Oct 08 12:48:25 kairos-ca96 kairos-agent[1636]: Still running stage 'Enable QEMU tools.Enable QEMU.1'
+Oct 08 12:48:25 kairos-ca96 kairos-agent[1636]: 2026-10-08T12:48:25Z INF Still running stage 'Enable QEMU tools.Enable QEMU.1'
+Oct 08 12:48:35 kairos-ca96 kairos-agent[1636]: Still running stage 'Enable QEMU tools.Enable QEMU.1'
+Oct 08 12:48:35 kairos-ca96 kairos-agent[1636]: 2026-10-08T12:48:35Z INF Still running stage 'Enable QEMU tools.Enable QEMU.1'
+Oct 08 12:48:45 kairos-ca96 kairos-agent[1636]: Still running stage 'Enable QEMU tools.Enable QEMU.1'
+Oct 08 12:48:45 kairos-ca96 kairos-agent[1636]: 2026-10-08T12:48:45Z INF Still running stage 'Enable QEMU tools.Enable QEMU.1'
+Oct 08 12:48:55 kairos-ca96 kairos-agent[1636]: Still running stage 'Enable QEMU tools.Enable QEMU.1'
+Oct 08 12:48:55 kairos-ca96 kairos-agent[1636]: 2026-10-08T12:48:55Z INF Still running stage 'Enable QEMU tools.Enable QEMU.1'
+Oct 08 12:48:55 kairos-ca96 systemd[1]: Dependency failed for qemu-guest-agent.service - QEMU Guest Agent.
+Oct 08 12:48:55 kairos-ca96 systemd[1]: qemu-guest-agent.service: Job qemu-guest-agent.service/start failed with result 'dependency'.
+Oct 08 12:48:55 kairos-ca96 kairos-agent[1636]: Error on file /system/oem/26_vm.yaml on stage Enable QEMU: 1 error occurred:
+                                                        * failed to run systemctl start qemu-guest-agent: exit status 1
+                                                A dependency job for qemu-guest-agent.service failed. See 'journalctl -xe' for details.
+Oct 08 12:48:55 kairos-ca96 kairos-agent[1636]: 2026-10-08T12:48:55Z ERR Error on file /system/oem/26_vm.yaml on stage Enable QEMU: 1 error occurred:
+Oct 08 12:48:55 kairos-ca96 kairos-agent[1636]:         * failed to run systemctl start qemu-guest-agent: exit status 1
+Oct 08 12:48:55 kairos-ca96 kairos-agent[1636]: A dependency job for qemu-guest-agent.service failed. See 'journalctl -xe' for details.
+                                                : exit status 1)' stage name: Enable QEMU tools.Enable VBOX.2
+Oct 08 12:48:55 kairos-ca96 kairos-agent[1636]: : exit status 1)' stage name: Enable QEMU tools.Enable VBOX.2
+                                                : exit status 1)' stage name: Enable QEMU tools.Enable VBOX.3
+Oct 08 12:48:55 kairos-ca96 kairos-agent[1636]: : exit status 1)' stage name: Enable QEMU tools.Enable VBOX.3
+                                                : exit status 1)' stage name: Enable QEMU tools.Enable VMWARE.4
+Oct 08 12:48:55 kairos-ca96 kairos-agent[1636]: : exit status 1)' stage name: Enable QEMU tools.Enable VMWARE.4
+                                                : exit status 1)' stage name: Enable QEMU tools.Enable VMWARE.5
+Oct 08 12:48:55 kairos-ca96 kairos-agent[1636]: : exit status 1)' stage name: Enable QEMU tools.Enable VMWARE.5
+Oct 08 12:48:56 kairos-ca96 kairos-agent[1636]:         * failed to run systemctl start qemu-guest-agent: exit status 1
+Oct 08 12:48:56 kairos-ca96 kairos-agent[1636]: A dependency job for qemu-guest-agent.service failed. See 'journalctl -xe' for details.
+                                                        * failed to run systemctl start qemu-guest-agent: exit status 1
+                                                A dependency job for qemu-guest-agent.service failed. See 'journalctl -xe' for details.
+[?2004hroot@kairos-ca96:~# 
