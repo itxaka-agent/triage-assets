@@ -1,0 +1,24 @@
+=== kairos-local/hadron681-before
+ls: cannot access '/usr/share/grub/*.pf2': No such file or directory
+ls: cannot access '/usr/bin/grub-mkfont': No such file or directory
+i386-pc
+x86_64-efi
+=== kairos-local/hadron681-before-init
+ls: cannot access '/usr/share/grub/*.pf2': No such file or directory
+ls: cannot access '/usr/bin/grub-mkfont': No such file or directory
+i386-pc
+x86_64-efi
+=== kairos-local/hadron681-after
+-rw-r--r-- 1 root root    5004 Oct 13 08:33 /usr/share/grub/ascii.pf2
+-rw-r--r-- 1 root root   52231 Oct 13 08:33 /usr/share/grub/euro.pf2
+-rw-r--r-- 1 root root 2413163 Oct 13 08:33 /usr/share/grub/unicode.pf2
+ls: cannot access '/usr/bin/grub-mkfont': No such file or directory
+i386-pc
+x86_64-efi
+=== kairos-local/hadron681-after-init
+-rw-r--r-- 1 root root    5004 Oct 13 08:33 /usr/share/grub/ascii.pf2
+-rw-r--r-- 1 root root   52231 Oct 13 08:33 /usr/share/grub/euro.pf2
+-rw-r--r-- 1 root root 2413163 Oct 13 08:33 /usr/share/grub/unicode.pf2
+ls: cannot access '/usr/bin/grub-mkfont': No such file or directory
+i386-pc
+x86_64-efi
