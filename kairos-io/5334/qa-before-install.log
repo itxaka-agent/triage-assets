@@ -1,0 +1,608 @@
+Warning: Permanently added '[127.0.0.1]:22681' (ED25519) to the list of known hosts.
+2026-10-13T09:12:58Z INF Kairos Agent version=v2.31.4
+2026-10-13T09:12:58Z DBG Kairos Agent version={"git_commit":"14f0d3bf68b60c86efbfd1dd857a0d9087bac7b1","go_version":"go1.26.6","version":"v2.31.4"}
+2026-10-13T09:12:58Z DBG detecting boot state
+2026-10-13T09:12:58Z INF Boot Mode boot_mode=livecd_boot
+2026-10-13T09:12:58Z INF Boot in uki mode result=false
+2026-10-13T09:12:58Z DBG Loaded config: &config.Config{
+  Install: &install.Install{
+    Device: "/dev/vda",
+  },
+  Collector: collector.Config{
+    Sources: []string{
+      "reader",
+      "reader",
+      "reader",
+      "cmdline",
+    },
+    Values: collector.ConfigValues{
+      "install": collector.ConfigValues{
+        "device": "/dev/vda",
+        "reboot": false,
+      },
+      "users": []interface {}{
+        collector.ConfigValues{
+          "groups": []interface {}{
+            "admin",
+          },
+          "name": "kairos",
+          "passwd": "kairos",
+        },
+      },
+    },
+  },
+  Fs: &vfs.osfs{}, // p0
+  Mounter: &mount.Mounter{
+    mounterPath: "/usr/bin/mount",
+    trySystemd: true,
+    withSafeNotMountedBehavior: true,
+  },
+  Runner: &runner.RealRunner{}, // p1
+  Syscall: &syscall.RealSyscall{},
+  CloudInitRunner: &cloudinit.YipCloudInitRunner{
+    exec: &executor.DefaultExecutor{
+      plugins: []executor.Plugin{
+        plugins.DNS,
+        plugins.Download,
+        plugins.Git,
+        plugins.Entities,
+        plugins.EnsureDirectories,
+        plugins.EnsureFiles,
+        plugins.Commands,
+        plugins.DeleteEntities,
+        plugins.Hostname,
+        plugins.Sysctl,
+        plugins.User,
+        plugins.SSH,
+        plugins.LoadModules,
+        plugins.Timesyncd,
+        plugins.Systemctl,
+        plugins.Environment,
+        plugins.SystemdFirstboot,
+        plugins.DataSources,
+        plugins.Layout,
+        plugins.PackagePins,
+        plugins.Packages,
+        plugins.UnpackImage,
+      },
+      conditionals: []executor.Plugin{
+        plugins.NodeConditional,
+        plugins.IfConditional,
+        plugins.OnlyIfOS,
+        plugins.OnlyIfOSVersion,
+        plugins.IfArch,
+        plugins.IfServiceManager,
+        plugins.IfFiles,
+      },
+    },
+    fs: p0,
+    console: &cloudinit.cloudInitConsole{
+      runner: p1,
+    },
+  },
+  ImageExtractor: image.OCIImageExtractor{},
+  Platform: &platform.Platform{
+    OS: "linux",
+    Arch: "x86_64",
+    GolangArch: "amd64",
+  },
+  Arch: "x86_64",
+  SquashFsCompressionConfig: []string{},
+  SquashFsNoCompression: true,
+  UkiMaxEntries: 3,
+}
+2026-10-13T09:12:58Z DBG Kubernetes check hostdir= status=false
+2026-10-13T09:12:58Z INF Setting image size to 415MiB
+2026-10-13T09:12:58Z INF Setting OEM partition size to 64MiB
+2026-10-13T09:12:58Z INF Setting recovery partition size to 1030MiB
+2026-10-13T09:12:58Z INF Setting state partition size to 2245MiB
+2026-10-13T09:12:58Z INF Setting persistent partition size to 0MiB
+2026-10-13T09:12:58Z DBG Loaded install spec: &spec.InstallSpec{
+  Target: "/dev/vda",
+  Firmware: "efi",
+  PartTable: "gpt",
+  Partitions: partitions.ElementalPartitions{
+    EFI: &partitions.Partition{
+      Name: "efi",
+      FilesystemLabel: "COS_GRUB",
+      Size: 64,
+      FS: "vfat",
+      Flags: []string{
+        "esp",
+      },
+      MountPoint: "/run/cos/efi",
+    },
+    OEM: &partitions.Partition{
+      Name: "oem",
+      FilesystemLabel: "COS_OEM",
+      Size: 64,
+      FS: "ext4",
+      Flags: []string{}, // p0
+      MountPoint: "/run/cos/oem",
+    },
+    Recovery: &partitions.Partition{
+      Name: "recovery",
+      FilesystemLabel: "COS_RECOVERY",
+      Size: 1030,
+      FS: "ext4",
+      Flags: p0,
+      MountPoint: "/run/cos/recovery",
+    },
+    State: &partitions.Partition{
+      Name: "state",
+      FilesystemLabel: "COS_STATE",
+      Size: 2245,
+      FS: "ext4",
+      Flags: p0,
+      MountPoint: "/run/cos/state",
+    },
+    Persistent: &partitions.Partition{
+      Name: "persistent",
+      FilesystemLabel: "COS_PERSISTENT",
+      FS: "ext4",
+      Flags: p0,
+      MountPoint: "/run/cos/persistent",
+    },
+  },
+  Tty: "tty1",
+  Active: images.Image{
+    File: "/run/cos/state/cOS/active.img",
+    Label: "COS_ACTIVE",
+    Size: 415,
+    FS: "ext2",
+    Source: &images.ImageSource{
+      source: "/run/rootfsbase",
+      srcType: "dir",
+    },
+    MountPoint: "/run/cos/active",
+  },
+  Recovery: images.Image{
+    File: "/run/cos/recovery/cOS/recovery.img",
+    Label: "COS_SYSTEM",
+    Size: 415,
+    FS: "ext2",
+    Source: &images.ImageSource{
+      source: "/run/cos/state/cOS/active.img",
+      srcType: "file",
+    },
+  },
+  Passive: images.Image{
+    File: "/run/cos/state/cOS/passive.img",
+    Label: "COS_PASSIVE",
+    Size: 415,
+    FS: "ext2",
+    Source: &images.ImageSource{
+      source: "/run/cos/state/cOS/active.img",
+      srcType: "file",
+    },
+  },
+  GrubConf: "/etc/cos/grub.cfg",
+}
+2026-10-13T09:12:58Z DBG Cloud-init paths set to [/system/oem /oem/ /usr/local/cloud-config/ /tmp/kairos-install-config-xxx.yaml796415030]
+2026-10-13T09:12:58Z DBG Failed creating cloud-init config path: /tmp/kairos-install-config-xxx.yaml796415030 mkdir /tmp/kairos-install-config-xxx.yaml796415030: not a directory
+2026-10-13T09:12:58Z INF Running stage: kairos-install.pre.before
+
+2026-10-13T09:12:58Z INF Done executing stage 'kairos-install.pre.before'
+
+2026-10-13T09:12:58Z INF Running stage: kairos-install.pre
+
+2026-10-13T09:12:58Z INF Done executing stage 'kairos-install.pre'
+
+2026-10-13T09:12:58Z INF Running stage: kairos-install.pre.after
+
+2026-10-13T09:12:58Z INF Done executing stage 'kairos-install.pre.after'
+
+2026-10-13T09:12:58Z INF Running stage: kairos-install.pre.before
+
+2026-10-13T09:12:58Z INF Done executing stage 'kairos-install.pre.before'
+
+2026-10-13T09:12:58Z INF Running stage: kairos-install.pre
+
+2026-10-13T09:12:58Z INF Done executing stage 'kairos-install.pre'
+
+2026-10-13T09:12:58Z INF Running stage: kairos-install.pre.after
+
+2026-10-13T09:12:58Z INF Done executing stage 'kairos-install.pre.after'
+
+2026-10-13T09:12:58Z DBG Running cmd: 'blkdeactivate --lvmoptions retry,wholevg --dmoptions force,retry --errors'
+2026-10-13T09:12:58Z DBG blkdeactivate command output: Deactivating block devices:
+
+2026-10-13T09:12:58Z DBG Initialized new disk from device &partitioner.Disk{
+  Disk: &disk.Disk{
+    Backend: file.rawBackend{
+      storage: &os.File{
+        file: &os.file{
+          pfd: poll.FD{
+            fdmu: poll.fdMutex{
+              state: 0,
+              rsema: 0,
+              wsema: 0,
+            },
+            Sysfd: 8,
+            SysFile: poll.SysFile{},
+            pd: poll.pollDesc{
+              runtimeCtx: <uintptr Value>,
+            },
+            csema: 0,
+            isBlocking: 1,
+            IsStream: true,
+            ZeroReadIsEOF: true,
+            isFile: true,
+          },
+          name: "/dev/vda",
+          dirinfo: atomic.Pointer[os.dirInfo]{
+            _: [0]*os.dirInfo{},
+            _: atomic.noCopy{},
+          },
+          nonblock: false,
+          stdoutOrErr: false,
+          appendMode: false,
+          inRoot: false,
+        },
+      },
+      path: "",
+      readOnly: false,
+    },
+    Size: 42949672960,
+    LogicalBlocksize: 512,
+    PhysicalBlocksize: 512,
+  },
+}
+2026-10-13T09:12:58Z INF Partitioning device...
+2026-10-13T09:12:58Z INF Creating partition table for partition type gpt
+2026-10-13T09:12:59Z INF Created partition table for partition type gpt
+2026-10-13T09:12:59Z DBG Running cmd: 'udevadm trigger'
+2026-10-13T09:12:59Z DBG Running cmd: 'udevadm settle'
+2026-10-13T09:12:59Z DBG Formatting partition: COS_GRUB
+2026-10-13T09:12:59Z DBG Running cmd: 'mkfs.vfat -n COS_GRUB /dev/vda1'
+2026-10-13T09:12:59Z DBG Formatting partition: COS_OEM
+2026-10-13T09:12:59Z DBG Running cmd: 'mkfs.ext4 -L COS_OEM /dev/vda2'
+2026-10-13T09:12:59Z DBG Formatting partition: COS_RECOVERY
+2026-10-13T09:12:59Z DBG Running cmd: 'mkfs.ext4 -L COS_RECOVERY /dev/vda3'
+2026-10-13T09:12:59Z DBG Formatting partition: COS_STATE
+2026-10-13T09:12:59Z DBG Running cmd: 'mkfs.ext4 -L COS_STATE /dev/vda4'
+2026-10-13T09:12:59Z DBG Formatting partition: COS_PERSISTENT
+2026-10-13T09:12:59Z DBG Running cmd: 'mkfs.ext4 -L COS_PERSISTENT /dev/vda5'
+2026-10-13T09:12:59Z INF Mounting disk partitions
+2026-10-13T09:12:59Z DBG Mounting partition COS_GRUB
+2026-10-13T09:12:59Z DBG Running cmd: 'udevadm trigger'
+2026-10-13T09:12:59Z DBG Running cmd: 'udevadm settle'
+2026-10-13T09:12:59Z DBG Mounting partition COS_OEM
+2026-10-13T09:12:59Z DBG Running cmd: 'udevadm trigger'
+2026-10-13T09:12:59Z DBG Running cmd: 'udevadm settle'
+2026-10-13T09:12:59Z DBG Mounting partition COS_PERSISTENT
+2026-10-13T09:12:59Z DBG Running cmd: 'udevadm trigger'
+2026-10-13T09:12:59Z DBG Running cmd: 'udevadm settle'
+2026-10-13T09:13:00Z DBG Mounting partition COS_RECOVERY
+2026-10-13T09:13:00Z DBG Running cmd: 'udevadm trigger'
+2026-10-13T09:13:00Z DBG Running cmd: 'udevadm settle'
+2026-10-13T09:13:00Z DBG Mounting partition COS_STATE
+2026-10-13T09:13:00Z DBG Running cmd: 'udevadm trigger'
+2026-10-13T09:13:00Z DBG Running cmd: 'udevadm settle'
+2026-10-13T09:13:00Z INF Running before-install hook
+2026-10-13T09:13:00Z DBG Cloud-init paths set to [/system/oem /oem/ /usr/local/cloud-config/ /tmp/kairos-install-config-xxx.yaml796415030]
+2026-10-13T09:13:00Z DBG Failed creating cloud-init config path: /tmp/kairos-install-config-xxx.yaml796415030 mkdir /tmp/kairos-install-config-xxx.yaml796415030: not a directory
+2026-10-13T09:13:00Z INF Running stage: before-install.before
+
+2026-10-13T09:13:00Z INF Done executing stage 'before-install.before'
+
+2026-10-13T09:13:00Z INF Running stage: before-install
+
+2026-10-13T09:13:00Z INF Done executing stage 'before-install'
+
+2026-10-13T09:13:00Z INF Running stage: before-install.after
+
+2026-10-13T09:13:00Z INF Done executing stage 'before-install.after'
+
+2026-10-13T09:13:00Z INF Running stage: before-install.before
+
+2026-10-13T09:13:00Z INF Done executing stage 'before-install.before'
+
+2026-10-13T09:13:00Z INF Running stage: before-install
+
+2026-10-13T09:13:00Z INF Done executing stage 'before-install'
+
+2026-10-13T09:13:00Z INF Running stage: before-install.after
+
+2026-10-13T09:13:00Z INF Done executing stage 'before-install.after'
+
+2026-10-13T09:13:00Z INF Creating file system image /run/cos/state/cOS/active.img with size 415MiB
+2026-10-13T09:13:00Z DBG Running cmd: 'mkfs.ext2 -L COS_ACTIVE /run/cos/state/cOS/active.img'
+2026-10-13T09:13:00Z DBG Mounting image COS_ACTIVE
+2026-10-13T09:13:00Z DBG Opening loop control device
+2026-10-13T09:13:00Z DBG Getting free loop device
+2026-10-13T09:13:00Z DBG Opening loop device device=/dev/loop1
+2026-10-13T09:13:00Z DBG Opening img file image=/run/cos/state/cOS/active.img
+2026-10-13T09:13:00Z DBG Setting loop device
+2026-10-13T09:13:00Z DBG Setting loop flags
+2026-10-13T09:13:00Z INF Copying /run/rootfsbase source to /run/cos/active
+2026-10-13T09:13:00Z INF Starting rsync...
+2026-10-13T09:13:00Z DBG Running cmd: 'rsync --progress --partial --human-readable --archive --acls --exclude=/mnt --exclude=/proc --exclude=/sys --exclude=/dev --exclude=/tmp --exclude=/host --exclude=/run /run/rootfsbase/ /run/cos/active/'
+2026-10-13T09:13:02Z INF Finished syncing
+2026-10-13T09:13:02Z INF Finished copying /run/rootfsbase into /run/cos/active
+2026-10-13T09:13:02Z INF List of cloud inits to copy: [/tmp/kairos-install-config-xxx.yaml796415030]
+
+2026-10-13T09:13:02Z INF Starting copying cloud config file /tmp/kairos-install-config-xxx.yaml796415030 to /run/cos/oem/90_custom.yaml
+2026-10-13T09:13:02Z INF Finished copying cloud config file /tmp/kairos-install-config-xxx.yaml796415030 to /run/cos/oem/90_custom.yaml
+2026-10-13T09:13:02Z INF Using grub config dir /run/cos/active/etc/cos/grub.cfg
+2026-10-13T09:13:02Z INF Copying grub contents from /run/cos/active/etc/cos/grub.cfg to /run/cos/state/grub2/grub.cfg
+2026-10-13T09:13:02Z INF Generating grub files for efi on /dev/vda
+2026-10-13T09:13:02Z DBG Copying /run/cos/active/usr/lib/grub/x86_64-efi/loopback.mod to /run/cos/state/grub2/x86_64-efi/loopback.mod
+2026-10-13T09:13:02Z DBG Copying /run/cos/active/usr/lib/grub/x86_64-efi/squash4.mod to /run/cos/state/grub2/x86_64-efi/squash4.mod
+2026-10-13T09:13:02Z DBG Copying /run/cos/active/usr/lib/grub/x86_64-efi/xzio.mod to /run/cos/state/grub2/x86_64-efi/xzio.mod
+2026-10-13T09:13:02Z DBG Copying /run/cos/active/usr/lib/grub/x86_64-efi/gzio.mod to /run/cos/state/grub2/x86_64-efi/gzio.mod
+2026-10-13T09:13:02Z DBG Copying /run/cos/active/usr/lib/grub/x86_64-efi/regexp.mod to /run/cos/state/grub2/x86_64-efi/regexp.mod
+2026-10-13T09:13:02Z WRN did not find grub font ascii.pf2 under /run/cos/active
+2026-10-13T09:13:02Z WRN did not find grub font euro.pf2 under /run/cos/active
+2026-10-13T09:13:02Z WRN did not find grub font unicode.pf2 under /run/cos/active
+2026-10-13T09:13:02Z DBG Detected Flavor: hadron
+2026-10-13T09:13:02Z DBG Copying /usr/share/efi/x86_64/shim.efi to /run/cos/efi/EFI/boot/shim.efi
+2026-10-13T09:13:02Z DBG skip copying /run/cos/active/usr/share/efi/x86_64/grub.efi: not found
+2026-10-13T09:13:02Z DBG skip copying /run/cos/active/usr/lib/grub/x86_64-efi-signed/grubx64.efi.signed: not found
+2026-10-13T09:13:02Z DBG skip copying /run/cos/active/boot/efi/EFI/fedora/grubx64.efi: not found
+2026-10-13T09:13:02Z DBG skip copying /run/cos/active/boot/efi/EFI/rocky/grubx64.efi: not found
+2026-10-13T09:13:02Z DBG skip copying /run/cos/active/boot/efi/EFI/redhat/grubx64.efi: not found
+2026-10-13T09:13:02Z DBG skip copying /run/cos/active/boot/efi/EFI/almalinux/grubx64.efi: not found
+2026-10-13T09:13:02Z DBG Copying /usr/lib/grub/x86_64-efi/grubx64.efi to /run/cos/efi/EFI/boot/grubx64.efi
+2026-10-13T09:13:02Z DBG Extra mounts: map[/run/cos/oem:/oem /run/cos/persistent:/usr/local]
+2026-10-13T09:13:02Z DBG Mounting /dev to chroot
+2026-10-13T09:13:02Z DBG Mounted /dev to /run/cos/active/dev
+2026-10-13T09:13:02Z DBG Mounting /dev/pts to chroot
+2026-10-13T09:13:02Z DBG Mounted /dev/pts to /run/cos/active/dev/pts
+2026-10-13T09:13:02Z DBG Mounting /proc to chroot
+2026-10-13T09:13:02Z DBG Mounted /proc to /run/cos/active/proc
+2026-10-13T09:13:02Z DBG Mounting /sys to chroot
+2026-10-13T09:13:02Z DBG Mounted /sys to /run/cos/active/sys
+2026-10-13T09:13:02Z DBG Mounting /run/systemd/journal/ to chroot
+2026-10-13T09:13:02Z DBG Mounted /run/systemd/journal/ to /run/cos/active/run/systemd/journal/
+2026-10-13T09:13:02Z DBG Mounting /run/cos/oem to chroot
+2026-10-13T09:13:02Z DBG Mounted /run/cos/oem to /run/cos/active/oem
+2026-10-13T09:13:02Z DBG Mounting /run/cos/persistent to chroot
+2026-10-13T09:13:02Z DBG Mounted /run/cos/persistent to /run/cos/active/usr/local
+2026-10-13T09:13:02Z DBG No files relabelling as SELinux utilities are not found
+2026-10-13T09:13:02Z DBG Unmounting /run/cos/active/usr/local from chroot
+2026-10-13T09:13:02Z DBG Unmounting /run/cos/active/oem from chroot
+2026-10-13T09:13:02Z DBG Unmounting /run/cos/active/run/systemd/journal/ from chroot
+2026-10-13T09:13:02Z DBG Unmounting /run/cos/active/sys from chroot
+2026-10-13T09:13:02Z DBG Unmounting /run/cos/active/proc from chroot
+2026-10-13T09:13:02Z DBG Unmounting /run/cos/active/dev/pts from chroot
+2026-10-13T09:13:02Z DBG Unmounting /run/cos/active/dev from chroot
+2026-10-13T09:13:02Z DBG Extra mounts: map[/run/cos/oem:/oem /run/cos/persistent:/usr/local]
+2026-10-13T09:13:02Z DBG Mounting /dev to chroot
+2026-10-13T09:13:02Z DBG Mounted /dev to /run/cos/active/dev
+2026-10-13T09:13:02Z DBG Mounting /dev/pts to chroot
+2026-10-13T09:13:02Z DBG Mounted /dev/pts to /run/cos/active/dev/pts
+2026-10-13T09:13:02Z DBG Mounting /proc to chroot
+2026-10-13T09:13:02Z DBG Mounted /proc to /run/cos/active/proc
+2026-10-13T09:13:02Z DBG Mounting /sys to chroot
+2026-10-13T09:13:02Z DBG Mounted /sys to /run/cos/active/sys
+2026-10-13T09:13:02Z DBG Mounting /run/systemd/journal/ to chroot
+2026-10-13T09:13:02Z DBG Mounted /run/systemd/journal/ to /run/cos/active/run/systemd/journal/
+2026-10-13T09:13:02Z DBG Mounting /run/cos/oem to chroot
+2026-10-13T09:13:02Z DBG Mounted /run/cos/oem to /run/cos/active/oem
+2026-10-13T09:13:02Z DBG Mounting /run/cos/persistent to chroot
+2026-10-13T09:13:02Z DBG Mounted /run/cos/persistent to /run/cos/active/usr/local
+2026-10-13T09:13:02Z INF Running after-install-chroot hook
+2026-10-13T09:13:02Z DBG Cloud-init paths set to [/system/oem /oem/ /usr/local/cloud-config/ /tmp/kairos-install-config-xxx.yaml796415030]
+2026-10-13T09:13:02Z INF Running stage: after-install-chroot.before
+
+2026-10-13T09:13:02Z INF Done executing stage 'after-install-chroot.before'
+
+2026-10-13T09:13:02Z INF Running stage: after-install-chroot
+
+2026-10-13T09:13:02Z DBG Generating op for stage 'Nvidia Jetson QSPI firmware check.Check and stage QSPI firmware update'
+2026-10-13T09:13:02Z DBG Reading '/system/oem/13_nvidia_qspi.yaml'
+2026-10-13T09:13:02Z DBG Executing stage 'Nvidia Jetson QSPI firmware check.Check and stage QSPI firmware update'
+2026-10-13T09:13:02Z DBG running command `[ -x "/usr/sbin/kairos-jetson-qspi-update" ]
+`
+2026-10-13T09:13:02Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -x "/usr/sbin/kairos-jetson-qspi-update" ]
+: exit status 1)' stage name: Nvidia Jetson QSPI firmware check.Check and stage QSPI firmware update
+2026-10-13T09:13:02Z INF Done executing stage 'after-install-chroot'
+
+2026-10-13T09:13:02Z INF Running stage: after-install-chroot.after
+
+2026-10-13T09:13:02Z INF Done executing stage 'after-install-chroot.after'
+
+2026-10-13T09:13:02Z INF Running stage: after-install-chroot.before
+
+2026-10-13T09:13:02Z INF Done executing stage 'after-install-chroot.before'
+
+2026-10-13T09:13:02Z INF Running stage: after-install-chroot
+
+2026-10-13T09:13:02Z INF Done executing stage 'after-install-chroot'
+
+2026-10-13T09:13:02Z INF Running stage: after-install-chroot.after
+
+2026-10-13T09:13:02Z INF Done executing stage 'after-install-chroot.after'
+
+2026-10-13T09:13:02Z DBG Unmounting /run/cos/active/usr/local from chroot
+2026-10-13T09:13:02Z DBG Unmounting /run/cos/active/oem from chroot
+2026-10-13T09:13:02Z DBG Unmounting /run/cos/active/run/systemd/journal/ from chroot
+2026-10-13T09:13:02Z DBG Unmounting /run/cos/active/sys from chroot
+2026-10-13T09:13:02Z DBG Unmounting /run/cos/active/proc from chroot
+2026-10-13T09:13:02Z DBG Unmounting /run/cos/active/dev/pts from chroot
+2026-10-13T09:13:02Z DBG Unmounting /run/cos/active/dev from chroot
+2026-10-13T09:13:02Z DBG Unmounting image COS_ACTIVE
+2026-10-13T09:13:03Z DBG Opening loop device device=/dev/loop1
+2026-10-13T09:13:03Z DBG Clearing loop device
+2026-10-13T09:13:03Z INF Copying /run/cos/state/cOS/active.img source to /run/cos/recovery/cOS/recovery.img
+2026-10-13T09:13:03Z INF Finished copying /run/cos/state/cOS/active.img into /run/cos/recovery/cOS/recovery.img
+2026-10-13T09:13:03Z DBG Running cmd: 'tune2fs -L COS_SYSTEM /run/cos/recovery/cOS/recovery.img'
+2026-10-13T09:13:03Z DBG Not unmounting image,  doesn't look like mountpoint
+2026-10-13T09:13:03Z INF Copying /run/cos/state/cOS/active.img source to /run/cos/state/cOS/passive.img
+2026-10-13T09:13:03Z INF Finished copying /run/cos/state/cOS/active.img into /run/cos/state/cOS/passive.img
+2026-10-13T09:13:03Z DBG Running cmd: 'tune2fs -L COS_PASSIVE /run/cos/state/cOS/passive.img'
+2026-10-13T09:13:04Z DBG Not unmounting image,  doesn't look like mountpoint
+2026-10-13T09:13:04Z INF Starting unified encryption flow
+2026-10-13T09:13:04Z INF No partitions to encrypt
+2026-10-13T09:13:04Z INF No bundles to run in BundlePostInstall hook
+2026-10-13T09:13:04Z INF Running CopyLogs hook
+2026-10-13T09:13:04Z INF Starting rsync...
+2026-10-13T09:13:04Z DBG Running cmd: 'rsync --progress --partial --human-readable --archive --acls /var/log/ /run/cos/persistent/.state/var-log.bind/'
+2026-10-13T09:13:04Z INF Finished syncing
+2026-10-13T09:13:04Z DBG Logs copied to persistent partition
+2026-10-13T09:13:04Z INF Finish CopyLogs hook
+2026-10-13T09:13:04Z INF Running after-install hook
+2026-10-13T09:13:04Z DBG Cloud-init paths set to [/system/oem /oem/ /usr/local/cloud-config/ /tmp/kairos-install-config-xxx.yaml796415030]
+2026-10-13T09:13:04Z DBG Failed creating cloud-init config path: /tmp/kairos-install-config-xxx.yaml796415030 mkdir /tmp/kairos-install-config-xxx.yaml796415030: not a directory
+2026-10-13T09:13:04Z INF Running stage: after-install.before
+
+2026-10-13T09:13:04Z INF Done executing stage 'after-install.before'
+
+2026-10-13T09:13:04Z INF Running stage: after-install
+
+2026-10-13T09:13:04Z DBG Generating op for stage 'Boot assessment and branding.Mount state'
+2026-10-13T09:13:04Z DBG Generating op for stage 'Boot assessment and branding.Hook boot assessment grub configuration'
+2026-10-13T09:13:04Z DBG Generating op for stage 'Boot assessment and branding.Add boot assessment grub configuration'
+2026-10-13T09:13:04Z DBG Generating op for stage 'Boot assessment and branding.Grub branding'
+2026-10-13T09:13:04Z DBG Generating op for stage 'Boot assessment and branding.umount state'
+2026-10-13T09:13:04Z DBG Reading '/system/oem/08_grub.yaml'
+2026-10-13T09:13:04Z DBG Executing stage 'Boot assessment and branding.Mount state'
+2026-10-13T09:13:04Z DBG running command `grep -vq "rd.immucore.uki" /proc/cmdline`
+2026-10-13T09:13:04Z DBG If statement result 
+2026-10-13T09:13:04Z INF Processing stage step 'Boot assessment and branding.Mount state'. ( commands: 1, files: 0, ... )
+2026-10-13T09:13:04Z DBG Stage: schema.Stage{
+  Commands: []string{
+    "STATEDIR=/tmp/mnt/STATE\nSTATE=$(blkid -L COS_STATE || true)\nmkdir -p $STATEDIR || true\nmount ${STATE} $STATEDIR\n",
+  },
+  If: "grep -vq \"rd.immucore.uki\" /proc/cmdline",
+  Name: "Mount state",
+}
+2026-10-13T09:13:04Z DBG running command `STATEDIR=/tmp/mnt/STATE
+STATE=$(blkid -L COS_STATE || true)
+mkdir -p $STATEDIR || true
+mount ${STATE} $STATEDIR
+`
+2026-10-13T09:13:04Z DBG Empty command output
+2026-10-13T09:13:04Z INF Running layout plugin
+2026-10-13T09:13:04Z DBG Device field empty, skipping layout plugin
+2026-10-13T09:13:04Z DBG Reading '/system/oem/08_grub.yaml'
+2026-10-13T09:13:04Z DBG Executing stage 'Boot assessment and branding.Hook boot assessment grub configuration'
+2026-10-13T09:13:04Z DBG running command `! grep -q "grub_boot_assessment" /tmp/mnt/STATE/grubcustom && grep -vq "rd.immucore.uki" /proc/cmdline
+`
+2026-10-13T09:13:04Z DBG If statement result grep: /tmp/mnt/STATE/grubcustom: No such file or directory
+
+2026-10-13T09:13:04Z INF Processing stage step 'Boot assessment and branding.Hook boot assessment grub configuration'. ( commands: 1, files: 0, ... )
+2026-10-13T09:13:04Z DBG Stage: schema.Stage{
+  Commands: []string{
+    "cat << 'EOF' >> /tmp/mnt/STATE/grubcustom\nset bootfile=\"/grub_boot_assessment\"\nsearch --no-floppy --file --set=bootfile_loc \"${bootfile}\"\nif [ \"${bootfile_loc}\" ]; then\n   source \"(${bootfile_loc})${bootfile}\"\nfi\nEOF\n",
+  },
+  If: "! grep -q \"grub_boot_assessment\" /tmp/mnt/STATE/grubcustom && grep -vq \"rd.immucore.uki\" /proc/cmdline\n",
+  Name: "Hook boot assessment grub configuration",
+}
+2026-10-13T09:13:04Z DBG running command `cat << 'EOF' >> /tmp/mnt/STATE/grubcustom
+set bootfile="/grub_boot_assessment"
+search --no-floppy --file --set=bootfile_loc "${bootfile}"
+if [ "${bootfile_loc}" ]; then
+   source "(${bootfile_loc})${bootfile}"
+fi
+EOF
+`
+2026-10-13T09:13:04Z DBG Empty command output
+2026-10-13T09:13:04Z INF Running layout plugin
+2026-10-13T09:13:04Z DBG Device field empty, skipping layout plugin
+2026-10-13T09:13:04Z DBG Reading '/system/oem/08_grub.yaml'
+2026-10-13T09:13:04Z DBG Executing stage 'Boot assessment and branding.Add boot assessment grub configuration'
+2026-10-13T09:13:04Z DBG running command `grep -vq "rd.immucore.uki" /proc/cmdline`
+2026-10-13T09:13:04Z DBG If statement result 
+2026-10-13T09:13:04Z INF Processing stage step 'Boot assessment and branding.Add boot assessment grub configuration'. ( commands: 0, files: 1, ... )
+2026-10-13T09:13:04Z DBG Stage: schema.Stage{
+  Files: []schema.File{
+    schema.File{
+      Path: "/tmp/mnt/STATE/grub_boot_assessment",
+      Content: "set boot_assessment=\"/boot_assessment\"\nsearch --no-floppy --file --set=boot_assessment_blk \"${boot_assessment}\"\nif [ \"${boot_assessment_blk}\" ]; then\n  load_env -f \"(${boot_assessment_blk})${boot_assessment}\"\nfi\nif [ \"${enable_boot_assessment}\" = \"yes\" -o \"${enable_boot_assessment_always}\" = \"yes\" ]; then\n  if [ -z \"${selected_entry}\" ]; then\n    if [ \"${boot_assessment_tentative}\" = \"yes\" ]; then\n      set default=\"fallback\"\n      set extra_passive_cmdline=\"upgrade_failure\"\n    else\n      set boot_assessment_tentative=\"yes\"\n      save_env -f \"(${boot_assessment_blk})${boot_assessment}\" boot_assessment_tentative\n    fi\n  fi\nfi\n",
+    },
+  },
+  If: "grep -vq \"rd.immucore.uki\" /proc/cmdline",
+  Name: "Add boot assessment grub configuration",
+}
+2026-10-13T09:13:04Z DBG Creating file /tmp/mnt/STATE/grub_boot_assessment
+2026-10-13T09:13:04Z INF Running layout plugin
+2026-10-13T09:13:04Z DBG Device field empty, skipping layout plugin
+2026-10-13T09:13:04Z DBG Reading '/system/oem/08_grub.yaml'
+2026-10-13T09:13:04Z DBG Executing stage 'Boot assessment and branding.Grub branding'
+2026-10-13T09:13:04Z DBG running command `[ -e "/etc/kairos/branding/grubmenu.cfg" ] && grep -vq "rd.immucore.uki" /proc/cmdline`
+2026-10-13T09:13:04Z DBG If statement result 
+2026-10-13T09:13:04Z INF Processing stage step 'Boot assessment and branding.Grub branding'. ( commands: 1, files: 0, ... )
+2026-10-13T09:13:04Z DBG Stage: schema.Stage{
+  Commands: []string{
+    "cp -rfv /etc/kairos/branding/grubmenu.cfg /tmp/mnt/STATE/grubmenu",
+  },
+  If: "[ -e \"/etc/kairos/branding/grubmenu.cfg\" ] && grep -vq \"rd.immucore.uki\" /proc/cmdline",
+  Name: "Grub branding",
+}
+2026-10-13T09:13:04Z DBG running command `cp -rfv /etc/kairos/branding/grubmenu.cfg /tmp/mnt/STATE/grubmenu`
+2026-10-13T09:13:04Z DBG Command output: '/etc/kairos/branding/grubmenu.cfg' -> '/tmp/mnt/STATE/grubmenu'
+
+2026-10-13T09:13:04Z INF Running layout plugin
+2026-10-13T09:13:04Z DBG Device field empty, skipping layout plugin
+2026-10-13T09:13:04Z DBG Reading '/system/oem/08_grub.yaml'
+2026-10-13T09:13:04Z DBG Executing stage 'Boot assessment and branding.umount state'
+2026-10-13T09:13:04Z DBG running command `grep -vq "rd.immucore.uki" /proc/cmdline`
+2026-10-13T09:13:04Z DBG If statement result 
+2026-10-13T09:13:04Z INF Processing stage step 'Boot assessment and branding.umount state'. ( commands: 1, files: 0, ... )
+2026-10-13T09:13:04Z DBG Stage: schema.Stage{
+  Commands: []string{
+    "umount /tmp/mnt/STATE",
+  },
+  If: "grep -vq \"rd.immucore.uki\" /proc/cmdline",
+  Name: "umount state",
+}
+2026-10-13T09:13:04Z DBG running command `umount /tmp/mnt/STATE`
+2026-10-13T09:13:04Z DBG Empty command output
+2026-10-13T09:13:04Z INF Running layout plugin
+2026-10-13T09:13:04Z DBG Device field empty, skipping layout plugin
+2026-10-13T09:13:04Z INF Done executing stage 'after-install'
+
+2026-10-13T09:13:04Z INF Running stage: after-install.after
+
+2026-10-13T09:13:04Z INF Done executing stage 'after-install.after'
+
+2026-10-13T09:13:04Z INF Running stage: after-install.before
+
+2026-10-13T09:13:04Z INF Done executing stage 'after-install.before'
+
+2026-10-13T09:13:04Z INF Running stage: after-install
+
+2026-10-13T09:13:04Z INF Done executing stage 'after-install'
+
+2026-10-13T09:13:04Z INF Running stage: after-install.after
+
+2026-10-13T09:13:04Z INF Done executing stage 'after-install.after'
+
+2026-10-13T09:13:04Z DBG Not unmounting image, /run/cos/active doesn't look like mountpoint
+2026-10-13T09:13:04Z INF Unmounting disk partitions
+2026-10-13T09:13:04Z DBG Unmounting partition COS_STATE
+2026-10-13T09:13:04Z DBG Unmounting partition COS_RECOVERY
+2026-10-13T09:13:04Z DBG Not unmounting partition, /run/cos/persistent doesn't look like mountpoint
+2026-10-13T09:13:04Z DBG Not unmounting partition, /run/cos/oem doesn't look like mountpoint
+2026-10-13T09:13:04Z DBG Unmounting partition COS_GRUB
+2026-10-13T09:13:04Z DBG Cloud-init paths set to [/system/oem /oem/ /usr/local/cloud-config/ /tmp/kairos-install-config-xxx.yaml796415030]
+2026-10-13T09:13:04Z DBG Failed creating cloud-init config path: /tmp/kairos-install-config-xxx.yaml796415030 mkdir /tmp/kairos-install-config-xxx.yaml796415030: not a directory
+2026-10-13T09:13:04Z INF Running stage: kairos-install.after.before
+
+2026-10-13T09:13:04Z INF Done executing stage 'kairos-install.after.before'
+
+2026-10-13T09:13:04Z INF Running stage: kairos-install.after
+
+2026-10-13T09:13:04Z INF Done executing stage 'kairos-install.after'
+
+2026-10-13T09:13:04Z INF Running stage: kairos-install.after.after
+
+2026-10-13T09:13:04Z INF Done executing stage 'kairos-install.after.after'
+
+2026-10-13T09:13:04Z INF Running stage: kairos-install.after.before
+
+2026-10-13T09:13:04Z INF Done executing stage 'kairos-install.after.before'
+
+2026-10-13T09:13:04Z INF Running stage: kairos-install.after
+
+2026-10-13T09:13:04Z INF Done executing stage 'kairos-install.after'
+
+2026-10-13T09:13:04Z INF Running stage: kairos-install.after.after
+
+2026-10-13T09:13:04Z INF Done executing stage 'kairos-install.after.after'
+
+2026-10-13T09:13:04Z DBG Running Lifecycle hook
+2026-10-13T09:13:04Z DBG Finish Lifecycle hook
+EXIT=0
