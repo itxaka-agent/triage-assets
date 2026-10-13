@@ -1,0 +1,56 @@
+kairos v4.3.0-184-g3e52b4c4
+### print-schema keys for install
+17463 /tmp/s.json
+{
+ "$schema": "https://kairos.io/v4.3.0-184-g3e52b4c4/cloud-config.json",
+ "title": "Kairos Schema",
+ "description": "Defines all valid Kairos configu
+bash: line 4: P: command not found
+firmware: 1
+part-table: 1
+cloud-init: 1
+iso: 1
+tty: 1
+skip-entries: 1
+allow-insecure-registries: 1
+### validate ok
+rc=0
+### validate bad
+jsonschema: '/install/allow-insecure-registries' does not validate with file:///home/kairos/schema.json#/properties/install/$ref/properties/allow-insecure-registries/type: expected boolean, but got string
+rc=1
+### validate typo
+rc=0
+kairos v4.3.0-184-g3e52b4c4
+### tty: [1,2]
+jsonschema: '/install/tty' does not validate with file:///home/kairos/schema.json#/properties/install/$ref/properties/tty/type: expected string, but got array
+rc=1
+### tty: 5
+jsonschema: '/install/tty' does not validate with file:///home/kairos/schema.json#/properties/install/$ref/properties/tty/type: expected string, but got number
+rc=1
+### firmware: foo
+jsonschema: '/install/firmware' does not validate with file:///home/kairos/schema.json#/properties/install/$ref/properties/firmware/enum: value must be one of "efi", "bios"
+rc=1
+### part-table: mbr
+jsonschema: '/install/part-table' does not validate with file:///home/kairos/schema.json#/properties/install/$ref/properties/part-table/enum: value must be "gpt"
+rc=1
+### cloud-init: 5
+jsonschema: '/install/cloud-init' does not validate with file:///home/kairos/schema.json#/properties/install/$ref/properties/cloud-init/type: expected array, but got number
+rc=1
+### skip-entries: x
+jsonschema: '/install/skip-entries' does not validate with file:///home/kairos/schema.json#/properties/install/$ref/properties/skip-entries/type: expected array, but got string
+rc=1
+### iso: [a]
+jsonschema: '/install/iso' does not validate with file:///home/kairos/schema.json#/properties/install/$ref/properties/iso/type: expected string, but got array
+rc=1
+### allow-insecure-registries: yes-please
+jsonschema: '/install/allow-insecure-registries' does not validate with file:///home/kairos/schema.json#/properties/install/$ref/properties/allow-insecure-registries/type: expected boolean, but got string
+rc=1
+### print-schema install props
+    "tty": {
+     "description": "Console the installed system gets a getty on, in addition to the default one",
+     "examples": [
+      "ttyS0",
+      "tty1"
+     ],
+     "type": "string"
+    }

@@ -1,0 +1,39 @@
+kairos v4.3.0-182-g056d10e8
+### print-schema keys for install
+15920 /tmp/s.json
+{
+ "$schema": "https://kairos.io/v4.3.0-182-g056d10e8/cloud-config.json",
+ "title": "Kairos Schema",
+ "description": "Defines all valid Kairos configu
+bash: line 4: P: command not found
+firmware: 0
+part-table: 0
+cloud-init: 0
+iso: 0
+tty: 0
+skip-entries: 0
+allow-insecure-registries: 0
+### validate ok
+rc=0
+### validate bad
+rc=0
+### validate typo
+rc=0
+kairos v4.3.0-182-g056d10e8
+### tty: [1,2]
+rc=0
+### tty: 5
+rc=0
+### firmware: foo
+rc=0
+### part-table: mbr
+rc=0
+### cloud-init: 5
+rc=0
+### skip-entries: x
+rc=0
+### iso: [a]
+rc=0
+### allow-insecure-registries: yes-please
+rc=0
+### print-schema install props
