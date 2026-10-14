@@ -1,0 +1,45 @@
+kairos-4fb9
+--- .state bind mounts:
+39
+/home /.state/home.bind
+/opt /.state/opt.bind
+/root /.state/root.bind
+/etc/cni /.state/etc-cni.bind
+/var/cores /.state/var-cores.bind
+/etc/init.d /.state/etc-init.d.bind
+/etc/iscsi /.state/etc-iscsi.bind
+/etc/k0s /.state/etc-k0s.bind
+/etc/kubernetes /.state/etc-kubernetes.bind
+/var/log /.state/var-log.bind
+/etc/modprobe.d /.state/etc-modprobe.d.bind
+/etc/pwx /.state/etc-pwx.bind
+/etc/rancher /.state/etc-rancher.bind
+/etc/runlevels /.state/etc-runlevels.bind
+/etc/ssh /.state/etc-ssh.bind
+/etc/sysconfig /.state/etc-sysconfig.bind
+/etc/systemd /.state/etc-systemd.bind
+/etc/zfs /.state/etc-zfs.bind
+/var/log/audit /.state/var-log-audit.bind
+/usr/local/.state/var-log.bind/audit /.state/var-log-audit.bind
+/var/lib/ca-certificates /.state/var-lib-ca-certificates.bind
+/var/lib/calico /.state/var-lib-calico.bind
+/etc/ssl/certs /.state/etc-ssl-certs.bind
+/var/lib/cni /.state/var-lib-cni.bind
+/var/lib/confexts /.state/var-lib-confexts.bind
+/var/lib/containerd /.state/var-lib-containerd.bind
+/var/lib/dbus /.state/var-lib-dbus.bind
+/var/lib/etcd /.state/var-lib-etcd.bind
+/var/lib/extensions /.state/var-lib-extensions.bind
+/var/lib/k0s /.state/var-lib-k0s.bind
+/var/lib/kairos /.state/var-lib-kairos.bind
+/var/lib/kubelet /.state/var-lib-kubelet.bind
+/var/lib/longhorn /.state/var-lib-longhorn.bind
+/var/lib/osd /.state/var-lib-osd.bind
+/etc/ssl/private /.state/etc-ssl-private.bind
+/var/lib/rancher /.state/var-lib-rancher.bind
+/var/lib/rook /.state/var-lib-rook.bind
+/var/lib/tailscale /.state/var-lib-tailscale.bind
+/var/lib/wicked /.state/var-lib-wicked.bind
+--- immucore QA_NOPE/bind lines:
+--- /etc/hostname-ish persistence check: findmnt /etc/ssh /home /root /var/log
+rc=1

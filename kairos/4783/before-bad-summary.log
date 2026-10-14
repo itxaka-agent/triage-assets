@@ -1,0 +1,16 @@
+Could not chdir to home directory /home/kairos: No such file or directory
+kairos-a3ff
+--- .state bind mounts:
+0
+--- immucore QA_NOPE/bind lines:
+2026-10-14T09:29:39Z ERR Could not resolve custom-mount label to a device error="resolving mount source for label \"QA_NOPE\": partition not found" label=QA_NOPE
+2026-10-14T09:29:39Z WRN error="1 error occurred:\n\t* resolving mount source for label \"QA_NOPE\": partition not found\n\n"
+                                                   "extra_cmdline": "rd.immucore.mount=LABEL=QA_NOPE:/run/qa-nope",
+                                                       "extra_cmdline": "rd.immucore.mount=LABEL=QA_NOPE:/run/qa-nope",
+                                                          * resolving mount source for label "QA_NOPE": partition not found
+                                                          * resolving mount source for label "QA_NOPE": partition not found
+        * resolving mount source for label "QA_NOPE": partition not found
+        * resolving mount source for label "QA_NOPE": partition not found
+2026-10-14T09:29:40Z INF Boot timeline step error="1 error occurred:\n\t* resolving mount source for label \"QA_NOPE\": partition not found\n\n" duration=25.745262 rank=5 step=custom-mount
+--- /etc/hostname-ish persistence check: findmnt /etc/ssh /home /root /var/log
+rc=1
