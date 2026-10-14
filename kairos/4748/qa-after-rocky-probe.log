@@ -1,0 +1,84 @@
+### after-rocky
+PRETTY_NAME="Rocky Linux 9.8 (Blue Onyx)"
+-- mounts of /usr/share/pki
+none
+-- ls /usr/local/.state
+total 160
+drwxr-xr-x  40 root root 4096 Oct 14 09:45 .
+drwxr-xr-x  10 root root 4096 Oct 14 09:45 ..
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 etc-cni.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 etc-init.d.bind
+drwxr-xr-x.  2 root root 4096 Oct 14 09:45 etc-iscsi.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 etc-k0s.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 etc-kubernetes.bind
+drwxr-xr-x.  2 root root 4096 Oct 14 09:43 etc-modprobe.d.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 etc-pwx.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 etc-rancher.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 etc-runlevels.bind
+drwxr-xr-x.  4 root root 4096 Oct 14 09:45 etc-ssh.bind
+drwxr-xr-x   2 root root 4096 Aug 14 03:21 etc-ssl-certs.bind
+drwx------   2 root root 4096 Oct 14 09:45 etc-ssl-private.bind
+drwxr-xr-x.  3 root root 4096 Oct 14 09:42 etc-sysconfig.bind
+drwxr-xr-x.  5 root root 4096 Oct 14 09:43 etc-systemd.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 etc-zfs.bind
+drwxr-xr-x.  3 root root 4096 Oct 14 09:45 home.bind
+drwxr-xr-x.  2 root root 4096 Nov  3  2024 opt.bind
+dr-xr-x---.  3 root root 4096 Oct 14 09:40 root.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 var-cores.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 var-lib-ca-certificates.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 var-lib-calico.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 var-lib-cni.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 var-lib-confexts.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 var-lib-containerd.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 var-lib-dbus.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 var-lib-etcd.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 var-lib-extensions.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 var-lib-k0s.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 var-lib-kairos.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 var-lib-kubelet.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 var-lib-longhorn.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 var-lib-osd.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 var-lib-rancher.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 var-lib-rook.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 var-lib-tailscale.bind
+drwxr-xr-x   2 root root 4096 Oct 14 09:45 var-lib-wicked.bind
+drwx------.  2 root root 4096 Jan 17  2026 var-log-audit.bind
+drwxr-xr-x.  8 root root 4096 Oct 14 09:41 var-log.bind
+-- journal immucore pki/EROFS
+Oct 14 09:45:24 localhost immucore[585]: 2026-10-14T09:45:24Z WRN Image is not writable, attaching read-only image=/sysroot/run/initramfs/cos-state/cOS/active.img writable="open /sysroot/run/initramfs/cos-state/cOS/active.img: read-only file system"
+Oct 14 09:45:28 kairos-f1e4 touch[1124]: touch: cannot touch '/.autorelabel': Read-only file system
+Oct 14 09:45:28 kairos-f1e4 kairos-agent[1122]: mkdir /usr/lib/extensions: read-only file system
+Oct 14 09:45:28 kairos-f1e4 kairos-agent[1122]: 2026-10-14T09:45:28Z ERR mkdir /usr/lib/extensions: read-only file system
+Oct 14 09:45:28 kairos-f1e4 kairos-agent[1122]: mkdir /usr/lib/confexts: read-only file system
+Oct 14 09:45:28 kairos-f1e4 kairos-agent[1122]: 2026-10-14T09:45:28Z ERR mkdir /usr/lib/confexts: read-only file system
+                                                        * mkdir /usr/lib/extensions: read-only file system
+                                                        * mkdir /usr/lib/confexts: read-only file system
+Oct 14 09:45:28 kairos-f1e4 kairos-agent[1122]:         * mkdir /usr/lib/extensions: read-only file system
+Oct 14 09:45:28 kairos-f1e4 kairos-agent[1122]:         * mkdir /usr/lib/confexts: read-only file system
+                                                        * mkdir /usr/lib/extensions: read-only file system
+                                                        * mkdir /usr/lib/confexts: read-only file system
+Oct 14 09:45:28 kairos-f1e4 kairos-agent[1122]:         * mkdir /usr/lib/extensions: read-only file system
+Oct 14 09:45:28 kairos-f1e4 kairos-agent[1122]:         * mkdir /usr/lib/confexts: read-only file system
+-- failed units
+-- immucore any errors
+Oct 14 09:45:24 localhost kairos-immucore[585]: (conditional) Skip 'Skipping stage (if statement error: failed to run test -f /usr/lib/systemd/systemd-networkd: exit status 1)' stage name: Default network configuration.Enable systemd-network config files for DHCP
+Oct 14 09:45:24 localhost immucore[585]: 2026-10-14T09:45:24Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run test -f /usr/lib/systemd/systemd-networkd: exit status 1)' stage name: Default network configuration.Enable systemd-network config files for DHCP
+Oct 14 09:45:24 localhost kairos-immucore[585]: (conditional) Skip 'Skipping stage (if statement error: failed to run [ -d /oem/userdata ] && [ ! -d /oem/95_userdata ]: exit status 1)' stage name: Datasource handling.Move old datasource to new location
+Oct 14 09:45:24 localhost immucore[585]: 2026-10-14T09:45:24Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -d /oem/userdata ] && [ ! -d /oem/95_userdata ]: exit status 1)' stage name: Datasource handling.Move old datasource to new location
+Oct 14 09:45:24 localhost kairos-immucore[585]: (conditional) Skip 'Skipping stage (if statement error: failed to run [ -d /oem/userdata ] && [ -d /oem/95_userdata ]: exit status 1)' stage name: Datasource handling.Remove old userdata
+Oct 14 09:45:24 localhost immucore[585]: 2026-10-14T09:45:24Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -d /oem/userdata ] && [ -d /oem/95_userdata ]: exit status 1)' stage name: Datasource handling.Remove old userdata
+Oct 14 09:45:24 localhost kairos-immucore[585]: Error on file /system/oem/00_datasource.yaml on stage Pull data from provider: no metadata/userdata found
+Oct 14 09:45:24 localhost immucore[585]: 2026-10-14T09:45:24Z ERR Error on file /system/oem/00_datasource.yaml on stage Pull data from provider: no metadata/userdata found
+Oct 14 09:45:24 localhost kairos-immucore[585]: (conditional) Skip 'Skipping stage (if statement error: failed to run [ -e "/run/cos/recovery_mode" ] || [ -e "/run/cos/autoreset_mode" ]: exit status 1)' stage name: Rootfs Layout Settings.Layout configuration for recovery/autoreset mode
+Oct 14 09:45:24 localhost immucore[585]: 2026-10-14T09:45:24Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -e "/run/cos/recovery_mode" ] || [ -e "/run/cos/autoreset_mode" ]: exit status 1)' stage name: Rootfs Layout Settings.Layout configuration for recovery/autoreset mode
+Oct 14 09:45:24 localhost kairos-immucore[585]: (conditional) Skip 'Skipping stage (if statement error: failed to run [ -e "/run/cos/uki_install_mode" ]: exit status 1)' stage name: Rootfs Layout Settings.Layout configuration for UKI installer
+Oct 14 09:45:24 localhost immucore[585]: 2026-10-14T09:45:24Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -e "/run/cos/uki_install_mode" ]: exit status 1)' stage name: Rootfs Layout Settings.Layout configuration for UKI installer
+Oct 14 09:45:24 localhost kairos-immucore[585]: (conditional) Skip 'Skipping stage (if statement error: failed to run [ -r /run/cos/custom-layout.env ] && [ ! -f "/run/cos/recovery_mode" ] && [ ! -f /run/cos/live_mode ]: exit status 1)' stage name: Rootfs Layout Settings.add custom bind and ephemeral mounts to /run/cos/cos-layout.env
+Oct 14 09:45:24 localhost immucore[585]: 2026-10-14T09:45:24Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -r /run/cos/custom-layout.env ] && [ ! -f "/run/cos/recovery_mode" ] && [ ! -f /run/cos/live_mode ]: exit status 1)' stage name: Rootfs Layout Settings.add custom bind and ephemeral mounts to /run/cos/cos-layout.env
+Oct 14 09:45:26 localhost kairos-immucore[585]: (conditional) Skip 'Skipping stage (if statement error: failed to run [ -d /oem/userdata ] && [ ! -d /oem/95_userdata ]: exit status 1)' stage name: Datasource handling.Move old datasource to new location
+Oct 14 09:45:26 localhost immucore[585]: 2026-10-14T09:45:26Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -d /oem/userdata ] && [ ! -d /oem/95_userdata ]: exit status 1)' stage name: Datasource handling.Move old datasource to new location
+Oct 14 09:45:26 localhost kairos-immucore[585]: (conditional) Skip 'Skipping stage (if statement error: failed to run [ -f "/proc/device-tree/model" ] && grep -i "Raspberry Pi" "/proc/device-tree/model": exit status 1)' stage name: RPI configs.Set a safe date before user creation for RPI without hardware clocks
+Oct 14 09:45:26 localhost immucore[585]: 2026-10-14T09:45:26Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -f "/proc/device-tree/model" ] && grep -i "Raspberry Pi" "/proc/device-tree/model": exit status 1)' stage name: RPI configs.Set a safe date before user creation for RPI without hardware clocks
+Oct 14 09:45:26 localhost kairos-immucore[585]: (conditional) Skip 'Skipping stage (if statement error: failed to run [ -d /oem/userdata ] && [ -d /oem/95_userdata ]: exit status 1)' stage name: Datasource handling.Remove old userdata
+Oct 14 09:45:26 localhost immucore[585]: 2026-10-14T09:45:26Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -d /oem/userdata ] && [ -d /oem/95_userdata ]: exit status 1)' stage name: Datasource handling.Remove old userdata
+-- extra-layout
