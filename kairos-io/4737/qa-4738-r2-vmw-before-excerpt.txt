@@ -1,0 +1,14 @@
+systemd-detect-virt; which vmtoolsd; dpkg -l | grep -c open-vm-tools; journalctl -b --no-pager | grep -iE 'vmtoolsd|open-vm|26_vm|VMWARE' | cut -c1-200; systemd-analyze
+vmware
+0
+Oct 14 10:28:06 localhost kernel: DMI: VMware, Inc. VMware Virtual Platform, BIOS 6.00 
+Oct 14 10:28:06 localhost systemd[1]: Detected virtualization vmware.
+Oct 14 10:28:08 kairos-2223 systemd[1]: Detected virtualization vmware.
+Oct 14 10:28:11 kairos-2223 kairos-agent[1632]: Error on file /system/oem/26_vm.yaml on stage Enable VMWARE: 1 error occurred:
+                                                        * failed to run systemctl start vmtoolsd: exit status 5
+                                                Failed to start vmtoolsd.service: Unit vmtoolsd.service not found.
+Oct 14 10:28:11 kairos-2223 kairos-agent[1632]: 2026-10-14T10:28:11Z ERR Error on file /system/oem/26_vm.yaml on stage Enable VMWARE: 1 error occurred:
+Oct 14 10:28:11 kairos-2223 kairos-agent[1632]:         * failed to run systemctl start vmtoolsd: exit status 5
+Oct 14 10:28:11 kairos-2223 kairos-agent[1632]: Failed to start vmtoolsd.service: Unit vmtoolsd.service not found.
+Startup finished in 2.696s (kernel) + 2.698s (initrd) + 4.730s (userspace) = 10.126s 
+multi-user.target reached after 4.693s in userspace.

@@ -1,0 +1,16 @@
+systemd-detect-virt; which vmtoolsd; dpkg -l | grep -c open-vm-tools; journalctl -b --no-pager | grep -iE 'vmtoolsd|open-vm|26_vm|VMWARE' | cut -c1-200; systemd-analyze
+vmware
+/usr/bin/vmtoolsd
+1
+Oct 14 10:28:05 localhost kernel: DMI: VMware, Inc. VMware Virtual Platform, BIOS 6.00 
+Oct 14 10:28:05 localhost systemd[1]: Detected virtualization vmware.
+Oct 14 10:28:07 kairos-4ee5 systemd[1]: Detected virtualization vmware.
+Oct 14 10:28:09 kairos-4ee5 systemd[1]: Started vgauth.service - Authentication service for virtual machines hosted on VMware.
+Oct 14 10:28:09 kairos-4ee5 systemd[1]: Started open-vm-tools.service - Service for virtual machines hosted on VMware.
+Oct 14 10:28:09 kairos-4ee5 systemd[1]: open-vm-tools.service: Main process exited, code=exited, status=1/FAILURE
+Oct 14 10:28:09 kairos-4ee5 systemd[1]: open-vm-tools.service: Failed with result 'exit-code'.
+Oct 14 10:28:10 kairos-4ee5 systemd[1]: Started open-vm-tools.service - Service for virtual machines hosted on VMware.
+Oct 14 10:28:10 kairos-4ee5 systemd[1]: open-vm-tools.service: Main process exited, code=exited, status=1/FAILURE
+Oct 14 10:28:10 kairos-4ee5 systemd[1]: open-vm-tools.service: Failed with result 'exit-code'.
+Startup finished in 2.703s (kernel) + 2.666s (initrd) + 4.555s (userspace) = 9.925s 
+multi-user.target reached after 4.525s in userspace.

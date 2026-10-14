@@ -1,0 +1,4 @@
+kvm
+degraded
+Startup finished in 2.689s (kernel) + 3.151s (initrd) + 4.423s (userspace) = 10.264s 
+multi-user.target reached after 4.394s in userspace.
