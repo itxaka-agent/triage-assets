@@ -1,0 +1,186 @@
+
+$ ls -l /boot/ /run/initramfs/cos-state/cOS 2>&1 | head
+sudo -i
+[root@kairos-bd5a ~]# </cos-state/cOS 2>&1 | head; echo DONE_$((1+1))_MARK
+/boot/:
+total 73432
+-rw------- 1 root root 56392916 Oct 23 12:40 initrd
+-rw-r--r-- 1 root root       13 Sep 18 08:15 kernel-release
+-rw-r--r-- 1 root root        6 Sep 18 08:15 kernel-version
+lrwxrwxrwx 1 root root       26 Oct 23 12:40 vmlinuz -> /boot/vmlinuz-7.2.6-hadron
+-rw-r--r-- 1 root root 18502144 Sep 18 08:15 vmlinuz-7.2.6-hadron
+
+/run/initramfs/cos-state/cOS:
+total 833944
+DONE_2_MARK
+
+$ mkdir -p /tmp/ir && cd /tmp/ir && (for f in /boot/initrd*; do echo $f; file $f 2>/dev/null; done)
+[root@kairos-bd5a ~]# <file $f 2>/dev/null; done); echo DONE_$((1+1))_MARK
+/boot/initrd
+DONE_2_MARK
+[root@kairos-bd5a ir]# 
+$ cd /tmp/ir; (zstd -dc /boot/initrd 2>/dev/null || xz -dc /boot/initrd 2>/dev/null || zcat /boot/initrd 2>/dev/null) | cpio -idm 2>&1 | tail -n 2; find /tmp/ir -name "immucore.service*" 2>/dev/null
+<core.service*" 2>/dev/null; echo DONE_$((1+1))_MARK
+205451 blocks
+/tmp/ir/usr/lib/systemd/system/initrd.target.requires/immucore.service
+/tmp/ir/usr/lib/systemd/system/immucore.service.d
+/tmp/ir/usr/lib/systemd/system/immucore.service
+DONE_2_MARK
+
+$ for f in $(find /tmp/ir -name immucore.service -type f 2>/dev/null); do echo == $f; cat $f; done
+for f in $(find /tmp/ir -name immucore.service -type f 2>/dev/null); do echo == $f; cat $f; done; echo DONE_$((1+1))_MARK
+[root@kairos-bd5a ir]# <o echo == $f; cat $f; done; echo DONE_$((1+1))_MARK
+== /tmp/ir/usr/lib/systemd/system/immucore.service
+[Unit]
+Description=immucore
+DefaultDependencies=no
+After=systemd-udev-trigger.service
+Wants=systemd-udev-trigger.service
+Before=initrd-fs.target
+Before=initrd-switch-root.target
+Conflicts=initrd-switch-root.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+StandardOutput=journal+console
+ExecStart=/usr/bin/immucoreDONE_2_MARK
+[root@kairos-bd5a ir]# 
+$ find /tmp/ir -name "systemd-udev-*" 2>/dev/null | head
+<udev-*" 2>/dev/null | head; echo DONE_$((1+1))_MARK
+/tmp/ir/usr/lib/systemd/system/systemd-udev-trigger.service
+/tmp/ir/usr/lib/systemd/system/systemd-udev-settle.service
+/tmp/ir/usr/lib/systemd/system/sysinit.target.wants/systemd-udev-trigger.service
+DONE_2_MARK
+[root@kairos-bd5a ir]# 
+$ journalctl -b --no-pager -o short-precise | grep -E "immucore|udev-settle|udev-trigger|Waited|continuing|Continuing" | grep -v " ERR " | grep -v "kairos-immucore\[" | cut -c1-230 | head -70
+<" | cut -c1-230 | head -70; echo DONE_$((1+1))_MARK
+Oct 23 12:43:33.929184 localhost systemd[1]: Starting immucore...
+Oct 23 12:43:33.953333 localhost immucore[557]: 2026-10-23T12:43:33Z INF Immucore go=go1.26.10 version=v0.0.0-qa4672after
+Oct 23 12:43:33.960564 localhost immucore[557]: 2026-10-23T12:43:33Z INF Booting on active/passive/recovery.
+Oct 23 12:43:34.962468 localhost immucore[557]: 2026-10-23T12:43:34Z INF Waited for the device to be enumerated attempts=2 labels=["COS_STATE"]
+Oct 23 12:43:34.963687 localhost immucore[557]: 2026-10-23T12:43:34Z INF Checking OEM encryption status oem_encrypted=false
+Oct 23 12:43:34.963687 localhost immucore[557]: 2026-10-23T12:43:34Z INF OEM is NOT encrypted: OEM mount will run before kcrypt unlock
+Oct 23 12:43:34.963855 localhost immucore[557]: 2026-10-23T12:43:34Z INF 1.
+Oct 23 12:43:34.963855 localhost immucore[557]:  <init> (background: false) (weak: false) (run: false)
+Oct 23 12:43:34.963855 localhost immucore[557]: 2.
+Oct 23 12:43:34.963855 localhost immucore[557]:  <create-sentinel> (background: false) (weak: false) (run: false)
+Oct 23 12:43:34.963855 localhost immucore[557]:  <lvm-activation> (background: false) (weak: false) (run: false)
+Oct 23 12:43:34.963855 localhost immucore[557]:  <mount-state> (background: false) (weak: false) (run: false)
+Oct 23 12:43:34.963855 localhost immucore[557]:  <mount-tmpfs> (background: false) (weak: false) (run: false)
+Oct 23 12:43:34.963855 localhost immucore[557]: 3.
+Oct 23 12:43:34.963855 localhost immucore[557]:  <upgrade-kcrypt> (background: false) (weak: false) (run: false)
+Oct 23 12:43:34.963855 localhost immucore[557]:  <discover-state> (background: false) (weak: false) (run: false)
+Oct 23 12:43:34.963855 localhost immucore[557]: 4.
+Oct 23 12:43:34.963855 localhost immucore[557]:  <mount-root> (background: false) (weak: false) (run: false)
+Oct 23 12:43:34.963855 localhost immucore[557]: 5.
+Oct 23 12:43:34.963855 localhost immucore[557]:  <mount-oem> (background: false) (weak: false) (run: false)
+Oct 23 12:43:34.963855 localhost immucore[557]: 6.
+Oct 23 12:43:34.963855 localhost immucore[557]:  <rootfs-hook> (background: false) (weak: false) (run: false)
+Oct 23 12:43:34.963855 localhost immucore[557]:  <encrypt-pending> (background: false) (weak: false) (run: false)
+Oct 23 12:43:34.963855 localhost immucore[557]: 7.
+Oct 23 12:43:34.963855 localhost immucore[557]:  <load-config> (background: false) (weak: false) (run: false)
+Oct 23 12:43:34.963855 localhost immucore[557]:  <unlock-all> (background: false) (weak: false) (run: false)
+Oct 23 12:43:34.963855 localhost immucore[557]: 8.
+Oct 23 12:43:34.963855 localhost immucore[557]:  <custom-mount> (background: false) (weak: false) (run: false)
+Oct 23 12:43:34.963855 localhost immucore[557]:  <mount-base-overlay> (background: false) (weak: false) (run: false)
+Oct 23 12:43:34.963855 localhost immucore[557]: 9.
+Oct 23 12:43:34.963855 localhost immucore[557]:  <overlay-mount> (background: false) (weak: false) (run: false)
+Oct 23 12:43:34.963855 localhost immucore[557]: 10.
+Oct 23 12:43:34.963855 localhost immucore[557]:  <mount-bind> (background: false) (weak: false) (run: false)
+Oct 23 12:43:34.963855 localhost immucore[557]: 11.
+Oct 23 12:43:34.963855 localhost immucore[557]:  <enable-sysext-confext> (background: false) (weak: false) (run: false)
+Oct 23 12:43:34.963855 localhost immucore[557]:  <write-fstab> (background: false) (weak: false) (run: false)
+Oct 23 12:43:34.963855 localhost immucore[557]:  <quarantine-stale-units> (background: false) (weak: false) (run: false)
+Oct 23 12:43:34.963855 localhost immucore[557]: 12.
+Oct 23 12:43:34.963855 localhost immucore[557]:  <initramfs-hook> (background: false) (weak: false) (run: false)
+Oct 23 12:43:34.963855 localhost immucore[557]: 
+Oct 23 12:43:34.968694 localhost immucore[557]: 2026-10-23T12:43:34Z INF mount done options=["rw","nosuid","nodev","noexec"] type=tmpfs what=tmpfs where=/tmp
+Oct 23 12:43:34.972689 localhost immucore[557]: 2026-10-23T12:43:34Z INF Setting sentinel file to=active_mode
+Oct 23 12:43:34.984190 localhost immucore[557]: 2026-10-23T12:43:34Z INF mount done options=["ro"] type=ext4 what=/dev/disk/by-label/COS_STATE where=/sysroot/run/initramfs/cos-state
+Oct 23 12:43:34.988492 localhost immucore[557]: 2026-10-23T12:43:34Z WRN Image is not writable, attaching read-only image=/sysroot/run/initramfs/cos-state/cOS/active.img writable="open /sysroot/run/initramfs/cos-state/cOS/active.i
+Oct 23 12:43:35.070544 localhost immucore[557]: 2026-10-23T12:43:35Z INF mount done options=["ro","suid","dev","exec","async"] type=ext4 what=/dev/disk/by-label/COS_ACTIVE where=/sysroot
+Oct 23 12:43:35.095413 localhost immucore[557]: 2026-10-23T12:43:35Z INF mount done options=["rw","suid","dev","exec","async"] type=ext4 what=/dev/vda2 where=/sysroot/oem
+Oct 23 12:43:35.095935 localhost immucore[557]: 2026-10-23T12:43:35Z INF Running rootfs stage
+Oct 23 12:43:35.095935 localhost immucore[557]: 2026-10-23T12:43:35Z INF Running stage: rootfs.before
+Oct 23 12:43:35.095935 localhost immucore[557]: 
+Oct 23 12:43:35.113664 localhost immucore[557]: 2026-10-23T12:43:35Z INF Processing stage step 'Default network configuration.Enable systemd-network config files for DHCP'. ( commands: 0, files: 2, ... )
+Oct 23 12:43:35.113740 localhost immucore[557]: 2026-10-23T12:43:35Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -d /oem/userdata ] && [ ! -d /oem/95_userdata ]: exit status 1)' stage name: Datasour
+Oct 23 12:43:35.115379 localhost immucore[557]: 2026-10-23T12:43:35Z INF Running layout plugin
+Oct 23 12:43:35.115461 localhost immucore[557]: 2026-10-23T12:43:35Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -d /oem/userdata ] && [ -d /oem/95_userdata ]: exit status 1)' stage name: Datasource
+Oct 23 12:43:35.117065 localhost immucore[557]: 2026-10-23T12:43:35Z INF Processing stage step 'Datasource handling.Pull data from provider'. ( commands: 0, files: 0, ... )
+Oct 23 12:43:35.480881 localhost immucore[557]: 2026-10-23T12:43:35Z INF Running layout plugin
+Oct 23 12:43:35.481737 localhost immucore[557]: 2026-10-23T12:43:35Z INF Processing stage step 'Datasource handling.Sentinel file for userdata'. ( commands: 0, files: 1, ... )
+Oct 23 12:43:35.482112 localhost immucore[557]: 2026-10-23T12:43:35Z INF Running layout plugin
+Oct 23 12:43:35.482321 localhost immucore[557]: 2026-10-23T12:43:35Z INF Done executing stage 'rootfs.before'
+Oct 23 12:43:35.482321 localhost immucore[557]: 
+Oct 23 12:43:35.482353 localhost immucore[557]: 2026-10-23T12:43:35Z INF Running stage: rootfs
+Oct 23 12:43:35.482353 localhost immucore[557]: 
+Oct 23 12:43:35.486611 localhost immucore[557]: 2026-10-23T12:43:35Z INF Processing stage step 'Rootfs Layout Settings.Layout configuration for active/passive mode'. ( commands: 0, files: 0, ... )
+Oct 23 12:43:35.486611 localhost immucore[557]: 2026-10-23T12:43:35Z INF Running layout plugin
+Oct 23 12:43:35.487414 localhost immucore[557]: 2026-10-23T12:43:35Z WRN (conditional) Skip 'OnlyIfOs regex (Ubuntu.*|Debian.*) doesn't match os name Hadron Linux dracut-112 (Initramfs)' stage name: Extra binds for specific distro
+Oct 23 12:43:35.488341 localhost immucore[557]: 2026-10-23T12:43:35Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -e "/run/cos/recovery_mode" ] || [ -e "/run/cos/autoreset_mode" ]: exit status 1)' st
+Oct 23 12:43:35.489038 localhost immucore[557]: 2026-10-23T12:43:35Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -e "/run/cos/uki_install_mode" ]: exit status 1)' stage name: Rootfs Layout Settings.
+Oct 23 12:43:35.489113 localhost immucore[557]: 2026-10-23T12:43:35Z INF Processing stage step 'Rootfs Layout Settings.Mask the commit service to avoid systemd messing with machine-id'. ( commands: 0, files: 0, ... )
+Oct 23 12:43:35.493025 localhost systemd[1]: Reload requested from client PID 696 ('systemctl') (unit immucore.service)...
+Oct 23 12:43:35.634102 localhost immucore[557]: 2026-10-23T12:43:35Z INF Running layout plugin
+Oct 23 12:43:35.634885 localhost immucore[557]: 2026-10-23T12:43:35Z INF Done executing stage 'rootfs'
+DONE_2_MARK
+
+$ journalctl -b --no-pager -o short-precise | grep -E "immucore" | grep -c " ERR "
+[root@kairos-bd5a ir]# <mmucore" | grep -c " ERR "; echo DONE_$((1+1))_MARK
+50
+DONE_2_MARK
+[root@kairos-bd5a ir]# 
+$ journalctl -b --no-pager -o short-precise | grep -E "Waited|Device not enumerated|not enumerated|No OEM" | cut -c1-230
+<ated|No OEM" | cut -c1-230; echo DONE_$((1+1))_MARK
+Oct 23 12:43:34.962209 localhost kairos-immucore[557]: Waited for the device to be enumerated
+Oct 23 12:43:34.962468 localhost immucore[557]: 2026-10-23T12:43:34Z INF Waited for the device to be enumerated attempts=2 labels=["COS_STATE"]
+DONE_2_MARK
+[root@kairos-bd5a ir]# 
+$ journalctl -b --no-pager -o short-precise | grep -E "Starting immucore|Finished immucore|immucore.service|Reached target|Switching Root|Startup" | cut -c1-200 | head -20
+<" | cut -c1-200 | head -20; echo DONE_$((1+1))_MARK
+Oct 23 12:43:33.723920 localhost systemd[1]: Reached target Initrd /usr File System.
+Oct 23 12:43:33.723928 localhost systemd[1]: Reached target Path Units.
+Oct 23 12:43:33.723934 localhost systemd[1]: Reached target Slice Units.
+Oct 23 12:43:33.723940 localhost systemd[1]: Reached target Swaps.
+Oct 23 12:43:33.723947 localhost systemd[1]: Reached target Timer Units.
+Oct 23 12:43:33.723953 localhost systemd[1]: Reached target Local Verity Protected Volumes.
+Oct 23 12:43:33.724010 localhost systemd[1]: Reached target Socket Units.
+Oct 23 12:43:33.724276 localhost systemd[1]: Reached target Preparation for Network.
+Oct 23 12:43:33.724308 localhost systemd[1]: Reached target Local Encrypted Volumes (Pre).
+Oct 23 12:43:33.724315 localhost systemd[1]: Reached target Local Encrypted Volumes.
+Oct 23 12:43:33.727705 localhost systemd[1]: Reached target Preparation for Local File Systems.
+Oct 23 12:43:33.727732 localhost systemd[1]: Reached target Local File Systems.
+Oct 23 12:43:33.754012 localhost systemd[1]: Reached target Host and Network Name Lookups.
+Oct 23 12:43:33.902259 localhost systemd[1]: Reached target Network.
+Oct 23 12:43:33.920667 localhost systemd[1]: Reached target System Initialization.
+Oct 23 12:43:33.920719 localhost systemd[1]: Reached target Basic System.
+Oct 23 12:43:33.929184 localhost systemd[1]: Starting immucore...
+Oct 23 12:43:34.997856 localhost systemd[1]: Reached target Initrd Root Device.
+Oct 23 12:43:35.014507 localhost systemd[1]: Reached target Preparation for Remote File Systems.
+Oct 23 12:43:35.014524 localhost systemd[1]: Reached target Remote Encrypted Volumes.
+DONE_2_MARK
+[root@kairos-bd5a ir]# 
+$ systemctl is-system-running; systemctl --failed --no-pager | head
+<--failed --no-pager | head; echo DONE_$((1+1))_MARK
+running
+  UNIT LOAD ACTIVE SUB DESCRIPTION
+
+0 loaded units listed.
+DONE_2_MARK
+[root@kairos-bd5a ir]# 
+$ dmesg | grep -iE "udev|Switching root|Freeing unused" | head
+<oot|Freeing unused" | head; echo DONE_$((1+1))_MARK
+[    1.868192] Freeing unused decrypted memory: 2028K
+[    1.868660] Freeing unused kernel image (initmem) memory: 5256K
+[    1.868998] Freeing unused kernel image (text/rodata gap) memory: 1740K
+[    1.869031] Freeing unused kernel image (rodata/data gap) memory: 156K
+[    2.316226] systemd[1]: Listening on udev Control Socket.
+[    2.316245] systemd[1]: Listening on udev Kernel Socket.
+[    2.316274] systemd[1]: Listening on udev Varlink Socket.
+[    9.254754] systemd[1]: Listening on udev Control Socket.
+[    9.254782] systemd[1]: Listening on udev Varlink Socket.
+[    9.279351] systemd[1]: Starting Load udev Rules from Credentials...
+DONE_2_MARK
+[root@kairos-bd5a ir]# 
