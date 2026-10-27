@@ -1,0 +1,14 @@
+### after
+/etc/os-release:PRETTY_NAME="openSUSE Tumbleweed"
+/etc/kairos-release:KAIROS_VERSION="v0.0.0-qa5576-after"
+--- which tmux
+tmux: not found
+--- rpm -q tmux
+package tmux is not installed
+--- rpm -q vim htop
+vim-9.2.1202-1.1.x86_64
+htop-3.5.3-1.1.x86_64
+bash: line 1: tmux: command not found
+--- mode
+active_mode
+cos-layout.env
