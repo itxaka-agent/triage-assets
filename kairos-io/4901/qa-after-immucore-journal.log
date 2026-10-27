@@ -1,0 +1,76 @@
+== uname
+KAIROS_ARCH="amd64"
+KAIROS_BUG_REPORT_URL="https://github.com/kairos-io/kairos/issues"
+KAIROS_FAMILY="hadron"
+== journal immucore
+[    7.064617] localhost immucore[565]: 2026-10-27T09:43:48Z WRN executing mount callback error="mount target is a symlink: /sysroot/usr/local/qa-abs -> /usr/local/qa-abs-target" options=["bind"] type=overlay what=/sysroot/usr/local/.state/usr-local-qa-abs.bind where=/sysroot/usr/local/qa-abs
+[    7.065186] localhost kairos-immucore[565]: Skipping persistent state bind: the mountpoint is a symlink, so the bind would land on whatever it resolves to instead. To persist that path, name it directly, or drop this entry from persistent_state_paths/CUSTOM_BIND_MOUNTS.
+[    7.065362] localhost immucore[565]: 2026-10-27T09:43:48Z WRN Skipping persistent state bind: the mountpoint is a symlink, so the bind would land on whatever it resolves to instead. To persist that path, name it directly, or drop this entry from persistent_state_paths/CUSTOM_BIND_MOUNTS. error="mount target is a symlink: /sysroot/usr/local/qa-abs -> /usr/local/qa-abs-target" what=/usr/local/qa-abs
+[    7.065694] localhost immucore[565]: 2026-10-27T09:43:48Z WRN executing mount callback error="mount target is a symlink: /sysroot/usr/local/qa-rel -> qa-rel-target" options=["bind"] type=overlay what=/sysroot/usr/local/.state/usr-local-qa-rel.bind where=/sysroot/usr/local/qa-rel
+[    7.065989] localhost kairos-immucore[565]: Skipping persistent state bind: the mountpoint is a symlink, so the bind would land on whatever it resolves to instead. To persist that path, name it directly, or drop this entry from persistent_state_paths/CUSTOM_BIND_MOUNTS.
+[    7.066179] localhost immucore[565]: 2026-10-27T09:43:48Z WRN Skipping persistent state bind: the mountpoint is a symlink, so the bind would land on whatever it resolves to instead. To persist that path, name it directly, or drop this entry from persistent_state_paths/CUSTOM_BIND_MOUNTS. error="mount target is a symlink: /sysroot/usr/local/qa-rel -> qa-rel-target" what=/usr/local/qa-rel
+                                                    "/usr/local/qa-abs",
+                                                    "/usr/local/qa-rel",
+                                                    "/usr/local/qa-abs",
+                                                    "/usr/local/qa-rel",
+[    9.711464] localhost kairos-immucore[565]: (conditional) Skip 'Skipping stage (if statement error: failed to run [ ! -f "/run/cos/recovery_mode" ] && [ ! -f "/run/cos/autoreset_mode" ] && grep -q "selinux=1" /proc/cmdline: exit status 1)' stage name: SELinux.file_contexts.subs from state bind mounts
+[    9.711489] localhost immucore[565]: 2026-10-27T09:43:51Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ ! -f "/run/cos/recovery_mode" ] && [ ! -f "/run/cos/autoreset_mode" ] && grep -q "selinux=1" /proc/cmdline: exit status 1)' stage name: SELinux.file_contexts.subs from state bind mounts
+                                                       "/usr/local/qa-abs",
+                                                       "/usr/local/qa-rel",
+                                                       "/usr/local/qa-abs",
+                                                       "/usr/local/qa-rel",
+[   11.417603] kairos-cff2 kairos-agent[1205]:         "/usr/local/qa-abs",
+[   11.417603] kairos-cff2 kairos-agent[1205]:         "/usr/local/qa-rel",
+[   11.417603] kairos-cff2 kairos-agent[1205]:         "/usr/local/qa-abs",
+[   11.417603] kairos-cff2 kairos-agent[1205]:         "/usr/local/qa-rel",
+                                                       "/usr/local/qa-abs",
+                                                       "/usr/local/qa-rel",
+                                                       "/usr/local/qa-abs",
+                                                       "/usr/local/qa-rel",
+[   11.498408] kairos-cff2 kairos-agent[1259]:         "/usr/local/qa-abs",
+[   11.498408] kairos-cff2 kairos-agent[1259]:         "/usr/local/qa-rel",
+[   11.498408] kairos-cff2 kairos-agent[1259]:         "/usr/local/qa-abs",
+[   11.498408] kairos-cff2 kairos-agent[1259]:         "/usr/local/qa-rel",
+                                                       "/usr/local/qa-abs",
+                                                       "/usr/local/qa-rel",
+                                                       "/usr/local/qa-abs",
+                                                       "/usr/local/qa-rel",
+[   11.506981] kairos-cff2 kairos-agent[1260]:         "/usr/local/qa-abs",
+[   11.506981] kairos-cff2 kairos-agent[1260]:         "/usr/local/qa-rel",
+[   11.506981] kairos-cff2 kairos-agent[1260]:         "/usr/local/qa-abs",
+[   11.506981] kairos-cff2 kairos-agent[1260]:         "/usr/local/qa-rel",
+                                                       "/usr/local/qa-abs",
+                                                       "/usr/local/qa-rel",
+                                                       "/usr/local/qa-abs",
+                                                       "/usr/local/qa-rel",
+[   13.800756] kairos-cff2 kairos-agent[1371]:         "/usr/local/qa-abs",
+[   13.800756] kairos-cff2 kairos-agent[1371]:         "/usr/local/qa-rel",
+[   13.800756] kairos-cff2 kairos-agent[1371]:         "/usr/local/qa-abs",
+[   13.800756] kairos-cff2 kairos-agent[1371]:         "/usr/local/qa-rel",
+                                                       "/usr/local/qa-abs",
+                                                       "/usr/local/qa-rel",
+                                                       "/usr/local/qa-abs",
+                                                       "/usr/local/qa-rel",
+[  300.406694] kairos-cff2 bash[1388]:         "/usr/local/qa-abs",
+[  300.406694] kairos-cff2 bash[1388]:         "/usr/local/qa-rel",
+[  300.406694] kairos-cff2 bash[1388]:         "/usr/local/qa-abs",
+[  300.406694] kairos-cff2 bash[1388]:         "/usr/local/qa-rel",
+== mounts
+lrwxrwxrwx  1 root root     24 Oct 27 09:43 qa-abs -> /usr/local/qa-abs-target
+drwx------  2 root root   4096 Oct 27 09:42 qa-abs-target
+lrwxrwxrwx  1 root root     13 Oct 27 09:43 qa-rel -> qa-rel-target
+drwx------  2 root root   4096 Oct 27 09:42 qa-rel-target
+== rel-target
+/usr/local/.state/usr-local-qa-abs.bind:
+total 8
+drwxr-xr-x  2 root root 4096 Oct 27 09:42 .
+drwxr-xr-x 44 root root 4096 Oct 27 09:42 ..
+lrwxrwxrwx  1 root root   24 Oct 27 09:42 qa-abs-target -> /usr/local/qa-abs-target
+
+/usr/local/.state/usr-local-qa-rel.bind:
+total 8
+drwxr-xr-x  2 root root 4096 Oct 27 09:42 .
+drwxr-xr-x 44 root root 4096 Oct 27 09:42 ..
+lrwxrwxrwx  1 root root   13 Oct 27 09:42 qa-rel-target -> qa-rel-target
+ls: cannot open directory '/usr/local/qa-rel-target': Permission denied
+== fstab

@@ -1,0 +1,12 @@
+[    0.000000] Command line: BOOT_IMAGE=(loop0)/boot/vmlinuz console=ttyS0 console=tty1 net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=0 rd.emergency=halt rd.shell=0 root=LABEL=COS_ACTIVE cos-img/filename=/cOS/active.img selinux=0 rd.immucore.debug
+[    0.000000] Command line: BOOT_IMAGE=(loop0)/boot/vmlinuz console=tty1 console=ttyS0 net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=0 rd.emergency=halt rd.shell=0 root=LABEL=COS_ACTIVE cos-img/filename=/cOS/active.img selinux=0 rd.immucore.debug
+[    8.269954] immucore[574]: ========================================
+[    8.270392] immucore[574]:         IMMUCORE BOOT FAILED
+[    8.270680] immucore[574]: ========================================
+[    8.271009] immucore[574]: Reason:  failed operations: mount-bind: 1 error occurred:
+[    8.271390] immucore[574]: 	* mkdir /sysroot/usr/local/qa-abs: file exists
+[    8.271686] immucore[574]: Cmdline: BOOT_IMAGE=(loop0)/boot/vmlinuz console=tty1 console=ttyS0 net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=0 rd.emergency=halt rd.shell=0 root=LABEL=COS_ACTIVE cos-img/filename=/cOS/active.img selinux=0 rd.immucore.debug
+[    8.272614] immucore[574]: Logs:    /run/immucore
+[    8.272812] immucore[574]: ----------------------------------------
+[    8.273068] immucore[574]: Inspect logs above, then exit this shell to retry or reboot.
+[    8.273388] immucore[574]: ========================================
