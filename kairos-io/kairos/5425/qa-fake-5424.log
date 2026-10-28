@@ -1,0 +1,25 @@
+agent-provider-alpha
+agent-provider-beta
+=== before: kairos-init --stage init --dry-run -v v1.0.0 --provider alpha --provider beta
+        KAIROS_SOFTWARE_VERSION: v1.0.0
+        KAIROS_SOFTWARE_VERSION_PREFIX: alpha
+=== before: kairos-init --stage init --dry-run -v v1.0.0 --provider beta --provider alpha
+        KAIROS_SOFTWARE_VERSION: v1.0.0
+        KAIROS_SOFTWARE_VERSION_PREFIX: alpha
+=== before: kairos-init --stage init --dry-run -v v1.0.0 --provider beta
+        KAIROS_SOFTWARE_VERSION: v1.0.0
+        KAIROS_SOFTWARE_VERSION_PREFIX: beta
+=== before: 8 runs, no --provider (stability)
+      6  KAIROS_SOFTWARE_VERSION: v1.0.0 KAIROS_SOFTWARE_VERSION_PREFIX: alpha 
+      2  KAIROS_SOFTWARE_VERSION: v1.0.0 KAIROS_SOFTWARE_VERSION_PREFIX: beta 
+agent-provider-alpha
+agent-provider-beta
+=== head: kairos-init --stage init --dry-run -v v1.0.0 --provider alpha --provider beta
+        KAIROS_SOFTWARE_VERSION: v1.0.0
+        KAIROS_SOFTWARE_VERSION_PREFIX: alpha
+=== head: kairos-init --stage init --dry-run -v v1.0.0 --provider beta --provider alpha
+(no KAIROS_SOFTWARE_VERSION lines)
+=== head: kairos-init --stage init --dry-run -v v1.0.0 --provider beta
+(no KAIROS_SOFTWARE_VERSION lines)
+=== head: 8 runs, no --provider (stability)
+      8  KAIROS_SOFTWARE_VERSION: v1.0.0 KAIROS_SOFTWARE_VERSION_PREFIX: alpha 

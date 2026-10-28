@@ -1,0 +1,40 @@
+=== before: kairos-init --stage init --dry-run -v v1.0.0 --provider k3s --provider k0s
+        KAIROS_SOFTWARE_VERSION: v1.31.0+k0s.0
+        KAIROS_SOFTWARE_VERSION_PREFIX: k0s
+stderr tail:
+=== before: kairos-init --stage init --dry-run -v v1.0.0 --provider k0s --provider k3s
+        KAIROS_SOFTWARE_VERSION: v1.31.0+k0s.0
+        KAIROS_SOFTWARE_VERSION_PREFIX: k0s
+stderr tail:
+=== before: kairos-init --stage init --dry-run -v v1.0.0 --provider k3s
+        KAIROS_SOFTWARE_VERSION: v1.31.0+k0s.0
+        KAIROS_SOFTWARE_VERSION_PREFIX: k0s
+stderr tail:
+=== before: kairos-init --stage init --dry-run -v v1.0.0 --provider k0s
+        KAIROS_SOFTWARE_VERSION: v1.31.0+k0s.0
+        KAIROS_SOFTWARE_VERSION_PREFIX: k0s
+stderr tail:
+=== before: kairos-init --stage init --dry-run -v v1.0.0 
+        KAIROS_SOFTWARE_VERSION: v1.31.0+k0s.0
+        KAIROS_SOFTWARE_VERSION_PREFIX: k0s
+stderr tail:
+=== head: kairos-init --stage init --dry-run -v v1.0.0 --provider k3s --provider k0s
+        KAIROS_SOFTWARE_VERSION: v1.36.5+k3s1
+        KAIROS_SOFTWARE_VERSION_PREFIX: k3s
+stderr tail:
+=== head: kairos-init --stage init --dry-run -v v1.0.0 --provider k0s --provider k3s
+        KAIROS_SOFTWARE_VERSION: v1.31.0+k0s.0
+        KAIROS_SOFTWARE_VERSION_PREFIX: k0s
+stderr tail:
+=== head: kairos-init --stage init --dry-run -v v1.0.0 --provider k3s
+        KAIROS_SOFTWARE_VERSION: v1.36.5+k3s1
+        KAIROS_SOFTWARE_VERSION_PREFIX: k3s
+stderr tail:
+=== head: kairos-init --stage init --dry-run -v v1.0.0 --provider k0s
+        KAIROS_SOFTWARE_VERSION: v1.31.0+k0s.0
+        KAIROS_SOFTWARE_VERSION_PREFIX: k0s
+stderr tail:
+=== head: kairos-init --stage init --dry-run -v v1.0.0 
+        KAIROS_SOFTWARE_VERSION: v1.31.0+k0s.0
+        KAIROS_SOFTWARE_VERSION_PREFIX: k0s
+stderr tail:
