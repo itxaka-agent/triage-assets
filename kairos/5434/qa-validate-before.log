@@ -1,0 +1,10 @@
+##### BINARY: before (/tmp/agent-before)
+1-blank-first.yaml             missing #cloud-config header [rc=0]
+2-comment-first.yaml           missing #cloud-config header [rc=0]
+3-trailing-space.yaml          [rc=0]
+4-plain.yaml                   [rc=0]
+5-cloud-configuration.yaml     [rc=0]
+6-header-line9.yaml            missing #cloud-config header [rc=0]
+7-header-line10.yaml           missing #cloud-config header [rc=0]
+8-header-line11.yaml           missing #cloud-config header [rc=0]
+9-no-header.yaml               missing #cloud-config header [rc=0]
