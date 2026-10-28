@@ -1,0 +1,9 @@
+<ml 2>&1 | tail -15; echo INSTALLRC=${PIPESTATUS[0]}
+2026-10-28T08:48:32Z INF Kairos Agent version=v4.4.0
+2026-10-28T08:48:32Z INF Kairos System version=v4.4.0
+2026-10-28T08:48:32Z INF Boot Mode boot_mode=livecd_boot
+2026-10-28T08:48:32Z INF Boot in uki mode result=false
+yaml: unmarshal errors:
+  line 19: cannot unmarshal !!seq into string
+INSTALLRC=1
+[root@kairos-2b34 ~]# 

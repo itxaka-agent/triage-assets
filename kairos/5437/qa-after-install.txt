@@ -1,0 +1,18 @@
+<ml 2>&1 | tail -15; echo INSTALLRC=${PIPESTATUS[0]}
+
+2026-10-28T08:51:36Z INF Done executing stage 'kairos-install.after.after'
+
+2026-10-28T08:51:36Z INF Running stage: kairos-install.after.before
+
+2026-10-28T08:51:36Z INF Done executing stage 'kairos-install.after.before'
+
+2026-10-28T08:51:36Z INF Running stage: kairos-install.after
+
+2026-10-28T08:51:36Z INF Done executing stage 'kairos-install.after'
+
+2026-10-28T08:51:36Z INF Running stage: kairos-install.after.after
+
+2026-10-28T08:51:36Z INF Done executing stage 'kairos-install.after.after'
+
+INSTALLRC=0
+[root@kairos-496a ~]# 

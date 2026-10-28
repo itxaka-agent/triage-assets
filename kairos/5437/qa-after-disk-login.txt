@@ -1,0 +1,5 @@
+uid=1000(kairos) gid=1000(kairos) groups=1000(kairos),900(admin),1000(kairos)
+metal-9aeb
+kairos
+SUDO_OK
+wrongpw_rc=5
