@@ -1,0 +1,46 @@
+### guest
+PRETTY_NAME="Hadron Linux"
+7.2.6-hadron
+4af82892d16ac38e4ab75663ddeac97ffaa3a4bc75ad2f61e1d7c420bce0b00d  /tmp/stages-after.test
+32f6c8f615f317748cf873f6fa99db0ec2b1f3a4701f3566a53d5dd7f25be5bc  /tmp/stages-before.test
+
+### BEFORE: merge base 5287b320 + the PR's new test
+$ /tmp/stages-before.test -test.v -test.run TestProviderBuildInstallEventCountsEveryPluginResponse
+=== RUN   TestProviderBuildInstallEventCountsEveryPluginResponse
+=== RUN   TestProviderBuildInstallEventCountsEveryPluginResponse/one_plugin,_one_provider
+    steps_install_provider_test.go:90: ProviderBuildInstallEvent never returned
+=== RUN   TestProviderBuildInstallEventCountsEveryPluginResponse/one_plugin,_two_providers
+    steps_install_provider_test.go:90: ProviderBuildInstallEvent never returned
+=== RUN   TestProviderBuildInstallEventCountsEveryPluginResponse/two_plugins,_one_provider
+    steps_install_provider_test.go:90: ProviderBuildInstallEvent never returned
+=== RUN   TestProviderBuildInstallEventCountsEveryPluginResponse/two_plugins,_two_providers
+    steps_install_provider_test.go:90: ProviderBuildInstallEvent never returned
+--- FAIL: TestProviderBuildInstallEventCountsEveryPluginResponse (80.01s)
+    --- FAIL: TestProviderBuildInstallEventCountsEveryPluginResponse/one_plugin,_one_provider (20.00s)
+    --- FAIL: TestProviderBuildInstallEventCountsEveryPluginResponse/one_plugin,_two_providers (20.00s)
+    --- FAIL: TestProviderBuildInstallEventCountsEveryPluginResponse/two_plugins,_one_provider (20.00s)
+    --- FAIL: TestProviderBuildInstallEventCountsEveryPluginResponse/two_plugins,_two_providers (20.00s)
+FAIL
+exit=1
+
+### AFTER: PR head 519c9d36
+$ /tmp/stages-after.test -test.v -test.run TestProviderBuildInstallEventCountsEveryPluginResponse
+=== RUN   TestProviderBuildInstallEventCountsEveryPluginResponse
+=== RUN   TestProviderBuildInstallEventCountsEveryPluginResponse/one_plugin,_one_provider
+=== RUN   TestProviderBuildInstallEventCountsEveryPluginResponse/one_plugin,_two_providers
+=== RUN   TestProviderBuildInstallEventCountsEveryPluginResponse/two_plugins,_one_provider
+=== RUN   TestProviderBuildInstallEventCountsEveryPluginResponse/two_plugins,_two_providers
+--- PASS: TestProviderBuildInstallEventCountsEveryPluginResponse (0.10s)
+    --- PASS: TestProviderBuildInstallEventCountsEveryPluginResponse/one_plugin,_one_provider (0.01s)
+    --- PASS: TestProviderBuildInstallEventCountsEveryPluginResponse/one_plugin,_two_providers (0.03s)
+    --- PASS: TestProviderBuildInstallEventCountsEveryPluginResponse/two_plugins,_one_provider (0.02s)
+    --- PASS: TestProviderBuildInstallEventCountsEveryPluginResponse/two_plugins,_two_providers (0.03s)
+PASS
+exit=0
+ls: cannot access '/usr/bin/agent-provider*': No such file or directory
+/system/providers:
+total 70301
+drwxr-xr-x 2 root root       44 Oct 14 10:38 .
+drwxr-xr-x 6 root root       77 Oct 14 10:38 ..
+-rwxr-xr-x 1 root root 71987362 Oct 14 10:38 agent-provider-kairos
+/bin:/usr/bin:/sbin:/usr/sbin
