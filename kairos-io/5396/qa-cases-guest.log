@@ -1,0 +1,26 @@
+### disks
+NAME   LABEL    FSTYPE MOUNTPOINT
+vda                    
+└─vda1 COS_GRUB vfat   
+vdb                    
+└─vdb1 COS_GRUB vfat   
+### CASE A: neither mounted
+--- A / before
+RESULT: chosen=/dev/vdb1 mountpoint="" label=COS_GRUB
+--- A / after
+[90m2026-10-28T14:38:32Z[0m [33mWRN[0m [1mmore than one partition carries the COS_GRUB label[0m [36mcandidates=[0m["/dev/vda1","/dev/vdb1"] [36mchosen=[0m/dev/vda1 [36mmountpoint=[0m
+RESULT: chosen=/dev/vda1 mountpoint="" label=COS_GRUB
+### CASE B: first disk (vda1) mounted, last (vdb1) not
+/dev/vda1 /mnt/efi1 vfat rw,relatime,fmask=0077,dmask=0077,codepage=437,iocharset=ascii,shortname=mixed,errors=remount-ro 0 0
+--- B / before
+RESULT: chosen=/dev/vdb1 mountpoint="" label=COS_GRUB
+--- B / after
+[90m2026-10-28T14:38:32Z[0m [33mWRN[0m [1mmore than one partition carries the COS_GRUB label[0m [36mcandidates=[0m["/dev/vda1","/dev/vdb1"] [36mchosen=[0m/dev/vda1 [36mmountpoint=[0m/mnt/efi1
+RESULT: chosen=/dev/vda1 mountpoint="/mnt/efi1" label=COS_GRUB
+### CASE C: last disk (vdb1) mounted
+/dev/vdb1 /mnt/efi2 vfat rw,relatime,fmask=0077,dmask=0077,codepage=437,iocharset=ascii,shortname=mixed,errors=remount-ro 0 0
+--- C / before
+RESULT: chosen=/dev/vdb1 mountpoint="/mnt/efi2" label=COS_GRUB
+--- C / after
+[90m2026-10-28T14:38:32Z[0m [33mWRN[0m [1mmore than one partition carries the COS_GRUB label[0m [36mcandidates=[0m["/dev/vda1","/dev/vdb1"] [36mchosen=[0m/dev/vdb1 [36mmountpoint=[0m/mnt/efi2
+RESULT: chosen=/dev/vdb1 mountpoint="/mnt/efi2" label=COS_GRUB
