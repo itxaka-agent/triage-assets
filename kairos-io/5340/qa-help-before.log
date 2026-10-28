@@ -1,0 +1,2 @@
+kairos v4.3.0-290-g4aafabb5
+   --lease-dir value                                                        DHCP Lease directory (default: "/tmp/kairos") [$lease-dir]

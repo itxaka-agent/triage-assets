@@ -1,0 +1,6 @@
+sh: line 1: lease-dir=/x: No such file or directory
+rc=127
+rc=124
+⇨ http server started on 127.0.0.1:8080
+ls: cannot access '/tmp/qa-lease': No such file or directory
+/tmp/kairos
