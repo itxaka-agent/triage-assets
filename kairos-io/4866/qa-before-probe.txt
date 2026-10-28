@@ -1,0 +1,11 @@
+QAPROBE-BEGIN boot=0
+QAPROBE etc_mode=755
+QAPROBE usrlocal_cc: directory mode=770 / islink=no
+QAPROBE oem: directory mode=770
+QAPROBE-END
+QAPROBE linked-created
+QAPROBE-BEGIN boot=0
+QAPROBE etc_mode=770
+QAPROBE usrlocal_cc: symbolic link mode=777 / islink=yes
+QAPROBE oem: directory mode=770
+QAPROBE-END
