@@ -1,0 +1,33 @@
+### CASE 1 (issue): src=1MiB file + abs symlink -> /qa5417-outside/big59 (59MiB, exists only on host)
+    expect: before 1+59+100=160, after 1+100=101
+total 1024
+lrwxrwxrwx 1 root root      21 Oct 28 14:43 link -> /qa5417-outside/big59
+-rw------- 1 root root 1048576 Oct 28 14:43 small
+before RESULT: /var/tmp/qa/c1 => 160 MiB (err=<nil>)
+after  RESULT: /var/tmp/qa/c1 => 101 MiB (err=<nil>)
+### CASE 2 (double count): src has /qa5417data/payload (50MiB) + abs symlink /qa5417data/payload; host also has a 10MiB file at that path
+    expect: before 50+10+100=160 (host file wrongly added), after 50+100=150 (counted once)
+/var/tmp/qa/c2:
+total 0
+lrwxrwxrwx 1 root root 19 Oct 28 14:43 link -> /qa5417data/payload
+drwx------ 2 root root 60 Oct 28 14:43 qa5417data
+
+/var/tmp/qa/c2/qa5417data:
+total 51200
+-rw------- 1 root root 52428800 Oct 28 14:43 payload
+before RESULT: /var/tmp/qa/c2 => 160 MiB (err=<nil>)
+after  RESULT: /var/tmp/qa/c2 => 150 MiB (err=<nil>)
+### CASE 3 (relative symlink, unchanged): src has data/payload (50MiB) + relative symlink -> data/payload
+    expect: before == after == 50+100=150
+total 0
+drwx------ 2 root root 60 Oct 28 14:43 data
+lrwxrwxrwx 1 root root 12 Oct 28 14:43 rel -> data/payload
+before RESULT: /var/tmp/qa/c3 => 150 MiB (err=<nil>)
+after  RESULT: /var/tmp/qa/c3 => 150 MiB (err=<nil>)
+### CASE 4 (abs symlink to file inside source, nested dir): src/usr/bin/busybox 5MiB, src/bin/sh -> /usr/bin/busybox ; host has no such path
+    expect: before == after == 5+100=105
+before RESULT: /var/tmp/qa/c4 => 105 MiB (err=<nil>)
+after  RESULT: /var/tmp/qa/c4 => 105 MiB (err=<nil>)
+### CASE 5 (source root /): both binaries on the live guest root
+before RESULT: / => 134217911 MiB (err=readlink /proc/10/exe: no such file or directory)
+after  RESULT: / => 134217911 MiB (err=readlink /proc/10/exe: no such file or directory)
