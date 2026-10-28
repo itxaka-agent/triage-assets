@@ -1,0 +1,38 @@
+=== QA5263 variant: before ===
+--- case: #cloud-config only (  #   c   l   o   u   d   -   c   o   n   f   i   g  \n)
+jsonschema: '' does not validate with file:///schema.json#/type: expected object, but got null
+exit=1
+--- case: #kairos-config only (  #   k   a   i   r   o   s   -   c   o   n   f   i   g  \n)
+jsonschema: '' does not validate with file:///schema.json#/type: expected object, but got null
+exit=1
+--- case: #node-config only (  #   n   o   d   e   -   c   o   n   f   i   g  \n)
+jsonschema: '' does not validate with file:///schema.json#/type: expected object, but got null
+exit=1
+--- case: header + comments (  #   c   l   o   u   d   -   c   o   n   f   i   g  \n   #    )
+jsonschema: '' does not validate with file:///schema.json#/type: expected object, but got null
+exit=1
+--- case: header + '- kairos' (  #   c   l   o   u   d   -   c   o   n   f   i   g  \n   -    )
+jsonschema: '' does not validate with file:///schema.json#/type: expected object, but got array
+exit=1
+--- case: header + 'kairos' (  #   c   l   o   u   d   -   c   o   n   f   i   g  \n   k   a)
+jsonschema: '' does not validate with file:///schema.json#/type: expected object, but got string
+exit=1
+--- case: empty string ()
+missing #cloud-config header
+exit=1
+--- case: valid users (  #   c   l   o   u   d   -   c   o   n   f   i   g  \n   u   s)
+exit=0
+--- edit-config: clear file down to header
+before edit:
+#cloud-config
+users:
+  - name: kairos
+    passwd: <redacted>
+Invalid draft discarded; the original configuration is unchanged.
+edit-config exit=0
+file after edit-config:
+#cloud-config
+users:
+  - name: kairos
+    passwd: <redacted>
+=== QA5263 DONE ===
