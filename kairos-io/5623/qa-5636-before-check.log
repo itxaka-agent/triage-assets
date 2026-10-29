@@ -1,0 +1,9 @@
+BOOT_IMAGE=(loop0)/boot/vmlinuz console=ttyS0 console=tty1 splash net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=5 rd.emergency=reboot rd.shell=0 systemd.crash_reboot=yes quiet root=LABEL=COS_ACTIVE cos-img/filename=/cOS/active.img selinux=0 rd.immucore.debug
+seqnum=3369
+  LV   VG   Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  qalv qavg -wi-a----- 100.00m                                                    
+lrwxrwxrwx 1 root root 10 Oct 29 10:46 QA5636_LV -> ../../dm-0
+[0;1;31mudevadm: unrecognized option '--trigger'
+udevadm --trigger rc=1
+udevadm trigger rc=0
+settle --timeout=10 rc=0

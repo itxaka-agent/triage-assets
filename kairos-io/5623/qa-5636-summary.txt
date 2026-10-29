@@ -1,0 +1,6 @@
+before boot: 8. <lvm-activation> 21ms (ok) seqnum=3369
+before boot2: 9. <lvm-activation> 24ms (ok) seqnum=3370
+before boot3: 8. <lvm-activation> 26ms (ok) seqnum=3370
+after boot: 4. <lvm-activation> 209ms (ok) seqnum=3766
+after boot2: 4. <lvm-activation> 202ms (ok) seqnum=3772
+after boot3: 4. <lvm-activation> 216ms (ok) seqnum=3769
