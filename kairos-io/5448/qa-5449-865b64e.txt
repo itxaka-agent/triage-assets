@@ -1,0 +1,40 @@
+# QA kairos-io/kairos#5449 @ 865b64e: cve-check step, alpine:3 container, --network none not used for apk; gh/date/sleep stubbed, no token, no live API
+## gh stub
+#!/bin/bash
+# fake gh: no network. args: api <path> [--jq expr]
+path="$2"; jqx=""; [ "$3" = "--jq" ] && jqx="$4"
+out='[]'
+n=$(cat /state/polls 2>/dev/null || echo 0)
+case "$path" in
+ *workflows/release.yaml/runs*)
+   if [ "$FAKE_TAG" = "v4.4.0" ]; then
+     n=$((n+1)); echo $n > /state/polls
+     if [ $n -le 2 ]; then out='{"workflow_runs":[{"id":1,"status":"in_progress"}]}'; else out='{"workflow_runs":[{"id":1,"status":"completed"}]}'; fi
+   else out='{"workflow_runs":[]}'; fi ;;
+ *actions/runs/1/jobs*)
+   if [ $(cat /state/polls) -ge 3 ]; then out='{"jobs":[{"id":11,"name":"standard k3s amd64"},{"id":12,"name":"standard k0s amd64"},{"id":13,"name":"other"}]}'; else out='{"jobs":[]}'; fi ;;
+ *check-runs/*annotations*) out='[{"annotation_level":"warning","message":"CVE-0000-0000 critical"}]' ;;
+ *code-scanning*) out='[]' ;;
+esac
+if [ -n "$jqx" ]; then echo "$out" | jq -c "$jqx"; else echo "$out"; fi
+
+## run log
+== v4.4.0
+Waiting for 1 release run(s) for tag v4.4.0 to complete
+Waiting for 1 release run(s) for tag v4.4.0 to complete
+-- output:
+has_cve=true
+warning<<EOF
+> [!WARNING]
+> **Security Notice:** The standard images in this release contain known CVEs from upstream components (k3s and k0s). These vulnerabilities originate from the Kubernetes distribution binaries and are outside our control. Please review the security scan results before deploying to production.
+
+EOF
+polls=3
+== v9.9.9
+No release run for tag v9.9.9 yet, retrying
+No release run for tag v9.9.9 yet, retrying
+No release run for tag v9.9.9 yet, retrying
+No release run found for tag v9.9.9, checking code scanning alerts only
+-- output:
+has_cve=false
+polls=
