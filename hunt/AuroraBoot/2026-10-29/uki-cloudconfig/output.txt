@@ -1,0 +1,28 @@
+[90m2026-10-29T09:21:09Z[0m [32mINF[0m [1m[16] Creating base config file with profile 0[0m
+[90m2026-10-29T09:21:09Z[0m [32mINF[0m [1m[16] Calculating the size of the img file[0m
+[90m2026-10-29T09:21:09Z[0m [32mINF[0m [1m[16] Creating the img file with size: 5Mb[0m
+[90m2026-10-29T09:21:09Z[0m [32mINF[0m [1m[16] Created image: /tmp/auroraboot-iso-dir-512079233/efiboot.img[0m
+[90m2026-10-29T09:21:09Z[0m [32mINF[0m [1m[16] Creating directories in the img file[0m
+[90m2026-10-29T09:21:09Z[0m [32mINF[0m [1m[16] Copying files in the img file[0m
+[90m2026-10-29T09:21:09Z[0m [32mINF[0m [1m[16] Creating the iso files with xorriso[0m
+[90m2026-10-29T09:21:09Z[0m [32mINF[0m [1m[16] Done building iso at: /work/out[0m
+=== ISO root listing ===
+'/efiboot.img'
+=== grep marker in whole ISO (raw, and decompressing nothing) ===
+0
+marker NOT found in ISO bytes
+=== extract efiboot.img and UKI, check initrd for marker ===
+EFI          <DIR>     2026-10-29   9:21 
+Directory for ::/EFI
+Directory for ::/EFI/BOOT
+BOOTX64  EFI    199544 2026-10-29   9:21 
+Directory for ::/EFI/kairos
+norole   efi   2466168 2026-10-29   9:21 
+Directory for ::/EFI/tools
+-- EFI/kairos/norole.efi
+initrd entries under usr/local/cloud-config and oem:
+oem
+usr/local/cloud-config
+0
+marker NOT in initrd
+cmdline: console=ttyS0 console=tty1 splash net.ifnames=1 rd.immucore.oemlabel=COS_OEM rd.immucore.oemtimeout=2 rd.immucore.uki selinux=0 panic=5 rd.shell=0 systemd.crash_reboot=yes

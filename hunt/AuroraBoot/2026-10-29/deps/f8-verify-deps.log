@@ -1,0 +1,18 @@
+linuxx64.efi.stub
+systemd-bootx64.efi
+=== RUN   TestF8DepsMissingMformatPasses
+    f8_verify_test.go:34: checkBuildUKIDeps without mformat on PATH -> err=<nil>
+    f8_verify_test.go:37: but mformat lookup: exec: "mformat": executable file not found in $PATH
+    f8_verify_test.go:38: BUG: dependency check passed although mformat (run by createImgWithSize) is missing
+--- FAIL: TestF8DepsMissingMformatPasses (0.00s)
+=== RUN   TestF8DepsMissingXorrisoFailsForAllTypes
+    f8_verify_test.go:45: checkBuildUKIDeps without xorriso (signature has no outputType) -> err=exec: "xorriso": executable file not found in $PATH
+    f8_verify_test.go:47: BUG: xorriso demanded even though only ISO output runs it: exec: "xorriso": executable file not found in $PATH
+--- FAIL: TestF8DepsMissingXorrisoFailsForAllTypes (0.00s)
+=== RUN   TestF8DepsMissingMkfsMsdosFails
+    f8_verify_test.go:54: checkBuildUKIDeps without mkfs.msdos -> err=exec: "mkfs.msdos": executable file not found in $PATH
+    f8_verify_test.go:56: BUG: mkfs.msdos demanded though nothing in build-uki runs it: exec: "mkfs.msdos": executable file not found in $PATH
+--- FAIL: TestF8DepsMissingMkfsMsdosFails (0.00s)
+FAIL
+FAIL	github.com/kairos-io/AuroraBoot/pkg/uki	0.016s
+FAIL

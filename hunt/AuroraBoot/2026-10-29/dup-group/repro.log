@@ -1,0 +1,30 @@
+go: downloading github.com/go-openapi/swag/typeutils v0.28.0
+go: downloading github.com/go-openapi/swag/yamlutils v0.28.0
+go: downloading github.com/go-openapi/swag/pools v0.28.0
+go: downloading go.yaml.in/yaml/v3 v3.0.5
+go: downloading github.com/docker/docker-credential-helpers v0.9.3
+go: downloading github.com/sirupsen/logrus v1.10.2
+go: downloading golang.org/x/mod v0.42.0
+=== RUN   TestDuplicateGroupName
+2026/10/29 09:19:47 127.0.0.1 POST /api/v1/groups 201 404.613µs
+    dup_group_test.go:45: POST prod #1 -> 201 {"id":"d12c8cfb-f0bb-4210-a6d4-4912738bc559","name":"prod","description":"","createdAt":"2026-10-29T09:19:47.767100425Z","updatedAt":"2026-10-29T09:19:47.767100425Z"}
+
+2026/10/29 09:19:47 [31;1m/src/internal/store/gorm/store.go:108 [35;1mduplicated key not allowed
+[0m[33m[0.183ms] [34;1m[rows:0][0m INSERT INTO `node_groups` (`id`,`name`,`description`,`created_at`,`updated_at`) VALUES ("be0c971a-553d-42f6-b1d8-caedcc7a7009","prod","","2026-10-29 09:19:47.767","2026-10-29 09:19:47.767")
+2026/10/29 09:19:47 127.0.0.1 POST /api/v1/groups 500 277.106µs
+    dup_group_test.go:47: POST prod #2 -> 500 {"error":"failed to create group"}
+2026/10/29 09:19:47 127.0.0.1 POST /api/v1/groups 201 185.625µs
+    dup_group_test.go:49: POST staging -> 201 {"id":"41965b96-1d2b-4c27-9c29-4598cd934cef","name":"staging","description":"","createdAt":"2026-10-29T09:19:47.76836688Z","updatedAt":"2026-10-29T09:19:47.76836688Z"}
+
+2026/10/29 09:19:47 [31;1m/src/internal/store/gorm/store.go:157 [35;1mduplicated key not allowed
+[0m[33m[0.097ms] [34;1m[rows:0][0m UPDATE `node_groups` SET `name`="prod",`description`="",`created_at`="2026-10-29 09:19:47.768",`updated_at`="2026-10-29 09:19:47.768" WHERE `id` = "41965b96-1d2b-4c27-9c29-4598cd934cef"
+2026/10/29 09:19:47 127.0.0.1 PUT /api/v1/groups/41965b96-1d2b-4c27-9c29-4598cd934cef 500 421.047µs
+    dup_group_test.go:53: PUT staging->prod -> 500 {"error":"failed to update group"}
+2026/10/29 09:19:47 127.0.0.1 GET /api/v1/groups 200 159.778µs
+    dup_group_test.go:55: GET groups -> [{"id":"d12c8cfb-f0bb-4210-a6d4-4912738bc559","name":"prod","description":"","node_count":0,"createdAt":"2026-10-29T09:19:47.767100425Z","updatedAt":"2026-10-29T09:19:47.767100425Z"},{"id":"41965b96-1d2b-4c27-9c29-4598cd934cef","name":"staging","description":"","node_count":0,"createdAt":"2026-10-29T09:19:47.76836688Z","updatedAt":"2026-10-29T09:19:47.76836688Z"}]
+    dup_group_test.go:58: duplicate create: got 500, want 409
+    dup_group_test.go:61: rename to existing: got 500, want 409
+--- FAIL: TestDuplicateGroupName (0.02s)
+FAIL
+FAIL	github.com/kairos-io/AuroraBoot/internal/hunttest	0.034s
+FAIL

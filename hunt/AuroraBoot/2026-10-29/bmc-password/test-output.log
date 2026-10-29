@@ -1,0 +1,41 @@
+go version go1.27.3 linux/amd64
+go: downloading github.com/pkg/errors v0.9.1
+go: downloading github.com/mattn/go-colorable v0.1.15
+go: downloading github.com/mattn/go-isatty v0.0.22
+go: downloading golang.org/x/tools v0.52.0
+go: downloading github.com/foxboron/go-tpm-keyfiles v0.0.0-20240725205618-b7c5a84edf9d
+go: downloading github.com/go-piv/piv-go/v2 v2.3.0
+go: downloading github.com/google/go-tpm v0.9.8
+go: downloading github.com/goccy/go-yaml v1.18.0
+go: downloading github.com/fatih/color v1.17.0
+go: downloading github.com/opencontainers/go-digest v1.0.0
+go: downloading go.yaml.in/yaml/v3 v3.0.5
+go: downloading github.com/valyala/bytebufferpool v1.0.0
+go: downloading github.com/jackc/pgpassfile v1.0.0
+go: downloading github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761
+go: downloading kernel.org/pub/linux/libs/security/libcap/psx v1.2.70
+go: downloading github.com/docker/cli v29.7.2+incompatible
+go: downloading github.com/jackc/puddle/v2 v2.2.2
+go: downloading github.com/opencontainers/image-spec v1.1.1
+go: downloading github.com/klauspost/compress v1.20.3
+go: downloading github.com/rs/zerolog v1.35.1
+go: downloading github.com/coreos/go-systemd/v22 v22.7.0
+go: downloading github.com/sirupsen/logrus v1.10.2
+go: downloading github.com/docker/docker-credential-helpers v0.9.3
+go: downloading golang.org/x/mod v0.42.0
+=== RUN   TestVerifyBMCPasswordPersist
+    zz_bmc_password_verify_test.go:64: fake BMC at http://172.17.0.14:33121
+    zz_bmc_password_verify_test.go:107: POST create -> 201 {"id":"cbc67519-cde0-4bbc-9861-ff9efb342a1b","name":"bmc1","endpoint":"http://172.17.0.14:33121","vendor":"generic","username":"admin","verifySSL":false,"createdAt":"0001-01-01T00:00:00Z","updatedAt":"0001-01-01T00:00:00Z"}
+    zz_bmc_password_verify_test.go:116: store after POST: Password=""
+    zz_bmc_password_verify_test.go:118: BUG: password sent on POST not stored (got "")
+    zz_bmc_password_verify_test.go:122: POST inspect -> 500 {"error":"failed to connect to redfish endpoint: connecting to Redfish service: 401: {\"error\":{\"message\":\"bad creds\"}}"}
+    zz_bmc_password_verify_test.go:127: PUT update -> 200 {"id":"cbc67519-cde0-4bbc-9861-ff9efb342a1b","name":"bmc1","endpoint":"http://172.17.0.14:33121","vendor":"generic","username":"admin","verifySSL":false,"lastStatus":"unreachable","lastError":"connecting to Redfish service: 401: {\"error\":{\"message\":\"bad creds\"}}","lastInspectAt":"2026-10-29T09:20:14.028339802Z","createdAt":"2026-10-29T09:20:14.026625212Z","updatedAt":"2026-10-29T09:20:14.028397888Z"}
+    zz_bmc_password_verify_test.go:129: store after PUT: Password=""
+    zz_bmc_password_verify_test.go:131: BUG: password sent on PUT not stored (got "")
+    zz_bmc_password_verify_test.go:136: BMC saw: POST /redfish/v1/SessionService/Sessions session-body={"UserName":"admin","Password":""}
+    zz_bmc_password_verify_test.go:144: control: store after direct Update(Password=direct): Password="direct"
+    zz_bmc_password_verify_test.go:152: done
+--- FAIL: TestVerifyBMCPasswordPersist (0.03s)
+FAIL
+FAIL	github.com/kairos-io/AuroraBoot/pkg/handlers	0.032s
+FAIL

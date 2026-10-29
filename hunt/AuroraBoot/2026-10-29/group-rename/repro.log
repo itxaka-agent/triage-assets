@@ -1,0 +1,39 @@
+go: downloading github.com/aybabtme/rgbterm v0.0.0-20170906152045-cc83f3b3ce59
+go: downloading github.com/wayneashleyberry/terminal-dimensions v1.1.0
+go: downloading github.com/ayoubfaouzi/pkcs7 v0.2.3
+go: downloading github.com/u-root/uio v0.0.0-20240224005618-d2acac8f3701
+go: downloading github.com/dustin/go-humanize v1.0.1
+== create group 'edge-prod'
+{"id":"4476b8c0-1bda-45ad-88fa-04fb1a1f8138","name":"edge-prod","description":"","createdAt":"2026-10-29T09:20:23.934179491Z","updatedAt":"2026-10-29T09:20:23.934179491Z"}
+== create artifact targeting group 4476b8c0-1bda-45ad-88fa-04fb1a1f8138
+artifact id=10a71891-3df7-4d1c-abdb-f6711d3312d1
+== baked cloud-config phonehome block
+phonehome:
+    allowed_commands:
+        - upgrade
+        - upgrade-recovery
+        - reboot
+        - unregister
+    group: edge-prod
+    registration_token: regtok
+    url: http://127.0.0.1:8080
+stages:
+== rename group to 'edge-production'
+{"id":"4476b8c0-1bda-45ad-88fa-04fb1a1f8138","name":"edge-production","description":"","createdAt":"2026-10-29T09:20:23.934179491Z","updatedAt":"2026-10-29T09:20:23.956136876Z"}
+
+== artifact record after rename (targetGroupId, cloudConfig group)
+{"targetGroupId":"4476b8c0-1bda-45ad-88fa-04fb1a1f8138","group":"edge-prod"}
+== node from that image registers (agent sends phonehome.group='edge-prod')
+{"apiKey":"<redacted>","id":"a2337129-d77e-4ad9-8717-89e50b4b9531"}
+ HTTP201
+== control: node sending new name registers
+{"apiKey":"<redacted>","id":"1e6a9874-3bb8-49af-8bc1-aa8bb5d283f2"}
+ HTTP201
+== node groups
+{"hostname":"n1","groupID":null}
+{"hostname":"n2","groupID":"4476b8c0-1bda-45ad-88fa-04fb1a1f8138"}
+== members of group 4476b8c0-1bda-45ad-88fa-04fb1a1f8138
+["n2"]
+== server log lines mentioning group/warn
+WARNING: serving plaintext HTTP — TLS is NOT enabled.
+[0m[33m[0.026ms] [34;1m[rows:0][0m SELECT * FROM `node_groups` WHERE name = "edge-prod" ORDER BY `node_groups`.`id` LIMIT 1

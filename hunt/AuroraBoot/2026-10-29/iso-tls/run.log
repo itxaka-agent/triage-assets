@@ -1,0 +1,16 @@
+=== RUN   TestMissingCert
+    repro_test.go:40: Start() with missing cert/key returned: <nil>
+    repro_test.go:20: TCP dial to 127.0.0.1:39421: CONNECTED (listener still open)
+    repro_test.go:25: TLS handshake after 3.001s: err=read tcp 127.0.0.1:56352->127.0.0.1:39421: i/o timeout
+    repro_test.go:32: plain HTTP read after 3.002s: n=0 err=read tcp 127.0.0.1:56364->127.0.0.1:39421: i/o timeout
+    repro_test.go:45: Shutdown: <nil>
+--- PASS: TestMissingCert (6.20s)
+=== RUN   TestGarbageCert
+    repro_test.go:55: Start() with garbage cert/key returned: <nil>
+    repro_test.go:20: TCP dial to 127.0.0.1:40073: CONNECTED (listener still open)
+    repro_test.go:25: TLS handshake after 3.001s: err=read tcp 127.0.0.1:53480->127.0.0.1:40073: i/o timeout
+    repro_test.go:32: plain HTTP read after 3.002s: n=0 err=read tcp 127.0.0.1:47976->127.0.0.1:40073: i/o timeout
+    repro_test.go:60: Shutdown: <nil>
+--- PASS: TestGarbageCert (6.20s)
+PASS
+ok  	repro/isoserve	12.412s

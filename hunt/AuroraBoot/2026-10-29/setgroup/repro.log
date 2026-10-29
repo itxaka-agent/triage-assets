@@ -1,0 +1,63 @@
+go: downloading github.com/cyphar/filepath-securejoin v0.7.0
+go: downloading github.com/jaypipes/pcidb v1.1.1
+go: downloading gopkg.in/evanphx/json-patch.v4 v4.13.0
+go: downloading github.com/docker/go-units v0.5.0
+go: downloading github.com/felixge/httpsnoop v1.1.0
+go: downloading go.opentelemetry.io/otel/metric v1.46.0
+go: downloading gopkg.in/warnings.v0 v0.1.2
+go: downloading github.com/emicklei/go-restful/v3 v3.13.0
+go: downloading github.com/cloudflare/circl v1.6.3
+go: downloading github.com/go-openapi/swag/pools v0.28.0
+go: downloading github.com/docker/docker-credential-helpers v0.9.3
+go: downloading github.com/klauspost/cpuid/v2 v2.3.0
+go: downloading github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
+go: downloading github.com/aybabtme/rgbterm v0.0.0-20170906152045-cc83f3b3ce59
+go: downloading github.com/wayneashleyberry/terminal-dimensions v1.1.0
+go: downloading github.com/go-logr/stdr v1.2.2
+go: downloading go.opentelemetry.io/auto/sdk v1.2.1
+go: downloading github.com/dustin/go-humanize v1.0.1
+go: downloading github.com/u-root/uio v0.0.0-20240224005618-d2acac8f3701
+go: downloading github.com/ayoubfaouzi/pkcs7 v0.2.3
+== register node
+{"apiKey":"<redacted>","id":"4f0c9edf-4a65-4124-8a7c-223a2f8a450c"}
+== list groups
+[]
+
+== PUT existing node -> nonexistent group
+{"status":"ok"}
+ HTTP 200
+== GET node after
+{"id":"4f0c9edf-4a65-4124-8a7c-223a2f8a450c","machineID":"m1","hostname":"h1","groupID":"no-such-group-0000","phase":"Registered","lastHeartbeat":null,"agentVersion":"","osRelease":null,"labels":{},"remoteIP":"127.0.0.1","createdAt":"2026-10-29T09:20:25.153526485Z","updatedAt":"2026-10-29T09:20:25.163309748Z"}
+
+== DB row
+4f0c9edf-4a65-4124-8a7c-223a2f8a450c|no-such-group-0000
+== DB node_groups count
+0
+== PRAGMA foreign_keys
+0
+== create real group
+{"id":"99f72fae-cabd-4205-aa5a-4889757150f2","name":"g1","description":"","createdAt":"2026-10-29T09:20:25.180478057Z","updatedAt":"2026-10-29T09:20:25.180478057Z"}
+== PUT nonexistent node -> real group
+{"status":"ok"}
+ HTTP 200
+== PUT nonexistent node -> null group
+{"status":"ok"}
+ HTTP 200
+== GET nonexistent node (baseline)
+{"error":"node not found"}
+ HTTP 404
+== PUT labels nonexistent node
+{"error":"failed to set labels"}
+ HTTP 500
+== list nodes in group g1 / ListByGroup
+[{"id":"4f0c9edf-4a65-4124-8a7c-223a2f8a450c","machineID":"m1","hostname":"h1","groupID":"no-such-group-0000","phase":"Registered","lastHeartbeat":null,"agentVersion":"","osRelease":null,"labels":{},"remoteIP":"127.0.0.1","createdAt":"2026-10-29T09:20:25.153526485Z","updatedAt":"2026-10-29T09:20:25.163309748Z"}]
+
+== GET nonexistent group
+{"error":"group not found"}
+ HTTP 404
+== server log tail
+2026/10/29 09:20:25 127.0.0.1 GET /api/v1/nodes?group=no-such-group-0000 200 202.107µs
+
+2026/10/29 09:20:25 [31;1m/build/internal/store/gorm/store.go:113 [35;1mrecord not found
+[0m[33m[0.077ms] [34;1m[rows:0][0m SELECT * FROM `node_groups` WHERE id = "no-such-group-0000" ORDER BY `node_groups`.`id` LIMIT 1
+2026/10/29 09:20:25 127.0.0.1 GET /api/v1/groups/no-such-group-0000 404 124.377µs

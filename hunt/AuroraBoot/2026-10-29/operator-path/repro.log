@@ -1,0 +1,40 @@
+func TestSortedFeatures(t *testing.T) {
+func TestRunRegistryCancel(t *testing.T) {
+func TestProgressUpdater(t *testing.T) {
+Running Suite: Handlers Suite - /src/pkg/handlers
+=================================================
+Random Seed: 1793265195
+
+Will run 1 of 464 specs
+
+------------------------------
+HUNT f2: operator-uploaded ISO via local serve deploys an artifact whose ISO arrived through Upload
+/src/pkg/handlers/zz_hunt_f2_test.go:22
+  ArtifactFiles after Upload: ["kairos.iso"]
+  on-disk file exists: true
+  cwd=/src/pkg/handlers
+  deploy status=500 body={"error":"failed to serve artifact ISO: registering iso: stat /src/pkg/handlers/kairos.iso: no such file or directory"}
+
+  [FAILED] in [It] - /src/pkg/handlers/zz_hunt_f2_test.go:61 @ 10/29/26 09:13:15.284
+• [FAILED] [0.001 seconds]
+HUNT f2: operator-uploaded ISO via local serve [It] deploys an artifact whose ISO arrived through Upload
+/src/pkg/handlers/zz_hunt_f2_test.go:22
+
+  [FAILED] Expected
+      <int>: 500
+  to equal
+      <int>: 202
+  In [It] at: /src/pkg/handlers/zz_hunt_f2_test.go:61 @ 10/29/26 09:13:15.284
+------------------------------
+
+
+Summarizing 1 Failure:
+  [FAIL] HUNT f2: operator-uploaded ISO via local serve [It] deploys an artifact whose ISO arrived through Upload
+  /src/pkg/handlers/zz_hunt_f2_test.go:61
+
+Ran 1 of 464 Specs in 0.005 seconds
+FAIL! -- 0 Passed | 1 Failed | 0 Pending | 463 Skipped
+--- FAIL: TestHandlers (0.01s)
+FAIL
+FAIL	github.com/kairos-io/AuroraBoot/pkg/handlers	0.017s
+FAIL

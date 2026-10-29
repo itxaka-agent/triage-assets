@@ -1,0 +1,31 @@
+OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026)
+[90m2026-10-29T09:18:46Z[0m [32mINF[0m [1m[7927] Generating PK[0m
+[90m2026-10-29T09:18:46Z[0m [32mINF[0m [1m[7927] PK generated at /tmp/TestVerifyF4_ExistingKeysDirKeepsPCRKey338977151/001/fleet/PK.key and /tmp/TestVerifyF4_ExistingKeysDirKeepsPCRKey338977151/001/fleet/PK.pem[0m
+[90m2026-10-29T09:18:46Z[0m [32mINF[0m [1m[7927] Converting PK.pem to DER[0m
+[90m2026-10-29T09:18:46Z[0m [32mINF[0m [1m[7927] PK generated at /tmp/TestVerifyF4_ExistingKeysDirKeepsPCRKey338977151/001/fleet/PK.der[0m
+[90m2026-10-29T09:18:46Z[0m [32mINF[0m [1m[7927] Generating KEK[0m
+[90m2026-10-29T09:18:46Z[0m [32mINF[0m [1m[7927] KEK generated at /tmp/TestVerifyF4_ExistingKeysDirKeepsPCRKey338977151/001/fleet/KEK.key and /tmp/TestVerifyF4_ExistingKeysDirKeepsPCRKey338977151/001/fleet/KEK.pem[0m
+[90m2026-10-29T09:18:46Z[0m [32mINF[0m [1m[7927] Converting KEK.pem to DER[0m
+[90m2026-10-29T09:18:46Z[0m [32mINF[0m [1m[7927] KEK generated at /tmp/TestVerifyF4_ExistingKeysDirKeepsPCRKey338977151/001/fleet/KEK.der[0m
+[90m2026-10-29T09:18:46Z[0m [32mINF[0m [1m[7927] Generating db[0m
+[90m2026-10-29T09:18:46Z[0m [32mINF[0m [1m[7927] db generated at /tmp/TestVerifyF4_ExistingKeysDirKeepsPCRKey338977151/001/fleet/db.key and /tmp/TestVerifyF4_ExistingKeysDirKeepsPCRKey338977151/001/fleet/db.pem[0m
+[90m2026-10-29T09:18:46Z[0m [32mINF[0m [1m[7927] Converting db.pem to DER[0m
+[90m2026-10-29T09:18:46Z[0m [32mINF[0m [1m[7927] db generated at /tmp/TestVerifyF4_ExistingKeysDirKeepsPCRKey338977151/001/fleet/db.der[0m
+[90m2026-10-29T09:18:46Z[0m [32mINF[0m [1m[7927] Generating policy encryption key[0m
+[90m2026-10-29T09:18:46Z[0m [32mINF[0m [1m[7927] Using existing PK, KEK and db keys from /tmp/TestVerifyF4_ExistingKeysDirKeepsPCRKey338977151/001/fleet[0m
+[90m2026-10-29T09:18:46Z[0m [32mINF[0m [1m[7927] Converting PK.pem to DER[0m
+[90m2026-10-29T09:18:46Z[0m [32mINF[0m [1m[7927] PK generated at /tmp/TestVerifyF4_ExistingKeysDirKeepsPCRKey338977151/002/rebuilt/PK.der[0m
+[90m2026-10-29T09:18:46Z[0m [32mINF[0m [1m[7927] Converting KEK.pem to DER[0m
+[90m2026-10-29T09:18:46Z[0m [32mINF[0m [1m[7927] KEK generated at /tmp/TestVerifyF4_ExistingKeysDirKeepsPCRKey338977151/002/rebuilt/KEK.der[0m
+[90m2026-10-29T09:18:46Z[0m [32mINF[0m [1m[7927] Converting db.pem to DER[0m
+[90m2026-10-29T09:18:47Z[0m [32mINF[0m [1m[7927] db generated at /tmp/TestVerifyF4_ExistingKeysDirKeepsPCRKey338977151/002/rebuilt/db.der[0m
+[90m2026-10-29T09:18:47Z[0m [32mINF[0m [1m[7927] Generating policy encryption key[0m
+    pcrkey_verify_test.go:26: PK.key identical: true
+    pcrkey_verify_test.go:26: KEK.key identical: true
+    pcrkey_verify_test.go:26: db.key identical: true
+    pcrkey_verify_test.go:32: tpm2-pcr-private.pem identical: false
+    pcrkey_verify_test.go:34: tpm2-pcr-private.pem in ExistingKeysDir was ignored; a new PCR policy key was minted
+--- FAIL: TestVerifyF4_ExistingKeysDirKeepsPCRKey (0.53s)
+FAIL
+FAIL	github.com/kairos-io/AuroraBoot/pkg/secureboot	0.538s
+FAIL

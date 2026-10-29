@@ -1,0 +1,20 @@
+go: downloading github.com/spf13/afero v1.15.0
+go: downloading golang.org/x/sys v0.49.0
+go: downloading github.com/jackc/puddle/v2 v2.2.2
+go: downloading github.com/foxboron/go-tpm-keyfiles v0.0.0-20240725205618-b7c5a84edf9d
+go: downloading github.com/google/go-tpm v0.9.8
+go: downloading github.com/go-piv/piv-go/v2 v2.3.0
+go: downloading github.com/fatih/color v1.17.0
+go: downloading github.com/goccy/go-yaml v1.18.0
+go: downloading github.com/coreos/go-systemd/v22 v22.7.0
+go: downloading kernel.org/pub/linux/libs/security/libcap/psx v1.2.70
+go: downloading github.com/docker/docker-credential-helpers v0.9.3
+go: downloading github.com/sirupsen/logrus v1.10.2
+=== RUN   TestClearGroupDescription
+    group_desc_test.go:38: PUT status=200 body={"id":"5cbd3b42-3716-4cea-beb6-65dd6ea4494b","name":"prod","description":"old desc","createdAt":"2026-10-29T09:19:33.366381386Z","updatedAt":"2026-10-29T09:19:33.366622358Z"}
+    group_desc_test.go:46: stored description after PUT: "old desc"
+    group_desc_test.go:48: description not cleared: status=200 resp="old desc" stored="old desc"
+--- FAIL: TestClearGroupDescription (0.01s)
+FAIL
+FAIL	github.com/kairos-io/AuroraBoot/huntrepro	0.035s
+FAIL

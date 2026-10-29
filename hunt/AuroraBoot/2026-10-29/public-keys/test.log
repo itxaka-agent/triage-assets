@@ -1,0 +1,30 @@
+go: downloading github.com/go-logr/stdr v1.2.2
+go: downloading go.opentelemetry.io/auto/sdk v1.2.1
+go: downloading github.com/cespare/xxhash/v2 v2.3.0
+go: downloading gopkg.in/warnings.v0 v0.1.2
+go: downloading github.com/klauspost/cpuid/v2 v2.3.0
+go: downloading github.com/ulikunitz/xz v0.5.15
+go: downloading github.com/pkg/xattr v0.4.12
+go: downloading github.com/pierrec/lz4/v4 v4.1.26
+go: downloading github.com/elliotwutingfeng/asciiset v0.0.0-20260129054604-cfde2086bc57
+go: downloading github.com/anchore/go-lzo v0.1.0
+go: downloading github.com/djherbis/times v1.6.0
+go: downloading github.com/aybabtme/rgbterm v0.0.0-20170906152045-cc83f3b3ce59
+go: downloading github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
+go: downloading github.com/wayneashleyberry/terminal-dimensions v1.1.0
+go: downloading github.com/ayoubfaouzi/pkcs7 v0.2.3
+go: downloading github.com/u-root/uio v0.0.0-20240224005618-d2acac8f3701
+go: downloading github.com/dustin/go-humanize v1.0.1
+=== RUN   TestF5ImageFilesEmptyKeysDir
+    f5_verify_test.go:24: loader/keys/auto = [PK.auth KEK.auth db.auth]
+--- PASS: TestF5ImageFilesEmptyKeysDir (0.00s)
+=== RUN   TestF5CreateArtifactNoKeys
+[90m2026-10-29T09:17:28Z[0m [31mERR[0m [1m[16388] opening file PK.auth: open PK.auth: no such file or directory[0m
+    f5_verify_test.go:35: createArtifact with empty PublicKeysDir failed: open PK.auth: no such file or directory
+--- FAIL: TestF5CreateArtifactNoKeys (0.00s)
+=== RUN   TestF5CreateArtifactPicksCWD
+    f5_verify_test.go:52: shipped loader/keys/auto/PK.auth from CWD: "stray-PK.auth" err=<nil>
+--- PASS: TestF5CreateArtifactPicksCWD (0.00s)
+FAIL
+FAIL	github.com/kairos-io/AuroraBoot/pkg/uki	0.032s
+FAIL

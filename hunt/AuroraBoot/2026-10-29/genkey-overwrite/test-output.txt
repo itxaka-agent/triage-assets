@@ -1,0 +1,25 @@
+=== RUN   TestLibraryOverwrites
+    repro_test.go:40: second GenerateKeySet into same dir err=<nil>
+    repro_test.go:43: PK.key                 before=7713d8e53b772003 after=04b66698ab6a4cb9 changed=true
+    repro_test.go:43: KEK.key                before=c7dd13623ee8d929 after=73fb6d336288e567 changed=true
+    repro_test.go:43: db.key                 before=d5823f8ee9c7ac54 after=16c954a19a037679 changed=true
+    repro_test.go:43: tpm2-pcr-private.pem   before=20b793658212488a after=c7c01360fa93f8fa changed=true
+    repro_test.go:43: PK.pem                 before=68fd207a922174bd after=dd0b92b7df2042cf changed=true
+    repro_test.go:46: BUG: existing PK.key overwritten without error
+--- FAIL: TestLibraryOverwrites (0.54s)
+=== RUN   TestWebDuplicateName
+    repro_test.go:66: POST generate name=prod -> 201 {"id":"9c927722-47db-48ad-bdca-55d3bcfdaa45","name":"prod","secureBootEnroll":"","createdAt":"2026-10-29T09:20:14.10323974Z","updatedAt":"2026-10-29T09:20:14.10323974Z","hasTpmPcrKey":true}
+
+2026/10/29 09:20:14 [31;1m/src/internal/store/gorm/store.go:1150 [35;1mduplicated key not allowed
+[0m[33m[0.146ms] [34;1m[rows:0][0m INSERT INTO `secure_boot_key_sets` (`id`,`name`,`keys_dir`,`tpmpcr_key_path`,`secure_boot_enroll`,`created_at`,`updated_at`) VALUES ("85f28eb6-09d9-4154-a410-857c25eaa8d3","prod","/tmp/TestWebDuplicateName3385404684/001/keys/prod","/tmp/TestWebDuplicateName3385404684/001/keys/prod/tpm2-pcr-private.pem","","2026-10-29 09:20:14.383","2026-10-29 09:20:14.383")
+    repro_test.go:66: POST generate name=prod -> 500 {"error":"failed to save key set record"}
+    repro_test.go:76: PK.key                 before=8523691925fbac20 after=a23ccdb717755332 changed=true
+    repro_test.go:76: KEK.key                before=bc82465d76a62867 after=6dd4b0dd28a587aa changed=true
+    repro_test.go:76: db.key                 before=48f71d5518d19d72 after=e3bdce69565218f4 changed=true
+    repro_test.go:76: tpm2-pcr-private.pem   before=25c1df1f4f90e394 after=06f04391ebf8b75c changed=true
+    repro_test.go:76: PK.pem                 before=4ab1b257324fc49c after=8d5374abe8f8d07d changed=true
+    repro_test.go:79: BUG: request failed with 500 but keys of existing set 'prod' were replaced on disk
+--- FAIL: TestWebDuplicateName (0.54s)
+FAIL
+FAIL	github.com/kairos-io/AuroraBoot/internal/reprof2	1.085s
+FAIL

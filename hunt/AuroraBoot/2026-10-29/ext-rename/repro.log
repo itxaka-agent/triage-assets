@@ -1,0 +1,30 @@
+go: downloading golang.org/x/mod v0.42.0
+=== RUN   TestRenameBundledExtension
+2026/10/29 09:20:07 127.0.0.1 PUT /api/v1/artifacts/art1/bundle-extensions 200 446.302µs
+    rename_test.go:50: PUT /api/v1/artifacts/art1/bundle-extensions -> 200 [{"artifactId":"art1","extensionName":"myext","extensionType":"sysext","order":0,"CreatedAt":"2026-10-29T09:20:07.050741729Z","UpdatedAt":"2026-10-29T09:20:07.050741729Z"}]
+2026/10/29 09:20:07 127.0.0.1 POST /api/v1/artifacts/art1/bundle-resolve 200 188.92µs
+    rename_test.go:50: POST /api/v1/artifacts/art1/bundle-resolve -> 200 [{"name":"myext","type":"sysext","version":"v1","source":"http://ab.example/api/v1/extensions/ext1/download/myext.raw?token=tok"}]
+2026/10/29 09:20:07 127.0.0.1 DELETE /api/v1/extensions/ext1 409 150.702µs
+    rename_test.go:50: DELETE /api/v1/extensions/ext1 -> 409 {"artifacts":["art1"],"error":"extension is referenced by one or more artifact bundles"}
+2026/10/29 09:20:07 127.0.0.1 PATCH /api/v1/extensions/ext1 200 261.552µs
+    rename_test.go:50: PATCH /api/v1/extensions/ext1 -> 200 {"id":"ext1","name":"renamed","type":"sysext","phase":"Ready","message":"","arch":"amd64","version":"v1","sourceMode":"","sourceArtifactId":"","sourceImage":"","signingKeySetId":"","hierarchies":null,"serviceReload":false,"containerImage":"","rawFilename":"myext.raw","downloadToken":"tok","createdAt":"2026-10-29T09:20:07.048320579Z","updatedAt":"2026-10-29T09:20:07.051632087Z"}
+2026/10/29 09:20:07 127.0.0.1 GET /api/v1/artifacts/art1/bundle-extensions 200 112.233µs
+    rename_test.go:50: GET /api/v1/artifacts/art1/bundle-extensions -> 200 [{"artifactId":"art1","extensionName":"myext","extensionType":"sysext","order":0,"CreatedAt":"2026-10-29T09:20:07.050741729Z","UpdatedAt":"2026-10-29T09:20:07.050741729Z"}]
+
+2026/10/29 09:20:07 [31;1m/src/internal/store/gorm/store.go:1382 [35;1mrecord not found
+[0m[33m[0.059ms] [34;1m[rows:0][0m SELECT * FROM `extension_records` WHERE type = "sysext" AND name = "myext" AND phase = "Ready" ORDER BY created_at DESC,`extension_records`.`id` LIMIT 1
+2026/10/29 09:20:07 127.0.0.1 POST /api/v1/artifacts/art1/bundle-resolve 400 256.42µs
+    rename_test.go:50: POST /api/v1/artifacts/art1/bundle-resolve -> 400 {"error":"bundle[0]: no Ready sysext extension matches name=\"myext\" version=\"\""}
+2026/10/29 09:20:07 127.0.0.1 DELETE /api/v1/extensions/ext1 204 202.288µs
+    rename_test.go:50: DELETE /api/v1/extensions/ext1 -> 204 
+
+2026/10/29 09:20:07 [31;1m/src/internal/store/gorm/store.go:1382 [35;1mrecord not found
+[0m[33m[0.057ms] [34;1m[rows:0][0m SELECT * FROM `extension_records` WHERE type = "sysext" AND name = "myext" AND phase = "Ready" ORDER BY created_at DESC,`extension_records`.`id` LIMIT 1
+2026/10/29 09:20:07 127.0.0.1 POST /api/v1/artifacts/art1/bundle-resolve 400 193.431µs
+    rename_test.go:50: POST /api/v1/artifacts/art1/bundle-resolve -> 400 {"error":"bundle[0]: no Ready sysext extension matches name=\"myext\" version=\"\""}
+    rename_test.go:118: SUMMARY renameAccepted=true resolveAfterRename=400 deleteAfterRename=204 resolveAfterDelete=400
+    rename_test.go:121: BUG: rename of bundled extension accepted (200) and broke bundle-resolve (400); delete guard then bypassed (204)
+--- FAIL: TestRenameBundledExtension (0.02s)
+FAIL
+FAIL	github.com/kairos-io/AuroraBoot/internal/huntrepro	0.024s
+FAIL

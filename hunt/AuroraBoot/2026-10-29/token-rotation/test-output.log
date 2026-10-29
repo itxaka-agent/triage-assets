@@ -1,0 +1,150 @@
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+debconf: unable to initialize frontend: Teletype
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Noninteractive
+go: downloading github.com/valyala/bytebufferpool v1.0.0
+go: downloading github.com/jackc/puddle/v2 v2.2.2
+go: downloading github.com/go-openapi/jsonpointer v1.0.0
+go: downloading github.com/go-openapi/jsonreference v1.0.0
+go: downloading github.com/go-openapi/swag v0.28.0
+go: downloading github.com/coreos/go-systemd/v22 v22.7.0
+go: downloading github.com/go-openapi/swag/jsonutils v0.28.0
+go: downloading github.com/go-openapi/swag/cmdutils v0.28.0
+go: downloading github.com/go-openapi/swag/conv v0.28.0
+go: downloading github.com/go-openapi/swag/fileutils v0.28.0
+go: downloading github.com/go-openapi/swag/loading v0.28.0
+go: downloading github.com/go-openapi/swag/mangling v0.28.0
+go: downloading github.com/go-openapi/swag/netutils v0.28.0
+go: downloading github.com/go-openapi/swag/stringutils v0.28.0
+go: downloading github.com/go-openapi/swag/typeutils v0.28.0
+go: downloading github.com/go-openapi/swag/yamlutils v0.28.0
+go: downloading github.com/sirupsen/logrus v1.10.2
+go: downloading github.com/docker/docker-credential-helpers v0.9.3
+go: downloading github.com/go-openapi/swag/pools v0.28.0
+go: downloading golang.org/x/mod v0.42.0
+=== RUN   TestRegTokenRotationReachesBuilds
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 58.892µs
+    zz_regtoken_rotation_test.go:61: rotate: 200 {"registrationToken":"<redacted>"}
+2026/10/29 09:19:53 127.0.0.1 GET /api/v1/settings/registration-token 200 28.316µs
+    zz_regtoken_rotation_test.go:67: GET token after rotate: 200 {"registrationToken":"<redacted>"}
+{"time":"2026-10-29T09:19:53.866314388Z","level":"ERROR","prefix":"echo","file":"artifacts.go","line":"597","message":"read back stored build 71913673-9f29-4d8e-9bf0-96ff5a85248c: not found"}
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/artifacts 201 429.832µs
+    zz_regtoken_rotation_test.go:71: create artifact: 201 {"id":"71913673-9f29-4d8e-9bf0-96ff5a85248c","phase":"Pending","message":"","artifacts":null}
+    zz_regtoken_rotation_test.go:78: cloud-config line: registration_token: startup-token
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 401 19.926µs
+    zz_regtoken_rotation_test.go:84: register with embedded (old) token: 401 {"error":"invalid registration token"}
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 201 61.774µs
+    zz_regtoken_rotation_test.go:87: register with rotated token: 201 {"apiKey":"<redacted>","id":"b2d481a8-3d12-4348-a2cf-467dffa41629"}
+    zz_regtoken_rotation_test.go:90: BUG: build started after rotation embeds stale token; rotated=adfa3c9d-c2de-4b27-af63-5d53eabe1824; new token present in cloud-config=false; old token present=true
+--- FAIL: TestRegTokenRotationReachesBuilds (0.02s)
+=== RUN   TestRegTokenRotateRace
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 61.864µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 401 31.916µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 10.259µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 401 5.307µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 401 3.692µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 2.642µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 401 3.536µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 2.177µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 401 5.12µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 2.248µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 401 3.119µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 5.116µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 401 3.798µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 401 10.653µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 2.681µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 401 4.497µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 2.677µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 401 2.994µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 401 55.959µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 42.084µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 401 25.978µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 401 7.824µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 9.766µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 401 8.599µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 7.549µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 41.296µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 401 24.924µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 19.783µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 401 63.909µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 401 10.5µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 27.745µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 15.701µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 11.536µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 401 8.822µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 401 20.386µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 7.412µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 13.383µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 401 8.295µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 6.141µs
+2026/10/29 09:19:53 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 6.453µs
+--- PASS: TestRegTokenRotateRace (0.02s)
+FAIL
+FAIL	github.com/kairos-io/AuroraBoot/pkg/server	0.049s
+FAIL
+===== RACE =====
+=== RUN   TestRegTokenRotateRace
+2026/10/29 09:20:28 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 138.738µs
+2026/10/29 09:20:28 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 115.683µs
+2026/10/29 09:20:28 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 249.988µs
+2026/10/29 09:20:28 127.0.0.1 POST /api/v1/nodes/register 401 316.123µs
+2026/10/29 09:20:28 127.0.0.1 POST /api/v1/nodes/register 401 440.971µs
+2026/10/29 09:20:28 127.0.0.1 POST /api/v1/nodes/register 401 481.899µs
+==================
+WARNING: DATA RACE
+Write at 0x00c0003dea70 by goroutine 176:
+  github.com/kairos-io/AuroraBoot/pkg/handlers.(*SettingsHandler).RotateRegistrationToken()
+      /src/pkg/handlers/settings.go:110 +0xf9
+  github.com/kairos-io/AuroraBoot/pkg/handlers.(*SettingsHandler).RotateRegistrationToken-fm()
+      <autogenerated>:1 +0x3e
+  github.com/kairos-io/AuroraBoot/pkg/server.bodyLimit.func1.1()
+      /src/pkg/server/body_limit.go:61 +0x211
+  github.com/kairos-io/AuroraBoot/pkg/auth.AdminMiddleware.func1.1()
+      /src/pkg/auth/middleware.go:67 +0x14a
+  github.com/labstack/echo/v4.(*Echo).add.func1()
+      /go/pkg/mod/github.com/labstack/echo/v4@v4.16.2/echo.go:611 +0x76
+  github.com/labstack/echo/v4/middleware.RecoverWithConfig.func1.1()
+      /go/pkg/mod/github.com/labstack/echo/v4@v4.16.2/middleware/recover.go:130 +0x181
+  github.com/labstack/echo/v4/middleware.RequestLoggerConfig.ToMiddleware.func1.1()
+      /go/pkg/mod/github.com/labstack/echo/v4@v4.16.2/middleware/request_logger.go:354 +0x1b0
+  github.com/labstack/echo/v4.(*Echo).ServeHTTP()
+      /go/pkg/mod/github.com/labstack/echo/v4@v4.16.2/echo.go:698 +0x7c1
+  net/http.serverHandler.ServeHTTP()
+      /usr/local/go/src/net/http/server.go:3436 +0x2a1
+  net/http.(*conn).serve()
+      /usr/local/go/src/net/http/server.go:2157 +0xeda
+  net/http.(*Server).Serve.gowrap3()
+      /usr/local/go/src/net/http/server.go:3604 +0x46
+
+Previous read at 0x00c0003dea70 by goroutine 171:
+  github.com/kairos-io/AuroraBoot/pkg/auth.RegistrationTokenAuth.func1.1()
+      /src/pkg/auth/middleware.go:320 +0x3c4
+  github.com/labstack/echo/v4.(*Echo).add.func1()
+      /go/pkg/mod/github.com/labstack/echo/v4@v4.16.2/echo.go:611 +0x76
+  github.com/labstack/echo/v4/middleware.RecoverWithConfig.func1.1()
+      /go/pkg/mod/github.com/labstack/echo/v4@v4.16.2/middleware/recover.go:130 +0x181
+  github.com/labstack/echo/v4/middleware.RequestLoggerConfig.ToMiddleware.func1.1()
+      /go/pkg/mod/github.com/labstack/echo/v4@v4.16.2/middleware/request_logger.go:354 +0x1b0
+  github.com/labstack/echo/v4.(*Echo).ServeHTTP()
+      /go/pkg/mod/github.com/labstack/echo/v4@v4.16.2/echo.go:698 +0x7c1
+  net/http.serverHandler.ServeHTTP()
+      /usr/local/go/src/net/http/server.go:3436 +0x2a1
+  net/http.(*conn).serve()
+      /usr/local/go/src/net/http/server.go:2157 +0xeda
+  net/http.(*Server).Serve.gowrap3()
+      /usr/local/go/src/net/http/server.go:3604 +0x46
+
+Goroutine 176 (running) created at:
+  net/http.(*Server).Serve()
+      /usr/local/go/src/net/http/server.go:3604 +0x929
+  net/http/httptest.(*Server).goServe.func1()
+      /usr/local/go/src/net/http/httptest/server.go:586 +0xac
+
+Goroutine 171 (running) created at:
+  net/http.(*Server).Serve()
+      /usr/local/go/src/net/http/server.go:3604 +0x929

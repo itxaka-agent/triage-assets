@@ -1,0 +1,38 @@
+=== RUN   TestF3_CustomCertDirDropsSHA256
+    zz_f3_sha256_test.go:69: input db: 2 signature lists
+    zz_f3_sha256_test.go:71:   input list type=a5c059a1-94e4-4aa7-87b5-ab155c2bf072 entries=1
+    zz_f3_sha256_test.go:71:   input list type=c1c41626-504c-4092-aca9-41f936934328 entries=1
+[90m2026-10-29T09:18:39Z[0m [32mINF[0m [1m[7970] Converting custom certs (type: db)
+[0m
+[90m2026-10-29T09:18:39Z[0m [32mINF[0m [1m[7970] 	Signature Owner: 77fa9abd-0359-4d32-bd60-28f4e78f784b
+[0m
+[90m2026-10-29T09:18:39Z[0m [32mINF[0m [1m[7970] 	Signature Owner: 77fa9abd-0359-4d32-bd60-28f4e78f784b
+[0m
+[90m2026-10-29T09:18:39Z[0m [31mERR[0m [1m[7970] cert error: x509: malformed certificate[0m
+[90m2026-10-29T09:18:39Z[0m [32mINF[0m [1m[7970] Converting custom certs (type: KEK)
+[0m
+[90m2026-10-29T09:18:39Z[0m [32mINF[0m [1m[7970] 	Signature Owner: 77fa9abd-0359-4d32-bd60-28f4e78f784b
+[0m
+[90m2026-10-29T09:18:39Z[0m [32mINF[0m [1m[7970] Generating PK[0m
+[90m2026-10-29T09:18:39Z[0m [32mINF[0m [1m[7970] PK generated at /tmp/TestF3_CustomCertDirDropsSHA2564194088093/002/PK.key and /tmp/TestF3_CustomCertDirDropsSHA2564194088093/002/PK.pem[0m
+[90m2026-10-29T09:18:39Z[0m [32mINF[0m [1m[7970] Converting PK.pem to DER[0m
+[90m2026-10-29T09:18:39Z[0m [32mINF[0m [1m[7970] PK generated at /tmp/TestF3_CustomCertDirDropsSHA2564194088093/002/PK.der[0m
+[90m2026-10-29T09:18:39Z[0m [32mINF[0m [1m[7970] Generating KEK[0m
+[90m2026-10-29T09:18:39Z[0m [32mINF[0m [1m[7970] KEK generated at /tmp/TestF3_CustomCertDirDropsSHA2564194088093/002/KEK.key and /tmp/TestF3_CustomCertDirDropsSHA2564194088093/002/KEK.pem[0m
+[90m2026-10-29T09:18:39Z[0m [32mINF[0m [1m[7970] Converting KEK.pem to DER[0m
+[90m2026-10-29T09:18:39Z[0m [32mINF[0m [1m[7970] KEK generated at /tmp/TestF3_CustomCertDirDropsSHA2564194088093/002/KEK.der[0m
+[90m2026-10-29T09:18:39Z[0m [32mINF[0m [1m[7970] Generating db[0m
+[90m2026-10-29T09:18:39Z[0m [32mINF[0m [1m[7970] db generated at /tmp/TestF3_CustomCertDirDropsSHA2564194088093/002/db.key and /tmp/TestF3_CustomCertDirDropsSHA2564194088093/002/db.pem[0m
+[90m2026-10-29T09:18:39Z[0m [32mINF[0m [1m[7970] Converting db.pem to DER[0m
+[90m2026-10-29T09:18:39Z[0m [32mINF[0m [1m[7970] db generated at /tmp/TestF3_CustomCertDirDropsSHA2564194088093/002/db.der[0m
+[90m2026-10-29T09:18:39Z[0m [32mINF[0m [1m[7970] Generating policy encryption key[0m
+    zz_f3_sha256_test.go:81: GenerateKeySet err = <nil>
+    zz_f3_sha256_test.go:96:   output db.esl list type=a5c059a1-94e4-4aa7-87b5-ab155c2bf072 entries=1
+    zz_f3_sha256_test.go:96:   output db.esl list type=a5c059a1-94e4-4aa7-87b5-ab155c2bf072 entries=1
+    zz_f3_sha256_test.go:106: custom cert carried over: true
+    zz_f3_sha256_test.go:107: custom SHA256 hash carried over: false
+    zz_f3_sha256_test.go:109: SHA256 entry from firmware db is missing from db.esl, yet GenerateKeySet returned nil
+--- FAIL: TestF3_CustomCertDirDropsSHA256 (0.64s)
+FAIL
+FAIL	github.com/kairos-io/AuroraBoot/pkg/secureboot	0.647s
+FAIL

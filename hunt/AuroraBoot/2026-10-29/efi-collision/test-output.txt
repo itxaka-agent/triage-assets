@@ -1,0 +1,60 @@
+go: downloading github.com/swaggest/refl v1.4.0
+go: downloading github.com/mattn/go-isatty v0.0.22
+go: downloading github.com/clipperhouse/uax29/v2 v2.7.0
+go: downloading github.com/containerd/console v1.0.5
+go: downloading github.com/docker/go-units v0.5.0
+go: downloading github.com/mitchellh/reflectwalk v1.0.2
+go: downloading github.com/jaypipes/pcidb v1.1.1
+go: downloading github.com/felixge/httpsnoop v1.1.0
+go: downloading go.opentelemetry.io/otel/metric v1.46.0
+go: downloading github.com/docker/docker-credential-helpers v0.9.3
+go: downloading github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376
+go: downloading github.com/pjbgf/sha1cd v0.6.0
+go: downloading github.com/emirpasic/gods v1.18.1
+go: downloading github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99
+go: downloading github.com/cyphar/filepath-securejoin v0.7.0
+go: downloading github.com/cloudflare/circl v1.6.3
+go: downloading gopkg.in/warnings.v0 v0.1.2
+go: downloading github.com/go-logr/stdr v1.2.2
+go: downloading go.opentelemetry.io/auto/sdk v1.2.1
+go: downloading github.com/cespare/xxhash/v2 v2.3.0
+go: downloading github.com/klauspost/cpuid/v2 v2.3.0
+go: downloading github.com/ulikunitz/xz v0.5.15
+go: downloading github.com/pkg/xattr v0.4.12
+go: downloading github.com/pierrec/lz4/v4 v4.1.26
+go: downloading github.com/djherbis/times v1.6.0
+go: downloading github.com/elliotwutingfeng/asciiset v0.0.0-20260129054604-cfde2086bc57
+go: downloading github.com/anchore/go-lzo v0.1.0
+go: downloading github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
+go: downloading github.com/wayneashleyberry/terminal-dimensions v1.1.0
+go: downloading github.com/aybabtme/rgbterm v0.0.0-20170906152045-cc83f3b3ce59
+go: downloading github.com/ayoubfaouzi/pkcs7 v0.2.3
+go: downloading github.com/u-root/uio v0.0.0-20240224005618-d2acac8f3701
+go: downloading github.com/dustin/go-humanize v1.0.1
+=== RUN   TestF9SingleEfiCollision
+    f9_collision_test.go:21: entry title="Kairos" filename="norole" cmdline="console=ttyS0 console=tty1 splash net.ifnames=1 rd.immucore.oemlabel=COS_OEM rd.immucore.oemtimeout=2 rd.immucore.uki selinux=0 panic=5 rd.shell=0 systemd.crash_reboot=yes"
+    f9_collision_test.go:21: entry title="Kairos (Debug)" filename="debug" cmdline="console=ttyS0 console=tty1 splash net.ifnames=1 rd.immucore.oemlabel=COS_OEM rd.immucore.oemtimeout=2 rd.immucore.uki selinux=0 panic=5 rd.shell=0 systemd.crash_reboot=yes  rd.debug"
+    f9_collision_test.go:21: entry title="Kairos (debug)" filename="debug" cmdline="console=ttyS0 console=tty1 splash net.ifnames=1 rd.immucore.oemlabel=COS_OEM rd.immucore.oemtimeout=2 rd.immucore.uki selinux=0 panic=5 rd.shell=0 systemd.crash_reboot=yes  rd.break"
+    f9_collision_test.go:21: entry title="Kairos (Norole)" filename="norole" cmdline="console=ttyS0 console=tty1 splash net.ifnames=1 rd.immucore.oemlabel=COS_OEM rd.immucore.oemtimeout=2 rd.immucore.uki selinux=0 panic=5 rd.shell=0 systemd.crash_reboot=yes  console=ttyS0"
+    f9_collision_test.go:36: 4 entries -> 2 efi files on disk, 2 conf files
+    f9_collision_test.go:39:   debug.efi: UKI for: console=ttyS0 console=tty1 splash net.ifnames=1 rd.immucore.oemlabel=COS_OEM rd.immucore.oemtimeout=2 rd.immucore.uki selinux=0 panic=5 rd.shell=0 systemd.crash_reboot=yes  rd.break
+    f9_collision_test.go:39:   norole.efi: UKI for: console=ttyS0 console=tty1 splash net.ifnames=1 rd.immucore.oemlabel=COS_OEM rd.immucore.oemtimeout=2 rd.immucore.uki selinux=0 panic=5 rd.shell=0 systemd.crash_reboot=yes  console=ttyS0
+    f9_collision_test.go:43:   entries/debug.conf:
+        title Kairos (debug)
+        sort-key debug-0
+        uki /EFI/kairos/debug.efi
+        profile 0
+        cmdline rd.break
+    f9_collision_test.go:43:   entries/norole.conf:
+        title Kairos (Norole)
+        sort-key norole-0
+        uki /EFI/kairos/norole.efi
+        profile 0
+        cmdline console=ttyS0
+    f9_collision_test.go:58: imageFiles EFI/kairos = [/tmp/TestF9SingleEfiCollision2700882074/001/norole.efi /tmp/TestF9SingleEfiCollision2700882074/001/debug.efi /tmp/TestF9SingleEfiCollision2700882074/001/debug.efi /tmp/TestF9SingleEfiCollision2700882074/001/norole.efi]
+    f9_collision_test.go:73: copyFilesToImg err = copying /tmp/TestF9SingleEfiCollision2700882074/001/debug.efi in img file: exit status 1
+    f9_collision_test.go:76: COLLISION: 4 boot entries but 2 distinct EFI files; ISO copy err=copying /tmp/TestF9SingleEfiCollision2700882074/001/debug.efi in img file: exit status 1
+--- FAIL: TestF9SingleEfiCollision (0.04s)
+FAIL
+FAIL	github.com/kairos-io/AuroraBoot/pkg/uki	0.063s
+FAIL

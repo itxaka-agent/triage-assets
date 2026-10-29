@@ -1,0 +1,30 @@
+go: downloading github.com/docker/cli v29.7.2+incompatible
+go: downloading github.com/valyala/bytebufferpool v1.0.0
+go: downloading github.com/jackc/puddle/v2 v2.2.2
+go: downloading github.com/foxboron/go-tpm-keyfiles v0.0.0-20240725205618-b7c5a84edf9d
+go: downloading github.com/go-piv/piv-go/v2 v2.3.0
+go: downloading github.com/google/go-tpm v0.9.8
+go: downloading github.com/goccy/go-yaml v1.18.0
+go: downloading github.com/fatih/color v1.17.0
+go: downloading github.com/mattn/go-colorable v0.1.15
+go: downloading github.com/mattn/go-isatty v0.0.22
+go: downloading github.com/opencontainers/image-spec v1.1.1
+go: downloading github.com/klauspost/compress v1.20.3
+go: downloading kernel.org/pub/linux/libs/security/libcap/psx v1.2.70
+go: downloading github.com/rs/zerolog v1.35.1
+go: downloading github.com/coreos/go-systemd/v22 v22.7.0
+go: downloading github.com/sirupsen/logrus v1.10.2
+go: downloading github.com/docker/docker-credential-helpers v0.9.3
+go: downloading golang.org/x/mod v0.42.0
+=== RUN   TestPatchWritesBackStaleSnapshot
+    zz_patch_stale_test.go:77: PATCH code=200; after: name="new" phase="Building" message="building..." files=[] uploadToken="tokenhash"
+    zz_patch_stale_test.go:80: phase reverted: want "Ready", got "Building"
+    zz_patch_stale_test.go:83: artifact files reverted: got []
+    zz_patch_stale_test.go:86: cleared upload token restored: got "tokenhash"
+--- FAIL: TestPatchWritesBackStaleSnapshot (0.01s)
+=== RUN   TestPatchRaceUnhooked
+    zz_patch_stale_test.go:113: unhooked: 11/300 iterations ended with phase reverted to Building after the Ready write completed
+--- PASS: TestPatchRaceUnhooked (0.14s)
+FAIL
+FAIL	github.com/kairos-io/AuroraBoot/pkg/handlers	0.155s
+FAIL
