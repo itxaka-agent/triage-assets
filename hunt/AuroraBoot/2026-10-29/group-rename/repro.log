@@ -15,7 +15,7 @@ phonehome:
         - reboot
         - unregister
     group: edge-prod
-    registration_token: regtok
+    registration_token: <redacted>
     url: http://127.0.0.1:8080
 stages:
 == rename group to 'edge-production'

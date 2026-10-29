@@ -72,7 +72,7 @@ var _ = Describe("REPRO f1: local-serve ISO URL revoked when Deploy returns", fu
 		bmc.onReset = func() { rangeGet("BMC at Reset (firmware starts reading CD)") }
 
 		e := echo.New()
-		body := fmt.Sprintf(`{"endpoint":%q,"username":"u","password":"p","verifySSL":false}`, bmc.URL())
+		body := fmt.Sprintf(`{"endpoint":%q,"username":"u","password":"<redacted>","verifySSL":false}`, bmc.URL())
 		req := httptest.NewRequest(http.MethodPost, "/api/v1/artifacts/art-1/deploy/redfish", strings.NewReader(body))
 		req.Header.Set("Content-Type", "application/json")
 		rec := httptest.NewRecorder()

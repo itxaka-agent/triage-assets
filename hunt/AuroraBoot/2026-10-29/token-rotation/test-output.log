@@ -29,18 +29,18 @@ go: downloading github.com/go-openapi/swag/pools v0.28.0
 go: downloading golang.org/x/mod v0.42.0
 === RUN   TestRegTokenRotationReachesBuilds
 2026/10/29 09:19:53 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 58.892µs
-    zz_regtoken_rotation_test.go:61: rotate: 200 {"registrationToken":"<redacted>"}
+    zz_<redacted>en_rotation_test.go:61: rotate: 200 {"registrationToken":"<redacted>"}
 2026/10/29 09:19:53 127.0.0.1 GET /api/v1/settings/registration-token 200 28.316µs
-    zz_regtoken_rotation_test.go:67: GET token after rotate: 200 {"registrationToken":"<redacted>"}
+    zz_<redacted>en_rotation_test.go:67: GET token after rotate: 200 {"registrationToken":"<redacted>"}
 {"time":"2026-10-29T09:19:53.866314388Z","level":"ERROR","prefix":"echo","file":"artifacts.go","line":"597","message":"read back stored build 71913673-9f29-4d8e-9bf0-96ff5a85248c: not found"}
 2026/10/29 09:19:53 127.0.0.1 POST /api/v1/artifacts 201 429.832µs
-    zz_regtoken_rotation_test.go:71: create artifact: 201 {"id":"71913673-9f29-4d8e-9bf0-96ff5a85248c","phase":"Pending","message":"","artifacts":null}
-    zz_regtoken_rotation_test.go:78: cloud-config line: registration_token: startup-token
+    zz_<redacted>en_rotation_test.go:71: create artifact: 201 {"id":"71913673-9f29-4d8e-9bf0-96ff5a85248c","phase":"Pending","message":"","artifacts":null}
+    zz_<redacted>en_rotation_test.go:78: cloud-config line: registration_token: <redacted>
 2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 401 19.926µs
-    zz_regtoken_rotation_test.go:84: register with embedded (old) token: 401 {"error":"invalid registration token"}
+    zz_<redacted>en_rotation_test.go:84: register with embedded (old) token: 401 {"error":"invalid registration token"}
 2026/10/29 09:19:53 127.0.0.1 POST /api/v1/nodes/register 201 61.774µs
-    zz_regtoken_rotation_test.go:87: register with rotated token: 201 {"apiKey":"<redacted>","id":"b2d481a8-3d12-4348-a2cf-467dffa41629"}
-    zz_regtoken_rotation_test.go:90: BUG: build started after rotation embeds stale token; rotated=adfa3c9d-c2de-4b27-af63-5d53eabe1824; new token present in cloud-config=false; old token present=true
+    zz_<redacted>en_rotation_test.go:87: register with rotated token: 201 {"apiKey":"<redacted>","id":"b2d481a8-3d12-4348-a2cf-467dffa41629"}
+    zz_<redacted>en_rotation_test.go:90: BUG: build started after rotation embeds stale token; rotated=adfa3c9d-c2de-4b27-af63-5d53eabe1824; new token present in cloud-config=false; old token present=true
 --- FAIL: TestRegTokenRotationReachesBuilds (0.02s)
 === RUN   TestRegTokenRotateRace
 2026/10/29 09:19:53 127.0.0.1 POST /api/v1/settings/registration-token/rotate 200 61.864µs

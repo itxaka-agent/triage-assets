@@ -33,7 +33,7 @@ go: downloading golang.org/x/mod v0.42.0
     zz_bmc_password_verify_test.go:129: store after PUT: Password=""
     zz_bmc_password_verify_test.go:131: BUG: password sent on PUT not stored (got "")
     zz_bmc_password_verify_test.go:136: BMC saw: POST /redfish/v1/SessionService/Sessions session-body={"UserName":"admin","Password":""}
-    zz_bmc_password_verify_test.go:144: control: store after direct Update(Password=direct): Password="direct"
+    zz_bmc_password_verify_test.go:144: control: store after direct Update(Password=<redacted>): Password="<redacted>"
     zz_bmc_password_verify_test.go:152: done
 --- FAIL: TestVerifyBMCPasswordPersist (0.03s)
 FAIL

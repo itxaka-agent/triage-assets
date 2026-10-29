@@ -102,7 +102,7 @@ func TestVerifyBMCPasswordPersist(t *testing.T) {
 	}
 
 	// Same body shape as ui/src/api/deployments.ts createBMCTarget
-	createBody := fmt.Sprintf(`{"name":"bmc1","endpoint":%q,"vendor":"generic","username":"admin","password":"S3cret-create","verifySSL":false}`, bmc.URL)
+	createBody := fmt.Sprintf(`{"name":"bmc1","endpoint":%q,"vendor":"generic","username":"admin","password":"<redacted>","verifySSL":false}`, bmc.URL)
 	code, body := do("POST", "/api/v1/bmc-targets", createBody)
 	t.Logf("POST create -> %d %s", code, body)
 	var created map[string]any
@@ -114,7 +114,7 @@ func TestVerifyBMCPasswordPersist(t *testing.T) {
 		t.Fatal(err)
 	}
 	t.Logf("store after POST: Password=%q", got.Password)
-	if got.Password != "S3cret-create" {
+	if got.Password != "<redacted>" {
 		t.Errorf("BUG: password sent on POST not stored (got %q)", got.Password)
 	}
 
@@ -141,7 +141,7 @@ func TestVerifyBMCPasswordPersist(t *testing.T) {
 	got.Password = "direct"
 	_ = bmcStore.Update(t.Context(), got)
 	got2, _ := bmcStore.GetByID(t.Context(), id)
-	t.Logf("control: store after direct Update(Password=direct): Password=%q", got2.Password)
+	t.Logf("control: store after direct Update(Password=<redacted>): Password=%q", got2.Password)
 
 	if got.Password == "" || got2.Password != "direct" {
 		t.Log("unexpected control")

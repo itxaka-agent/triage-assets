@@ -49,7 +49,7 @@ var _ = Describe("HUNT f2: operator-uploaded ISO via local serve", func() {
 		dh := handlers.NewDeployHandler(as, &fakeDeploymentStore{}, &fakeBMCTargetStore{}, nil, artifactsDir, serve, nil).WithSettings(settings)
 
 		dreq := httptest.NewRequest(http.MethodPost, "/api/v1/artifacts/"+id+"/deploy/redfish",
-			strings.NewReader(`{"endpoint":"http://10.0.0.9","username":"u","password":"p"}`))
+			strings.NewReader(`{"endpoint":"http://10.0.0.9","username":"u","password":"<redacted>"}`))
 		dreq.Header.Set("Content-Type", "application/json")
 		drec := httptest.NewRecorder()
 		dc := e.NewContext(dreq, drec)

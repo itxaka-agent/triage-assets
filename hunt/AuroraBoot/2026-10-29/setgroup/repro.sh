@@ -5,12 +5,12 @@ cp -r /src /build && cd /build
 mkdir -p ui/dist 2>/dev/null; true
 go build -o /tmp/ab . 2>&1 | tail -20 || exit 1
 mkdir -p /tmp/d
-/tmp/ab web --listen 127.0.0.1:8099 --data-dir /tmp/d --admin-password adminpw --registration-token regtok >/tmp/srv.log 2>&1 &
+/tmp/ab web --listen 127.0.0.1:8099 --data-dir /tmp/d --<redacted>word <redacted> --registration-token <redacted> >/tmp/srv.log 2>&1 &
 for i in $(seq 1 60); do curl -s -o /dev/null http://127.0.0.1:8099/ && break; sleep 1; done
-A='Authorization: Bearer adminpw'
+A='Authorization: Bearer <redacted>'
 U=http://127.0.0.1:8099/api/v1
 echo "== register node"
-R=$(curl -s -X POST $U/nodes/register -H 'Content-Type: application/json' -d '{"registrationToken":"regtok","machineID":"m1","hostname":"h1"}'); echo "$R"
+R=$(curl -s -X POST $U/nodes/register -H 'Content-Type: application/json' -d '{"registrationToken":"<redacted>","machineID":"m1","hostname":"h1"}'); echo "$R"
 NID=$(echo "$R" | sed -n 's/.*"id":"\([^"]*\)".*/\1/p')
 echo "== list groups"; curl -s -H "$A" $U/groups; echo
 echo "== PUT existing node -> nonexistent group"

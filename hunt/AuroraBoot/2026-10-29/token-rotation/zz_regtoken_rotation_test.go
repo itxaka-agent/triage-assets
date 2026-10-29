@@ -51,22 +51,22 @@ func TestRegTokenRotationReachesBuilds(t *testing.T) {
 	app := server.New(server.Config{
 		NodeStore: &fakeNodeStore{}, CommandStore: &fakeCommandStore{}, GroupStore: &fakeGroupStore{},
 		ArtifactStore: &fakeArtifactStore{}, Builder: b,
-		AdminPassword: "admin-pass", RegToken: "startup-token", AuroraBootURL: "http://localhost:8080",
+		AdminPassword: "<redacted>", RegToken: "<redacted>", AuroraBootURL: "http://localhost:8080",
 		DisableRateLimit: true,
 	})
 	ts := httptest.NewServer(app)
 	defer ts.Close()
 
-	code, body := do(t, "POST", ts.URL+"/api/v1/settings/registration-token/rotate", "admin-pass", "")
+	code, body := do(t, "POST", ts.URL+"/api/v1/settings/registration-token/rotate", "<redacted>", "")
 	t.Logf("rotate: %d %s", code, body)
 	var r map[string]string
 	_ = json.Unmarshal([]byte(body), &r)
 	newTok := r["registrationToken"]
 
-	code, body = do(t, "GET", ts.URL+"/api/v1/settings/registration-token", "admin-pass", "")
+	code, body = do(t, "GET", ts.URL+"/api/v1/settings/registration-token", "<redacted>", "")
 	t.Logf("GET token after rotate: %d %s", code, body)
 
-	code, body = do(t, "POST", ts.URL+"/api/v1/artifacts", "admin-pass",
+	code, body = do(t, "POST", ts.URL+"/api/v1/artifacts", "<redacted>",
 		`{"name":"t","baseImage":"quay.io/kairos/opensuse:leap-15.6-core-amd64-generic","variant":"core","outputs":{"iso":true}}`)
 	t.Logf("create artifact: %d %s", code, body)
 	if len(b.cfg) == 0 {
@@ -80,7 +80,7 @@ func TestRegTokenRotationReachesBuilds(t *testing.T) {
 	}
 	// Node boots from this ISO and registers with the embedded token.
 	code, body = do(t, "POST", ts.URL+"/api/v1/nodes/register", "",
-		`{"registrationToken":"startup-token","machineId":"m1","hostname":"h1"}`)
+		`{"registrationToken":"<redacted>","machineId":"m1","hostname":"h1"}`)
 	t.Logf("register with embedded (old) token: %d %s", code, body)
 	code2, body2 := do(t, "POST", ts.URL+"/api/v1/nodes/register", "",
 		`{"registrationToken":"`+newTok+`","machineId":"m2","hostname":"h2"}`)
@@ -88,7 +88,7 @@ func TestRegTokenRotationReachesBuilds(t *testing.T) {
 
 	if !strings.Contains(cc, newTok) {
 		t.Errorf("BUG: build started after rotation embeds stale token; rotated=%s; new token present in cloud-config=%v; old token present=%v",
-			newTok, strings.Contains(cc, newTok), strings.Contains(cc, "startup-token"))
+			newTok, strings.Contains(cc, newTok), strings.Contains(cc, "<redacted>"))
 	}
 }
 
@@ -96,7 +96,7 @@ func TestRegTokenRotationReachesBuilds(t *testing.T) {
 func TestRegTokenRotateRace(t *testing.T) {
 	app := server.New(server.Config{
 		NodeStore: &fakeNodeStore{}, CommandStore: &fakeCommandStore{}, GroupStore: &fakeGroupStore{},
-		Builder: &capBuilder{}, AdminPassword: "admin-pass", RegToken: "startup-token",
+		Builder: &capBuilder{}, AdminPassword: "<redacted>", RegToken: "<redacted>",
 		AuroraBootURL: "http://localhost:8080", DisableRateLimit: true,
 	})
 	ts := httptest.NewServer(app)
@@ -104,7 +104,7 @@ func TestRegTokenRotateRace(t *testing.T) {
 	var wg sync.WaitGroup
 	for i := 0; i < 20; i++ {
 		wg.Add(2)
-		go func() { defer wg.Done(); do(t, "POST", ts.URL+"/api/v1/settings/registration-token/rotate", "admin-pass", "") }()
+		go func() { defer wg.Done(); do(t, "POST", ts.URL+"/api/v1/settings/registration-token/rotate", "<redacted>", "") }()
 		go func() {
 			defer wg.Done()
 			do(t, "POST", ts.URL+"/api/v1/nodes/register", "", `{"registrationToken":"x","machineId":"m","hostname":"h"}`)

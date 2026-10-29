@@ -14,7 +14,7 @@ import (
 
 func do(t *testing.T, srv *httptest.Server, method, path, body string) (int, string) {
 	req, _ := http.NewRequest(method, srv.URL+path, strings.NewReader(body))
-	req.Header.Set("Authorization", "Bearer admin-pass")
+	req.Header.Set("Authorization", "Bearer <redacted>")
 	req.Header.Set("Content-Type", "application/json")
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
@@ -34,7 +34,7 @@ func TestDuplicateGroupName(t *testing.T) {
 		NodeStore:     &gormstore.NodeStoreAdapter{S: s},
 		CommandStore:  &gormstore.CommandStoreAdapter{S: s},
 		GroupStore:    &gormstore.GroupStoreAdapter{S: s},
-		AdminPassword: "admin-pass",
+		AdminPassword: "<redacted>",
 		RegToken:      "reg-token",
 		AuroraBootURL: "http://localhost:8080",
 	})
