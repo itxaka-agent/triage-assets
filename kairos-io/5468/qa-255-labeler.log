@@ -1,0 +1,30 @@
+pod/lab-before created
+--- ref=before pod phase=Succeeded
+labeled node node1
+--- node node1 systemUUID reported by kubelet:
+11111111-2222-3333-4444-555555555501
+--- kairos.io labels:
+kairos.io/boot-state = unknown
+kairos.io/flavor = ubuntu
+kairos.io/managed = true
+pod/lab-after created
+--- ref=after pod phase=Succeeded
+labeled node node1
+--- node node1 systemUUID reported by kubelet:
+11111111-2222-3333-4444-555555555501
+--- kairos.io labels:
+kairos.io/boot-state = unknown
+kairos.io/flavor = ubuntu
+kairos.io/managed = true
+kairos.io/system-uuid = 11111111-2222-3333-4444-555555555501
+clusterrolebinding.rbac.authorization.k8s.io/qa-admin created
+pod/lab-after created
+--- ref=after pod phase=Succeeded
+labeled node node2
+--- node node2 systemUUID reported by kubelet:
+11111111-2222-3333-4444-555555555502
+--- kairos.io labels:
+kairos.io/boot-state = unknown
+kairos.io/flavor = ubuntu
+kairos.io/managed = true
+kairos.io/system-uuid = 11111111-2222-3333-4444-555555555502
