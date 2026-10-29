@@ -1,0 +1,25 @@
+QA5622 10:00:21.230182752 boot_id=a9996676-46bf-4776-b7ad-251052d9412f version=kairos v4.4.0-22-gf41ed95f
+QA5622 10:00:27.099795413 grace message seen after ~5s: 2026-10-29T10:00:27Z INF Rebooting node in 5s, press Ctrl+C to cancel
+QA5622 10:00:27.212277892 kairos-agent pids: 1447 ; cmdline of 1447: kairos-agent --debug install 
+QA5622 10:00:27.214270600 sent SIGINT to pid 1447 (kill rc=0)
+QA5622 10:00:28.219981993 +1s pid 1447 GONE; exit code file: 130
+QA5622 10:00:29.231244669 +2s pid 1447 GONE; exit code file: 130
+QA5622 10:00:30.243036194 +3s pid 1447 GONE; exit code file: 130
+QA5622 10:00:31.255275035 +4s pid 1447 GONE; exit code file: 130
+QA5622 10:00:32.265246619 +5s pid 1447 GONE; exit code file: 130
+QA5622 10:00:33.276900933 +6s pid 1447 GONE; exit code file: 130
+QA5622 10:00:34.293320255 +7s pid 1447 GONE; exit code file: 130
+QA5622 10:00:35.302514873 +8s pid 1447 GONE; exit code file: 130
+QA5622 10:00:35.305994136 after 8s (> 5s grace): still up, boot_id=a9996676-46bf-4776-b7ad-251052d9412f, uptime: 24.96s; exit=130
+---install.out tail
+2026-10-29T10:00:27Z INF Done executing stage 'kairos-install.after'
+
+2026-10-29T10:00:27Z INF Running stage: kairos-install.after.after
+
+2026-10-29T10:00:27Z INF Done executing stage 'kairos-install.after.after'
+
+2026-10-29T10:00:27Z DBG Running Lifecycle hook
+2026-10-29T10:00:27Z INF Rebooting node in 5s, press Ctrl+C to cancel
+---
+Oct 29 10:00:17 kairos-ec05 systemd[1]: Started Getty on tty1.
+Oct 29 10:00:17 kairos-ec05 login[1271]: pam_unix(login:session): session opened for user root(uid=0) by (uid=0)
