@@ -1,0 +1,53 @@
+=== RUN   TestUkiUpgradeNoSource
+    uki_nosource_test.go:21: PANIC: runtime error: invalid memory address or nil pointer dereference
+        goroutine 38 [running]:
+        runtime/debug.Stack()
+        	/usr/local/go/src/runtime/debug/stack.go:26 +0x5e
+        github.com/kairos-io/kairos/v4/agent/pkg/config_test.TestUkiUpgradeNoSource.func1()
+        	/work/agent/pkg/config/uki_nosource_test.go:21 +0x39
+        panic({0x1e2eb38?, 0x207b1c0?})
+        	/usr/local/go/src/runtime/panic.go:859 +0x125
+        github.com/kairos-io/kairos/v4/agent/pkg/config.GetSourceSize(0x12b6dc5c008, 0x11a6716?)
+        	/work/agent/pkg/config/spec.go:972 +0x2b
+        github.com/kairos-io/kairos/v4/agent/pkg/config.NewUkiUpgradeSpec(0x12b6dc5c008)
+        	/work/agent/pkg/config/spec.go:878 +0x1d1
+        github.com/kairos-io/kairos/v4/agent/pkg/config.ReadSpecFromCloudConfig(0x12b6dc5c008, {0x11ac827, 0xb})
+        	/work/agent/pkg/config/spec.go:1058 +0x175
+        github.com/kairos-io/kairos/v4/agent/pkg/config.ReadUkiUpgradeSpecFromConfig(0x12b6dc59f50?)
+        	/work/agent/pkg/config/spec.go:912 +0x1f
+        github.com/kairos-io/kairos/v4/agent/pkg/config_test.TestUkiUpgradeNoSource(0x12b6dc9d208)
+        	/work/agent/pkg/config/uki_nosource_test.go:24 +0x18d
+        testing.tRunner(0x12b6dc9d208, 0x1f62b00)
+        	/usr/local/go/src/testing/testing.go:2195 +0xea
+        created by testing.(*T).Run in goroutine 1
+        	/usr/local/go/src/testing/testing.go:2260 +0x4d4
+--- FAIL: TestUkiUpgradeNoSource (0.02s)
+=== RUN   TestNonUkiUpgradeNoSource
+    uki_nosource_test.go:35: PANIC: runtime error: invalid memory address or nil pointer dereference
+        goroutine 83 [running]:
+        runtime/debug.Stack()
+        	/usr/local/go/src/runtime/debug/stack.go:26 +0x5e
+        github.com/kairos-io/kairos/v4/agent/pkg/config_test.TestNonUkiUpgradeNoSource.func1()
+        	/work/agent/pkg/config/uki_nosource_test.go:35 +0x39
+        panic({0x1e2eb38?, 0x207b1c0?})
+        	/usr/local/go/src/runtime/panic.go:859 +0x125
+        github.com/kairos-io/kairos/v4/agent/pkg/config.GetSourceSize(0x12b6dc5cc88, 0x12b6dda9850?)
+        	/work/agent/pkg/config/spec.go:972 +0x2b
+        github.com/kairos-io/kairos/v4/agent/pkg/config.setUpgradeSourceSize(0x12b6dc5cc88, 0x11a6716?)
+        	/work/agent/pkg/config/spec.go:473 +0x1a7
+        github.com/kairos-io/kairos/v4/agent/pkg/config.NewUpgradeSpec(0x12b6dc5cc88)
+        	/work/agent/pkg/config/spec.go:441 +0xbde
+        github.com/kairos-io/kairos/v4/agent/pkg/config.ReadSpecFromCloudConfig(0x12b6dc5cc88, {0x11a6716, 0x7})
+        	/work/agent/pkg/config/spec.go:1050 +0xcc
+        github.com/kairos-io/kairos/v4/agent/pkg/config.ReadUpgradeSpecFromConfig(0x12b6dc07f50?)
+        	/work/agent/pkg/config/spec.go:1033 +0x1f
+        github.com/kairos-io/kairos/v4/agent/pkg/config_test.TestNonUkiUpgradeNoSource(0x12b6dc9c248)
+        	/work/agent/pkg/config/uki_nosource_test.go:38 +0x18d
+        testing.tRunner(0x12b6dc9c248, 0x1f62af8)
+        	/usr/local/go/src/testing/testing.go:2195 +0xea
+        created by testing.(*T).Run in goroutine 1
+        	/usr/local/go/src/testing/testing.go:2260 +0x4d4
+--- FAIL: TestNonUkiUpgradeNoSource (0.02s)
+FAIL
+FAIL	github.com/kairos-io/kairos/v4/agent/pkg/config	0.053s
+FAIL
