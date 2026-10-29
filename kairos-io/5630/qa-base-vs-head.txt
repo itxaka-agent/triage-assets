@@ -1,0 +1,39 @@
+date: 2026-10-29T11:50:50+00:00
+pr head: c460a510804c7a7935d3ae1575e0441cafd1fdc7  base: 97d4217ecf3574ff2b297526e624ff2a7ed6e7fc
+== HEAD c460a510 (PR): go test -run . -ginkgo.focus BaseOverlay -v
+=== RUN   TestSuite
+Running Suite: Op test Suite - /w/immucore/pkg/op
+=================================================
+Random Seed: 1793274641
+Will run 3 of 17 specs
+SSSSSSSSSSSSSS•S•
+Ran 2 of 17 Specs in 0.004 seconds
+SUCCESS! -- 2 Passed | 0 Failed | 0 Pending | 15 Skipped
+--- PASS: TestSuite (0.00s)
+PASS
+ok  	github.com/kairos-io/kairos/v4/immucore/pkg/op	0.011s
+== BASE 97d4217e fs.go + PR test file
+=== RUN   TestSuite
+Running Suite: Op test Suite - /w/immucore/pkg/op
+=================================================
+Random Seed: 1793274642
+Will run 3 of 17 specs
+------------------------------
+• [FAILED] [0.002 seconds]
+BaseOverlay [It] writes the mount option defaults for a device-backed overlay
+/w/immucore/pkg/op/fs_test.go:208
+  [FAILED] Expected
+      <map[string]string | len:1>: {"default": ""}
+  to equal
+      <map[string]string | len:1>: {"defaults": ""}
+  In [It] at: /w/immucore/pkg/op/fs_test.go:214 @ 10/29/26 11:50:42.588
+------------------------------
+Summarizing 1 Failure:
+  [FAIL] BaseOverlay [It] writes the mount option defaults for a device-backed overlay
+  /w/immucore/pkg/op/fs_test.go:214
+Ran 2 of 17 Specs in 0.003 seconds
+FAIL! -- 1 Passed | 1 Failed | 0 Pending | 15 Skipped
+--- FAIL: TestSuite (0.00s)
+FAIL
+FAIL	github.com/kairos-io/kairos/v4/immucore/pkg/op	0.011s
+FAIL
