@@ -1,0 +1,52 @@
+BOOT_ID_BEFORE=b0b5e112-3a9a-4950-9c4b-467d7062327c
+nodeop.operator.kairos.io/qa-reboot created
+--- 09:31:03
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+ 
+--- 09:31:09
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+ 
+--- 09:31:14
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+ 
+--- 09:31:19
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Running {"kairos-7b97":{"jobName":"qa-reboot-kairos-7b97-zl8p8","lastUpdated":"2026-10-29T08:31:19Z","message":"Job is running","phase":"Running","rebootStatus":"pending"}}
+default           qa-reboot-kairos-7b97-zl8p8-swcs6         0/1   Init:0/1    0             1s
+default           qa-reboot-reboot-lkkwn                    1/1   Running     0             2s
+--- 09:31:25
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Running {"kairos-7b97":{"jobName":"qa-reboot-kairos-7b97-zl8p8","lastUpdated":"2026-10-29T08:31:23Z","message":"Job completed successfully","phase":"Completed","preRebootBootID":"b0b5e112-3a9a-4950-9c4b-467d7062327c","rebootStatus":"pending"}}
+default           qa-reboot-kairos-7b97-zl8p8-swcs6         0/1   Completed   0             6s
+default           qa-reboot-reboot-lkkwn                    1/1   Running     0             7s
+--- 09:31:30
+kex_exchange_identification: read: Connection reset by peer
+--- 09:31:35
+Connection timed out during banner exchange
+--- 09:31:45
+Connection timed out during banner exchange
+--- 09:31:55
+boot_id=9f683902-67bf-46d6-aa76-0ed7317ae6e2
+Running {"kairos-7b97":{"jobName":"qa-reboot-kairos-7b97-zl8p8","lastUpdated":"2026-10-29T08:31:23Z","message":"Job completed successfully","phase":"Completed","preRebootBootID":"b0b5e112-3a9a-4950-9c4b-467d7062327c","rebootStatus":"pending"}}
+default           qa-reboot-kairos-7b97-zl8p8-swcs6         0/1   Completed   0             37s
+default           qa-reboot-reboot-lkkwn                    1/1   Running     0             38s
+--- 09:32:01
+boot_id=9f683902-67bf-46d6-aa76-0ed7317ae6e2
+Running {"kairos-7b97":{"jobName":"qa-reboot-kairos-7b97-zl8p8","lastUpdated":"2026-10-29T08:31:23Z","message":"Job completed successfully","phase":"Completed","preRebootBootID":"b0b5e112-3a9a-4950-9c4b-467d7062327c","rebootStatus":"pending"}}
+default           qa-reboot-kairos-7b97-zl8p8-swcs6         0/1   Completed   0             42s
+default           qa-reboot-reboot-lkkwn                    0/1   Error       0             43s
+--- 09:32:06
+boot_id=9f683902-67bf-46d6-aa76-0ed7317ae6e2
+Running {"kairos-7b97":{"jobName":"qa-reboot-kairos-7b97-zl8p8","lastUpdated":"2026-10-29T08:31:23Z","message":"Job completed successfully","phase":"Completed","preRebootBootID":"b0b5e112-3a9a-4950-9c4b-467d7062327c","rebootStatus":"pending"}}
+default           qa-reboot-kairos-7b97-zl8p8-swcs6         0/1   Completed   0             47s
+default           qa-reboot-reboot-lkkwn                    0/1   Error       0             48s
+--- 09:32:11
+boot_id=9f683902-67bf-46d6-aa76-0ed7317ae6e2
+Running {"kairos-7b97":{"jobName":"qa-reboot-kairos-7b97-zl8p8","lastUpdated":"2026-10-29T08:31:23Z","message":"Job completed successfully","phase":"Completed","preRebootBootID":"b0b5e112-3a9a-4950-9c4b-467d7062327c","rebootStatus":"pending"}}
+default           qa-reboot-kairos-7b97-zl8p8-swcs6         0/1   Completed   0             53s
+default           qa-reboot-reboot-lkkwn                    0/1   Error       0             54s
+--- 09:32:17
+boot_id=9f683902-67bf-46d6-aa76-0ed7317ae6e2
+Completed {"kairos-7b97":{"jobName":"qa-reboot-kairos-7b97-zl8p8","lastUpdated":"2026-10-29T08:32:15Z","message":"Job and reboot completed successfully","phase":"Completed","preRebootBootID":"b0b5e112-3a9a-4950-9c4b-467d7062327c","rebootStatus":"completed"}}
+default           qa-reboot-kairos-7b97-zl8p8-swcs6         0/1   Completed   0             58s
+default           qa-reboot-reboot-lkkwn                    0/1   Completed   1 (48s ago)   59s

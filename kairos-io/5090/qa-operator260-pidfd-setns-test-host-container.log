@@ -1,0 +1,11 @@
+7.2.11-arch1-1
+Running Suite: Reboot Watcher Suite - /t
+========================================
+Random Seed: 1793262861
+
+Will run 2 of 20 specs
+••SSSSSSSSSSSSSSSSSS
+
+Ran 2 of 20 Specs in 0.051 seconds
+SUCCESS! -- 2 Passed | 0 Failed | 0 Pending | 18 Skipped
+PASS

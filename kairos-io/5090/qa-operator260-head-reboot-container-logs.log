@@ -1,0 +1,19 @@
+== /var/log/pods/default_qa-reboot-reboot-lkkwn_e290a1c2-db05-4e41-bbdf-fdbf49a69ffb/reboot/1.log
+2026-10-29T08:32:12.460468326Z stderr F 2026-10-29T08:32:12Z	INFO	reboot-watcher	waiting for the upgrade Job	{"namespace": "default", "job": "qa-reboot-kairos-7b97-zl8p8"}
+2026-10-29T08:32:12.464854549Z stderr F 2026-10-29T08:32:12Z	INFO	reboot-watcher	upgrade Job is complete	{"jobBootID": "b0b5e112-3a9a-4950-9c4b-467d7062327c", "currentBootID": "9f683902-67bf-46d6-aa76-0ed7317ae6e2"}
+2026-10-29T08:32:12.464868126Z stderr F 2026-10-29T08:32:12Z	INFO	reboot-watcher	host already rebooted, nothing to do
+Oct 29 08:31:30 kairos-7b97 k3s[1328]: E1029 08:31:30.415049    1328 pod_workers.go:1338] "Error syncing pod, skipping" err="failed to ensure that the pod: 59a1e488-6a0e-4da7-b577-63a34e663d97 cgroups exist and are correctly applied: failed to create
+Oct 29 08:31:30 kairos-7b97 systemd[1]: Requested transaction contradicts existing jobs: Transaction for kubepods-besteffort-pod9a5326b4_e091_4e98_804f_20fea327c3bc.slice/start is destructive (systemd-reboot.service has 'start' job queued, but 'stop'
+Oct 29 08:31:30 kairos-7b97 k3s[1328]: E1029 08:31:30.416462    1328 pod_workers.go:1338] "Error syncing pod, skipping" err="failed to ensure that the pod: 9a5326b4-e091-4e98-804f-20fea327c3bc cgroups exist and are correctly applied: failed to create
+Oct 29 08:31:30 kairos-7b97 systemd[1]: Requested transaction contradicts existing jobs: Transaction for kubepods-burstable-podd9850166_9be6_47eb_9f34_5d23a69c7a6f.slice/start is destructive (shutdown.target has 'start' job queued, but 'stop' is incl
+Oct 29 08:31:30 kairos-7b97 k3s[1328]: E1029 08:31:30.417890    1328 pod_workers.go:1338] "Error syncing pod, skipping" err="failed to ensure that the pod: d9850166-9be6-47eb-9f34-5d23a69c7a6f cgroups exist and are correctly applied: failed to create
+Oct 29 08:31:30 kairos-7b97 systemd[1]: Requested transaction contradicts existing jobs: Transaction for kubepods-besteffort-pod50857e04_7c9c_4464_aecd_d3f190bc665a.slice/start is destructive (systemd-reboot.service has 'start' job queued, but 'stop'
+Oct 29 08:31:30 kairos-7b97 k3s[1328]: E1029 08:31:30.419260    1328 pod_workers.go:1338] "Error syncing pod, skipping" err="failed to ensure that the pod: 50857e04-7c9c-4464-aecd-d3f190bc665a cgroups exist and are correctly applied: failed to create
+Oct 29 08:31:31 kairos-7b97 systemd[1]: Requested transaction contradicts existing jobs: Transaction for kubepods-besteffort-pod62b84266_9118_404b_99e8_8e7ece85ddf1.slice/start is destructive (systemd-reboot.service has 'start' job queued, but 'stop'
+Oct 29 08:31:31 kairos-7b97 k3s[1328]: E1029 08:31:31.603409    1328 pod_workers.go:1338] "Error syncing pod, skipping" err="failed to ensure that the pod: 62b84266-9118-404b-99e8-8e7ece85ddf1 cgroups exist and are correctly applied: failed to create
+Oct 29 08:31:31 kairos-7b97 systemd[1]: systemd-logind-varlink.socket: Deactivated successfully.
+Oct 29 08:31:31 kairos-7b97 systemd[1]: Stopping Security Audit Logging Service...
+Oct 29 08:31:31 kairos-7b97 systemd[1]: Stopping Network Management...
+Oct 29 08:31:31 kairos-7b97 systemd[1]: Stopping Network Name Resolution...
+Oct 29 08:31:31 kairos-7b97 systemd[1]: Stopping Network Time Synchronization...
+Oct 29 08:31:31 kairos-7b97 systemd[1]: Stopping Flush Journal to Persistent Storage...

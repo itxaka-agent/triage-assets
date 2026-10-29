@@ -1,0 +1,15 @@
+Oct 29 08:31:20.126512 kairos-7b97 systemd-logind[1306]: Removed session 78.
+Oct 29 08:31:20.802490 kairos-7b97 k3s[1328]: I1029 08:31:20.801155    1328 pod_startup_latency_tracker.go:148] "Observed pod startup duration" pod="default/qa-reboot-kairos-7b97-zl8p8-swcs6" podStartSLOduration=1.797775144 podStartE2EDuration="1.801
+Oct 29 08:31:25.289277 kairos-7b97 systemd-logind[1306]: New session '79' of user 'kairos' with class 'user' and type 'tty'.
+Oct 29 08:31:25.310924 kairos-7b97 sudo[9200]:   kairos : PWD=/home/kairos ; USER=root ; COMMAND=/usr/bin/k3s kubectl get nodeop qa-reboot -o 'jsonpath={.status.phase} {.status.nodeStatuses}{"\\n"}'
+Oct 29 08:31:25.426706 kairos-7b97 systemd-logind[1306]: Removed session 79.
+Oct 29 08:31:29.060096 kairos-7b97 systemd-logind[1306]: reboot requested from client PID 9235 ('reboot') (unit cri-containerd-58fc6e11b6c39a43bbe72ccdd9309a4da644c1b47ebb2eb9109e1d22c98b505b.scope)...
+Oct 29 08:31:29.062439 kairos-7b97 systemd-logind[1306]: System is rebooting.
+Oct 29 08:31:29.072226 kairos-7b97 systemd-logind[1306]: The system will reboot now!
+
+Oct 29 08:19:11.749228 localhost kernel: Command line: BOOT_IMAGE=(loop0)/boot/vmlinuz console=ttyS0 console=tty1 splash net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=5 rd.emergency=reboot rd.shell=0 systemd.crash_reboot=yes quiet 
+Oct 29 08:19:11.750581 localhost kernel: Kernel command line: BOOT_IMAGE=(loop0)/boot/vmlinuz console=ttyS0 console=tty1 splash net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=5 rd.emergency=reboot rd.shell=0 systemd.crash_reboot=yes
+Oct 29 08:19:11.779789 localhost dracut-cmdline[343]: Using kernel command line parameters:    BOOT_IMAGE=(loop0)/boot/vmlinuz console=ttyS0 console=tty1 splash net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=5 rd.emergency=reboot rd
+Oct 29 08:19:19.818364 kairos-7b97 systemd-logind[1306]: New seat seat0.
+Oct 29 08:19:19.827197 kairos-7b97 systemd-logind[1306]: Watching system buttons on /dev/input/event0 (Power Button)
+Oct 29 08:19:19.827226 kairos-7b97 systemd-logind[1306]: Watching system buttons on /dev/input/event1 (AT Translated Set 2 keyboard)

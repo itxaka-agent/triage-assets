@@ -1,0 +1,35 @@
+### user kairos TMPDIR=/var/qa-tmp
+------------------------------
+RunInNamespacesOf fails without running anything when the target process does not exist
+/tmp/s/internal/rebootwatcher/hostns_test.go:60
+• [0.001 seconds]
+------------------------------
+
+Summarizing 1 Failure:
+  [FAIL] RunInNamespacesOf [It] runs the command in the target's mount and IPC namespaces
+  /tmp/s/internal/rebootwatcher/hostns_test.go:49
+
+Ran 2 of 20 Specs in 0.029 seconds
+FAIL! -- 1 Passed | 1 Failed | 0 Pending | 18 Skipped
+--- FAIL: TestRebootWatcher (0.03s)
+FAIL
+### sudo TMPDIR=/var/qa-tmp
+------------------------------
+RunInNamespacesOf fails without running anything when the target process does not exist
+/tmp/s/internal/rebootwatcher/hostns_test.go:60
+• [0.002 seconds]
+------------------------------
+
+Summarizing 1 Failure:
+  [FAIL] RunInNamespacesOf [It] runs the command in the target's mount and IPC namespaces
+  /tmp/s/internal/rebootwatcher/hostns_test.go:49
+
+Ran 2 of 20 Specs in 0.039 seconds
+FAIL! -- 1 Passed | 1 Failed | 0 Pending | 18 Skipped
+--- FAIL: TestRebootWatcher (0.04s)
+FAIL
+### user kairos TMPDIR=/tmp (default)
+Ran 2 of 20 Specs in 0.032 seconds
+FAIL! -- 1 Passed | 1 Failed | 0 Pending | 18 Skipped
+--- FAIL: TestRebootWatcher (0.03s)
+FAIL

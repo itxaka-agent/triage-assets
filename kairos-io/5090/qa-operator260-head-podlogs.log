@@ -1,0 +1,8 @@
+2026-10-29T08:32:12Z	INFO	reboot-watcher	waiting for the upgrade Job	{"namespace": "default", "job": "qa-reboot-kairos-7b97-zl8p8"}
+2026-10-29T08:32:12Z	INFO	reboot-watcher	upgrade Job is complete	{"jobBootID": "b0b5e112-3a9a-4950-9c4b-467d7062327c", "currentBootID": "9f683902-67bf-46d6-aa76-0ed7317ae6e2"}
+2026-10-29T08:32:12Z	INFO	reboot-watcher	host already rebooted, nothing to do
+---prev
+unable to retrieve container logs for containerd://58fc6e11b6c39a43bbe72ccdd9309a4da644c1b47ebb2eb9109e1d22c98b505b
+kairos-local/operator-260:head ["/manager","reboot-watcher"]
+{"terminated":{"containerID":"containerd://58fc6e11b6c39a43bbe72ccdd9309a4da644c1b47ebb2eb9109e1d22c98b505b","exitCode":1,"finishedAt":"2026-10-29T08:31:29Z","reason":"Error","startedAt":"2026-10-29T08:31:19Z"}}
+7.2.6-hadron

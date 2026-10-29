@@ -1,0 +1,235 @@
+BOOT_ID_BEFORE=1075c234-a8a0-44bb-bbbe-7a393d01a573
+nodeop.operator.kairos.io/qa-reboot created
+--- t=10s 09:20:35
+boot_id=1075c234-a8a0-44bb-bbbe-7a393d01a573
+Running
+
+default           qa-reboot-reboot-d2wgl                    0/1   ContainerCreating   0             0s
+--- t=20s 09:20:45
+boot_id=1075c234-a8a0-44bb-bbbe-7a393d01a573
+The connection to the server 127.0.0.1:6443 was refused - did you specify the right host or port?
+The connection to the server 127.0.0.1:6443 was refused - did you specify the right host or port?
+--- t=30s 09:20:56
+Connection timed out during banner exchange
+--- t=40s 09:21:11
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Running
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0             37s
+default           qa-reboot-reboot-d2wgl                    1/1   Running     0             37s
+--- t=50s 09:21:21
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Running
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0              47s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (36s ago)    47s
+--- t=60s 09:21:32
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Running
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0              57s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (46s ago)    57s
+--- t=70s 09:21:42
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0              68s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (57s ago)    68s
+--- t=80s 09:21:53
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               79s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (68s ago)     79s
+--- t=90s 09:22:04
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               89s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (78s ago)     89s
+--- t=100s 09:22:15
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               100s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (89s ago)     100s
+--- t=110s 09:22:25
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               111s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (100s ago)    111s
+--- t=120s 09:22:36
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               2m2s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (111s ago)    2m2s
+--- t=130s 09:22:47
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0              2m13s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (2m2s ago)   2m13s
+--- t=140s 09:22:58
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               2m23s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (2m12s ago)   2m23s
+--- t=150s 09:23:08
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               2m34s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (2m23s ago)   2m34s
+--- t=160s 09:23:19
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               2m45s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (2m34s ago)   2m45s
+--- t=170s 09:23:30
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               2m56s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (2m45s ago)   2m56s
+--- t=180s 09:23:41
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               3m6s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (2m55s ago)   3m6s
+--- t=190s 09:23:51
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               3m17s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (3m6s ago)    3m17s
+--- t=200s 09:24:02
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               3m28s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (3m17s ago)   3m28s
+--- t=210s 09:24:13
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               3m38s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (3m27s ago)   3m38s
+--- t=220s 09:24:23
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               3m49s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (3m38s ago)   3m49s
+--- t=230s 09:24:34
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               3m59s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (3m48s ago)   3m59s
+--- t=240s 09:24:44
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               4m10s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (3m59s ago)   4m10s
+--- t=250s 09:24:55
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               4m21s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (4m10s ago)   4m21s
+--- t=260s 09:25:06
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               4m31s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (4m20s ago)   4m31s
+--- t=270s 09:25:16
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               4m42s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (4m31s ago)   4m42s
+--- t=280s 09:25:27
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               4m52s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (4m41s ago)   4m52s
+--- t=290s 09:25:37
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               5m3s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (4m52s ago)   5m3s
+--- t=300s 09:25:48
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0              5m13s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (5m2s ago)   5m13s
+--- t=310s 09:25:58
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               5m24s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (5m13s ago)   5m24s
+--- t=320s 09:26:09
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               5m34s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (5m23s ago)   5m34s
+--- t=330s 09:26:19
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               5m45s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (5m34s ago)   5m45s
+--- t=340s 09:26:30
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               5m56s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (5m45s ago)   5m56s
+--- t=350s 09:26:41
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               6m6s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (5m55s ago)   6m6s
+--- t=360s 09:26:51
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               6m17s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (6m6s ago)    6m17s
+--- t=370s 09:27:02
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               6m27s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (6m16s ago)   6m27s
+--- t=380s 09:27:12
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               6m38s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (6m27s ago)   6m38s
+--- t=390s 09:27:23
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               6m48s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (6m37s ago)   6m48s
+--- t=400s 09:27:33
+boot_id=b0b5e112-3a9a-4950-9c4b-467d7062327c
+Completed
+
+default           qa-reboot-kairos-7b97-drd9b-9h6ng         0/1   Completed   0               6m59s
+default           qa-reboot-reboot-d2wgl                    0/1   Completed   1 (6m48s ago)   6m59s
