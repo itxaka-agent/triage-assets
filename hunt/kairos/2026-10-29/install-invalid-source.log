@@ -1,0 +1,11 @@
+=== RUN   TestC2InvalidInstallSource
+    c2_verify_test.go:19: NewSrcFromURI("oci:quay.io/Kairos/opensuse:latest") err = invalid image reference quay.io/Kairos/opensuse:latest
+    c2_verify_test.go:43: NewInstallSpec err = <nil>
+    c2_verify_test.go:47: spec.Active.Source = "" IsEmpty=true
+    c2_verify_test.go:48: Sanitize err = undefined system source to install
+    c2_verify_test.go:51: NewUkiInstallSpec err = <nil>
+    c2_verify_test.go:53: uki spec.Active.Source = "" IsEmpty=true
+    c2_verify_test.go:54: uki Sanitize err = <nil>
+--- PASS: TestC2InvalidInstallSource (0.00s)
+PASS
+ok  	github.com/kairos-io/kairos/v4/agent/pkg/config	0.009s
