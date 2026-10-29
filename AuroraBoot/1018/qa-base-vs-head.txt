@@ -1,0 +1,20 @@
+# base: 1781716c plus the PR's test files; head: 3e613f35
+# throwaway container auroraboot-gotest:1.27.3 (--user uid:gid, tmpfs, source read-only)
+# cmd: go test -count=1 ./pkg/auth/ ./pkg/handlers/ ./pkg/server/ 2>&1 | tail -30
+
+##### BASE (1781716c + PR test files)
+# github.com/kairos-io/AuroraBoot/pkg/auth_test [github.com/kairos-io/AuroraBoot/pkg/auth.test]
+pkg/auth/middleware_test.go:256:20: undefined: auth.RegistrationToken
+pkg/auth/middleware_test.go:264:14: undefined: auth.NewRegistrationToken
+FAIL	github.com/kairos-io/AuroraBoot/pkg/auth [build failed]
+# github.com/kairos-io/AuroraBoot/pkg/handlers_test [github.com/kairos-io/AuroraBoot/pkg/handlers.test]
+pkg/handlers/settings_test.go:21:17: undefined: auth.RegistrationToken
+pkg/handlers/settings_test.go:27:16: undefined: auth.NewRegistrationToken
+FAIL	github.com/kairos-io/AuroraBoot/pkg/handlers [build failed]
+ok  	github.com/kairos-io/AuroraBoot/pkg/server	0.168s
+FAIL
+
+##### HEAD (3e613f35)
+ok  	github.com/kairos-io/AuroraBoot/pkg/auth	0.010s
+ok  	github.com/kairos-io/AuroraBoot/pkg/handlers	1.265s
+ok  	github.com/kairos-io/AuroraBoot/pkg/server	0.150s

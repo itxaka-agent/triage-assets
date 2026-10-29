@@ -1,0 +1,48 @@
+# base: 071c7be0 plus the PR's test files; head: a58a3b42
+# throwaway container auroraboot-gotest:1.27.3 (--user uid:gid, tmpfs, source read-only)
+# cmd: cd sdk && go test -count=1 ./collector/ 2>&1 | tail -40
+
+##### BASE (071c7be0 + PR test files)
+      {
+          s: "cannot merge int with float64",
+      }
+  occurred
+  In [It] at: /src/sdk/collector/collector_test.go:623 @ 10/29/26 14:24:55.09
+------------------------------
+• [FAILED] [0.000 seconds]
+Config Collector deepMerge scalars of a different kind [It] merges across two sources in Configs.Merge
+/src/sdk/collector/collector_test.go:632
+
+  [FAILED] Unexpected error:
+      <*errors.errorString | 0xb36530391c0>: 
+      cannot merge bool with string
+      {
+          s: "cannot merge bool with string",
+      }
+  occurred
+  In [It] at: /src/sdk/collector/collector_test.go:642 @ 10/29/26 14:24:55.09
+------------------------------
+••••••••••••••••map[surname:Bros]•warning: ignoring config_url http://127.0.0.1:32903/remote_config_2.yaml because it has no valid header. Booting without it
+••••••••••••••••••••••••••••••
+
+Summarizing 5 Failures:
+  [FAIL] Config Collector deepMerge scalars of a different kind b wins [It] bool then string
+  /src/sdk/collector/collector_test.go:623
+  [FAIL] Config Collector deepMerge scalars of a different kind b wins [It] string then bool
+  /src/sdk/collector/collector_test.go:623
+  [FAIL] Config Collector deepMerge scalars of a different kind b wins [It] string then int
+  /src/sdk/collector/collector_test.go:623
+  [FAIL] Config Collector deepMerge scalars of a different kind b wins [It] int then float
+  /src/sdk/collector/collector_test.go:623
+  [FAIL] Config Collector deepMerge scalars of a different kind [It] merges across two sources in Configs.Merge
+  /src/sdk/collector/collector_test.go:642
+
+Ran 84 of 84 Specs in 12.596 seconds
+FAIL! -- 79 Passed | 5 Failed | 0 Pending | 0 Skipped
+--- FAIL: TestConfig (12.60s)
+FAIL
+FAIL	github.com/kairos-io/kairos/v4/sdk/collector	12.606s
+FAIL
+
+##### HEAD (a58a3b42)
+ok  	github.com/kairos-io/kairos/v4/sdk/collector	12.620s

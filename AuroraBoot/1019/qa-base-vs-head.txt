@@ -1,0 +1,48 @@
+# base: 1781716c plus the PR's test files; head: 6b25b8b7
+# throwaway container auroraboot-gotest:1.27.3 (--user uid:gid, tmpfs, source read-only)
+# cmd: go test -count=1 ./internal/builder/auroraboot/ 2>&1 | grep -vE '^\s*$' | tail -40
+
+##### BASE (1781716c + PR test files)
+==========================================================================
+Random Seed: 1793283847
+Will run 80 of 80 specs
+••••••
+------------------------------
+• [FAILED] [10.001 seconds]
+AuroraBoot Builder container tar save [It] fails the build when docker save fails
+/src/internal/builder/auroraboot/builder_tar_test.go:35
+  [FAILED] Timed out after 10.001s.
+  Expected
+      <string>: Ready
+  to equal
+      <string>: Error
+  In [It] at: /src/internal/builder/auroraboot/builder_tar_test.go:53 @ 10/29/26 14:24:18.219
+------------------------------
+• [FAILED] [0.111 seconds]
+AuroraBoot Builder container tar save [It] keeps a build cancelled during docker save in the Error state
+/src/internal/builder/auroraboot/builder_tar_test.go:65
+  [FAILED] Failed after 0.100s.
+  Expected
+      <string>: Ready
+  to equal
+      <string>: Error
+  In [It] at: /src/internal/builder/auroraboot/builder_tar_test.go:90 @ 10/29/26 14:24:18.33
+------------------------------
+•••••••••••••••••••••••••••••••2026-10-29T14:24:19Z INF progress line k=v
+••2026-10-29T14:24:19Z DBG Cloud config contents cloudConfig=marker-secret
+2026-10-29T14:24:19Z INF Copying cloud config
+•••••••••••••••••••••••••••••••••••••••
+Summarizing 2 Failures:
+  [FAIL] AuroraBoot Builder container tar save [It] fails the build when docker save fails
+  /src/internal/builder/auroraboot/builder_tar_test.go:53
+  [FAIL] AuroraBoot Builder container tar save [It] keeps a build cancelled during docker save in the Error state
+  /src/internal/builder/auroraboot/builder_tar_test.go:90
+Ran 80 of 80 Specs in 12.239 seconds
+FAIL! -- 78 Passed | 2 Failed | 0 Pending | 0 Skipped
+--- FAIL: TestAuroraBootBuilder (12.24s)
+FAIL
+FAIL	github.com/kairos-io/AuroraBoot/internal/builder/auroraboot	12.251s
+FAIL
+
+##### HEAD (6b25b8b7)
+ok  	github.com/kairos-io/AuroraBoot/internal/builder/auroraboot	4.152s
