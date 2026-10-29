@@ -1,0 +1,7 @@
+[!p]104\[0m[?7h[1G[0J7[32766;32766H[6n8[!p]104\[0m[?7h[1G[0J7[32766;32766H[6n8]3008;start=4cfa9771bd0e46e4ab3ed8a81e5af644;user=root;hostname=kairos-6592;machineid=6592a839b1de40daab279f29b229a5b4;bootid=559f813f3df44238aeb863e5cbec2b70;pid=1348;pidfdid=4781;comm=(agetty);servicename=serial-getty@ttyS0.service;invocationid=a396906f73ab49e1ac8cf0f7747037b9;type=service\P+q6E616D65\
+kairos-6592 login: [!p]104\[0m[?7h[1G[0J7[32766;32766H[6n8]3008;end=4cfa9771bd0e46e4ab3ed8a81e5af644\[  155.670417] watchdog: watchdog0: watchdog did not stop!
+[  155.814017] watchdog: watchdog0: watchdog did not stop!
+[  155.814102] systemd-shutdown[1]: Unable to finalize remaining loop devices, ignoring.
+[  155.817029] reboot: Restarting system
+[!p]104\[0m[?7h[1G[0J7[32766;32766H[6n8[!p]104\[0m[?7h[1G[0J7[32766;32766H[6n8]3008;start=5d58f5d366984e00a1d24da73cb0b1de;user=root;hostname=kairos-6592;machineid=6592a839b1de40daab279f29b229a5b4;bootid=91b2778585054cfba51acd92d20cdc68;pid=1333;pidfdid=722;comm=(agetty);servicename=serial-getty@ttyS0.service;invocationid=4ce9a970076f44cf868a9d122e2b4c83;type=service\P+q6E616D65\
+kairos-6592 login: 

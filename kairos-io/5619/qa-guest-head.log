@@ -1,0 +1,119 @@
+### version: kairos v4.4.0-25-gb2481461
+### recovery partition BEFORE:
+total 220192
+drwxr-xr-x 2 root root      4096 Oct 29 08:06 .
+drwxr-xr-x 4 root root      4096 Oct 29 08:03 ..
+-rw------- 1 root root 225468416 Oct 29 08:06 recovery.squashfs
+### BEFORE squashfs mounted check
+usr/bin entries: 406
+ls: cannot access '/run/qa5633/sq/marker-from-stage': No such file or directory
+ls: cannot access '/run/qa5633/sq/qa5633-extra': No such file or directory
+0
+bin
+boot
+dev
+etc
+home
+lib
+lib64
+lost+found
+mnt
+opt
+proc
+root
+run
+sbin
+srv
+sys
+system
+tmp
+usr
+var
+### RUN: kairos-agent upgrade --recovery --source dir:/run/qa5633/src
+upgrade exit: 0
+2026-10-29T08:08:53Z DBG Mounting /dev to chroot
+2026-10-29T08:08:54Z DBG Mounting /dev/pts to chroot
+2026-10-29T08:08:54Z DBG Mounting /proc to chroot
+2026-10-29T08:08:54Z DBG Mounting /sys to chroot
+2026-10-29T08:08:54Z DBG Mounting /run/systemd/journal/ to chroot
+2026-10-29T08:08:54Z DBG Mounting /oem to chroot
+2026-10-29T08:08:54Z DBG Mounting /run/cos/recovery to chroot
+2026-10-29T08:08:54Z DBG Mounting /run/initramfs/cos-state to chroot
+2026-10-29T08:08:54Z DBG Mounting /usr/local to chroot
+2026-10-29T08:08:54Z INF Handing off upgrade finalize to target kairos-agent (/usr/bin/kairos-agent)
+2026-10-29T08:08:54Z DBG Running cmd: '/usr/bin/kairos-agent upgrade-finalize --context-file /tmp/kairos-upgrade-finalize.json'
+2026-10-29T08:08:54Z INF upgrade-finalize output: 2026-10-29T08:08:54Z INF Applying 'after-upgrade-chroot' hook
+2026-10-29T08:08:54Z INF Running after-upgrade-chroot hook
+2026-10-29T08:08:54Z INF Running stage: after-upgrade-chroot.before
+2026-10-29T08:08:54Z INF Done executing stage 'after-upgrade-chroot.before'
+2026-10-29T08:08:54Z INF Running stage: after-upgrade-chroot
+2026-10-29T08:08:54Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -x "/usr/sbin/kairos-jetson-qspi-update" ]
+2026-10-29T08:08:54Z INF Done executing stage 'after-upgrade-chroot'
+2026-10-29T08:08:54Z INF Running stage: after-upgrade-chroot.after
+2026-10-29T08:08:54Z INF Done executing stage 'after-upgrade-chroot.after'
+2026-10-29T08:08:54Z INF Running stage: after-upgrade-chroot.before
+2026-10-29T08:08:54Z INF Done executing stage 'after-upgrade-chroot.before'
+2026-10-29T08:08:54Z INF Running stage: after-upgrade-chroot
+2026-10-29T08:08:54Z INF Done executing stage 'after-upgrade-chroot'
+2026-10-29T08:08:54Z INF Running stage: after-upgrade-chroot.after
+2026-10-29T08:08:54Z INF Done executing stage 'after-upgrade-chroot.after'
+2026-10-29T08:08:54Z DBG Unmounting /usr/local/tmp/elemental-1084556180/usr/local from chroot
+2026-10-29T08:08:54Z DBG Unmounting /usr/local/tmp/elemental-1084556180/host/run/initramfs/cos-state from chroot
+2026-10-29T08:08:54Z DBG Unmounting /usr/local/tmp/elemental-1084556180/host/run/cos/recovery from chroot
+2026-10-29T08:08:54Z DBG Unmounting /usr/local/tmp/elemental-1084556180/oem from chroot
+2026-10-29T08:08:54Z DBG Unmounting /usr/local/tmp/elemental-1084556180/run/systemd/journal/ from chroot
+2026-10-29T08:08:54Z DBG Unmounting /usr/local/tmp/elemental-1084556180/sys from chroot
+2026-10-29T08:08:54Z DBG Unmounting /usr/local/tmp/elemental-1084556180/proc from chroot
+2026-10-29T08:08:54Z DBG Unmounting /usr/local/tmp/elemental-1084556180/dev/pts from chroot
+2026-10-29T08:08:54Z DBG Unmounting /usr/local/tmp/elemental-1084556180/dev from chroot
+2026-10-29T08:08:54Z DBG Running cmd: 'mksquashfs /usr/local/tmp/elemental-1084556180 /run/cos/recovery/cOS/transition.img -b 1024k'
+2026-10-29T08:09:05Z INF Moving /run/cos/recovery/cOS/transition.img to /run/cos/recovery/cOS/recovery.squashfs
+2026-10-29T08:09:05Z INF Finished moving /run/cos/recovery/cOS/transition.img to /run/cos/recovery/cOS/recovery.squashfs
+2026-10-29T08:09:05Z INF Applying 'after-upgrade' hook
+2026-10-29T08:09:05Z INF Running after-upgrade hook
+2026-10-29T08:09:05Z INF Running stage: after-upgrade.before
+2026-10-29T08:09:05Z INF Done executing stage 'after-upgrade.before'
+2026-10-29T08:09:05Z INF Running stage: after-upgrade
+2026-10-29T08:09:05Z DBG Generating op for stage 'Boot assessment and branding.Hook boot assessment grub configuration'
+2026-10-29T08:09:05Z DBG Executing stage 'Boot assessment and branding.Hook boot assessment grub configuration'
+2026-10-29T08:09:05Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run ! grep -q "grub_boot_assessment" /tmp/mnt/STATE/grubcustom && grep -vq "rd.immucore.uki" /proc/cmdline
+: exit status 1)' stage name: Boot assessment and branding.Hook boot assessment grub configuration
+      Content: "set boot_assessment=\"/boot_assessment\"\nsearch --no-floppy --file --set=boot_assessment_blk \"${boot_assessment}\"\nif [ \"${boot_assessment_blk}\" ]; then\n  load_env -f \"(${boot_assessment_blk})${boot_assessment}\"\nfi\nif [ \"${enable_boo
+2026-10-29T08:09:05Z INF Done executing stage 'after-upgrade'
+2026-10-29T08:09:05Z INF Running stage: after-upgrade.after
+2026-10-29T08:09:05Z INF Done executing stage 'after-upgrade.after'
+2026-10-29T08:09:05Z INF Running stage: after-upgrade.before
+2026-10-29T08:09:05Z INF Done executing stage 'after-upgrade.before'
+2026-10-29T08:09:05Z INF Running stage: after-upgrade
+2026-10-29T08:09:05Z INF Done executing stage 'after-upgrade'
+2026-10-29T08:09:05Z INF Running stage: after-upgrade.after
+2026-10-29T08:09:05Z INF Done executing stage 'after-upgrade.after'
+2026-10-29T08:09:05Z INF Upgrade completed
+2026-10-29T08:09:05Z DBG Running Lifecycle hook
+2026-10-29T08:09:05Z DBG Finish Lifecycle hook
+### recovery partition AFTER:
+total 228928
+drwxr-xr-x 2 root root      4096 Oct 29 08:09 .
+drwxr-xr-x 4 root root      4096 Oct 29 08:03 ..
+-rw------- 1 root root 234414080 Oct 29 08:09 recovery.squashfs
+mount recovery.squashfs rc=0
+usr/bin entries in new recovery: 406; has kairos-agent: /run/qa5633/sq/usr/bin/kairos-agent
+### marker:
+-rw------- 1 root root 0 Oct 29 08:08 /run/qa5633/sq/marker-from-stage
+### stage-ls.txt:
+bin boot dev etc home host lib lib64 lost+found marker-from-stage oem opt proc qa5633-extra root run sbin srv stage-info.txt stage-ls.txt sys system tmp usr var 
+### stage-info.txt:
+usrbin=406 pwd=/ root=1046530 
+### extra dirs:
+drwx------ 2 root root 3 Oct 29 08:08 /run/qa5633/sq/qa5633-extra/a
+drwx------ 2 root root 3 Oct 29 08:08 /run/qa5633/sq/var/lib/qa5633-kubelet
+### top of new recovery /:
+bin boot dev etc home host lib lib64 lost+found marker-from-stage oem opt proc qa5633-extra root run sbin srv stage-info.txt stage-ls.txt sys system tmp usr var 
+### leftovers: /run/cos:
+total 8
+drwxr-xr-x  3 root root 100 Oct 29 08:08 .
+drwxr-xr-x 27 root root 620 Oct 29 08:04 ..
+-rwxr-xr-x  1 root root   1 Oct 29 08:04 active_mode
+-rw-r--r--  1 root root 677 Oct 29 08:04 cos-layout.env
+drwx------  2 root root  40 Oct 29 08:08 recovery
+ls: cannot access '/run/cos/transition': No such file or directory

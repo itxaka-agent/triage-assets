@@ -1,0 +1,87 @@
+### version: kairos v4.4.0-21-g97d4217e
+### recovery partition BEFORE:
+total 220192
+drwxr-xr-x 2 root root      4096 Oct 29 08:06 .
+drwxr-xr-x 4 root root      4096 Oct 29 08:03 ..
+-rw------- 1 root root 225468416 Oct 29 08:05 recovery.squashfs
+### BEFORE squashfs mounted check
+usr/bin entries: 406
+ls: cannot access '/run/qa5633/sq/marker-from-stage': No such file or directory
+ls: cannot access '/run/qa5633/sq/qa5633-extra': No such file or directory
+0
+bin
+boot
+dev
+etc
+home
+lib
+lib64
+lost+found
+mnt
+opt
+proc
+root
+run
+sbin
+srv
+sys
+system
+tmp
+usr
+var
+### RUN: kairos-agent upgrade --recovery --source dir:/run/qa5633/src
+upgrade exit: 1
+warning: skipping /etc/kairos/kairos-init-init-stage.yaml because it has no valid header
+warning: skipping /etc/kairos/kairos-init-install-stage.yaml because it has no valid header
+      "after-upgrade-chroot": []interface {}{
+      "extra-dirs-rootfs": []interface {}{
+        "/qa5633-extra/a",
+    "squash-no-compression": true,
+    File: "/run/initramfs/cos-state/cOS/transition.img",
+    MountPoint: "/run/cos/transition",
+    File: "/run/cos/recovery/cOS/transition.img",
+    FS: "squashfs",
+  ExtraDirsRootfs: []string{
+    "/qa5633-extra/a",
+      source: "/run/initramfs/cos-state/cOS/transition.img",
+2026-10-29T08:08:29Z INF Applying 'before-upgrade' hook
+2026-10-29T08:08:29Z INF Running before-upgrade hook
+2026-10-29T08:08:29Z INF deploying image /run/qa5633/src to /run/cos/recovery/cOS/transition.img
+2026-10-29T08:08:31Z DBG Running cmd: 'mksquashfs /usr/local/tmp/elemental-1161545663 /run/cos/recovery/cOS/transition.img -b 1024k'
+2026-10-29T08:08:41Z DBG Extra mounts: map[/oem:/oem /run/cos/recovery:/host/run/cos/recovery /run/initramfs/cos-state:/host/run/initramfs/cos-state /usr/local:/usr/local]
+2026-10-29T08:08:41Z DBG Mounting /dev to chroot
+2026-10-29T08:08:42Z DBG Mounting /dev/pts to chroot
+2026-10-29T08:08:42Z DBG Mounting /proc to chroot
+2026-10-29T08:08:42Z DBG Mounting /sys to chroot
+2026-10-29T08:08:42Z DBG Unmounting /proc from chroot
+2026-10-29T08:08:42Z DBG Unmounting /dev/pts from chroot
+2026-10-29T08:08:42Z DBG Unmounting /dev from chroot
+2026-10-29T08:08:42Z ERR Error unmounting /dev: unmount failed: exit status 32
+2026-10-29T08:08:42Z DBG [Cleanup] Removing /run/cos/recovery/cOS/transition.img
+1 error occurred:
+### recovery partition AFTER:
+total 220192
+drwxr-xr-x 2 root root      4096 Oct 29 08:08 .
+drwxr-xr-x 4 root root      4096 Oct 29 08:03 ..
+-rw------- 1 root root 225468416 Oct 29 08:05 recovery.squashfs
+mount recovery.squashfs rc=0
+usr/bin entries in new recovery: 406; has kairos-agent: /run/qa5633/sq/usr/bin/kairos-agent
+### marker:
+ls: cannot access '/run/qa5633/sq/marker-from-stage': No such file or directory
+### stage-ls.txt:
+cat: /run/qa5633/sq/stage-ls.txt: No such file or directory 
+### stage-info.txt:
+cat: /run/qa5633/sq/stage-info.txt: No such file or directory
+### extra dirs:
+ls: cannot access '/run/qa5633/sq/qa5633-extra/a': No such file or directory
+ls: cannot access '/run/qa5633/sq/var/lib/qa5633-kubelet': No such file or directory
+### top of new recovery /:
+bin boot dev etc home lib lib64 mnt opt proc root run sbin srv sys system tmp usr var 
+### leftovers: /run/cos:
+total 8
+drwxr-xr-x  3 root root 100 Oct 29 08:08 .
+drwxr-xr-x 26 root root 600 Oct 29 08:08 ..
+-rwxr-xr-x  1 root root   1 Oct 29 08:07 active_mode
+-rw-r--r--  1 root root 677 Oct 29 08:07 cos-layout.env
+drwx------  2 root root  40 Oct 29 08:08 recovery
+ls: cannot access '/run/cos/transition': No such file or directory
