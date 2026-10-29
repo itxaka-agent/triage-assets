@@ -1,0 +1,175 @@
+# AuroraBoot PR 1016 QA: base 56667fb vs head 57f34fa, built binaries run in container golang:1.27.3 (libpcsclite-dev added), not a booted node. Admin password in web test: redacted.
+
+apt exit=0
+-rwxr-xr-x 1 root root 119974304 Oct 29 11:40 /out/auroraboot-base
+-rwxr-xr-x 1 root root 119980392 Oct 29 11:40 /out/auroraboot-head
+
+################ base ################
+== 1. fresh genkey
+2026-10-29T11:40:14Z INF [16062] Converting db.pem to DER
+2026-10-29T11:40:14Z INF [16062] db generated at /out/keys-base/db.der
+2026-10-29T11:40:14Z INF [16062] Generating policy encryption key
+[exit=0]
+6aefab4c70130ebb  PK.key
+71e1ec2e9402eb23  KEK.key
+d413a54c863b7f56  db.key
+04fb314cf4a183fe  tpm2-pcr-private.pem
+-- sums before second genkey
+6aefab4c70130ebb  PK.key
+71e1ec2e9402eb23  KEK.key
+d413a54c863b7f56  db.key
+04fb314cf4a183fe  tpm2-pcr-private.pem
+== 2. second genkey same dir
+2026-10-29T11:40:14Z INF [16114] Converting db.pem to DER
+2026-10-29T11:40:14Z INF [16114] db generated at /out/keys-base/db.der
+2026-10-29T11:40:14Z INF [16114] Generating policy encryption key
+[exit=0]
+-- sums after
+699c999dc5db52a5  PK.key
+4304e035e9e59e83  KEK.key
+68503522095152bc  db.key
+7beffcb2546d0d76  tpm2-pcr-private.pem
+RESULT: keys REPLACED
+== 6. --existing-keys-dir (src: fresh keys from step 1 set)
+2026-10-29T11:40:14Z INF [16156] db generated at /out/ex-base/db.der
+2026-10-29T11:40:14Z INF [16156] Generating policy encryption key
+[exit=0]
+699c999dc5db52a5  PK.key
+4304e035e9e59e83  KEK.key
+68503522095152bc  db.key
+c3aae5dc95505ec9  tpm2-pcr-private.pem
+-- existing-keys-dir into non-empty dir (again)
+2026-10-29T11:40:14Z INF [16191] db generated at /out/ex-base/db.der
+2026-10-29T11:40:14Z INF [16191] Generating policy encryption key
+[exit=0]
+== 7. web API
+$ POST generate name=webset (first)
+{"id":"efc68f2a-cbb0-4afe-a78e-4bd17fd5f6e2","name":"webset","secureBootEnroll":"","createdAt":"2026-10-29T11:40:20.684219256Z","updatedAt":"2026-10-29T11:40:20.684219256Z","hasTpmPcrKey":true}
+ [http=201]
+6854786042c8ddc0  PK.key
+974746a3d509890a  KEK.key
+f04149ba3667473e  db.key
+18c2e909cf4c2b6a  tpm2-pcr-private.pem
+keydir=/out/web-base/keys/webset
+6854786042c8ddc0  PK.key
+974746a3d509890a  KEK.key
+f04149ba3667473e  db.key
+18c2e909cf4c2b6a  tpm2-pcr-private.pem
+$ POST generate name=webset (second)
+{"error":"failed to save key set record"}
+ [http=500]
+98efc00fd005b8bf  PK.key
+4306c7eddc2e2e3b  KEK.key
+319b3ce964afd35c  db.key
+f0f0fc639e7999c2  tpm2-pcr-private.pem
+RESULT: web keys REPLACED
+-- web empty-dir reuse: pre-create dir, then generate
+{"id":"7424a74e-fdd0-406b-994e-1c06ef4b247c","name":"emptyset","secureBootEnroll":"","createdAt":"2026-10-29T11:40:21.140260797Z","updatedAt":"2026-10-29T11:40:21.140260797Z","hasTpmPcrKey":true}
+ [http=201]
+-- server log tail
+2026-10-29T11:40:21Z INF [16212] db generated at /out/web-base/keys/emptyset/db.key and /out/web-base/keys/emptyset/db.pem
+2026-10-29T11:40:21Z INF [16212] Converting db.pem to DER
+2026-10-29T11:40:21Z INF [16212] db generated at /out/web-base/keys/emptyset/db.der
+2026-10-29T11:40:21Z INF [16212] Generating policy encryption key
+2026/10/29 11:40:21 127.0.0.1 POST /api/v1/secureboot-keys/generate 201 215.406363ms
+
+################ head ################
+== 1. fresh genkey
+2026-10-29T11:40:21Z INF [16308] Converting db.pem to DER
+2026-10-29T11:40:21Z INF [16308] db generated at /out/keys-head/db.der
+2026-10-29T11:40:21Z INF [16308] Generating policy encryption key
+[exit=0]
+4242986581356bbd  PK.key
+e995efaf62d25c49  KEK.key
+9bdd96b6f780f3f0  db.key
+a23d6699754fa522  tpm2-pcr-private.pem
+-- sums before second genkey
+4242986581356bbd  PK.key
+e995efaf62d25c49  KEK.key
+9bdd96b6f780f3f0  db.key
+a23d6699754fa522  tpm2-pcr-private.pem
+== 2. second genkey same dir
+
+$ /out/auroraboot-head genkey -o /out/keys-head mytest
+output directory /out/keys-head already holds PK.key; refusing to overwrite existing keys, use a different directory or allow overwriting
+[exit=1]
+-- sums after
+4242986581356bbd  PK.key
+e995efaf62d25c49  KEK.key
+9bdd96b6f780f3f0  db.key
+a23d6699754fa522  tpm2-pcr-private.pem
+RESULT: keys UNCHANGED
+== 3. --overwrite
+2026-10-29T11:40:21Z INF [16392] db generated at /out/keys-head/db.der
+2026-10-29T11:40:21Z INF [16392] Generating policy encryption key
+[exit=0]
+diff: /tmp/after: No such file or directory
+RESULT: keys replaced with --overwrite
+== 4. empty dir reuse
+2026-10-29T11:40:21Z INF [16433] Generating policy encryption key
+[exit=0]
+fe08712ba9adf69e  PK.key
+6742323ef44259a8  KEK.key
+3054be64dcef83af  db.key
+236fb61b9b00b0c1  tpm2-pcr-private.pem
+== 5. half-filled dir (only PK.pem + PK.der present)
+2026-10-29T11:40:21Z INF [16474] Generating policy encryption key
+[exit=0]
+d3e3caf7fc521c19  PK.key
+b253b26cada3aee2  KEK.key
+29147cd1f1960dc0  db.key
+8428b3f8d7b4d421  tpm2-pcr-private.pem
+== 6. --existing-keys-dir (src: fresh keys from step 1 set)
+2026-10-29T11:40:21Z INF [16513] db generated at /out/ex-head/db.der
+2026-10-29T11:40:21Z INF [16513] Generating policy encryption key
+[exit=0]
+8fc2df2d0f990cb8  PK.key
+a9720d3151b4a035  KEK.key
+a3f7e0e5a1b0ac8b  db.key
+1898848e3d3b1c8a  tpm2-pcr-private.pem
+-- existing-keys-dir into non-empty dir (again)
+2026-10-29T11:40:22Z INF [16547] db generated at /out/ex-head/db.der
+2026-10-29T11:40:22Z INF [16547] Generating policy encryption key
+[exit=0]
+== 7. web API
+$ POST generate name=webset (first)
+{"id":"bbeee845-2753-4142-ae2c-ee5efdf12465","name":"webset","secureBootEnroll":"","createdAt":"2026-10-29T11:40:28.256897698Z","updatedAt":"2026-10-29T11:40:28.256897698Z","hasTpmPcrKey":true}
+ [http=201]
+7192a5479a77ff0e  PK.key
+797fdf429903b05c  KEK.key
+d7ac01002d235842  db.key
+23948058eb1430e1  tpm2-pcr-private.pem
+keydir=/out/web-head/keys/webset
+7192a5479a77ff0e  PK.key
+797fdf429903b05c  KEK.key
+d7ac01002d235842  db.key
+23948058eb1430e1  tpm2-pcr-private.pem
+$ POST generate name=webset (second)
+{"error":"a key set named \"webset\" already exists"}
+ [http=409]
+7192a5479a77ff0e  PK.key
+797fdf429903b05c  KEK.key
+d7ac01002d235842  db.key
+23948058eb1430e1  tpm2-pcr-private.pem
+RESULT: web keys UNCHANGED
+-- web empty-dir reuse: pre-create dir, then generate
+{"id":"998c1c7c-06d8-40bd-86cf-1fd49c6a65b1","name":"emptyset","secureBootEnroll":"","createdAt":"2026-10-29T11:40:28.557362619Z","updatedAt":"2026-10-29T11:40:28.557362619Z","hasTpmPcrKey":true}
+ [http=201]
+-- server log tail
+2026-10-29T11:40:28Z INF [16569] db generated at /out/web-head/keys/emptyset/db.key and /out/web-head/keys/emptyset/db.pem
+2026-10-29T11:40:28Z INF [16569] Converting db.pem to DER
+2026-10-29T11:40:28Z INF [16569] db generated at /out/web-head/keys/emptyset/db.der
+2026-10-29T11:40:28Z INF [16569] Generating policy encryption key
+2026/10/29 11:40:28 127.0.0.1 POST /api/v1/secureboot-keys/generate 201 263.900131ms
+
+## --overwrite flag on head
+before
+2de3b8eca8358944  PK.key
+393bd8461780aab9  KEK.key
+96f93a81326d9e68  db.key
+5f173a0a0044d8c4  tpm2-pcr-private.pem
+after --overwrite (exit=0)
+257285f02cef155e  PK.key
+7abb1365b002ee7a  KEK.key
+7f494ffcd0a0e624  db.key
+a15e556317fa872c  tpm2-pcr-private.pem

@@ -1,0 +1,10 @@
+before
+2de3b8eca8358944  PK.key
+393bd8461780aab9  KEK.key
+96f93a81326d9e68  db.key
+5f173a0a0044d8c4  tpm2-pcr-private.pem
+after --overwrite (exit=0)
+257285f02cef155e  PK.key
+7abb1365b002ee7a  KEK.key
+7f494ffcd0a0e624  db.key
+a15e556317fa872c  tpm2-pcr-private.pem
