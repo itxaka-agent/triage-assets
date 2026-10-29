@@ -1,0 +1,55 @@
+# kairos#5816 base 071c7be0 (+head order test) go test
+=== RUN   TestLabelFromByLabelPath
+=== RUN   TestLabelFromByLabelPath//dev/disk/by-label/COS_PERSISTENT
+=== RUN   TestLabelFromByLabelPath//dev/disk/by-label/COS_OEM
+=== RUN   TestLabelFromByLabelPath//dev/disk/by-label/MYAPP_DATA
+=== RUN   TestLabelFromByLabelPath//dev/sda2
+=== RUN   TestLabelFromByLabelPath//dev/mapper/vda5
+=== RUN   TestLabelFromByLabelPath/LABEL=COS_PERSISTENT
+=== RUN   TestLabelFromByLabelPath/#00
+--- PASS: TestLabelFromByLabelPath (0.00s)
+    --- PASS: TestLabelFromByLabelPath//dev/disk/by-label/COS_PERSISTENT (0.00s)
+    --- PASS: TestLabelFromByLabelPath//dev/disk/by-label/COS_OEM (0.00s)
+    --- PASS: TestLabelFromByLabelPath//dev/disk/by-label/MYAPP_DATA (0.00s)
+    --- PASS: TestLabelFromByLabelPath//dev/sda2 (0.00s)
+    --- PASS: TestLabelFromByLabelPath//dev/mapper/vda5 (0.00s)
+    --- PASS: TestLabelFromByLabelPath/LABEL=COS_PERSISTENT (0.00s)
+    --- PASS: TestLabelFromByLabelPath/#00 (0.00s)
+=== RUN   TestResolveMountSource
+=== RUN   TestResolveMountSource/encrypted:_resolves_to_the_mapper_path
+=== RUN   TestResolveMountSource/plain:_resolves_to_the_partition_path
+=== RUN   TestResolveMountSource/unknown_label:_returns_an_error
+--- PASS: TestResolveMountSource (0.00s)
+    --- PASS: TestResolveMountSource/encrypted:_resolves_to_the_mapper_path (0.00s)
+    --- PASS: TestResolveMountSource/plain:_resolves_to_the_partition_path (0.00s)
+    --- PASS: TestResolveMountSource/unknown_label:_returns_an_error (0.00s)
+=== RUN   TestSuite
+Running Suite: Mount test Suite - /src/immucore/pkg/state
+=========================================================
+Random Seed: 1793286150
+
+Will run 1 of 155 specs
+SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+------------------------------
+• [FAILED] [0.003 seconds]
+the custom mounts step order [It] mounts a parent volume before the volume nested under it, on every run
+/src/immucore/pkg/state/custom_mounts_order_internal_test.go:57
+
+  [FAILED] Expected
+      <[]string | len:2, cap:2>: ["/usr/local/data", "/usr/local"]
+  to equal
+      <[]string | len:2, cap:2>: ["/usr/local", "/usr/local/data"]
+  In [It] at: /src/immucore/pkg/state/custom_mounts_order_internal_test.go:69 @ 10/29/26 15:02:30.442
+------------------------------
+SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+
+Summarizing 1 Failure:
+  [FAIL] the custom mounts step order [It] mounts a parent volume before the volume nested under it, on every run
+  /src/immucore/pkg/state/custom_mounts_order_internal_test.go:69
+
+Ran 1 of 155 Specs in 0.005 seconds
+FAIL! -- 0 Passed | 1 Failed | 0 Pending | 154 Skipped
+--- FAIL: TestSuite (0.01s)
+FAIL
+FAIL	github.com/kairos-io/kairos/v4/immucore/pkg/state	0.014s
+FAIL

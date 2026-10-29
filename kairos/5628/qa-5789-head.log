@@ -1,0 +1,38 @@
+# kairos#5789 head c07e1574 go test -race
+=== RUN   TestLabelFromByLabelPath
+=== RUN   TestLabelFromByLabelPath//dev/disk/by-label/COS_PERSISTENT
+=== RUN   TestLabelFromByLabelPath//dev/disk/by-label/COS_OEM
+=== RUN   TestLabelFromByLabelPath//dev/disk/by-label/MYAPP_DATA
+=== RUN   TestLabelFromByLabelPath//dev/sda2
+=== RUN   TestLabelFromByLabelPath//dev/mapper/vda5
+=== RUN   TestLabelFromByLabelPath/LABEL=COS_PERSISTENT
+=== RUN   TestLabelFromByLabelPath/#00
+--- PASS: TestLabelFromByLabelPath (0.00s)
+    --- PASS: TestLabelFromByLabelPath//dev/disk/by-label/COS_PERSISTENT (0.00s)
+    --- PASS: TestLabelFromByLabelPath//dev/disk/by-label/COS_OEM (0.00s)
+    --- PASS: TestLabelFromByLabelPath//dev/disk/by-label/MYAPP_DATA (0.00s)
+    --- PASS: TestLabelFromByLabelPath//dev/sda2 (0.00s)
+    --- PASS: TestLabelFromByLabelPath//dev/mapper/vda5 (0.00s)
+    --- PASS: TestLabelFromByLabelPath/LABEL=COS_PERSISTENT (0.00s)
+    --- PASS: TestLabelFromByLabelPath/#00 (0.00s)
+=== RUN   TestResolveMountSource
+=== RUN   TestResolveMountSource/encrypted:_resolves_to_the_mapper_path
+=== RUN   TestResolveMountSource/plain:_resolves_to_the_partition_path
+=== RUN   TestResolveMountSource/unknown_label:_returns_an_error
+--- PASS: TestResolveMountSource (0.00s)
+    --- PASS: TestResolveMountSource/encrypted:_resolves_to_the_mapper_path (0.00s)
+    --- PASS: TestResolveMountSource/plain:_resolves_to_the_partition_path (0.00s)
+    --- PASS: TestResolveMountSource/unknown_label:_returns_an_error (0.00s)
+=== RUN   TestSuite
+Running Suite: Mount test Suite - /src/immucore/pkg/state
+=========================================================
+Random Seed: 1793286139
+
+Will run 1 of 155 specs
+SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS•SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+
+Ran 1 of 155 Specs in 0.017 seconds
+SUCCESS! -- 1 Passed | 0 Failed | 0 Pending | 154 Skipped
+--- PASS: TestSuite (0.02s)
+PASS
+ok  	github.com/kairos-io/kairos/v4/immucore/pkg/state	1.052s

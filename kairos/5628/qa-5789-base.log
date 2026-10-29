@@ -1,0 +1,884 @@
+# kairos#5789 base 071c7be0 (+head test, +unguarded appendFstab shim) go test -race
+=== RUN   TestLabelFromByLabelPath
+=== RUN   TestLabelFromByLabelPath//dev/disk/by-label/COS_PERSISTENT
+=== RUN   TestLabelFromByLabelPath//dev/disk/by-label/COS_OEM
+=== RUN   TestLabelFromByLabelPath//dev/disk/by-label/MYAPP_DATA
+=== RUN   TestLabelFromByLabelPath//dev/sda2
+=== RUN   TestLabelFromByLabelPath//dev/mapper/vda5
+=== RUN   TestLabelFromByLabelPath/LABEL=COS_PERSISTENT
+=== RUN   TestLabelFromByLabelPath/#00
+--- PASS: TestLabelFromByLabelPath (0.00s)
+    --- PASS: TestLabelFromByLabelPath//dev/disk/by-label/COS_PERSISTENT (0.00s)
+    --- PASS: TestLabelFromByLabelPath//dev/disk/by-label/COS_OEM (0.00s)
+    --- PASS: TestLabelFromByLabelPath//dev/disk/by-label/MYAPP_DATA (0.00s)
+    --- PASS: TestLabelFromByLabelPath//dev/sda2 (0.00s)
+    --- PASS: TestLabelFromByLabelPath//dev/mapper/vda5 (0.00s)
+    --- PASS: TestLabelFromByLabelPath/LABEL=COS_PERSISTENT (0.00s)
+    --- PASS: TestLabelFromByLabelPath/#00 (0.00s)
+=== RUN   TestResolveMountSource
+=== RUN   TestResolveMountSource/encrypted:_resolves_to_the_mapper_path
+=== RUN   TestResolveMountSource/plain:_resolves_to_the_partition_path
+=== RUN   TestResolveMountSource/unknown_label:_returns_an_error
+--- PASS: TestResolveMountSource (0.00s)
+    --- PASS: TestResolveMountSource/encrypted:_resolves_to_the_mapper_path (0.00s)
+    --- PASS: TestResolveMountSource/plain:_resolves_to_the_partition_path (0.00s)
+    --- PASS: TestResolveMountSource/unknown_label:_returns_an_error (0.00s)
+=== RUN   TestSuite
+Running Suite: Mount test Suite - /src/immucore/pkg/state
+=========================================================
+Random Seed: 1793286125
+
+Will run 1 of 155 specs
+==================
+WARNING: DATA RACE
+Read at 0x00c000102008 by goroutine 53:
+  runtime.growslice()
+      /usr/local/go/src/runtime/slice.go:178 +0x0
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).appendFstab()
+      /src/immucore/pkg/state/zz_shim_test.go:6 +0x297
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:31 +0x8c
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:32 +0x38
+
+Previous write at 0x00c000102008 by goroutine 54:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).AddToFstab()
+      /src/immucore/pkg/state/state.go:259 +0x21e
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:35 +0x215
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:36 +0x38
+
+Goroutine 53 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:29 +0x6a4
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+
+Goroutine 54 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:33 +0x51a
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+==================
+==================
+WARNING: DATA RACE
+Read at 0x00c00012c250 by goroutine 62:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).AddToFstab()
+      /src/immucore/pkg/state/state.go:252 +0x44
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:35 +0x215
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:36 +0x38
+
+Previous write at 0x00c00012c250 by goroutine 54:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).AddToFstab()
+      /src/immucore/pkg/state/state.go:259 +0x26b
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:35 +0x215
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:36 +0x38
+
+Goroutine 62 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:33 +0x51a
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+
+Goroutine 54 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:33 +0x51a
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+==================
+==================
+WARNING: DATA RACE
+Write at 0x00c00012c250 by goroutine 55:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).appendFstab()
+      /src/immucore/pkg/state/zz_shim_test.go:6 +0x2f5
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:31 +0x8c
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:32 +0x38
+
+Previous read at 0x00c00012c250 by goroutine 57:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).appendFstab()
+      /src/immucore/pkg/state/zz_shim_test.go:6 +0x258
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:31 +0x8c
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:32 +0x38
+
+Goroutine 55 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:29 +0x6a4
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+
+Goroutine 57 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:29 +0x6a4
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+==================
+==================
+WARNING: DATA RACE
+Read at 0x00c0003cc018 by goroutine 62:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).AddToFstab()
+      /src/immucore/pkg/state/state.go:252 +0xa4
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:35 +0x215
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:36 +0x38
+
+Previous write at 0x00c0003cc018 by goroutine 53:
+  runtime.slicecopy()
+      /usr/local/go/src/runtime/slice.go:392 +0x0
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).appendFstab()
+      /src/immucore/pkg/state/zz_shim_test.go:6 +0x2e8
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:31 +0x8c
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:32 +0x38
+
+Goroutine 62 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:33 +0x51a
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+
+Goroutine 53 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:29 +0x6a4
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+==================
+==================
+WARNING: DATA RACE
+Read at 0x00c00017e000 by goroutine 62:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).AddToFstab()
+      /src/immucore/pkg/state/state.go:253 +0xbe
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:35 +0x215
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:36 +0x38
+
+Previous write at 0x00c00017e000 by goroutine 53:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:31 +0x12f
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:32 +0x38
+
+Goroutine 62 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:33 +0x51a
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+
+Goroutine 53 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:29 +0x6a4
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+==================
+==================
+WARNING: DATA RACE
+Read at 0x00c000554018 by goroutine 65:
+  runtime.growslice()
+      /usr/local/go/src/runtime/slice.go:178 +0x0
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).appendFstab()
+      /src/immucore/pkg/state/zz_shim_test.go:6 +0x297
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:31 +0x8c
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:32 +0x38
+
+Previous write at 0x00c000554018 by goroutine 63:
+  runtime.slicecopy()
+      /usr/local/go/src/runtime/slice.go:392 +0x0
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).appendFstab()
+      /src/immucore/pkg/state/zz_shim_test.go:6 +0x2e8
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:31 +0x8c
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:32 +0x38
+
+Goroutine 65 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:29 +0x6a4
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+
+Goroutine 63 (finished) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:29 +0x6a4
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+==================
+==================
+WARNING: DATA RACE
+Read at 0x00c00012c250 by goroutine 64:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).AddToFstab()
+      /src/immucore/pkg/state/state.go:252 +0x44
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:35 +0x215
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:36 +0x38
+
+Previous write at 0x00c00012c250 by goroutine 53:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).appendFstab()
+      /src/immucore/pkg/state/zz_shim_test.go:6 +0x2f5
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:31 +0x8c
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:32 +0x38
+
+Goroutine 64 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:33 +0x51a
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+
+Goroutine 53 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:29 +0x6a4
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+==================
+==================
+WARNING: DATA RACE
+Write at 0x00c00012c250 by goroutine 57:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).appendFstab()
+      /src/immucore/pkg/state/zz_shim_test.go:6 +0x2f5
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:31 +0x8c
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:32 +0x38
+
+Previous read at 0x00c00012c250 by goroutine 60:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).AddToFstab()
+      /src/immucore/pkg/state/state.go:259 +0x1ba
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:35 +0x215
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:36 +0x38
+
+Goroutine 57 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:29 +0x6a4
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+
+Goroutine 60 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:33 +0x51a
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+==================
+==================
+WARNING: DATA RACE
+Read at 0x00c0001e8320 by goroutine 56:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).AddToFstab()
+      /src/immucore/pkg/state/state.go:253 +0xbe
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:35 +0x215
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:36 +0x38
+
+Previous write at 0x00c0001e8320 by goroutine 54:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:35 +0x124
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:36 +0x38
+
+Goroutine 56 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:33 +0x51a
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+
+Goroutine 54 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:33 +0x51a
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+==================
+==================
+WARNING: DATA RACE
+Write at 0x00c00012c250 by goroutine 59:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).appendFstab()
+      /src/immucore/pkg/state/zz_shim_test.go:6 +0x2f5
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:31 +0x8c
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:32 +0x38
+
+Previous write at 0x00c00012c250 by goroutine 56:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).AddToFstab()
+      /src/immucore/pkg/state/state.go:259 +0x26b
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:35 +0x215
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:36 +0x38
+
+Goroutine 59 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:29 +0x6a4
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+
+Goroutine 56 (finished) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:33 +0x51a
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+==================
+==================
+WARNING: DATA RACE
+Write at 0x00c00012c250 by goroutine 62:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).AddToFstab()
+      /src/immucore/pkg/state/state.go:259 +0x26b
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:35 +0x215
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:36 +0x38
+
+Previous write at 0x00c00012c250 by goroutine 60:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).AddToFstab()
+      /src/immucore/pkg/state/state.go:259 +0x26b
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:35 +0x215
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:36 +0x38
+
+Goroutine 62 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:33 +0x51a
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+
+Goroutine 60 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:33 +0x51a
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+==================
+==================
+WARNING: DATA RACE
+Read at 0x00c00062e010 by goroutine 64:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).AddToFstab()
+      /src/immucore/pkg/state/state.go:252 +0xa4
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:35 +0x215
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:36 +0x38
+
+Previous write at 0x00c00062e010 by goroutine 60:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).AddToFstab()
+      /src/immucore/pkg/state/state.go:259 +0x21e
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:35 +0x215
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:36 +0x38
+
+Goroutine 64 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:33 +0x51a
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+
+Goroutine 60 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:33 +0x51a
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+==================
+==================
+WARNING: DATA RACE
+Read at 0x00c00012c250 by goroutine 67:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).appendFstab()
+      /src/immucore/pkg/state/zz_shim_test.go:6 +0x258
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:31 +0x8c
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:32 +0x38
+
+Previous write at 0x00c00012c250 by goroutine 68:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).AddToFstab()
+      /src/immucore/pkg/state/state.go:259 +0x26b
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:35 +0x215
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:36 +0x38
+
+Goroutine 67 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:29 +0x6a4
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+
+Goroutine 68 (finished) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:33 +0x51a
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+==================
+==================
+WARNING: DATA RACE
+Write at 0x00c000406068 by goroutine 67:
+  runtime.slicecopy()
+      /usr/local/go/src/runtime/slice.go:392 +0x0
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).appendFstab()
+      /src/immucore/pkg/state/zz_shim_test.go:6 +0x2e8
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:31 +0x8c
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:32 +0x38
+
+Previous write at 0x00c000406068 by goroutine 69:
+  runtime.slicecopy()
+      /usr/local/go/src/runtime/slice.go:392 +0x0
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).appendFstab()
+      /src/immucore/pkg/state/zz_shim_test.go:6 +0x2e8
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:31 +0x8c
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:32 +0x38
+
+Goroutine 67 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:29 +0x6a4
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+
+Goroutine 69 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:29 +0x6a4
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+==================
+==================
+WARNING: DATA RACE
+Write at 0x00c00012c250 by goroutine 81:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).appendFstab()
+      /src/immucore/pkg/state/zz_shim_test.go:6 +0x2f5
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:31 +0x8c
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:32 +0x38
+
+Previous write at 0x00c00012c250 by goroutine 77:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).appendFstab()
+      /src/immucore/pkg/state/zz_shim_test.go:6 +0x2f5
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:31 +0x8c
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:32 +0x38
+
+Goroutine 81 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:29 +0x6a4
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+
+Goroutine 77 (finished) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:29 +0x6a4
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+==================
+==================
+WARNING: DATA RACE
+Read at 0x00c00012c250 by goroutine 84:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).AddToFstab()
+      /src/immucore/pkg/state/state.go:259 +0x1ba
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:35 +0x215
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:36 +0x38
+
+Previous write at 0x00c00012c250 by goroutine 74:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).AddToFstab()
+      /src/immucore/pkg/state/state.go:259 +0x26b
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:35 +0x215
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:36 +0x38
+
+Goroutine 84 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:33 +0x51a
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+
+Goroutine 74 (finished) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:33 +0x51a
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+==================
+==================
+WARNING: DATA RACE
+Write at 0x00c000230090 by goroutine 91:
+  runtime.slicecopy()
+      /usr/local/go/src/runtime/slice.go:392 +0x0
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).appendFstab()
+      /src/immucore/pkg/state/zz_shim_test.go:6 +0x2e8
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:31 +0x8c
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:32 +0x38
+
+Previous write at 0x00c000230090 by goroutine 90:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).AddToFstab()
+      /src/immucore/pkg/state/state.go:259 +0x21e
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:35 +0x215
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:36 +0x38
+
+Goroutine 91 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:29 +0x6a4
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+
+Goroutine 90 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:33 +0x51a
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+==================
+==================
+WARNING: DATA RACE
+Write at 0x00c0002300f0 by goroutine 96:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).AddToFstab()
+      /src/immucore/pkg/state/state.go:259 +0x21e
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:35 +0x215
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:36 +0x38
+
+Previous write at 0x00c0002300f0 by goroutine 104:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).AddToFstab()
+      /src/immucore/pkg/state/state.go:259 +0x21e
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:35 +0x215
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:36 +0x38
+
+Goroutine 96 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:33 +0x51a
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+
+Goroutine 104 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:33 +0x51a
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+==================
+==================
+WARNING: DATA RACE
+Read at 0x00c0002300f0 by goroutine 108:
+  runtime.growslice()
+      /usr/local/go/src/runtime/slice.go:178 +0x0
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).AddToFstab()
+      /src/immucore/pkg/state/state.go:259 +0x1fb
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:35 +0x215
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:36 +0x38
+
+Previous write at 0x00c0002300f0 by goroutine 102:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).AddToFstab()
+      /src/immucore/pkg/state/state.go:259 +0x21e
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:35 +0x215
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:36 +0x38
+
+Goroutine 108 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:33 +0x51a
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+
+Goroutine 102 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:33 +0x51a
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+==================
+==================
+WARNING: DATA RACE
+Read at 0x00c0002341d0 by goroutine 160:
+  runtime.growslice()
+      /usr/local/go/src/runtime/slice.go:178 +0x0
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).AddToFstab()
+      /src/immucore/pkg/state/state.go:259 +0x1fb
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:35 +0x215
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap2()
+      /src/immucore/pkg/state/fstabs_internal_test.go:36 +0x38
+
+Previous write at 0x00c0002341d0 by goroutine 171:
+  runtime.slicecopy()
+      /usr/local/go/src/runtime/slice.go:392 +0x0
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.(*State).appendFstab()
+      /src/immucore/pkg/state/zz_shim_test.go:6 +0x2e8
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:31 +0x8c
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1.gowrap1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:32 +0x38
+
+Goroutine 160 (running) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:33 +0x51a
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+
+Goroutine 171 (finished) created at:
+  github.com/kairos-io/kairos/v4/immucore/pkg/state.init.func12.1()
+      /src/immucore/pkg/state/fstabs_internal_test.go:29 +0x6a4
+  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/node.go:585 +0x2e
+  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3()
+      /gomod/github.com/onsi/ginkgo/v2@v2.33.1/internal/suite.go:946 +0x699
+==================
+------------------------------
+• [FAILED] [0.007 seconds]
+fstab entries recorded by concurrent DAG ops [It] keeps every entry
+/src/immucore/pkg/state/fstabs_internal_test.go:20
+
+  [FAILED] Expected
+      <[]string | len:185, cap:185>: [
+          "add0 /b none  0 0",
+          "append5 /a none  0 0",
+          "add4 /b none  0 0",
+          "add5 /b none  0 0",
+          "add7 /b none  0 0",
+          "append7 /a none  0 0",
+          "add6 /b none  0 0",
+          "append10 /a none  0 0",
+          "append9 /a none  0 0",
+          "add9 /b none  0 0",
+          "append14 /a none  0 0",
+          "append15 /a none  0 0",
+          "add10 /b none  0 0",
+          "add15 /b none  0 0",
+          "add13 /b none  0 0",
+          "add14 /b none  0 0",
+          "append16 /a none  0 0",
+          "append22 /a none  0 0",
+          "append19 /a none  0 0",
+          "append23 /a none  0 0",
+          "add19 /b none  0 0",
+          "append24 /a none  0 0",
+          "add12 /b none  0 0",
+          "append21 /a none  0 0",
+          "append20 /a none  0 0",
+          "append25 /a none  0 0",
+          "append26 /a none  0 0",
+          "add23 /b none  0 0",
+          "append28 /a none  0 0",
+          "add22 /b none  0 0",
+          "add21 /b none  0 0",
+          "append30 /a none  0 0",
+          "append32 /a none  0 0",
+          "add31 /b none  0 0",
+          "add30 /b none  0 0",
+          "add34 /b none  0 0",
+          "append39 /a none  0 0",
+          "append38 /a none  0 0",
+          "append41 /a none  0 0",
+          "add43 /b none  0 0",
+          "add38 /b none  0 0",
+          "add41 /b none  0 0",
+          "append45 /a none  0 0",
+          "append43 /a none  0 0",
+          "append46 /a none  0 0",
+          "append48 /a none  0 0",
+          "add46 /b none  0 0",
+          "append50 /a none  0 0",
+          "add48 /b none  0 0",
+          "add47 /b none  0 0",
+          "append55 /a none  0 0",
+          "append52 /a none  0 0",
+          "append54 /a none  0 0",
+          "add52 /b none  0 0",
+          "append57 /a none  0 0",
+          "append53 /a none  0 0",
+          "append60 /a none  0 0",
+          "add55 /b none  0 0",
+          "append59 /a none  0 0",
+          "add59 /b none  0 0",
+          "append61 /a none  0 0",
+          "add54 /b none  0 0",
+          "add57 /b none  0 0",
+          "append63 /a none  0 0",
+          "add53 /b none  0 0",
+          "add63 /b none  0 0",
+          "add61 /b none  0 0",
+          "add64 /b none  0 0",
+          "add62 /b none  0 0",
+          "append65 /a none  0 0",
+          "add65 /b none  0 0",
+          "add56 /b none  0 0",
+          "append67 /a none  0 0",
+          "append70 /a none  0 0",
+          "append72 /a none  0 0",
+          "append73 /a none  0 0",
+          "append66 /a none  0 0",
+          "add72 /b none  0 0",
+          "append75 /a none  0 0",
+          "append76 /a none  0 0",
+          "add74 /b none  0 0",
+          "append78 /a none  0 0",
+          "append74 /a none  0 0",
+          "add77 /b none  0 0",
+          "append79 /a none  0 0",
+          "append77 /a none  0 0",
+          "add78 /b none  0 0",
+          "add76 /b none  0 0",
+          "add75 /b none  0 0",
+          "append87 /a none  0 0",
+          "append86 /a none  0 0",
+          "add85 /b none  0 0",
+          "append90 /a none  0 0",
+          "add91 /b none  0 0",
+          "add84 /b none  0 0",
+          "add94 /b none  0 0",
+          "append98 /a none  0 0",
+          "add89 /b none  0 0",
+          "add95 /b none  0 0",
+          "add97 /b none  0 0",
+          "add98 /b none  0 0",
+          "add96 /b none  0 0",
+          "add100 /b none  0 0",
+          "add99 /b none  0 0",
+          "append101 /a none  0 0",
+          "append103 /a none  0 0",
+          "append104 /a none  0 0",
+          "add103 /b none  0 0",
+          "append107 /a none  0 0",
+          "add105 /b none  0 0",
+          "append108 /a none  0 0",
+          "append106 /a none  0 0",
+          "append109 /a none  0 0",
+          "add104 /b none  0 0",
+          "append110 /a none  0 0",
+          "add106 /b none  0 0",
+          "add108 /b none  0 0",
+          "add111 /b none  0 0",
+          "add112 /b none  0 0",
+          "append113 /a none  0 0",
+          "add117 /b none  0 0",
+          "append121 /a none  0 0",
+          "append125 /a none  0 0",
+          "add129 /b none  0 0",
+          "add121 /b none  0 0",
+          "add124 /b none  0 0",
+          "append129...
+
+  Gomega truncated this representation as it exceeds 'format.MaxLength'.
+  Consider having the object provide a custom 'GomegaStringer' representation
+  or adjust the parameters in Gomega's 'format' package.
+
+  Learn more here: https://onsi.github.io/gomega/#adjusting-output
+
+  to have length 400
+  In [It] at: /src/immucore/pkg/state/fstabs_internal_test.go:43 @ 10/29/26 15:02:05.056
+------------------------------
+SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+
+Summarizing 1 Failure:
+  [FAIL] fstab entries recorded by concurrent DAG ops [It] keeps every entry
+  /src/immucore/pkg/state/fstabs_internal_test.go:43
+
+Ran 1 of 155 Specs in 0.016 seconds
+FAIL! -- 0 Passed | 1 Failed | 0 Pending | 154 Skipped
+    testing.go:1867: race detected during execution of test
+--- FAIL: TestSuite (0.02s)
+FAIL
+FAIL	github.com/kairos-io/kairos/v4/immucore/pkg/state	0.051s
+FAIL
