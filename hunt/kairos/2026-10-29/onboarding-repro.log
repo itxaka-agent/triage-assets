@@ -1,0 +1,24 @@
+Unable to find image 'node:22-alpine' locally
+22-alpine: Pulling from library/node
+304511616d6a: Pulling fs layer
+7246d4c6a55d: Pulling fs layer
+8776aa3d2ba7: Pulling fs layer
+7b229517ed22: Pulling fs layer
+7b229517ed22: Already exists
+304511616d6a: Download complete
+7246d4c6a55d: Download complete
+8597ec7f632e: Download complete
+9cb01b8fd902: Download complete
+8776aa3d2ba7: Download complete
+304511616d6a: Pull complete
+304511616d6a: Pull complete
+7246d4c6a55d: Pull complete
+8776aa3d2ba7: Pull complete
+Digest: sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914
+Status: Downloaded newer image for node:22-alpine
+🔍 Searching for existing onboarding issues with query: repo:kairos-io/kairos is:issue "Onboarding: Jane Doe" in:title
+   Found 1 matching issues
+   ✅ Found existing onboarding issue #100 (state: closed)
+⚠️  Onboarding issue already exists for "Jane Doe": #100 (closed)
+result: {"issueNumber":100,"alreadyExists":true,"state":"closed"}
+maintainer onboarding issues created: 0

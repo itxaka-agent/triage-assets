@@ -1,0 +1,7 @@
+base_image=ghcr.io/kairos-io/hadron:v0.6.3 -> BASE_IMAGE=ghcr.io/kairos-io/hadron BASE_TAG=v0.6.3 FLAVOR=hadron FLAVOR_RELEASE=v0.6.3
+base_image=ubuntu:24.04 -> BASE_IMAGE=ubuntu BASE_TAG=24.04 FLAVOR=ubuntu FLAVOR_RELEASE=24.04
+base_image=ubuntu -> BASE_IMAGE=ubuntu BASE_TAG=ubuntu FLAVOR=ubuntu FLAVOR_RELEASE=ubuntu
+base_image=opensuse/leap -> BASE_IMAGE=opensuse/leap BASE_TAG=opensuse/leap FLAVOR=opensuse FLAVOR_RELEASE=leap-opensuse/leap
+base_image=localhost:5000/kairos-io/hadron:main -> BASE_IMAGE=localhost BASE_TAG=5000/kairos-io/hadron FLAVOR=localhost FLAVOR_RELEASE=5000/kairos-io/hadron
+base_image=ghcr.io/kairos-io/hadron@sha256:0123abcd -> BASE_IMAGE=ghcr.io/kairos-io/hadron@sha256 BASE_TAG=0123abcd FLAVOR=hadron@sha256 FLAVOR_RELEASE=0123abcd
+base_image=docker.io/ubuntu:24.04 -> BASE_IMAGE=docker.io/ubuntu BASE_TAG=24.04 FLAVOR=docker.io FLAVOR_RELEASE=ubuntu-24.04
