@@ -1,0 +1,27 @@
+=== kairos-agent upgrade  (no source)
+warning: skipping /etc/kairos/kairos-init-init-stage.yaml because it has no valid header
+warning: skipping /etc/kairos/kairos-init-install-stage.yaml because it has no valid header
+2026-10-29T10:37:56Z INF Kairos Agent version=v4.4.0-22-g667b9eac
+2026-10-29T10:37:56Z INF Kairos System version=v0.0.0-qa5689after
+2026-10-29T10:37:56Z INF Boot Mode boot_mode=active_boot
+2026-10-29T10:37:56Z INF Boot in uki mode result=true
+failed initializing spec: could not find a proper source for the upgrade.
+This can be configured in the cloud config files under the 'upgrade.system.uri' key or via cmdline using the '--source' flag
+EXIT=1
+=== kairos-agent upgrade --recovery (no source)
+warning: skipping /etc/kairos/kairos-init-init-stage.yaml because it has no valid header
+warning: skipping /etc/kairos/kairos-init-install-stage.yaml because it has no valid header
+2026-10-29T10:37:56Z INF Kairos Agent version=v4.4.0-22-g667b9eac
+2026-10-29T10:37:56Z INF Kairos System version=v0.0.0-qa5689after
+2026-10-29T10:37:56Z INF Boot Mode boot_mode=active_boot
+2026-10-29T10:37:56Z INF Boot in uki mode result=true
+failed initializing spec: could not find a proper source for the upgrade.
+This can be configured in the cloud config files under the 'upgrade.system.uri' key or via cmdline using the '--source' flag
+EXIT=1
+=== regression: explicit bad source
+2026-10-29T10:37:57Z INF Kairos Agent version=v4.4.0-22-g667b9eac
+2026-10-29T10:37:57Z INF Kairos System version=v0.0.0-qa5689after
+2026-10-29T10:37:57Z INF Boot Mode boot_mode=active_boot
+2026-10-29T10:37:57Z INF Boot in uki mode result=true
+failed initializing spec: could not resolve image nonexistent.invalid/x:y: Get "https://nonexistent.invalid/v2/": dial tcp: lookup nonexistent.invalid on 10.0.2.3:53: no such host
+EXIT=1
