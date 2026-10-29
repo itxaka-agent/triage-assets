@@ -1,0 +1,9 @@
+=== RUN   TestRotateReproF10
+    zz_rotate_repro_test.go:32: HTTP status=200 newToken="<redacted>" tokenFileStatErr=stat /tmp/TestRotateReproF101092110928/001/missing-dir/registration-token: no such file or directory
+    zz_rotate_repro_test.go:34: BUG: rotate returned 200 but new token was not persisted
+    zz_rotate_repro_test.go:57: scenario2 uid=1000 HTTP status=200 rotatedTo="<redacted>" tokenAfterRestart="old-leaked-token" err=<nil>
+    zz_rotate_repro_test.go:59: BUG: rotation reported 200 but restart reverts to "old-leaked-token"
+--- FAIL: TestRotateReproF10 (0.00s)
+FAIL
+FAIL	github.com/kairos-io/AuroraBoot/pkg/handlers	0.016s
+FAIL

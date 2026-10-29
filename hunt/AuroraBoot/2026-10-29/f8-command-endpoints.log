@@ -1,0 +1,13 @@
+=== RUN   TestF8
+    f8_test.go:33: POST /api/v1/nodes/does-not-exist/commands -> 201 {"id":"1c6e497f-f491-4fd7-af1e-acc526cc3ba8","managedNodeID":"does-not-exist","command":"reboot","args":null,"phase":"Pending","result":"","expiresAt":null,"deliveredAt":null,"completedAt":null,"createdAt":"2026-10-29T09:39:30.885742363Z"}
+    f8_test.go:37: rows stored for missing node: 1
+    f8_test.go:33: PUT /api/v1/nodes/any/commands/no-such-command/status -> 200 {"status":"ok"}
+
+2026/10/29 09:39:30 [31;1m/src/internal/store/gorm/store.go:726 [35;1mrecord not found
+[0m[33m[0.140ms] [34;1m[rows:0][0m SELECT * FROM `node_commands` WHERE id = "no-such-command" ORDER BY `node_commands`.`id` LIMIT 1
+    f8_test.go:40: GetByID(no-such-command) after 200: cmd=<nil> err=record not found
+    f8_test.go:33: DELETE /api/v1/nodes/any/commands/no-such-command -> 404 {"error":"command not found"}
+    f8_test.go:33: POST /api/v1/groups/no-such-group/commands -> 201 []
+--- PASS: TestF8 (0.02s)
+PASS
+ok  	github.com/kairos-io/AuroraBoot/f8repro	0.030s
