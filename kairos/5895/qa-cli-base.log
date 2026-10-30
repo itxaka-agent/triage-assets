@@ -1,0 +1,63 @@
+===== BEFORE
+--- /oem/a.yaml
+#cloud-config
+phonehome:
+  url: https://example.invalid
+  registration_token: <redacted>
+stack:
+  keep: me
+--- /oem/sub/dir/b.yml
+#cloud-config
+phonehome:
+  url: https://example.invalid
+users:
+- name: keepuser
+--- /usr/local/cloud-config/c.yaml
+#cloud-config
+phonehome:
+  url: https://example.invalid
+hostname: keephost
+--- /usr/local/cloud-config/deep/d.yaml
+#cloud-config
+phonehome:
+  url: https://example.invalid
+stages:
+  boot:
+  - name: x
+--- /oem/sub/note.txt
+phonehome:
+  url: x
+===== RUN
+stopping kairos-agent-phonehome:  (exec: "systemctl": executable file not found in $PATH)
+disabling kairos-agent-phonehome:  (exec: "systemctl": executable file not found in $PATH)
+unit file already absent: /etc/systemd/system/kairos-agent-phonehome.service
+daemon-reload:  (exec: "systemctl": executable file not found in $PATH)
+credentials already absent: /usr/local/.kairos/phonehome-credentials.yaml
+stripped phonehome stanza from /oem/a.yaml
+rc=0
+===== AFTER
+--- /oem/a.yaml
+#cloud-config
+stack:
+  keep: me
+--- /oem/sub/dir/b.yml
+#cloud-config
+phonehome:
+  url: https://example.invalid
+users:
+- name: keepuser
+--- /usr/local/cloud-config/c.yaml
+#cloud-config
+phonehome:
+  url: https://example.invalid
+hostname: keephost
+--- /usr/local/cloud-config/deep/d.yaml
+#cloud-config
+phonehome:
+  url: https://example.invalid
+stages:
+  boot:
+  - name: x
+--- /oem/sub/note.txt
+phonehome:
+  url: x

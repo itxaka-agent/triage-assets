@@ -1,0 +1,13 @@
+=== RUN   TestPhoneHome
+Running Suite: PhoneHome Suite - /src/agent/internal/phonehome
+==============================================================
+Random Seed: 1793369338
+
+Will run 144 of 144 specs
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+Ran 144 of 144 Specs in 5.720 seconds
+SUCCESS! -- 144 Passed | 0 Failed | 0 Pending | 0 Skipped
+--- PASS: TestPhoneHome (5.72s)
+PASS
+ok  	github.com/kairos-io/kairos/v4/agent/internal/phonehome	5.729s
