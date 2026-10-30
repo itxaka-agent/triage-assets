@@ -1,0 +1,162 @@
+go: downloading github.com/hashicorp/mdns v1.0.7
+go: downloading github.com/foxboron/go-uefi v0.0.0-20261004203234-c7f1f57bdc6e
+go: downloading github.com/itchyny/gojq v0.12.19
+go: downloading github.com/jaypipes/ghw v0.26.0
+go: downloading github.com/mudler/go-pluggable v0.0.0-20230126220627-7710299a0ae5
+go: downloading github.com/gorilla/websocket v1.5.4-0.20250319132907-e064f32e3674
+go: downloading github.com/kairos-io/tpm-helpers v0.0.0-20261020143916-2cc4ae14e34b
+go: downloading github.com/rs/zerolog v1.35.1
+go: downloading github.com/zcalusic/sysinfo v1.2.1
+go: downloading github.com/google/go-tpm v0.9.8
+go: downloading gopkg.in/yaml.v3 v3.0.1
+go: downloading github.com/google/go-attestation v0.6.4
+go: downloading github.com/anatol/luks.go v0.0.0-20260615185044-2658459c8ca5
+go: downloading github.com/gofrs/uuid v4.4.0+incompatible
+go: downloading github.com/mudler/yip v1.26.4
+go: downloading github.com/denisbrodbeck/machineid v1.0.1
+go: downloading github.com/hashicorp/go-multierror v1.1.1
+go: downloading github.com/joho/godotenv v1.5.1
+go: downloading github.com/pterm/pterm v0.12.84
+go: downloading github.com/qeesung/image2ascii v1.0.1
+go: downloading golang.org/x/sys v0.49.0
+go: downloading github.com/edsrzf/mmap-go v1.2.0
+go: downloading github.com/saferwall/pe v1.6.5
+go: downloading github.com/Masterminds/sprig/v3 v3.3.0
+go: downloading github.com/avast/retry-go v3.0.0+incompatible
+go: downloading github.com/hashicorp/errwrap v1.1.0
+go: downloading github.com/miekg/dns v1.1.72
+go: downloading golang.org/x/net v0.62.0
+go: downloading github.com/chuckpreslar/emission v0.0.0-20170206194824-a7ddd980baf9
+go: downloading github.com/pkg/errors v0.9.1
+go: downloading github.com/itchyny/timefmt-go v0.1.8
+go: downloading github.com/google/certificate-transparency-go v1.1.4
+go: downloading github.com/google/go-tpm-tools v0.4.7
+go: downloading github.com/google/uuid v1.6.0
+go: downloading github.com/twpayne/go-vfs/v4 v4.3.0
+go: downloading github.com/anatol/devmapper.go v0.0.0-20250316020617-2671eefd35d7
+go: downloading github.com/dgryski/go-camellia v0.0.0-20191119043421-69a8a13fb23d
+go: downloading github.com/jzelinskie/whirlpool v0.0.0-20201016144138-0675e54bb004
+go: downloading golang.org/x/crypto v0.58.0
+go: downloading dario.cat/mergo v1.0.2
+go: downloading github.com/Masterminds/goutils v1.1.1
+go: downloading github.com/Masterminds/semver/v3 v3.5.0
+go: downloading github.com/huandu/xstrings v1.5.0
+go: downloading github.com/mitchellh/copystructure v1.2.0
+go: downloading github.com/shopspring/decimal v1.4.0
+go: downloading github.com/spf13/cast v1.10.0
+go: downloading github.com/twpayne/go-vfs/v5 v5.0.5
+go: downloading github.com/sirupsen/logrus v1.10.2
+go: downloading github.com/sanity-io/litter v1.5.8
+go: downloading github.com/spectrocloud-labs/herd v0.4.2
+go: downloading github.com/mattn/go-colorable v0.1.15
+go: downloading github.com/coreos/go-systemd/v22 v22.7.0
+go: downloading golang.org/x/text v0.43.0
+go: downloading atomicgo.dev/cursor v0.2.0
+go: downloading atomicgo.dev/keyboard v0.2.10
+go: downloading atomicgo.dev/schedule v0.1.0
+go: downloading github.com/lithammer/fuzzysearch v1.1.8
+go: downloading github.com/mattn/go-runewidth v0.0.24
+go: downloading golang.org/x/term v0.47.0
+go: downloading github.com/mitchellh/reflectwalk v1.0.2
+go: downloading github.com/cavaliergopher/grab/v3 v3.0.1
+go: downloading github.com/diskfs/go-diskfs v1.9.4
+go: downloading github.com/containerd/containerd/v2 v2.4.2
+go: downloading github.com/go-git/go-git/v5 v5.19.2
+go: downloading github.com/google/go-containerregistry v0.22.1
+go: downloading github.com/mauromorales/xpasswd v0.4.8
+go: downloading github.com/mudler/entities v0.8.3
+go: downloading github.com/satori/go.uuid v1.2.1-0.20181028125025-b2ce2384e17b
+go: downloading gopkg.in/ini.v1 v1.67.3
+go: downloading pault.ag/go/modprobe v0.2.0
+go: downloading github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510
+go: downloading github.com/jaypipes/pcidb v1.1.1
+go: downloading github.com/kendru/darwin/go/depgraph v0.0.0-20230809052043-4d1c7e9d1767
+go: downloading github.com/samber/lo v1.53.0
+go: downloading github.com/mattn/go-isatty v0.0.22
+go: downloading github.com/containerd/console v1.0.5
+go: downloading github.com/clipperhouse/uax29/v2 v2.7.0
+go: downloading github.com/gofrs/flock v0.13.0
+go: downloading github.com/phayes/permbits v0.0.0-20190612203442-39d7c581d2ee
+go: downloading github.com/tredoe/osutil v1.5.0
+go: downloading github.com/vmware/vmw-guestinfo v0.0.0-20220317130741-510905f0efa3
+go: downloading github.com/ProtonMail/go-crypto v1.4.1
+go: downloading github.com/go-git/go-billy/v5 v5.9.0
+go: downloading github.com/sergi/go-diff v1.4.0
+go: downloading github.com/golang/groupcache v0.0.0-20241129210726-2c02b8208cf8
+go: downloading github.com/kevinburke/ssh_config v1.2.0
+go: downloading github.com/skeema/knownhosts v1.3.1
+go: downloading github.com/xanzy/ssh-agent v0.3.3
+go: downloading github.com/spf13/afero v1.15.0
+go: downloading github.com/docker/cli v29.7.2+incompatible
+go: downloading github.com/opencontainers/go-digest v1.0.0
+go: downloading github.com/moby/docker-image-spec v1.3.1
+go: downloading github.com/moby/moby/api v1.56.1
+go: downloading github.com/moby/moby/client v0.6.2
+go: downloading golang.org/x/sync v0.24.0
+go: downloading github.com/klauspost/compress v1.20.3
+go: downloading github.com/pierrec/lz4 v2.6.1+incompatible
+go: downloading github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8
+go: downloading pault.ag/go/topsort v0.1.1
+go: downloading github.com/pjbgf/sha1cd v0.6.0
+go: downloading github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376
+go: downloading github.com/emirpasic/gods v1.18.1
+go: downloading github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99
+go: downloading github.com/cyphar/filepath-securejoin v0.7.0
+go: downloading github.com/opencontainers/image-spec v1.1.1
+go: downloading github.com/cloudflare/circl v1.6.3
+go: downloading github.com/containerd/errdefs v1.0.0
+go: downloading github.com/containerd/errdefs/pkg v0.3.0
+go: downloading github.com/distribution/reference v0.6.0
+go: downloading github.com/docker/go-connections v0.8.2
+go: downloading go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.71.0
+go: downloading go.opentelemetry.io/otel/trace v1.46.0
+go: downloading github.com/containerd/continuity v0.5.0
+go: downloading github.com/containerd/log v0.2.0
+go: downloading github.com/moby/sys/userns v0.2.1
+go: downloading gopkg.in/warnings.v0 v0.1.2
+go: downloading github.com/docker/go-units v0.5.0
+go: downloading github.com/docker/docker-credential-helpers v0.9.3
+go: downloading go.opentelemetry.io/otel v1.46.0
+go: downloading github.com/felixge/httpsnoop v1.1.0
+go: downloading go.opentelemetry.io/otel/metric v1.46.0
+go: downloading github.com/klauspost/cpuid/v2 v2.3.0
+go: downloading github.com/cespare/xxhash/v2 v2.3.0
+go: downloading github.com/go-logr/stdr v1.2.2
+go: downloading github.com/go-logr/logr v1.4.4
+go: downloading go.opentelemetry.io/auto/sdk v1.2.1
+go: downloading github.com/elliotwutingfeng/asciiset v0.0.0-20260129054604-cfde2086bc57
+go: downloading github.com/djherbis/times v1.6.0
+go: downloading github.com/ulikunitz/xz v0.5.15
+go: downloading github.com/anchore/go-lzo v0.1.0
+go: downloading github.com/pierrec/lz4/v4 v4.1.26
+go: downloading github.com/pkg/xattr v0.4.12
+go: downloading github.com/ayoubfaouzi/pkcs7 v0.2.3
+go: downloading github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
+go: downloading github.com/wayneashleyberry/terminal-dimensions v1.1.0
+go: downloading github.com/aybabtme/rgbterm v0.0.0-20170906152045-cc83f3b3ce59
+=== RUN   TestAttestationEndpointURL
+=== RUN   TestAttestationEndpointURL/no_trailing_slash
+=== RUN   TestAttestationEndpointURL/trailing_slash_is_normalized
+=== RUN   TestAttestationEndpointURL/multiple_trailing_slashes_are_normalized
+=== RUN   TestAttestationEndpointURL/bare_host_without_path
+=== RUN   TestAttestationEndpointURL/bare_host_with_trailing_slash
+--- PASS: TestAttestationEndpointURL (0.00s)
+    --- PASS: TestAttestationEndpointURL/no_trailing_slash (0.00s)
+    --- PASS: TestAttestationEndpointURL/trailing_slash_is_normalized (0.00s)
+    --- PASS: TestAttestationEndpointURL/multiple_trailing_slashes_are_normalized (0.00s)
+    --- PASS: TestAttestationEndpointURL/bare_host_without_path (0.00s)
+    --- PASS: TestAttestationEndpointURL/bare_host_with_trailing_slash (0.00s)
+=== RUN   TestDiscoverMDNSServerFindsLateResponder
+--- PASS: TestDiscoverMDNSServerFindsLateResponder (0.06s)
+=== RUN   TestDiscoverMDNSServerTimesOutAndStopsQuerying
+--- PASS: TestDiscoverMDNSServerTimesOutAndStopsQuerying (0.30s)
+=== RUN   TestQueryMDNSUsesIPv6WhenThereIsNoIPv4
+--- PASS: TestQueryMDNSUsesIPv6WhenThereIsNoIPv4 (0.00s)
+=== RUN   TestQueryMDNSKeepsTheZoneOfALinkLocalAddress
+--- PASS: TestQueryMDNSKeepsTheZoneOfALinkLocalAddress (0.00s)
+=== RUN   TestQueryMDNSPrefersIPv4
+--- PASS: TestQueryMDNSPrefersIPv4 (0.00s)
+=== RUN   TestQueryMDNSIgnoresAnAnswerWithoutAnAddress
+--- PASS: TestQueryMDNSIgnoresAnAnswerWithoutAnAddress (0.20s)
+PASS
+ok  	github.com/kairos-io/kairos/v4/kcrypt/discovery/client	0.573s

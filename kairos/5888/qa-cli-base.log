@@ -1,0 +1,108 @@
+== build
+
+### sysext install /tmp/ext/foo.raw
+2026-10-30T14:34:04Z INF Kairos Agent version=dev
+2026-10-30T14:34:04Z INF Boot Mode boot_mode=unknown
+2026-10-30T14:34:04Z INF Boot in uki mode result=false
+2026-10-30T14:34:04Z INF [8375] Downloading https://kairos-io.github.io/hadron-layers/releases.json...
+2026-10-30T14:34:04Z ERR [8375] Download failed: Get "https://kairos-io.github.io/hadron-layers/releases.json": dial tcp: lookup kairos-io.github.io on 192.168.1.4:53: dial udp 192.168.1.4:53: connect: network is unreachable
+
+2026-10-30T14:34:04Z WRN Skipping unreadable extension catalog error="Get \"https://kairos-io.github.io/hadron-layers/releases.json\": dial tcp: lookup kairos-io.github.io on 192.168.1.4:53: dial udp 192.168.1.4:53: connect: network is unreachable" catalog=https://kairos-io.github.io/hadron-layers/releases.json
+2026-10-30T14:34:04Z ERR failed installing system extension error="no extension catalog could be read: catalog https://kairos-io.github.io/hadron-layers/releases.json: Get \"https://kairos-io.github.io/hadron-layers/releases.json\": dial tcp: lookup kairos-io.github.io on 192.168.1.4:53: dial udp 192.168.1.4:53: connect: network is unreachable"
+no extension catalog could be read: catalog https://kairos-io.github.io/hadron-layers/releases.json: Get "https://kairos-io.github.io/hadron-layers/releases.json": dial tcp: lookup kairos-io.github.io on 192.168.1.4:53: dial udp 192.168.1.4:53: connect: network is unreachable
+exit=1
+
+### sysext install docker://example.invalid/foo:1
+2026-10-30T14:34:05Z INF Kairos Agent version=dev
+2026-10-30T14:34:05Z INF Boot Mode boot_mode=unknown
+2026-10-30T14:34:05Z INF Boot in uki mode result=false
+2026-10-30T14:34:05Z INF [8400] Downloading https://kairos-io.github.io/hadron-layers/releases.json...
+2026-10-30T14:34:05Z ERR [8400] Download failed: Get "https://kairos-io.github.io/hadron-layers/releases.json": dial tcp: lookup kairos-io.github.io on 192.168.1.4:53: dial udp 192.168.1.4:53: connect: network is unreachable
+
+2026-10-30T14:34:05Z WRN Skipping unreadable extension catalog error="Get \"https://kairos-io.github.io/hadron-layers/releases.json\": dial tcp: lookup kairos-io.github.io on 192.168.1.4:53: dial udp 192.168.1.4:53: connect: network is unreachable" catalog=https://kairos-io.github.io/hadron-layers/releases.json
+2026-10-30T14:34:05Z ERR failed installing system extension error="no extension catalog could be read: catalog https://kairos-io.github.io/hadron-layers/releases.json: Get \"https://kairos-io.github.io/hadron-layers/releases.json\": dial tcp: lookup kairos-io.github.io on 192.168.1.4:53: dial udp 192.168.1.4:53: connect: network is unreachable"
+no extension catalog could be read: catalog https://kairos-io.github.io/hadron-layers/releases.json: Get "https://kairos-io.github.io/hadron-layers/releases.json": dial tcp: lookup kairos-io.github.io on 192.168.1.4:53: dial udp 192.168.1.4:53: connect: network is unreachable
+exit=1
+
+### sysext install https://example.invalid/foo.raw
+2026-10-30T14:34:05Z INF Kairos Agent version=dev
+2026-10-30T14:34:05Z INF Boot Mode boot_mode=unknown
+2026-10-30T14:34:05Z INF Boot in uki mode result=false
+2026-10-30T14:34:05Z INF [8425] Downloading https://kairos-io.github.io/hadron-layers/releases.json...
+2026-10-30T14:34:05Z ERR [8425] Download failed: Get "https://kairos-io.github.io/hadron-layers/releases.json": dial tcp: lookup kairos-io.github.io on 192.168.1.4:53: dial udp 192.168.1.4:53: connect: network is unreachable
+
+2026-10-30T14:34:05Z WRN Skipping unreadable extension catalog error="Get \"https://kairos-io.github.io/hadron-layers/releases.json\": dial tcp: lookup kairos-io.github.io on 192.168.1.4:53: dial udp 192.168.1.4:53: connect: network is unreachable" catalog=https://kairos-io.github.io/hadron-layers/releases.json
+2026-10-30T14:34:05Z ERR failed installing system extension error="failed to create target dir /var/lib/kairos/extensions: mkdir /var/lib/kairos: permission denied"
+failed to create target dir /var/lib/kairos/extensions: mkdir /var/lib/kairos: permission denied
+exit=1
+
+### sysext install somename
+2026-10-30T14:34:05Z INF Kairos Agent version=dev
+2026-10-30T14:34:05Z INF Boot Mode boot_mode=unknown
+2026-10-30T14:34:05Z INF Boot in uki mode result=false
+2026-10-30T14:34:05Z INF [8449] Downloading https://kairos-io.github.io/hadron-layers/releases.json...
+2026-10-30T14:34:05Z ERR [8449] Download failed: Get "https://kairos-io.github.io/hadron-layers/releases.json": dial tcp: lookup kairos-io.github.io on 192.168.1.4:53: dial udp 192.168.1.4:53: connect: network is unreachable
+
+2026-10-30T14:34:05Z WRN Skipping unreadable extension catalog error="Get \"https://kairos-io.github.io/hadron-layers/releases.json\": dial tcp: lookup kairos-io.github.io on 192.168.1.4:53: dial udp 192.168.1.4:53: connect: network is unreachable" catalog=https://kairos-io.github.io/hadron-layers/releases.json
+2026-10-30T14:34:05Z ERR failed installing system extension error="no extension catalog could be read: catalog https://kairos-io.github.io/hadron-layers/releases.json: Get \"https://kairos-io.github.io/hadron-layers/releases.json\": dial tcp: lookup kairos-io.github.io on 192.168.1.4:53: dial udp 192.168.1.4:53: connect: network is unreachable"
+no extension catalog could be read: catalog https://kairos-io.github.io/hadron-layers/releases.json: Get "https://kairos-io.github.io/hadron-layers/releases.json": dial tcp: lookup kairos-io.github.io on 192.168.1.4:53: dial udp 192.168.1.4:53: connect: network is unreachable
+exit=1
+
+### sysext install --version 1.0 /tmp/ext/foo.raw
+2026-10-30T14:34:05Z INF Kairos Agent version=dev
+2026-10-30T14:34:05Z INF Boot Mode boot_mode=unknown
+2026-10-30T14:34:05Z INF Boot in uki mode result=false
+2026-10-30T14:34:05Z INF [8473] Downloading https://kairos-io.github.io/hadron-layers/releases.json...
+2026-10-30T14:34:05Z ERR [8473] Download failed: Get "https://kairos-io.github.io/hadron-layers/releases.json": dial tcp: lookup kairos-io.github.io on 192.168.1.4:53: dial udp 192.168.1.4:53: connect: network is unreachable
+
+2026-10-30T14:34:05Z WRN Skipping unreadable extension catalog error="Get \"https://kairos-io.github.io/hadron-layers/releases.json\": dial tcp: lookup kairos-io.github.io on 192.168.1.4:53: dial udp 192.168.1.4:53: connect: network is unreachable" catalog=https://kairos-io.github.io/hadron-layers/releases.json
+2026-10-30T14:34:05Z ERR failed installing system extension error="no extension catalog could be read: catalog https://kairos-io.github.io/hadron-layers/releases.json: Get \"https://kairos-io.github.io/hadron-layers/releases.json\": dial tcp: lookup kairos-io.github.io on 192.168.1.4:53: dial udp 192.168.1.4:53: connect: network is unreachable"
+no extension catalog could be read: catalog https://kairos-io.github.io/hadron-layers/releases.json: Get "https://kairos-io.github.io/hadron-layers/releases.json": dial tcp: lookup kairos-io.github.io on 192.168.1.4:53: dial udp 192.168.1.4:53: connect: network is unreachable
+exit=1
+
+### sysext install --version 1.0 docker://example.invalid/foo:1
+2026-10-30T14:34:05Z INF Kairos Agent version=dev
+2026-10-30T14:34:05Z INF Boot Mode boot_mode=unknown
+2026-10-30T14:34:05Z INF Boot in uki mode result=false
+2026-10-30T14:34:05Z INF [8497] Downloading https://kairos-io.github.io/hadron-layers/releases.json...
+2026-10-30T14:34:05Z ERR [8497] Download failed: Get "https://kairos-io.github.io/hadron-layers/releases.json": dial tcp: lookup kairos-io.github.io on 192.168.1.4:53: dial udp 192.168.1.4:53: connect: network is unreachable
+
+no extension catalog could be read: catalog https://kairos-io.github.io/hadron-layers/releases.json: Get "https://kairos-io.github.io/hadron-layers/releases.json": dial tcp: lookup kairos-io.github.io on 192.168.1.4:53: dial udp 192.168.1.4:53: connect: network is unreachable
+2026-10-30T14:34:05Z WRN Skipping unreadable extension catalog error="Get \"https://kairos-io.github.io/hadron-layers/releases.json\": dial tcp: lookup kairos-io.github.io on 192.168.1.4:53: dial udp 192.168.1.4:53: connect: network is unreachable" catalog=https://kairos-io.github.io/hadron-layers/releases.json
+2026-10-30T14:34:05Z ERR failed installing system extension error="no extension catalog could be read: catalog https://kairos-io.github.io/hadron-layers/releases.json: Get \"https://kairos-io.github.io/hadron-layers/releases.json\": dial tcp: lookup kairos-io.github.io on 192.168.1.4:53: dial udp 192.168.1.4:53: connect: network is unreachable"
+exit=1
+
+### sysext install --help
+NAME:
+   kairos-agent sysext install - Install a system extension
+
+USAGE:
+   install [--catalog URL]... [--version VERSION] URI|NAME
+
+DESCRIPTION:
+   Install a system extension from a URI or catalog
+
+OPTIONS:
+   --catalog extensions.catalogs [ --catalog extensions.catalogs ]  Extension catalog URL, repeatable. Searched in order, the first catalog publishing the name wins. Defaults to extensions.catalogs from the cloud config.
+   --version value                                                  Extension version from the catalog. An exact version, or a semver constraint such as ">= 2.1, < 3"
+   --help, -h                                                       show help
+exit=0
+
+== tests
+2026-10-30T14:34:07Z WRN Skipping unreadable extension catalog error="download failed" catalog=https://kairos-io.github.io/hadron-layers/releases.json
+--- FAIL: TestSysextInstallFromAPathFetchesNoCatalog (0.00s)
+    root_test.go:131: installing a local image with no catalog reachable: no extension catalog could be read: catalog https://kairos-io.github.io/hadron-layers/releases.json: connection refused
+--- FAIL: TestSysextInstallFromARegistryFetchesNoCatalog (0.00s)
+    root_test.go:149: no extension catalog could be read: catalog https://kairos-io.github.io/hadron-layers/releases.json: connection refused
+--- FAIL: TestSysextInstallFromAnHTTPSURIDownloadsOnce (0.00s)
+    root_test.go:170: requested ["https://kairos-io.github.io/hadron-layers/releases.json" "https://example.test/tools.sysext.raw"], want only "https://example.test/tools.sysext.raw", once
+--- FAIL: TestSysextInstallRefusesAVersionOnAReference (0.00s)
+    root_test.go:179: expected a version-on-reference error, got no extension catalog could be read: catalog https://kairos-io.github.io/hadron-layers/releases.json: connection refused
+--- FAIL: TestConfextInstallRefusesANameWithNoCatalog (0.00s)
+    root_test.go:211: expected an error listing the accepted sources, got source git does not match any of oci:, file: or http(s): 
+2026-10-30T14:34:07Z WRN Skipping unreadable extension catalog error="download failed" catalog=https://example.test/catalog.json
+Using registry: quay.io/kairos
+warn: failed unmarshalling data: 'invalid character 'o' in literal null (expecting 'u')'
+FAIL
+FAIL	github.com/kairos-io/kairos/v4/agent/pkg/cmd	0.028s
+FAIL
