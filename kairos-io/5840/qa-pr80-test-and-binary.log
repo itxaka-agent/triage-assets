@@ -1,0 +1,37 @@
+=== BASE (PR tests, base code)
+mint join material: create token: kubeadm [token create --ttl 1h0m0s --kubeconfig /tmp/<t>.conf] failed (exit 0): fork/exec /usr/bin/kubeadm: no such file or directory: 
+mint join material: create token: kubeadm [token create --ttl 1h0m0s --kubeconfig /tmp/<t>.conf] failed (exit 0): fork/exec /usr/bin/kubeadm: no such file or directory: 
+--- FAIL: TestRunMintJoinRejectsShortClusterToken (0.00s)
+    main_test.go:169: runMintJoin(--cluster-token "short") = 1, want 2
+    main_test.go:169: runMintJoin(--cluster-token "  short-token   ") = 1, want 2
+FAIL
+FAIL	github.com/kairos-io/provider-kubernetes	0.003s
+--- FAIL: TestRenderJoinCloudConfig_Rejects (0.00s)
+    --- FAIL: TestRenderJoinCloudConfig_Rejects/short_cluster_token (0.00s)
+        joinsnippet_test.go:105: expected error for short cluster token, got nil
+    --- FAIL: TestRenderJoinCloudConfig_Rejects/short_cluster_token_after_trim (0.00s)
+        joinsnippet_test.go:105: expected error for short cluster token after trim, got nil
+FAIL
+FAIL	github.com/kairos-io/provider-kubernetes/internal/provider	0.007s
+FAIL
+=== HEAD
+--- PASS: TestRunMintJoinRejectsShortClusterToken (0.00s)
+PASS
+ok  	github.com/kairos-io/provider-kubernetes	0.003s
+--- PASS: TestRenderJoinCloudConfig_Rejects (0.00s)
+--- PASS: TestRenderJoinCloudConfig_RejectsInvalidUTF8 (0.00s)
+PASS
+ok  	github.com/kairos-io/provider-kubernetes/internal/provider	0.003s
+=== base: mint-join --cluster-token <redacted 5 chars>
+mint join material: create token: kubeadm [token create --ttl 1h0m0s --kubeconfig /tmp/root/etc/kubernetes/admin.conf] failed (exit 0): fork/exec /usr/bin/kubeadm: no such file or directory: 
+exit=1
+--- valid 16+ chars
+mint join material: create token: kubeadm [token create --ttl 1h0m0s --kubeconfig /tmp/root/etc/kubernetes/admin.conf] failed (exit 0): fork/exec /usr/bin/kubeadm: no such file or directory: 
+exit=1
+=== head: mint-join --cluster-token <redacted 5 chars>
+cluster_token must be at least 16 characters
+exit=2
+--- valid 16+ chars
+warning: cluster_token is below the recommended 128 bits of entropy; it is treated as a low-trust correlation value only and must not be reused as a secret
+mint join material: create token: kubeadm [token create --ttl 1h0m0s --kubeconfig /tmp/root/etc/kubernetes/admin.conf] failed (exit 0): fork/exec /usr/bin/kubeadm: no such file or directory: 
+exit=1
