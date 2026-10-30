@@ -1,0 +1,9 @@
+QA #5849  config_url that names its own URL (test server switches to a plain config after 300 hits so the VM can finish booting)
+
+BEFORE (merge base 1643e129): fetches of the same URL during boot = 309
+AFTER  (PR head 8969974): fetches of the same URL during boot = 9
+
+AFTER guest log:
+  Oct 30 09:09:09 kairos-532a kairos-agent[1205]: config_url http://10.0.2.2:18080/head/loop was already fetched in this chain, not following it again
+  Oct 30 09:09:10 kairos-532a kairos-agent[1261]: config_url http://10.0.2.2:18080/head/loop was already fetched in this chain, not following it again
+  Oct 30 09:09:10 kairos-532a kairos-agent[1260]: config_url http://10.0.2.2:18080/head/loop was already fetched in this chain, not following it again

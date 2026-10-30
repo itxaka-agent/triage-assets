@@ -1,0 +1,11 @@
+QA #5855  kairos provider finds a provider that is only on PATH (fake agent-provider-fake in /tmp/pbin)
+
+BEFORE (merge base 1643e129)
+### PATH=/tmp/pbin:$PATH kairos provider hello
+kairos provider: no provider installed (looked in /system/providers, /usr/local/system/providers). Providers ship in Kairos standard images, not core ones
+rc=1
+
+AFTER (PR head cb3d6ff)
+### PATH=/tmp/pbin:$PATH kairos provider hello
+fake provider ran: /tmp/pbin/agent-provider-fake args=hello
+rc=0

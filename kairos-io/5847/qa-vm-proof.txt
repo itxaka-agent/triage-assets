@@ -1,0 +1,22 @@
+QA #5847  sub-tools answer their own version command (live ISO booted in QEMU)
+
+BEFORE (merge base 1643e129)
+### kairos-agent version
+kairos v4.4.0-qabase
+
+### kairos-agent version --long
+kairos v4.4.0-qabase
+### 5847 kairos provider version (with fake provider on PATH)
+kairos v4.4.0-qabase
+rc=0
+
+AFTER (PR head 78e774da)
+### kairos-agent version
+v4.4.0-qahead
+
+### kairos-agent version --long
+kairos v4.4.0-qahead
+go     go1.27.3
+### 5847 kairos provider version (with fake provider on PATH)
+fake provider ran: /tmp/pbin/agent-provider-fake args=version
+rc=0

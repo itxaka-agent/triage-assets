@@ -1,0 +1,23 @@
+QA #5845  config_url answers 404 with a body; server counts hits and distinct TCP connections
+(same cloud-config, same boot, fetches at boot over several stages x 3 retries)
+
+BEFORE (merge base 1643e129): requests=54 distinct connections=54
+   10:04:29 /base/404 conn_port=46308 n=1
+   10:04:30 /base/404 conn_port=46312 n=2
+   10:04:32 /base/404 conn_port=46348 n=3
+   10:04:32 /base/404 conn_port=46360 n=4
+   10:04:32 /base/404 conn_port=46374 n=5
+   10:04:33 /base/404 conn_port=46376 n=6
+   10:04:33 /base/404 conn_port=46392 n=7
+   10:04:35 /base/404 conn_port=46402 n=8
+
+AFTER  (PR head f0448627): requests=57 distinct connections=18
+   10:04:28 /head/404 conn_port=46302 n=1
+   10:04:29 /head/404 conn_port=46302 n=2
+   10:04:31 /head/404 conn_port=46302 n=3
+   10:04:32 /head/404 conn_port=46326 n=4
+   10:04:32 /head/404 conn_port=46332 n=5
+   10:04:33 /head/404 conn_port=46326 n=6
+   10:04:33 /head/404 conn_port=46332 n=7
+   10:04:35 /head/404 conn_port=46326 n=8
+

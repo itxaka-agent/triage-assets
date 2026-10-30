@@ -1,0 +1,44 @@
+QA #5854  install.oem_files: valid 20_good.yaml + 30_bad.yaml (content: hello)
+
+BEFORE (merge base 1643e129)
+### manual-install (oem_files: one valid entry, one with content 'hello')
+install exit code: 0
+### OEM partition after install
+total 16
+drwxr-xr-x 3 root root  1024 Oct 30 09:10 .
+drwxrwxrwt 9 root root   260 Oct 30 09:10 ..
+-r-------- 1 root root    83 Oct 30 09:10 20_good.yaml
+-r-------- 1 root root     5 Oct 30 09:10 30_bad.yaml
+-rw-r----- 1 root root   490 Oct 30 09:10 90_custom.yaml
+drwx------ 2 root root 12288 Oct 30 09:10 lost+found
+--- 30_bad.yaml:
+hello
+
+AFTER (PR head 0fcbbc9)
+### manual-install (oem_files: one valid entry, one with content 'hello')
+install exit code: 1
+2026-10-30T09:10:12Z INF Copying /run/cos/state/cOS/active.img source to /run/cos/recovery/cOS/recovery.img
+2026-10-30T09:10:15Z INF Finished copying /run/cos/state/cOS/active.img into /run/cos/recovery/cOS/recovery.img
+2026-10-30T09:10:16Z INF Copying /run/cos/state/cOS/active.img source to /run/cos/state/cOS/passive.img
+2026-10-30T09:10:21Z INF Finished copying /run/cos/state/cOS/active.img into /run/cos/state/cOS/passive.img
+2026-10-30T09:10:22Z ERR could not write the oem files error="install.oem_files: \"30_bad.yaml\" is not a cloud-config yip can load, and it would stop every file in /oem from running at boot: yaml: unmarshal errors:\n  line 1: cannot unmarshal !!str `hello
+2026-10-30T09:10:22Z INF Unmounting disk partitions
+1 error occurred:
+	* install.oem_files: "30_bad.yaml" is not a cloud-config yip can load, and it would stop every file in /oem from running at boot: yaml: unmarshal errors:
+  line 1: cannot unmarshal !!str `hello` into schema.YipConfig
+### OEM partition after install
+total 14
+drwxr-xr-x 3 root root  1024 Oct 30 09:10 .
+drwxrwxrwt 8 root root   240 Oct 30 09:10 ..
+-rw-r----- 1 root root   490 Oct 30 09:10 90_custom.yaml
+drwx------ 2 root root 12288 Oct 30 09:10 lost+found
+--- 30_bad.yaml:
+cat: /tmp/oemchk/30_bad.yaml: No such file or directory
+
+AFTER, only valid entries:
+0
+install exit code: 0
+20_good.yaml
+90_custom.yaml
+lost+found
+

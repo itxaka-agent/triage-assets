@@ -1,0 +1,60 @@
+QA #5850  kairos-agent sysext enable --common --now X when X is already enabled (dm-verity sysext image)
+
+BEFORE (merge base 1643e129)
+
+### install + enable --common (not now)
+
+2026-10-30T09:08:25Z INF System extension file:///tmp/qaext5.raw installed
+2026-10-30T09:08:29Z INF Extension qaext5.raw enabled in common
+
+### ls /run/extensions (before --now)
+total 0
+drwxr-xr-x  2 root root  40 Oct 30 09:04 .
+drwxr-xr-x 26 root root 620 Oct 30 09:05 ..
+
+### kairos-agent sysext enable --common --now qaext5 (already enabled)
+2026-10-30T09:08:32Z INF Extension qaext5.raw is already enabled in common
+
+### ls /run/extensions
+total 0
+drwxr-xr-x  2 root root  40 Oct 30 09:04 .
+drwxr-xr-x 26 root root 620 Oct 30 09:05 ..
+
+### systemd-sysext status
+HIERARCHY EXTENSIONS SINCE
+/opt      -          -
+/usr      -          -
+
+### marker
+cat: /usr/share/qaext-marker: No such file or directory
+
+AFTER (PR head 1d723c0)
+
+### install + enable --common (not now)
+
+2026-10-30T09:08:35Z INF System extension file:///tmp/qaext5.raw installed
+2026-10-30T09:08:38Z INF Extension qaext5.raw enabled in common
+
+### ls /run/extensions (before --now)
+total 0
+drwxr-xr-x  2 root root  40 Oct 30 09:08 .
+drwxr-xr-x 26 root root 620 Oct 30 09:05 ..
+
+### kairos-agent sysext enable --common --now qaext5 (already enabled)
+2026-10-30T09:08:41Z INF Extension qaext5.raw is already enabled in common
+2026-10-30T09:08:41Z INF Extension qaext5.raw enabled in /run/extensions
+2026-10-30T09:08:42Z INF Extension qaext5.raw merged by systemd-sysext
+
+### ls /run/extensions
+total 0
+drwxr-xr-x  2 root root  60 Oct 30 09:08 .
+drwxr-xr-x 26 root root 620 Oct 30 09:05 ..
+lrwxrwxrwx  1 root root  44 Oct 30 09:08 qaext5.raw -> /var/lib/kairos/extensions/common/qaext5.raw
+
+### systemd-sysext status
+HIERARCHY EXTENSIONS SINCE
+/opt      -          -
+/usr      -          -
+
+### marker
+qa sysext marker
