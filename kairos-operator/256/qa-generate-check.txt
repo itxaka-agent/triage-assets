@@ -1,0 +1,8 @@
+PR head 8b5093611f33 (kairos-io/kairos-operator#256), community agent-conventions @66ce4dd1
+$ generate.py check kairos-operator AGENTS.md   (python:3-alpine, --network none, read-only mount)
+exit 0 (up to date)
+$ generate.py check hadron AGENTS.md   (negative control: wrong overlay)
+AGENTS.md is out of date with kairos-io/community/agent-conventions.
+exit 1
+
+CLAUDE.md content: @AGENTS.md
