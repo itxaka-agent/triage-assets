@@ -1,0 +1,64 @@
+# base bd93457e + PR spec (export_test.go dropped, SetWriteWait line removed; base has no such hook): go test ./pkg/ws -race
+•2026/10/30 09:37:31 ws read error for node e4b74089-3635-455d-9cc4-fcd55a6fdf09: websocket: close 1006 (abnormal closure): unexpected EOF
+•2026/10/30 09:37:31 ws read error for node 2c16db8b-a549-4af2-84cb-0111a23c4128: websocket: close 1006 (abnormal closure): unexpected EOF
+2026/10/30 09:37:31 ws: failed to update node phase: sql: database is closed
+••2026/10/30 09:37:31 ws read error for node 24936dd8-e28c-437c-bac5-6ba6935dcb57: websocket: close 1006 (abnormal closure): unexpected EOF
+••2026/10/30 09:37:31 ws read error for node 12d77eb4-4e26-4162-993d-83bf2005b997: websocket: close 1006 (abnormal closure): unexpected EOF
+•2026/10/30 09:37:31 ws read error for node d3522f70-2ff0-448b-9249-d7d3c527b276: websocket: close 1006 (abnormal closure): unexpected EOF
+•2026/10/30 09:37:31 refused a request from Origin "https://evil.example": it matches neither the request Host "127.0.0.1:34563" nor the public URL host "aurora.example.com" (behind a reverse proxy that rewrites Host, set --url / AURORABOOT_URL to the address the browser uses)
+••2026/10/30 09:37:31 refused a request from Origin "https://evil.example": it matches neither the request Host "127.0.0.1:32925" nor the public URL host "aurora.example.com" (behind a reverse proxy that rewrites Host, set --url / AURORABOOT_URL to the address the browser uses)
+2026/10/30 09:37:31 /src/internal/store/gorm/store.go:737 sql: database is closed
+[0.038ms] [rows:0] SELECT * FROM `node_commands` WHERE managed_node_id = "b6615a9a-a1a2-4d3e-a4d1-1dbb05eac66a" AND phase = "Pending" AND (expires_at IS NULL OR expires_at > "2026-10-30 09:37:31.792")
+2026/10/30 09:37:31 ws read error for node b6615a9a-a1a2-4d3e-a4d1-1dbb05eac66a: websocket: close 1006 (abnormal closure): unexpected EOF
+2026/10/30 09:37:31 ws: failed to update node phase: sql: database is closed
+•2026/10/30 09:37:31 ws read error for node 745a365c-05c4-4d4e-873b-c967d439d915: websocket: close 1006 (abnormal closure): unexpected EOF
+2026/10/30 09:37:31 ws: failed to update node phase: sql: database is closed
+2026/10/30 09:37:31 /src/internal/store/gorm/store.go:215 record not found
+[0.123ms] [rows:0] SELECT * FROM `managed_nodes` WHERE api_key = "wrong" ORDER BY `managed_nodes`.`id` LIMIT 1
+Summarizing 1 Failure:
+  [FAIL] WebSocket concurrent writers [It] drops a UI client that stops reading instead of blocking every broadcast
+  /src/pkg/ws/concurrency_test.go:209
+Ran 34 of 34 Specs in 30.231 seconds
+FAIL! -- 33 Passed | 1 Failed | 0 Pending | 0 Skipped
+--- FAIL: TestWS (30.24s)
+FAIL
+FAIL	github.com/kairos-io/AuroraBoot/pkg/ws	30.258s
+FAIL
+
+# head 563f3860: go test ./pkg/ws -race
+2026/10/30 09:36:14 /src/internal/store/gorm/store.go:737 sql: database is closed
+[0.089ms] [rows:0] SELECT * FROM `node_commands` WHERE managed_node_id = "f975f3c6-b4a0-4a24-93e1-2fc1a791a1b7" AND phase = "Pending" AND (expires_at IS NULL OR expires_at > "2026-10-30 09:36:14.091")
+2026/10/30 09:36:14 ws read error for node f975f3c6-b4a0-4a24-93e1-2fc1a791a1b7: websocket: close 1006 (abnormal closure): unexpected EOF
+2026/10/30 09:36:14 ws: failed to update node phase: sql: database is closed
+2026/10/30 09:36:14 /src/internal/store/gorm/store.go:215 record not found
+[0.362ms] [rows:0] SELECT * FROM `managed_nodes` WHERE api_key = "wrong" ORDER BY `managed_nodes`.`id` LIMIT 1
+2026/10/30 09:36:14 /src/internal/store/gorm/store.go:215 record not found
+[0.447ms] [rows:0] SELECT * FROM `managed_nodes` WHERE api_key = "bad-token" ORDER BY `managed_nodes`.`id` LIMIT 1
+•2026/10/30 09:36:14 ws read error for node 772c8c69-e663-44c2-8f39-09dabea44bef: websocket: close 1006 (abnormal closure): unexpected EOF
+•2026/10/30 09:36:14 ws read error for node 72a89720-b2eb-482b-b421-c0cc959834a1: websocket: close 1006 (abnormal closure): unexpected EOF
+•2026/10/30 09:36:14 ws read error for node 47afbf52-dff1-4654-8d7f-555ff4868401: websocket: close 1006 (abnormal closure): unexpected EOF
+•2026/10/30 09:36:14 ws read error for node 61602204-4eda-4cbc-9ba4-40c6a2f40475: websocket: close 1006 (abnormal closure): unexpected EOF
+2026/10/30 09:36:14 ws: failed to update node phase: sql: database is closed
+•2026/10/30 09:36:14 ws read error for node 4cc32e2b-8de2-418c-a381-58b95eade845: websocket: close 1006 (abnormal closure): unexpected EOF
+2026/10/30 09:36:14 ws: failed to update node phase: sql: database is closed
+•2026/10/30 09:36:14 ws read error for node d06a8352-9baa-4462-84e6-836c5a40bcc2: websocket: close 1006 (abnormal closure): unexpected EOF
+•2026/10/30 09:36:14 ws read error for node df1eb80f-ae0e-4336-9ca3-b0b9b9c8d054: websocket: close 1006 (abnormal closure): unexpected EOF
+•2026/10/30 09:36:15 ws: batch batch-23 stopped after node a11ab4e7-1d4e-4ba3-9bf0-92b2ca82a90c failed; 1 pending command(s) canceled
+2026/10/30 09:36:15 ws read error for node a11ab4e7-1d4e-4ba3-9bf0-92b2ca82a90c: websocket: close 1006 (abnormal closure): unexpected EOF
+2026/10/30 09:36:15 ws: failed to update node phase: sql: database is closed
+•2026/10/30 09:36:15 ws: node b239a76d-692b-4eb2-afc9-302d5d87dfcf attempted to update command 1d0720e1-52d7-449b-99d2-d0e6722bf309 it does not own; rejected
+2026/10/30 09:36:16 ws read error for node b239a76d-692b-4eb2-afc9-302d5d87dfcf: websocket: close 1006 (abnormal closure): unexpected EOF
+•2026/10/30 09:36:16 ws read error for node ec2ef274-c2fb-40d7-97ca-206ef3508946: websocket: close 1006 (abnormal closure): unexpected EOF
+•2026/10/30 09:36:16 ws: node 2d7bfc80-655c-4431-88d4-3f4c1a32ef8a sent a message over 4194304 bytes, dropping connection
+••2026/10/30 09:36:18 ws: node 34f48543-024d-47a0-82bf-0a2499496cea missed keepalive for 1.5s, dropping connection
+•2026/10/30 09:36:22 ws read error for node 5b87f1ee-873c-4d37-8b4f-2209040112c1: websocket: close 1006 (abnormal closure): unexpected EOF
+•2026/10/30 09:36:22 ws read error for node aab49c54-696c-4c87-bd77-703162d277d8: websocket: close 1006 (abnormal closure): unexpected EOF
+2026/10/30 09:36:22 ws: failed to update node phase: sql: database is closed
+••2026/10/30 09:36:22 ws read error for node 1a6d9cbe-1c0e-4084-8baa-ded15fa51a5a: websocket: close 1006 (abnormal closure): unexpected EOF
+••2026/10/30 09:36:23 ws read error for node 7f64058b-0a83-43cb-a167-582e91addb35: websocket: close 1006 (abnormal closure): unexpected EOF
+•2026/10/30 09:36:23 ws read error for node 0bff7de2-a1b8-48d7-ba92-e3b75f33deb4: websocket: close 1006 (abnormal closure): unexpected EOF
+Ran 34 of 34 Specs in 10.939 seconds
+SUCCESS! -- 34 Passed | 0 Failed | 0 Pending | 0 Skipped
+--- PASS: TestWS (10.95s)
+PASS
+ok  	github.com/kairos-io/AuroraBoot/pkg/ws	11.979s
