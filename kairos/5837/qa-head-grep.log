@@ -1,0 +1,15 @@
+2e0e9c460d7044b51f82504f281a3aa18b98c214
+.codecov.yaml
+-- grep refs (excluding git history)
+kairos-init/changelog.md:35:- Fix goreleaser build (6a68184)
+kairos-init/pkg/stages/steps_install.go:941:// (non-monorepo) release, with its own goreleaser "*-checksums.txt" sibling,
+kairos-init/pkg/stages/steps_install.go:952:// goreleaser-style checksums listing published at checksumsURL (either a
+kairos-init/pkg/stages/steps_install_test.go:60:// checksums.txt sibling at /checksums.txt, the same layout goreleaser
+kairos-init/pkg/stages/steps_install_test.go:283:// goreleaser layout: each publishes its own "*-checksums.txt" sibling next
+kairos-init/.gitignore:1:# Added by goreleaser init:
+sdk/verify/verify.go:130:// ChecksumFromSumsFile parses a goreleaser-style checksums listing — lines
+-- exit: done
+-- ldflags target packages exist?
+version.go
+ls: cannot access 'agent/internal/common': No such file or directory
+ls: cannot access 'immucore/internal/version': No such file or directory
