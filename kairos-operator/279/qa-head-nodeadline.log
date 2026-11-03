@@ -1,0 +1,8 @@
+### HEAD no-deadline artifact (clean rerun)
+NAME               PHASE      AGE
+qa279-deadline     Error      2m32s
+qa279-nodeadline   Building   60s
+qa279-nodeadline-jcbwf                   0/1     Init:0/1     0          60s
+qa279-nodeadline-jcbwf  phase=Pending  activeDeadlineSeconds=
+status:
+  phase: Building
