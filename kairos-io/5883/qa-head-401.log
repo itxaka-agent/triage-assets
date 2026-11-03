@@ -1,0 +1,14 @@
+== head (21f88a81) scenario 1: server state lost, node holds old key
+mar 03 nov 2026 13:31:29 UTC
+server A nodes:
+[{"id":"ed2aa8b3-31ac-4a15-9725-6fd3fdd77454","machineID":"90c5bac43f1b4ce29d28688c11f6eeb6","hostname":"kairos-90c5","groupID":"","phase":"Online","lastHeartbeat":"2026-11-03T13:31:25.311553102Z","agentVersion":"v4.4.0-53-g21f88a81","osRelease":{"ARCH":"x86_6
+
+Nov 03 13:30:17 kairos-90c5 kairos-agent[1435]: registered as node 9e3413de-1cf6-41b9-9a44-9de7177ab04b
+Nov 03 13:30:17 kairos-90c5 kairos-agent[1435]: connected to ws://10.0.2.2:18080/api/v1/ws?token=REDACTED
+Nov 03 13:30:42 kairos-90c5 kairos-agent[1435]: disconnected: websocket dial: websocket: bad handshake (401 Unauthorized: {"error":"invalid token"}), registering again
+Nov 03 13:30:42 kairos-90c5 kairos-agent[1435]: registered as node ed2aa8b3-31ac-4a15-9725-6fd3fdd77454
+Nov 03 13:30:42 kairos-90c5 kairos-agent[1435]: registered again, reconnecting in 3s
+Nov 03 13:30:45 kairos-90c5 kairos-agent[1435]: connected to ws://10.0.2.2:18080/api/v1/ws?token=REDACTED
+node_id: ed2aa8b3-31ac-4a15-9725-6fd3fdd77454
+api_key: <redacted>
+server_url: http://10.0.2.2:18080
