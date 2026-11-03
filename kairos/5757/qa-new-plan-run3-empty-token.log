@@ -1,0 +1,24 @@
+job.batch "apply-network-token-rotation-on-kairos-6e44-with-600050b2-0dc4d" deleted from system-upgrade namespace
+NAME                                                                        STATUS     COMPLETIONS   DURATION   AGE
+job.batch/apply-network-token-rotation-on-kairos-6e44-with-5da16a99-a6040   Complete   1/1           9s         3m3s
+job.batch/apply-network-token-rotation-on-kairos-6e44-with-64fdce20-5e3f3   Complete   1/1           7s         4m4s
+job.batch/apply-network-token-rotation-on-kairos-6e44-with-ae07f8bc-6bc5a   Running    0/1           94s        94s
+
+NAME                                                                  READY   STATUS      RESTARTS   AGE
+pod/apply-network-token-rotation-on-kairos-6e44-with-5da16a99-v4flb   0/1     Completed   0          3m3s
+pod/apply-network-token-rotation-on-kairos-6e44-with-64fdce20-gh8lz   0/1     Completed   0          4m4s
+pod/apply-network-token-rotation-on-kairos-6e44-with-ae07f8bc-9tg69   0/1     Error       0          30s
+pod/apply-network-token-rotation-on-kairos-6e44-with-ae07f8bc-dm9rr   0/1     Error       0          94s
+pod/apply-network-token-rotation-on-kairos-6e44-with-ae07f8bc-ltrwm   0/1     Error       0          8s
+[pod/apply-network-token-rotation-on-kairos-6e44-with-5da16a99-v4flb/upgrade] Network token up to date
+[pod/apply-network-token-rotation-on-kairos-6e44-with-ae07f8bc-9tg69/upgrade] network_token is empty in the rotate-token secret
+[pod/apply-network-token-rotation-on-kairos-6e44-with-ae07f8bc-dm9rr/upgrade] network_token is empty in the rotate-token secret
+[pod/apply-network-token-rotation-on-kairos-6e44-with-ae07f8bc-ltrwm/upgrade] network_token is empty in the rotate-token secret
+--- token fingerprints in /oem (sha256 prefix of value)
+/oem/90_p2p.yaml 127fb6684e08
+/oem/95_userdata/userdata.yaml 97c728ea9560
+/oem/95_userdata/userdata 97c728ea9560
+--- edgevpn unit:
+ActiveState=active
+ActiveEnterTimestamp=Tue 2026-11-03 13:13:10 UTC
+MainPID=7459

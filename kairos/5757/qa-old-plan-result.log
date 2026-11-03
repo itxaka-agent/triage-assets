@@ -1,0 +1,9 @@
+NAME                                            IMAGE                   CHANNEL   VERSION   COMPLETE   MESSAGE   APPLYING
+plan.upgrade.cattle.io/network-token-rotation   quay.io/kairos/kairos             latest    False                ["kairos-6e44"]
+
+NAME                                                                  READY   STATUS             RESTARTS   AGE    IP          NODE          NOMINATED NODE   READINESS GATES
+pod/apply-network-token-rotation-on-kairos-6e44-with-8488a94a-vrqbn   0/1     ImagePullBackOff   0          56s    10.0.2.15   kairos-6e44   <none>           <none>
+pod/system-upgrade-controller-858df8c4b9-lrvqh                        1/1     Running            0          106s   10.42.0.9   kairos-6e44   <none>           <none>
+    Image:         rancher/kubectl:v1.30.3
+    Image:         quay.io/kairos/kairos:latest
+  Warning  Failed     6s (x3 over 49s)  kubelet            spec.containers{upgrade}: Failed to pull image "quay.io/kairos/kairos:latest": failed to pull and unpack image "quay.io/kairos/kairos:latest": failed to resolve reference "quay.io/kairos/kairos:latest": unexpected status from HEAD request to https://quay.io/v2/kairos/kai

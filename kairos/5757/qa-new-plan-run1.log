@@ -1,0 +1,21 @@
+secret/rotate-token created
+plan.upgrade.cattle.io/network-token-rotation created
+NAME                                            IMAGE     CHANNEL   VERSION   COMPLETE   MESSAGE
+plan.upgrade.cattle.io/network-token-rotation   busybox             1.37      True       
+
+NAME                                                                        STATUS     COMPLETIONS   DURATION   AGE
+job.batch/apply-network-token-rotation-on-kairos-6e44-with-64fdce20-5e3f3   Complete   1/1           7s         45s
+
+NAME                                                                  READY   STATUS      RESTARTS   AGE
+pod/apply-network-token-rotation-on-kairos-6e44-with-64fdce20-gh8lz   0/1     Completed   0          45s
+pod/system-upgrade-controller-858df8c4b9-lrvqh                        1/1     Running     0          2m57s
+warning: skipping /etc/kairos/kairos-init-init-stage.yaml because it has no valid header
+warning: skipping /etc/kairos/kairos-init-install-stage.yaml because it has no valid header
+--- token fingerprints in /oem (sha256 prefix of value)
+/oem/90_p2p.yaml 127fb6684e08
+/oem/95_userdata/userdata.yaml 97c728ea9560
+/oem/95_userdata/userdata 97c728ea9560
+--- edgevpn unit:
+ActiveState=active
+ActiveEnterTimestamp=Tue 2026-11-03 13:13:10 UTC
+MainPID=7459
