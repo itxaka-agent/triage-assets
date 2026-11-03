@@ -1,0 +1,51 @@
+go: downloading sigs.k8s.io/controller-runtime v0.25.2
+go: downloading sigs.k8s.io/controller-runtime/tools/setup-envtest v0.25.2
+go: downloading go.uber.org/zap v1.27.0
+go: downloading github.com/go-logr/logr v1.4.3
+go: downloading github.com/spf13/afero v1.12.0
+go: downloading github.com/spf13/pflag v1.0.10
+go: downloading github.com/go-logr/zapr v1.3.0
+go: downloading sigs.k8s.io/yaml v1.6.0
+go: downloading go.yaml.in/yaml/v2 v2.4.4
+go: downloading golang.org/x/text v0.40.0
+go: downloading go.uber.org/multierr v1.10.0
+• [0.000 seconds]
+------------------------------
+SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+------------------------------
+NodeOp Controller - Preflight defaults Spec.Preflight.ActiveDeadlineSeconds to a sane value when not set
+/src/internal/controller/nodeop_controller_test.go:4439
+  2026-11-03T11:02:00Z	INFO	Reconciling NodeOp	{"request": {"name":"preflight-test-1793703718872315347","namespace":"default"}}
+  2026-11-03T11:02:00Z	DEBUG	No node selector specified, targeting all nodes	{"nodeCount": 3}
+  2026-11-03T11:02:00Z	INFO	Found target nodes	{"selector": "", "targetNodeCount": 3, "totalNodeCount": 3}
+  2026-11-03T11:02:00Z	INFO	Starting new work for nodes	{"nodeOp": "preflight-test-1793703718872315347", "toStart": 3, "availableSlots": 3, "freshNodes": 3}
+  2026-11-03T11:02:00Z	INFO	Created preflight Pod	{"nodeOp": "preflight-test-1793703718872315347", "node": "pf-a-1793703718872315347", "pod": "preflight-test-1793703718872315347-preflight-rm5wv"}
+  2026-11-03T11:02:01Z	INFO	Created preflight Pod	{"nodeOp": "preflight-test-1793703718872315347", "node": "pf-b-1793703718872315347", "pod": "preflight-test-1793703718872315347-preflight-p98tz"}
+  2026-11-03T11:02:01Z	INFO	Created preflight Pod	{"nodeOp": "preflight-test-1793703718872315347", "node": "pf-c-1793703718872315347", "pod": "preflight-test-1793703718872315347-preflight-8p6zw"}
+• [2.470 seconds]
+------------------------------
+SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+------------------------------
+builderPodFailureMessage reports the deadline when activeDeadlineSeconds ran out
+/src/internal/controller/job_test.go:1262
+• [0.000 seconds]
+------------------------------
+builderPodFailureMessage reports only the reason when there is no message
+/src/internal/controller/job_test.go:1275
+• [0.000 seconds]
+------------------------------
+builderPodFailureMessage names the pod when the status has no details
+/src/internal/controller/job_test.go:1283
+• [0.000 seconds]
+------------------------------
+[AfterSuite] 
+/src/internal/controller/suite_test.go:83
+  STEP: tearing down the test environment @ 11/03/26 11:02:01.345
+[AfterSuite] PASSED [0.041 seconds]
+------------------------------
+
+Ran 5 of 319 Specs in 5.757 seconds
+SUCCESS! -- 5 Passed | 0 Failed | 0 Pending | 314 Skipped
+--- PASS: TestControllers (5.76s)
+PASS
+ok  	github.com/kairos-io/kairos-operator/internal/controller	5.775s
