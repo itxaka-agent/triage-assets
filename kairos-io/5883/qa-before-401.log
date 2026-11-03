@@ -1,0 +1,15 @@
+== before (3879a878) scenario 1: server state lost, node still holds old key
+mar 03 nov 2026 13:29:00 UTC
+server A nodes:
+[]
+
+Nov 03 13:23:59 kairos-5018 kairos-agent[1463]: registered as node 9942ba67-4830-489f-aa9a-802be3a395fd
+Nov 03 13:23:59 kairos-5018 kairos-agent[1463]: connected to ws://10.0.2.2:18080/api/v1/ws?token=REDACTED
+Nov 03 13:27:13 kairos-5018 kairos-agent[1463]: disconnected: websocket dial: websocket: bad handshake (401 Unauthorized: {"error":"invalid token"}), reconnecting in 3s
+Nov 03 13:27:16 kairos-5018 kairos-agent[1463]: disconnected: websocket dial: websocket: bad handshake (401 Unauthorized: {"error":"invalid token"}), reconnecting in 6s
+Nov 03 13:27:22 kairos-5018 kairos-agent[1463]: disconnected: websocket dial: websocket: bad handshake (401 Unauthorized: {"error":"invalid token"}), reconnecting in 12s
+Nov 03 13:27:34 kairos-5018 kairos-agent[1463]: disconnected: websocket dial: websocket: bad handshake (401 Unauthorized: {"error":"invalid token"}), reconnecting in 24s
+Nov 03 13:27:58 kairos-5018 kairos-agent[1463]: disconnected: websocket dial: websocket: bad handshake (401 Unauthorized: {"error":"invalid token"}), reconnecting in 48s
+Nov 03 13:28:46 kairos-5018 kairos-agent[1463]: disconnected: websocket dial: websocket: bad handshake (401 Unauthorized: {"error":"invalid token"}), reconnecting in 1m0s
+node_id: 9942ba67-4830-489f-aa9a-802be3a395fd
+api_key: <redacted>
