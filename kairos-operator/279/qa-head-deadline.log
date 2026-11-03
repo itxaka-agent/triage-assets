@@ -1,0 +1,49 @@
+### HEAD deadline artifact
+apiVersion: build.kairos.io/v1alpha2
+kind: OSArtifact
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"build.kairos.io/v1alpha2","kind":"OSArtifact","metadata":{"annotations":{},"name":"qa279-deadline","namespace":"default"},"spec":{"activeDeadlineSeconds":20,"artifacts":{"arch":"amd64","iso":true},"image":{"ref":"quay.io/kairos/opensuse:leap-15.6-core-amd64-generic-v3.6.0"}}}
+  creationTimestamp: "2026-11-03T10:58:04Z"
+  finalizers:
+  - build.kairos.io/osbuilder-finalizer
+  generation: 2
+  name: qa279-deadline
+  namespace: default
+  resourceVersion: "592"
+  uid: bba8b5d7-b1f3-4fb8-8aa6-8936b3a4655c
+spec:
+  activeDeadlineSeconds: 20
+  artifacts:
+    arch: amd64
+    iso: true
+  image:
+    ref: quay.io/kairos/opensuse:leap-15.6-core-amd64-generic-v3.6.0
+  nameOverride: {}
+  resources: {}
+status:
+  phase: Building
+qa279-deadline-lfnsf                     0/1     Init:0/1    0          45s
+## pod/qa279-deadline-lfnsf
+qa279-deadline-lfnsf  phase=Pending  reason=  msg=  activeDeadlineSeconds=20
+105s        Normal    WaitForFirstConsumer             persistentvolumeclaim/qa279-nodeadline-artifacts   waiting for first consumer to be created before binding
+105s        Normal    ExternalProvisioning             persistentvolumeclaim/qa279-nodeadline-artifacts   Waiting for a volume to be created either by the external provisioner 'rancher.io/local-path' or manually by the system administrator. If volume creation is delayed, please verify that the provisioner is running and correctly registered.
+105s        Normal    Provisioning                     persistentvolumeclaim/qa279-nodeadline-artifacts   External provisioner is provisioning volume for claim "default/qa279-nodeadline-artifacts"
+100s        Normal    ProvisioningSucceeded            persistentvolumeclaim/qa279-nodeadline-artifacts   Successfully provisioned volume pvc-51e51691-c362-49ca-9e9d-029cfd7fca7d
+98s         Normal    Pulling                          pod/qa279-nodeadline-qq667                         Pulling image "quay.io/kairos/auroraboot:v0.24.0"
+59s         Normal    Started                          pod/qa279-nodeadline-qq667                         Started container pull-image-baseimage
+59s         Normal    Pulled                           pod/qa279-nodeadline-qq667                         Successfully pulled image "quay.io/kairos/auroraboot:v0.24.0" in 39.65s (39.65s including waiting). Image size: 567112595 bytes.
+59s         Normal    Created                          pod/qa279-nodeadline-qq667                         Created container: pull-image-baseimage
+57s         Normal    Pulled                           pod/kairos-operator-f8f75c876-wr76q                Container image "docker.io/library/qa279-op:head" already present on machine
+57s         Normal    Killing                          pod/qa279-nodeadline-qq667                         Stopping container pull-image-baseimage
+46s         Normal    ExternalProvisioning             persistentvolumeclaim/qa279-deadline-artifacts     Waiting for a volume to be created either by the external provisioner 'rancher.io/local-path' or manually by the system administrator. If volume creation is delayed, please verify that the provisioner is running and correctly registered.
+46s         Normal    Provisioning                     persistentvolumeclaim/qa279-deadline-artifacts     External provisioner is provisioning volume for claim "default/qa279-deadline-artifacts"
+46s         Normal    WaitForFirstConsumer             persistentvolumeclaim/qa279-deadline-artifacts     waiting for first consumer to be created before binding
+44s         Normal    ProvisioningSucceeded            persistentvolumeclaim/qa279-deadline-artifacts     Successfully provisioned volume pvc-47226c14-f149-4060-971a-8ae01aa019a2
+42s         Normal    Pulling                          pod/qa279-deadline-lfnsf                           Pulling image "quay.io/kairos/auroraboot:v0.24.0"
+42s         Normal    Started                          pod/qa279-deadline-lfnsf                           Started container pull-image-baseimage
+42s         Normal    Created                          pod/qa279-deadline-lfnsf                           Created container: pull-image-baseimage
+42s         Normal    Pulled                           pod/qa279-deadline-lfnsf                           Successfully pulled image "quay.io/kairos/auroraboot:v0.24.0" in 497ms (497ms including waiting). Image size: 567112595 bytes.
+22s         Normal    DeadlineExceeded                 pod/qa279-deadline-lfnsf                           Pod was active on the node longer than the specified deadline
+22s         Normal    Killing                          pod/qa279-deadline-lfnsf                           Stopping container pull-image-baseimage
