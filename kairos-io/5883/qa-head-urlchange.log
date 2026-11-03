@@ -1,0 +1,14 @@
+== head (21f88a81) scenario 2: url changed to server B (18081)
+mar 03 nov 2026 13:31:53 UTC
+server B nodes:
+[{"id":"4a91dcb7-165c-4289-a0bd-84e0699ab259","machineID":"90c5bac43f1b4ce29d28688c11f6eeb6","hostname":"kairos-90c5","groupID":"","phase":"Online","lastHeartbeat":"2026-11-03T13:31:43.609005005Z","agentVersion":"v4.4.0-53-g21f88a81","osRelease":{"ARCH":"x86_6
+
+Nov 03 13:31:33 kairos-90c5 kairos-agent[1577]: 2026-11-03T13:31:33Z INF saved credentials for node ed2aa8b3-31ac-4a15-9725-6fd3fdd77454 were issued by http://10.0.2.2:18080, registering with http://10.0.2.2:18081
+Nov 03 13:31:33 kairos-90c5 kairos-agent[1577]: saved credentials for node ed2aa8b3-31ac-4a15-9725-6fd3fdd77454 were issued by http://10.0.2.2:18080, registering with http://10.0.2.2:18081
+Nov 03 13:31:33 kairos-90c5 kairos-agent[1577]: registered as node 4a91dcb7-165c-4289-a0bd-84e0699ab259
+Nov 03 13:31:33 kairos-90c5 kairos-agent[1577]: 2026-11-03T13:31:33Z INF registered as node 4a91dcb7-165c-4289-a0bd-84e0699ab259
+Nov 03 13:31:33 kairos-90c5 kairos-agent[1577]: connected to ws://10.0.2.2:18081/api/v1/ws?token=REDACTED
+Nov 03 13:31:33 kairos-90c5 kairos-agent[1577]: 2026-11-03T13:31:33Z INF connected to ws://10.0.2.2:18081/api/v1/ws?token=REDACTED
+node_id: 4a91dcb7-165c-4289-a0bd-84e0699ab259
+api_key: <redacted>
+server_url: http://10.0.2.2:18081
