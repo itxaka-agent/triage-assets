@@ -1,0 +1,12 @@
+== before (3879a878) scenario 2: url changed to server B (18081), old creds kept
+mar 03 nov 2026 13:29:35 UTC
+server B nodes:
+[]
+
+Nov 03 13:27:58 kairos-5018 kairos-agent[1463]: disconnected: websocket dial: websocket: bad handshake (401 Unauthorized: {"error":"invalid token"}), reconnecting in 48s
+Nov 03 13:28:46 kairos-5018 kairos-agent[1463]: disconnected: websocket dial: websocket: bad handshake (401 Unauthorized: {"error":"invalid token"}), reconnecting in 1m0s
+Nov 03 13:29:04 kairos-5018 kairos-agent[1618]: loaded existing credentials for node 9942ba67-4830-489f-aa9a-802be3a395fd
+Nov 03 13:29:04 kairos-5018 kairos-agent[1618]: disconnected: websocket dial: websocket: bad handshake (401 Unauthorized: {"error":"invalid token"}), reconnecting in 3s
+Nov 03 13:29:07 kairos-5018 kairos-agent[1618]: disconnected: websocket dial: websocket: bad handshake (401 Unauthorized: {"error":"invalid token"}), reconnecting in 6s
+Nov 03 13:29:13 kairos-5018 kairos-agent[1618]: disconnected: websocket dial: websocket: bad handshake (401 Unauthorized: {"error":"invalid token"}), reconnecting in 12s
+Nov 03 13:29:25 kairos-5018 kairos-agent[1618]: disconnected: websocket dial: websocket: bad handshake (401 Unauthorized: {"error":"invalid token"}), reconnecting in 24s
