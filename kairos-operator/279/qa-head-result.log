@@ -1,0 +1,28 @@
+### HEAD after deadline
+NAME               PHASE   AGE
+qa279-deadline     Error   80s
+qa279-nodeadline   Error   80s
+{"message":"builder pod qa279-deadline-lfnsf failed: DeadlineExceeded: Pod was active on the node longer than the specified deadline","phase":"Error"}
+NAME                                     READY   STATUS       RESTARTS   AGE
+kairos-node-labeler-de019fba2cdd-sqmcc   0/1     Completed    0          2m43s
+kairos-operator-f8f75c876-wr76q          1/1     Running      0          92s
+qa279-deadline-lfnsf                     0/1     Init:Error   0          80s
+## pod/qa279-deadline-lfnsf
+qa279-deadline-lfnsf  phase=Failed  reason=DeadlineExceeded  msg=Pod was active on the node longer than the specified deadline  activeDeadlineSeconds=20
+
+status:
+  message: 'builder pod qa279-deadline-lfnsf failed: DeadlineExceeded: Pod was active
+    on the node longer than the specified deadline'
+  phase: Error
+---
+spec:
+  artifacts:
+    arch: amd64
+    iso: true
+  image:
+    ref: quay.io/kairos/opensuse:leap-15.6-core-amd64-generic-v3.6.0
+  nameOverride: {}
+  resources: {}
+status:
+  message: builder pod qa279-nodeadline-qq667 failed
+  phase: Error
