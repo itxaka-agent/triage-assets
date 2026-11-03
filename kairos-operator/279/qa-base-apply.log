@@ -1,0 +1,3 @@
+### BASE apply with deadline
+Error from server (BadRequest): error when creating "STDIN": OSArtifact in version "v1alpha2" cannot be handled as a OSArtifact: strict decoding error: unknown field "spec.activeDeadlineSeconds"
+Error from server (BadRequest): error when creating "STDIN": OSArtifact in version "v1alpha2" cannot be handled as a OSArtifact: strict decoding error: unknown field "spec.activeDeadlineSeconds"
