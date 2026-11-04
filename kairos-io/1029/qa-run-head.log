@@ -1,0 +1,10 @@
+url http://127.0.0.1:8080/login
+POST http://127.0.0.1:8080/api/v1/secureboot-keys/generate 201
+POST http://127.0.0.1:8080/api/v1/secureboot-keys/generate 409
+toast text: ["Generate failed: a key set named \"qaset\" already exists"]
+keysets [{"id":"620cbf45-a1e9-49f8-aa37-825bc3e464aa","name":"qaset","secureBootEnroll":"","createdAt":"2026-11-04T13:24:00.438665116Z","updatedAt":"2026-11-04T13:24:00.438665116Z","hasTpmPcrKey":true}]
+tables: artifact_extension_bundles node_commands artifact_records node_extension_rows bmc_targets node_groups deployments secure_boot_key_sets extension_records settings managed_nodes 
+breaking table secure_boot_key_sets
+remove buttons 1
+DELETE http://127.0.0.1:8080/api/v1/secureboot-keys/620cbf45-a1e9-49f8-aa37-825bc3e464aa 500
+toast text2: ["Remove failed: failed to delete key set"]
