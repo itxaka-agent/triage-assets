@@ -1,0 +1,18 @@
+
+> kairos-docs@0.0.0 test:scripts
+> node --test scripts/*.test.mjs
+
+✔ updates hadronFlavorRelease for the target version (18.561686ms)
+✔ leaves the OS-flavor curated list (v3.7.2) untouched (23.475261ms)
+✔ refreshes the announcement banner to the target version (27.541211ms)
+✔ generates a per-version hadron flavor const matching hadronFlavorRelease (26.95791ms)
+✔ is idempotent across repeated runs (39.473394ms)
+✔ falls back to the template flavorOptions when there is no hadron release (19.953841ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 208.039005
