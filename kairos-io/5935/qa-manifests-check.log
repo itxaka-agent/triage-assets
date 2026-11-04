@@ -1,0 +1,47 @@
+=== base
+container.json
+full-image-fips-grub.json
+full-image-fips-systemd.json
+full-image-no-fips-grub.json
+full-image-no-fips-systemd.json
+-- full-image-fips-grub.json
+grub: 0
+shim: 0
+gawk: 0
+musl-fts: 0
+dracut: 1
+-- full-image-no-fips-grub.json
+grub: 0
+shim: 0
+gawk: 0
+musl-fts: 0
+dracut: 1
+=== head
+container.json
+full-image-fips-grub.json
+full-image-fips-systemd.json
+full-image-no-fips-grub.json
+full-image-no-fips-systemd.json
+-- full-image-fips-grub.json
+grub: 1
+shim: 1
+gawk: 1
+musl-fts: 1
+dracut: 1
+-- full-image-no-fips-grub.json
+grub: 1
+shim: 1
+gawk: 1
+musl-fts: 1
+dracut: 1
+=== diff non-grub manifests base vs head
+IDENTICAL
+=== diff grub
+18a19
+>   "gawk": "5.4.1",
+19a21
+>   "grub": "2.14",
+43a46
+>   "musl-fts": "1.2.7",
+53a57
+>   "shim": "16.1",

@@ -1,0 +1,27 @@
+Unable to find image 'node:alpine' locally
+alpine: Pulling from library/node
+46f115b2e1ef: Pulling fs layer
+7b229517ed22: Pulling fs layer
+e731957ed974: Pulling fs layer
+7b229517ed22: Already exists
+46f115b2e1ef: Download complete
+318f9079f790: Download complete
+c1e013599e1d: Download complete
+e731957ed974: Download complete
+e731957ed974: Pull complete
+46f115b2e1ef: Pull complete
+Digest: sha256:c6ad9e9c1d80f6eb607c26b4b0a132ff7a2344fad1c78ea3baa2a7d4c8de6d94
+Status: Downloaded newer image for node:alpine
+== gen-components_test
+PASS: gen-components tests
+exit=0
+== gen-components_shipped_test
+note: shipped stage ref 'stage2-merge' has no *_VERSION ARG (skipped)
+PASS: gen-components shipped/flat tests
+exit=0
+== gen-manifests_context_test
+PASS: gen-manifests context test (5 manifests, byte-identical)
+exit=0
+== gen-manifests_shipped_test
+FAIL: full-image-no-fips-grub.json does not list grub
+exit=1

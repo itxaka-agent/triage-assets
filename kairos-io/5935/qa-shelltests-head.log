@@ -1,0 +1,13 @@
+== gen-components_test
+PASS: gen-components tests
+exit=0
+== gen-components_shipped_test
+note: shipped stage ref 'stage2-merge' has no *_VERSION ARG (skipped)
+PASS: gen-components shipped/flat tests
+exit=0
+== gen-manifests_context_test
+PASS: gen-manifests context test (5 manifests, byte-identical)
+exit=0
+== gen-manifests_shipped_test
+PASS: gen-manifests shipped tests
+exit=0
