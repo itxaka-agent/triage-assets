@@ -1,0 +1,8 @@
+=== base (3caeaa5, 2026-11-03): 64KiB random -> 16KiB tmpfs (failure only at encoder Close) ===
+ZstdFile returned err=<nil>
+output size on disk: 16384 bytes
+exit=0
+=== head (8fda57c, 2026-11-04): 64KiB random -> 16KiB tmpfs (failure only at encoder Close) ===
+ZstdFile returned err=error finishing the compressed initramfs file: write /out/initrd: no space left on device
+output size on disk: 16384 bytes
+exit=1
