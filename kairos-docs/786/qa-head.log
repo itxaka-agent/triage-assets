@@ -1,0 +1,48 @@
+  `-- joi@17.13.9
+| +-- lodash@4.18.1
+| `-- mermaid@12.3.0
+      1 chevrotain@13.2.0
+      2 joi@17.13.9
+      1 lodash-es@4.17.23
+     10 lodash@4.18.1
+      1 mermaid@12.3.0
+      1 mermaid@3.10.2
+      1 node-forge@1.3.14
+      1 node-forge@1.4.2
+BUILD_EXIT=0
+[Local Search] [INFO]: Index docs-default-v4.4.0 written to disk
+[Local Search] [INFO]: Index docs-operator-docs-current written to disk
+[Local Search] [INFO]: Index docs-operator-docs-v0.2.2 written to disk
+[Local Search] [INFO]: Index docs-operator-docs-v0.0.7 written to disk
+[Local Search] [INFO]: Index docs-operator-docs-v0.3.0 written to disk
+[Local Search] [INFO]: Index docs-default-v4.3.0 written to disk
+[Local Search] [INFO]: Index docs-provider-kubernetes-docs-current written to disk
+[Local Search] [INFO]: Index docs-quickstart-current written to disk
+[Local Search] [INFO]: Index docs-default-current written to disk
+[SUCCESS] Generated static files in "build".
+[INFO] Use `npm run serve` command to test your build locally.
+
+real	0m13.011s
+user	0m37.659s
+sys	0m2.796s
+1
+0
+TESTS_EXIT=0
+✔ refreshes the announcement banner to the target version (27.541211ms)
+✔ generates a per-version hadron flavor const matching hadronFlavorRelease (26.95791ms)
+✔ is idempotent across repeated runs (39.473394ms)
+✔ falls back to the template flavorOptions when there is no hadron release (19.953841ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 208.039005
+TC_EXIT=0
+
+> kairos-docs@0.0.0 typecheck
+> tsc
+
+docker run --rm --name qa786-head -e RUNTESTS=1 -v $PWD/head:/src -v  -w /src  0,02s user 0,01s system 0% cpu 15,560 total
