@@ -1,0 +1,32 @@
+QA PR #1057  2026-11-04  base=3caeaa5  head=92665eb
+=== base:  ===
+--- base garbage pair
+Start returned nil; listening on 127.0.0.1:36783
+TLS handshake FAILED/HUNG: context deadline exceeded
+exit=2
+--- base missing files
+Start returned nil; listening on 127.0.0.1:43269
+TLS handshake FAILED/HUNG: context deadline exceeded
+exit=2
+--- base valid pair
+Start returned nil; listening on 127.0.0.1:35657
+TLS handshake OK, version 772
+exit=0
+=== head:  ===
+--- head garbage pair
+Start returned ERROR: starting iso-serve: loading TLS certificate bad.crt and key bad.key: tls: failed to find any PEM data in certificate input
+exit=1
+--- head missing files
+Start returned ERROR: starting iso-serve: loading TLS certificate /nonexist.crt and key /nonexist.key: open /nonexist.crt: no such file or directory
+exit=1
+--- head valid pair
+Start returned nil; listening on 127.0.0.1:40159
+TLS handshake OK, version 772
+exit=0
+=== go test isoserve (head's tests) on base ===
+--- FAIL: TestIsoserve (0.07s)
+FAIL
+FAIL	github.com/kairos-io/AuroraBoot/pkg/isoserve	0.082s
+FAIL
+=== go test isoserve (head's tests) on head ===
+ok  	github.com/kairos-io/AuroraBoot/pkg/isoserve	0.051s
