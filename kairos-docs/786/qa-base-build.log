@@ -1,0 +1,40 @@
+
+> kairos-docs@0.0.0 build
+> docusaurus build
+
+[INFO] [en] Creating an optimized production build...
+Browserslist: browsers data (caniuse-lite) is 11 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[Local Search] [INFO]: Gathering documents
+[Local Search] [INFO]: Parsing documents
+[Local Search] [WARN]: Page has no <main>, therefore no content was indexed for this page. (url: /community/)
+[Local Search] [INFO]: 11 indexes will be created.
+[Local Search] [INFO]: Building index default (273 documents)
+[Local Search] [INFO]: Building index blog_posts_list (63 documents)
+[Local Search] [INFO]: Building index docs-default-v4.1.2 (732 documents)
+[Local Search] [INFO]: Building index docs-default-v4.2.0 (792 documents)
+[Local Search] [INFO]: Building index docs-default-v4.3.0 (799 documents)
+[Local Search] [INFO]: Building index docs-default-current (808 documents)
+[Local Search] [INFO]: Building index docs-hadron-docs-current (58 documents)
+[Local Search] [INFO]: Building index docs-operator-docs-v0.0.7 (54 documents)
+[Local Search] [INFO]: Building index docs-operator-docs-v0.2.2 (125 documents)
+[Local Search] [INFO]: Building index docs-operator-docs-current (125 documents)
+[Local Search] [INFO]: Building index docs-quickstart-current (49 documents)
+[Local Search] [INFO]: Index blog_posts_list written to disk
+[Local Search] [INFO]: Index default written to disk
+[Local Search] [INFO]: Index docs-default-v4.1.2 written to disk
+[Local Search] [INFO]: Index docs-hadron-docs-current written to disk
+[Local Search] [INFO]: Index docs-operator-docs-v0.0.7 written to disk
+[Local Search] [INFO]: Index docs-default-v4.3.0 written to disk
+[Local Search] [INFO]: Index docs-operator-docs-v0.2.2 written to disk
+[Local Search] [INFO]: Index docs-quickstart-current written to disk
+[Local Search] [INFO]: Index docs-operator-docs-current written to disk
+[Local Search] [INFO]: Index docs-default-v4.2.0 written to disk
+[Local Search] [INFO]: Index docs-default-current written to disk
+[SUCCESS] Generated static files in "build".
+[INFO] Use `npm run serve` command to test your build locally.
+
+real	0m11.123s
+user	0m29.538s
+sys	0m2.237s
