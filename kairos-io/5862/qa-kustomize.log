@@ -1,0 +1,65 @@
+### kustomize v5.8.3 in container; opt-in blocks uncommented
+### BASE (b1dacad, merge base)
+Error: accumulating resources: accumulation err='accumulating resources from '../certmanager': evalsymlink failure on '/w/base-opt/config/certmanager' : lstat /w/base-opt/config/certmanager: no such file or directory': must build at directory: not a valid directory: evalsymlink failure on '/w/base-opt/config/certmanager' : lstat /w/base-opt/config/certmanager: no such file or directory
+exit=1
+
+### default render, base vs head
+byte-identical
+
+### HEAD (ee5a6fe) opt-in
+exit=0
+7888:kind: Certificate
+7889-metadata:
+7890-  labels:
+7891-    app.kubernetes.io/managed-by: kustomize
+7892-    app.kubernetes.io/name: kairos-operator
+7893-  name: operator-metrics-certs
+7894-  namespace: operator-system
+7895-spec:
+7896-  dnsNames:
+7897-  - operator-kairos-operator-metrics-service.operator-system.svc
+7898-  - operator-kairos-operator-metrics-service.operator-system.svc.cluster.local
+7899-  issuerRef:
+7900-    kind: Issuer
+7901-    name: operator-selfsigned-issuer
+7902-  secretName: metrics-server-cert
+7903----
+7904-apiVersion: cert-manager.io/v1
+7905:kind: Issuer
+7906-metadata:
+7907-  labels:
+7908-    app.kubernetes.io/managed-by: kustomize
+7909-    app.kubernetes.io/name: kairos-operator
+7910-  name: operator-selfsigned-issuer
+7911-  namespace: operator-system
+7912-spec:
+7913-  selfSigned: {}
+7943:      serverName: operator-kairos-operator-metrics-service.operator-system.svc
+7883-            path: tls.key
+7884-          optional: false
+7885:          secretName: metrics-server-cert
+7886----
+7887-apiVersion: cert-manager.io/v1
+7888-kind: Certificate
+--
+7900-    kind: Issuer
+7901-    name: operator-selfsigned-issuer
+7902:  secretName: metrics-server-cert
+7903----
+7904-apiVersion: cert-manager.io/v1
+7905-kind: Issuer
+--
+7932-        secret:
+7933-          key: ca.crt
+7934:          name: metrics-server-cert
+7935-      cert:
+7936-        secret:
+7937-          key: tls.crt
+7938:          name: metrics-server-cert
+7939-      insecureSkipVerify: false
+7940-      keySecret:
+7941-        key: tls.key
+7942:        name: metrics-server-cert
+7943-      serverName: operator-kairos-operator-metrics-service.operator-system.svc
+7944-  selector:
+7945-    matchLabels:
