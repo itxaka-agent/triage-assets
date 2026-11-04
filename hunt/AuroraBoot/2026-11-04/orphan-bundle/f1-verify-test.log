@@ -1,0 +1,18 @@
+=== RUN   TestVerifyOrphanBundleBlocksExtensionDelete
+    orphan_bundle_verify_test.go:52: PUT /artifacts/art-1/bundle-extensions -> 200 [{"artifactId":"art-1","extensionName":"myext","extensionType":"sysext","order":0,"CreatedAt":"2026-11-04T08:07:18.446476928Z","UpdatedAt":"2026-11-04T08:07:18.446476928Z"}]
+    orphan_bundle_verify_test.go:55: DELETE /artifacts/art-1 -> 204
+
+2026/11/04 08:07:18 [31;1m/src/internal/store/gorm/store.go:1071 [35;1mrecord not found
+[0m[33m[0.024ms] [34;1m[rows:0][0m SELECT * FROM `artifact_records` WHERE id = "art-1" ORDER BY `artifact_records`.`id` LIMIT 1
+    orphan_bundle_verify_test.go:61: bundle rows left for deleted art-1: 1
+    orphan_bundle_verify_test.go:64: DELETE /extensions/ext-1 -> 409 {"artifacts":["art-1"],"error":"extension is referenced by one or more artifact bundles"}
+
+2026/11/04 08:07:18 [31;1m/src/internal/store/gorm/store.go:1071 [35;1mrecord not found
+[0m[33m[0.024ms] [34;1m[rows:0][0m SELECT * FROM `artifact_records` WHERE id = "art-1" ORDER BY `artifact_records`.`id` LIMIT 1
+    orphan_bundle_verify_test.go:67: PUT /artifacts/art-1/bundle-extensions [] -> 404 {"error":"not found"}
+    orphan_bundle_verify_test.go:75: bundle rows left after DeleteByPhase(Error) for art-2: 1
+    orphan_bundle_verify_test.go:78: BUG: orphan bundle rows survive artifact deletion and block extension delete
+--- FAIL: TestVerifyOrphanBundleBlocksExtensionDelete (0.00s)
+FAIL
+FAIL	github.com/kairos-io/AuroraBoot/pkg/handlers	0.007s
+FAIL
