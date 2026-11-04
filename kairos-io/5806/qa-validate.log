@@ -1,0 +1,26 @@
+real kubeadm: v1.37.0
+
+##### [base-noaddr] advertiseAddress line in rendered cloud-config:
+          advertiseAddress: "FILL-IN-THIS-NODE-IP"
+##### [base-noaddr] kubeadm config validate --config join-base-noaddr.yaml
+    error: couldn't use "FILL-IN-THIS-NODE-IP" as "apiserver-advertise-address", must be ipv4 or ipv6 address
+    To see the stack trace of this error execute with --v=5 or higher
+    exit=1
+
+##### [head-noaddr] advertiseAddress line in rendered cloud-config:
+          advertiseAddress: ""
+##### [head-noaddr] kubeadm config validate --config join-head-noaddr.yaml
+    ok
+    exit=0
+
+##### [head-addr] advertiseAddress line in rendered cloud-config:
+          advertiseAddress: "10.0.0.11"
+##### [head-addr] kubeadm config validate --config join-head-addr.yaml
+    ok
+    exit=0
+
+##### [base-addr] advertiseAddress line in rendered cloud-config:
+          advertiseAddress: "10.0.0.11"
+##### [base-addr] kubeadm config validate --config join-base-addr.yaml
+    ok
+    exit=0
