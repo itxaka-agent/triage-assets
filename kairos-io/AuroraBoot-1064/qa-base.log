@@ -1,0 +1,13 @@
+=== base ===
+$ auroraboot build-uki -s Debug: rd.debug -s debug: rd.break
+exec: "mkfs.msdos": executable file not found in $PATH
+exit=1
+
+$ auroraboot build-uki -s Norole: rd.debug
+exec: "mkfs.msdos": executable file not found in $PATH
+exit=1
+
+$ auroraboot build-uki -s Debug: rd.debug -s Other: rd.break
+exec: "mkfs.msdos": executable file not found in $PATH
+exit=1
+

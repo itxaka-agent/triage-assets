@@ -1,0 +1,13 @@
+=== head ===
+$ auroraboot build-uki -s Debug: rd.debug -s debug: rd.break
+uki.Build: boot entries "Kairos (Debug)" and "Kairos (debug)" both produce debug.efi, use distinct titles
+exit=1
+
+$ auroraboot build-uki -s Norole: rd.debug
+uki.Build: boot entries "Kairos" and "Kairos (Norole)" both produce norole.efi, use distinct titles
+exit=1
+
+$ auroraboot build-uki -s Debug: rd.debug -s Other: rd.break
+exec: "mkfs.msdos": executable file not found in $PATH
+exit=1
+
