@@ -1,0 +1,82 @@
+go: downloading github.com/pierrec/lz4/v4 v4.1.26
+go: downloading github.com/pkg/xattr v0.4.12
+go: downloading github.com/ulikunitz/xz v0.5.15
+go: downloading github.com/jaypipes/pcidb v1.1.1
+go: downloading gopkg.in/evanphx/json-patch.v4 v4.13.0
+go: downloading github.com/mitchellh/reflectwalk v1.0.2
+go: downloading github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2
+go: downloading gopkg.in/warnings.v0 v0.1.2
+go: downloading github.com/cloudflare/circl v1.6.3
+go: downloading github.com/emicklei/go-restful/v3 v3.13.0
+go: downloading github.com/go-openapi/swag/pools v0.28.0
+go: downloading github.com/go-logr/stdr v1.2.2
+go: downloading go.opentelemetry.io/auto/sdk v1.2.1
+go: downloading github.com/klauspost/cpuid/v2 v2.3.0
+go: downloading github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
+go: downloading github.com/wayneashleyberry/terminal-dimensions v1.1.0
+go: downloading github.com/aybabtme/rgbterm v0.0.0-20170906152045-cc83f3b3ce59
+go: downloading github.com/ayoubfaouzi/pkcs7 v0.2.3
+go: downloading github.com/u-root/uio v0.0.0-20240224005618-d2acac8f3701
+go: downloading github.com/dustin/go-humanize v1.0.1
+== register node
+{"apiKey":"<redacted>","id":"b1203b6d-6005-4ba3-a2bb-66af5dbe3df0"}
+== create group
+{"id":"4e805061-97d5-495d-96f6-31aec6e2d266","name":"g1","description":"","createdAt":"2026-11-05T10:23:12.764482143Z","updatedAt":"2026-11-05T10:23:12.764482143Z"}
+== 1 PUT group unknown group (claim: head 404, base 200)
+$ -X PUT -H Authorization: Bearer <redacted> -H Content-Type: application/json http://127.0.0.1:8099/api/v1/nodes/b1203b6d-6005-4ba3-a2bb-66af5dbe3df0/group -d {"groupID":"no-such-group-0000"}
+{"status":"ok"}
+ -> HTTP 200
+node groupID after:
+"groupID":"no-such-group-0000"
+== 2 PUT group unknown node (claim: head 404, base 200)
+$ -X PUT -H Authorization: Bearer <redacted> -H Content-Type: application/json http://127.0.0.1:8099/api/v1/nodes/no-such-node/group -d {"groupID":"4e805061-97d5-495d-96f6-31aec6e2d266"}
+{"status":"ok"}
+ -> HTTP 200
+$ -X PUT -H Authorization: Bearer <redacted> -H Content-Type: application/json http://127.0.0.1:8099/api/v1/nodes/no-such-node/group -d {"groupID":null}
+{"status":"ok"}
+ -> HTTP 200
+== 3 PUT labels unknown node (claim: head 404, base 500)
+$ -X PUT -H Authorization: Bearer <redacted> -H Content-Type: application/json http://127.0.0.1:8099/api/v1/nodes/no-such-node/labels -d {"labels":{"a":"b"}}
+{"error":"failed to set labels"}
+ -> HTTP 500
+== 4 valid group set (200)
+$ -X PUT -H Authorization: Bearer <redacted> -H Content-Type: application/json http://127.0.0.1:8099/api/v1/nodes/b1203b6d-6005-4ba3-a2bb-66af5dbe3df0/group -d {"groupID":"4e805061-97d5-495d-96f6-31aec6e2d266"}
+{"status":"ok"}
+ -> HTTP 200
+"groupID":"4e805061-97d5-495d-96f6-31aec6e2d266"
+== 5 valid group clear (200)
+$ -X PUT -H Authorization: Bearer <redacted> -H Content-Type: application/json http://127.0.0.1:8099/api/v1/nodes/b1203b6d-6005-4ba3-a2bb-66af5dbe3df0/group -d {"groupID":null}
+{"status":"ok"}
+ -> HTTP 200
+"groupID":null
+node JSON:
+{"id":"b1203b6d-6005-4ba3-a2bb-66af5dbe3df0","machineID":"m1","hostname":"h1","groupID":null,"phase":"Registered","lastHeartbeat":null,"agentVersion":"","osRelease":null,"labels":{},"remoteIP":"127.0.0.1","createdAt":"2026-11-05T10:23:12.742451002Z","updatedAt":"2026-11-05T10:23:12.863553908Z"}
+
+== 6 valid labels (200)
+$ -X PUT -H Authorization: Bearer <redacted> -H Content-Type: application/json http://127.0.0.1:8099/api/v1/nodes/b1203b6d-6005-4ba3-a2bb-66af5dbe3df0/labels -d {"labels":{"a":"b"}}
+{"status":"ok"}
+ -> HTTP 200
+"labels":{"a":"b"}
+== 7 adjacent: list groups, list nodes, set group again, delete group, list groups
+$ -H Authorization: Bearer <redacted> http://127.0.0.1:8099/api/v1/groups
+[{"id":"4e805061-97d5-495d-96f6-31aec6e2d266","name":"g1","description":"","node_count":0,"createdAt":"2026-11-05T10:23:12.764482143Z","updatedAt":"2026-11-05T10:23:12.764482143Z"}]
+ -> HTTP 200
+$ -H Authorization: Bearer <redacted> http://127.0.0.1:8099/api/v1/nodes
+[{"id":"b1203b6d-6005-4ba3-a2bb-66af5dbe3df0","machineID":"m1","hostname":"h1","groupID":null,"phase":"Registered","lastHeartbeat":null,"agentVersion":"","osRelease":null,"labels":{"a":"b"},"remoteIP":"127.0.0.1","createdAt":"2026-11-05T10:23:12.742451002Z","updatedAt":"2026-11-05T10:23:12.89433197Z"}]
+ -> HTTP 200
+$ -X PUT -H Authorization: Bearer <redacted> -H Content-Type: application/json http://127.0.0.1:8099/api/v1/nodes/b1203b6d-6005-4ba3-a2bb-66af5dbe3df0/group -d {"groupID":"4e805061-97d5-495d-96f6-31aec6e2d266"}
+{"status":"ok"}
+ -> HTTP 200
+$ -X DELETE -H Authorization: Bearer <redacted> http://127.0.0.1:8099/api/v1/groups/4e805061-97d5-495d-96f6-31aec6e2d266
+ -> HTTP 204
+$ -H Authorization: Bearer <redacted> http://127.0.0.1:8099/api/v1/groups
+[]
+ -> HTTP 200
+== DB
+b1203b6d-6005-4ba3-a2bb-66af5dbe3df0|
+== server log tail
+2026/11/05 10:23:12 127.0.0.1 GET /api/v1/groups 200 172.586µs
+2026/11/05 10:23:12 127.0.0.1 GET /api/v1/nodes 200 186.115µs
+2026/11/05 10:23:12 127.0.0.1 PUT /api/v1/nodes/b1203b6d-6005-4ba3-a2bb-66af5dbe3df0/group 200 268.666µs
+2026/11/05 10:23:12 127.0.0.1 DELETE /api/v1/groups/4e805061-97d5-495d-96f6-31aec6e2d266 204 222.415µs
+2026/11/05 10:23:12 127.0.0.1 GET /api/v1/groups 200 378.895µs
