@@ -1,0 +1,401 @@
+]3008;start=c293c09da79c4af995893e62bf1cf202;user=root;hostname=kairos-49bb;machineid=49bb45eb22e5455da154c6502705b91e;bootid=ec61126754aa4e34ac873f4b6e64906b;pid=911;pidfdid=407;comm=login;targetuser=root;sessionid=1;type=session\]3008;start=8316baf5-d768-4627-9fb1-a62b44af531a;type=shell;machineid=49bb45eb22e5455da154c6502705b91e;user=root;hostname=kairos-49bb;bootid=ec611267-54aa-4e34-ac87-3f4b6e64906b;pid=968;cwd=/root\[root@kairos-49bb ~]# ==IMMUCORE-LOG==
+2026-11-05T14:37:56Z INF Immucore go=go1.27.3 version=dev
+2026-11-05T14:37:56Z DBG cmdline content="console=ttyS0 console=tty1 net.ifnames=1 rd.immucore.oemlabel=COS_OEM rd.immucore.oemtimeout=2 rd.immucore.uki selinux=0 panic=5 rd.shell=0 systemd.crash_reboot=yes  console=ttyS0 console=tty1 rd.immucore.debug stages.initramfs[0].commands[0]=\"touch /run/qa-marker; echo QA5979-MARKER-RAN > /dev/kmsg\"\n"
+2026-11-05T14:37:56Z DBG Read-only media layout is not applicable to this boot; not probing
+2026-11-05T14:37:56Z INF UKI booting!
+2026-11-05T14:37:56Z INF 1.
+ <init> (background: false) (weak: false) (run: false)
+2.
+ <uki-base-mounts> (background: false) (weak: false) (run: false)
+3.
+ <create-sentinel> (background: false) (weak: false) (run: false)
+ <uki-tpm-modules> (background: false) (weak: false) (run: false)
+4.
+ <uki-pivot-to-sysroot> (background: false) (weak: false) (run: false)
+5.
+ <uki-kernel-modules> (background: false) (weak: false) (run: false)
+6.
+ <uki-udev> (background: false) (weak: false) (run: false)
+7.
+ <mount-livecd> (background: false) (weak: false) (run: false)
+ <uki-network> (background: false) (weak: false) (run: false)
+ <mount-esp> (background: false) (weak: false) (run: false)
+ <extract-certs> (background: false) (weak: false) (run: false)
+8.
+ <uki-unlock> (background: false) (weak: false) (run: false)
+9.
+ <mount-oem> (background: false) (weak: true) (run: false)
+10.
+ <rootfs-hook> (background: false) (weak: false) (run: false)
+11.
+ <load-config> (background: false) (weak: false) (run: false)
+12.
+ <custom-mount> (background: false) (weak: true) (run: false)
+ <mount-base-overlay> (background: false) (weak: false) (run: false)
+13.
+ <overlay-mount> (background: false) (weak: true) (run: false)
+14.
+ <mount-bind> (background: false) (weak: true) (run: false)
+15.
+ <uki-transition-sysext> (background: false) (weak: false) (run: false)
+ <quarantine-stale-units> (background: false) (weak: false) (run: false)
+ <write-fstab> (background: false) (weak: false) (run: false)
+16.
+ <enable-sysext-confext> (background: false) (weak: false) (run: false)
+17.
+ <initramfs-hook> (background: false) (weak: true) (run: false)
+18.
+ <uki-init> (background: false) (weak: true) (run: false)
+
+2026-11-05T14:37:56Z DBG Will now create /run/cos if not exists
+2026-11-05T14:37:56Z DBG Will now create the runtime object
+2026-11-05T14:37:56Z DBG detecting boot state
+2026-11-05T14:37:56Z DBG Detected uki boot
+2026-11-05T14:37:56Z DBG Bootstate: livecd_boot
+2026-11-05T14:37:56Z DBG The BootState was BootState=livecd_boot
+2026-11-05T14:37:56Z INF Setting sentinel file to=live_mode
+2026-11-05T14:37:56Z INF Setting sentinel file to=uki_install_mode
+2026-11-05T14:37:56Z INF Setting install intent sentinel file to=install_mode_interactive
+2026-11-05T14:37:57Z DBG Detecting needed modules drivers=["tpm_ftpm_tee"]
+2026-11-05T14:37:57Z DBG modprobe error="exit status 1" out="modprobe: FATAL: Module tpm_ftpm_tee not found in directory /lib/modules/7.3.0-hadron\n"
+2026-11-05T14:37:57Z DBG Creating sysroot dir what=/sysroot
+2026-11-05T14:37:57Z DBG Mounting tmpfs on sysroot
+2026-11-05T14:37:57Z DBG simple directory what=.extra
+2026-11-05T14:37:57Z DBG Symlinked file from=usr/bin to=/sysroot/bin
+2026-11-05T14:37:57Z DBG mount point what=dev
+2026-11-05T14:37:57Z DBG simple directory what=efi
+2026-11-05T14:37:57Z DBG simple directory what=etc
+2026-11-05T14:37:57Z DBG simple directory what=home
+2026-11-05T14:37:57Z DBG Symlinked file from=/usr/bin/immucore to=/sysroot/init
+2026-11-05T14:37:57Z DBG Symlinked file from=usr/lib to=/sysroot/lib
+2026-11-05T14:37:57Z DBG Symlinked file from=usr/lib to=/sysroot/lib64
+2026-11-05T14:37:57Z DBG simple directory what=mnt
+2026-11-05T14:37:57Z DBG simple directory what=oem
+2026-11-05T14:37:57Z DBG simple directory what=opt
+2026-11-05T14:37:57Z DBG mount point what=proc
+2026-11-05T14:37:57Z DBG simple directory what=root
+2026-11-05T14:37:57Z DBG mount point what=run
+2026-11-05T14:37:57Z DBG Symlinked file from=usr/sbin to=/sysroot/sbin
+2026-11-05T14:37:57Z DBG simple directory what=srv
+2026-11-05T14:37:57Z DBG mount point what=sys
+2026-11-05T14:37:57Z DBG simple directory what=system
+2026-11-05T14:37:57Z DBG mount point what=tmp
+2026-11-05T14:37:57Z DBG simple directory what=usr
+2026-11-05T14:37:58Z DBG simple directory what=var
+2026-11-05T14:37:58Z DBG Mount moved from=/dev to=/sysroot/dev
+2026-11-05T14:37:58Z DBG Mount moved from=/proc to=/sysroot/proc
+2026-11-05T14:37:58Z DBG Mount moved from=/run to=/sysroot/run
+2026-11-05T14:37:58Z DBG Mount moved from=/sys to=/sysroot/sys
+2026-11-05T14:37:58Z DBG Mount moved from=/tmp to=/sysroot/tmp
+2026-11-05T14:37:58Z DBG Changing dir to=/sysroot
+2026-11-05T14:37:58Z DBG Moving mount what=/sysroot where=/
+2026-11-05T14:37:58Z DBG Chrooting to=.
+2026-11-05T14:37:59Z DBG Detecting needed modules drivers=["af_packet","ahci","ahcpi-platform","ata_generic","ata_piix","cdrom","dm_mod","dm_snapshot","dm-verity","e1000","e1000e","ehci_hcd","ehci_pci","ext2","ext4","fat","fuse","hid-generic","iso9660","isofs","libahci-platform","libata","loop","mmc_block","nls_cp437","nls_iso8859_1","nvme","nvme_core","ohci_hcd","ohci_pci","overlay","paride","part_msdos","pata_acpi","scsi_mod","sd_mod","sdhci-pci","simpledrm","squashfs","sr_mod","uas","uhci_hcd","usb_common","usbcore","usbhid","usbms","usb_storage","vfat","virtio","virtio_blk","virtio_net","virtio_pci","virtio_scsi","xhci_hcd","xhci_pci","nfit","libnvdimm","nd_pmem","dax_pmem","tegra-bpmp","tegra-bpmp-thermal","phy-tegra194-p2u","pcie-tegra264"]
+2026-11-05T14:37:59Z DBG modprobe error="exit status 1" out="modprobe: FATAL: Module ahcpi-platform not found in directory /lib/modules/7.3.0-hadron\n"
+2026-11-05T14:37:59Z DBG modprobe error="exit status 1" out="modprobe: FATAL: Module paride not found in directory /lib/modules/7.3.0-hadron\n"
+2026-11-05T14:37:59Z DBG modprobe error="exit status 1" out="modprobe: FATAL: Module part_msdos not found in directory /lib/modules/7.3.0-hadron\n"
+2026-11-05T14:37:59Z DBG modprobe error="exit status 1" out="modprobe: FATAL: Module usbms not found in directory /lib/modules/7.3.0-hadron\n"
+2026-11-05T14:37:59Z DBG modprobe error="exit status 1" out="modprobe: FATAL: Module tegra-bpmp not found in directory /lib/modules/7.3.0-hadron\n"
+2026-11-05T14:37:59Z DBG modprobe error="exit status 1" out="modprobe: FATAL: Module tegra-bpmp-thermal not found in directory /lib/modules/7.3.0-hadron\n"
+2026-11-05T14:37:59Z DBG modprobe error="exit status 1" out="modprobe: FATAL: Module phy-tegra194-p2u not found in directory /lib/modules/7.3.0-hadron\n"
+2026-11-05T14:37:59Z DBG modprobe error="exit status 1" out="modprobe: FATAL: Module pcie-tegra264 not found in directory /lib/modules/7.3.0-hadron\n"
+2026-11-05T14:37:59Z DBG Udev daemon cmd="/usr/lib/systemd/systemd-udevd --daemon" out="Starting systemd-udevd version 262.1\n"
+2026-11-05T14:37:59Z DBG Udev trigger out=
+2026-11-05T14:37:59Z DBG Udev settle out=
+2026-11-05T14:37:59Z DBG Not setting up the network, nothing to unlock on this boot
+2026-11-05T14:37:59Z DBG Not mounting ESP as we think we are booting from removable media
+2026-11-05T14:37:59Z DBG Mounted /dev/disk/by-label/UKI_ISO_INSTALL
+2026-11-05T14:37:59Z DBG Opening img file image=/run/initramfs/live/efiboot.img
+2026-11-05T14:37:59Z WRN Image is not writable, attaching read-only image=/run/initramfs/live/efiboot.img writable="open /run/initramfs/live/efiboot.img: read-only file system"
+2026-11-05T14:37:59Z DBG [1] Opening loop control device
+2026-11-05T14:37:59Z DBG [1] Getting free loop device
+2026-11-05T14:37:59Z DBG Opening loop device device=/dev/loop0
+2026-11-05T14:37:59Z DBG [1] Setting loop device
+2026-11-05T14:37:59Z DBG [1] Setting loop flags
+2026-11-05T14:37:59Z DBG Attached loop device device=/dev/loop0 image=/run/initramfs/live/efiboot.img readOnly=true
+2026-11-05T14:37:59Z DBG Not unlocking disks as we think we are booting from removable media
+2026-11-05T14:37:59Z DBG detecting boot state
+2026-11-05T14:37:59Z DBG Detected uki boot
+2026-11-05T14:37:59Z DBG Livecd mode detected, won't mount OEM
+2026-11-05T14:37:59Z INF Running rootfs stage
+2026-11-05T14:37:59Z INF [1] Running stage: rootfs.before
+
+2026-11-05T14:37:59Z DBG [1] Generating op for stage 'Datasource handling.Move old datasource to new location'
+2026-11-05T14:37:59Z DBG [1] Generating op for stage 'Datasource handling.Remove old userdata'
+2026-11-05T14:37:59Z DBG [1] Generating op for stage 'Datasource handling.Pull data from provider'
+2026-11-05T14:37:59Z DBG [1] Generating op for stage 'Datasource handling.Sentinel file for userdata'
+2026-11-05T14:37:59Z DBG [1] Generating op for stage 'Default network configuration.Enable systemd-network config files for DHCP'
+2026-11-05T14:37:59Z DBG [1] Reading '/system/oem/00_datasource.yaml'
+2026-11-05T14:37:59Z DBG [1] Reading '/system/oem/05_network.yaml'
+2026-11-05T14:37:59Z DBG [1] Executing stage 'Datasource handling.Move old datasource to new location'
+2026-11-05T14:37:59Z DBG [1] Executing stage 'Default network configuration.Enable systemd-network config files for DHCP'
+2026-11-05T14:37:59Z WRN [1] (conditional) Skip 'Skipping stage (if statement error: failed to run [ -d /oem/userdata ] && [ ! -d /oem/95_userdata ] && [ ! -f /run/cos/write_protected ]: exit status 1)' stage name: Datasource handling.Move old datasource to new location
+2026-11-05T14:37:59Z DBG [1] If statement result 
+2026-11-05T14:37:59Z DBG [1] running stage (OnlyIfOs regex (Ubuntu.*|Debian.*|Fedora.*|CentOS.*|Rocky.*|AlmaLinux.*|Oracle.*Linux.*|SUSE.*|[Oo]penSUSE.*|Hadron.*|Red.*Hat.*) matches os name 'Hadron Linux
+2026-11-05T14:37:59Z DBG [1] Found systemd at /bin/systemctl
+2026-11-05T14:37:59Z INF [1] Processing stage step 'Default network configuration.Enable systemd-network config files for DHCP'. ( commands: 0, files: 2, ... )
+2026-11-05T14:37:59Z DBG [1] Stage: schema.Stage{
+  Files: []schema.File{
+    schema.File{
+      Path: "/etc/systemd/network/20-dhcp.network",
+      Permissions: 420,
+      Content: "[Match]\nName=en*\n[Network]\nDHCP=yes\n[DHCP]\nClientIdentifier=mac\n",
+    },
+    schema.File{
+      Path: "/etc/systemd/network/20-dhcp-legacy.network",
+      Permissions: 420,
+      Content: "[Match]\nName=eth*\n[Network]\nDHCP=yes\n[DHCP]\nClientIdentifier=mac\n",
+    },
+  },
+  Directories: []schema.Directory{
+    schema.Directory{
+      Path: "/etc/systemd/network",
+      Permissions: 509,
+    },
+  },
+  If: "test -f /usr/lib/systemd/systemd-networkd",
+  Name: "Enable systemd-network config files for DHCP",
+  OnlyIfOs: "Ubuntu.*|Debian.*|Fedora.*|CentOS.*|Rocky.*|AlmaLinux.*|Oracle.*Linux.*|SUSE.*|[Oo]penSUSE.*|Hadron.*|Red.*Hat.*",
+  OnlyIfServiceManager: "systemd",
+}
+2026-11-05T14:37:59Z DBG [1] Creating file /etc/systemd/network/20-dhcp.network
+2026-11-05T14:37:59Z DBG [1] Creating file /etc/systemd/network/20-dhcp-legacy.network
+2026-11-05T14:37:59Z INF [1] Running layout plugin
+2026-11-05T14:37:59Z DBG [1] Device field empty, skipping layout plugin
+2026-11-05T14:37:59Z DBG [1] Reading '/system/oem/00_datasource.yaml'
+2026-11-05T14:37:59Z DBG [1] Executing stage 'Datasource handling.Remove old userdata'
+2026-11-05T14:37:59Z WRN [1] (conditional) Skip 'Skipping stage (if statement error: failed to run [ -d /oem/userdata ] && [ -d /oem/95_userdata ] && [ ! -f /run/cos/write_protected ]: exit status 1)' stage name: Datasource handling.Remove old userdata
+2026-11-05T14:37:59Z DBG [1] Reading '/system/oem/00_datasource.yaml'
+2026-11-05T14:37:59Z DBG [1] Executing stage 'Datasource handling.Pull data from provider'
+2026-11-05T14:37:59Z DBG [1] If statement result 
+2026-11-05T14:37:59Z INF [1] Processing stage step 'Datasource handling.Pull data from provider'. ( commands: 0, files: 0, ... )
+2026-11-05T14:37:59Z DBG [1] Stage: schema.Stage{
+  If: "[ ! -e /oem/95_userdata ] && ([ ! -f /run/cos/uki_boot_mode ] || grep -q \"kairos.pull_datasources\" /proc/cmdline ) && [ ! -f /run/cos/write_protected ]",
+  Name: "Pull data from provider",
+  DataSources: schema.DataSource{
+    Providers: []string{
+      "cdrom",
+      "gcp",
+      "openstack",
+      "aws",
+      "azure",
+      "hetzner",
+      "packet",
+      "vultr",
+      "digitalocean",
+      "metaldata",
+      "vmware",
+      "config-drive",
+      "maas",
+    },
+    Path: "/oem/95_userdata",
+  },
+}
+2026-11-05T14:37:59Z DBG [1] cdrom devices to be checked: [/dev/sr0]
+2026-11-05T14:37:59Z DBG [1] CIDATA devices to be checked: []
+2026-11-05T14:37:59Z DBG [1] unique devices to be checked: [/dev/sr0]
+2026-11-05T14:37:59Z DBG [1] cdrom devices to be checked: [/dev/sr0]
+2026-11-05T14:37:59Z DBG [1] CONFIG-2 devices to be checked: []
+2026-11-05T14:37:59Z DBG [1] unique devices to be checked: [/dev/sr0]
+2026-11-05T14:37:59Z DBG [1] Creating directory /run/config
+2026-11-05T14:37:59Z DBG [1] Full provider list: [GCP Openstack AWS Azure Hetzner Packet Vultr DigitalOcean Metaldata VMWARE MAAS]
+2026-11-05T14:37:59Z DBG [1] Starting provider CDROM(/dev/sr0)
+2026-11-05T14:37:59Z DBG [1] Didnt found userdata from CDROM(/dev/sr0)
+2026-11-05T14:37:59Z DBG [1] Starting provider CONFIG_DRIVE(/dev/sr0)
+2026-11-05T14:37:59Z DBG [1] Didnt found userdata from CONFIG_DRIVE(/dev/sr0)
+2026-11-05T14:37:59Z DBG [1] Starting provider GCP
+2026-11-05T14:37:59Z DBG [1] Starting provider Openstack
+2026-11-05T14:37:59Z DBG [1] Starting provider AWS
+2026-11-05T14:37:59Z DBG [1] Starting provider Azure
+2026-11-05T14:37:59Z DBG [1] Starting provider Hetzner
+2026-11-05T14:37:59Z DBG [1] Starting provider Packet
+2026-11-05T14:37:59Z DBG [1] Starting provider Vultr
+2026-11-05T14:37:59Z DBG [1] Starting provider DigitalOcean
+2026-11-05T14:37:59Z DBG [1] Starting provider Metaldata
+2026-11-05T14:37:59Z DBG [1] Starting provider VMWARE
+2026-11-05T14:37:59Z DBG [1] Didnt found userdata from Azure
+2026-11-05T14:37:59Z DBG [1] Starting provider MAAS
+2026-11-05T14:37:59Z DBG [1] MAAS: probe failed: MAAS: no cloud-config-url on cmdline
+2026-11-05T14:37:59Z DBG [1] Didnt found userdata from Openstack
+2026-11-05T14:37:59Z DBG [1] Didnt found userdata from AWS
+2026-11-05T14:37:59Z DBG [1] Didnt found userdata from MAAS
+2026-11-05T14:37:59Z DBG [1] Didnt found userdata from GCP
+2026-11-05T14:37:59Z DBG [1] Didnt found userdata from DigitalOcean
+2026-11-05T14:37:59Z DBG [1] Hetzner: probe failed: Hetzner: Could not contact metadata service: Get "http://169.254.169.254/hetzner/v1/metadata": dial tcp 169.254.169.254:80: connect: network is unreachable
+2026-11-05T14:37:59Z DBG [1] Didnt found userdata from Vultr
+2026-11-05T14:37:59Z DBG [1] Didnt found userdata from Packet
+2026-11-05T14:37:59Z DBG [1] Didnt found userdata from Metaldata
+2026-11-05T14:37:59Z DBG [1] Didnt found userdata from VMWARE
+2026-11-05T14:37:59Z DBG [1] Didnt found userdata from Hetzner
+2026-11-05T14:37:59Z ERR [1] Error on file /system/oem/00_datasource.yaml on stage Pull data from provider: no metadata/userdata found
+2026-11-05T14:37:59Z INF [1] Running layout plugin
+2026-11-05T14:37:59Z DBG [1] Device field empty, skipping layout plugin
+2026-11-05T14:37:59Z DBG [1] Reading '/system/oem/00_datasource.yaml'
+2026-11-05T14:37:59Z DBG [1] Executing stage 'Datasource handling.Sentinel file for userdata'
+2026-11-05T14:37:59Z DBG [1] If statement result 
+2026-11-05T14:37:59Z INF [1] Processing stage step 'Datasource handling.Sentinel file for userdata'. ( commands: 0, files: 1, ... )
+2026-11-05T14:37:59Z DBG [1] Stage: schema.Stage{
+  Files: []schema.File{
+    schema.File{
+      Path: "/run/.userdata_load",
+    },
+  },
+  If: "[ ! -e /oem/95_userdata ]",
+  Name: "Sentinel file for userdata",
+}
+2026-11-05T14:37:59Z DBG [1] Creating file /run/.userdata_load
+2026-11-05T14:37:59Z INF [1] Running layout plugin
+2026-11-05T14:37:59Z DBG [1] Device field empty, skipping layout plugin
+2026-11-05T14:37:59Z INF [1] Done executing stage 'rootfs.before'
+
+2026-11-05T14:37:59Z INF [1] Running stage: rootfs
+
+2026-11-05T14:37:59Z DBG [1] Generating op for stage 'Rootfs Layout Settings.Layout configuration for active/passive mode'
+2026-11-05T14:37:59Z DBG [1] Generating op for stage 'Rootfs Layout Settings.Layout configuration for recovery/autoreset mode'
+2026-11-05T14:37:59Z DBG [1] Generating op for stage 'Rootfs Layout Settings.Layout configuration for UKI installer'
+2026-11-05T14:37:59Z DBG [1] Generating op for stage 'Rootfs Layout Settings.Mask the commit service to avoid systemd messing with machine-id'
+2026-11-05T14:37:59Z DBG [1] Generating op for stage 'Extra binds for specific distros.Extra layout configuration for active/passive mode (Ubuntu/Debian)'
+2026-11-05T14:37:59Z DBG [1] Reading '/system/oem/00_rootfs.yaml'
+2026-11-05T14:37:59Z DBG [1] Reading '/system/oem/01_extra_binds.yaml'
+2026-11-05T14:37:59Z DBG [1] Executing stage 'Rootfs Layout Settings.Layout configuration for active/passive mode'
+2026-11-05T14:37:59Z DBG [1] Executing stage 'Extra binds for specific distros.Extra layout configuration for active/passive mode (Ubuntu/Debian)'
+2026-11-05T14:37:59Z WRN [1] (conditional) Skip 'Skipping stage (if statement error: failed to run [ ! -f "/run/cos/recovery_mode" ] && [ ! -e "/run/cos/uki_install_mode" ] && [ ! -e "/run/cos/autoreset_mode" ]: exit status 1)' stage name: Extra binds for specific distros.Extra layout configuration for active/passive mode (Ubuntu/Debian)
+2026-11-05T14:37:59Z WRN [1] (conditional) Skip 'Skipping stage (if statement error: failed to run [ ! -e "/run/cos/recovery_mode" ] && [ ! -e "/run/cos/autoreset_mode" ] && [ ! -e "/run/cos/uki_install_mode" ]: exit status 1)' stage name: Rootfs Layout Settings.Layout configuration for active/passive mode
+2026-11-05T14:37:59Z DBG [1] Reading '/system/oem/00_rootfs.yaml'
+2026-11-05T14:37:59Z DBG [1] Executing stage 'Rootfs Layout Settings.Layout configuration for recovery/autoreset mode'
+2026-11-05T14:37:59Z WRN [1] (conditional) Skip 'Skipping stage (if statement error: failed to run [ -e "/run/cos/recovery_mode" ] || [ -e "/run/cos/autoreset_mode" ]: exit status 1)' stage name: Rootfs Layout Settings.Layout configuration for recovery/autoreset mode
+2026-11-05T14:37:59Z DBG [1] Reading '/system/oem/00_rootfs.yaml'
+2026-11-05T14:37:59Z DBG [1] Executing stage 'Rootfs Layout Settings.Layout configuration for UKI installer'
+2026-11-05T14:37:59Z DBG [1] If statement result 
+2026-11-05T14:37:59Z INF [1] Processing stage step 'Rootfs Layout Settings.Layout configuration for UKI installer'. ( commands: 0, files: 0, ... )
+2026-11-05T14:37:59Z DBG [1] Stage: schema.Stage{
+  If: "[ -e \"/run/cos/uki_install_mode\" ]",
+  Name: "Layout configuration for UKI installer",
+  Environment: map[string]string{
+    "OVERLAY": "tmpfs:25%",
+    "RW_PATHS": "/var /etc /srv /home",
+  },
+  EnvironmentFile: "/run/cos/cos-layout.env",
+}
+2026-11-05T14:37:59Z INF [1] Running layout plugin
+2026-11-05T14:37:59Z DBG [1] Device field empty, skipping layout plugin
+2026-11-05T14:37:59Z DBG [1] Reading '/system/oem/00_rootfs.yaml'
+2026-11-05T14:37:59Z DBG [1] Executing stage 'Rootfs Layout Settings.Mask the commit service to avoid systemd messing with machine-id'
+2026-11-05T14:37:59Z DBG [1] Found systemd at /bin/systemctl
+2026-11-05T14:37:59Z INF [1] Processing stage step 'Rootfs Layout Settings.Mask the commit service to avoid systemd messing with machine-id'. ( commands: 0, files: 0, ... )
+2026-11-05T14:37:59Z DBG [1] Stage: schema.Stage{
+  Name: "Mask the commit service to avoid systemd messing with machine-id",
+  Systemctl: schema.Systemctl{
+    Mask: []string{
+      "systemd-machine-id-commit.service",
+    },
+  },
+  OnlyIfServiceManager: "systemd",
+}
+2026-11-05T14:37:59Z INF [1] Running layout plugin
+2026-11-05T14:37:59Z DBG [1] Device field empty, skipping layout plugin
+2026-11-05T14:37:59Z INF [1] Done executing stage 'rootfs'
+
+2026-11-05T14:37:59Z INF [1] Running stage: rootfs.after
+
+2026-11-05T14:37:59Z DBG [1] Generating op for stage 'Rootfs Layout Settings.add custom bind and ephemeral mounts to /run/cos/cos-layout.env'
+2026-11-05T14:37:59Z DBG [1] Generating op for stage 'Rootfs Layout Settings.Grow persistent'
+2026-11-05T14:37:59Z DBG [1] Reading '/system/oem/00_rootfs.yaml'
+2026-11-05T14:37:59Z DBG [1] Executing stage 'Rootfs Layout Settings.add custom bind and ephemeral mounts to /run/cos/cos-layout.env'
+2026-11-05T14:37:59Z WRN [1] (conditional) Skip 'Skipping stage (if statement error: failed to run [ -r /run/cos/custom-layout.env ] && [ ! -f "/run/cos/recovery_mode" ] && [ ! -f /run/cos/live_mode ]: exit status 1)' stage name: Rootfs Layout Settings.add custom bind and ephemeral mounts to /run/cos/cos-layout.env
+2026-11-05T14:37:59Z DBG [1] Reading '/system/oem/00_rootfs.yaml'
+2026-11-05T14:37:59Z DBG [1] Executing stage 'Rootfs Layout Settings.Grow persistent'
+2026-11-05T14:37:59Z WRN [1] (conditional) Skip 'Skipping stage (if statement error: failed to run [ ! -f /run/cos/recovery_mode ] && [ ! -f /run/cos/live_mode ] && [ ! -f /run/cos/write_protected ]: exit status 1)' stage name: Rootfs Layout Settings.Grow persistent
+2026-11-05T14:37:59Z INF [1] Done executing stage 'rootfs.after'
+
+2026-11-05T14:37:59Z INF [1] Running stage: rootfs.before
+
+2026-11-05T14:37:59Z INF [1] Done executing stage 'rootfs.before'
+
+2026-11-05T14:37:59Z INF [1] Running stage: rootfs
+
+2026-11-05T14:37:59Z INF [1] Done executing stage 'rootfs'
+
+2026-11-05T14:37:59Z INF [1] Running stage: rootfs.after
+
+2026-11-05T14:37:59Z INF [1] Done executing stage 'rootfs.after'
+
+2026-11-05T14:37:59Z WRN stage completed with errors error="1 error occurred:\n\t* no metadata/userdata found\n\n" stage=rootfs
+2026-11-05T14:37:59Z DBG No extra env from /run/cos/extra-layout.env
+2026-11-05T14:37:59Z DBG Mounting custom mounts mounts={}
+2026-11-05T14:37:59Z DBG mount ready options=["nosuid","nodev","mode=0755","size=25%"] type=tmpfs what=tmpfs where=/run/overlay
+2026-11-05T14:37:59Z DBG Mounting overlays dirs=["/var","/etc","/srv","/home"]
+2026-11-05T14:37:59Z DBG Overlay mount start what=/var
+2026-11-05T14:37:59Z DBG mount ready options=["lowerdir=/var","upperdir=/run/overlay/var/.overlay/upper","workdir=/run/overlay/var/.overlay/work"] type=overlay what=overlay where=/var
+2026-11-05T14:37:59Z DBG Overlay mount done what=/var
+2026-11-05T14:37:59Z DBG Overlay mount start what=/etc
+2026-11-05T14:37:59Z DBG mount ready options=["lowerdir=/etc","upperdir=/run/overlay/etc/.overlay/upper","workdir=/run/overlay/etc/.overlay/work"] type=overlay what=overlay where=/etc
+2026-11-05T14:37:59Z DBG Overlay mount done what=/etc
+2026-11-05T14:37:59Z DBG Overlay mount start what=/srv
+2026-11-05T14:37:59Z DBG mount ready options=["lowerdir=/srv","upperdir=/run/overlay/srv/.overlay/upper","workdir=/run/overlay/srv/.overlay/work"] type=overlay what=overlay where=/srv
+2026-11-05T14:37:59Z DBG Overlay mount done what=/srv
+2026-11-05T14:37:59Z DBG Overlay mount start what=/home
+2026-11-05T14:37:59Z DBG mount ready options=["lowerdir=/home","upperdir=/run/overlay/home/.overlay/upper","workdir=/run/overlay/home/.overlay/work"] type=overlay what=overlay where=/home
+2026-11-05T14:37:59Z DBG Overlay mount done what=/home
+2026-11-05T14:37:59Z DBG Mounting binds mounts=["/var/log/audit"]
+2026-11-05T14:37:59Z DBG Bind mount start what=/var/log/audit
+2026-11-05T14:37:59Z DBG Bind mount what=/usr/local/.state/var-log-audit.bind where=/var/log/audit
+2026-11-05T14:37:59Z DBG mount ready options=["bind"] type=overlay what=/usr/local/.state/var-log-audit.bind where=/var/log/audit
+2026-11-05T14:37:59Z DBG Bind mount end what=/var/log/audit
+2026-11-05T14:37:59Z DBG Adding line to fstab what="tmpfs /run/overlay tmpfs size=25%,nosuid,nodev,mode=0755 0 0"
+2026-11-05T14:37:59Z DBG Not transitioning sysext as we think we are booting from removable media
+2026-11-05T14:37:59Z DBG Adding line to fstab what="overlay /var overlay lowerdir=/var,upperdir=/run/overlay/var/.overlay/upper,workdir=/run/overlay/var/.overlay/work 0 0"
+2026-11-05T14:37:59Z DBG Adding line to fstab what="overlay /etc overlay workdir=/run/overlay/etc/.overlay/work,lowerdir=/etc,upperdir=/run/overlay/etc/.overlay/upper 0 0"
+2026-11-05T14:37:59Z DBG Adding line to fstab what="overlay /srv overlay workdir=/run/overlay/srv/.overlay/work,lowerdir=/srv,upperdir=/run/overlay/srv/.overlay/upper 0 0"
+2026-11-05T14:37:59Z DBG Adding line to fstab what="overlay /home overlay lowerdir=/home,upperdir=/run/overlay/home/.overlay/upper,workdir=/run/overlay/home/.overlay/work 0 0"
+2026-11-05T14:37:59Z DBG Adding line to fstab what="/usr/local/.state/var-log-audit.bind /var/log/audit overlay bind 0 0"
+2026-11-05T14:37:59Z DBG Not copying sysextensions as we think we are booting from removable media
+2026-11-05T14:37:59Z INF Running initramfs stage
+2026-11-05T14:37:59Z INF [1] Running stage: initramfs.before
+
+2026-11-05T14:37:59Z DBG [1] Generating op for stage 'Datasource handling.Move old datasource to new location'
+2026-11-05T14:37:59Z DBG [1] Generating op for stage 'Datasource handling.Remove old userdata'
+2026-11-05T14:37:59Z DBG [1] Generating op for stage 'Datasource handling.Pull data from provider'
+2026-11-05T14:37:59Z DBG [1] Generating op for stage 'Datasource handling.3'
+2026-11-05T14:37:59Z DBG [1] Generating op for stage 'RPI configs.Set a safe date before user creation for RPI without hardware clocks'
+2026-11-05T14:37:59Z DBG [1] Generating op for stage '/system/oem/29_blacklist.yaml.Blacklist bpfilter on Alpine ( bug: https://github.com/kairos-io/kairos/issues/277 )'
+2026-11-05T14:37:59Z DBG [1] Generating op for stage 'L4T RootFS Prep for Orin NX.Apply NVIDIA binaries'
+2026-11-05T14:37:59Z DBG [1] Reading '/system/oem/29_blacklist.yaml'
+2026-11-05T14:37:59Z DBG [1] Reading '/system/oem/00_datasource.yaml'
+2026-11-05T14:37:59Z DBG [1] Reading '/system/oem/11_RPI.yaml'
+2026-11-05T14:37:59Z DBG [1] Executing stage '/system/oem/29_blacklist.yaml.Blacklist bpfilter on Alpine ( bug: https://github.com/kairos-io/kairos/issues/277 )'
+2026-11-05T14:37:59Z DBG [1] Found systemd at /bin/systemctl
+2026-11-05T14:37:59Z DBG [1] Executing stage 'RPI configs.Set a safe date before user creation for RPI without hardware clocks'
+2026-11-05T14:37:59Z WRN [1] (conditional) Skip 'service manager doesn't match openrc' stage name: /system/oem/29_blacklist.yaml.Blacklist bpfilter on Alpine ( bug: https://github.com/kairos-io/kairos/issues/277 )
+2026-11-05T14:37:59Z WRN [1] (conditional) Skip 'Skipping stage (if statement error: failed to run [ -f "/proc/device-tree/model" ] && grep -i "Raspberry Pi" "/proc/device-tree/model": exit status 1)' stage name: RPI configs.Set a safe date before user creation for RPI without hardware clocks
+2026-11-05T14:37:59Z DBG [1] Executing stage 'Datasource handling.Move old datasource to new location'
+2026-11-05T14:37:59Z WRN [1] (conditional) Skip 'Skipping stage (if statement error: failed to run [ -d /oem/userdata ] && [ ! -d /oem/95_userdata ] && [ ! -f /run/cos/write_protected ]: exit status 1)' stage name: Datasource handling.Move old datasource to new location
+2026-11-05T14:37:59Z DBG [1] Reading '/system/oem/30-prepare-l4t-rootfs.yaml'
+2026-11-05T14:37:59Z DBG [1] Reading '/system/oem/00_datasource.yaml'
+2026-11-05T14:37:59Z DBG [1] Executing stage 'L4T RootFS Prep for Orin NX.Apply NVIDIA binaries'
+2026-11-05T14:37:59Z DBG [1] Executing stage 'Datasource handling.Remove old userdata'
+2026-11-05T14:37:59Z WRN [1] (conditional) Skip 'Skipping stage (if statement error: failed to run [ -f "/proc/device-tree/model" ] && grep -i "Orin NX" "/proc/device-tree/model": exit status 1)' stage name: L4T RootFS Prep for Orin NX.Apply NVIDIA binaries
+2026-11-05T14:37:59Z WRN [1] (conditional) Skip 'Skipping stage (if statement error: failed to run [ -d /oem/userdata ] && [ -d /oem/95_userdata ] && [ ! -f /run/cos/write_protected ]: exit status 1)' stage name: Datasource handling.Remove old userdata
+2026-11-05T14:37:59Z DBG [1] Reading '/system/oem/00_datasource.yaml'
+2026-11-05T14:37:59Z DBG [1] Executing stage 'Datasource handling.Pull data from provider'
+2026-11-05T14:37:59Z DBG [1] If statement result 
+2026-11-05T14:37:59Z INF [1] Processing stage step 'Datasource handling.Pull data from provider'. ( commands: 0, files: 0, ... )
+2026-11-05T14:37:59Z DBG [1] Stage: schema.Stage{
+  If: "[ ! -e /oem/95_userdata ] && ([ ! -f /run/cos/uki_boot_mode ] || grep -q \"kairos.pull_datasources\" /proc/cmdline ) && [ ! -f /run/cos/write_protected ]",
+  Name: "Pull data from provider",
+  DataSources: schema.DataSource{
+    Providers: []string{
+      "cdrom",
+      "gcp",
+      "openstack",
+      "aws",
+      "azure",
+      "hetzner",
+      "packet",
+      "vultr",
+      "digitalocean",
+      "metaldata",
+      "vmware",
+      "config-drive",
+      "maas",
+    },
