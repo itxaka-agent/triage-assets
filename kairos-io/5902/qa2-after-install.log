@@ -1,0 +1,579 @@
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mKairos Agent[0m [36mversion=[0mv4.4.0-66-g80ccb975
+[90m2026-11-05T14:17:42Z[0m DBG Kairos Agent [36mgo=[0mgo1.27.3 [36mversion=[0mv4.4.0-66-g80ccb975
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mKairos System[0m [36mversion=[0mv4.4.0-66-g80ccb975
+[90m2026-11-05T14:17:42Z[0m DBG detecting boot state
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mBoot Mode[0m [36mboot_mode=[0mlivecd_boot
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mBoot in uki mode[0m [36mresult=[0mfalse
+[90m2026-11-05T14:17:42Z[0m DBG Loaded config: map[string]interface {}{
+  "collector": map[string]interface {}{
+    "install": map[string]interface {}{
+      "auto": true,
+      "device": "/dev/vda",
+      "iso": "http://10.0.2.2:8904/iso-head/kairos-hadron-v0.6.3-core-amd64-generic-v4.4.0-66-g80ccb975.iso",
+      "poweroff": false,
+    },
+    "stages": map[string]interface {}{
+      "after-install": []interface {}{
+        map[string]interface {}{
+          "commands": []interface {}{
+            "echo after-install-ran > /tmp/AFTER_INSTALL_MARKER",
+          },
+          "name": "qa marker",
+        },
+      },
+    },
+    "users": []interface {}{
+      map[string]interface {}{
+        "groups": []interface {}{
+          "admin",
+        },
+        "name": "kairos",
+        "passwd": "[REDACTED]",
+      },
+    },
+  },
+  "config": map[string]interface {}{
+    "arch": "x86_64",
+    "install": map[string]interface {}{
+      "auto": true,
+      "device": "/dev/vda",
+    },
+    "squash-no-compression": true,
+    "uki-max-entries": 3,
+  },
+}
+[90m2026-11-05T14:17:42Z[0m DBG Kubernetes check [36mhostdir=[0m [36mstatus=[0mfalse
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mSetting image size to 482MiB[0m
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mSetting OEM partition size to 64MiB[0m
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mSetting recovery partition size to 1164MiB[0m
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mSetting state partition size to 2446MiB[0m
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mSetting persistent partition size to 0MiB[0m
+[90m2026-11-05T14:17:42Z[0m DBG Loaded install spec: &spec.InstallSpec{
+  Target: "/dev/vda",
+  Firmware: "bios",
+  PartTable: "gpt",
+  Partitions: partitions.ElementalPartitions{
+    BIOS: &partitions.Partition{
+      Name: "bios",
+      FilesystemLabel: "COS_GRUB",
+      Size: 1,
+      Flags: []string{
+        "bios_grub",
+      },
+    },
+    OEM: &partitions.Partition{
+      Name: "oem",
+      FilesystemLabel: "COS_OEM",
+      Size: 64,
+      FS: "ext4",
+      Flags: []string{}, // p0
+      MountPoint: "/run/cos/oem",
+    },
+    Recovery: &partitions.Partition{
+      Name: "recovery",
+      FilesystemLabel: "COS_RECOVERY",
+      Size: 1164,
+      FS: "ext4",
+      Flags: p0,
+      MountPoint: "/run/cos/recovery",
+    },
+    State: &partitions.Partition{
+      Name: "state",
+      FilesystemLabel: "COS_STATE",
+      Size: 2446,
+      FS: "ext4",
+      Flags: p0,
+      MountPoint: "/run/cos/state",
+    },
+    Persistent: &partitions.Partition{
+      Name: "persistent",
+      FilesystemLabel: "COS_PERSISTENT",
+      FS: "ext4",
+      Flags: p0,
+      MountPoint: "/run/cos/persistent",
+    },
+  },
+  Iso: "http://10.0.2.2:8904/iso-head/kairos-hadron-v0.6.3-core-amd64-generic-v4.4.0-66-g80ccb975.iso",
+  Tty: "tty1",
+  Active: images.Image{
+    File: "/run/cos/state/cOS/active.img",
+    Label: "COS_ACTIVE",
+    Size: 482,
+    FS: "ext2",
+    Source: &images.ImageSource{
+      source: "/run/rootfsbase",
+      srcType: "dir",
+    },
+    MountPoint: "/run/cos/active",
+  },
+  Recovery: images.Image{
+    File: "/run/cos/recovery/cOS/recovery.img",
+    Label: "COS_SYSTEM",
+    Size: 482,
+    FS: "ext2",
+    Source: &images.ImageSource{
+      source: "/run/cos/state/cOS/active.img",
+      srcType: "file",
+    },
+  },
+  Passive: images.Image{
+    File: "/run/cos/state/cOS/passive.img",
+    Label: "COS_PASSIVE",
+    Size: 482,
+    FS: "ext2",
+    Source: &images.ImageSource{
+      source: "/run/cos/state/cOS/active.img",
+      srcType: "file",
+    },
+  },
+  GrubConf: "/etc/cos/grub.cfg",
+}
+[90m2026-11-05T14:17:42Z[0m DBG Cloud-init paths set to [/system/oem /oem/ /usr/local/cloud-config/ /tmp/kairos-install-config-xxx.yaml191708988]
+[90m2026-11-05T14:17:42Z[0m DBG Failed creating cloud-init config path: /tmp/kairos-install-config-xxx.yaml191708988 mkdir /tmp/kairos-install-config-xxx.yaml191708988: not a directory
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mRunning stage: kairos-install.pre.before
+[0m
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mDone executing stage 'kairos-install.pre.before'
+[0m
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mRunning stage: kairos-install.pre
+[0m
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mDone executing stage 'kairos-install.pre'
+[0m
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mRunning stage: kairos-install.pre.after
+[0m
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mDone executing stage 'kairos-install.pre.after'
+[0m
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mRunning stage: kairos-install.pre.before
+[0m
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mDone executing stage 'kairos-install.pre.before'
+[0m
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mRunning stage: kairos-install.pre
+[0m
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mDone executing stage 'kairos-install.pre'
+[0m
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mRunning stage: kairos-install.pre.after
+[0m
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mDone executing stage 'kairos-install.pre.after'
+[0m
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mDownloading http://10.0.2.2:8904/iso-head/kairos-hadron-v0.6.3-core-amd64-generic-v4.4.0-66-g80ccb975.iso...[0m
+[90m2026-11-05T14:17:42Z[0m DBG Download saved to .//tmp/elemental440498539/cOs.iso 
+
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mMounting iso /tmp/elemental440498539/cOs.iso into /tmp/elemental440498539/iso[0m
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mMounting squashfs image from iso into /tmp/elemental440498539/rootfs[0m
+[90m2026-11-05T14:17:42Z[0m DBG Running cmd: 'blkdeactivate --lvmoptions retry,wholevg --dmoptions force,retry --errors'
+[90m2026-11-05T14:17:42Z[0m DBG blkdeactivate command output: Deactivating block devices:
+
+[90m2026-11-05T14:17:42Z[0m DBG Initialized new disk from device &partitioner.Disk{
+  Disk: &disk.Disk{
+    Backend: file.rawBackend{
+      storage: &os.File{
+        file: &os.file{
+          pfd: poll.FD{
+            fdmu: poll.fdMutex{
+              state: 0,
+              rsema: 0,
+              wsema: 0,
+            },
+            Sysfd: 8,
+            SysFile: poll.SysFile{},
+            pd: poll.pollDesc{
+              runtimeCtx: <uintptr Value>,
+            },
+            csema: 0,
+            isBlocking: 1,
+            IsStream: true,
+            ZeroReadIsEOF: true,
+            isFile: true,
+          },
+          name: "/dev/vda",
+          dirinfo: atomic.Pointer[os.dirInfo]{
+            _: [0]*os.dirInfo{},
+            _: atomic.noCopy{},
+          },
+          nonblock: false,
+          stdoutOrErr: false,
+          appendMode: false,
+          inRoot: false,
+        },
+      },
+      path: "/dev/vda",
+      readOnly: false,
+    },
+    Size: 21474836480,
+    LogicalBlocksize: 512,
+    PhysicalBlocksize: 512,
+  },
+}
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mPartitioning device...[0m
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mCreating partition table for partition type gpt[0m
+[90m2026-11-05T14:17:42Z[0m [32mINF[0m [1mCreated partition table for partition type gpt[0m
+[90m2026-11-05T14:17:42Z[0m DBG Running cmd: 'udevadm trigger'
+[90m2026-11-05T14:17:42Z[0m DBG Running cmd: 'udevadm settle'
+[90m2026-11-05T14:17:43Z[0m DBG Formatting partition: COS_OEM
+[90m2026-11-05T14:17:43Z[0m DBG Running cmd: 'mkfs.ext4 -L COS_OEM -O ^metadata_csum_seed /dev/vda2'
+[90m2026-11-05T14:17:43Z[0m DBG Formatting partition: COS_RECOVERY
+[90m2026-11-05T14:17:43Z[0m DBG Running cmd: 'mkfs.ext4 -L COS_RECOVERY -O ^metadata_csum_seed /dev/vda3'
+[90m2026-11-05T14:17:43Z[0m DBG Formatting partition: COS_STATE
+[90m2026-11-05T14:17:43Z[0m DBG Running cmd: 'mkfs.ext4 -L COS_STATE -O ^metadata_csum_seed /dev/vda4'
+[90m2026-11-05T14:17:43Z[0m DBG Formatting partition: COS_PERSISTENT
+[90m2026-11-05T14:17:43Z[0m DBG Running cmd: 'mkfs.ext4 -L COS_PERSISTENT -O ^metadata_csum_seed /dev/vda5'
+[90m2026-11-05T14:17:43Z[0m [32mINF[0m [1mMounting disk partitions[0m
+[90m2026-11-05T14:17:43Z[0m DBG Mounting partition COS_OEM
+[90m2026-11-05T14:17:43Z[0m DBG Running cmd: 'udevadm trigger'
+[90m2026-11-05T14:17:43Z[0m DBG Running cmd: 'udevadm settle'
+[90m2026-11-05T14:17:43Z[0m DBG Mounting partition COS_PERSISTENT
+[90m2026-11-05T14:17:43Z[0m DBG Running cmd: 'udevadm trigger'
+[90m2026-11-05T14:17:43Z[0m DBG Running cmd: 'udevadm settle'
+[90m2026-11-05T14:17:43Z[0m DBG Mounting partition COS_RECOVERY
+[90m2026-11-05T14:17:43Z[0m DBG Running cmd: 'udevadm trigger'
+[90m2026-11-05T14:17:43Z[0m DBG Running cmd: 'udevadm settle'
+[90m2026-11-05T14:17:44Z[0m DBG Mounting partition COS_STATE
+[90m2026-11-05T14:17:44Z[0m DBG Running cmd: 'udevadm trigger'
+[90m2026-11-05T14:17:44Z[0m DBG Running cmd: 'udevadm settle'
+[90m2026-11-05T14:17:44Z[0m [32mINF[0m [1mRunning before-install hook[0m
+[90m2026-11-05T14:17:44Z[0m DBG Cloud-init paths set to [/system/oem /oem/ /usr/local/cloud-config/ /tmp/kairos-install-config-xxx.yaml191708988]
+[90m2026-11-05T14:17:44Z[0m DBG Failed creating cloud-init config path: /tmp/kairos-install-config-xxx.yaml191708988 mkdir /tmp/kairos-install-config-xxx.yaml191708988: not a directory
+[90m2026-11-05T14:17:44Z[0m [32mINF[0m [1mRunning stage: before-install.before
+[0m
+[90m2026-11-05T14:17:44Z[0m [32mINF[0m [1mDone executing stage 'before-install.before'
+[0m
+[90m2026-11-05T14:17:44Z[0m [32mINF[0m [1mRunning stage: before-install
+[0m
+[90m2026-11-05T14:17:44Z[0m [32mINF[0m [1mDone executing stage 'before-install'
+[0m
+[90m2026-11-05T14:17:44Z[0m [32mINF[0m [1mRunning stage: before-install.after
+[0m
+[90m2026-11-05T14:17:44Z[0m [32mINF[0m [1mDone executing stage 'before-install.after'
+[0m
+[90m2026-11-05T14:17:44Z[0m [32mINF[0m [1mRunning stage: before-install.before
+[0m
+[90m2026-11-05T14:17:44Z[0m [32mINF[0m [1mDone executing stage 'before-install.before'
+[0m
+[90m2026-11-05T14:17:44Z[0m [32mINF[0m [1mRunning stage: before-install
+[0m
+[90m2026-11-05T14:17:44Z[0m [32mINF[0m [1mDone executing stage 'before-install'
+[0m
+[90m2026-11-05T14:17:44Z[0m [32mINF[0m [1mRunning stage: before-install.after
+[0m
+[90m2026-11-05T14:17:44Z[0m [32mINF[0m [1mDone executing stage 'before-install.after'
+[0m
+[90m2026-11-05T14:17:44Z[0m [32mINF[0m [1mCreating file system image /run/cos/state/cOS/active.img with size 482MiB[0m
+[90m2026-11-05T14:17:44Z[0m DBG Running cmd: 'mkfs.ext2 -L COS_ACTIVE -O ^metadata_csum_seed /run/cos/state/cOS/active.img'
+[90m2026-11-05T14:17:44Z[0m DBG Mounting image COS_ACTIVE
+[90m2026-11-05T14:17:44Z[0m DBG Opening img file [36mimage=[0m/run/cos/state/cOS/active.img
+[90m2026-11-05T14:17:44Z[0m DBG Opening loop control device
+[90m2026-11-05T14:17:44Z[0m DBG Getting free loop device
+[90m2026-11-05T14:17:44Z[0m DBG Opening loop device [36mdevice=[0m/dev/loop3
+[90m2026-11-05T14:17:44Z[0m DBG Setting loop device
+[90m2026-11-05T14:17:44Z[0m DBG Setting loop flags
+[90m2026-11-05T14:17:44Z[0m DBG Attached loop device [36mdevice=[0m/dev/loop3 [36mimage=[0m/run/cos/state/cOS/active.img [36mreadOnly=[0mfalse
+[90m2026-11-05T14:17:44Z[0m [32mINF[0m [1mCopying /tmp/elemental440498539/rootfs source to /run/cos/active[0m
+[90m2026-11-05T14:17:44Z[0m [32mINF[0m [1mStarting rsync...[0m
+[90m2026-11-05T14:17:44Z[0m DBG Running cmd: 'rsync --progress --partial --human-readable --archive --acls --exclude=/mnt --exclude=/proc --exclude=/sys --exclude=/dev --exclude=/tmp --exclude=/host --exclude=/run /tmp/elemental440498539/rootfs/ /run/cos/active/'
+[90m2026-11-05T14:17:47Z[0m [32mINF[0m [1mFinished syncing[0m
+[90m2026-11-05T14:17:47Z[0m [32mINF[0m [1mFinished copying /tmp/elemental440498539/rootfs into /run/cos/active[0m
+[90m2026-11-05T14:17:47Z[0m [32mINF[0m [1mList of cloud inits to copy: [/tmp/kairos-install-config-xxx.yaml191708988]
+[0m
+[90m2026-11-05T14:17:47Z[0m [32mINF[0m [1mStarting copying cloud config file /tmp/kairos-install-config-xxx.yaml191708988 to /run/cos/oem/90_custom.yaml[0m
+[90m2026-11-05T14:17:47Z[0m [32mINF[0m [1mFinished copying cloud config file /tmp/kairos-install-config-xxx.yaml191708988 to /run/cos/oem/90_custom.yaml[0m
+[90m2026-11-05T14:17:47Z[0m DBG detecting boot state
+[90m2026-11-05T14:17:47Z[0m [32mINF[0m [1mInstalling GRUB..[0m
+[90m2026-11-05T14:17:47Z[0m DBG Found grub binary [36mcommand=[0m/run/cos/active/usr/sbin/grub-install
+[90m2026-11-05T14:17:47Z[0m DBG Running grub with the following args: [--directory=/usr/lib/grub/i386-pc --boot-directory=/run/cos/state --target=i386-pc -v /dev/vda]
+[90m2026-11-05T14:17:47Z[0m DBG Mounting /dev to chroot
+[90m2026-11-05T14:17:47Z[0m DBG Mounted /dev to /run/cos/active/dev
+[90m2026-11-05T14:17:47Z[0m DBG Mounting /dev/pts to chroot
+[90m2026-11-05T14:17:47Z[0m DBG Mounted /dev/pts to /run/cos/active/dev/pts
+[90m2026-11-05T14:17:47Z[0m DBG Mounting /proc to chroot
+[90m2026-11-05T14:17:47Z[0m DBG Mounted /proc to /run/cos/active/proc
+[90m2026-11-05T14:17:47Z[0m DBG Mounting /sys to chroot
+[90m2026-11-05T14:17:47Z[0m DBG Mounted /sys to /run/cos/active/sys
+[90m2026-11-05T14:17:47Z[0m DBG Mounting /run/systemd/journal/ to chroot
+[90m2026-11-05T14:17:47Z[0m DBG Mounted /run/systemd/journal/ to /run/cos/active/run/systemd/journal/
+[90m2026-11-05T14:17:47Z[0m DBG Mounting /run/cos/state to chroot
+[90m2026-11-05T14:17:47Z[0m DBG Mounted /run/cos/state to /run/cos/active/run/cos/state
+[90m2026-11-05T14:17:47Z[0m DBG Running cmd: '/usr/sbin/grub-install --directory=/usr/lib/grub/i386-pc --boot-directory=/run/cos/state --target=i386-pc -v /dev/vda'
+[90m2026-11-05T14:17:48Z[0m DBG Unmounting /run/cos/active/run/cos/state from chroot
+[90m2026-11-05T14:17:48Z[0m DBG Unmounting /run/cos/active/run/systemd/journal/ from chroot
+[90m2026-11-05T14:17:48Z[0m DBG Unmounting /run/cos/active/sys from chroot
+[90m2026-11-05T14:17:48Z[0m DBG Unmounting /run/cos/active/proc from chroot
+[90m2026-11-05T14:17:48Z[0m DBG Unmounting /run/cos/active/dev/pts from chroot
+[90m2026-11-05T14:17:48Z[0m DBG Unmounting /run/cos/active/dev from chroot
+[90m2026-11-05T14:17:48Z[0m [32mINF[0m [1mGrub install to device /dev/vda complete[0m
+[90m2026-11-05T14:17:48Z[0m [32mINF[0m [1mUsing grub config dir /run/cos/active/etc/cos/grub.cfg[0m
+[90m2026-11-05T14:17:48Z[0m [32mINF[0m [1mCopying grub contents from /run/cos/active/etc/cos/grub.cfg to /run/cos/state/grub/grub.cfg[0m
+[90m2026-11-05T14:17:48Z[0m DBG Extra mounts: map[/run/cos/oem:/oem /run/cos/persistent:/usr/local]
+[90m2026-11-05T14:17:48Z[0m DBG Mounting /dev to chroot
+[90m2026-11-05T14:17:48Z[0m DBG Mounted /dev to /run/cos/active/dev
+[90m2026-11-05T14:17:48Z[0m DBG Mounting /dev/pts to chroot
+[90m2026-11-05T14:17:48Z[0m DBG Mounted /dev/pts to /run/cos/active/dev/pts
+[90m2026-11-05T14:17:48Z[0m DBG Mounting /proc to chroot
+[90m2026-11-05T14:17:48Z[0m DBG Mounted /proc to /run/cos/active/proc
+[90m2026-11-05T14:17:48Z[0m DBG Mounting /sys to chroot
+[90m2026-11-05T14:17:48Z[0m DBG Mounted /sys to /run/cos/active/sys
+[90m2026-11-05T14:17:48Z[0m DBG Mounting /run/systemd/journal/ to chroot
+[90m2026-11-05T14:17:48Z[0m DBG Mounted /run/systemd/journal/ to /run/cos/active/run/systemd/journal/
+[90m2026-11-05T14:17:48Z[0m DBG Mounting /run/cos/oem to chroot
+[90m2026-11-05T14:17:48Z[0m DBG Mounted /run/cos/oem to /run/cos/active/oem
+[90m2026-11-05T14:17:48Z[0m DBG Mounting /run/cos/persistent to chroot
+[90m2026-11-05T14:17:48Z[0m DBG Mounted /run/cos/persistent to /run/cos/active/usr/local
+[90m2026-11-05T14:17:48Z[0m DBG No files relabelling as SELinux utilities are not found
+[90m2026-11-05T14:17:48Z[0m DBG Unmounting /run/cos/active/usr/local from chroot
+[90m2026-11-05T14:17:48Z[0m DBG Unmounting /run/cos/active/oem from chroot
+[90m2026-11-05T14:17:48Z[0m DBG Unmounting /run/cos/active/run/systemd/journal/ from chroot
+[90m2026-11-05T14:17:48Z[0m DBG Unmounting /run/cos/active/sys from chroot
+[90m2026-11-05T14:17:48Z[0m DBG Unmounting /run/cos/active/proc from chroot
+[90m2026-11-05T14:17:48Z[0m DBG Unmounting /run/cos/active/dev/pts from chroot
+[90m2026-11-05T14:17:48Z[0m DBG Unmounting /run/cos/active/dev from chroot
+[90m2026-11-05T14:17:48Z[0m DBG Extra mounts: map[/run/cos/oem:/oem /run/cos/persistent:/usr/local]
+[90m2026-11-05T14:17:48Z[0m DBG Mounting /dev to chroot
+[90m2026-11-05T14:17:48Z[0m DBG Mounted /dev to /run/cos/active/dev
+[90m2026-11-05T14:17:48Z[0m DBG Mounting /dev/pts to chroot
+[90m2026-11-05T14:17:48Z[0m DBG Mounted /dev/pts to /run/cos/active/dev/pts
+[90m2026-11-05T14:17:48Z[0m DBG Mounting /proc to chroot
+[90m2026-11-05T14:17:48Z[0m DBG Mounted /proc to /run/cos/active/proc
+[90m2026-11-05T14:17:48Z[0m DBG Mounting /sys to chroot
+[90m2026-11-05T14:17:48Z[0m DBG Mounted /sys to /run/cos/active/sys
+[90m2026-11-05T14:17:48Z[0m DBG Mounting /run/systemd/journal/ to chroot
+[90m2026-11-05T14:17:48Z[0m DBG Mounted /run/systemd/journal/ to /run/cos/active/run/systemd/journal/
+[90m2026-11-05T14:17:48Z[0m DBG Mounting /run/cos/oem to chroot
+[90m2026-11-05T14:17:48Z[0m DBG Mounted /run/cos/oem to /run/cos/active/oem
+[90m2026-11-05T14:17:48Z[0m DBG Mounting /run/cos/persistent to chroot
+[90m2026-11-05T14:17:48Z[0m DBG Mounted /run/cos/persistent to /run/cos/active/usr/local
+[90m2026-11-05T14:17:48Z[0m [32mINF[0m [1mRunning after-install-chroot hook[0m
+[90m2026-11-05T14:17:48Z[0m DBG Cloud-init paths set to [/system/oem /oem/ /usr/local/cloud-config/ /tmp/kairos-install-config-xxx.yaml191708988]
+[90m2026-11-05T14:17:48Z[0m [32mINF[0m [1mRunning stage: after-install-chroot.before
+[0m
+[90m2026-11-05T14:17:48Z[0m [32mINF[0m [1mDone executing stage 'after-install-chroot.before'
+[0m
+[90m2026-11-05T14:17:48Z[0m [32mINF[0m [1mRunning stage: after-install-chroot
+[0m
+[90m2026-11-05T14:17:48Z[0m DBG Generating op for stage 'Nvidia Jetson QSPI firmware check.Check and stage QSPI firmware update'
+[90m2026-11-05T14:17:48Z[0m DBG Reading '/system/oem/13_nvidia_qspi.yaml'
+[90m2026-11-05T14:17:48Z[0m DBG Executing stage 'Nvidia Jetson QSPI firmware check.Check and stage QSPI firmware update'
+[90m2026-11-05T14:17:48Z[0m DBG running command `[ -x "/usr/sbin/kairos-jetson-qspi-update" ]
+`
+[90m2026-11-05T14:17:48Z[0m [33mWRN[0m [1m(conditional) Skip 'Skipping stage (if statement error: failed to run [ -x "/usr/sbin/kairos-jetson-qspi-update" ]
+: exit status 1)' stage name: Nvidia Jetson QSPI firmware check.Check and stage QSPI firmware update[0m
+[90m2026-11-05T14:17:48Z[0m [32mINF[0m [1mDone executing stage 'after-install-chroot'
+[0m
+[90m2026-11-05T14:17:48Z[0m [32mINF[0m [1mRunning stage: after-install-chroot.after
+[0m
+[90m2026-11-05T14:17:48Z[0m [32mINF[0m [1mDone executing stage 'after-install-chroot.after'
+[0m
+[90m2026-11-05T14:17:48Z[0m [32mINF[0m [1mRunning stage: after-install-chroot.before
+[0m
+[90m2026-11-05T14:17:48Z[0m [32mINF[0m [1mDone executing stage 'after-install-chroot.before'
+[0m
+[90m2026-11-05T14:17:48Z[0m [32mINF[0m [1mRunning stage: after-install-chroot
+[0m
+[90m2026-11-05T14:17:48Z[0m [32mINF[0m [1mDone executing stage 'after-install-chroot'
+[0m
+[90m2026-11-05T14:17:48Z[0m [32mINF[0m [1mRunning stage: after-install-chroot.after
+[0m
+[90m2026-11-05T14:17:48Z[0m [32mINF[0m [1mDone executing stage 'after-install-chroot.after'
+[0m
+[90m2026-11-05T14:17:48Z[0m DBG Unmounting /run/cos/active/usr/local from chroot
+[90m2026-11-05T14:17:48Z[0m DBG Unmounting /run/cos/active/oem from chroot
+[90m2026-11-05T14:17:48Z[0m DBG Unmounting /run/cos/active/run/systemd/journal/ from chroot
+[90m2026-11-05T14:17:48Z[0m DBG Unmounting /run/cos/active/sys from chroot
+[90m2026-11-05T14:17:48Z[0m DBG Unmounting /run/cos/active/proc from chroot
+[90m2026-11-05T14:17:48Z[0m DBG Unmounting /run/cos/active/dev/pts from chroot
+[90m2026-11-05T14:17:48Z[0m DBG Unmounting /run/cos/active/dev from chroot
+[90m2026-11-05T14:17:48Z[0m DBG Unmounting image COS_ACTIVE
+[90m2026-11-05T14:17:48Z[0m DBG Opening loop device [36mdevice=[0m/dev/loop3
+[90m2026-11-05T14:17:48Z[0m DBG Clearing loop device
+[90m2026-11-05T14:17:48Z[0m [32mINF[0m [1mCopying /run/cos/state/cOS/active.img source to /run/cos/recovery/cOS/recovery.img[0m
+[90m2026-11-05T14:17:48Z[0m [32mINF[0m [1mFinished copying /run/cos/state/cOS/active.img into /run/cos/recovery/cOS/recovery.img[0m
+[90m2026-11-05T14:17:48Z[0m DBG Running cmd: 'tune2fs -L COS_SYSTEM /run/cos/recovery/cOS/recovery.img'
+[90m2026-11-05T14:17:49Z[0m DBG Not unmounting image,  doesn't look like mountpoint
+[90m2026-11-05T14:17:49Z[0m [32mINF[0m [1mCopying /run/cos/state/cOS/active.img source to /run/cos/state/cOS/passive.img[0m
+[90m2026-11-05T14:17:49Z[0m [32mINF[0m [1mFinished copying /run/cos/state/cOS/active.img into /run/cos/state/cOS/passive.img[0m
+[90m2026-11-05T14:17:49Z[0m DBG Running cmd: 'tune2fs -L COS_PASSIVE /run/cos/state/cOS/passive.img'
+[90m2026-11-05T14:17:49Z[0m DBG Not unmounting image,  doesn't look like mountpoint
+[90m2026-11-05T14:17:49Z[0m [32mINF[0m [1mStarting unified encryption flow[0m
+[90m2026-11-05T14:17:49Z[0m [32mINF[0m [1mNo partitions to encrypt[0m
+[90m2026-11-05T14:17:49Z[0m [32mINF[0m [1mNo bundles to run in BundlePostInstall hook[0m
+[90m2026-11-05T14:17:49Z[0m [32mINF[0m [1mRunning CopyLogs hook[0m
+[90m2026-11-05T14:17:49Z[0m [32mINF[0m [1mStarting rsync...[0m
+[90m2026-11-05T14:17:49Z[0m DBG Running cmd: 'rsync --progress --partial --human-readable --archive --acls /var/log/ /run/cos/persistent/.state/var-log.bind/'
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mFinished syncing[0m
+[90m2026-11-05T14:17:50Z[0m DBG Logs copied to persistent partition
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mFinish CopyLogs hook[0m
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mRunning after-install hook[0m
+[90m2026-11-05T14:17:50Z[0m DBG Cloud-init paths set to [/system/oem /oem/ /usr/local/cloud-config/ /tmp/kairos-install-config-xxx.yaml191708988]
+[90m2026-11-05T14:17:50Z[0m DBG Failed creating cloud-init config path: /tmp/kairos-install-config-xxx.yaml191708988 mkdir /tmp/kairos-install-config-xxx.yaml191708988: not a directory
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mRunning stage: after-install.before
+[0m
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mDone executing stage 'after-install.before'
+[0m
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mRunning stage: after-install
+[0m
+[90m2026-11-05T14:17:50Z[0m DBG Generating op for stage 'Boot assessment and branding.Mount state'
+[90m2026-11-05T14:17:50Z[0m DBG Generating op for stage 'Boot assessment and branding.Hook boot assessment grub configuration'
+[90m2026-11-05T14:17:50Z[0m DBG Generating op for stage 'Boot assessment and branding.Add boot assessment grub configuration'
+[90m2026-11-05T14:17:50Z[0m DBG Generating op for stage 'Boot assessment and branding.Grub branding'
+[90m2026-11-05T14:17:50Z[0m DBG Generating op for stage 'Boot assessment and branding.umount state'
+[90m2026-11-05T14:17:50Z[0m DBG Reading '/system/oem/08_grub.yaml'
+[90m2026-11-05T14:17:50Z[0m DBG Executing stage 'Boot assessment and branding.Mount state'
+[90m2026-11-05T14:17:50Z[0m DBG running command `grep -vq "rd.immucore.uki" /proc/cmdline`
+[90m2026-11-05T14:17:50Z[0m DBG If statement result 
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mProcessing stage step 'Boot assessment and branding.Mount state'. ( commands: 1, files: 0, ... )[0m
+[90m2026-11-05T14:17:50Z[0m DBG Stage: schema.Stage{
+  Commands: []string{
+    "STATEDIR=/tmp/mnt/STATE\nSTATE=$(blkid -L COS_STATE || true)\nmkdir -p $STATEDIR || true\nmount ${STATE} $STATEDIR\n",
+  },
+  If: "grep -vq \"rd.immucore.uki\" /proc/cmdline",
+  Name: "Mount state",
+}
+[90m2026-11-05T14:17:50Z[0m DBG running command `STATEDIR=/tmp/mnt/STATE
+STATE=$(blkid -L COS_STATE || true)
+mkdir -p $STATEDIR || true
+mount ${STATE} $STATEDIR
+`
+[90m2026-11-05T14:17:50Z[0m DBG Empty command output
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mRunning layout plugin[0m
+[90m2026-11-05T14:17:50Z[0m DBG Device field empty, skipping layout plugin
+[90m2026-11-05T14:17:50Z[0m DBG Reading '/system/oem/08_grub.yaml'
+[90m2026-11-05T14:17:50Z[0m DBG Executing stage 'Boot assessment and branding.Hook boot assessment grub configuration'
+[90m2026-11-05T14:17:50Z[0m DBG running command `! grep -q "grub_boot_assessment" /tmp/mnt/STATE/grubcustom && grep -vq "rd.immucore.uki" /proc/cmdline
+`
+[90m2026-11-05T14:17:50Z[0m DBG If statement result grep: /tmp/mnt/STATE/grubcustom: No such file or directory
+
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mProcessing stage step 'Boot assessment and branding.Hook boot assessment grub configuration'. ( commands: 1, files: 0, ... )[0m
+[90m2026-11-05T14:17:50Z[0m DBG Stage: schema.Stage{
+  Commands: []string{
+    "cat << 'EOF' >> /tmp/mnt/STATE/grubcustom\nset bootfile=\"/grub_boot_assessment\"\nsearch --no-floppy --file --set=bootfile_loc \"${bootfile}\"\nif [ \"${bootfile_loc}\" ]; then\n   source \"(${bootfile_loc})${bootfile}\"\nfi\nEOF\n",
+  },
+  If: "! grep -q \"grub_boot_assessment\" /tmp/mnt/STATE/grubcustom && grep -vq \"rd.immucore.uki\" /proc/cmdline\n",
+  Name: "Hook boot assessment grub configuration",
+}
+[90m2026-11-05T14:17:50Z[0m DBG running command `cat << 'EOF' >> /tmp/mnt/STATE/grubcustom
+set bootfile="/grub_boot_assessment"
+search --no-floppy --file --set=bootfile_loc "${bootfile}"
+if [ "${bootfile_loc}" ]; then
+   source "(${bootfile_loc})${bootfile}"
+fi
+EOF
+`
+[90m2026-11-05T14:17:50Z[0m DBG Empty command output
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mRunning layout plugin[0m
+[90m2026-11-05T14:17:50Z[0m DBG Device field empty, skipping layout plugin
+[90m2026-11-05T14:17:50Z[0m DBG Reading '/system/oem/08_grub.yaml'
+[90m2026-11-05T14:17:50Z[0m DBG Executing stage 'Boot assessment and branding.Add boot assessment grub configuration'
+[90m2026-11-05T14:17:50Z[0m DBG running command `grep -vq "rd.immucore.uki" /proc/cmdline`
+[90m2026-11-05T14:17:50Z[0m DBG If statement result 
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mProcessing stage step 'Boot assessment and branding.Add boot assessment grub configuration'. ( commands: 0, files: 1, ... )[0m
+[90m2026-11-05T14:17:50Z[0m DBG Stage: schema.Stage{
+  Files: []schema.File{
+    schema.File{
+      Path: "/tmp/mnt/STATE/grub_boot_assessment",
+      Permissions: 384,
+      Content: "set boot_assessment=\"/boot_assessment\"\nsearch --no-floppy --file --set=boot_assessment_blk \"${boot_assessment}\"\nif [ \"${boot_assessment_blk}\" ]; then\n  load_env -f \"(${boot_assessment_blk})${boot_assessment}\"\nfi\nif [ \"${enable_boot_assessment}\" = \"yes\" -o \"${enable_boot_assessment_always}\" = \"yes\" ]; then\n  if [ -z \"${selected_entry}\" ]; then\n    if [ \"${boot_assessment_tentative}\" = \"yes\" ]; then\n      set default=\"fallback\"\n      set extra_passive_cmdline=\"upgrade_failure\"\n    else\n      set boot_assessment_tentative=\"yes\"\n      save_env -f \"(${boot_assessment_blk})${boot_assessment}\" boot_assessment_tentative\n    fi\n  fi\nfi\n",
+    },
+  },
+  If: "grep -vq \"rd.immucore.uki\" /proc/cmdline",
+  Name: "Add boot assessment grub configuration",
+}
+[90m2026-11-05T14:17:50Z[0m DBG Creating file /tmp/mnt/STATE/grub_boot_assessment
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mRunning layout plugin[0m
+[90m2026-11-05T14:17:50Z[0m DBG Device field empty, skipping layout plugin
+[90m2026-11-05T14:17:50Z[0m DBG Reading '/system/oem/08_grub.yaml'
+[90m2026-11-05T14:17:50Z[0m DBG Executing stage 'Boot assessment and branding.Grub branding'
+[90m2026-11-05T14:17:50Z[0m DBG running command `[ -e "/etc/kairos/branding/grubmenu.cfg" ] && grep -vq "rd.immucore.uki" /proc/cmdline`
+[90m2026-11-05T14:17:50Z[0m DBG If statement result 
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mProcessing stage step 'Boot assessment and branding.Grub branding'. ( commands: 1, files: 0, ... )[0m
+[90m2026-11-05T14:17:50Z[0m DBG Stage: schema.Stage{
+  Commands: []string{
+    "cp -rfv /etc/kairos/branding/grubmenu.cfg /tmp/mnt/STATE/grubmenu",
+  },
+  If: "[ -e \"/etc/kairos/branding/grubmenu.cfg\" ] && grep -vq \"rd.immucore.uki\" /proc/cmdline",
+  Name: "Grub branding",
+}
+[90m2026-11-05T14:17:50Z[0m DBG running command `cp -rfv /etc/kairos/branding/grubmenu.cfg /tmp/mnt/STATE/grubmenu`
+[90m2026-11-05T14:17:50Z[0m DBG Command output: '/etc/kairos/branding/grubmenu.cfg' -> '/tmp/mnt/STATE/grubmenu'
+
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mRunning layout plugin[0m
+[90m2026-11-05T14:17:50Z[0m DBG Device field empty, skipping layout plugin
+[90m2026-11-05T14:17:50Z[0m DBG Reading '/system/oem/08_grub.yaml'
+[90m2026-11-05T14:17:50Z[0m DBG Executing stage 'Boot assessment and branding.umount state'
+[90m2026-11-05T14:17:50Z[0m DBG running command `grep -vq "rd.immucore.uki" /proc/cmdline`
+[90m2026-11-05T14:17:50Z[0m DBG If statement result 
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mProcessing stage step 'Boot assessment and branding.umount state'. ( commands: 1, files: 0, ... )[0m
+[90m2026-11-05T14:17:50Z[0m DBG Stage: schema.Stage{
+  Commands: []string{
+    "umount /tmp/mnt/STATE",
+  },
+  If: "grep -vq \"rd.immucore.uki\" /proc/cmdline",
+  Name: "umount state",
+}
+[90m2026-11-05T14:17:50Z[0m DBG running command `umount /tmp/mnt/STATE`
+[90m2026-11-05T14:17:50Z[0m DBG Empty command output
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mRunning layout plugin[0m
+[90m2026-11-05T14:17:50Z[0m DBG Device field empty, skipping layout plugin
+[90m2026-11-05T14:17:50Z[0m DBG Generating op for stage '/tmp/kairos-install-config-xxx.yaml191708988.qa marker'
+[90m2026-11-05T14:17:50Z[0m DBG Reading '/tmp/kairos-install-config-xxx.yaml191708988'
+[90m2026-11-05T14:17:50Z[0m DBG Executing stage '/tmp/kairos-install-config-xxx.yaml191708988.qa marker'
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mProcessing stage step '/tmp/kairos-install-config-xxx.yaml191708988.qa marker'. ( commands: 1, files: 0, ... )[0m
+[90m2026-11-05T14:17:50Z[0m DBG Stage: schema.Stage{
+  Commands: []string{
+    "echo after-install-ran > /tmp/AFTER_INSTALL_MARKER",
+  },
+  Name: "qa marker",
+}
+[90m2026-11-05T14:17:50Z[0m DBG running command `echo after-install-ran > /tmp/AFTER_INSTALL_MARKER`
+[90m2026-11-05T14:17:50Z[0m DBG Empty command output
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mRunning layout plugin[0m
+[90m2026-11-05T14:17:50Z[0m DBG Device field empty, skipping layout plugin
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mDone executing stage 'after-install'
+[0m
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mRunning stage: after-install.after
+[0m
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mDone executing stage 'after-install.after'
+[0m
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mRunning stage: after-install.before
+[0m
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mDone executing stage 'after-install.before'
+[0m
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mRunning stage: after-install
+[0m
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mDone executing stage 'after-install'
+[0m
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mRunning stage: after-install.after
+[0m
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mDone executing stage 'after-install.after'
+[0m
+[90m2026-11-05T14:17:50Z[0m DBG Not unmounting image, /run/cos/active doesn't look like mountpoint
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mUnmounting disk partitions[0m
+[90m2026-11-05T14:17:50Z[0m DBG Unmounting partition COS_STATE
+[90m2026-11-05T14:17:50Z[0m DBG Unmounting partition COS_RECOVERY
+[90m2026-11-05T14:17:50Z[0m DBG Not unmounting partition, /run/cos/persistent doesn't look like mountpoint
+[90m2026-11-05T14:17:50Z[0m DBG Not unmounting partition, /run/cos/oem doesn't look like mountpoint
+[90m2026-11-05T14:17:50Z[0m DBG Cloud-init paths set to [/system/oem /oem/ /usr/local/cloud-config/ /tmp/kairos-install-config-xxx.yaml191708988]
+[90m2026-11-05T14:17:50Z[0m DBG Failed creating cloud-init config path: /tmp/kairos-install-config-xxx.yaml191708988 mkdir /tmp/kairos-install-config-xxx.yaml191708988: not a directory
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mRunning stage: kairos-install.after.before
+[0m
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mDone executing stage 'kairos-install.after.before'
+[0m
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mRunning stage: kairos-install.after
+[0m
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mDone executing stage 'kairos-install.after'
+[0m
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mRunning stage: kairos-install.after.after
+[0m
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mDone executing stage 'kairos-install.after.after'
+[0m
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mRunning stage: kairos-install.after.before
+[0m
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mDone executing stage 'kairos-install.after.before'
+[0m
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mRunning stage: kairos-install.after
+[0m
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mDone executing stage 'kairos-install.after'
+[0m
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mRunning stage: kairos-install.after.after
+[0m
+[90m2026-11-05T14:17:50Z[0m [32mINF[0m [1mDone executing stage 'kairos-install.after.after'
+[0m
+[90m2026-11-05T14:17:50Z[0m DBG Running Lifecycle hook
+[90m2026-11-05T14:17:50Z[0m DBG Finish Lifecycle hook
+EXIT=0
