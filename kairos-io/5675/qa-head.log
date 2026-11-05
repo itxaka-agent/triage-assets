@@ -1,0 +1,61 @@
+== register node
+{"apiKey":"<redacted>","id":"f7b7eda5-e5da-4680-8ecb-efe2bb936429"}
+== create group
+{"id":"6ebe1ee1-09f9-42a0-9c6d-488c6be20581","name":"g1","description":"","createdAt":"2026-11-05T10:23:49.658912932Z","updatedAt":"2026-11-05T10:23:49.658912932Z"}
+== 1 PUT group unknown group (claim: head 404, base 200)
+$ -X PUT -H Authorization: Bearer <redacted> -H Content-Type: application/json http://127.0.0.1:8099/api/v1/nodes/f7b7eda5-e5da-4680-8ecb-efe2bb936429/group -d {"groupID":"no-such-group-0000"}
+{"error":"group not found"}
+ -> HTTP 404
+node groupID after:
+== 2 PUT group unknown node (claim: head 404, base 200)
+$ -X PUT -H Authorization: Bearer <redacted> -H Content-Type: application/json http://127.0.0.1:8099/api/v1/nodes/no-such-node/group -d {"groupID":"6ebe1ee1-09f9-42a0-9c6d-488c6be20581"}
+{"error":"node not found"}
+ -> HTTP 404
+$ -X PUT -H Authorization: Bearer <redacted> -H Content-Type: application/json http://127.0.0.1:8099/api/v1/nodes/no-such-node/group -d {"groupID":null}
+{"error":"node not found"}
+ -> HTTP 404
+== 3 PUT labels unknown node (claim: head 404, base 500)
+$ -X PUT -H Authorization: Bearer <redacted> -H Content-Type: application/json http://127.0.0.1:8099/api/v1/nodes/no-such-node/labels -d {"labels":{"a":"b"}}
+{"error":"node not found"}
+ -> HTTP 404
+== 4 valid group set (200)
+$ -X PUT -H Authorization: Bearer <redacted> -H Content-Type: application/json http://127.0.0.1:8099/api/v1/nodes/f7b7eda5-e5da-4680-8ecb-efe2bb936429/group -d {"groupID":"6ebe1ee1-09f9-42a0-9c6d-488c6be20581"}
+{"status":"ok"}
+ -> HTTP 200
+"groupID":"6ebe1ee1-09f9-42a0-9c6d-488c6be20581"
+== 5 valid group clear (200)
+$ -X PUT -H Authorization: Bearer <redacted> -H Content-Type: application/json http://127.0.0.1:8099/api/v1/nodes/f7b7eda5-e5da-4680-8ecb-efe2bb936429/group -d {"groupID":null}
+{"status":"ok"}
+ -> HTTP 200
+"groupID":null
+node JSON:
+{"id":"f7b7eda5-e5da-4680-8ecb-efe2bb936429","machineID":"m1","hostname":"h1","groupID":null,"phase":"Registered","lastHeartbeat":null,"agentVersion":"","osRelease":null,"labels":{},"remoteIP":"127.0.0.1","createdAt":"2026-11-05T10:23:49.634145329Z","updatedAt":"2026-11-05T10:23:49.761077661Z"}
+
+== 6 valid labels (200)
+$ -X PUT -H Authorization: Bearer <redacted> -H Content-Type: application/json http://127.0.0.1:8099/api/v1/nodes/f7b7eda5-e5da-4680-8ecb-efe2bb936429/labels -d {"labels":{"a":"b"}}
+{"status":"ok"}
+ -> HTTP 200
+"labels":{"a":"b"}
+== 7 adjacent: list groups, list nodes, set group again, delete group, list groups
+$ -H Authorization: Bearer <redacted> http://127.0.0.1:8099/api/v1/groups
+[{"id":"6ebe1ee1-09f9-42a0-9c6d-488c6be20581","name":"g1","description":"","node_count":0,"createdAt":"2026-11-05T10:23:49.658912932Z","updatedAt":"2026-11-05T10:23:49.658912932Z"}]
+ -> HTTP 200
+$ -H Authorization: Bearer <redacted> http://127.0.0.1:8099/api/v1/nodes
+[{"id":"f7b7eda5-e5da-4680-8ecb-efe2bb936429","machineID":"m1","hostname":"h1","groupID":null,"phase":"Registered","lastHeartbeat":null,"agentVersion":"","osRelease":null,"labels":{"a":"b"},"remoteIP":"127.0.0.1","createdAt":"2026-11-05T10:23:49.634145329Z","updatedAt":"2026-11-05T10:23:49.814961918Z"}]
+ -> HTTP 200
+$ -X PUT -H Authorization: Bearer <redacted> -H Content-Type: application/json http://127.0.0.1:8099/api/v1/nodes/f7b7eda5-e5da-4680-8ecb-efe2bb936429/group -d {"groupID":"6ebe1ee1-09f9-42a0-9c6d-488c6be20581"}
+{"status":"ok"}
+ -> HTTP 200
+$ -X DELETE -H Authorization: Bearer <redacted> http://127.0.0.1:8099/api/v1/groups/6ebe1ee1-09f9-42a0-9c6d-488c6be20581
+ -> HTTP 204
+$ -H Authorization: Bearer <redacted> http://127.0.0.1:8099/api/v1/groups
+[]
+ -> HTTP 200
+== DB
+f7b7eda5-e5da-4680-8ecb-efe2bb936429|
+== server log tail
+2026/11/05 10:23:49 127.0.0.1 GET /api/v1/groups 200 127.645µs
+2026/11/05 10:23:49 127.0.0.1 GET /api/v1/nodes 200 260.226µs
+2026/11/05 10:23:49 127.0.0.1 PUT /api/v1/nodes/f7b7eda5-e5da-4680-8ecb-efe2bb936429/group 200 278.86µs
+2026/11/05 10:23:49 127.0.0.1 DELETE /api/v1/groups/6ebe1ee1-09f9-42a0-9c6d-488c6be20581 204 224.308µs
+2026/11/05 10:23:49 127.0.0.1 GET /api/v1/groups 200 179.1µs
