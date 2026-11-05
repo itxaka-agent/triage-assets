@@ -1,0 +1,54 @@
+# QA kairos#5962 / #5926 - black-box test in golang container, host /etc/os-release mounted with KAIROS_FLAVOR=hostflavor
+# before = dc32ce451637 (merge base)
+=== RUN   TestQAExplicitFileDoesNotLeakHost
+    qa_blackbox_test.go:16: OSRelease(FLAVOR, target) = "hostflavor", err=<nil>
+    qa_blackbox_test.go:19: want empty + KeyNotFoundErr, got "hostflavor", <nil>
+--- FAIL: TestQAExplicitFileDoesNotLeakHost (0.00s)
+=== RUN   TestQANoArgFallsBackToOSRelease
+    qa_blackbox_test.go:25: OSRelease(FLAVOR) = "", err=open /etc/kairos-release: no such file or directory
+    qa_blackbox_test.go:27: want hostflavor from /etc/os-release, got "", open /etc/kairos-release: no such file or directory
+--- FAIL: TestQANoArgFallsBackToOSRelease (0.00s)
+FAIL
+FAIL	github.com/kairos-io/kairos/v4/sdk/utils	0.006s
+FAIL
+
+# after = 304924b4de73 (PR head)
+=== RUN   TestQAExplicitFileDoesNotLeakHost
+    qa_blackbox_test.go:16: OSRelease(FLAVOR, target) = "", err=KAIROS_FLAVOR key not found
+--- PASS: TestQAExplicitFileDoesNotLeakHost (0.00s)
+=== RUN   TestQANoArgFallsBackToOSRelease
+    qa_blackbox_test.go:25: OSRelease(FLAVOR) = "hostflavor", err=<nil>
+--- PASS: TestQANoArgFallsBackToOSRelease (0.00s)
+PASS
+ok  	github.com/kairos-io/kairos/v4/sdk/utils	0.007s
+
+# test file
+package utils_test
+
+import (
+	"errors"
+	"os"
+	"path/filepath"
+	"testing"
+
+	"github.com/kairos-io/kairos/v4/sdk/utils"
+)
+
+func TestQAExplicitFileDoesNotLeakHost(t *testing.T) {
+	target := filepath.Join(t.TempDir(), "target")
+	os.WriteFile(target, []byte("KAIROS_MODEL=generic\nID=ubuntu\n"), 0o644)
+	v, err := utils.OSRelease("FLAVOR", target)
+	t.Logf("OSRelease(FLAVOR, target) = %q, err=%v", v, err)
+	var nf utils.KeyNotFoundErr
+	if v != "" || !errors.As(err, &nf) {
+		t.Fatalf("want empty + KeyNotFoundErr, got %q, %v", v, err)
+	}
+}
+
+func TestQANoArgFallsBackToOSRelease(t *testing.T) {
+	v, err := utils.OSRelease("FLAVOR")
+	t.Logf("OSRelease(FLAVOR) = %q, err=%v", v, err)
+	if err != nil || v != "hostflavor" {
+		t.Fatalf("want hostflavor from /etc/os-release, got %q, %v", v, err)
+	}
+}
