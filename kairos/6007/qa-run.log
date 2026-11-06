@@ -1,0 +1,47 @@
+=== base missing
+## foo changes$
+- Version: 1.0 -> n/a\n- Unable to compare: missing one side of the version range$
+$
+=== base noslug
+## foo changes$
+- Version: 1.0 -> 2.0\n- Unable to map component to GitHub repository$
+$
+=== base norefs
+## foo changes$
+- Version: 1.0 -> 2.0\n- Unable to resolve refs in repository$
+$
+=== base ok
+## foo changes$
+- Version: 1.0 -> 2.0$
+- change A$
+- change B$
+$
+=== base same
+## foo changes$
+- No changes (1.0)$
+$
+=== head missing
+## foo changes$
+- Version: 1.0 -> n/a$
+- Unable to compare: missing one side of the version range$
+$
+=== head noslug
+## foo changes$
+- Version: 1.0 -> 2.0$
+- Unable to map component to GitHub repository$
+$
+=== head norefs
+## foo changes$
+- Version: 1.0 -> 2.0$
+- Unable to resolve refs in repository$
+$
+=== head ok
+## foo changes$
+- Version: 1.0 -> 2.0$
+- change A$
+- change B$
+$
+=== head same
+## foo changes$
+- No changes (1.0)$
+$
