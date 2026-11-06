@@ -1,0 +1,99 @@
+=================== base : default-nooverride
++ /a/bin/kustomize build config/default
+exit=0
+7818:        - name: OPERATOR_IMAGE
+7819-          value: quay.io/kairos/operator:v0.3.0
+7826:        image: quay.io/kairos/operator:v0.3.0
+7827-        imagePullPolicy: IfNotPresent
+=================== base : default-IMG
++ /a/bin/kustomize build config/default
+exit=0
+7818:        - name: OPERATOR_IMAGE
+7819-          value: quay.io/kairos/operator:v0.3.0
+7826:        image: quay.io/kairos/operator:v0.3.0
+7827-        imagePullPolicy: IfNotPresent
+=================== base : dev-nooverride
++ /a/bin/kustomize build config/dev
+exit=0
+7820:        - name: OPERATOR_IMAGE
+7821-          value: quay.io/kairos/operator:v0.3.0
+7826:        image: controller:latest
+7827-        imagePullPolicy: IfNotPresent
+=================== base : dev-IMG
++ /a/bin/kustomize build config/dev
+exit=0
+7820:        - name: OPERATOR_IMAGE
+7821-          value: quay.io/kairos/operator:v0.3.0
+7826:        image: example.com/me/operator:dev123
+7827-        imagePullPolicy: IfNotPresent
+=================== head : default-nooverride
++ /a/bin/kustomize build config/default
+exit=0
+7818:        - name: OPERATOR_IMAGE
+7819-          value: quay.io/kairos/operator:v0.3.0@sha256:bc0462a0bd5e240ee17af9e3743d228173905ec642e894e30cbfc650ef43fed7
+7826:        image: quay.io/kairos/operator:v0.3.0@sha256:bc0462a0bd5e240ee17af9e3743d228173905ec642e894e30cbfc650ef43fed7
+7827-        imagePullPolicy: IfNotPresent
+=================== head : default-IMG
++ /a/bin/kustomize build config/default
+exit=0
+7818:        - name: OPERATOR_IMAGE
+7819-          value: example.com/me/operator:dev123
+7826:        image: example.com/me/operator:dev123
+7827-        imagePullPolicy: IfNotPresent
+=================== head : dev-nooverride
++ /a/bin/kustomize build config/dev
+exit=0
+7820:        - name: OPERATOR_IMAGE
+7821-          value: controller:latest
+7826:        image: controller:latest
+7827-        imagePullPolicy: IfNotPresent
+=================== head : dev-IMG
++ /a/bin/kustomize build config/dev
+exit=0
+7820:        - name: OPERATOR_IMAGE
+7821-          value: example.com/me/operator:dev123
+7826:        image: example.com/me/operator:dev123
+7827-        imagePullPolicy: IfNotPresent
+##### head
+=== RUN   TestOperatorImageFollowsManagerImage
+=== RUN   TestOperatorImageFollowsManagerImage/default
+=== RUN   TestOperatorImageFollowsManagerImage/make_deploy_IMG=_via_controller
+=== RUN   TestOperatorImageFollowsManagerImage/dev
+=== RUN   TestOperatorImageFollowsManagerImage/make_deploy-dev_IMG=_via_quay.io/kairos/operator
+=== RUN   TestOperatorImageFollowsManagerImage/overlay_images_remap
+--- PASS: TestOperatorImageFollowsManagerImage (0.60s)
+    --- PASS: TestOperatorImageFollowsManagerImage/default (0.12s)
+    --- PASS: TestOperatorImageFollowsManagerImage/make_deploy_IMG=_via_controller (0.12s)
+    --- PASS: TestOperatorImageFollowsManagerImage/dev (0.12s)
+    --- PASS: TestOperatorImageFollowsManagerImage/make_deploy-dev_IMG=_via_quay.io/kairos/operator (0.13s)
+    --- PASS: TestOperatorImageFollowsManagerImage/overlay_images_remap (0.12s)
+=== RUN   TestMetricsOverlaysSelectTheManager
+--- PASS: TestMetricsOverlaysSelectTheManager (0.00s)
+PASS
+ok  	github.com/kairos-io/kairos-operator/config	0.601s
+##### base
+=== RUN   TestOperatorImageFollowsManagerImage
+=== RUN   TestOperatorImageFollowsManagerImage/default
+    operator_image_test.go:161: manager image = "quay.io/kairos/operator:v0.3.0", want "quay.io/kairos/operator:v0.3.0@sha256:bc0462a0bd5e240ee17af9e3743d228173905ec642e894e30cbfc650ef43fed7"
+    operator_image_test.go:161: OPERATOR_IMAGE = "quay.io/kairos/operator:v0.3.0", want "quay.io/kairos/operator:v0.3.0@sha256:bc0462a0bd5e240ee17af9e3743d228173905ec642e894e30cbfc650ef43fed7"
+=== RUN   TestOperatorImageFollowsManagerImage/make_deploy_IMG=_via_controller
+    operator_image_test.go:168: manager image = "quay.io/kairos/operator:v0.3.0", want "example.com/me/operator:dev"
+    operator_image_test.go:168: OPERATOR_IMAGE = "quay.io/kairos/operator:v0.3.0", want "example.com/me/operator:dev"
+=== RUN   TestOperatorImageFollowsManagerImage/dev
+    operator_image_test.go:174: OPERATOR_IMAGE = "quay.io/kairos/operator:v0.3.0", want "controller:latest"
+=== RUN   TestOperatorImageFollowsManagerImage/make_deploy-dev_IMG=_via_controller
+    operator_image_test.go:181: OPERATOR_IMAGE = "quay.io/kairos/operator:v0.3.0", want "example.com/me/operator:e2e"
+=== RUN   TestOperatorImageFollowsManagerImage/overlay_images_remap
+    operator_image_test.go:195: manager image = "mirror.example.com/kairos/operator:v0.3.0", want "mirror.example.com/kairos/operator:v0.3.0@sha256:bc0462a0bd5e240ee17af9e3743d228173905ec642e894e30cbfc650ef43fed7"
+    operator_image_test.go:195: OPERATOR_IMAGE = "quay.io/kairos/operator:v0.3.0", want "mirror.example.com/kairos/operator:v0.3.0@sha256:bc0462a0bd5e240ee17af9e3743d228173905ec642e894e30cbfc650ef43fed7"
+--- FAIL: TestOperatorImageFollowsManagerImage (0.61s)
+    --- FAIL: TestOperatorImageFollowsManagerImage/default (0.12s)
+    --- FAIL: TestOperatorImageFollowsManagerImage/make_deploy_IMG=_via_controller (0.13s)
+    --- FAIL: TestOperatorImageFollowsManagerImage/dev (0.12s)
+    --- FAIL: TestOperatorImageFollowsManagerImage/make_deploy-dev_IMG=_via_controller (0.13s)
+    --- FAIL: TestOperatorImageFollowsManagerImage/overlay_images_remap (0.12s)
+=== RUN   TestMetricsOverlaysSelectTheManager
+--- PASS: TestMetricsOverlaysSelectTheManager (0.00s)
+FAIL
+FAIL	github.com/kairos-io/kairos-operator/config	0.609s
+FAIL
