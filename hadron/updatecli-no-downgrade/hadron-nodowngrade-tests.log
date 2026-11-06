@@ -1,0 +1,21 @@
+$ git rev-parse HEAD
+1bb6889d70b117d356b483345dc559d826d3425d
+$ date -Iseconds
+2026-11-06T09:22:26+01:00
+$ docker run --rm --user 1000:1000 -e HOME=/tmp -v ~/projects/kairos-triage-agent/workspace/hadron-nodowngrade:/src:ro -w /src --entrypoint sh alpine/git:latest -c sh tests/revert-version-downgrades_test.sh && sh tests/updatecli-empty-source.sh
+::warning::OPENSSH_VERSION: updatecli offered 10.6p1, older than 10.6p2 at HEAD; keeping 10.6p2
+::warning::SHADOW_VERSION: updatecli offered 3.3.1, older than 4.18.0 at HEAD; keeping 4.18.0
+revert-version-downgrades: 2 downgrade(s) reverted
+ok: ARG OPENSSH_VERSION=10.6p2
+ok: ARG SHADOW_VERSION=4.18.0
+ok: ARG ZLIB_VERSION=1.3.2
+ok: ARG KERNEL_VERSION=6.12.10
+ok: ARG TZDATA_VERSION=2025c
+ok: ARG UNTOUCHED_VERSION=2.0
+ok: ARG OPENSSH_VERSION_NOTE=keep
+ok: FROM scratch
+ok: reports 2 reverts
+ok: clean tree stays clean
+all revert-version-downgrades checks passed
+PASS: all 22 updatecli shell sources fail on empty output
+exit=0
