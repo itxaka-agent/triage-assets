@@ -1,0 +1,13 @@
+go version go1.27.3 linux/amd64
+=== RUN   TestM
+header-only                        base=false head_upgrade=false head_decentralized=false
+Ready row (default)                base=true  head_upgrade=true  head_decentralized=true 
+Ready row (-o wide)                base=true  head_upgrade=true  head_decentralized=true 
+NotReady only                      base=true  head_upgrade=false head_decentralized=false
+NotReady,SchedulingDisabled only   base=true  head_upgrade=false head_decentralized=false
+Ready,SchedulingDisabled           base=true  head_upgrade=false head_decentralized=false
+Ready + NotReady mix               base=true  head_upgrade=true  head_decentralized=true 
+empty                              base=false head_upgrade=false head_decentralized=false
+--- PASS: TestM (0.00s)
+PASS
+ok  	m	0.002s
