@@ -1,0 +1,52 @@
+=== head-rec-serial.log (excerpt)
+printf %s <redacted> > /tmp/newpass; chmod 600 /tmp/newpass; mount -o remount,rw /oem 2>&1; printf 'kcrypt:\n  method: passphrase\n  passphrase_file: /tmp/newpass\n' > /oem/99_reset.yaml; cat /oem/99_reset.yaml; ls /oem
+echo RC_$?_"636370"
+kcrypt:
+  method: passphrase
+  passphrase_file: /tmp/newpass
+90_custom.yaml	99_reset.yaml  lost+found
+RC_0_636370
+kairos-agent print-config 2>&1 | grep -B2 -A4 kcrypt; ls -la /tmp/newpass
+echo RC_$?_"636388"
+-rw------- 1 root root 16 Nov  9 15:37 /tmp/newpass
+RC_0_636388
+kairos-agent reset --unattended > /tmp/reset.log 2>&1; echo RESET_EXIT=$?; tail -25 /tmp/reset.log
+🔐 New passphrase for the encrypted COS_PERSISTENT (at least 8 characters): (press TAB for no echo)                         •���•���•��••••����••���•
+🔐 Type the new passphrase for the encrypted COS_PERSISTENT again: (press TAB for no echo)                         •••••���••��•••••••
+[   43.898796] Error: Driver 'pcspkr' is already registered, aborting...
+[   48.073599] Error: Driver 'pcspkr' is already registered, aborting...
+RESET_EXIT=0
+2026-11-09T15:37:30Z INF Running layout plugin
+2026-11-09T15:37:30Z INF Processing stage step 'Boot assessment and branding.umount state'. ( commands: 1, files: 0, ... )
+2026-11-09T15:37:30Z INF Running layout plugin
+2026-11-09T15:37:30Z INF Done executing stage 'after-reset'
+
+2026-11-09T15:37:30Z INF Running stage: after-reset.after
+
+2026-11-09T15:37:30Z INF Done executing stage 'after-reset.after'
+
+2026-11-09T15:37:30Z INF Running stage: after-reset.before
+
+2026-11-09T15:37:30Z INF Done executing stage 'after-reset.before'
+
+=== base-rec-serial.log (excerpt)
+  passphrase_file: /tmp/newpass
+90_custom.yaml	99_reset.yaml  lost+found
+RC_0_633523
+kairos-agent print-config 2>&1 | grep -B2 -A4 kcrypt; ls -la /tmp/newpass
+echo RC_$?_"633544"
+-rw------- 1 root root 16 Nov  9 15:37 /tmp/newpass
+RC_0_633544
+kairos-agent reset --unattended > /tmp/reset.log 2>&1; echo RESET_EXIT=$?; tail -25 /tmp/reset.log
+RESET_EXIT=1
+warning: skipping /etc/kairos/kairos-init-init-stage.yaml because it has no valid header
+warning: skipping /etc/kairos/kairos-init-install-stage.yaml because it has no valid header
+warning: skipping /oem/99_reset.yaml because it has no valid header
+2026-11-09T15:37:13Z INF Kairos Agent version=v4.4.0-93-g3a8d145e
+2026-11-09T15:37:13Z INF Kairos System version=v4.4.0-93-g3a8d145e
+2026-11-09T15:37:13Z INF Boot Mode boot_mode=recovery_boot
+2026-11-09T15:37:13Z INF Boot in uki mode result=false
+2026-11-09T15:37:13Z INF Setting image size to 583MiB
+failed initializing spec: COS_PERSISTENT is an encrypted container (/dev/vda5) with no open mapper, so it cannot be formatted; unlock it first with `kairos-agent kcrypt unlock-all` and retry, or set `reset-persistent: false` to reset without it
+true
+echo RC_$?_"635556"
