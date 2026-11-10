@@ -1,0 +1,37 @@
+$ git rev-parse HEAD
+c99b1ac6aefad724a73df2cf6054097514358def
+$ date -Iseconds
+2026-11-10T14:28:27+01:00
+go: downloading github.com/aybabtme/rgbterm v0.0.0-20170906152045-cc83f3b3ce59
+go: downloading github.com/wayneashleyberry/terminal-dimensions v1.1.0
+go: downloading github.com/ayoubfaouzi/pkcs7 v0.2.3
+go: downloading github.com/u-root/uio v0.0.0-20240224005618-d2acac8f3701
+go: downloading github.com/dustin/go-humanize v1.0.1
+== create extension record
+{"id":"cd8c47ad-f2a5-4e97-ad32-079974c15873","phase":"Pending","message":"","rawFile":"","containerImage":""}
+== register node1, node2
+{"apiKey":"<redacted>","id":"19ff2183-f2ad-4461-a521-c26e888f281f"}
+{"apiKey":"<redacted>","id":"34d4205e-6c4f-4709-9a30-cec30f1b009a"}
+== admin queues extension install on 19ff2183-f2ad-4461-a521-c26e888f281f; node reports completed
+{"status":"ok"}
+ http=200
+== admin queues extension install on 34d4205e-6c4f-4709-9a30-cec30f1b009a; node reports completed
+{"status":"ok"}
+ http=200
+== GET extensions/foo/nodes BEFORE delete (node1=19ff2183-f2ad-4461-a521-c26e888f281f node2=34d4205e-6c4f-4709-9a30-cec30f1b009a)
+[{"nodeId":"19ff2183-f2ad-4461-a521-c26e888f281f","name":"foo","type":"sysext","bootState":"active","version":"","installedAt":"2026-11-10T13:29:12.946473702Z","updatedAt":"2026-11-10T13:29:12.946508933Z"},{"nodeId":"34d4205e-6c4f-4709-9a30-cec30f1b009a","name":"foo","type":"sysext","bootState":"active","version":"","installedAt":"2026-11-10T13:29:12.958926442Z","updatedAt":"2026-11-10T13:29:12.958941419Z"}]
+
+== DELETE node1
+http=204
+== GET nodes list
+"id":"34d4205e-6c4f-4709-9a30-cec30f1b009a"
+== GET extensions/foo/nodes AFTER delete
+[{"nodeId":"19ff2183-f2ad-4461-a521-c26e888f281f","name":"foo","type":"sysext","bootState":"active","version":"","installedAt":"2026-11-10T13:29:12.946473702Z","updatedAt":"2026-11-10T13:29:12.946508933Z"},{"nodeId":"34d4205e-6c4f-4709-9a30-cec30f1b009a","name":"foo","type":"sysext","bootState":"active","version":"","installedAt":"2026-11-10T13:29:12.958926442Z","updatedAt":"2026-11-10T13:29:12.958941419Z"}]
+
+== server log tail
+2026/11/10 13:29:12 127.0.0.1 PUT /api/v1/nodes/34d4205e-6c4f-4709-9a30-cec30f1b009a/commands/a1cc94c3-a731-4973-9037-36adfd66020f/status 200 549.1µs
+2026/11/10 13:29:12 127.0.0.1 GET /api/v1/extensions/cd8c47ad-f2a5-4e97-ad32-079974c15873/nodes 200 339.381µs
+2026/11/10 13:29:12 127.0.0.1 DELETE /api/v1/nodes/19ff2183-f2ad-4461-a521-c26e888f281f 204 327.888µs
+2026/11/10 13:29:12 127.0.0.1 GET /api/v1/nodes 200 231.012µs
+2026/11/10 13:29:12 127.0.0.1 GET /api/v1/extensions/cd8c47ad-f2a5-4e97-ad32-079974c15873/nodes 200 312.251µs
+exit=0
