@@ -1,0 +1,12 @@
+INPUT="ip=10.0.0.2::10.0.0.1:255.255.255.0::eth0:none"
+  Title="Kairos"
+  FileName="single_entry_ip_10.0.0.2_10.0.0.1_255.255.255.0_eth0_none".efi
+  Cmdline-tail="ystemd.crash_reboot=yes ip=10.0.0.2::10.0.0.1:255.255.255.0::eth0:none"
+INPUT="a/b: quiet"
+  Title="Kairos"
+  FileName="single_entry_a_b_quiet".efi
+  Cmdline-tail="e.uki selinux=0 panic=5 rd.shell=0 systemd.crash_reboot=yes a/b: quiet"
+INPUT="My Entry: quiet"
+  Title="Kairos (My Entry)"
+  FileName="my_entry".efi
+  Cmdline-tail="ucore.uki selinux=0 panic=5 rd.shell=0 systemd.crash_reboot=yes  quiet"

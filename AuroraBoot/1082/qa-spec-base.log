@@ -1,0 +1,41 @@
+Running Suite: pkg/uki suite - /src/pkg/uki
+===========================================
+Random Seed: 1794303473
+
+Will run 4 of 86 specs
+SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS••
+------------------------------
+• [FAILED] [0.000 seconds]
+single-efi-cmdline titles only treats the text before the first colon as a title when it looks like one [It] untitled with colons and '='
+/src/pkg/uki/uki_test.go:556
+
+  [FAILED] Expected
+      <string>: Kairos (ip=10.0.0.2)
+  to equal
+      <string>: Kairos
+  In [It] at: /src/pkg/uki/uki_test.go:550 @ 11/10/26 09:37:53.087
+------------------------------
+• [FAILED] [0.000 seconds]
+single-efi-cmdline titles only treats the text before the first colon as a title when it looks like one [It] slash before the colon
+/src/pkg/uki/uki_test.go:561
+
+  [FAILED] Expected
+      <string>: Kairos (a/b)
+  to equal
+      <string>: Kairos
+  In [It] at: /src/pkg/uki/uki_test.go:550 @ 11/10/26 09:37:53.088
+------------------------------
+SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+
+Summarizing 2 Failures:
+  [FAIL] single-efi-cmdline titles only treats the text before the first colon as a title when it looks like one [It] untitled with colons and '='
+  /src/pkg/uki/uki_test.go:550
+  [FAIL] single-efi-cmdline titles only treats the text before the first colon as a title when it looks like one [It] slash before the colon
+  /src/pkg/uki/uki_test.go:550
+
+Ran 4 of 86 Specs in 0.001 seconds
+FAIL! -- 2 Passed | 2 Failed | 0 Pending | 82 Skipped
+--- FAIL: TestUki (0.00s)
+FAIL
+FAIL	github.com/kairos-io/AuroraBoot/pkg/uki	0.010s
+FAIL
