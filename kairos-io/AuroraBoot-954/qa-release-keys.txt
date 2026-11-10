@@ -1,0 +1,22 @@
+# 2026-11-10T15:21:25+01:00
+$ docker run --rm --entrypoint cat quay.io/kairos/hadron:v0.6.3-core-amd64-generic-v4.4.0 /etc/kairos-release
+KAIROS_ARCH="amd64"
+KAIROS_BUG_REPORT_URL="https://github.com/kairos-io/kairos/issues"
+KAIROS_FAMILY="hadron"
+KAIROS_FIPS="false"
+KAIROS_FLAVOR="hadron"
+KAIROS_FLAVOR_RELEASE="v0.6.3"
+KAIROS_HOME_URL="https://github.com/kairos-io/kairos"
+KAIROS_ID="kairos"
+KAIROS_ID_LIKE="kairos-core-hadron-v0.6.3"
+KAIROS_INIT_VERSION="v4.4.0"
+KAIROS_MODEL="generic"
+KAIROS_NAME="kairos-core-hadron-v0.6.3"
+KAIROS_RELEASE="v4.4.0"
+KAIROS_TARGETARCH="amd64"
+KAIROS_TRUSTED_BOOT="false"
+KAIROS_VARIANT="core"
+KAIROS_VERSION="v4.4.0"
+$ ... | grep -c KAIROS_IMAGE
+0
+quay.io/kairos/hadron@sha256:9051a82fb7d6df33598dbccb0c55417629334e384976ed6f535f40809b3977d2
