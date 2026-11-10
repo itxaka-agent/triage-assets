@@ -83,7 +83,7 @@ func TestFinalStatusAfterReconnect(t *testing.T) {
 	srv := httptest.NewServer(mux)
 	defer srv.Close()
 
-	cfg := &phonehome.Config{URL: srv.URL, RegistrationToken: "t",
+	cfg := &phonehome.Config{URL: srv.URL, RegistrationToken: "<redacted>",
 		HeartbeatInterval: 100 * time.Millisecond, ReconnectBackoff: 50 * time.Millisecond}
 	c := phonehome.NewClient(cfg,
 		phonehome.WithCredentialsPath(filepath.Join(t.TempDir(), "c.yaml")),
