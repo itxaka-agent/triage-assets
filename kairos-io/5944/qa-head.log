@@ -1,0 +1,37 @@
+$ git rev-parse HEAD
+180c9783afe42c45682c939fa9de798a40668ff8
+$ date -Iseconds
+2026-11-10T14:29:18+01:00
+go: downloading github.com/aybabtme/rgbterm v0.0.0-20170906152045-cc83f3b3ce59
+go: downloading github.com/wayneashleyberry/terminal-dimensions v1.1.0
+go: downloading github.com/ayoubfaouzi/pkcs7 v0.2.3
+go: downloading github.com/u-root/uio v0.0.0-20240224005618-d2acac8f3701
+go: downloading github.com/dustin/go-humanize v1.0.1
+== create extension record
+{"id":"451b4f36-bd09-4a34-ad34-d9abcb09bad3","phase":"Pending","message":"","rawFile":"","containerImage":""}
+== register node1, node2
+{"apiKey":"<redacted>","id":"2d4600e3-8d8d-41f3-8bfa-593d4085d665"}
+{"apiKey":"<redacted>","id":"ec2b33b7-a287-45f3-9899-7e4644e88261"}
+== admin queues extension install on 2d4600e3-8d8d-41f3-8bfa-593d4085d665; node reports completed
+{"status":"ok"}
+ http=200
+== admin queues extension install on ec2b33b7-a287-45f3-9899-7e4644e88261; node reports completed
+{"status":"ok"}
+ http=200
+== GET extensions/foo/nodes BEFORE delete (node1=2d4600e3-8d8d-41f3-8bfa-593d4085d665 node2=ec2b33b7-a287-45f3-9899-7e4644e88261)
+[{"nodeId":"2d4600e3-8d8d-41f3-8bfa-593d4085d665","name":"foo","type":"sysext","bootState":"active","version":"","installedAt":"2026-11-10T13:30:08.256232329Z","updatedAt":"2026-11-10T13:30:08.256254585Z"},{"nodeId":"ec2b33b7-a287-45f3-9899-7e4644e88261","name":"foo","type":"sysext","bootState":"active","version":"","installedAt":"2026-11-10T13:30:08.271094255Z","updatedAt":"2026-11-10T13:30:08.271121558Z"}]
+
+== DELETE node1
+http=204
+== GET nodes list
+"id":"ec2b33b7-a287-45f3-9899-7e4644e88261"
+== GET extensions/foo/nodes AFTER delete
+[{"nodeId":"ec2b33b7-a287-45f3-9899-7e4644e88261","name":"foo","type":"sysext","bootState":"active","version":"","installedAt":"2026-11-10T13:30:08.271094255Z","updatedAt":"2026-11-10T13:30:08.271121558Z"}]
+
+== server log tail
+2026/11/10 13:30:08 127.0.0.1 PUT /api/v1/nodes/ec2b33b7-a287-45f3-9899-7e4644e88261/commands/f056ee06-c084-4176-b6d6-576553e53462/status 200 887.175µs
+2026/11/10 13:30:08 127.0.0.1 GET /api/v1/extensions/451b4f36-bd09-4a34-ad34-d9abcb09bad3/nodes 200 402.101µs
+2026/11/10 13:30:08 127.0.0.1 DELETE /api/v1/nodes/2d4600e3-8d8d-41f3-8bfa-593d4085d665 204 592.267µs
+2026/11/10 13:30:08 127.0.0.1 GET /api/v1/nodes 200 446.92µs
+2026/11/10 13:30:08 127.0.0.1 GET /api/v1/extensions/451b4f36-bd09-4a34-ad34-d9abcb09bad3/nodes 200 489.28µs
+exit=0
