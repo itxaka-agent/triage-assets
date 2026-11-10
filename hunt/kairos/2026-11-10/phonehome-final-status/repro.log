@@ -1,0 +1,13 @@
+=== RUN   TestFinalStatusAfterReconnect
+[90m2026-11-10T11:28:53Z[0m [32mINF[0m [1m[16749] registered as node n[0m
+[90m2026-11-10T11:28:53Z[0m [32mINF[0m [1m[16749] connected to ws://127.0.0.1:33205/api/v1/ws?token=REDACTED[0m
+[90m2026-11-10T11:28:53Z[0m [32mINF[0m [1m[16749] executing command cmd-1: exec[0m
+[90m2026-11-10T11:28:53Z[0m [33mWRN[0m [1m[16749] initial heartbeat error: websocket: close sent[0m
+[90m2026-11-10T11:28:53Z[0m [32mINF[0m [1m[16749] connected to ws://127.0.0.1:33205/api/v1/ws?token=REDACTED[0m
+[90m2026-11-10T11:28:54Z[0m [31mERR[0m [1m[16749] failed to send command status: websocket: close sent[0m
+    reconnect_status_test.go:103: sessions=2 statuses=[s1:Running]
+    reconnect_status_test.go:109: final Completed status never reached server; got [s1:Running]
+--- FAIL: TestFinalStatusAfterReconnect (3.00s)
+FAIL
+FAIL	github.com/kairos-io/kairos/v4/agent/internal/phonehome	3.010s
+FAIL
