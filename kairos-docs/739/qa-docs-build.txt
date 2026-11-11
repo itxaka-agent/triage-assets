@@ -1,0 +1,15 @@
+PR kairos-io/kairos-docs#739 at d17ff1dd4b142ceb8c9b70eecb7205daeafc73a1
+$ docker run node:22 ... npm run build   (clean checkout of the head, fresh git repo inside the container)
+[SUCCESS] Generated static files in "build".
+exit 0, no broken-link or anchor warnings (site builds with onBrokenLinks: 'throw')
+build/docs/architecture/immutable/index.html present; new anchors /etc/pki/ca-trust/source/anchors and /var/lib/confexts rendered
+
+$ compare PERSISTENT_STATE_PATHS in kairos master 00_rootfs.yaml (d9db631) with the list block in docs/architecture/immutable.md
+yaml 39 doc 39 identical_in_order True
+$ grep -c usr/libexec docs/architecture/immutable.md
+1   (only in the explanatory sentence, not in the list)
+
+immucore@98d6a52:
+internal/utils/mounts.go:104  rsync -aquAX %s %s      (no --delete)
+pkg/op/fs.go:74,76            strings.ReplaceAll(mountpoint, "/", "-") ; fmt.Sprintf("%s.bind", ...)  -> etc-systemd.bind
+pkg/op/fs.go:101              SyncState called from the bind mount callback (every boot)
