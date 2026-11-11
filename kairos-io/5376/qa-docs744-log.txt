@@ -1,0 +1,28 @@
+QA kairos-io/kairos-docs#744 at 59da2af10eafb322a7bdf08ee58d29682c1dab1c (base 94c14668, node:22 container, 2026-11-11)
+
+== base: npm ci; installed versions
+tinypool 1.1.1
+katex 0.16.47
+postcss-selector-parser 6.1.5
+== base: npm audit (matching lines)
+katex  0.11.0 - 0.18.1
+tinypool  <=2.1.1
+63 vulnerabilities (9 low, 15 moderate, 21 high, 18 critical)
+
+== head: npm ci; installed versions
+tinypool 2.2.0
+katex 0.18.10
+postcss-selector-parser 7.1.7
+== head: npm audit (matching lines for the three packages)
+(none)
+61 vulnerabilities (8 low, 30 moderate, 21 high, 2 critical)
+
+== head: npm ls (all copies resolved to the overrides)
+katex@0.18.10 overridden
+tinypool@2.2.0 overridden
+postcss-selector-parser@7.1.7 deduped / overridden (every occurrence)
+
+== head: npm run build
+[SUCCESS] Generated static files in "build".
+== head: npm test
+tests 8, pass 8, fail 0
