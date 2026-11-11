@@ -1,0 +1,37 @@
+# QA of kairos-io/kairos#6075 at caa89030650ffd2592658d107f5d0c6d9f15f1ba, scripts run in an ubuntu:24.04 container, 2026-11-11T12:03:51Z
+# real master.yaml runs: gh run list -R kairos-io/kairos --workflow master.yaml --branch master --event push --limit 50
+### unit tests
+green-commit_test rc=0
+green-commit: 14 passed, 0 failed
+release-version_test rc=0
+release-version: 22 passed, 0 failed
+semver-bump_test rc=0
+semver-bump: 34 passed, 0 failed
+### real runs.json (newest first)
+state=red
+sha=fa6801435880cdb4fd0c7c3e42577cb5974a3555
+conclusion=failure
+url=https://github.com/kairos-io/kairos/actions/runs/42849163678
+rc=2
+### real runs.json with the red newest run removed
+state=red
+sha=2a91198db7a8fd49f5a5b196d1e3ee1d1c7e7fd4
+conclusion=failure
+url=https://github.com/kairos-io/kairos/actions/runs/42793808433
+rc=2
+### release-version on upstream/master, auto
+version=v4.5.0
+previous=v4.4.0
+base=v4.4.0
+bump=minor
+commits=108
+rc=0
+- patch: fix(agent): unmount the downloaded ISO before removing its temp dir (#5904) (fa68014)
+- patch: chore(deps): update AuroraBoot to v0.30.0 (#6065) (6b7191e)
+- patch: fix(kcrypt): move kube-rbac-proxy sidecar to upstream image (#6049) (0d0b51b)
+- patch: ci: check that pull request titles are Conventional Commits (#6050) (74f64dd)
+- patch: fix(upgrade): read --exclude-path the same way for every source type (#6047) (1573430)
+### bump minor/major
+version=v4.5.0
+previous=v4.4.0
+base=v4.4.0
