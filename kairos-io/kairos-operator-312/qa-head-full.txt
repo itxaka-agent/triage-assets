@@ -1,0 +1,30 @@
+  2026-11-11T15:37:33Z	INFO	Starting new work for nodes	{"nodeOp": "test-resource-1794411453476508173-reboot-backoff", "toStart": 1, "availableSlots": 1, "freshNodes": 1}
+  2026-11-11T15:37:33Z	INFO	Created reboot pod	{"node": "test-resource-1794411453476508173-reboot-backoff-node", "pod": "test-resource-1794411453476508173-reboot-bac-a9dc99a0bbc1-rwlqc"}
+  2026-11-11T15:37:33Z	INFO	Waiting for the reboot Pod before creating the upgrade Job	{"node": "test-resource-1794411453476508173-reboot-backoff-node", "pod": "test-resource-1794411453476508173-reboot-bac-a9dc99a0bbc1-rwlqc", "phase": "Pending"}
+  2026-11-11T15:37:33Z	INFO	Reconciling NodeOp	{"request": {"name":"test-resource-1794411453476508173-reboot-backoff","namespace":"default"}}
+  2026-11-11T15:37:33Z	INFO	Found target nodes	{"selector": "kubernetes.io/hostname=test-resource-1794411453476508173-reboot-backoff-node", "targetNodeCount": 1, "totalNodeCount": 2}
+  2026-11-11T15:37:33Z	INFO	Created Job for node	{"nodeOp": "test-resource-1794411453476508173-reboot-backoff", "node": "test-resource-1794411453476508173-reboot-backoff-node", "job": "test-resource-1794411453476508173-reboot-bac-061c6e10292b-v2gtj"}
+  2026-11-11T15:37:33Z	DEBUG	No available slots for new work	{"nodeOp": "test-resource-1794411453476508173-reboot-backoff", "running": 1, "maxConcurrency": 1}
+  STEP: Verifying Job was created with custom BackoffLimit even with reboot enabled @ 11/11/26 15:37:33.638
+  STEP: Verifying Job structure is correct for reboot case @ 11/11/26 15:37:33.639
+• [0.278 seconds]
+------------------------------
+newBuilderPod scratch storage uses the declared volume for Buildah storage and rootfs without duplicating it
+/src/internal/controller/job_test.go:940
+• [0.000 seconds]
+------------------------------
+newBuilderPod scratch storage uses subPath rootfs for rootfsVolume on its own (not shared with storageVolume)
+/src/internal/controller/job_test.go:1031
+• [0.000 seconds]
+------------------------------
+[AfterSuite] 
+/src/internal/controller/suite_test.go:83
+  STEP: tearing down the test environment @ 11/11/26 15:37:33.754
+[AfterSuite] PASSED [0.021 seconds]
+------------------------------
+
+Ran 274 of 333 Specs in 39.964 seconds
+SUCCESS! -- 274 Passed | 0 Failed | 0 Pending | 59 Skipped
+--- PASS: TestControllers (39.97s)
+PASS
+ok  	github.com/kairos-io/kairos-operator/internal/controller	39.979s

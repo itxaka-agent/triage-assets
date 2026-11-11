@@ -1,0 +1,30 @@
+  2026-11-11T15:36:37Z	DEBUG	controller-runtime.test-env	installing CRD	{"crd": "nodeopupgrades.operator.kairos.io"}
+  2026-11-11T15:36:37Z	DEBUG	controller-runtime.test-env	installing CRD	{"crd": "osartifacts.build.kairos.io"}
+  2026-11-11T15:36:37Z	DEBUG	controller-runtime.test-env	adding API in waitlist	{"GV": "operator.kairos.io/v1alpha1"}
+  2026-11-11T15:36:37Z	DEBUG	controller-runtime.test-env	adding API in waitlist	{"GV": "operator.kairos.io/v1alpha1"}
+  2026-11-11T15:36:37Z	DEBUG	controller-runtime.test-env	adding API in waitlist	{"GV": "build.kairos.io/v1alpha2"}
+  2026-11-11T15:36:37Z	DEBUG	controller-runtime.test-env	installing webhooks
+[BeforeSuite] PASSED [2.607 seconds]
+------------------------------
+SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+------------------------------
+NodeOpUpgrade Controller When reconciling a NodeOpUpgrade resource should drop node statuses the NodeOp no longer reports
+/src/internal/controller/nodeopupgrade_controller_test.go:814
+  2026-11-11T15:36:39Z	INFO	Creating NodeOp for NodeOpUpgrade	{"nodeOp": "test-nodeopupgrade-1794411397322425344"}
+  STEP: Reporting two nodes on the NodeOp @ 11/11/26 15:36:39.372
+  STEP: Removing node-b from the NodeOp status @ 11/11/26 15:36:39.402
+• [2.140 seconds]
+------------------------------
+SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+------------------------------
+[AfterSuite] 
+/src/internal/controller/suite_test.go:83
+  STEP: tearing down the test environment @ 11/11/26 15:36:39.462
+[AfterSuite] PASSED [0.054 seconds]
+------------------------------
+
+Ran 1 of 333 Specs in 4.808 seconds
+SUCCESS! -- 1 Passed | 0 Failed | 0 Pending | 332 Skipped
+--- PASS: TestControllers (4.81s)
+PASS
+ok  	github.com/kairos-io/kairos-operator/internal/controller	4.827s

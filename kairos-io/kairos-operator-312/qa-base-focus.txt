@@ -1,0 +1,30 @@
+              Message: "",
+              RebootStatus: "",
+              PreRebootBootID: "",
+              LastUpdated: {
+                  Time: 0001-01-01T00:00:00Z,
+              },
+          },
+      }
+  not to have key
+      <string>: node-b
+  In [It] at: /src/internal/controller/nodeopupgrade_controller_test.go:858 @ 11/11/26 15:36:45.783
+------------------------------
+SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+------------------------------
+[AfterSuite] 
+/src/internal/controller/suite_test.go:83
+  STEP: tearing down the test environment @ 11/11/26 15:36:45.824
+[AfterSuite] PASSED [0.052 seconds]
+------------------------------
+
+Summarizing 1 Failure:
+  [FAIL] NodeOpUpgrade Controller When reconciling a NodeOpUpgrade resource [It] should drop node statuses the NodeOp no longer reports
+  /src/internal/controller/nodeopupgrade_controller_test.go:858
+
+Ran 1 of 333 Specs in 4.374 seconds
+FAIL! -- 0 Passed | 1 Failed | 0 Pending | 332 Skipped
+--- FAIL: TestControllers (4.38s)
+FAIL
+FAIL	github.com/kairos-io/kairos-operator/internal/controller	4.390s
+FAIL
