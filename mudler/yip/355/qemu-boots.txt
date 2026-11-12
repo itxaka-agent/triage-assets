@@ -1,0 +1,40 @@
+$ # kairos master b2697a28, core hadron ISO, yip pinned per build
+$ go version -m dist/linux-amd64/kairos | grep mudler/yip
+base: github.com/mudler/yip v1.26.5-0.20261027073353-b1c67bef913c
+head: github.com/mudler/yip v1.26.5-0.20261112121625-702ccb84609a
+
+$ for n in base head; do for b in 1 2 3 4 5; do ./analyze.sh $n-boot$b/immucore.log; done; done
+# line numbers in /run/immucore/immucore.log, initramfs stage window only
+base#1 05_first=875 05_last=1167 31_first=841 interleaved=YES relink=ran
+      /etc/resolv.conf -> /run/systemd/resolve/resolv.conf
+base#2 05_first=855 05_last=1124 31_first=859 interleaved=YES relink=ran
+      /etc/resolv.conf -> /run/systemd/resolve/resolv.conf
+base#3 05_first=848 05_last=1116 31_first=860 interleaved=YES relink=ran
+      /etc/resolv.conf -> /run/systemd/resolve/resolv.conf
+base#4 05_first=874 05_last=1122 31_first=870 interleaved=YES relink=ran
+      /etc/resolv.conf -> /run/systemd/resolve/resolv.conf
+base#5 05_first=853 05_last=1113 31_first=900 interleaved=YES relink=skipped
+      /etc/resolv.conf -> ../run/systemd/resolve/stub-resolv.conf
+head#1 05_first=939 05_last=997 31_first=1293 interleaved=no relink=ran
+      /etc/resolv.conf -> /run/systemd/resolve/resolv.conf
+head#2 05_first=948 05_last=1006 31_first=1265 interleaved=no relink=ran
+      /etc/resolv.conf -> /run/systemd/resolve/resolv.conf
+head#3 05_first=948 05_last=1006 31_first=1265 interleaved=no relink=ran
+      /etc/resolv.conf -> /run/systemd/resolve/resolv.conf
+head#4 05_first=948 05_last=1006 31_first=1265 interleaved=no relink=ran
+      /etc/resolv.conf -> /run/systemd/resolve/resolv.conf
+head#5 05_first=948 05_last=1006 31_first=1265 interleaved=no relink=ran
+      /etc/resolv.conf -> /run/systemd/resolve/resolv.conf
+
+$ grep -nE "Ensure persistent hosts file|Link /etc/resolv.conf" base-boot5/immucore.log | grep -v Generating
+999: DBG Executing stage '/system/oem/31_hosts.yaml.Ensure persistent hosts file'
+1001: INF Processing stage step '/system/oem/31_hosts.yaml.Ensure persistent hosts file'. ( commands: 2, files: 0, ... )
+1021: DBG Executing stage 'Default network configuration.Link /etc/resolv.conf to systemd resolv.conf'
+1024: WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -f /etc/hosts ]: exit status 1)' stage name: Default network configu
+
+$ grep -nE "Link /etc/resolv.conf|31_hosts.yaml.Ensure persistent /etc/" head-boot2/immucore.log | grep -v Generating
+984: DBG Executing stage 'Default network configuration.Link /etc/resolv.conf to systemd resolv.conf'
+987: INF Processing stage step 'Default network configuration.Link /etc/resolv.conf to systemd resolv.conf'. ( commands: 1, files: 0, ... )
+993:  Name: "Link /etc/resolv.conf to systemd resolv.conf",
+1265: DBG Executing stage '/system/oem/31_hosts.yaml.Ensure persistent /etc/ directory'
+1267: INF Processing stage step '/system/oem/31_hosts.yaml.Ensure persistent /etc/ directory'. ( commands: 0, files: 0, ... )
