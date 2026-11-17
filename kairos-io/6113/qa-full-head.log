@@ -1,0 +1,45 @@
+=== version
+KAIROS_FLAVOR="hadron"
+KAIROS_VERSION="v4.5.2-4-g0e2bc0768"
+=== kairos-agent upgrade --help (command names in help)
+13:To retrieve all the available versions, use "kairos agent upgrade list-releases". Use the --registry flag to specify a custom registry to retrieve the versions from, otherwise it will default to quay.io/kairos.
+15:$ kairos agent upgrade list-releases
+=== kairos-agent install --help (command names in help)
+4:It will print out a QR code which can be used with "kairos provider register" to send over a configuration and bootstraping a kairos node.
+=== kairos-agent recovery --help (command names in help)
+2:Starts kairos recovery mode.
+4:In recovery mode a QR code will be printed out on the screen which should be used in conjunction with "kairos provider bridge". Pass by the QR code as snapshot
+5:to the bridge to connect over the machine which runs the "kairos agent recovery" command.
+12:  kairos agent recovery [flags]
+=== CMD kairos agent upgrade list-releases --help
+RC 0
+List all available releases versions
+
+=== CMD kairos provider register --help
+RC 0
+NAME:
+   kairos provider register - Registers and bootstraps a node
+=== CMD kairos provider bridge --help
+RC 0
+NAME:
+   kairos provider bridge - Connect to a kairos VPN network
+=== CMD kairos agent recovery --help
+RC 0
+
+Starts kairos recovery mode.
+=== CMD kairos upgrade list-releases
+RC 2
+kairos: unknown sub-tool "upgrade"
+Usage:
+=== CMD kairos register
+RC 2
+kairos: unknown sub-tool "register"
+Usage:
+=== CMD kairos bridge
+RC 2
+kairos: unknown sub-tool "bridge"
+Usage:
+=== CMD kairos recovery
+RC 2
+kairos: unknown sub-tool "recovery"
+Usage:
