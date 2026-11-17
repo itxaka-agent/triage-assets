@@ -1,0 +1,16 @@
+2026/11/17 14:58:26 REGISTER
+2026/11/17 14:58:26 SESSION 1 opened
+2026/11/17 14:58:26 SESSION 1 sent command cmd-1
+2026/11/17 14:58:26 SESSION 1 STATUS {"id":"cmd-1","phase":"Running"}
+2026/11/17 14:58:26 SESSION 1 dropping connection after Running
+2026/11/17 14:58:29 SESSION 2 opened
+2026/11/17 14:58:29 SESSION 2 msg type=heartbeat
+2026/11/17 14:58:39 SESSION 2 msg type=heartbeat
+2026/11/17 14:58:49 SESSION 2 msg type=heartbeat
+2026/11/17 14:58:59 SESSION 2 msg type=heartbeat
+2026/11/17 14:59:06 SESSION 2 STATUS {"id":"cmd-1","phase":"Completed","result":"finished-after-reconnect\n"}
+2026/11/17 14:59:09 SESSION 2 msg type=heartbeat
+2026/11/17 14:59:19 SESSION 2 msg type=heartbeat
+2026/11/17 14:59:29 SESSION 2 msg type=heartbeat
+2026/11/17 14:59:39 SESSION 2 msg type=heartbeat
+2026/11/17 14:59:49 SESSION 2 msg type=heartbeat

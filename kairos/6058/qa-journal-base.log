@@ -1,0 +1,38 @@
+Warning: Permanently added '[127.0.0.1]:2231' (ED25519) to the list of known hosts.
+#############################################################################
+#                                                                           #
+#                               NOTICE                                      #
+#                                                                           #
+#  This system is for the use of authorized users only. Individuals using   #
+#  this system without authority, or in excess of their authority, are      #
+#  subject to having all of their activities on this system monitored and   #
+#  recorded by system personnel.                                            #
+#                                                                           #
+#  Anyone using this system expressly consents to such monitoring and is    #
+#  advised that if such monitoring reveals possible evidence of criminal    #
+#  activity, system personnel may provide the evidence to law enforcement   #
+#  officials.                                                               #
+#                                                                           #
+#############################################################################
+VERSION_ID="v0.6.3"
+Nov 17 13:56:44 kairos-24b0 systemd[1]: Started Kairos Agent Phone Home.
+Nov 17 13:56:44 kairos-24b0 kairos-agent[1453]: Kairos Agent
+Nov 17 13:56:44 kairos-24b0 kairos-agent[1453]: Kairos System
+Nov 17 13:56:44 kairos-24b0 kairos-agent[1453]: 2026-11-17T13:56:44Z INF Kairos Agent version=v4.5.3-dev.3+g219378389
+Nov 17 13:56:44 kairos-24b0 kairos-agent[1453]: 2026-11-17T13:56:44Z INF Kairos System version=v4.5.2-3-g219378389
+Nov 17 13:56:44 kairos-24b0 kairos-agent[1453]: Boot Mode
+Nov 17 13:56:44 kairos-24b0 kairos-agent[1453]: 2026-11-17T13:56:44Z INF Boot Mode boot_mode=livecd_boot
+Nov 17 13:56:44 kairos-24b0 kairos-agent[1453]: 2026-11-17T13:56:44Z INF Boot in uki mode result=false
+Nov 17 13:56:44 kairos-24b0 kairos-agent[1453]: Boot in uki mode
+Nov 17 13:56:44 kairos-24b0 kairos-agent[1453]: registered as node node-1
+Nov 17 13:56:44 kairos-24b0 kairos-agent[1453]: 2026-11-17T13:56:44Z INF registered as node node-1
+Nov 17 13:56:44 kairos-24b0 kairos-agent[1453]: connected to ws://10.0.2.2:18080/api/v1/ws?token=REDACTED
+Nov 17 13:56:44 kairos-24b0 kairos-agent[1453]: 2026-11-17T13:56:44Z INF connected to ws://10.0.2.2:18080/api/v1/ws?token=REDACTED
+Nov 17 13:56:44 kairos-24b0 kairos-agent[1453]: executing command cmd-1: exec
+Nov 17 13:56:44 kairos-24b0 kairos-agent[1453]: 2026-11-17T13:56:44Z INF executing command cmd-1: exec
+Nov 17 13:56:44 kairos-24b0 kairos-agent[1453]: initial heartbeat error: websocket: close sent
+Nov 17 13:56:44 kairos-24b0 kairos-agent[1453]: 2026-11-17T13:56:44Z WRN initial heartbeat error: websocket: close sent
+Nov 17 13:56:47 kairos-24b0 kairos-agent[1453]: connected to ws://10.0.2.2:18080/api/v1/ws?token=REDACTED
+Nov 17 13:56:47 kairos-24b0 kairos-agent[1453]: 2026-11-17T13:56:47Z INF connected to ws://10.0.2.2:18080/api/v1/ws?token=REDACTED
+Nov 17 13:57:24 kairos-24b0 kairos-agent[1453]: failed to send command status: websocket: close sent
+Nov 17 13:57:24 kairos-24b0 kairos-agent[1453]: 2026-11-17T13:57:24Z ERR failed to send command status: websocket: close sent

@@ -1,0 +1,11 @@
+Warning: Permanently added '[127.0.0.1]:2232' (ED25519) to the list of known hosts.
+Nov 17 13:58:26 kairos-d115 systemd[1]: Started Kairos Agent Phone Home.
+Nov 17 13:58:26 kairos-d115 kairos-agent[1466]: Kairos Agent
+Nov 17 13:58:26 kairos-d115 kairos-agent[1466]: Kairos System
+Nov 17 13:58:26 kairos-d115 kairos-agent[1466]: Boot Mode
+Nov 17 13:58:26 kairos-d115 kairos-agent[1466]: Boot in uki mode
+Nov 17 13:58:26 kairos-d115 kairos-agent[1466]: registered as node node-1
+Nov 17 13:58:26 kairos-d115 kairos-agent[1466]: connected to ws://10.0.2.2:18080/api/v1/ws?token=REDACTED
+Nov 17 13:58:26 kairos-d115 kairos-agent[1466]: executing command cmd-1: exec
+Nov 17 13:58:29 kairos-d115 kairos-agent[1466]: connected to ws://10.0.2.2:18080/api/v1/ws?token=REDACTED
+kairos v4.5.3-dev.4+g55c174e97
