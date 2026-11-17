@@ -1,0 +1,10 @@
+2026-11-17T13:26:48Z ERR Failed to get the latest kernel: open /lib/modules: no such file or directory
+---
+2026-11-17T13:27:02Z DBG Constraint matches, adding packages packages=["linux-image-generic"]
+      "linux-image-generic",
+2026-11-17T13:27:45Z DBG [7] running command `apt-get -y --no-install-recommends install linux-image-generic`
+  linux-firmware-realtek linux-image-7.3.0-10-generic linux-image-generic
+Get:28 http://archive.ubuntu.com/ubuntu stonking-updates/main amd64 linux-image-generic amd64 7.3.0-10.10 [2664 B]
+Selecting previously unselected package linux-image-generic.
+Preparing to unpack .../27-linux-image-generic_7.3.0-10.10_amd64.deb ...
+Unpacking linux-image-generic (7.3.0-10.10) ...
