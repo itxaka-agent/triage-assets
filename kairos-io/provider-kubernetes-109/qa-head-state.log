@@ -1,0 +1,27 @@
+---calls
+09:54:38 kubeadm version -o short
+09:54:38 kubeadm token generate
+09:54:38 kubeadm certs certificate-key
+09:54:38 kubeadm init --config /run/kubeadm-2101382647.yaml --upload-certs
+09:54:40 kubeadm token generate
+09:54:40 kubeadm certs certificate-key
+09:54:40 kubeadm init --config /run/kubeadm-709786349.yaml --upload-certs
+---status
+apiVersion: provider-kubernetes.kairos.io/v1
+bootID: c3810dec-683d-4f49-96fc-9edb48b0411b
+budget:
+  attempts: 2
+  maxAttempts: 2
+lastAction: run-init
+membership: uninitialized
+message: 'run-init: reconcile: action "run-init": failed after 2 attempts (first attempt:
+  kubeadm init: kubeadm [init --config /run/kubeadm-2101382647.yaml --upload-certs]
+  failed (exit 1): exit status 1: [wait-...): kubeadm init: kubeadm [init --config
+  /run/kubeadm-'
+outcome: failure
+phase: Failed
+reason: BudgetExhausted
+role: init
+terminal: false
+updatedAt: "2026-11-17T09:54:40Z"
+version: dev
