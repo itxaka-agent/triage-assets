@@ -1,0 +1,22 @@
+=== before / cloud-config empty
+2026-11-17T09:14:36Z WRN no cloud-config-file given: netbooting without config_url. This is only safe if the image already has everything it needs baked in from build time -- an image with no cloud-config attached at all will boot but never install itself.
+2026-11-17T09:14:36Z INF Netbooting cmdline="rd.live.overlay.overlayfs rd.neednet=1 ip=dhcp rd.cos.disable root=live:{{ ID \"/in/rootfs.squashfs\" }} netboot install-mode-interactive config_url={{ ID \"\" }} console=tty1 console=ttyS0 console=tty0"
+--- ipxe script served by pixiecore:
+unknown architecture
+
+=== before / cloud-config configured
+2026-11-17T09:14:36Z INF Netbooting cmdline="rd.live.overlay.overlayfs rd.neednet=1 ip=dhcp rd.cos.disable root=live:{{ ID \"/in/rootfs.squashfs\" }} netboot install-mode-interactive config_url={{ ID \"/in/user-data.yaml\" }} console=tty1 console=ttyS0 console=tty0"
+--- ipxe script served by pixiecore:
+unknown architecture
+
+=== after / cloud-config empty
+2026-11-17T09:14:36Z WRN no cloud-config-file given: netbooting without config_url. This is only safe if the image already has everything it needs baked in from build time -- an image with no cloud-config attached at all will boot but never install itself.
+2026-11-17T09:14:36Z INF Netbooting cmdline="rd.live.overlay.overlayfs rd.neednet=1 ip=dhcp rd.cos.disable root=live:{{ ID \"/in/rootfs.squashfs\" }} netboot install-mode-interactive console=tty1 console=ttyS0 console=tty0"
+--- ipxe script served by pixiecore:
+unknown architecture
+
+=== after / cloud-config configured
+2026-11-17T09:14:36Z INF Netbooting cmdline="rd.live.overlay.overlayfs rd.neednet=1 ip=dhcp rd.cos.disable root=live:{{ ID \"/in/rootfs.squashfs\" }} netboot install-mode-interactive config_url={{ ID \"/in/user-data.yaml\" }} console=tty1 console=ttyS0 console=tty0"
+--- ipxe script served by pixiecore:
+unknown architecture
+

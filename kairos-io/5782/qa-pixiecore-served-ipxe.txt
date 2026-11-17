@@ -1,0 +1,10 @@
+=== before / cloud-config empty (arch=0 ipxe script, the boot line is the node cmdline)
+boot kernel initrd=initrd0 rd.live.overlay.overlayfs rd.neednet=1 ip=dhcp rd.cos.disable root=live:http://q5782-before-empty:8080/_/file/rootfs.squashfs?name=other-0 netboot install-mode-interactive config_url=http://q5782-before-empty:8080/_/file?name=other-1 console=tty1 console=ttyS0 console=tty0
+=== before / cloud-config configured (arch=0 ipxe script, the boot line is the node cmdline)
+boot kernel initrd=initrd0 rd.live.overlay.overlayfs rd.neednet=1 ip=dhcp rd.cos.disable root=live:http://q5782-before-configured:8080/_/file/rootfs.squashfs?name=other-0 netboot install-mode-interactive config_url=http://q5782-before-configured:8080/_/file/user-data.yaml?name=other-1 console=tty1 console=ttyS0 console=tty0
+=== after / cloud-config empty (arch=0 ipxe script, the boot line is the node cmdline)
+boot kernel initrd=initrd0 rd.live.overlay.overlayfs rd.neednet=1 ip=dhcp rd.cos.disable root=live:http://q5782-after-empty:8080/_/file/rootfs.squashfs?name=other-0 netboot install-mode-interactive console=tty1 console=ttyS0 console=tty0
+=== after / cloud-config configured (arch=0 ipxe script, the boot line is the node cmdline)
+boot kernel initrd=initrd0 rd.live.overlay.overlayfs rd.neednet=1 ip=dhcp rd.cos.disable root=live:http://q5782-after-configured:8080/_/file/rootfs.squashfs?name=other-0 netboot install-mode-interactive config_url=http://q5782-after-configured:8080/_/file/user-data.yaml?name=other-1 console=tty1 console=ttyS0 console=tty0
+=== before/empty: fetch the minted config_url
+HTTP 500 size=18
