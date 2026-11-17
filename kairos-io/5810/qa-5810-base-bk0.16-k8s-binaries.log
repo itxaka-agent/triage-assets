@@ -1,0 +1,75 @@
+#0 building with "qa5810old" instance using docker-container driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 38.77kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/alpine:3.24@sha256:3f4d6b32e26703c6082839234f43769d5046b3ac7c910033911d1e71d8cd630a
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 692B done
+#3 DONE 0.0s
+
+#4 [k8s-binaries 1/6] FROM docker.io/library/alpine:3.24@sha256:3f4d6b32e26703c6082839234f43769d5046b3ac7c910033911d1e71d8cd630a
+#4 resolve docker.io/library/alpine:3.24@sha256:3f4d6b32e26703c6082839234f43769d5046b3ac7c910033911d1e71d8cd630a 0.0s done
+#4 CACHED
+
+#5 [k8s-binaries 2/6] RUN apk add --no-cache curl ca-certificates
+#5 0.271 ( 1/10) Installing ca-certificates (20261020-r0)
+#5 0.280 ( 2/10) Installing brotli-libs (1.2.1-r0)
+#5 0.289 ( 3/10) Installing c-ares (1.34.9-r0)
+#5 0.294 ( 4/10) Installing libunistring (1.4.2-r0)
+#5 0.308 ( 5/10) Installing libidn2 (2.3.8-r0)
+#5 0.313 ( 6/10) Installing nghttp2-libs (1.70.0-r0)
+#5 0.317 ( 7/10) Installing libpsl (0.21.5-r3)
+#5 0.321 ( 8/10) Installing zstd-libs (1.5.7-r2)
+#5 0.332 ( 9/10) Installing libcurl (8.23.0-r0)
+#5 0.341 (10/10) Installing curl (8.23.0-r0)
+#5 0.347 Executing busybox-1.37.0-r31.trigger
+#5 0.351 Executing ca-certificates-20261020-r0.trigger
+#5 0.381 OK: 13.3 MiB in 26 packages
+#5 DONE 0.4s
+
+#6 [k8s-binaries 3/6] WORKDIR /bin
+#6 DONE 0.0s
+
+#7 [k8s-binaries 4/6] RUN set -eux;     for bin in kubeadm kubectl; do       base="https://dl.k8s.io/v1.37.0/bin/linux/amd64";       curl -fsSL -o "${bin}" "${base}/${bin}";       curl -fsSL -o "${bin}.sha256" "${base}/${bin}.sha256";       echo "$(cat ${bin}.sha256)  ${bin}" | sha256sum -c -;       rm "${bin}.sha256";       chmod 0755 "${bin}";     done
+#7 0.073 + base=https://dl.k8s.io/v1.37.0/bin/linux/amd64
+#7 0.073 + curl -fsSL -o kubeadm https://dl.k8s.io/v1.37.0/bin/linux/amd64/kubeadm
+#7 1.175 + curl -fsSL -o kubeadm.sha256 https://dl.k8s.io/v1.37.0/bin/linux/amd64/kubeadm.sha256
+#7 1.217 + sha256sum -c -
+#7 1.217 + cat kubeadm.sha256
+#7 1.218 + echo '9406f2e75c7fc99391f5fb0575b07914f2d90750d2b8c2c473e9c9c5194c9352  kubeadm'
+#7 1.447 kubeadm: OK
+#7 1.447 + rm kubeadm.sha256
+#7 1.447 + chmod 0755 kubeadm
+#7 1.448 + base=https://dl.k8s.io/v1.37.0/bin/linux/amd64
+#7 1.448 + curl -fsSL -o kubectl https://dl.k8s.io/v1.37.0/bin/linux/amd64/kubectl
+#7 2.349 + curl -fsSL -o kubectl.sha256 https://dl.k8s.io/v1.37.0/bin/linux/amd64/kubectl.sha256
+#7 2.390 + sha256sum -c -
+#7 2.390 + cat kubectl.sha256
+#7 2.391 + echo '6129359f4e1f3848a5572ccb0b26cf28b8ca08cef38c95a765b2f64a2c961a2f  kubectl'
+#7 2.580 kubectl: OK
+#7 2.580 + rm kubectl.sha256
+#7 2.581 + chmod 0755 kubectl
+#7 DONE 2.6s
+
+#8 [k8s-binaries 5/6] RUN set -eux;     base="https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.37.0";     file="crictl-v1.37.0-linux-amd64.tar.gz";     curl -fsSL -o "${file}" "${base}/${file}";     curl -fsSL -o "${file}.sha256" "${base}/${file}.sha256";     echo "$(cat ${file}.sha256)  ${file}" | sha256sum -c -;     tar -xzf "${file}";     rm "${file}" "${file}.sha256";     chown 0:0 crictl;     chmod 0755 crictl
+#8 0.065 + base=https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.37.0
+#8 0.065 + file=crictl-v1.37.0-linux-amd64.tar.gz
+#8 0.065 + curl -fsSL -o crictl-v1.37.0-linux-amd64.tar.gz https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.37.0/crictl-v1.37.0-linux-amd64.tar.gz
+#8 0.461 + curl -fsSL -o crictl-v1.37.0-linux-amd64.tar.gz.sha256 https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.37.0/crictl-v1.37.0-linux-amd64.tar.gz.sha256
+#8 0.581 + sha256sum -c -
+#8 0.581 + cat crictl-v1.37.0-linux-amd64.tar.gz.sha256
+#8 0.583 + echo '67c983ee8a6bbce73d39a186e633c5fe4f8a70e62171ac3bd92a9c1b2c601670  crictl-v1.37.0-linux-amd64.tar.gz'
+#8 0.659 crictl-v1.37.0-linux-amd64.tar.gz: OK
+#8 0.659 + tar -xzf crictl-v1.37.0-linux-amd64.tar.gz
+#8 0.890 + rm crictl-v1.37.0-linux-amd64.tar.gz crictl-v1.37.0-linux-amd64.tar.gz.sha256
+#8 0.892 + chown 0:0 crictl
+#8 0.893 + chmod 0755 crictl
+#8 DONE 0.9s
+
+#9 [k8s-binaries 6/6] RUN set -eu;     bad="$(find kubeadm kubectl crictl ! \( -type f -user 0 -group 0 -perm 0755 \))";     if [ -n "${bad}" ]; then echo "FATAL: not root:root 0755 regular files: ${bad}" >&2; exit 1; fi
+#9 DONE 0.1s
+WARNING: No output specified with docker-container driver. Build result will only remain in the build cache. To push result image into registry use --push or to load image into docker use --load
