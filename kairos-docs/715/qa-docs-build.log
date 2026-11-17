@@ -1,0 +1,11 @@
+# QA docs build for kairos-docs#715 at 786fc3a4876e0464cf6f40c342f5026c2669a94f
+# 2026-11-17T09:07:19+00:00 docker node:22: npm ci; npx docusaurus build
+# npm ci exit: 0
+[INFO] [en] Creating an optimized production build...
+Browserslist: browsers data (caniuse-lite) is 11 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[SUCCESS] Generated static files in "build".
+[INFO] Use `npm run serve` command to test your build locally.
+/build/build/docs/reference/recovery_mode
+# result exit: 0, 'broken' matches: 0
