@@ -1,0 +1,34 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.head
+#1 transferring dockerfile: 39.42kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/alpine:3.24@sha256:3f4d6b32e26703c6082839234f43769d5046b3ac7c910033911d1e71d8cd630a
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 692B done
+#3 DONE 0.0s
+
+#4 [qa-probe 1/2] FROM docker.io/library/alpine:3.24@sha256:3f4d6b32e26703c6082839234f43769d5046b3ac7c910033911d1e71d8cd630a
+#4 resolve docker.io/library/alpine:3.24@sha256:3f4d6b32e26703c6082839234f43769d5046b3ac7c910033911d1e71d8cd630a 0.0s done
+#4 CACHED
+
+#5 [qa-probe 2/2] RUN echo "TARGETPLATFORM=linux/arm64 TARGETARCH=arm64"; echo "k8s url: https://dl.k8s.io/v1.37.0/bin/linux/arm64/kubeadm"; echo "cni: cni-plugins-linux-arm64-v1.9.1.tgz"; echo "runc: runc.arm64"; echo "crictl: crictl-v1.37.0-linux-arm64.tar.gz"
+#5 0.103 TARGETPLATFORM=linux/arm64 TARGETARCH=arm64
+#5 0.103 k8s url: https://dl.k8s.io/v1.37.0/bin/linux/arm64/kubeadm
+#5 0.103 cni: cni-plugins-linux-arm64-v1.9.1.tgz
+#5 0.103 runc: runc.arm64
+#5 0.103 crictl: crictl-v1.37.0-linux-arm64.tar.gz
+#5 DONE 0.1s
+
+#6 exporting to image
+#6 exporting layers 0.0s done
+#6 exporting manifest sha256:bfcb0d43af985be8a7403db1550275e52672aac2cb99308af9bc026e6382dd88 done
+#6 exporting config sha256:656f34807e13b3d1e233bc49f831aae27bc8df87b2b1a29427f659f0152132e8 done
+#6 exporting attestation manifest sha256:43ae572909d53a7fd49a4529a440db8db4b98b8ff287ec8e6a6a22ba46148584 done
+#6 exporting manifest list sha256:c59e790f2ad6b89c675381041089d276c879adfee52ce56bc9e1f86d1c55496d
+#6 exporting manifest list sha256:c59e790f2ad6b89c675381041089d276c879adfee52ce56bc9e1f86d1c55496d done
+#6 naming to moby-dangling@sha256:c59e790f2ad6b89c675381041089d276c879adfee52ce56bc9e1f86d1c55496d done
+#6 DONE 0.1s
