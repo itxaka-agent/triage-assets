@@ -1,0 +1,635 @@
+sha256:210cee5778077c50996120d9ff43e05ee883e345f6d081224256a05044d18416 (unnamed <nil>)
+sha256:6f4affa68d6f5d85aba67f07c7956a4458aae595d9624907a980a8ac23f269a6 [acl 1/2] COPY --from=sources-downloader /sources/downloads/acl.tar.gz /sources/
+sha256:6825e1fa57cdd19344acc68d049494c8c2ec58d1acf7c95d9c25282aecacd0e0 [acl 2/2] RUN mkdir -p /sources && cd /sources && tar -xf acl.tar.gz && mv acl-* acl &&     cd acl && mkdir -p /acl && ./configure --quiet --prefix=/usr --host=x86_64-hadron-linux-musl --build=x86_64-hadron-linux-musl --enable-lto --enable-shared --disable-static --disable-dependency-tracking --disable-nls --libexecdir=/usr/libexec && make -s -j16  DESTDIR=/acl &&     make -s -j16  DESTDIR=/acl install && make -s -j16  install
+sha256:a033a03cba880cf8822bbd022da9834321ea471083b359073692d0719395fa00 [acl-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/acl:2.4.0@sha256:38d5765229542a29c929c832f8eb3c2e1f04de627d5b4a98cc844d3c119418a5
+sha256:9f7054e261be28c7d91a44370552e0c127bb036348c82c12577aa6554a062107 [alpine-base 1/2] FROM docker.io/library/alpine:3.24.4@sha256:f59abe656b692d901e184be3445e084786602108599d2a51d229c0f5a48c71bf
+sha256:874b72164a8765cdeee158d08afbc0233b91c7f02ff98ada88beb45a01c9350a [alpine-base 2/2] RUN apk update &&     apk add --no-cache git bash wget bash perl build-base make patch busybox-static     curl m4 xz texinfo bison gawk gzip zstd-dev coreutils bzip2 tar rsync     git coreutils findutils pax-utils binutils
+sha256:9453c4f7e550169077ee24f31dc37e3cfc337ecf0d931d355eb8951497d840de [aports-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/aports:3.24.3@sha256:91c53209091f49c8c702b71f1889d2491b39d2fa4146fdfbe26dc3bdae7b9ca4
+sha256:828b806faf6a9e5f7bf6ee77af6dbd5775404a2bbc6a8041da20c22cc9887d60 [argp 1/5] COPY --from=sources-downloader /sources/downloads/argp-standalone.tar.gz /sources/
+sha256:5a988f5e320150cf2d4cd1976e1997ad65672499b3c4ea6dfc7733e54e8490b3 [argp 2/5] WORKDIR /sources
+sha256:b9490b82177984e0b18bc3b1d78c454f58744ced5c6993b1a6a1e09126353702 [argp 3/5] RUN tar -xf argp-standalone.tar.gz && mv argp-standalone-* argp
+sha256:bd897e2970e6aed13eb681608acf3d9c811a74b97d40c1814b47e5b0cf4e31f2 [argp 4/5] WORKDIR /sources/argp
+sha256:7d1487dbbc212957ede827ef6323bc123e16a94b297ad713ebc65d9e35fb3cff [argp 5/5] RUN gcc -Os -pipe -fomit-frame-pointer -fno-unroll-loops -fno-asynchronous-unwind-tables -ffunction-sections -fdata-sections -fPIC -I.       -DHAVE_UNISTD_H=1 -DUNUSED='__attribute__((__unused__))'       -c argp-ba.c argp-eexst.c argp-fmtstream.c argp-help.c argp-parse.c argp-pv.c argp-pvh.c &&     gcc-ar rcs libargp.a argp-ba.o argp-eexst.o argp-fmtstream.o argp-help.o argp-parse.o argp-pv.o argp-pvh.o &&     mkdir -p /argp/usr/lib /argp/usr/include &&     cp libargp.a /argp/usr/lib/libargp.a &&     cp libargp.a /usr/lib/libargp.a &&     cp argp.h /argp/usr/include/argp.h &&     cp argp.h /usr/include/argp.h
+sha256:bbe3e2dac641fbd3df576d179efd9a4eee9c83b4a62877ff97cb52b12f3c4112 [argp-standalone-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/argp-standalone:1.5.0@sha256:fa7a804bfbaf61267e5e3c10c0f681884d4a4347e7f3acf83cbd0cf0d24e9dbf
+sha256:0992c72c1310885afa7a62d05aa1aebee86e4df41c66bf5a440f1d99b5d3695e [attr 1/9] COPY --from=sources-downloader /sources/downloads/attr.tar.gz /sources/
+sha256:c99872c8f12d36e747ef7f121a16142c2b05f87f538e00d80bca18a667971f6c [attr 2/9] RUN mkdir -p /attr
+sha256:6266fc12169c1e384fe63cca53244c4d3c0b78f13876f576973008fd10bd3d02 [attr 3/9] WORKDIR /sources
+sha256:2dc440d4d33249109448b1e1ea0f9f2dfc362eb34cab79d3df60a6eb4ce587e4 [attr 4/9] RUN tar -xf attr.tar.gz && mv attr-* attr
+sha256:83c4fb348370a34bdd524eaf41b8cb4045c0c24d020b09be32e1ded972a45d92 [attr 5/9] WORKDIR /sources/attr
+sha256:176b247c587331f8e7b6f5ce27311f0f145fcd95a7637499f9ee65d7150a5ddb [attr 6/9] RUN ./configure --quiet --prefix=/usr --host=x86_64-hadron-linux-musl --build=x86_64-hadron-linux-musl --enable-lto --enable-shared --disable-static --disable-dependency-tracking --sysconfdir=/etc     --mandir=/usr/share/man     --localstatedir=/var     --disable-nls
+sha256:3533cbcd7b0daa536d6185720ba9f430224074c7df016bd302a828c3877a343a [attr 7/9] RUN make -s -j16  DESTDIR=/attr
+sha256:8b288fe96c64230266b31d0d902ee6fb4fb6307a85d94cff4fbf37a10a179e9b [attr 8/9] RUN make -s -j16   DESTDIR=/attr install
+sha256:d34f7f899bbdf08ef4d948e7ac37e6c87a7d2b2d42e24cd12441cb844dc4c701 [attr 9/9] RUN make -s -j16  install
+sha256:be4d90e80f12c9c2c32f2cf4aa4433f9e7e9f0b90ec63ceb0da80daab3c7174c [attr-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/attr:2.6.0@sha256:cb1d750f3672b841224258c6e74a586d51e4b6b2055c87718526a7e2466b9921
+sha256:3ba93f4a2ccabcf880e464b6530fb7889e9f85f0d02fc05887f36f9756394b83 [audit-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/audit:4.2.1@sha256:75517c4799a7a7770992c7d125e04ff462c9e859b6644be84b266aba4dd5a708
+sha256:158867b1728d99cb2d38bf7fb55288580918202ba066d4276c788d9b1ef0884c [autoconf 2/4] COPY --from=perl /perl/ /
+sha256:c0827804ab9966c572cb3ec7c4654000c7774694500b35ec53bc86ce61220d39 [autoconf 3/4] COPY --from=sources-downloader /sources/downloads/autoconf.tar.xz /sources/
+sha256:09c8ca755b74f66c4af39b3d736793390561aaf98cc1262d17375d95b1c7466a [autoconf 4/4] RUN mkdir -p /sources && cd /sources && tar -xvf autoconf.tar.xz && mv autoconf-* autoconf &&     cd autoconf && mkdir -p /autoconf && ./configure --quiet --prefix=/usr --host=x86_64-hadron-linux-musl --build=x86_64-hadron-linux-musl --enable-lto --enable-shared --disable-static --prefix=/usr && make DESTDIR=/autoconf &&     make -j16  DESTDIR=/autoconf install && make -j16  install
+sha256:1a5e56196b0790835b0c6dcd3d538b75e34fd7c776b12aa1c038357743555b91 [autoconf-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/autoconf:2.73@sha256:fa16c0956e9de2d852459f5417b40d31c7fa93f52a946a8d3de72ed841d19845
+sha256:e995f63355a7cd07dd93248d6144d0afb51259b4af8ba6f6feb2c1354b5c4bbc [automake 2/5] COPY --from=autoconf /autoconf/ /
+sha256:02fc7ade0d525ff2108f504e5c6836420b7b6edd41e52d979690b36206bcd241 [automake 3/5] COPY --from=m4 /m4/ /
+sha256:a85a1896131d94a4aa9042b55c87025d1c57157343ffd64ea71006bd2ffa61f4 [automake 4/5] COPY --from=sources-downloader /sources/downloads/automake.tar.xz /sources/
+sha256:23b6226b49a04f28e62b8cacd82cec02cb0fbdc17fd38dfd1758c29283e5474f [automake 5/5] RUN mkdir -p /sources && cd /sources && tar -xvf automake.tar.xz && mv automake-* automake &&     cd automake && mkdir -p /automake && ./configure --quiet --prefix=/usr --host=x86_64-hadron-linux-musl --build=x86_64-hadron-linux-musl --enable-lto --enable-shared --disable-static --prefix=/usr && make DESTDIR=/automake &&     make -j16  DESTDIR=/automake install && make -j16  install
+sha256:e03c5327cc6064551cfc0e0c2c0dc16754a9ac9edecd4f79f4df67ab36696fe3 [automake-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/automake:1.20@sha256:88390a8e7debeaffcdd201b14cd885761dc69f6c6233b32ff6f7d58cdc5ce316
+sha256:630592416a3caaf2ddc06abf0749bad24ad5d6b578a004a541d72c5b1c9590af [bash  1/13] COPY --from=bison /bison /
+sha256:581693c6c7e600400dbcfaedf8e78d4e24c66c1c8a52d8a430df2224b820f5d2 [bash  2/13] COPY --from=flex /flex /
+sha256:bd751f3f759d9df42615bcd8475978961c87a384bd5f38f2a30d51a9e37d6b50 [bash  3/13] COPY ./files/bash/bashrc /sources/bashrc
+sha256:eb74772e19039fb7f9ae0f7b6787f5e03cb4efe29e6201900a4de5ba95799fdc [bash  4/13] COPY ./files/bash/profile-bashrc.sh /sources/profile-bashrc.sh
+sha256:abcd521090452fd086a2b8aa51e27f7ea992265d6ba4b1739d66dcdeb8dfeaba [bash  5/13] COPY --from=sources-downloader /sources/downloads/bash /sources/bash
+sha256:67157bfcd6a4862d496a1696d72ca96031bf4b703b79102344e853a3345da52f [bash  6/13] RUN mkdir -p /bash
+sha256:fe926707c086aca7a8a7c60e3914147601c0a0b988445512c0da0fd95fe09d11 [bash  7/13] WORKDIR /sources/bash
+sha256:f2b9d9b0cc469ee067f4c5e37860c39aba252ea02b372efe700d7bf531840e90 [bash  8/13] RUN CFLAGS="-Os -pipe -fomit-frame-pointer -fno-unroll-loops -fno-asynchronous-unwind-tables -ffunction-sections -fdata-sections -flto=auto -frandom-seed=hadron -DNON_INTERACTIVE_LOGIN_SHELLS -DSSH_SOURCE_BASHRC" ./configure --quiet --quiet --prefix=/usr --host=x86_64-hadron-linux-musl --build=x86_64-hadron-linux-musl --enable-lto --enable-shared --disable-static     --build=x86_64-pc-linux-musl     --host=x86_64-hadron-linux-musl     --prefix=/usr     --bindir=/bin     --mandir=/usr/share/man     --infodir=/usr/share/info     --disable-nls     --enable-readline     --without-bash-malloc     --with-installed-readline     bash_cv_getcwd_malloc=yes     bash_cv_job_control_missing=nomissing     bash_cv_sys_named_pipes=nomissing     bash_cv_printf_a_format=yes
+sha256:d5a8fce395e30766f8b478ed0de1fa0c9579719b2100437a6bcb4698042daa91 [bash  9/13] RUN make -s -j16  y.tab.c && make -s -j16  builtins/libbuiltins.a && make -s -j16 
+sha256:5cff1a64809a50885d503e17d00a83a0a0ff2d9252f3aa39ddbcaec7c7dd8413 [bash 10/13] RUN mkdir -p /bash/etc/bash
+sha256:0e5693a8a85fb9f1a5e70c5b5c4acc3899fbf72b090299794bb04e9f1320e13c [bash 11/13] RUN install -Dm644  /sources/bashrc /bash/etc/bash.bashrc
+sha256:dab6d721933c7bb38a846d94ac8aa66ff79bd8bdb9696ae5b10d929ff78350c0 [bash 12/13] RUN install -Dm644  /sources/profile-bashrc.sh /bash/etc/profile.d/00-bashrc.sh
+sha256:50881e0e02c125f82644c8cf98420139551d3a1519a31cba7719294d75b1d3cd [bash 13/13] RUN make -s -j16  DESTDIR=/bash install && make -s -j16  install
+sha256:d1e55a17a15b811921dc28716d597f74deff359d09c5b54c2dff11774bb01a53 [bash-download 1/6] COPY --from=bash-tarball-download /sources/downloads/bash.tar.gz /sources/downloads/
+sha256:9c3fa3f6724a5da2c2199920391dad7ea7abc7eb2294fa5f5e25e1eb3df830bd [bash-download 2/6] RUN tar -xf bash.tar.gz && rm bash.tar.gz && src=$(echo bash-*) && echo "${src#bash-}" > /sources/bash-version && mv "${src}" bash
+sha256:f9bbf8a6c105fa3cf6fb7967104edf5498852276654bbbed1b76d14a88a082a1 [bash-download 3/6] COPY files/bash/patches.sha256 /sources/bash-patches.sha256
+sha256:400763bbd58d7d95633a8dec03b8867a8d42811468c770fac9c3c8150df97511 [bash-download 4/6] WORKDIR /sources/downloads/bash
+sha256:f2f2a69a681e15336d11d73d2e2500911e6f4145e6ec241b3b3f49980ef6d60e [bash-download 5/6] RUN bash_version=$(cat /sources/bash-version);     for i in $(seq 1 20); do         patch_num=$(printf '%03d' ${i});         patch_name=bash${bash_version/./}-${patch_num};         expected=$(awk -v f="${patch_name}" '$2 == f { print $1 }' /sources/bash-patches.sha256);         test -n "${expected}" || { echo "No sha256 pinned for ${patch_name} in files/bash/patches.sha256, run hack/refresh-source-checksums.sh bash"; exit 1; };         echo "Applying bash patch ${patch_name}";         matched=0;         for mirror in https://ftpmirror.gnu.org https://ftp.gnu.org/gnu https://mirror.netcologne.de/gnu; do             rm -f bash-patch-${patch_num}.patch;             wget -q -T 30 -t 1 "${mirror}/bash/bash-${bash_version}-patches/${patch_name}" -O bash-patch-${patch_num}.patch || continue;             printf '%s  %s\n' "${expected}" bash-patch-${patch_num}.patch > /tmp/bash-patch.sha256;             if sha256sum -c /tmp/bash-patch.sha256; then matched=1; break; fi;         done;         test "${matched}" -eq 1 || { echo "No mirror served bash patch ${patch_name} with the pinned sha256"; exit 1; };         patch -p0 < bash-patch-${patch_num}.patch;     done
+sha256:edbd97313399f0264a5cf416dcbad1b352da5b3bbc13c1b8d7333c033a2e0ba4 [bash-download 6/6] WORKDIR /sources/downloads
+sha256:b4cd0a4a05c68e1dbe15f835922e4efc6693f9e0efd1d4cd64d3d597974270c3 [bash-tarball-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/bash:5.3@sha256:c5801a23904a2b141f579b15a09625d3eb180c78c9c5caba7d8dfebfcad2fc35
+sha256:c755537f5e177e4a0ad7991301cad54e8bc23a24415a2255251b66db78123305 [bc-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/bc:7.1.0@sha256:f2c50afc7ec929308067f5054a4267096d04b246873c9c54251e77d3ad3ccf36
+sha256:1e9b546c49f30d45502759cefc80fd4c28bcd0d6c2e5313889124f8cfdf66fb8 [binutils-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/binutils:2.47@sha256:c1af4c15bce49f077dcf2ddf5b9f9a7242ec3a15c0daa7d6bd0a6a58e874d02f
+sha256:521520991ced6a646db3f55f6d7d2febe4b12d33ac877921558bef7c615e935b [binutils-stage0 1/3] COPY --from=sources-downloader /sources/downloads/binutils.tar.xz .
+sha256:b9da41998827e45373dee9fef45ee24fda4dc9c3ed3416304fe6b42f4224c460 [binutils-stage0 2/3] RUN tar -xf binutils.tar.xz && mv binutils-* binutils
+sha256:0f3c9d164d8e8192950d982de096e7fc98b39d09e27747c5e9615431baa6830d [binutils-stage0 3/3] RUN <<EOT bash
+sha256:ba8ff7d09b7267b58fa79ebe16cc9502463bd1c5f62fbb89dac113e7fc2369a5 [bison 1/5] COPY --from=flex /flex/ /
+sha256:bf9ebd40ed3d056f54bd33cbecf1ff0c9b4dfb3f2f973ecf44d863ee25126998 [bison 2/5] COPY --from=m4 /m4/ /
+sha256:53406e630a4909e23d49998592423e7cc98dcf21ae193c9d8bd8aa7cb1b7d306 [bison 3/5] COPY --from=perl /perl/ /
+sha256:cb13cca234767ff9406bc9f2135ec22757d4aaeac2812a3f60e719dd1589a05f [bison 4/5] COPY --from=sources-downloader /sources/downloads/bison.tar.xz /sources/
+sha256:67fce5073b8ecf8c37bc7bbea6f36b9c36a6122da770ad71e69b772a60663ca1 [bison 5/5] RUN mkdir -p /sources && cd /sources && tar -xvf bison.tar.xz && mv bison-* bison && cd bison && mkdir -p /bison && ./configure --quiet --prefix=/usr --host=x86_64-hadron-linux-musl --build=x86_64-hadron-linux-musl --enable-lto --enable-shared --disable-static --disable-dependency-tracking --infodir=/usr/share/info --mandir=/usr/share/man --prefix=/usr --disable-static --enable-shared &&     make -j16  DESTDIR=/bison install && make -j16  install
+sha256:c8aaa7640ec2b68fe82b3acfc39cfc32f2f2d9437d1f54ee6739bb9f0257b619 [bison-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/bison:3.8.2@sha256:56d9dc17e0d2bf348492ad881f8c2f83c6fa3ec0183439208901c45f72bf8fc9
+sha256:1b6877a58d26919fdf808ff26c4dd6bee881a0388b7bee543cab755a40958b34 [busybox-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/busybox:1.38.0@sha256:8fd46dcce434e38a1b8a577bd317a09fab5940929efa8263daee5f0dc3a34dcf
+sha256:b7b832d5cb11a42e34660c9d859ee3b0f4c52c8d013dc47ae706feacb28ed5ef [busybox-stage0 1/2] COPY --from=sources-downloader /sources/downloads/busybox.tar.bz2 /sources/
+sha256:ca42179b0fd8388095ff7b2562d08a0291fc85b58c75102777db89cdeb512f4f [busybox-stage0 2/2] RUN cd /sources && tar -xf busybox.tar.bz2 &&     mv busybox-* busybox && cd busybox &&     make -s distclean &&     make -s ARCH="x86-64" defconfig &&     sed -i 's/\(CONFIG_\)\(.*\)\(INETD\)\(.*\)=y/# \1\2\3\4 is not set/g' .config &&     sed -i 's/\(CONFIG_IFPLUGD\)=y/# \1 is not set/' .config &&     sed -i 's/\(CONFIG_FEATURE_WTMP\)=y/# \1 is not set/' .config &&     sed -i 's/\(CONFIG_FEATURE_UTMP\)=y/# \1 is not set/' .config &&     sed -i 's/\(CONFIG_UDPSVD\)=y/# \1 is not set/' .config &&     sed -i 's/\(CONFIG_TCPSVD\)=y/# \1 is not set/' .config &&     sed -i 's/\(CONFIG_TC\)=y/# \1 is not set/' .config &&     if [ "x86-64" != "x86-64" ]; then sed -i 's/\(CONFIG_SHA1_HWACCEL\)=y/# \1 is not set/' .config; fi &&     make -s ARCH="x86-64" CROSS_COMPILE="x86_64-hadron-linux-musl-" -j16  &&     make -s ARCH="x86-64" CROSS_COMPILE="x86_64-hadron-linux-musl-" -j16  CONFIG_PREFIX="/sysroot" install
+sha256:7401e3b2d6a52e9995afef6614bfbbf891ae3ad3665f2854e06be05ea3e0851a [ca-certificates  1/12] COPY --from=openssl /openssl/ /
+sha256:4316d9d22bb1f9ad00e0012fcb6e823798868c5ae1b47fe34c4a0100ab359d49 [ca-certificates  2/12] COPY --from=perl /perl/ /
+sha256:e3d91c128a86329411bbb4a6a07089893aabcd26da664af5b6999628e4e6a35f [ca-certificates  3/12] COPY --from=bash /bash /bash
+sha256:6821e9fe700d7014a7b1c7917b26730d0d4832bf5f7cccaf50c5e17c7f1c41aa [ca-certificates  4/12] RUN rsync -aHAX --keep-dirlinks  /bash/. /
+sha256:23a2d67f6f3656c36ab06c54b08b3ddc1da50cabbcee9872255b8e20b9934bed [ca-certificates  5/12] COPY --from=readline /readline/ /
+sha256:a3ae1f4862355f0bd1f5065326ee29cb79bbbdadc46af62fb502d9e570715fba [ca-certificates  6/12] COPY --from=acl /acl/ /
+sha256:60cf83bd1498312b7175a3512d9105a53b2e5d6a5d77ce3ae86b422c2f988a6a [ca-certificates  7/12] COPY --from=attr /attr/ /
+sha256:c3801dd241fb9935ed4ec2d2078aaf71cb9c33484e847ada3f455bd3811fb58f [ca-certificates  8/12] COPY --from=findutils /findutils/ /
+sha256:f91f1ac777884419a17bdf24484a22d3f31e67a8b38d95e7b67be6fa24b3a17b [ca-certificates  9/12] COPY --from=sources-downloader /sources/downloads/ca-certificates.tar.bz2 /sources/
+sha256:ff3399a0dd3684b8e5d5611b6790b33910c748d85afa1d89275120d92265d1af [ca-certificates 10/12] RUN mkdir -p /sources && cd /sources && tar -xf ca-certificates.tar.bz2 && mv ca-certificates-* ca-certificates &&     cd ca-certificates && mkdir -p /ca-certificates && CC=gcc make -s -j16  &&     make -s -j16  DESTDIR=/ca-certificates install
+sha256:f47312ef378c4b457e380aed425dbdd3f0ae9aa3fd6e2372002ad8f9ba65d125 [ca-certificates 11/12] COPY ./files/ca-certificates/post_install.sh /sources/post_install.sh
+sha256:df1fcca915378bde18339e9ca62006d8ee4353b95f4ab86298f67dde9386920e [ca-certificates 12/12] RUN bash /sources/post_install.sh
+sha256:446774a3cd39194baa4fcf3b4bd6ef0ced4f71200dda753be03e1690cf333704 [ca-certificates-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/ca-certificates:20261020@sha256:42f133d4c5a2196c050860a2855b95ee3cec87909e1dc3c620cb8839cbd5b135
+sha256:cc88c1b3631817fff39e0be0a0cd880127c50b1328e17a23d95ccf7b83f772d3 [cmake 1/9] COPY --from=curl /curl/ /
+sha256:5ce922a83b8a94f9a5ff9a0feae344cf51d2cadb7b211b4abe747fdd312fb5a0 [cmake 2/9] COPY --from=openssl /openssl/ /
+sha256:3806393a1223bb89413fac21ef6cdf78af16cc2807558131f4db5c1df33f66cd [cmake 3/9] COPY --from=sources-downloader /sources/downloads/cmake.tar.gz /sources/
+sha256:34c9886b8b6805335e861608746053246eeefc65187b7e068e0f71ff46d4f6b6 [cmake 4/9] RUN mkdir -p /cmake
+sha256:d5566eeca6841e9747842e0e4c65ef4c5dc0dde26e8ce83fcfb6af7272117c9a [cmake 5/9] WORKDIR /sources
+sha256:d9e924e0c4622109728669decccf1c693f4908bf97b3e3cd1aca89e5ecc6b1ee [cmake 6/9] RUN tar -xf cmake.tar.gz && mv cmake-* cmake
+sha256:7f206613e89886dca334e9e75829ecdab4dc3d14fb9e311261f95ee261273128 [cmake 7/9] WORKDIR /sources/cmake
+sha256:87381c555dc0cbb9c23978948774fb0b6ba7d1e1758333395214f1163d3e8667 [cmake 8/9] RUN ./bootstrap --prefix=/usr --no-debugger  --parallel=16
+sha256:5c3c0f8150c10ac3b43632f780f51b74308af74155aff2487d1d15138f73a6ab [cmake 9/9] RUN make -s -j16  && make -s -j16  install DESTDIR=/cmake
+sha256:3c039b4e8f6585532673cbf10fa94130553a32c46d812418802c6c6864add6ab [cmake-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/cmake:4.5.0@sha256:7f554a79b178d045c7fccb47814ff5d6de72aaa2b05574d73927c62c5002546d
+sha256:caf04216810d6f46dcd22efbac87f681768293ef9f3f111798c0ceea8fe25645 [conntrack-tools-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/conntrack-tools:1.4.9@sha256:b6cea9542a53603cc9c158a12891fd30c906155d99c6cb7e231d48aaa7b52141
+sha256:a09e6e319c262303e93da4794f33441e9217e55f1ed148e867028ee24c948c69 [coreutils 2/6] COPY --from=libcap /libcap /libcap
+sha256:301553d480150c17c93345641237ed79e7ac4b502ad78789b1852655dcffcfe3 [coreutils 3/6] RUN rsync -aHAX --keep-dirlinks  /libcap/. /
+sha256:9527695e2b72cf7c4bd7f1511baeeb10daed422a5db3e23d2a7a647d4ee4b3d6 [coreutils 4/6] COPY --from=perl /perl/ /
+sha256:061afd23bbdc35161fbaf72f255abb9ee868bd188f4ba949f5855baf72b13ee5 [coreutils 5/6] COPY --from=sources-downloader /sources/downloads/coreutils.tar.xz /sources/
+sha256:c8999ea5212ae55869549b9dea234e907c7d0aed3b101185985c2d142550df65 [coreutils 6/6] RUN cd /sources &&     tar -xf coreutils.tar.xz && mv coreutils-* coreutils &&     cd coreutils && mkdir -p /coreutils && FORCE_UNSAFE_CONFIGURE=1 ./configure --quiet --prefix=/usr --host=x86_64-hadron-linux-musl --build=x86_64-hadron-linux-musl --enable-lto --enable-shared --disable-static     --prefix=/usr     --bindir=/bin     --sysconfdir=/etc     --mandir=/usr/share/man     --infodir=/usr/share/info     --disable-nls     --enable-install-program=hostname,su,env     --enable-single-binary=symlinks     --enable-single-binary-exceptions=env,fmt,sha512sum     --with-openssl     --disable-dependency-tracking && make -s -j16  DESTDIR=/coreutils &&     make -s -j16  DESTDIR=/coreutils install
+sha256:10ebf6f1d7e5c1c6199013466e2b4bea7165794d000bb2148b9fdd69b3ec8a1f [coreutils-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/coreutils:9.12@sha256:b5178e75eab6583a6b966586fa68a4d78c09c4ed1da23a800dc3b65d0c46aa9f
+sha256:802e332ed0d49446caf7b92ed162c9a47fdf44b4752f94b3bbd384113ebbb8d9 [cracklib-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/cracklib:2.10.4@sha256:5afadf8380db1b674b58a09139d8269ed963da4a9f1041db5a3fe48a88720c80
+sha256:61c07564a01bb5a9a0f7a884ed4485798ace1dd316a4cc3df9faa8ee6e59e9d0 [cryptsetup-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/cryptsetup:2.8.8@sha256:efa170e591c9a7ff16ef538a944beb13a9dafb2717cc225d9ca4f1dcb911b600
+sha256:e62df555174c5d906be90a1e3f8369ef6b25e8c027ff1fbbe48f67a12064bbd4 [curl 1/5] COPY --from=ca-certificates /ca-certificates/ /
+sha256:c635919173ebaec21ff0b36b81e506a557f820637b3137ffe3b485e4a627fc9d [curl 2/5] COPY --from=openssl /openssl/ /
+sha256:a26ae4d053a35c99c4d5f058102bbb9e30ddcc3c954000b91b968d5e69a06176 [curl 3/5] COPY --from=zstd /zstd/ /
+sha256:19bf0a35444118d42ed3e1692120e5492a33ccdbf19e069cae667e2bc01de97b [curl 4/5] COPY --from=sources-downloader /sources/downloads/curl.tar.gz /sources/
+sha256:c2945044ddff51074ac77959c5901ef468556bc7d0a295ad1b0e64680eb2e4ea [curl 5/5] RUN mkdir -p /sources && cd /sources && tar -xf curl.tar.gz && mv curl-* curl &&     cd curl && mkdir -p /curl && ./configure --quiet --prefix=/usr --host=x86_64-hadron-linux-musl --build=x86_64-hadron-linux-musl --enable-lto --enable-shared --disable-static --disable-dependency-tracking --enable-ipv6     --enable-unix-sockets     --enable-static     --without-libidn2     --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt     --with-ca-path=/etc/ssl/certs     --with-zsh-functions-dir     --with-fish-functions-dir     --disable-ldap     --with-pic     --enable-websockets     --without-libssh2     --with-ssl     --with-nghttp2     --disable-ldap     --with-pic     --without-libpsl     --without-libssh2 && make -s -j16  DESTDIR=/curl &&     make -s -j16  DESTDIR=/curl install && make -s -j16  install
+sha256:4a383a5b48ae7c156ed4a64a849031066eff6180cabf21e8492704c9b0a3296a [curl-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/curl:8.23.0@sha256:285aafa947d9f0bd567604bcc83f8e0b3e0513b61446ba1600579a9b1704619b
+sha256:87813033bcf712b39bed0472e876e177bd2c4a0f6613c79a18a9112c758317ba [dbus-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/dbus:1.16.4@sha256:cf0e93e9693ab6459fac181d06117fd012f2dd944a959b7e69762b3ebeb9dafd
+sha256:93b733d4cf563a7dbf612d50def4b70db3e18e0d7b39f8ed63c6b55e9c097227 [diffutils  1/10] RUN mkdir -p /diffutils
+sha256:1cd38a5100bc0a6835003596d156c961714845f37bdee5f5a56df4538e076c32 [diffutils  2/10] COPY --from=sources-downloader /sources/downloads/diffutils.tar.xz /sources/
+sha256:05009b1c82d7d867a6948d01b27bfb9a20202700201be1f0d47044209df2a264 [diffutils  3/10] COPY --from=perl /perl/ /
+sha256:9d5a3e3479e72f3e99ba5f85fe5e2a10253ed4c0f81d46276d1363335f9f4901 [diffutils  4/10] WORKDIR /sources
+sha256:badf6f225db965aa0ef8357cefede9988081ea6564afba257ffc24be237032fc [diffutils  5/10] RUN tar xf diffutils.tar.xz && mv diffutils-* diffutils
+sha256:03692049a1ea46c49b6a30b5baae2f3ee19d6d36f6af82386d3e893d4f7be0b1 [diffutils  6/10] WORKDIR /sources/diffutils
+sha256:ffb1727ff1df24350dc6fa6db8270668087afc6c9f0572b08e600808f4ed4838 [diffutils  7/10] RUN ./configure --quiet --prefix=/usr --host=x86_64-hadron-linux-musl --build=x86_64-hadron-linux-musl --enable-lto --enable-shared --disable-static --disable-dependency-tracking --prefix=/usr --libdir=/usr/lib --host=${HOST}
+sha256:b1ed6d5469dad3acc86d22b04a4293e1ea675e041003963eac21e69ff22a9603 [diffutils  8/10] RUN make -s -j16  BUILD_CC=gcc CC="gcc" lib=lib prefix=/usr GOLANG=no DESTDIR=/diffutils
+sha256:f9edc17359dbd366b395b9071c2b8d8c42e77fc3a77a11785d26994bfcce7ebb [diffutils  9/10] RUN make -s -j16  DESTDIR=/diffutils install
+sha256:b1a452a06d44aced89be7f608da83906e359e9fbb306d73afbf83ef4de364c50 [diffutils 10/10] RUN make -s -j16  install
+sha256:19d6a6ae8697f5c33efbf47099d45866cb2cb876ae3f71745083b8c2210841ea [diffutils-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/diffutils:3.12@sha256:78ee99ad637a5fd15858c1dc30ebdcccff362f3dcef890ccbb39db0cf263cf3a
+sha256:420360f85553be80586181eb59b47d41f2c99e95fd34b3fbcf4cb0ca1a0c8a58 [dosfstools-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/dosfstools:4.2@sha256:97266a8cbecf326c267ac085f9e4b80747ae4a90d6235f93aa048d775b5d9bf4
+sha256:16ecd4c82b036b9f6a5cf175dd7885dbddfde6971f662cfa8b74f3b67c325b51 [dracut-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/dracut:112@sha256:10b37218388b2a378422832b094bb253f413d6dde6ca667a5d0725879ab85ce8
+sha256:94e70227f9c905292f36bc42998b8296938c58673de6ba0cfd8806cde6cdc4f5 [dwarves-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/dwarves:1.32@sha256:4d5098a32465fd5746497743f7453b5c6e735d6e1b810eaef0307480c5d2166a
+sha256:835d1cf67265860456ed344abd47972da2b803e9b2aca291392f7bd87e3d83bd [e2fsprogs-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/e2fsprogs:1.47.4@sha256:d209d38bd55ffccfaa76c33ced8f91b5453488cd8cad02a3ae483f383b846db0
+sha256:39ab1917fc778df097cbf3ef2de83d36442e36800cf179d1754ea31419130327 [elfutils  1/12] COPY --from=argp /argp/ /
+sha256:4bcb4b1d1ead8c1c40722e01d79046823accbb5a9b13721fb221a63451e0dd59 [elfutils  2/12] COPY --from=obstack /obstack/ /
+sha256:566537e45ed94d6311be0bbdadaecd70610448a4f262672640803f3ebb2dbd22 [elfutils  3/12] COPY --from=zlib /zlib/ /
+sha256:ff2dee8498e36b82d153d3a6d0d5d1b9009b1183e727335e075e8ad4a3601684 [elfutils  4/12] COPY --from=sources-downloader /sources/downloads/elfutils.tar.bz2 /sources/
+sha256:54e953fe4094af6b0ca27655d7346ee1dfbff4bdcc8fcfc246c3e7d0bf773833 [elfutils  5/12] RUN mkdir -p /elfutils
+sha256:11f6c3ff8bdde6acdc944e0847f0e6ab56633b2f110d92b0452cf67d95717e8d [elfutils  6/12] WORKDIR /sources
+sha256:36aacf922e8878e24fd4ef597373277d40dfdbbbf3c175bd2b7eaa5a027aaaed [elfutils  7/12] RUN tar -xf elfutils.tar.bz2 && mv elfutils-* elfutils
+sha256:e970f0b42c6f4e081bbaa8d235c24d42b9b003d677583bba45cc3370f1a17cae [elfutils  8/12] WORKDIR /sources/elfutils
+sha256:bb7089c2bdc913851a9b1b6d90afadb15d8ff7178500f497512264f779405681 [elfutils  9/12] RUN ./configure --quiet --prefix=/usr --host=x86_64-hadron-linux-musl --build=x86_64-hadron-linux-musl --enable-lto --enable-shared --disable-static     --disable-lto     --without-bzlib     --without-lzma     --disable-debuginfod     --disable-libdebuginfod     --disable-nls
+sha256:07c40c326742b649736649a399bd8bedf6ac2dfe038921c14ef3128476ca54f5 [elfutils 10/12] RUN make -j16  -C lib &&     make -j16  -C libelf &&     make -j16  -C libcpu &&     make -j16  -C libebl &&     make -j16  -C backends &&     make -j16  -C libdwelf &&     make -j16  -C libdwfl &&     make -j16  -C libdwfl_stacktrace &&     make -j16  -C libdw &&     make -C libelf install DESTDIR=/elfutils &&     make -C backends install DESTDIR=/elfutils &&     make -C libdw install DESTDIR=/elfutils &&     make -C libdwfl install DESTDIR=/elfutils &&     make -C libdwelf install DESTDIR=/elfutils &&     install -Dm644 version.h /elfutils/usr/include/elfutils/version.h
+sha256:f75d668c3229b686b35c5b234e5b6d136cec2fecb6743827047c6cc15287df79 [elfutils 11/12] RUN install -Dm644 config/libelf.pc /elfutils/usr/lib/pkgconfig/libelf.pc &&     install -Dm644 config/libdw.pc  /elfutils/usr/lib/pkgconfig/libdw.pc
+sha256:e3d29ad26bcbd39131be2bf0619044e980e205ca1debd6d917a82bde8dc3ec36 [elfutils 12/12] RUN rm -rf /elfutils/usr/share
+sha256:8778754097ba4be4b1979cd2ecc199d31a0b179c181ccb98aae2f793467943cd [elfutils-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/elfutils:0.197@sha256:80d0e2f835cb96694bcfbb0f334e6fd4d19c2dfae677c640520e828c0a7d9913
+sha256:82d5f5846cadaff4a8042b4d0571cdb740287e6ce6ff7eb6f15eca3490c0559b [expat-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/expat:2.10.0@sha256:69cddf68e8c71a65c3e6e382f0c8b8aa8fd6710afdd1107feaec145cdd09ff68
+sha256:f771e450b41b879ac62536f8ee3ab5d712a319cedefcf4d82c4184dabf353c64 [findutils 1/2] COPY --from=sources-downloader /sources/downloads/findutils.tar.xz /sources/
+sha256:d65f778c5658f0273ae7d1bf3b8f0943ebcf0ba7b01ada8ae70b78977e482c1a [findutils 2/2] RUN cd /sources &&     tar -xf findutils.tar.xz && mv findutils-* findutils &&     cd findutils && mkdir -p /findutils && ./configure --quiet --prefix=/usr --host=x86_64-hadron-linux-musl --build=x86_64-hadron-linux-musl --enable-lto --enable-shared --disable-static --disable-nls --disable-dependency-tracking && make -s -j16  DESTDIR=/findutils &&     make -s -j16  DESTDIR=/findutils install && make -s -j16  install
+sha256:939653e796f15afac3d546283fa1106a3e471109dcab46157216f63f34e86135 [findutils-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/findutils:4.11.0@sha256:bc59e42dfe30658c973c20d7e3231a65b2297dcd776b312a0bb8bb16983450ec
+sha256:13c878563535dc79643ae9db948f720fc510d095e1f816a75bf3e195e2ad9ac2 [flex 1/8] COPY --from=sources-downloader /sources/downloads/flex.tar.gz /sources/
+sha256:08a68b9378c0945951e9f5bd5d83d8898f482151a12a71b8d7f7f4d395b3f942 [flex 2/8] COPY --from=m4 /m4 /
+sha256:a597b6470e4fc40e355cfe1d6cfa61dcbf223fc6959e0783e8890ed94de44271 [flex 3/8] RUN mkdir -p /flex
+sha256:f2e58793a29eda4da3a24e3abfb88eaaecc85845df4dd6298a1c3cab1d4165e0 [flex 4/8] RUN mkdir -p /sources && cd /sources && tar -xf flex.tar.gz && mv flex-* flex
+sha256:147e5344606bcc78d47277b9476888fa73560d87e488472e8d5e6b1ccced619f [flex 5/8] WORKDIR /sources/flex
+sha256:15456e41139051f243438cd7b75fa19f0eec75cf6a955dfe73132f3540a181c0 [flex 6/8] RUN ./configure --quiet --prefix=/usr --build=x86_64-pc-linux-musl --enable-shared --disable-static --infodir=/usr/share/info --mandir=/usr/share/man
+sha256:d65002ae72b512fef5df3bf5c9203898b0e610d8b88da45168666e1ad45b0d89 [flex 7/8] RUN make -j16 
+sha256:06d1554ce12a8b1b976e815d99b33abfb2120d477facc7cd38f4a140b153618d [flex 8/8] RUN make -j16  DESTDIR=/flex install
+sha256:8cd6d05aa9207234c71c141a5aabdbe9584bd5caba9c099d7759fd65f61200b6 [flex-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/flex:2.6.15@sha256:be1397be502e6824cc1c57663dcd046288ecbc8e3cee28b03f2030eaa81ef68f
+sha256:fe3efce9200f063e65e11d4c030c6cfb4b2eff1a8bd83d69ddf0571cb40faa14 [freetype-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/freetype:2.15.0@sha256:c5d3aa18edc67ad8fcde5ea719948b44603cd6bf4bcdb15a45dfad5553dd855c
+sha256:5f68656149f10936f3fded0ce27c83cd91bc89fecfc41088ad79db414b3708cb [fts 7/8] COPY --from=sources-downloader /sources/downloads/musl-fts.tar.gz /sources/
+sha256:c20fe12c9ccf882069518437a4e3d844bb7c957a6a655fe548a6e416ed0eaa3d [fts 8/8] RUN mkdir -p /sources && cd /sources && tar -xvf musl-fts.tar.gz && mv musl-fts-* fts && cd fts && mkdir -p /fts && ./bootstrap.sh && ./configure --quiet --prefix=/usr --host=x86_64-hadron-linux-musl --build=x86_64-hadron-linux-musl --enable-lto --enable-shared --disable-static --disable-dependency-tracking --prefix=/usr --disable-static --enable-shared --localstatedir=/var --mandir=/usr/share/man  --sysconfdir=/etc  &&     make -j16  DESTDIR=/fts install && make -j16  install &&  cp musl-fts.pc /fts/usr/lib/pkgconfig/libfts.pc
+sha256:7e081e322961b0c3e6b4f7f39e8fd0606dcd46eba6d0cd0d373af6918a6c2435 [gawk 1/2] COPY --from=sources-downloader /sources/downloads/gawk.tar.xz /sources/
+sha256:eeb84cb390c1426d0fbe9a89d203555d68738db267aa0e9b046342f24e2e2bd9 [gawk 2/2] RUN mkdir -p /sources && cd /sources && tar -xf gawk.tar.xz && mv gawk-* gawk &&     cd gawk && mkdir -p /gawk && ./configure --quiet --prefix=/usr --host=x86_64-hadron-linux-musl --build=x86_64-hadron-linux-musl --enable-lto --enable-shared --disable-static --disable-dependency-tracking --prefix=/usr -sysconfdir=/etc     --mandir=/usr/share/man     --infodir=/usr/share/info     --disable-nls     --disable-pma && make -s -j16  DESTDIR=/gawk &&     make -s -j16  DESTDIR=/gawk install && make -s -j16  install
+sha256:eef4c8050149b39a65b414987464a3e36d8b84bfb835b9a1fadc94f80cc523ba [gawk-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/gawk:5.4.1@sha256:a381f200f380098dd2120289a0ce3cf3031570e0fce8d4367e678a7adb1213d5
+sha256:2a3facb30f63d72b98acb1675826671cdaa4e4d5c1eae4603f5a7dcb085db3d8 [gcc-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/gcc:15.3.0@sha256:992028f7e4acddf6f831baabc168ea15d2cc84fb317bb859b1ac463c1eeb0a37
+sha256:d1f6dc29555531ba8b7af571ca9ee64f348e97260a5b6548ce9bdd83d22f6e98 [gcc-stage0  1/15] COPY --from=sources-downloader /sources/downloads/gcc.tar.xz .
+sha256:30af293b5abef86529dd4180f42eb61ae32d28f399869b8295f964a71d3e9f34 [gcc-stage0  2/15] COPY --from=sources-downloader /sources/downloads/gmp.tar.bz2 .
+sha256:ec1e390b551a571dc87d85101065362dde591f88feb941572cdcf85c2572304d [gcc-stage0  3/15] COPY --from=sources-downloader /sources/downloads/mpc.tar.xz .
+sha256:e0fa8c747449659b226e3e1c3a25cc5dae22e33cd07754f17f9debac1cb93b67 [gcc-stage0  4/15] COPY --from=sources-downloader /sources/downloads/mpfr.tar.bz2 .
+sha256:2bd4199129dc3d7902eaab72f90ebfe692f0e2dd76b7cff9c76564c7ebc49089 [gcc-stage0  5/15] RUN tar -xf gcc.tar.xz && mv gcc-* gcc
+sha256:269550fbf9beaa88198b0407f792cd11df5f9da7cbeb379004cce93a00c56aff [gcc-stage0  6/15] RUN tar -xf gmp.tar.bz2 && mv -v gmp-* gcc/gmp
+sha256:ed24d45cdbaf0fd2407d446f388fb0a934eecb07132cc99076dc4e703c9326fd [gcc-stage0  7/15] RUN tar -xf mpc.tar.xz && mv -v mpc-* gcc/mpc
+sha256:e58316bc86cb0da8dc748a0449a9bf976e882ad2c36493438223f956e78fb367 [gcc-stage0  8/15] RUN tar -xf mpfr.tar.bz2 && mv -v mpfr-* gcc/mpfr
+sha256:34bfd50b2f22b9019cb9e5e71b6cda68b0b887b8acf30daee3a80081a74cef2e [gcc-stage0  9/15] COPY patches/0001-gcc-atomic-template-body-gcc15.patch /gcc/
+sha256:59a3d243df78b46d95544a7caf29ca215f6eb71844cb6aab233352881dfd7dfe [gcc-stage0 10/15] RUN cd /gcc && patch -p1 < 0001-gcc-atomic-template-body-gcc15.patch
+sha256:7e08798116a984211e1241a72d1903e16afed17a0e24981a19daa908778fb582 [gcc-stage0 11/15] RUN mkdir -p /sysroot/usr/include
+sha256:8b202f41a0c5585893962069c089b1032dfc61e3be02ff2746270e2af6bc36cc [gcc-stage0 12/15] WORKDIR /gcc/build
+sha256:e543637661a08a9b229dd1f5c9ac70cc65ff53a13e3de5164ea9e1e16fc6fe3b [gcc-stage0 13/15] RUN ../configure --quiet         --prefix=/usr         --build=x86_64         --host=x86_64-hadron-linux-musl         --target=x86_64-hadron-linux-musl         --with-sysroot=/         --disable-nls         --enable-languages=c,c++         --enable-c99         --enable-long-long         --disable-libmudflap         --disable-multilib         --disable-libsanitizer
+sha256:76342e39b495ff69d749f7f15bf09d88c8545c37afd97bd3265d13b7eb0a7e34 [gcc-stage0 14/15] RUN make -s ARCH="x86-64" CROSS_COMPILE="x86_64-hadron-linux-musl-" -j16 
+sha256:f29cd918ca182fe1259ee440a84fd700cc65eaae92857d74fc23d1e830f3f1fb [gcc-stage0 15/15] RUN make -s ARCH="x86-64" CROSS_COMPILE="x86_64-hadron-linux-musl-" -j16  DESTDIR=/sysroot install
+sha256:4f6287f809ef0ed175bfa9aceeb40122de8940e809d611e1b51cd0256973e5c9 [gdb-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/gdb:18.1@sha256:205c9356db970b43c2cfbcf4f8d81515bf128fbc10c1a2229756af00650e82d2
+sha256:0e660418d888081e7d7ad980cfdfd76d90b0d1846070a3b8d7fe33edd1d8de67 [glib-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/glib:2.90.1@sha256:f644ed1573982e34c93b6d2e14d34467f965abb58da8e9b76d32db43d35904b1
+sha256:b0114963e1e46d5351b0444934929537d86d1c0079bc634cad3a0002c2183790 [gmp-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/gmp:6.3.0@sha256:e9af33ad363697b746f3966e70277bf303ecd1fa79151ab5e8fe3507d8cdf91f
+sha256:d447cfc9e0d90ad454abf9d52e2576c43424dedb6311e656d6720b9f1f1edc4f [gperf-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/gperf:3.3@sha256:38a45689704399a52eccdeadf7b236910d797b6b7ba27f8e3670b2feef243a49
+sha256:64fe20951784172f2cb7c68db0ea16d76223bd562584e738bed96f4eb4579cc2 [grep 1/2] COPY --from=sources-downloader /sources/downloads/grep.tar.xz /sources/
+sha256:c6a31d3fb284b10bbd558c03565a47bf3494399169cdae57226f30645b91ac95 [grep 2/2] RUN cd /sources &&     tar -xf grep.tar.xz && mv grep-* grep &&     cd grep && mkdir -p /grep && ./configure --quiet --prefix=/usr --host=x86_64-hadron-linux-musl --build=x86_64-hadron-linux-musl --enable-lto --enable-shared --disable-static --disable-dependency-tracking && make -s -j16  DESTDIR=/grep &&     make -s -j16  DESTDIR=/grep install && make -s -j16  install
+sha256:d730b894d38cccfde5e1e3908e0ff1f64aa42ebc440a28f07af6399526d2d124 [grep-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/grep:3.12@sha256:1743c2ec7a72226335cd40fddf00b21f3064977fc5da12153f690b7deb1cbdf2
+sha256:de9138976c84b8bd3668af3bffcfa053bc6613a772538067d22d5e45a6b367c1 [grub-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/grub:2.14@sha256:8cff18c3db01bfbec24af4894f4f8c2eb7e9502b859d0bc7d70421eb2d711502
+sha256:61a75f217bffb57f896417e3387338e92e94ecabcf991be1e0f1f3f629164806 [gzip-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/gzip:1.15@sha256:eea64daee588469a5c300403dcde208d7b96093109be1bae2c7bfb8f951a2bfc
+sha256:ab3c23ea6ec1053d4aed05d181c244eeaa0a1f9f57c6c12bc9b874d9bba5cab5 [internal] load build context
+sha256:ec24b4ea5159e4e4dc2eea955cebbd6e2b7d499cf739eea227eac6daebf3808e [internal] preparing inline document
+sha256:a338067473b2ba926bd7ffbb69fe42731349af55fdfa6662a4932547cceb9480 [internal] preparing inline document
+sha256:cc1f51909229a75bd11c3bc2fe2ac8898a457f5eac8bebbab8be4ba3fa4a42db [internal] preparing inline document
+sha256:82157954c365772aade7489d59b2ffce0196483f40847d16cc9ee6a262022eb1 [internal] preparing inline document
+sha256:64a58cd4a1e3780f3fc2f7b276ad7710825290c404d09e6b67e13d142f71cea6 [internal] preparing inline document
+sha256:022b2224b845a1fcd1bc3042fbb526a14833c551ff63a2ad9fffb7dfd2fcd3ec [internal] preparing inline document
+sha256:468abf87265a162531b5cdd47f01851c69efb3f912a2effbfc33b109e76fee94 [iptables-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/iptables:1.8.13@sha256:623eaa2764d4e6f94e61ce2d1c51097be29ccc53712695d0cae2b8960f6888cc
+sha256:22c7233614dce71c62ca730756056fae267af4576933cb90b70b98c23d858741 [json-c-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/json-c:0.19@sha256:49ae6acb987ec6ebfeb2b83e57cfc8b59bea02f8933575781baae75003a9f024
+sha256:9b7635d72f730f65166ffae42daafaa79bafea3211938b33e108016f7b0622b7 [kbd-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/kbd:2.10.0@sha256:3bd2729ca6183a6943645610609bf056f1368ef9b67eb94329d9958948c6cc74
+sha256:4906b6e63f7b91d6471e85fdbdbfae5d68f7431c22f73b2e91c42911e74fede5 [kernel-artifacts 1/4] COPY --from=kernel /kernel /kernel
+sha256:13dc601366f10298a3ee6b6dd722bcf70506c2efe60ad68fb7bbd72b2b6913ec [kernel-artifacts 2/4] COPY --from=kernel /modules /modules
+sha256:939194f0c443694448e16265aa505e3222b63088129590024f4cd760133865da [kernel-artifacts 3/4] COPY --from=kernel-misc /output /kernel-misc
+sha256:34fbb21476c230c3cf76c7161afb45002b69efb25fd3a44726b1feb575d5806c [kernel-artifacts 4/4] COPY --from=kernel-headers /linux-headers /linux-headers
+sha256:6cd8afdf2e3eaedb1fa1da72858ffebe61038682226b41bb89bb48432c6cf77c [kernel-base  1/32] COPY --from=bash /bash/bin/ /usr/bin/
+sha256:08dd62b55d8a4658bf52a10579c29e12efd39fe09e6258cc79d0ccb602a6e9d4 [kernel-base  2/32] COPY --from=bash /bash/usr/ /usr/
+sha256:7067271e152a1d86325c0752230cdc247edeb06bd3b08b29d35ec53c831e383c [kernel-base  3/32] COPY --from=bash /bash/etc/ /etc/
+sha256:38c36bf5863d515e1d6f62690dd853714a9b85feada3732d12653859024c3b9b [kernel-base  4/32] COPY --from=zlib /zlib/ /
+sha256:fa40bbbbeb1355a107a73568458a90827a747a8503c33d75ce8959f35ebf4ab9 [kernel-base  5/32] COPY --from=zstd /zstd/ /
+sha256:050adb174c25a7899ac60adfd2ce469907cf011b4de13d40d645137829677dcb [kernel-base  6/32] COPY --from=readline /readline/ /
+sha256:4250882087dd0a17f3d006ad691e33564bf95ce29d25d1849f06ef8a7f42fee3 [kernel-base  7/32] COPY --from=flex /flex/ /
+sha256:571ce4497f9d2af08339a6c0516468d99b70f41b42b7a1f7ce5d2c181b6f8027 [kernel-base  8/32] COPY --from=m4 /m4/ /
+sha256:4da3138ab2b6bd9252bd6105b3f38a52ed686c560a76306debca8859a50df567 [kernel-base  9/32] COPY --from=bison /bison/ /
+sha256:3caadc3c56a4a8c53158356a9621cb17e6b1d109e3d6d8268c982f86ac8e5d7a [kernel-base 10/32] COPY --from=libelf /libelf/ /
+sha256:f92863bb181cfcaa7e6bc5d7c8c2c98e35de79f0d4bea5039f5ad27a7337af1e [kernel-base 11/32] COPY --from=elfutils /elfutils/ /
+sha256:0fb46b9ca000412c3b7aa359a87fc8b669f7eb7675e41c0928c3b1d08f0a54fc [kernel-base 12/32] COPY --from=openssl /openssl/ /
+sha256:17a64fa899ca9a967a4fc0b2ca03032c818c01521b4e8945d374c93c73177f2d [kernel-base 13/32] COPY --from=perl /perl/ /
+sha256:6b65ebfc8d254935e4a522bff5537d969215b191b736ca197d19cef5d8f29562 [kernel-base 14/32] COPY --from=gawk /gawk/ /
+sha256:68be70cc3df13c835a855a4384322d0b9364ee5225a89a33c5daa76b7c8ed1fc [kernel-base 15/32] COPY --from=findutils /findutils/ /
+sha256:44440a9ee8ded055e350279162a25106eb9d1a296125903153079096eb3bdee0 [kernel-base 16/32] COPY --from=diffutils /diffutils/ /
+sha256:cd296cea3e5540d2bf3e6b57fb88029392a6d34058617838e64b472c94d6c3f1 [kernel-base 17/32] COPY --from=kmod /kmod/ /
+sha256:6403d6dc8edfb6758634e19f520d2f38ec0385bb05a025cc66662e274421fd59 [kernel-base 18/32] COPY --from=xz /xz/ /
+sha256:cae18e3c54ba741d925623a81566a3781611acba9f9732ab00a328dad0f1ef19 [kernel-base 19/32] COPY --from=grep /grep/ /
+sha256:48c8bf559e1f1fcd2a2d2db5c32da41c6c80cd3ebe379fd4953575416b3ae5e4 [kernel-base 20/32] COPY --from=libbpf /libbpf/ /
+sha256:a82972e641ab0596fbc87a3e8cc3cc9763a76ab237523ae03c81ff34fe19ffda [kernel-base 21/32] COPY --from=obstack /obstack/ /
+sha256:8bfed1c0ce1b8cea0d35f89954c367d09c61192ebc4ad404bfb36cd74c771f5b [kernel-base 22/32] COPY --from=argp /argp/ /
+sha256:00439541a669f025bafd79fbf27fcde22e0e81e23e39a823f07ae344c99b88e6 [kernel-base 23/32] COPY --from=fts /fts/ /
+sha256:e928ffebf405598fa8c2818c95d72b0f0f227fc394c093f3079986c2e6f1ca60 [kernel-base 24/32] COPY --from=pahole /pahole/ /
+sha256:5c56f149a7fc123c113564d30c8159c2f4b0aef7e0b75cae67bd629b50bbaa1c [kernel-base 25/32] COPY --from=sources-downloader /sources/downloads/linux.tar.xz /sources/
+sha256:bf7399f18f3b0ed14ca7a4a276aaaabbb57faa7738281e9e152d80746c2315b8 [kernel-base 26/32] RUN mkdir -p /kernel && mkdir -p /modules
+sha256:25cf2f628d0d038a00ba584980d0b0273781c9b167c1b6c7073c52cf0949696a [kernel-base 27/32] WORKDIR /sources
+sha256:7d7bdae87d2d39c31fefccce9e6b69befadadc1aeb5510796972cc07e804fb49 [kernel-base 28/32] RUN tar -xf linux.tar.xz && mv linux-* kernel
+sha256:6936e933896b9f20038230c1f0fe50cf60c88c2786487438739874a6c14c502c [kernel-base 29/32] COPY ./patches/kernel-patches /sources/kernel-patches
+sha256:56659abb83383b83cbb025a4197e422710a6d799ce6b1d76dcff75eb206ddbb9 [kernel-base 30/32] RUN set -e;     cd /sources/kernel;     for p in /sources/kernel-patches/*.patch; do         [ -e "$p" ] || continue;         echo "Applying kernel patch: $p";         patch -p1 < "$p";     done
+sha256:dcd14b03d79745e877dfe0ee25197dee4f0c374b8b94f9b95882c407ca5c21c3 [kernel-base 31/32] COPY --from=kernel-bpf-helper-defs /out /sources/bpf-helper-defs
+sha256:57c9d1c99f628617f0d121f9ff7362be82c715db6b1f1ed1376aac5b6b3b1e6d [kernel-base 32/32] RUN set -e;     cd /sources/kernel;     sha256sum -c /sources/bpf-helper-defs/inputs.sha256;     mkdir -p tools/bpf/resolve_btfids/libbpf;     cp /sources/bpf-helper-defs/bpf_helper_defs.h tools/bpf/resolve_btfids/libbpf/bpf_helper_defs.h;     touch tools/bpf/resolve_btfids/libbpf/bpf_helper_defs.h
+sha256:deeca05feb200661d74fc5d2a45a84dbb187bfb96deee8d187000d32ccccde6e [kernel-bpf-helper-defs 1/6] COPY --from=python-build /python/ /
+sha256:fbdd71f5fd9a5f74c9f34fc7e91dccd78221e88e6e810d961ba0bd48d0c1964b [kernel-bpf-helper-defs 2/6] COPY --from=sources-downloader /sources/downloads/linux.tar.xz /sources/
+sha256:71954053d2aa0913ede187a80da025c41c2859a498c2fa77115b1c02f3bc7b54 [kernel-bpf-helper-defs 3/6] WORKDIR /sources
+sha256:3d0c58da74fd51d9efe1711ef609b63ae834b757add8ac2e00da58bffff4672d [kernel-bpf-helper-defs 4/6] RUN tar -xf linux.tar.xz && mv linux-* kernel
+sha256:28b959a0f8bdd37de508b01b182d5a24556e1254bf3e1e3ec83233c7473be667 [kernel-bpf-helper-defs 5/6] WORKDIR /sources/kernel
+sha256:7493c87dc87de15200a817f3af4dfab4e0fd4db861b0ae9ff6d5e985b5969f33 [kernel-bpf-helper-defs 6/6] RUN mkdir -p /out &&     python3 scripts/bpf_doc.py --header --file tools/include/uapi/linux/bpf.h > /out/bpf_helper_defs.h &&     sha256sum scripts/bpf_doc.py tools/include/uapi/linux/bpf.h > /out/inputs.sha256
+sha256:f2a61fb07ffba0aabb8c8626f0b912817a6acc0f4134befcfbff53ed7a3f52e7 [kernel-build 1/5] WORKDIR /sources/kernel
+sha256:0c3a2060dd2752b52ead60bce4fd0ddb18274b1fe646790bbde6be852aafba74 [kernel-build 2/5] RUN hcflags='-D__attribute_const__=' &&     if [ x86-64 = "aarch64" ]; then     ARCH=arm64 make olddefconfig;     ARCH=arm64 make -s -j${KERNEL_JOBS:-$(nproc)}  HOSTCFLAGS="$hcflags" Image;     elif [ x86-64 = "riscv64" ]; then     ARCH=riscv make olddefconfig;     ARCH=riscv make -s -j${KERNEL_JOBS:-$(nproc)}  HOSTCFLAGS="$hcflags" Image;     else     ARCH=x86_64 make olddefconfig;     ARCH=x86_64 make -s -j${KERNEL_JOBS:-$(nproc)}  HOSTCFLAGS="$hcflags" bzImage;     fi
+sha256:5506037176c3b8b36d56f0c19890b9534b3f4fd6f1c62b383d9b0d33951b2e9d [kernel-build 3/5] RUN if [ x86-64 = "aarch64" ]; then     export ARCH=arm64;     elif [ x86-64 = "riscv64" ]; then     export ARCH=riscv;     else     export ARCH=x86_64;    fi;  make -s -j${KERNEL_JOBS:-$(nproc)}  kernelrelease > /kernel/kernel-release ; make -s -j${KERNEL_JOBS:-$(nproc)}  kernelversion > /kernel/kernel-version
+sha256:0ec41993bbc09e9b2922be92637ccfd42b4dfdfa585e0d599943a7ad63c1e6a5 [kernel-build 4/5] RUN if [ x86-64 = "aarch64" ]; then     ARCH=arm64 kver=$(cat /kernel/kernel-release) && cp arch/x86-64/boot/Image /kernel/vmlinuz-${kver};     elif [ x86-64 = "riscv64" ]; then     ARCH=riscv kver=$(cat /kernel/kernel-release) && cp arch/x86-64/boot/Image /kernel/vmlinuz-${kver};     else     ARCH=x86_64 kver=$(cat /kernel/kernel-release) && cp arch/x86-64/boot/bzImage /kernel/vmlinuz-${kver};    fi
+sha256:f719cbf228432fa67f11c103a88062c57c8532ac70a4830217c1c1a75a200e46 [kernel-build 5/5] RUN ln -sfv /kernel/vmlinuz-$(cat /kernel/kernel-release) /kernel/vmlinuz
+sha256:f29db595c41adcfd2782aacb59d3953be20512275f3757a46a4eef64b3b77120 [kernel-configs-amd64 1/2] COPY files/kernel/cloud.config /cloud.config
+sha256:eaac3590179a6f6de18c24cc9dd89c8b7ae546d529ab91aaaa56869f139df28d [kernel-configs-amd64 2/2] COPY files/kernel/default.config /default.config
+sha256:f99d75d3bcc1714ad029823c0dc251e68e81f9c435e94d0eec24e63fbb0ec913 [kernel-default 1/2] WORKDIR /sources/kernel
+sha256:0c9e171ec9e3249aa6a47d27db205d02c70ae38fadd29285bbb548d6a94607d2 [kernel-default 2/2] COPY --from=kernel-configs /default.config .config
+sha256:18568428c524e6a2f9684250bd5a34aa2ea61c62527824c3ac5ee02b67c9fe13 [kernel-headers 1/7] COPY --from=xxhash /xxhash/ /
+sha256:d4460fd020846a7163a21eedd5d0fba8bab826890f3595b1f0358f1fe1c472f1 [kernel-headers 2/7] COPY --from=lz4 /lz4/ /
+sha256:7c09bc5ec89bd53b829f0e64790d5eae3fc5f1799a35c199ff2abdda3def7afc [kernel-headers 3/7] COPY --from=attr /attr/ /
+sha256:e96dc3cb3e5fd8ff71399bc37c7f2c624aff74a284a141816d3751fc069a098a [kernel-headers 4/7] COPY --from=acl /acl/ /
+sha256:cf9da273827c70fa1e0a7efe432b1e6b16495b80f190aa5c1af18beb31da0675 [kernel-headers 5/7] COPY --from=rsync /rsync/ /
+sha256:0a8a4f29540a290df5063eeb1b106bfafb3127b501fc697504d915cc4be0b38e [kernel-headers 6/7] WORKDIR /sources/kernel
+sha256:e26ed8fad8a354f69028f734473790392db201390b22472b975cb9d8c410506e [kernel-headers 7/7] RUN if [ x86-64 = "aarch64" ]; then     export ARCH=arm64;     elif [ x86-64 = "riscv64" ]; then     export ARCH=riscv;     else     export ARCH=x86_64;    fi; make -s -j${KERNEL_JOBS:-$(nproc)}  headers_install INSTALL_HDR_PATH=/linux-headers
+sha256:f10492aba208bdce9cdee41ce0def39872125a7f9e0e928267c31c7a7f859d70 [kernel-headers-stage0 1/5] COPY --from=sources-downloader /sources/downloads/linux.tar.xz /sources/
+sha256:33e5485a1654d32d7a2dbaf2d122082bca77a2cb7bfa82f434f204cb4d1ff4a3 [kernel-headers-stage0 2/5] WORKDIR /sources
+sha256:ab9de01139bb3c09ad41bd6878d4155e72bd79e5613ecccae68a5f9ecc1f6c66 [kernel-headers-stage0 3/5] RUN tar -xf linux.tar.xz && mv linux-* kernel
+sha256:1789a8b57ad7ba978b731289f34ad9d1d686b7e855ebf0b5f5e726705dac0cb3 [kernel-headers-stage0 4/5] WORKDIR /sources/kernel
+sha256:ccb61760c5c79c82998c2f2f441f1b1be80c27a190b2b2fbb0836b38c9cc2ae0 [kernel-headers-stage0 5/5] RUN if [ x86-64 = "aarch64" ]; then     export ARCH=arm64;     elif [ x86-64 = "riscv64" ]; then     export ARCH=riscv;     else     export ARCH=x86_64;    fi; make -s -j16  headers_install INSTALL_HDR_PATH=/linux-headers
+sha256:eb0b73a19941c5756d7646c64683cc24c80ac7451c280800dbf92ec3173c3f8d [kernel-misc 1/4] COPY --from=kernel-modules /kernel/kernel-version /output/kernel-version
+sha256:fbc4fa9b8229df706e1fe1443e53b3e3eb16d2766b9a3fe7cf8532307a1c105d [kernel-misc 2/4] COPY --from=kernel-modules /kernel/kernel-release /output/kernel-release
+sha256:10fc688af0500a518b71b2603c72c71ea05af1d416db2e45015fdc0cebe04954 [kernel-misc 3/4] COPY --from=kernel-modules /sources/kernel/.config /output/kernel-config
+sha256:93db1977761ec950848faf44bde841a82da1a06753eb7014c694a0b53106c282 [kernel-misc 4/4] COPY --from=kernel-modules /sources/kernel/Module.symvers /output/Module.symvers
+sha256:eb87a38d207feaf88ac661017ad4aa9241847d5cca0cb41edecfe820b7aaa70d [kernel-modules 1/2] RUN hcflags='-D__attribute_const__=' &&     if [ x86-64 = "aarch64" ]; then     export ARCH=arm64;     elif [ x86-64 = "riscv64" ]; then     export ARCH=riscv;     else     export ARCH=x86_64;    fi;  make -s -j${KERNEL_JOBS:-$(nproc)}  HOSTCFLAGS="$hcflags" modules
+sha256:f14f41ffd24b807339bea50ca92bea10ebe90ebad4ff18898e93d1db0d075cc6 [kernel-modules 2/2] RUN if [ x86-64 = "aarch64" ]; then     export ARCH=arm64;     elif [ x86-64 = "riscv64" ]; then     export ARCH=riscv;     else     export ARCH=x86_64;    fi;  ZSTD_CLEVEL=19 INSTALL_MOD_PATH="/modules" INSTALL_MOD_STRIP=1 make -s -j${KERNEL_JOBS:-$(nproc)}  modules_install
+sha256:736c45eac6dc49c0e365967f0ea0113ad84d9f6ba4c7d1dbc55e63473d9c678c [kernel-no-fips 1/2] COPY --from=kernel-modules /kernel /kernel
+sha256:770f2eeb6174e00d7697611c1b36c1e14fef2859bc61a18dad6bc4ae041e1db2 [kernel-no-fips 2/2] COPY --from=kernel-modules /modules /modules
+sha256:f7415a5fc73c4c3eecb63c7728da5a017ab689c264dfd4e878ded68eadf1c617 [keyutils-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/keyutils:1.6.3@sha256:2f68a8623b777c9e9b2eab1e5f6e4d2854555d250e47bb64240e5882cf53df27
+sha256:5c6686912416cfeaf392e650c39e14590a1106c50a89ae9e56c223de4d98db86 [kmod  1/13] COPY --from=xz /xz/ /
+sha256:c0e97fe52ff96424bbc89abb945bf79931ea9355dd881a973e2991179eb70b9e [kmod  2/13] COPY --from=coreutils /coreutils /coreutils
+sha256:590532638769c4f05bb8231fba36f6f378787bb944b1672909bad4ac14653242 [kmod  3/13] RUN rsync -aHAX --keep-dirlinks  /coreutils/. /
+sha256:244962ec82b30a6d8d9996c51f308902e040df3733b89c102f1d2887c7371a14 [kmod  4/13] COPY --from=libcap /libcap /libcap
+sha256:2f50af8b9623a801a34a1e080874811a62b9a3d40fedbeb3f7f5bb94a7958c26 [kmod  5/13] RUN rsync -aHAX --keep-dirlinks  /libcap/. /
+sha256:35063981725bf16f2b7d69c6bff0532311d82fc074d7cb49b8971af1ca32dd5d [kmod  6/13] COPY --from=sources-downloader /sources/downloads/kmod.tar.gz /sources/
+sha256:f858837686088a8650c553b32ffa79455cab17537042f1791c5a29f8d4945360 [kmod  7/13] RUN mkdir -p /kmod
+sha256:3422ce9c7597e66248598016376f132ecd7e6761cf8d8110b58ffeb0834f088f [kmod  8/13] WORKDIR /sources
+sha256:2a31ea0ad982c90e081afe5289c5dcc61e2236b46ea45e335323376c6de068ce [kmod  9/13] RUN tar -xf kmod.tar.gz && mv kmod-* kmod
+sha256:781f48ac6c550c838acca653e9cba0411fc6a9b6bb966ba35abcbb07c55771d1 [kmod 10/13] WORKDIR /sources/kmod
+sha256:280045eec2e7efa067b792c225ef5e2a15060714f16117789acdb38253ddb27f [kmod 11/13] RUN pip3 install meson ninja
+sha256:f4d7d40de44939dee7ea9a4fbc974ca5ae20974aa7c8067957060566d4e98cec [kmod 12/13] RUN meson setup buildDir --prefix=/usr --libdir=lib --buildtype=minsize -Dstrip=true -Dmanpages=false
+sha256:a96c2c11a0b55b870ed9ff1e96297c9238c7a8903025b1da282060cc4cd75b9c [kmod 13/13] RUN DESTDIR=/kmod ninja -j16  -C buildDir install && ninja -j16  -C buildDir install
+sha256:d7998ac343da924093706df9ad6c151aabff70d18f3465abf09a152e8014b4ef [kmod-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/kmod:34.3@sha256:c47144d3786a5353c1274ffd12206e4d7085a0c0992d445d2f0ad77bd5a2e9dc
+sha256:52196eb528260876ce4b41de853e4a3a5b0e093d894f31c46444b63a224f55ec [less-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/less:710@sha256:a338968afe1308e8bf71c95aa495724e14f7cadaa60dc556583aa817ab4fb1bb
+sha256:63a31e61004beb59c8424e3ef7701bf7bedb75c41767e5f691d43837ccfd7f09 [libaio-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/libaio:0.3.113@sha256:c70e0a5a8be84d2368986fc965ba655594c5f4bfed64b4f3ea6ba7fcffaaaadf
+sha256:5a533c7888d1cfe8b61014f21239cd5bbec2cb4875f2795088068311d62ef946 [libbpf  1/10] COPY --from=elfutils /elfutils/ /
+sha256:91642cf6769d9257380ab829a7d5997347cf476172f1b752395e0e0b2bd5c575 [libbpf  2/10] COPY --from=zlib /zlib/ /
+sha256:21fccda4a4558f887a80801c3c3cbab04959b504edd399401b7907f4f28a0e99 [libbpf  3/10] COPY --from=pkgconfig /pkgconfig/ /
+sha256:81abe1b5265d96a9c345f9a910fa0a4788efae0d99d9913fc1b3f2f610098be6 [libbpf  4/10] COPY --from=sources-downloader /sources/downloads/libbpf.tar.gz /sources/
+sha256:e77616c7e13876b1dff940f2f4307b266d104b282e1e6f2975cca91e2c3c3a85 [libbpf  5/10] WORKDIR /sources
+sha256:928cfd84a00a42a0867636ed0d3b117d9c7c41b4143c1d673c7736321dcce659 [libbpf  6/10] RUN tar -xf libbpf.tar.gz && mv libbpf-* libbpf
+sha256:0ca4bbc0c0365f477c786c7602542374b12f358fd30217fb8b48e1fabd8c4884 [libbpf  7/10] WORKDIR /sources/libbpf/src
+sha256:627ac8b16c3fe5bf611cd9dc7cc04b1071f0f6c4cb1ff518db6279119f2e0781 [libbpf  8/10] RUN mkdir -p /libbpf
+sha256:2157888f03add06981b31c8484b11d7e3ac48a4649cc67d841a6c91ec4fe7897 [libbpf  9/10] RUN make -j16  PREFIX=/usr LIBDIR=/usr/lib &&     make PREFIX=/usr LIBDIR=/usr/lib DESTDIR=/libbpf install &&     make PREFIX=/usr LIBDIR=/usr/lib DESTDIR=/libbpf install_uapi_headers
+sha256:879167338d6cfaf66b8aca41d1c900e2b470bb3d5216a4298ff039b56c7decd2 [libbpf 10/10] RUN cp -a /libbpf/usr/. /usr/
+sha256:5f3899e6be9a9f8f4f6ef1f1d6e7edf80469dfe6998be912b89510e498675653 [libbpf-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/libbpf:1.8.0@sha256:d633f3e03eb759fe6e3383b16e9ca005abc09abd32f79b80583db44007ee79a6
+sha256:d55463541d3266911698c58e47a01564f02020732ae8b9543367bb8f3a2ee9d8 [libcap 1/2] COPY --from=sources-downloader /sources/downloads/libcap.tar.xz /sources/
+sha256:4f7cbc011c5e88c580459ddcac6f8cfe7729210554a32cdd470bd1ef5b1e6de5 [libcap 2/2] RUN mkdir -p /sources && cd /sources && tar -xf libcap.tar.xz && mv libcap-* libcap &&     cd libcap && mkdir -p /libcap && make -s -j16  BUILD_CC=gcc CC="${CC:-gcc}" &&     make -s -j16  DESTDIR=/libcap PAM_LIBDIR=/lib prefix=/usr SBINDIR=/sbin lib=lib RAISE_SETFCAP=no GOLANG=no install && make -s -j16  GOLANG=no PAM_LIBDIR=/lib lib=lib prefix=/usr SBINDIR=/sbin RAISE_SETFCAP=no install
+sha256:ebb01fe4423307e47bef3945e7ea2cf69227061d24c1767830d1bff1da5e7a4e [libcap-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/libcap:2.78@sha256:d8225adbeba672060d9ec49df7372289894ffe199cfc8ecf3380b6d598c35697
+sha256:9d2c468f6e0336111d381def596a6d51e90ea618b573b6d57a78a5f96703eb6e [libelf 1/6] COPY --from=sources-downloader /sources/downloads/libelf.tar.gz /sources/
+sha256:716b3fe8123c0778af624b1bcefe8e20c1426abc548baefbdf6ae28356c24d1a [libelf 2/6] WORKDIR /sources
+sha256:6bd4454ee4bbbe68c1218193b52109ebe666a9e741af1b1a2be1fa0b1176949c [libelf 3/6] RUN tar -xf libelf.tar.gz && mv libelf-* libelf
+sha256:57fb56f818f02390fcf8cd211e995f842ddcbfc780fed8ac7de9dd7aa43842e7 [libelf 4/6] WORKDIR /sources/libelf
+sha256:ed3da927bc9326f662ec9ae1e06b2b1c7b52cccc1b3ecd7640163163d9478e61 [libelf 5/6] RUN make -j16  PREFIX=/usr DESTDIR=/libelf
+sha256:27052dc7fa126488cf240bb1a7b8545ac06606567d9bfaea4185144a2ca6620c [libelf 6/6] RUN make -j16  PREFIX=/usr DESTDIR=/libelf install-headers install-shared
+sha256:1401ca24c48f79bbc95a59dcb30b31a0e4b6e4d0584eca8df88065786c26a4e1 [libelf-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/libelf:0.197@sha256:d6ade1b1e4c44793f76429c5e260945f186a55fcddb18ce4498c12af0d5bdede
+sha256:6996957c945a013daa022e2f54144e8904fb6e806a131d07f2f94a347dbbd5a1 [libevent-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/libevent:2.1.13@sha256:6c9cef3ec0c0b613104ada5cfbed4d567930221a22cf6884cbb325e7a66c4cae
+sha256:c0f91ab1a6d1bde5cecaded6a161a686f920329e4a1f06e8a4b5ff8028f260f0 [libffi 1/7] COPY --from=sources-downloader /sources/downloads/libffi.tar.gz /sources/
+sha256:54a1870b0de76b179082662d7187a25750511c6e4279602933360c4186601c7c [libffi 2/7] RUN mkdir -p /libffi
+sha256:8caadddb458f5b9c37c2bc6fa2277a562a8e6c7aea03792ab0e49a4ef9e10b1d [libffi 3/7] WORKDIR /sources
+sha256:c8f864549f0fd67e8a0e1e95329f1bedc3ea135839d29e03e25bc1a39549964e [libffi 4/7] RUN tar -xf libffi.tar.gz && mv libffi-* libffi
+sha256:214107226136d1fff23ed88f94e8711d7bac5b9b25b7657fcafe19382d283ce3 [libffi 5/7] WORKDIR /sources/libffi
+sha256:72e83c6e55e612ef1dfe39162982eba589bed6002b481c1a53ac4d8e0641aadf [libffi 6/7] RUN ./configure --quiet --prefix=/usr --host=x86_64-hadron-linux-musl --build=x86_64-hadron-linux-musl --enable-lto --enable-shared --disable-static --disable-docs --libdir=/usr/lib --disable-multi-os-directory
+sha256:d946b154671fadaa422f50a2ce60c4da791787f17f06624d69a84755b3ef8e55 [libffi 7/7] RUN make -s -j16  && make -s -j16  install DESTDIR=/libffi
+sha256:7c997f740dc69821ba9097f747af3b2da25c0009f8515f23375c5f316db61d76 [libffi-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/libffi:3.8.1@sha256:5399ea14c6f13f94cc936e019908bc592e29311a0cfd5f6282c368bc5ced75ec
+sha256:65e07f5d1582e7e1314e1e270d5ec2fc23ee294e7cb3d2d1b72386eb27a5bd84 [libiconv-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/libiconv:1.19@sha256:9898e102cc39017be53e0569ee47aa631211a562d5602a0f2aa974725913473c
+sha256:0b2f17ea0713da3e1a368efc20ddf00a2952eddfcf4b5321b4619b3b61f78a46 [libkcapi-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/libkcapi:1.5.1@sha256:78298cbb1952a2fb6e92c1cefa323014ea57ddd26b92d06b32db182bc902c2f2
+sha256:b28ae375106cc1b1daa9554df44d54ec132836b37219e4546167ee5e26efc7c1 [libmnl-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/libmnl:1.0.5@sha256:f04f477d259bbce263d9ff4d4547f1ca1fa505f049b20352aaff9f3d9b36eece
+sha256:f932e3e879577a293c884fa3385f0c1597ec1cc2359768ace6c5927973f623fc [libnetfilter_conntrack-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/libnetfilter_conntrack:1.1.1@sha256:68df2dc4debceadae3792c59f45d0bcfa0134bec97b815853882857fb83ba138
+sha256:4df43bddf25b5442fd5f78a9c8006ea67facfe39b437c82dc3bf54e4f56f46ca [libnetfilter_cthelper-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/libnetfilter_cthelper:1.0.1@sha256:ca28ca32b79284275f7d32bb6233b206d70981dc2730df307cd599712b6b36de
+sha256:523339e6d83388249df778ff8e31d71f186faab0a455b264bdf6c2e643d059a4 [libnetfilter_cttimeout-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/libnetfilter_cttimeout:1.0.1@sha256:d038cf6570309a18f8f7defa042246c450870bc679edba0de2e7c7ab91a2b74e
+sha256:834d1c94dfe3446ce81b45ab9ff95d51861f0d074779310fe341c74d91376807 [libnetfilter_queue-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/libnetfilter_queue:1.0.5@sha256:fef127d1df5d3c382f1d314b9bb91fa54b97addcb17222b783a41e76d242a3e8
+sha256:6d0adb8b2bc6f5df16ac9a34f32e3ca025a09068da4b7f92d3bf406f7077166f [libnfnetlink-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/libnfnetlink:1.0.2@sha256:beaed115a702fad124c1cbbe41c9a966f2a0a15b536bed5bf33a00199cf55b01
+sha256:865c8205b8ba7bdcd2131b3231f2640d47955488c281afd966ec458e380fdbce [libnftnl-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/libnftnl:1.3.2@sha256:5c5cc83804dc682ff4f1a522e69a46a73657f77644173ed7e398739042341b2f
+sha256:74709684941299e65b223cc7a32c918bc5f87cfcf19faa74211794a12021c7f2 [libnl-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/libnl:3.12.0@sha256:6368d9f8ac6e38802656f58fe76ea52d5a233044b1ce2f39ee4a7e0ea13a4dae
+sha256:2a8a32b05163841a487321381a7cdee2afb4d570cf039d389c1c86160e6e6c20 [libpwquality-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/libpwquality:1.4.5@sha256:d9a264f0040aae1ca1f6e3868ca9a28df4bd56c69d739366fcac23d362878044
+sha256:37fc83b630c5666a60b2895fc6d9169547c200059fe8a78236822d688b0e589b [libseccomp-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/libseccomp:2.6.1@sha256:d04c29c4c49257fb389779b0a17125b1d02f81f7cc3a8f799c01d3fc74b79afc
+sha256:bfb6007f3304a1580a68cfd20c6ae6417a19fd05f7771471dccf4921a52f847d [libtirpc-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/libtirpc:1.3.8@sha256:c87925572f855535575a87f6c21ad03f10aed23e1ea6b08913f3968696339e52
+sha256:44442b03c105b7fab4c1c2bddd2a0bbe22f20a4a22992a8cee1fcbd8526efd1e [libtool 1/3] COPY --from=m4 /m4/ /
+sha256:952f0349c0cc930c9a9d5bb5e3031f276877b9f588bfcd14e2cd28ea275bb5e8 [libtool 2/3] COPY --from=sources-downloader /sources/downloads/libtool.tar.xz /sources/
+sha256:9122497ce109c68362173626b488874ce724a63bca2b33f2549a20c36f0ad17b [libtool 3/3] RUN mkdir -p /sources && cd /sources && tar -xvf libtool.tar.xz && mv libtool-* libtool && cd libtool && mkdir -p /libtool && sed -i -e "s|test-funclib-quote.sh||" -e "s|test-option-parser.sh||" gnulib-tests/Makefile.in && ./configure --quiet --prefix=/usr --host=x86_64-hadron-linux-musl --build=x86_64-hadron-linux-musl --enable-lto --enable-shared --disable-static --disable-dependency-tracking --prefix=/usr --disable-static --enable-shared &&     make -j16  DESTDIR=/libtool install && make -j16  install
+sha256:3039b68694cef8e2dfcafeec32ac8220dbaa8216c236ac3c8bcc27e09d16deda [libtool-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/libtool:2.5.4@sha256:ee8bf4d7a3cfd58d3d05181ccd44fe2542186b648bd2536594895ce2f5b17d6e
+sha256:094348607cc3de4f83947029b765460e3980b60aec1b14310e24ec52e84a65d4 [libucontext-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/libucontext:1.5.2@sha256:17b92e28e5d01fec6a4c45697fb2310772eb4e286aadc967fc47fdb4f567832e
+sha256:8d82de2ecf1b739f40ac1f39fe17a8bc7f87ed260d624519e714e6b8f47cdded [libxml2-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/libxml2:2.15.4@sha256:459d07aa0ffe7f87fecdc29073df9ed52ddf0e6155bc98cb883ee29aa8367813
+sha256:fa8228c89f244926d121ba811f0d79a9139a6fad99eb8f79fc6b993111f4de1f [linux-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/linux:7.3.4@sha256:5882e0c910c24ca3aff2fedd78aa1d4712dd47369d74cd49e37cf0a742988a5d
+sha256:aa2dad869233dab949b29011e62d279d78bb79106a36083d52fdbae8c54ff6a2 [lvm2-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/lvm2:2.03.44@sha256:d633714d11304b39184ac8664d70c77f38319504f73c32bfb1809cb17d27e547
+sha256:16ff3f61b2f595c38568ae50e8c0b12653970a019d4ed470c36e3435935dbaa0 [lz4 1/2] COPY --from=sources-downloader /sources/downloads/lz4.tar.gz /sources/
+sha256:ac6db5506eb76eb88dacc3008dfdea8f41e492a69c41e0f13b4241254dd93d64 [lz4 2/2] RUN mkdir -p /sources && cd /sources && tar -xf lz4.tar.gz && mv lz4-* lz4 &&     cd lz4 && mkdir -p /lz4 && CC=gcc make -s -j16  prefix=/usr DESTDIR=/lz4 &&     make -s -j16  prefix=/usr DESTDIR=/lz4 install && make -s -j16  prefix=/usr install
+sha256:c49afa62cf2075d2c63d6a7e5b54be10e0c9ba7deba8850cda4e871a999c2aaa [lz4-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/lz4:1.11.1@sha256:9b851d7582677a0b373e5072d2b4078aaff472bb72d47d42b246c955747894e6
+sha256:5ce87c90c4ac6ecf600e9166b31b26f1211923b0f17ad1bc31d6da888052c40f [m4 1/2] COPY --from=sources-downloader /sources/downloads/m4.tar.xz /sources/
+sha256:70b5c9cabc30f983fa56a82306e452c3894c831e62714d621c4188ea0011ace8 [m4 2/2] RUN cd /sources &&     tar -xf m4.tar.xz && mv m4-* m4 &&     cd m4 && mkdir -p /m4 && ./configure --quiet --prefix=/usr --host=x86_64-hadron-linux-musl --build=x86_64-hadron-linux-musl --enable-lto --enable-shared --disable-static --disable-dependency-tracking && make -s -j16  DESTDIR=/m4 &&     make -s -j16  DESTDIR=/m4 install && make -s -j16  install
+sha256:cb2281416379e8b5917c22a5211b347b8b5b30cf05725845ae0d3cf082042a07 [m4-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/m4:1.4.21@sha256:dca350125a617b8c63d6dd0fa7e6c18acf05b1415e56b38c028584dad64d444a
+sha256:f8062af5bb8ab2203fb998ce045ff52dd1424fe3124f8fe611d7ad5b34f89459 [make-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/make:4.4.1@sha256:40c87595a188f188242c9a3648ac842ff2b236ebcff0829eef3421ea9e9f523d
+sha256:702ffcbd66ae52fddec9ffc87e5e1bfb8638cafadb72553c40c34418f9b700a6 [make-stage0 1/8] COPY --from=sources-downloader /sources/downloads/make.tar.gz /sources/
+sha256:b2e7b357ae88f4ae203374cbc1adc3793be78175b47a76a655ee5e4aca424e54 [make-stage0 2/8] RUN cd /sources && tar -xf make.tar.gz && mv make-* make
+sha256:ae51c5a0ac1e2addf5d4ec50504d2c097c922209d4536b01fef99c8ad8bb067d [make-stage0 3/8] WORKDIR /sources/make
+sha256:336e86ef8dea8e1959c090dcbd82e43e8b27b90af302bb2f74e2b94f4695d5e5 [make-stage0 4/8] COPY patches/0001-make-getopt-gcc15.patch .
+sha256:0c89354f21182daeaa560c2da8bab54522490919ceb5cb464bac5fe0e87473fa [make-stage0 5/8] RUN patch -p1 < 0001-make-getopt-gcc15.patch
+sha256:636804c0dfd8b8c38c4da60625f9d08edb9f5291aa5d4ca7a9813fa5f0775942 [make-stage0 6/8] RUN ./configure --quiet --prefix=/usr --build=x86_64-pc-linux-musl --host=x86_64-hadron-linux-musl --disable-nls
+sha256:6ac6f90e8fe51fe4e9a51ba90aacc08599a98ec2a4b2868b3ed409ccdc4863ad [make-stage0 7/8] RUN make -s -j16 
+sha256:b17d1484bf902ef95cd09425e962a6323d0a695744ab93498a7a152deae55bb1 [make-stage0 8/8] RUN make -s -j16  DESTDIR=/sysroot install
+sha256:27d6c87afb9f8bc7152c2c20100e97ba4feabae0305ea5ed77110f31ace31ca5 [mpc-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/mpc:1.4.1@sha256:f790d4cf102ae414d91fee5c3f885dc47ae3024dd6b7f1f8dee4866e060e3422
+sha256:9f73a87b0452086cb1d647a8210e2225216ee235481cc17e89f546d0a8ba8f9b [mpfr-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/mpfr:4.2.2@sha256:199f7d938b1bc7d6fb94f027a364807ae32a7d7668cc06c7517424321a470035
+sha256:914023a226cadd9b1401fecb6b0a091a9a7e4732acb64abee0757a2044b00d92 [mspack-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/mspack:1.12@sha256:00b33508205dfe453e5bbafeca4d66e46f99788b59c1514253cadccf4073e005
+sha256:a039891ad639058e78a51df7d6ee8ec4bef9fd07d78b97480ffe07caa098b730 [multipath-tools-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/multipath-tools:0.15.1@sha256:9bb0d54753654fc81f0a140159ecc5e40e500af53723636a2ebd6265a8ac6235
+sha256:d83830a4ece140a23dd5a10843b8473270774f4ca5887b2ff1b1173f2f461d39 [musl-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/musl:1.2.6@sha256:3cd79bd57a9ea3fe8db1e666d47bf65b162c9aecec1cc9f58408ade62520934c
+sha256:b25c903a58220e7f04e5631ee78c1fee0ad5a15a37a835751021adce18bdeb85 [musl-fts-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/musl-fts:1.2.7@sha256:5bc4ada1dc9d4a8c5d9341e5ddc4f7b2d4fd722470031a376658eaf17171af1f
+sha256:3b7629fc574b6eb4f5b04b185f9cae250c6021495982e3c866b790207e1e4ac1 [musl-obstack-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/musl-obstack:1.2.3@sha256:fdefacb19813379997dcc4c23253fc6db73dbffc4bd6f9716f15eda35a079bf0
+sha256:bb90d0cfc3df4a2a231ac3370010ff2824982127238c01568cee027c9e77790b [musl-stage0 1/2] COPY --from=sources-downloader /sources/downloads/musl.tar.gz /sources/
+sha256:9f4e6ab219265336c9bd2f20eca6ca8ce9b907049f872cf2c5d2a1fd72a49f1e [musl-stage0 2/2] RUN cd /sources && tar -xf musl.tar.gz && mv musl-* musl &&    cd musl &&     ./configure --disable-warnings       CROSS_COMPILE=x86_64-hadron-linux-musl-       --prefix=/usr       --disable-static       --target=x86_64-hadron-linux-musl &&       make -s -j16  &&       DESTDIR=/sysroot make -s -j16  install
+sha256:08f39bf2fe8b3f740c81eeb441ba4614ba1cfafe6ce464ca976b14466cf160f4 [musl-toolchain-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/musl-toolchain:1.2.5@sha256:e40d5a8a48f7954b30af125b0fdb647debe261d649b7c3655427b3b6afdfd8c4
+sha256:06e32c2131419d783e9e61c6d61537cfb3094fafcd1268aa95c6655d8e310caf [ncurses-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/ncurses:6.6@sha256:e27cba3c7e9ec237f14a734aba2696e84fd1f2b0023f11b269fadddfe085bb6c
+sha256:f32a268c1e55c0a5491aca57f0e2bd3d945abf873887c10cf7f40991a5d88e7c [nfs-utils-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/nfs-utils:3.1.1@sha256:c129fbd9de98b79867fc03235e63d179a2813df70ca46c08f75c5c05ff8a1171
+sha256:f78781869e4ee24387978514c6fc917d1e50aa42474d175f4d5df5abcdbcc716 [obstack 1/8] COPY --from=autoconf /autoconf/ /
+sha256:161f8e57ab5d73fcf331483780ff5c71a2a82c718f77f86d1f5aea0b540ee04d [obstack 2/8] COPY --from=automake /automake/ /
+sha256:04fb4b57ef4b59f556e5b6bd6bda12cb0e1faa1f7b6c2917aa9da068b849e115 [obstack 3/8] COPY --from=m4 /m4/ /
+sha256:89ba50322effc7c3ff76ee449272845bb59777df237fda961da4678262a69c4d [obstack 4/8] COPY --from=perl /perl/ /
+sha256:a3097c2c2e75333e44601033a67f013a7bca7bb15a31a2097dcc988ef4d76ff5 [obstack 5/8] COPY --from=libtool /libtool/ /
+sha256:d3e251e839333f2580c760bbe20233ff3e6939498e9c9926481f113fdb9e761a [obstack 6/8] COPY --from=pkgconfig /pkgconfig/ /
+sha256:3d7ea2e1c9f4027db929e9f91e75d0f1783141a49f1c345c72fdc62e8a5a9ce9 [obstack 7/8] COPY --from=sources-downloader /sources/downloads/musl-obstack.tar.gz /sources/
+sha256:8e20c6cd8570df3177a330f98de25d23c89989c9a6bd5e85a11447b6b9602865 [obstack 8/8] RUN mkdir -p /sources && cd /sources && tar -xf musl-obstack.tar.gz && mv musl-obstack-* obstack &&     cd obstack && ./bootstrap.sh &&     ./configure --quiet --prefix=/usr --host=x86_64-hadron-linux-musl --build=x86_64-hadron-linux-musl --enable-lto --enable-shared --disable-static --disable-dependency-tracking --prefix=/usr --localstatedir=/var --sysconfdir=/etc &&     make -j16  DESTDIR=/obstack install && make -j16  install
+sha256:4f2b5d0d41a436e812de422b41d05c09df6dfdf24d2113d4df0f3ce780a46a25 [open-vm-tools-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/open-vm-tools:13.1.0@sha256:b485941e9473b7469052a59b4d4560188d77ede5a0bbaf1c0292306317652193
+sha256:1c76b8f40d91b823eed82126d99f06f8cf914aea469e6da808421447ddf32686 [openscsi-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/openscsi:2.1.13@sha256:d70219bfc2e857b9432629352a289df08082a4122c25aa63d78ec2a2ff126403
+sha256:658d31d3d1a45836ef46bd7c12efdf7baf07301da0027874c1fd8da8fe0522d2 [openssh-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/openssh:10.6p2@sha256:d242bd2b0ce2817d241e200ae9870a944f6da819cea12ff9dacd881eae251450
+sha256:4f1b310f79f3ef6fa61b21c813327a26a5c5ce351c7f540701424c415ea1218a [openssl-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/openssl:3.6.5@sha256:3451bd8d31482b8c53ea70e7d4e4113a0f58374d9cfe0b34c7cb602f806e3281
+sha256:a4402785c8c394cce432144f7137fba4c04e2380e640ddcf558e176de5f268c8 [openssl-fips-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/openssl-fips:3.1.2@sha256:d1fcee3398ac2388aed06700f77e68d13159b672f9ad9af3b050e54061226dd8
+sha256:0b3412dfa08eb288888a5a95fd018a8e6a3570b53df015ac8c57fb6aa3370250 [openssl-no-fips 1/9] COPY --from=perl /perl/ /
+sha256:954e4ae85b957e2be03733bec7aff7feb4454def4a293077465032835b328d1b [openssl-no-fips 2/9] COPY --from=zlib /zlib/ /
+sha256:5db7fb8167f720ce9034ffda97feb8e47d17d8418664bec53f29bf1fbcddbb30 [openssl-no-fips 3/9] COPY --from=sources-downloader /sources/downloads/openssl.tar.gz /sources/
+sha256:b39f052a265f5015b851a1a1fd549fd410a08c0f4ba8c98abfa0588ead49bab8 [openssl-no-fips 4/9] WORKDIR /sources
+sha256:335f5b0defb3e458863d1e649a80e2c5918c97c98e833965304e78fd5eaeb765 [openssl-no-fips 5/9] RUN tar -xf openssl.tar.gz && mv openssl-* openssl
+sha256:bc5f43929ed6dee52025ececbe74fd3bc89c0251a7b11479d60d391ac085325c [openssl-no-fips 6/9] WORKDIR /sources/openssl
+sha256:d8b7dabaf710d789333e9f1af2c3d5b760c16f39e60fd2228cb0b86053ac4d20 [openssl-no-fips 7/9] RUN ./Configure --prefix=/usr             --openssldir=/etc/ssl     --libdir=lib              shared zlib-dynamic     no-ssl3 no-weak-ssl-ciphers no-comp     no-md2 no-md4 no-mdc2 no-whirlpool     no-rc2 no-rc4 no-idea no-seed no-cast no-bf     no-tests no-unit-test no-external-tests no-docs     no-ui-console no-afalgeng no-capieng
+sha256:b0ba3ffc4f17b3860fa1095f81fb340ae178fe5e1732df44913d90b49069518c [openssl-no-fips 8/9] RUN make -s -j16  DESTDIR=/openssl 2>&1
+sha256:3b4d025573e583772147e063863b7908855c2fef868d220621e85d8ab31e17f2 [openssl-no-fips 9/9] RUN make -s -j16  DESTDIR=/openssl install_sw install_ssldirs && make -s -j16  install_sw install_ssldirs
+sha256:1d28c9a150cd91c7443fd22d060248c7efb8cab64d90664c44f46b7566122355 [pahole  1/15] COPY --from=cmake /cmake/ /
+sha256:cc423612fa86b0bc3098cc47005d0f212bef04e92db6719d7df6fcee9d5d8382 [pahole  2/15] COPY --from=openssl /openssl/ /
+sha256:34d4e9e5fc795939bb7da40624051b3fecbacf8c4e7f4773537921fdd98bb2b3 [pahole  3/15] COPY --from=elfutils /elfutils/ /
+sha256:1f8bb0b02373295d1384472114e48b2d9a3483314103bd1e7a3d818c410a3bbd [pahole  4/15] COPY --from=libbpf /libbpf/ /
+sha256:bbae61e5fd7e12647f5ae17f09c2a63b7a462a050d77b622484ab0ce9c46078b [pahole  5/15] COPY --from=obstack /obstack/ /
+sha256:98812bd245641704bcd771cc4307a6b8ff40a38073cb9721e321b12b4ccdb4f0 [pahole  6/15] COPY --from=argp /argp/ /
+sha256:2f34246b279df709246f1e940c3dc8d28ec3b483d2889274dbb33694b8f27c75 [pahole  7/15] COPY --from=zlib /zlib/ /
+sha256:e83d8d4b7d90592637fde756233aecc1d2e74159868c68cd402f214c6f54b4de [pahole  8/15] COPY --from=pkgconfig /pkgconfig/ /
+sha256:c83bd1462fa65489f702cd58a4da8d0ddc78f640e5b73986c2a33d19032c4371 [pahole  9/15] COPY --from=sources-downloader /sources/downloads/dwarves.tar.gz /sources/
+sha256:8840d0643e854ccd75bb6184ad48ca43033bc7dcdd64be48d7f1d4d3658bc95a [pahole 10/15] WORKDIR /sources
+sha256:bd0e75fa5b13aedfd89c2d0c494a22805b52c8dd3e0dcc4d3e53b13713405787 [pahole 11/15] RUN tar -xf dwarves.tar.gz && mv dwarves-* dwarves
+sha256:15f0edd9339ec718e724a22e2cb46fad48721c48ec7c80f24a8673ee5d05e387 [pahole 12/15] RUN mkdir -p /pahole /sources/dwarves-build
+sha256:8b845988d10f29cb1568a2ac5471c8eb0fbbe0f4e2acffb968ff7ba1812ddc79 [pahole 13/15] WORKDIR /sources/dwarves-build
+sha256:a78ff963c610e5bd4f5cd778f6b7a89438a95712c62112093a4461078fac3133 [pahole 14/15] RUN cmake ../dwarves       -DCMAKE_INSTALL_PREFIX=/usr       -DCMAKE_INSTALL_LIBDIR=lib       -DCMAKE_BUILD_TYPE=MinSizeRel       -DLIBBPF_EMBEDDED=OFF       -D__LIB=lib       &&     make -j16  &&     make install DESTDIR=/pahole
+sha256:a4600cc25c9b7b9cf61aeba880d26efe128b87f5c3d43949d7598d5908ad294f [pahole 15/15] RUN rm -rf /pahole/usr/include
+sha256:942a5406f6eecb32a5fd67853c4c0b9635e63328c72b51237413124016b4510e [pam-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/pam:1.7.2@sha256:8548fc8e3b648f541e7ff2f1db28aa019df7837774667b201b1a31bf20b63573
+sha256:3eab1e3fda765ec5ba4537918db228c43e3dadc9f5eda73afba82129d9cd5f28 [parted-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/parted:3.8@sha256:2772026bf539c1830e12040344d718c3d3434872196b0fc2ef4d834a9598dca3
+sha256:17552e6b77a647482c9f3cb415c3330991558a910e86ace7fd8f8c76fd55aad8 [patch-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/patch:2.8.1@sha256:f43426d12d019f4259bbb072d39c2ae5275f4b35549fb45fd4c8b0a75e0c8eae
+sha256:0ef369f064337420c482f7a505b59dad6221803316624a2fd9c31c6d1e19ce0c [pax-utils-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/pax-utils:1.3.11@sha256:cd85e1870f080eac09110012e161a0c6c2e9ab6efb98695aaca058d9a9a131a3
+sha256:203c9d4d39f371f5cd232938723566eb8fc9c1daa1635f68b71c9b3c08ae85ce [pcre2-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/pcre2:10.49@sha256:9ed65de007b76e14c50dcb3a89c121333758608b2168327c205734ca84ed10a6
+sha256:9719619194780652c738a3731978a9f7b198e040ea1099efdee3c58c8f351d13 [perl 1/2] COPY --from=sources-downloader /sources/downloads/perl.tar.gz /sources/
+sha256:4c21124e61d0dfd1c3ea8974d4c10ef5489bcf24659dffea04f738a71de417b6 [perl 2/2] RUN cd /sources &&     tar -xf perl.tar.gz && mv perl5-* perl &&     cd perl &&        sed -i 's|^cf_time=.*\$date.*|cf_time="Wed Jan  1 00:00:00 UTC 2025"|' Configure &&        grep -q '^cf_time="Wed Jan  1 00:00:00 UTC 2025"$' Configure && sh -n Configure &&        ln -s /usr/bin/gcc /usr/bin/cc && ./Configure -s -des -Dprefix=/usr -Dcccdlflags='-fPIC'        -Dccdlflags='-rdynamic'        -Dprivlib=/usr/share/perl5/core_perl        -Darchlib=/usr/lib/perl5/core_perl        -Dvendorprefix=/usr        -Dvendorlib=/usr/share/perl5/vendor_perl        -Dvendorarch=/usr/lib/perl5/vendor_perl        -Dsiteprefix=/usr/local        -Dsitelib=/usr/local/share/perl5/site_perl        -Dsitearch=/usr/local/lib/perl5/site_perl        -Dlocincpth=' '        -Doptimize="-flto=auto -O2"        -Duselargefiles        -Dusethreads        -Duseshrplib        -Dd_semctl_semun        -Dman1dir=/usr/share/man/man1        -Dman3dir=/usr/share/man/man3        -Dinstallman1dir=/usr/share/man/man1        -Dinstallman3dir=/usr/share/man/man3        -Dman1ext='1'        -Dman3ext='3pm'        -Dcf_by='hadron'        -Dcf_email='mudler@kairos.io'        -Dperladmin='mudler@kairos.io'        -Dmyhostname='hadron'        -Dmydomain='.hadron'        -Dmyuname='linux hadron'        -Dosvers='hadron'        -Ud_csh        -Ud_fpos64_t        -Ud_off64_t        -Dusenm        -Duse64bitint && make -s -j16  libperl.so &&         make -s -j16  DESTDIR=/perl && make -s -j16  DESTDIR=/perl install && make -s -j16  install
+sha256:9b2745d2d83c28d58ce90ec4b02305875601aaef205c9733f3f355e85d992b04 [perl-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/perl:5.44.0@sha256:d9eb3ff0dd54d29d220511fc8d388df1f5e122d7ea1c2bd08bc052e74ee1b7b5
+sha256:5d7dc43417e472b0b15eb45d3d99757aa71810d272e28f8c99428212fcc4a4ce [pkgconf-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/pkgconf:3.0.11@sha256:72020060c66a6334d66a412fc3c2ffd6147dadeae7a4d8353e33809bf5608454
+sha256:7db9b2c82ef89aeb58bc287c017d72988cfd439f9d52a5db7039a07a9fc131fc [pkgconfig 1/2] COPY --from=sources-downloader /sources/downloads/pkgconf.tar.xz /sources/
+sha256:7b2fb47f41607a2b8b0340a4ae9bc076ff84eed8183974ac4502b85ea37ee845 [pkgconfig 2/2] RUN mkdir -p /sources && cd /sources && tar -xf pkgconf.tar.xz && mv pkgconf-* pkgconfig &&     cd pkgconfig && mkdir -p /pkgconfig && ./configure --quiet --quiet --prefix=/usr --host=x86_64-hadron-linux-musl --build=x86_64-hadron-linux-musl --enable-lto --enable-shared --disable-static --disable-dependency-tracking --prefix=/usr --sysconfdir=/etc     --mandir=/usr/share/man     --infodir=/usr/share/info     --localstatedir=/var     --with-pkg-config-dir=/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig &&     make -s -j16  &&     make -s -j16  DESTDIR=/pkgconfig install && make -s -j16  install && ln -s pkgconf /pkgconfig/usr/bin/pkg-config
+sha256:e2262d1aad1f6c1ecd066fd63e405af0407c0f11a95e30d40c675a1d1dde0043 [popt-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/popt:1.19@sha256:09ad56883bb6afa190ae22b2395ddaba4fe4651d2105588f185a610f3df32c72
+sha256:6a22cabe42e05eec5a48d1a0089526c2780a1382f80814c46ac40967ba13b25a [procps-ng-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/procps-ng:4.0.7@sha256:26e27a533a0eee1feb930b84d90da6b500327a193b4a8119dead28d51f4720c6
+sha256:af1090e5acda8ecf672ed7c6a0bd21c8beb78f8bb4330e5482140a757d0a797a [python-build  2/14] COPY --from=bash /bash /bash
+sha256:087119c4ca0333ac342436f4a5c37fcec2fac38fa37e6ec1e5144dc5262b3c47 [python-build  3/14] RUN rsync -aHAX --keep-dirlinks  /bash/. /
+sha256:07e309a6300acee3ffdbf2209a2ae5d7d6768ed5b6d8136ddb8132fcf15527b0 [python-build  4/14] COPY --from=zlib /zlib/ /
+sha256:d548436f9353c5fc30d8ebfd752b9312c84fa4b03ed2b82f8018bc9e9d83af4d [python-build  5/14] COPY --from=readline /readline/ /
+sha256:bd9817778573e793b779af456952e603fd8b964e4aa89f71850d0489a3d6f1b2 [python-build  6/14] COPY --from=pkgconfig /pkgconfig/ /
+sha256:402992b3d72b214d6681ae99a83eb6c037f30027fef03f00f51cab2af06e679f [python-build  7/14] COPY --from=libffi /libffi/ /
+sha256:a01721ae4bd932fc9ced81bc565e3f646a77c81c8f81fcc83a66df298891cae8 [python-build  8/14] COPY --from=sources-downloader /sources/downloads/Python.tar.xz /sources/
+sha256:10764ddb6ce3457f1b99fd5052eade326a8c9942b4a9cd73a6e682ad91924c09 [python-build  9/14] RUN rm /bin/sh && ln -s /bin/bash /bin/sh && mkdir -p /sources && cd /sources && tar -xf Python.tar.xz && mv Python-* python &&     cd python && mkdir -p /python
+sha256:4d518300a7e4afd41dd8b962439b6a989e423ad7ec61e04e318c17761de07dd6 [python-build 10/14] WORKDIR /sources/python
+sha256:666f0ae3587408da2f995a1d01e60dd4074bed51f067ea9cdcd6addfb5280a9d [python-build 11/14] RUN ./configure --quiet --prefix=/usr     --enable-ipv6     --enable-loadable-sqlite-extensions     --enable-shared     --with-ensurepip=install     --with-computed-gotos     --disable-test-modules     --with-dbmliborder=gdbm:ndbm
+sha256:838d35a7d5e2f7030b5a2466bdd987d8fa21af2f9bd8d3a9db0536186d163ad8 [python-build 12/14] RUN make -s -j16  DESTDIR=/python
+sha256:2828f088883405f03ab601de3199cdecd2f96adced595dcb4b41d31a3e775041 [python-build 13/14] RUN make -s -j16  DESTDIR=/python install
+sha256:7207463a71789f8759cd9435b34da0fecabe4b34c47d604c1c7f76682481e43a [python-build 14/14] RUN make -s -j16  install 2>&1
+sha256:47bef7ea1111a69823e3c46d5e3d17ed3ae87af0f0ad11c3b1f2e77fe71b1cd5 [python-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/python:3.15.2@sha256:c13d1b90d67ca2cba50e0918fc59a8d9d12995af5d9a1f2ddf24c7f9e51b51af
+sha256:219ffb1074c7ee841f05657938d8ba9339f4f9db1bf655047b63c1ded73ee440 [qemu-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/qemu:10.1.5@sha256:4538bcd47fd75148992cc463d1a2425881c36bff34e0b31fdecd42276fc75f29
+sha256:4b2b457e114ed8cf82a2bb8c198977607a492642185fee2c706091ad10ef5c47 [readline 1/2] COPY --from=sources-downloader /sources/downloads/readline.tar.gz /sources/
+sha256:77d415eb7ff34ae8e6bdb5095f6fbd2fa77f09f2dac5c580e7f204433671f82d [readline 2/2] RUN cd /sources &&     tar -xf readline.tar.gz && mv readline-* readline &&     cd readline && mkdir -p /readline && ./configure --quiet --prefix=/usr --host=x86_64-hadron-linux-musl --build=x86_64-hadron-linux-musl --enable-lto --enable-shared --disable-static --disable-dependency-tracking && make -s -j16  DESTDIR=/readline &&     make -s -j16  DESTDIR=/readline install && make -s -j16  install
+sha256:94b18162948ca52858784e0abff38ad089fb12ea3d1899b32e052698023904fd [readline-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/readline:8.3@sha256:b54aa48c1872f7d9c6007cf675b935052c2c292bae0145b78890e8f419ca3658
+sha256:b6c9d1339eb4bfc56935f1a996d0668f465123ba1e7ddd61456fa50f114b4859 [rsync 1/2] COPY --from=sources-downloader /sources/downloads/rsync.tar.gz /sources/
+sha256:a1bc6e60bb0166e306a09698dae8a276c2bc155fb8c09a5f9129a52ebc78dc29 [rsync 2/2] RUN mkdir -p /sources && cd /sources && tar -xf rsync.tar.gz && mv rsync-* rsync &&     cd rsync && mkdir -p /rsync &&     ./configure --quiet --prefix=/usr --host=x86_64-hadron-linux-musl --build=x86_64-hadron-linux-musl --enable-lto --enable-shared --disable-static     --sysconfdir=/etc     --mandir=/usr/share/man     --localstatedir=/var     --enable-acl-support     --enable-xattr-support     --disable-roll-simd     --enable-xxhash     --with-rrsync     --without-included-popt     --without-included-zlib     --disable-md2man     --disable-nls     --disable-idn     --disable-openssl && make -s -j16  DESTDIR=/rsync &&     make -s -j16  DESTDIR=/rsync install && make -s -j16  install
+sha256:57a14002f77c1fa6076c33f2a4c81be0d3b0599826bb51fc0d118b655fdf9f82 [rsync-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/rsync:3.5.2@sha256:4edc1656bca918ae627c1faa8e1b0eaa6e815cedc5bd1e9a3cd0ca8ef5f589cb
+sha256:5d9ce7ea42be5f5f07246747635a91f0fd15b0087a5f75961c17c9fbbd8f9561 [shadow-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/shadow:4.20.3@sha256:53faa4fd5e42830beeecf2364dda80e7dc7eb1d33ed5b80e7a71c144be628f80
+sha256:432b98be0996f324161c62b23071ae038b436efb2577fa00fa061fe20689d41b [shim-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/shim:16.1@sha256:d766ced94151c7a2176e13971b21d754a7f646ed68e35cfdebe32152b9d864ff
+sha256:602d0eaeefe8d96267967c816d34c59c104b839b3b588771cd7b4133cf81033e [skeleton  1/24] RUN mkdir -p /sysroot
+sha256:0470bcf2b2536e529d0713275bfac8ebd9c14790c269bfce1515ec33077698ff [skeleton  2/24] WORKDIR /sysroot
+sha256:bb7d685bd7edcac9536c74edc3a9375095024e81ff6466ec8683cb5fb788a5db [skeleton  3/24] RUN mkdir -pv {boot,home,mnt,opt,srv,tmp}         {etc,var}         etc/{opt,sysconfig}         usr/{bin,sbin,lib}         usr/lib/firmware         usr/{,local/}{include,src}         usr/local/{bin,lib}         usr/{,local/}share/{color,dict,doc,info,locale,man}         usr/{,local/}share/{misc,terminfo,zoneinfo}         usr/{,local/}share/man/man{1..8}         var/{cache,local,log,mail,opt,spool}         var/lib/{color,misc,locate}         {dev,proc,sys,run}
+sha256:05bfcff008815f7931bfd46a8c4624064a184bbc8ce3e516a01dd36d7a59d127 [skeleton  4/24] RUN install -dv -m 0750 root
+sha256:7844bdd628141f29ab82b7ee46389e3548e14de7eb26fb1c55e144885f60819c [skeleton  5/24] RUN install -dv -m 1777 var/tmp
+sha256:d9d9fca35280fc2542abf6a52636c3f48ee873dcab309b6198b15961aa50c7f9 [skeleton  6/24] RUN touch etc/hostname
+sha256:eb7a7f05c3a073c89fc5d19787c18aad3ac67d281d11ebf26f60abf9116dfd47 [skeleton  7/24] RUN ln -sfv usr/sbin sbin # sbin -> usr/sbin
+sha256:bec0611992605241693433256fb595adcddf3910e02e0a3518abbcbd3f0af2cc [skeleton  8/24] RUN ln -sfv usr/bin bin   # bin -> usr/bin
+sha256:0b36ddc5647abc57948cc10c8abe6e4afc95385e4bd1076cef3234d1cc5e0fe4 [skeleton  9/24] RUN ln -sfv usr/lib lib   # lib -> usr/lib
+sha256:e4da023ef35ca59a28f54ead3e32c4d525a1673a686bca689afaa05981aec3f1 [skeleton 10/24] RUN ln -sfv usr/lib lib64 # lib64 -> usr/lib
+sha256:0177e2c7061678e13658ae214b68e3af6df3b9e4462bb2173d9e7ab4e602c433 [skeleton 11/24] RUN ln -sfv ../run var/run # var/run -> ../run important to be relative
+sha256:c1887f044f161b31346b4f58b4762e6e1683c481ac69e7cdc1d738d209b3c22c [skeleton 12/24] RUN ln -sfv ../run/lock var/lock # var/lock -> run/lock
+sha256:5bafbc8759387a0fcc874d0037aba9510ce08ea25db896b31c000577ce89dc3d [skeleton 13/24] RUN ln -svf proc/mounts etc/mtab
+sha256:831945cb5055c444133bb4bdb9007b0f450bf8d1b85e0837761ba0b648c425ef [skeleton 14/24] RUN touch etc/shadow
+sha256:56f1919509a0ea2c89ec9cba1f1da3fadaba308a9864552b0f429b849a014f4a [skeleton 15/24] RUN touch var/log/{btmp,lastlog,faillog,wtmp}
+sha256:f3e0848a457d14f9377b86800540a82b3e6d2d8fa7590202a232d0ab1cf953e4 [skeleton 16/24] RUN chgrp -v utmp var/log/lastlog
+sha256:8dcd4f2991c66466a08d00d37680d1491384ab14d58bc10d2ba841e5bdd45ce3 [skeleton 17/24] RUN chmod -v 664 var/log/lastlog
+sha256:8cdf065040e28f3c41c3ce3a4d942395d3564a43547536f1e144a55f1e24fbc2 [skeleton 18/24] RUN chmod -v 600 var/log/btmp
+sha256:8ad7d9832620b85e02aa88f233ae72d0d1737f94c78a11d7af5a742f20924191 [skeleton 19/24] COPY <<EOF etc/passwd
+sha256:8cf25915a82658ed3b8989d7fd92fb551da459f14a6eb2c80cb92e55bd151699 [skeleton 20/24] COPY <<EOF etc/group
+sha256:d15b4010d315976e227d6fff71c2ef934844af83bfcf7bb366f7b8a78d3201c1 [skeleton 21/24] COPY <<EOF etc/profile
+sha256:13a795b03ff8f5739bc214e565f70278438121d6357018953216ef516db19c61 [skeleton 22/24] COPY <<EOF etc/issue
+sha256:2f876226949ff8845d136fc3f835afb63bc54326ea049d53c4790d03d689ca29 [skeleton 23/24] COPY <<EOF etc/os-release
+sha256:bdf657179bfe92d2a1a4061c85518b810b19be492579a2e4febda7b55296f9a8 [skeleton 24/24] COPY <<EOF etc/hosts
+sha256:456ba579aa5d93cb812723cb683e479fd83525d13a825c74a12217d948ba39fb [sources-downloader   1/116] COPY --from=curl-download /sources/downloads/curl.tar.gz /sources/downloads/
+sha256:9a0faf539aaf09e49059405306f75bcae60a4f49ea53459f8445da12944d5059 [sources-downloader   2/116] COPY --from=rsync-download /sources/downloads/rsync.tar.gz /sources/downloads/
+sha256:b994c35b41f9529bbb52e843abb30b94544bfee16d25d25956666abe06f61649 [sources-downloader   3/116] COPY --from=xxhash-download /sources/downloads/xxhash.tar.gz /sources/downloads/
+sha256:9754a644514271b00cb9cfbc02c9b93e859b4e1e6cbbbed08fbbefe37e8be8a1 [sources-downloader   4/116] COPY --from=zstd-download /sources/downloads/zstd.tar.gz /sources/downloads/
+sha256:3ba1e0de002a3a4d49ae91e06105f6309678c7ffaea50359c4da5ea30eb59511 [sources-downloader   5/116] COPY --from=lz4-download /sources/downloads/lz4.tar.gz /sources/downloads/
+sha256:1103f59eb28843f4a355ef1f43da3f546302f31ba9379beacfbb97a5928f11b6 [sources-downloader   6/116] COPY --from=zlib-download /sources/downloads/zlib.tar.gz /sources/downloads/
+sha256:37b8028a73b8c036e2a782ed8855d63621bfe87bd37530583b24ae6674de99e9 [sources-downloader   7/116] COPY --from=acl-download /sources/downloads/acl.tar.gz /sources/downloads/
+sha256:a0f5b377feab3bbe7262f832ebaa36ec32c753787b625fd5f94c38f5aef9ea3e [sources-downloader   8/116] COPY --from=attr-download /sources/downloads/attr.tar.gz /sources/downloads/
+sha256:fa5e742f1f2645d586d96259b5beee3bd7739db7a1417fc80bdfa7df5b4f0fab [sources-downloader   9/116] COPY --from=audit-download /sources/downloads/audit.tar.gz /sources/downloads/
+sha256:6363de3f5918a5f31aea12a11620defdb3790e39e34b8f2e72f0093a4c811284 [sources-downloader  10/116] COPY --from=gawk-download /sources/downloads/gawk.tar.xz /sources/downloads/
+sha256:22e71f4f4ae9bf0bd7acdc5fa2d8d316ca6220aa6b72901e70c95eaa55bb213e [sources-downloader  11/116] COPY --from=ca-certificates-download /sources/downloads/ca-certificates.tar.bz2 /sources/downloads/
+sha256:7023272f8229b0f8a0f59359ce8ec97dae5f9783c66c765a030ee202c0900517 [sources-downloader  12/116] COPY --from=systemd-download /sources/downloads/systemd.tar.gz /sources/downloads/
+sha256:f472eb4dc565c7f1f16f36534329cb8e6c4c9897edca7b4a15c43c0f442696f4 [sources-downloader  13/116] COPY --from=libcap-download /sources/downloads/libcap.tar.xz /sources/downloads/
+sha256:d47aa37c2dfcb3dfb2989f662fe3f2f381c1c79030228aeedc0338e8e05738a5 [sources-downloader  14/116] COPY --from=util-linux-download /sources/downloads/util-linux.tar.xz /sources/downloads/
+sha256:c979985415b5fcc388438bbd8e764d783427487f3866775f05f935768e232f19 [sources-downloader  15/116] COPY --from=python-download /sources/downloads/Python.tar.xz /sources/downloads/
+sha256:d4f2c7eaefeaf2c93e6f3e361e3a3c9cdc708ddacf28d9dc2e60f9af4b38cebc [sources-downloader  16/116] COPY --from=sqlite3-download /sources/downloads/sqlite3.tar.gz /sources/downloads/
+sha256:cf975cdb44b1fb6cc247039113d4fb7031e5fe96ca30cdd429bf908ccc02ba44 [sources-downloader  17/116] COPY --from=openssl-download /sources/downloads/openssl.tar.gz /sources/downloads/
+sha256:89b30fbf04b9c7470c50c4ca6e02146327f54dbf5367e3052da20a16b52b11a6 [sources-downloader  18/116] COPY --from=openssl-fips-download /sources/downloads/openssl-fips.tar.gz /sources/downloads/
+sha256:74b161a36fe6636cf9de4edcf0b5de3864810c4687cfd2b3c5c7a97391992d9b [sources-downloader  19/116] COPY --from=openssh-download /sources/downloads/openssh.tar.gz /sources/downloads/
+sha256:ffc4eb1be95f2a95d709006a7413372466559d07baf79433b45e987e62bd59b3 [sources-downloader  20/116] COPY --from=pkgconf-download /sources/downloads/pkgconf.tar.xz /sources/downloads/
+sha256:3de1c760582295aa40671f89d5d1978431c43fac025d9e4375b9b84c269d076a [sources-downloader  21/116] COPY --from=dbus-download /sources/downloads/dbus.tar.xz /sources/downloads/
+sha256:7b5dcca244ca4e817d06ddc43abd96cf18da9b616b336e2b814caf1ef44c3b00 [sources-downloader  22/116] COPY --from=expat-download /sources/downloads/expat.tar.gz /sources/downloads/
+sha256:f17a31c42c1880ce9bafaeb0c07eff4f8259da1770a062ba1ef519d1db0d18ff [sources-downloader  23/116] COPY --from=libseccomp-download /sources/downloads/libseccomp.tar.gz /sources/downloads/
+sha256:271d1b4a954edd00e4431371b63b1919e3f6ef68b1625c05a01ea47f0e3c7926 [sources-downloader  24/116] COPY --from=strace-download /sources/downloads/strace.tar.xz /sources/downloads/
+sha256:7e3fcf803dbbb800dc9ecd48b0793774ca552db8559acab2cd7327ce09e6efdc [sources-downloader  25/116] COPY --from=less-download /sources/downloads/less.tar.gz /sources/downloads/
+sha256:bdef5c1a2aad76188116492394d74b73ce964245e761b8ffb5547154e5b64fc2 [sources-downloader  26/116] COPY --from=ncurses-download /sources/downloads/ncurses.tar.gz /sources/downloads/
+sha256:0171c0c201fc14354c6d87c56d22072cbd24b75d1130f841b85c0e3e91e69cb0 [sources-downloader  27/116] COPY --from=kbd-download /sources/downloads/kbd.tar.gz /sources/downloads/
+sha256:2d46cd694363427d42660667b0a5dc38fd2069e289bba9df33eb4347b1557baf [sources-downloader  28/116] COPY --from=iptables-download /sources/downloads/iptables.tar.xz /sources/downloads/
+sha256:ba299269ecb9cd5c0b7ddfd92e3630a93dbc7f41fb83052587f69330744298e8 [sources-downloader  29/116] COPY --from=libmnl-download /sources/downloads/libmnl.tar.bz2 /sources/downloads/
+sha256:b56d76cbbc9c27b5ae1ad301a0f050c2dd2080c3191ad9f01c1ef375f625854b [sources-downloader  30/116] COPY --from=libnftnl-download /sources/downloads/libnftnl.tar.xz /sources/downloads/
+sha256:1d3836607fd81036c0bb7b78e20d3874720d1f7d913127c43f6341596fcbff04 [sources-downloader  31/116] COPY --from=linux-download /sources/downloads/linux.tar.xz /sources/downloads/
+sha256:68482cb819b4a81cca33821feede357523e3af6f056e3cc42729ad24393ff1f6 [sources-downloader  32/116] COPY --from=flex-download /sources/downloads/flex.tar.gz /sources/downloads/
+sha256:bfc5f86ca5f5f961b913403c11b147139c91b8f5d94f716d15ab711851225ee6 [sources-downloader  33/116] COPY --from=bison-download /sources/downloads/bison.tar.xz /sources/downloads/
+sha256:3bc108b84365119f654f2e117406bd3baa5744d9d3f581d78e5742f7c6df623f [sources-downloader  34/116] COPY --from=autoconf-download /sources/downloads/autoconf.tar.xz /sources/downloads/
+sha256:c981d2dfe1e2f659bdbacb6302bd7cfeca888559cf0300f0de7bafb2b43ed4eb [sources-downloader  35/116] COPY --from=automake-download /sources/downloads/automake.tar.xz /sources/downloads/
+sha256:1094e82e7718f58e9c9c8edfb90d811e9829340974dd223eea02e457535b72d7 [sources-downloader  36/116] COPY --from=musl-fts-download /sources/downloads/musl-fts.tar.gz /sources/downloads/
+sha256:9064ab8043e0c0126943ba18cfafa61a509366de9c7219f541ef809358757b91 [sources-downloader  37/116] COPY --from=libtool-download /sources/downloads/libtool.tar.xz /sources/downloads/
+sha256:468c87b05535ff7bafaa31dee3a56817c9ffac35199330c0adccc581e9048181 [sources-downloader  38/116] COPY --from=libelf-download /sources/downloads/libelf.tar.gz /sources/downloads/
+sha256:ea4dfb6f1b8523207c0b4723fab39e666ccc9f28082e937c3e304056fc24ea1c [sources-downloader  39/116] COPY --from=xz-download /sources/downloads/xz.tar.gz /sources/downloads/
+sha256:4c3924698519dec0683261d9d838352dd4ffc36dd175fd8f465a996def8bc0ca [sources-downloader  40/116] COPY --from=kmod-download /sources/downloads/kmod.tar.gz /sources/downloads/
+sha256:3f58f2d05604deaa296039e86c94af56df813a8d0a91c19d6754ababb16f8da3 [sources-downloader  41/116] COPY --from=dracut-download /sources/downloads/dracut.tar.gz /sources/downloads/
+sha256:8ada025e5f1ff379e3f7b498e316b6ae75dc1915e9bb0249c4086dc5191fe3b1 [sources-downloader  42/116] COPY --from=libaio-download /sources/downloads/libaio.tar.gz /sources/downloads/
+sha256:75cc41a5163d1536ffe53a77fad7daa8d360c5fd5d0202cc3d007dc3abe8eb6b [sources-downloader  43/116] COPY --from=lvm2-download /sources/downloads/lvm2.tgz /sources/downloads/
+sha256:055f4579c4033cb556c745350dc0193c941a96b31235c03fb443dc0041e97d01 [sources-downloader  44/116] COPY --from=multipath-tools-download /sources/downloads/multipath-tools.tar.gz /sources/downloads/
+sha256:96d609db8ca83f52454dc181800a125c8650f441ce001f24f3c8c4bf92c709bf [sources-downloader  45/116] COPY --from=json-c-download /sources/downloads/json-c.tar.gz /sources/downloads/
+sha256:0e62ea914bf9d27338cd7338a750efa91d8963ba6c6fbcf623039e4056dc4652 [sources-downloader  46/116] COPY --from=cmake-download /sources/downloads/cmake.tar.gz /sources/downloads/
+sha256:b142cc6ea1546a10c01b6bf70258dce688393f82ae43ed801d091543c184ea13 [sources-downloader  47/116] COPY --from=urcu-download /sources/downloads/urcu.tar.bz2 /sources/downloads/
+sha256:8d1ce11bc188148927c393f63b344e43cac4bf082f146a410f9432ee050e2116 [sources-downloader  48/116] COPY --from=parted-download /sources/downloads/parted.tar.xz /sources/downloads/
+sha256:5b1e8fd863ca7e364826aafdafac365f76d37a1e6c7c4e4b7324671fc2372d2f [sources-downloader  49/116] COPY --from=e2fsprogs-download /sources/downloads/e2fsprogs.tar.xz /sources/downloads/
+sha256:b568c1cd5e53e48635fced0bc3381f842ad71447c073a4b7e53b1a6ef9257e28 [sources-downloader  50/116] COPY --from=dosfstools-download /sources/downloads/dosfstools.tar.gz /sources/downloads/
+sha256:38612dd52dc7929ea8d2d8ac625e016b3d34342d397d218229e6d5e7fe7fbc77 [sources-downloader  51/116] COPY --from=libtirpc-download /sources/downloads/libtirpc.tar.bz2 /sources/downloads/
+sha256:b8fc1c16acbccc20a8cfd03908e4abbca2ab5e91e8381fabdaf0a21ae3be388d [sources-downloader  52/116] COPY --from=libnl-download /sources/downloads/libnl.tar.gz /sources/downloads/
+sha256:8c3305335893a61623ff04ebea257232eed584c7e9770578f944ab6bd7263c53 [sources-downloader  53/116] COPY --from=libevent-download /sources/downloads/libevent.tar.gz /sources/downloads/
+sha256:69e30cae7fc30eada2326056fe7b9a003a0e6300996aee5818bb661afc7a2e77 [sources-downloader  54/116] COPY --from=keyutils-download /sources/downloads/keyutils.tar.gz /sources/downloads/
+sha256:4eb56b48480a40e04381c0b63fa862be2a861f29159e89a0c740134ac7fc5d80 [sources-downloader  55/116] COPY --from=nfs-utils-download /sources/downloads/nfs-utils.tar.xz /sources/downloads/
+sha256:191438436b48136cdbe2e9c91ca5441729f612d22625a09ee87764181578248b [sources-downloader  56/116] COPY --from=cryptsetup-download /sources/downloads/cryptsetup.tar.xz /sources/downloads/
+sha256:cb9fd4547ca07b1e276a0e915aea98c6fe05f196e6b1928fc28cd4922d267b5b [sources-downloader  57/116] COPY --from=grub-download /sources/downloads/grub.tar.xz /sources/downloads/
+sha256:5001b11df9a75623a54624dcaeaaedf4d8e9bedd27ff75d73efca9bfc525286a [sources-downloader  58/116] COPY --from=freetype-download /sources/downloads/freetype.tar.xz /sources/downloads/
+sha256:17682225a2144afc2b354de21b59df9d713c86f16bccd397d0842c5aa47ff1fe [sources-downloader  59/116] COPY --from=unifont-download /sources/downloads/unifont.bdf.gz /sources/downloads/
+sha256:d578b7799147e11de09b12509cfa1ecc5f22b97dec51dc647f802b6846f80674 [sources-downloader  60/116] COPY --from=pam-download /sources/downloads/pam.tar.xz /sources/downloads/
+sha256:e187f8c92605f505768f8d511b302b99bd9c8d6097273a14db3bafff862d6355 [sources-downloader  61/116] COPY --from=cracklib-download /sources/downloads/cracklib.tar.bz2 /sources/downloads/
+sha256:1b61d6d8e5c2894c5c4e8c3b7ff0d39cd3c6dd0df816aae3ad85d6d4aa40a249 [sources-downloader  62/116] COPY --from=libpwquality-download /sources/downloads/libpwquality.tar.bz2 /sources/downloads/
+sha256:30b0c7fb21aaef7a94a1ae36ce828f88ac1d3fe60c6b013d63a6ea46dd65243a [sources-downloader  63/116] COPY --from=shadow-download /sources/downloads/shadow.tar.xz /sources/downloads/
+sha256:49e806a638500fe27fec2285b0e5971f5f06db8299d95bc6b92fbcc80f5cfcb5 [sources-downloader  64/116] COPY --from=aports-download /sources/downloads/aports.tar.gz /sources/downloads/
+sha256:4f4741a22a937dfdcbe82ed2cc40608a87d35df49c6be239ee7cfefe78a37091 [sources-downloader  65/116] COPY --from=busybox-download /sources/downloads/busybox.tar.bz2 /sources/downloads/
+sha256:e791f90be6b01645c27e17444aba3dc95328d245df37ae5fe9281ede27d82269 [sources-downloader  66/116] COPY --from=musl-download /sources/downloads/musl.tar.gz /sources/downloads/
+sha256:f285e4b6078cadf2cdfc22a63ca2cbd300f3af8a27178275e95797d7e4e39463 [sources-downloader  67/116] COPY --from=gcc-download /sources/downloads/gcc.tar.xz /sources/downloads/
+sha256:cf05241538456b54f270e02fc03ec37db702381ac538f7738e1cf8521fab8c23 [sources-downloader  68/116] COPY --from=gmp-download /sources/downloads/gmp.tar.bz2 /sources/downloads/
+sha256:e085da8a2ebfc31d644253b6fa587c9a439474996b1c8fb2d29d490ee7fe7969 [sources-downloader  69/116] COPY --from=mpc-download /sources/downloads/mpc.tar.xz /sources/downloads/
+sha256:bb68414b2cc8c1377c8eb25b0b3707638dd801ee1200ec4f3f7beb34e465cf47 [sources-downloader  70/116] COPY --from=mpfr-download /sources/downloads/mpfr.tar.bz2 /sources/downloads/
+sha256:72cdcf17256d94e6563e7b56b14682eb43d8f154f84e7cf0ed3f45143b2b5eb1 [sources-downloader  71/116] COPY --from=make-download /sources/downloads/make.tar.gz /sources/downloads/
+sha256:4e23de4d11399058a7655d44ecfe9332f05a39cf9e91f0bfac51f394c8f1a247 [sources-downloader  72/116] COPY --from=binutils-download /sources/downloads/binutils.tar.xz /sources/downloads/
+sha256:370d612305b94640e981906d0e40edf7a5b2bc28eafe08685d2d4eee462e7492 [sources-downloader  73/116] COPY --from=popt-download /sources/downloads/popt.tar.gz /sources/downloads/
+sha256:4eafa12adfddd2a76624f720eaa968533114b4b7bc6c86eed22de6e9c264cdb6 [sources-downloader  74/116] COPY --from=m4-download /sources/downloads/m4.tar.xz /sources/downloads/
+sha256:ec43fb20ae6bf745f2e31cfd053f63058ecf3c2b187fb075ec60ef2779d51b95 [sources-downloader  75/116] COPY --from=readline-download /sources/downloads/readline.tar.gz /sources/downloads/
+sha256:c8776b7158dd89af92e7f34bf91cda31acd2fe9d7ef5020604e68924e78c7552 [sources-downloader  76/116] COPY --from=perl-download /sources/downloads/perl.tar.gz /sources/downloads/
+sha256:26585cf3d882e325955e3deb99ab6450bf827e5e83c39165ecd57353314ee0b1 [sources-downloader  77/116] COPY --from=coreutils-download /sources/downloads/coreutils.tar.xz /sources/downloads/
+sha256:8f70a12e67eff3ef58ef4c43de79f6516bf26ba23726c6384e2b29ad441a620a [sources-downloader  78/116] COPY --from=findutils-download /sources/downloads/findutils.tar.xz /sources/downloads/
+sha256:94cce93ed64f9c3c3c4938f5db54b4827b2ac69ece0beafcdec43597bfdc552d [sources-downloader  79/116] COPY --from=grep-download /sources/downloads/grep.tar.xz /sources/downloads/
+sha256:0b21c3247e5c33e60225851df44beaf9ac4431f22206588886face1970b535d7 [sources-downloader  80/116] COPY --from=gperf-download /sources/downloads/gperf.tar.gz /sources/downloads/
+sha256:1b1e64d8bf5bd7f419512115bc6ce2f08d6bd598812ea6a8fe5f6f318f550236 [sources-downloader  81/116] COPY --from=diffutils-download /sources/downloads/diffutils.tar.xz /sources/downloads/
+sha256:1deadbf270bf98d621fcf657d5f90b8a4d1b2d5c152f63115c41f13c850d8f37 [sources-downloader  82/116] COPY --from=sudo-download /sources/downloads/sudo.tar.gz /sources/downloads/
+sha256:8b80619e935401bc4525bd5b367dd0311056f86e2dd2d90a354c9f90b43d7e97 [sources-downloader  83/116] COPY --from=pax-utils-download /sources/downloads/pax-utils.tar.gz /sources/downloads/
+sha256:ee7d06b2e3c3768f8964026c8052526c536497352adf688dc42864bf5ac7fdcb [sources-downloader  84/116] COPY --from=openscsi-download /sources/downloads/openscsi.tar.gz /sources/downloads/
+sha256:571f2dc744529422cf70675f702f9aa23692336e402216aeb209ed05a2f125ac [sources-downloader  85/116] COPY --from=gdb-download /sources/downloads/gdb.tar.gz /sources/downloads/
+sha256:eee2a10d793ff387fc0d149beefe0985ad2d9d0cdb3d02218303172d3aa448ad [sources-downloader  86/116] COPY --from=libffi-download /sources/downloads/libffi.tar.gz /sources/downloads/
+sha256:35dfdb1fa5cd7702563b0e635071553a4075f1f723dbd00b5d2f46337dc4cc85 [sources-downloader  87/116] COPY --from=tpm2-tss-download /sources/downloads/tpm2-tss.tar.gz /sources/downloads/
+sha256:e9fd36988cbcdefdccfbee8fc6a40e45b27975d8b8d5bfca6bc02fe891d691a4 [sources-downloader  88/116] COPY --from=libucontext-download /sources/downloads/libucontext.tar.gz /sources/downloads/
+sha256:4f349a9d194ac4e00c2037f24de4447dcb6644be57593c76149f3944bd2770a9 [sources-downloader  89/116] COPY --from=libxml2-download /sources/downloads/libxml2.tar.xz /sources/downloads/
+sha256:c682c5e45d11eff978184e703a98e7cd4d7b897edbc23a8dbb58a090f7be8ecf [sources-downloader  90/116] COPY --from=gzip-download /sources/downloads/gzip.tar.xz /sources/downloads/
+sha256:85195a8add05c867b1adea39df9679ca97e87bc8bfce6418dad5b1fc01a6af4a [sources-downloader  91/116] COPY --from=bash-download /sources/downloads/bash /sources/downloads/bash
+sha256:18922918daa5dd53460965b6651d2e92fa731cf125bc9704186da77e055d9822 [sources-downloader  92/116] COPY --from=libkcapi-download /sources/downloads/libkcapi.tar.gz /sources/downloads/
+sha256:a6515c725a6cddad81e79191878217d52ccf0cf3d9151c7503c6d23a726999bb [sources-downloader  93/116] COPY --from=shim-download /sources/downloads/shim.tar.bz2 /sources/downloads/
+sha256:97718c00fee67fd70c217bdb023121eaf19b95ff8243acfc117b814d5bc6da1b [sources-downloader  94/116] COPY --from=libiconv-download /sources/downloads/libiconv.tar.gz /sources/downloads/
+sha256:2f3f5f6b8aedf11786b06255f2048200898746e97db0df380d9749b2d0bb68b2 [sources-downloader  95/116] COPY --from=bc-download /sources/downloads/bc.tar.xz /sources/downloads/
+sha256:b67f9181c42b6af913f1c173e0910df26c0d27f2eded2912e1893a9f203786ea [sources-downloader  96/116] COPY --from=patch-download /sources/downloads/patch.tar.gz /sources/downloads/
+sha256:cc8cb357550c0ce7748dc0e00d3c0b58d0404559f1ea7b04b78c1a843d7b3f18 [sources-downloader  97/116] COPY --from=pcre2-download /sources/downloads/pcre2.tar.gz /sources/downloads/
+sha256:2ac689c2d8778902f2be229a9f39bb5fd5199ab640a087e95d5a7749c8fa084f [sources-downloader  98/116] COPY --from=glib-download /sources/downloads/glib.tar.xz /sources/downloads/
+sha256:45e76d16c03543ccc020b7fed7daf39bf49ecb1ddea8f33606e034f91a291066 [sources-downloader  99/116] COPY --from=qemu-download /sources/downloads/qemu.tar.xz /sources/downloads/
+sha256:9843e16fe0f7bab1a1d3fe9df660ca8abb23a4b91ea47ddf1daed223e0e58273 [sources-downloader 100/116] COPY --from=mspack-download /sources/downloads/mspack.tar.gz /sources/downloads/
+sha256:b70e6b5bd4f8cd5b42724df5c419c7cd4c4183de4915fdb6be5099d35430e2be [sources-downloader 101/116] COPY --from=open-vm-tools-download /sources/downloads/open-vm-tools.tar.gz /sources/downloads
+sha256:3d41874c3f924c9beec8e8585b586337df768e04779cc468c873d456442ab153 [sources-downloader 102/116] COPY --from=libnfnetlink-download /sources/downloads/libnfnetlink.tar.bz2 /sources/downloads/
+sha256:439dd5937788a86e144430c9ea314e3de2c3a569b3565ce4079044134cbdbc01 [sources-downloader 103/116] COPY --from=libnetfilter_conntrack-download /sources/downloads/libnetfilter_conntrack.tar.xz /sources/downloads/
+sha256:f641fcc4d8d4b6b4da5f1065dbf34a9d1a25c31046ad2c74425c5b2fb26f8a0d [sources-downloader 104/116] COPY --from=libnetfilter_cttimeout-download /sources/downloads/libnetfilter_cttimeout.tar.bz2 /sources/downloads/
+sha256:9cd215e788ab51ae15577a71f448b20a20ea18a828d328259712ad7ed0499298 [sources-downloader 105/116] COPY --from=libnetfilter_cthelper-download /sources/downloads/libnetfilter_cthelper.tar.bz2 /sources/downloads/
+sha256:15d3f4c08f660c1764d7257d7f447317676f9849149a3a9ce7bc5ede6364faa5 [sources-downloader 106/116] COPY --from=libnetfilter_queue-download /sources/downloads/libnetfilter_queue.tar.bz2 /sources/downloads/
+sha256:fd65c7243108ad2a4a5f89a25a95ca638187aa235a232a765564256fa347ae81 [sources-downloader 107/116] COPY --from=conntrack-tools-download /sources/downloads/conntrack-tools.tar.xz /sources/downloads/
+sha256:f9d450784ba25cfe37228ee07b8c65ee5115c18db3e3f50d0a95ec9d652963c7 [sources-downloader 108/116] COPY --from=procps-ng-download /sources/downloads/procps-ng.tar.xz /sources/downloads/
+sha256:043b98ac7a412cbe707695bab5fc879b8fb1dce16f7d49f8e7fb91f5b7781bfd [sources-downloader 109/116] COPY --from=dwarves-download /sources/downloads/dwarves.tar.gz /sources/downloads/
+sha256:8405ea0f2b194dd925c7508dbc91b98185222fe7478a790b0d59407e7995385f [sources-downloader 110/116] COPY --from=libbpf-download /sources/downloads/libbpf.tar.gz /sources/downloads/
+sha256:6738bfe0fa86049139dc18a639c9e32835fe356d5d4a3713f7207a174a747a2f [sources-downloader 111/116] COPY --from=argp-standalone-download /sources/downloads/argp-standalone.tar.gz /sources/downloads/
+sha256:a143c26ad7dfaacc35ce038875f9d68fe1e131fbd429a40c769ae80431dd16f5 [sources-downloader 112/116] COPY --from=musl-obstack-download /sources/downloads/musl-obstack.tar.gz /sources/downloads/
+sha256:8acf54c19e290b1ed57aeed153fbda46b530c484b64b9920fe1a2d87395e2d2f [sources-downloader 113/116] COPY --from=elfutils-download /sources/downloads/elfutils.tar.bz2 /sources/downloads/
+sha256:0f16a1f31f3c28f4c786bc6f3616c099cd98ebdbf60d0ec5a0454938edbda1c4 [sources-downloader 114/116] COPY --from=tzcode-download /sources/downloads/tzcode.tar.gz /sources/downloads/
+sha256:99cc5b231a08574f13415229326d9b0defb1bc2370737795fde9039a26b1702b [sources-downloader 115/116] COPY --from=tzdata-download /sources/downloads/tzdata.tar.gz /sources/downloads/
+sha256:8d3512bcbe40a86555ef7f7b3088f4c0e3913cd4d335170842486dba4cd650ce [sources-downloader 116/116] COPY --from=wireless-regdb-download /sources/downloads/wireless-regdb.tar.xz /sources/downloads/
+sha256:1341f87142a3bab09b57c29e1723f4b42c240271cc7163a6d7b0ac249bdc6ef8 [sources-downloader-base 1/2] RUN mkdir -p /sources/downloads
+sha256:d5ae578d3b4b1274db6290185398b2eba74f49d38b22195a0e6fcff24cdb48b4 [sources-downloader-base 2/2] WORKDIR /sources/downloads
+sha256:b32ead74b72928bd66f38cc880f4e93ef0cc926444ce7715eb4141d298c86bf8 [sqlite3-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/sqlite3:3.54.1@sha256:6dadc521e243d0a2ab8b7680061c143d457c4373181e2c70ef2b07e17e499f8c
+sha256:699a12d15c60faf106169623d8f3ab866a032c7072f61135cfaf8a58845e624e [stage0 1/8] RUN if [ "x86-64" = "x86-64" ] && [ "x86_64" != "x86_64" ]; then echo "For ARCH x86-64, BUILD_ARCH must be x86_64"; exit 1; fi
+sha256:29948d9e4c77447c400cda8d5650950b1953bff5c8a2f8fc95f5c5205aff48ed [stage0 2/8] RUN if [ "x86-64" = "aarch64" ] && [ "x86_64" != "aarch64" ]; then echo "For ARCH aarch64, BUILD_ARCH must be aarch64"; exit 1; fi
+sha256:2c364a10ce3e57cb5278df9d2a1ed0271f225f07096e4964e1696e8fab9bc3b8 [stage0 3/8] RUN if [ "x86-64" = "riscv64" ] && [ "x86_64" != "riscv64" ]; then echo "For ARCH riscv64, BUILD_ARCH must be riscv64"; exit 1; fi
+sha256:9fa7a50e3182e4418abeda5c93aea2489255164004275b1de071bdef8a29402c [stage0 4/8] RUN git clone https://github.com/firasuke/mussel.git && cd mussel && git checkout 687d2f5e4d679487209cd9b4bd75091a20cae357 -b build
+sha256:10cfa118fb2c4455b8c4783ad149dd5888e81a889137aa49fe5b9cb0d21e778e [stage0 5/8] RUN mkdir -p mussel/sources/musl
+sha256:012b733f1457e63a244436a25bed4387ea1e9a6f0cff0a739d7f7c93c728bdb5 [stage0 6/8] COPY --from=musl-toolchain-download /sources/downloads/musl-toolchain.tar.gz mussel/sources/musl/musl-1.2.5.tar.gz
+sha256:420d42fbf5cc06dba231bb0e1921d5d7ea4294cc86b93a0e85d0b2abe34b4135 [stage0 7/8] RUN sed -i 's|https://ftpmirror\.gnu\.org|https://mirror.netcologne.de/gnu|g' mussel/mussel
+sha256:70cb2f6d4ef7510932d6ed2ab23030d1b1e455872e17a3a369a94124084ac509 [stage0 8/8] RUN cd mussel && ./mussel x86-64 -k -l -o -p -s -T hadron
+sha256:99c23af938570611f3fdf94a7308cca44a84856484d98a8943a75d20bc249790 [stage1 1/2] COPY --from=stage1-merge /skeleton /
+sha256:7514b32fc566da2e8ddba5db3ef13f742d7049afd8ddb1b715f8d2eb85fa0316 [stage1 2/2] RUN --mount=type=bind,from=kernel-headers-stage0,source=/linux-headers,target=/khdr     cp -a /khdr/. /usr/
+sha256:01b6dee1e062eb30232f0587238d42a175d11a51d40558b21871e38500dc9647 [stage1-merge  1/15] COPY --from=skeleton /sysroot /skeleton
+sha256:c54abb272927148f451294ed1eea43cbbf4f24a8e2fe2522376e6f052b2631ba [stage1-merge  2/15] COPY --from=gcc-stage0 /sysroot /gcc
+sha256:f62e5c215970d37da976298afe4774510819646a7e53bd3e991725a042c52c17 [stage1-merge  3/15] RUN rsync -aHAX --keep-dirlinks /gcc/. /skeleton
+sha256:3df2b7d615ffcaa13be8e4c3c6177278e5bfcd15de5aabce160761ab75561e33 [stage1-merge  4/15] COPY --from=musl-stage0 /sysroot /musl
+sha256:7300447d31fdd67efa92d1bbf7acc76150420e24fca0a08e5d7e68b0d2e71328 [stage1-merge  5/15] RUN rsync -aHAX --keep-dirlinks /musl/. /skeleton/
+sha256:c2ea8e8677877e980d8e19ad7189269a10927f8e18f054a7560ff2d908ca9371 [stage1-merge  6/15] COPY --from=busybox-stage0 /sysroot /busybox
+sha256:cc4b4b40ecd87c79a27a2eeda49920a603948c427e714d1c4a92adeb7f253eb7 [stage1-merge  7/15] RUN rsync -aHAX --keep-dirlinks /busybox/. /skeleton/
+sha256:2dbe2a129de39ac97d3178681fb3da29659e2797d2a70ece959b89eb971500f4 [stage1-merge  8/15] COPY --from=make-stage0 /sysroot /make
+sha256:60cbb5d264b25e9b703ab8377672400a77e803f0ca66fbdc52ff62dc8f3a33e6 [stage1-merge  9/15] RUN rsync -aHAX --keep-dirlinks /make/. /skeleton/
+sha256:897881f7b97689337aa82a714efe518c95cb4ee428edb9da1f580da3f420b561 [stage1-merge 10/15] COPY --from=binutils-stage0 /sysroot /binutils
+sha256:bb0274d7a686c5df2608feeeeb5c6e583ec2de3b077f3ef1b80aaac7c67cf481 [stage1-merge 11/15] RUN rsync -aHAX --keep-dirlinks /binutils/. /skeleton/
+sha256:fac88a777b019d08c2446c14e0fc34588b6762a8a442f83e0cf3ff35d8d1c5f9 [stage1-merge 12/15] COPY --from=sources-downloader /sources/downloads/aports.tar.gz /aports/aports.tar.gz
+sha256:518ad1c641a0d21594ae8d4f7bf07d259a7cc8980e7b6a29c4f00d7ea613951b [stage1-merge 13/15] WORKDIR /aports
+sha256:061c466f5e187a2dc4add0d9b3d6080f3b9739fee44f77b58d41ba0819ea70ff [stage1-merge 14/15] RUN tar xf aports.tar.gz && mv aports-* aports
+sha256:679b587dbbf7cf0e339e25741b1662cd60cb374cc835f5a23f1aafb1d6dc8480 [stage1-merge 15/15] RUN cp aports/main/musl/ldconfig /skeleton/usr/bin/ldconfig && chmod +x /skeleton/usr/bin/ldconfig
+sha256:d9ed2fd60634b3376526fe9cc0bb2e8a02280ba25b2f91cdd12a0a1819fc8dda [strace-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/strace:7.3@sha256:f06a735a4a0656ad65ebf3eec44698c7bada7bfecbd60c01da09a100aaecc355
+sha256:d0c7df90dc46b477a705fc1c95e3ca7a5166401818a02f63e64799290d45553a [sudo-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/sudo:1.9.17p2@sha256:3bcf5333e70b63355614d2f4e6aec33321bf317fe8c2933edb056170aa1e2835
+sha256:b00368801ace388422f971b29aae9829c213d8c70e110bb3e4de5458790d0cd4 [systemd-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/systemd:262.2@sha256:6dd6a28df94fac2672d97da3bebed9d23492fbf95d6559877c18aa0b1604034d
+sha256:8fc79619fb8b62b542e09c29467a4f7db599985f89beef8efaaef34f1c21b579 [tpm2-tss-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/tpm2-tss:4.2.2@sha256:a00351539436c5afa59429d6e95984969ec7cd2dd4476401dd362a22a6d868fb
+sha256:ac46ed04dcb7bd41fec58574c1a95f9929a41507f7e9de9c9eeda48dddf7fa06 [tzcode-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/tzcode:2026f@sha256:93adfafc75d29c756f09d865309a6eb1b85620916367360e31daa0732b7586ab
+sha256:b724c30e266d855b17a0a55d1617ff75c184e5dc19b260d713b1b9e072d75358 [tzdata-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/tzdata:2026f@sha256:4bbe46807d33468253fed85058b7c13861a982fac86a88f250e0918e841dbb9c
+sha256:e782c3825035a3fcea9610327eb0a8012e96523f311f84c6a8eb1ae908293024 [unifont-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/unifont:18.0.01@sha256:9932c45cef56490904c47aa2cbf3bcd4062d5e499bceba7c095aa8fa1723c18d
+sha256:5dca2d49daf6fa760f125dd75d09150da89e5aac3c0076ba14e6f28908754314 [urcu-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/urcu:0.15.7@sha256:7ca83615c64f9c51a6e8b50a9023f747e05126dd8c8052a155fbd3d1d7e63ba5
+sha256:10a75d36b6caf5f4ccc338135342c3a1ce2590247f8fd4d8f34c675151c42a86 [util-linux-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/util-linux:2.42.4@sha256:1c2bb8d204ba207f24589d92b25baaf4b79e6ea9ae249a00772029e66da0738c
+sha256:7c0207afd0f592f332b98f3dbab4504b123bb7c354d33ba8192bcb7cf5ca4211 [wireless-regdb-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/wireless-regdb:2026.09.03@sha256:437b9a648e1b4bda0a2679ed6404f6d7eb7b15fcec0d236c51700832b78e2074
+sha256:7f1805bf3d01f4ee1a1beb1f5a61bd114ef22d153106b852acb224d24de87774 [xxhash 1/2] COPY --from=sources-downloader /sources/downloads/xxhash.tar.gz /sources/
+sha256:89f090a9bcd3a94faaa4cd89d6ea0e7447b87f964846e7eff788e39f562f6a4b [xxhash 2/2] RUN mkdir -p /sources && cd /sources && tar -xf xxhash.tar.gz && mv xxHash-* xxhash &&     cd xxhash && mkdir -p /xxhash && CC=gcc make -s -j16  prefix=/usr DESTDIR=/xxhash &&     make -s -j16  prefix=/usr DESTDIR=/xxhash install && make -s -j16  prefix=/usr install
+sha256:59a0075eee76fde90adab9fd173f1f99f23ff7007eed539243d7466f697e6a66 [xxhash-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/xxhash:0.8.4@sha256:c3d14e0c384f448d4a2d64e620d96b8d78fb18aaa3f1999c27bb158fb5ce455c
+sha256:9be569bffd3a7ab863cba5bdae892bdabe039879beba51d1bcdcb683e540e35e [xz 1/7] COPY --from=sources-downloader /sources/downloads/xz.tar.gz /sources/
+sha256:10c7274890f4e56b07b98cb328e3d9dd7ddbf1c15e73506298325956b1ec4d2f [xz 2/7] RUN mkdir -p /xz
+sha256:edcfbadefef9430548699fbcf58affd6ee807891a080cf7e9ff1c0a1022bcd44 [xz 3/7] WORKDIR /sources
+sha256:51f8feec1eceb6f8873184d4b4f6b4a7eda4098cdd09be93ad66d1dd2210f80c [xz 4/7] RUN tar -xf xz.tar.gz && mv xz-* xz
+sha256:79a53061fc653c8ada1e747a202dc860b09e0c6cedb43ee6bbcd89a196cbb101 [xz 5/7] WORKDIR /sources/xz
+sha256:a44ad4bf8ea9385d370cc96389dbf79d4b0407392c179bf5f18266c24d1fff6e [xz 6/7] RUN ./configure --quiet --prefix=/usr --host=x86_64-hadron-linux-musl --build=x86_64-hadron-linux-musl --enable-lto --enable-shared --disable-static --disable-nls --disable-doc --enable-small --disable-scripts
+sha256:e66fe8a4570950e22ffd995f2aee7dde4d6cca5991532a663942cd92cf179141 [xz 7/7] RUN make -s -j16  && make -s -j16  install DESTDIR=/xz && make -s -j16  install
+sha256:195045a0b5cb6049fa79ae5dfd04a9b30a135270b9dc893cf7bbf8ba739d8589 [xz-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/xz:5.8.3@sha256:649e76beed17fee39580b04f9bf93a0d7640741c648d3c12b076968a891548c7
+sha256:e2f07706812d62af41a7364d6ce917ee2eed623ac577e83f89002fedbc4f27f1 [zlib 1/9] COPY --from=sources-downloader /sources/downloads/zlib.tar.gz /sources/
+sha256:c6a7bb2b6118f49f178ce4bef04b6f81691f5bd7f14769d97a1a52c20f9a842a [zlib 2/9] RUN mkdir -p /zlib
+sha256:1ea565e74fb3740356d1d5a362e166781aec242641237af0faaface6bf39e85c [zlib 3/9] WORKDIR /sources
+sha256:64c232d7c0c79866a6b88921d821d1f965c522665f0356d6c60415c7354d1dda [zlib 4/9] RUN tar -xf zlib.tar.gz && mv zlib-* zlib
+sha256:2d7dd45eaa2045e04aab35d876e4e002855e557e7f862b40762e05dc03f33318 [zlib 5/9] WORKDIR /sources/zlib
+sha256:6c27a1561cfe522a58926dd0999625f2251f3913989219c09985a215752d443f [zlib 6/9] RUN ./configure --shared --prefix=/usr
+sha256:1f82b386380be7bb4ba4ccd17f55a3253a9ffa33670edbd082b10804c11472bf [zlib 7/9] RUN make -s -j16  DESTDIR=/zlib
+sha256:c7d825facd8698f164fba613f69b9c91e2d976fae99d4b5564e27e781a684f05 [zlib 8/9] RUN make -s -j16  DESTDIR=/zlib install
+sha256:6652512923f48404ec3e5d0bba525e71747c7abb9544544c984617ddf892bb23 [zlib 9/9] RUN make -s -j16  install
+sha256:2676dda47aa0026fe25c55178d43b22ee4d556a31eb2a7c04c36214ac558f338 [zlib-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/zlib:1.4@sha256:04e48e6644094b9b6f3b22e5b36c9377a65294f00af56f84cfa16b8a1805cd7f
+sha256:2526a5b5b74ed8a8690eb0c571e6fa4d326300c2c21524d5384b7cbece6e7862 [zstd 1/8] COPY --from=sources-downloader /sources/downloads/zstd.tar.gz /sources/
+sha256:df2a43d40cc61b6ce81ffbe1f5bb56187602106a88383adc24ee5e596cf92b82 [zstd 2/8] RUN mkdir -p /zstd
+sha256:b3a80791982edd284a10870bedad08168261134804e9ed33122e21904ac872c0 [zstd 3/8] WORKDIR /sources
+sha256:8252921abe3924d054f956b4251b2b5c7b916db31d0b7c4e2591b92ad8e20f71 [zstd 4/8] RUN tar -xf zstd.tar.gz && mv zstd-* zstd
+sha256:1c344eadeabc6d7373f612f50cf0f86cdea85a8896263cdfc2f05465e0c6aa4f [zstd 5/8] WORKDIR /sources/zstd
+sha256:d0d0d9c15c4c7ce49eca85ef43d83d0ed5e5542e198824f1f71c3c3c42a7134d [zstd 6/8] RUN make -s -j16  DESTDIR=/zstd prefix=/usr
+sha256:10a27724041fd0aa580339688cec4af503981fa3d5f19b9b91b63febfbe05f21 [zstd 7/8] RUN make -s -j16  DESTDIR=/zstd prefix=/usr install
+sha256:e0efa3b947350bc50df55513a0b97ce69bffee52641194a865e54d4bd6af3454 [zstd 8/8] RUN make -s -j16  prefix=/usr install
+sha256:dd144abb52e7cdd53023c40ec2a202d63fdf721a78e6199b4315ab6328163147 [zstd-download 1/1] FROM ghcr.io/kairos-io/hadron-sources/zstd:1.5.7@sha256:eb84d5a98b01c348018ff6b9f13e0545d02c0fcccc5272bc8fe39b67ca059f52

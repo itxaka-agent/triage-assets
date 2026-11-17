@@ -1,0 +1,57 @@
+# base de78cc1 vs head a5530e5, linux/amd64, KERNEL_TYPE=default FIPS=no-fips SOURCE_DATE_EPOCH=0
+# digests from llbdump (BuildKit dockerfile2llb, deterministic). same digest = same cache key.
+[base kernel-misc, regex ^[[]kernel] base-kernel-misc-novers vs base-kernel-misc-main: 5 same, 44 differ
+[base kernel-misc, regex .] base-kernel-misc-novers vs base-kernel-misc-main: 288 same, 320 differ
+[head kernel-misc, regex ^[[]kernel] head-kernel-misc-novers vs head-kernel-misc-main: 58 same, 0 differ
+[head kernel-misc, regex .] head-kernel-misc-novers vs head-kernel-misc-main: 617 same, 0 differ
+[head kernel-artifacts, regex ^[[]kernel] head-kernel-artifacts-novers vs head-kernel-artifacts-main: 71 same, 0 differ
+[head kernel-artifacts, regex .] head-kernel-artifacts-novers vs head-kernel-artifacts-main: 630 same, 0 differ
+# kernel job (no VERSION) vs image job (VERSION=main BOOTLOADER=grub, target default)
+[base kernel-misc vs image] base-kernel-misc-novers vs base-image-grub: 5 same, 39 differ
+[head kernel-artifacts vs image grub] head-kernel-artifacts-novers vs head-image-grub: 56 same, 0 differ
+[head kernel-artifacts vs image systemd] head-kernel-artifacts-novers vs head-image-systemd: 56 same, 0 differ
+# base differing kernel-chain vertices (all of them)
+  DIFF [kernel-default 2/2] RUN if [ x86-64 = "aarch64" ] ; then cp -rfv /sources/kernel-configs/default-arm64.config
+  DIFF [kernel-base 15/30] COPY --from=xz /xz/ /
+  DIFF [kernel-base 14/30] COPY --from=kmod /kmod/ /
+  DIFF [kernel-build 5/5] RUN ln -sfv /kernel/vmlinuz-$(cat /kernel/kernel-release) /kernel/vmlinuz
+  DIFF [kernel-base 29/30] COPY ./patches/kernel-patches /sources/kernel-patches
+  DIFF [kernel-base 28/30] RUN tar -xf linux.tar.xz && mv linux-* kernel
+  DIFF [kernel-default 1/2] WORKDIR /sources/kernel
+  DIFF [kernel-base 5/30] COPY --from=m4 /m4/ /
+  DIFF [kernel-misc 4/5] RUN cp /sources/kernel/.config /output/kernel-config
+  DIFF [kernel-base 24/30] RUN mkdir -p /sources/kernel-configs
+  DIFF [kernel-base 8/30] COPY --from=elfutils /elfutils/ /
+  DIFF [kernel-misc 3/5] RUN cp /kernel/kernel-release /output/kernel-release
+  DIFF [kernel-base 16/30] COPY --from=grep /grep/ /
+  DIFF [kernel-base 9/30] COPY --from=openssl /openssl/ /
+  DIFF [kernel-base 4/30] COPY --from=flex /flex/ /
+  DIFF [kernel-misc 5/5] RUN cp /sources/kernel/Module.symvers /output/Module.symvers
+  DIFF [kernel-base 30/30] RUN set -e; cd /sources/kernel; for p in /sources/kernel-patches/*.patch; do [ -e "$p" ] |
+  DIFF [kernel-base 20/30] COPY --from=fts /fts/ /
+  DIFF [kernel-base 1/30] COPY --from=bash /bash /bash
+  DIFF [kernel-build 4/5] RUN if [ x86-64 = "aarch64" ]; then ARCH=arm64 kver=$(cat /kernel/kernel-release) && cp arc
+  DIFF [kernel-base 27/30] WORKDIR /sources
+  DIFF [kernel-base 26/30] RUN mkdir -p /kernel && mkdir -p /modules
+  DIFF [kernel-base 23/30] COPY --from=sources-downloader /sources/downloads/linux.tar.xz /sources/
+  DIFF [kernel-base 21/30] COPY --from=python-build /python /
+  DIFF [kernel-base 12/30] COPY --from=findutils /findutils/ /
+  DIFF [kernel-base 7/30] COPY --from=libelf /libelf/ /
+  DIFF [kernel-modules 2/2] RUN if [ x86-64 = "aarch64" ]; then export ARCH=arm64; elif [ x86-64 = "riscv64" ]; then 
+  DIFF [kernel-misc 2/5] RUN cp /kernel/kernel-version /output/kernel-version
+  DIFF [kernel-base 18/30] COPY --from=obstack /obstack/ /
+  DIFF [kernel-base 17/30] COPY --from=libbpf /libbpf/ /
+  DIFF [kernel-base 11/30] COPY --from=gawk /gawk/ /
+  DIFF [kernel-base 10/30] COPY --from=perl /perl/ /
+  DIFF [kernel-misc 1/5] WORKDIR /output/
+  DIFF [kernel-build 2/5] RUN hcflags='-D__attribute_const__=' && if [ x86-64 = "aarch64" ]; then ARCH=arm64 make old
+  DIFF [kernel-build 3/5] RUN if [ x86-64 = "aarch64" ]; then export ARCH=arm64; elif [ x86-64 = "riscv64" ]; then ex
+  DIFF [kernel-base 25/30] COPY ./files/kernel/* /sources/kernel-configs/
+  DIFF [kernel-base 3/30] COPY --from=readline /readline/ /
+  DIFF [kernel-modules 1/2] RUN hcflags='-D__attribute_const__=' && if [ x86-64 = "aarch64" ]; then export ARCH=arm64
+  DIFF [kernel-build 1/5] WORKDIR /sources/kernel
+  DIFF [kernel-base 22/30] COPY --from=pahole /pahole/ /
+  DIFF [kernel-base 19/30] COPY --from=argp /argp/ /
+  DIFF [kernel-base 13/30] COPY --from=diffutils /diffutils/ /
+  DIFF [kernel-base 6/30] COPY --from=bison /bison/ /
+  DIFF [kernel-base 2/30] RUN rsync -aHAX --keep-dirlinks /bash/. /
