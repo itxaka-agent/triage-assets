@@ -1,0 +1,39 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.base
+#1 transferring dockerfile: 39.23kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/alpine:3.24@sha256:3f4d6b32e26703c6082839234f43769d5046b3ac7c910033911d1e71d8cd630a
+#2 ...
+
+#3 [auth] library/alpine:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/alpine:3.24@sha256:3f4d6b32e26703c6082839234f43769d5046b3ac7c910033911d1e71d8cd630a
+#2 DONE 0.6s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 692B done
+#4 DONE 0.0s
+
+#5 [qa-probe 1/2] FROM docker.io/library/alpine:3.24@sha256:3f4d6b32e26703c6082839234f43769d5046b3ac7c910033911d1e71d8cd630a
+#5 resolve docker.io/library/alpine:3.24@sha256:3f4d6b32e26703c6082839234f43769d5046b3ac7c910033911d1e71d8cd630a 0.0s done
+#5 DONE 0.0s
+
+#6 [qa-probe 2/2] RUN echo "TARGETPLATFORM=linux/arm64 TARGETARCH=amd64"; echo "k8s url: https://dl.k8s.io/v1.37.0/bin/linux/amd64/kubeadm"; echo "cni: cni-plugins-linux-amd64-v1.9.1.tgz"; echo "runc: runc.amd64"; echo "crictl: crictl-v1.37.0-linux-amd64.tar.gz"
+#6 0.222 TARGETPLATFORM=linux/arm64 TARGETARCH=amd64
+#6 0.222 k8s url: https://dl.k8s.io/v1.37.0/bin/linux/amd64/kubeadm
+#6 0.222 cni: cni-plugins-linux-amd64-v1.9.1.tgz
+#6 0.222 runc: runc.amd64
+#6 0.222 crictl: crictl-v1.37.0-linux-amd64.tar.gz
+#6 DONE 0.2s
+
+#7 exporting to image
+#7 exporting layers 0.0s done
+#7 exporting manifest sha256:bd910d2e66237f0e16d3ddfefe639f8a8fd6d7e4e9794866bfd4fcff590726c6 done
+#7 exporting config sha256:12a5b52be204ff93e580ee055f4cf08e9a760b743f2287fc42dc4b3516da5b22 done
+#7 exporting attestation manifest sha256:5021e5dd5458652b3c3e31558ef911253d18a6ced513eea61bb5c483dd8c25a1 done
+#7 exporting manifest list sha256:05aed8757ca40d34fbf9759e93539d7bafd78664e2be3f587c3c4d140349af55 done
+#7 naming to moby-dangling@sha256:05aed8757ca40d34fbf9759e93539d7bafd78664e2be3f587c3c4d140349af55 done
+#7 DONE 0.1s
