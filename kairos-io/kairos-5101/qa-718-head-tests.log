@@ -1,0 +1,112 @@
+== head tests (full)
+
+> kairos-docs@0.0.0 test
+> npm run test:scripts && npm run test:components && npm run test:plugins
+
+
+> kairos-docs@0.0.0 test:scripts
+> node --test scripts/*.test.mjs
+
+✔ a scheduled run asks for verbose output and nothing else (6.193756ms)
+✔ a dispatch with a version passes the version as its own argument (2.571838ms)
+✔ a dispatch with a version and a dry run passes four separate arguments (2.408876ms)
+✔ a dispatch with blank inputs is the scheduled argument vector (2.302466ms)
+✔ a version holding a space stays one argument (2.303236ms)
+✔ release-automation.sh rejects every flag collapsed into one argument (5.024819ms)
+✔ updates hadronFlavorRelease for the target version (22.845647ms)
+✔ leaves the OS-flavor curated list (v3.7.2) untouched (18.192854ms)
+✔ refreshes the announcement banner to the target version (18.054518ms)
+✔ generates a per-version hadron flavor const matching hadronFlavorRelease (28.276732ms)
+✔ is idempotent across repeated runs (45.932272ms)
+✔ falls back to the template flavorOptions when there is no hadron release (23.226311ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 190.468636
+
+> kairos-docs@0.0.0 test:components
+> node --test 'src/**/*.test.mjs'
+
+(node:148) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///w/src/components/ShortcodeCodeBlock.render.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /w/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ renderTemplate replaces {{< OperatorVersion >}} with the resolved operator version (0.807529ms)
+✔ renderTemplate leaves other shortcodes intact when replacing OperatorVersion (0.112508ms)
+✔ renderTemplate substitutes OperatorVersion in older-version contexts (0.078659ms)
+✔ renderTemplate strips the leading v for OperatorChartVersion (0.102533ms)
+✔ renderTemplate leaves OperatorChartVersion unchanged if the operator version has no v prefix (0.081258ms)
+✔ renderTemplate replaces {{< GoogleImage >}} with the image name the pipeline publishes (0.117811ms)
+✔ renderTemplate leaves no shortcode behind for GoogleImage (0.109308ms)
+✔ renderTemplate tracks the hadron version of each docs version for GoogleImage (0.08473ms)
+✔ renderTemplate ignores the flavor selector for GoogleImage (0.086589ms)
+✔ renderTemplate leaves GoogleImage untouched for a docs version predating hadron (0.11562ms)
+✔ renderTemplate renders GoogleImage and KairosVersion differently in one template (0.0755ms)
+✔ renderTemplate substitutes every GoogleImage occurrence, not just the first (0.080414ms)
+✔ renderTemplate replaces OCITag with the tag half of the OCI reference (0.184192ms)
+✔ renderTemplate renders OCITag and OCI consistently in one template (0.112847ms)
+✔ renderTemplate leaves OCITag alone when no variant is given (0.046894ms)
+✔ renderTemplate substitutes every OCITag occurrence, not just the first (0.052686ms)
+✔ renderTemplate does not let the OCI rule swallow OCITag (0.059697ms)
+(node:149) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///w/src/components/kairos-image-name.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /w/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ buildKairosImageName builds standard ISO filename with k3s segment (0.520167ms)
+✔ buildKairosImageName omits k3s segment for non-standard variant (0.091792ms)
+✔ buildKairosOciImageName builds a pullable standard OCI reference (0.112287ms)
+✔ buildKairosOciImageName omits k3s segment for non-standard variant (0.075635ms)
+✔ buildKairosOciImageName appends an optional suffix (0.077678ms)
+✔ buildGoogleImageName matches what upload-image-to-gcp.sh creates (0.075574ms)
+✔ buildGoogleImageName leaves no dots for GCE to reject (0.089061ms)
+✔ buildGoogleImageName never adds a k3s segment (0.058352ms)
+✔ buildKairosOciImageTag returns the tag half of the OCI reference (0.095297ms)
+✔ buildKairosOciImageTag drops the k3s segment outside the standard variant (0.564933ms)
+✔ buildKairosOciImageTag honours arch, model and suffix (0.104971ms)
+(node:150) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///w/src/utils/versionedCustomFields.helpers.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /w/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ getDocsVersionFromPath returns the version for /docs/vX.Y.Z/ paths (0.589769ms)
+✔ getDocsVersionFromPath returns null for the current (unversioned) docs path (0.090244ms)
+✔ getDocsVersionFromPath returns null for non-docs paths, including operator-docs (0.068811ms)
+✔ getOperatorVersionFromPath returns the version for /operator-docs/vX.Y.Z/ paths (0.129617ms)
+✔ getOperatorVersionFromPath returns null for the current (unversioned) operator-docs path (0.086898ms)
+✔ getOperatorVersionFromPath returns null for the development operator-docs path (0.064677ms)
+✔ getOperatorVersionFromPath returns null for non-operator paths (0.063579ms)
+ℹ tests 35
+ℹ suites 0
+ℹ pass 35
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 65.87257
+
+> kairos-docs@0.0.0 test:plugins
+> node --test 'plugins/*.test.mjs'
+
+(node:187) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///w/plugins/remark-shortcode-code.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /w/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ a fenced block carrying a shortcode becomes a flow ShortcodeCodeBlock (0.945948ms)
+✔ inline code carrying a shortcode becomes a text ShortcodeInlineCode (0.182488ms)
+✔ inline code with extra whitespace in the shortcode is still matched (0.085924ms)
+✔ inline code with no shortcode is left alone (0.069263ms)
+✔ every shortcode the fenced branch accepts is accepted inline too (0.113464ms)
+✔ inline code nested below a paragraph is reached (0.067764ms)
+✔ a shortcode carrying an attribute is matched for every supported name (0.099858ms)
+✔ a name that only prefixes a supported shortcode is not matched (0.06966ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 57.842352

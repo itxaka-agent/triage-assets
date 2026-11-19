@@ -1,0 +1,16 @@
+== docs/reference/reset/index.html
+OCITag count: 0
+literal {{< lines: 0
+{'version: "v0.6.3-standard-amd64-generic-v4.4.0-k3s-v1.37.1-k3s1"'}
+== docs/v4.4.0/reference/reset/index.html
+OCITag count: 0
+literal {{< lines: 0
+{'version: "v0.6.3-standard-amd64-generic-v4.4.0-k3s-v1.37.1-k3s1"'}
+== docs/v4.3.0/reference/reset/index.html
+OCITag count: 0
+literal {{< lines: 0
+{'version: "v0.5.1-standard-amd64-generic-v4.3.0-k3s-v1.36.4-k3s1"'}
+== docs/v4.2.0/reference/reset/index.html
+OCITag count: 0
+literal {{< lines: 0
+{'version: "v0.5.1-standard-amd64-generic-v4.2.0-k3s-v1.36.3-k3s1"'}

@@ -1,0 +1,136 @@
+== base tests (head test files copied in)
+v24.22.0
+✔ renderTemplate replaces {{< OperatorVersion >}} with the resolved operator version (1.491139ms)
+✔ renderTemplate leaves other shortcodes intact when replacing OperatorVersion (0.110623ms)
+✔ renderTemplate substitutes OperatorVersion in older-version contexts (0.077108ms)
+✔ renderTemplate strips the leading v for OperatorChartVersion (0.067862ms)
+✔ renderTemplate leaves OperatorChartVersion unchanged if the operator version has no v prefix (0.62055ms)
+✔ renderTemplate replaces {{< GoogleImage >}} with the image name the pipeline publishes (0.14547ms)
+✔ renderTemplate leaves no shortcode behind for GoogleImage (0.120231ms)
+✔ renderTemplate tracks the hadron version of each docs version for GoogleImage (0.08792ms)
+✔ renderTemplate ignores the flavor selector for GoogleImage (0.089005ms)
+✔ renderTemplate leaves GoogleImage untouched for a docs version predating hadron (0.118085ms)
+✔ renderTemplate renders GoogleImage and KairosVersion differently in one template (0.081435ms)
+✔ renderTemplate substitutes every GoogleImage occurrence, not just the first (0.080543ms)
+✖ renderTemplate replaces OCITag with the tag half of the OCI reference (0.623519ms)
+✖ renderTemplate renders OCITag and OCI consistently in one template (0.326777ms)
+✔ renderTemplate leaves OCITag alone when no variant is given (0.06873ms)
+✖ renderTemplate substitutes every OCITag occurrence, not just the first (0.118681ms)
+✖ renderTemplate does not let the OCI rule swallow OCITag (0.110459ms)
+file:///w/src/components/kairos-image-name.test.mjs:7
+  buildKairosOciImageTag,
+  ^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: The requested module './kairos-image-name.ts' does not provide an export named 'buildKairosOciImageTag'
+    at #asyncInstantiate (node:internal/modules/esm/module_job:455:21)
+    at async ModuleJob.run (node:internal/modules/esm/module_job:553:5)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.22.0
+✖ src/components/kairos-image-name.test.mjs (54.269582ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 13
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 83.113885
+
+✖ failing tests:
+
+test at src/components/ShortcodeCodeBlock.test.mjs:114:1
+✖ renderTemplate replaces OCITag with the tag half of the OCI reference (0.623519ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'version: "{{< OCITag variant="standard" >}}"'
+  - 'version: "24.04-standard-amd64-generic-v4.2.0-k3s-v1.36.3-k3s1"'
+  
+      at TestContext.<anonymous> (file:///w/src/components/ShortcodeCodeBlock.test.mjs:117:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'version: "{{< OCITag variant="standard" >}}"',
+    expected: 'version: "24.04-standard-amd64-generic-v4.2.0-k3s-v1.36.3-k3s1"',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at src/components/ShortcodeCodeBlock.test.mjs:123:1
+✖ renderTemplate renders OCITag and OCI consistently in one template (0.326777ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'quay.io/kairos/ubuntu:24.04-standard-amd64-generic-v4.2.0-k3s-v1.36.3-k3s1 splits as quay.io/kairos/ubuntu:{{< OCITag variant="standard" >}}'
+  - 'quay.io/kairos/ubuntu:24.04-standard-amd64-generic-v4.2.0-k3s-v1.36.3-k3s1 splits as quay.io/kairos/ubuntu:24.04-standard-amd64-generic-v4.2.0-k3s-v1.36.3-k3s1'
+  
+      at TestContext.<anonymous> (file:///w/src/components/ShortcodeCodeBlock.test.mjs:124:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'quay.io/kairos/ubuntu:24.04-standard-amd64-generic-v4.2.0-k3s-v1.36.3-k3s1 splits as quay.io/kairos/ubuntu:{{< OCITag variant="standard" >}}',
+    expected: 'quay.io/kairos/ubuntu:24.04-standard-amd64-generic-v4.2.0-k3s-v1.36.3-k3s1 splits as quay.io/kairos/ubuntu:24.04-standard-amd64-generic-v4.2.0-k3s-v1.36.3-k3s1',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at src/components/ShortcodeCodeBlock.test.mjs:138:1
+✖ renderTemplate substitutes every OCITag occurrence, not just the first (0.118681ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '{{< OCITag variant="core" >}} {{< OCITag variant="core" >}}'
+  - '24.04-core-amd64-generic-v4.2.0 24.04-core-amd64-generic-v4.2.0'
+  
+      at TestContext.<anonymous> (file:///w/src/components/ShortcodeCodeBlock.test.mjs:139:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '{{< OCITag variant="core" >}} {{< OCITag variant="core" >}}',
+    expected: '24.04-core-amd64-generic-v4.2.0 24.04-core-amd64-generic-v4.2.0',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at src/components/ShortcodeCodeBlock.test.mjs:145:1
+✖ renderTemplate does not let the OCI rule swallow OCITag (0.110459ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '{{< OCITag variant="core" >}}'
+  - '24.04-core-amd64-generic-v4.2.0'
+  
+      at TestContext.<anonymous> (file:///w/src/components/ShortcodeCodeBlock.test.mjs:150:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '{{< OCITag variant="core" >}}',
+    expected: '24.04-core-amd64-generic-v4.2.0',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at src/components/kairos-image-name.test.mjs:1:1
+✖ src/components/kairos-image-name.test.mjs (54.269582ms)
+  'test failed'
