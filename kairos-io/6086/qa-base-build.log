@@ -1,0 +1,12 @@
+$ grep -n "runtime.State\|OEM" sdk/system/cloudconfig.go   # base d9a5c75
+28:	oem := runtime.OEM
+29:	if runtime.OEM.Name == "" {
+73:	return writeCloudConfig(runtime.State, cloudConfig, "", filename)
+82:	return writeCloudConfig(runtime.Persistent, cloudConfig, "cloud-config", filename)
+
+$ go test ./sdk/system/ (PR test file on base)
+# github.com/kairos-io/kairos/v4/sdk/system [github.com/kairos-io/kairos/v4/sdk/system.test]
+sdk/system/cloudconfig_test.go:15:25: undefined: persistentCloudConfigTarget
+sdk/system/cloudconfig_test.go:21:25: undefined: persistentCloudConfigTarget
+FAIL	github.com/kairos-io/kairos/v4/sdk/system [build failed]
+FAIL
