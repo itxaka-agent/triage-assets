@@ -1,0 +1,27 @@
+
+normal-boot
+active_mode  cos-layout.env
+0000000   1   2   7   .   0   .   0   .   1       l   o   c   a   l   h
+0000020   o   s   t       k   a   i   r   o   s   -   b   8   d   2  \n
+0000040   :   :   1                               l   o   c   a   l   h
+0000060   o   s   t  \n
+0000064
+---
+kairos-b8d2
+---
+total 8
+-rwxr-xr-x 1 root root   1 Nov 19 09:02 active_mode
+-rw-r--r-- 1 root root 677 Nov 19 09:02 cos-layout.env
+---
+127.0.0.1         localhost  localhost kairos-b8d2
+rc=0
+---
+
+real	0m0.010s
+user	0m0.001s
+sys	0m0.008s
+---
+NAME="Hadron Linux"
+PRETTY_NAME="Hadron Linux"
+ID=hadron
+END

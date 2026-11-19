@@ -1,0 +1,34 @@
+
+--- /etc/hosts
+--- hostname
+cos-recovery
+--- getent
+getent_rc=2
+--- sudo timing
+
+real	0m0.014s
+user	0m0.005s
+sys	0m0.009s
+sudo_rc=0
+--- recovery stage log
+Nov 19 08:59:34 localhost kernel: Command line: BOOT_IMAGE=(loop0)/boot/vmlinuz console=ttyS0 console=tty1 splash net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=5 rd.emergency=reboot rd.shell=0 systemd.crash_reboot=yes root=LABEL=COS_SYSTEM cos-img/filename=/cOS/recovery.img selinux=0
+Nov 19 08:59:34 localhost kernel: Kernel command line: BOOT_IMAGE=(loop0)/boot/vmlinuz console=ttyS0 console=tty1 splash net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=5 rd.emergency=reboot rd.shell=0 systemd.crash_reboot=yes root=LABEL=COS_SYSTEM cos-img/filename=/cOS/recovery.img selinux=0
+Nov 19 08:59:34 localhost kernel: Unknown kernel command line parameters "splash cos-img/filename=/cOS/recovery.img", will be passed to user space.
+Nov 19 08:59:34 localhost kernel: raid6: using avx2x2 recovery algorithm
+Nov 19 08:59:34 localhost kernel:     cos-img/filename=/cOS/recovery.img
+Nov 19 08:59:34 localhost dracut-cmdline[351]: Using kernel command line parameters:    BOOT_IMAGE=(loop0)/boot/vmlinuz console=ttyS0 console=tty1 splash net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=5 rd.emergency=reboot rd.shell=0 systemd.crash_reboot=yes root=LABEL=COS_SYSTEM cos-img/filename=/cOS/recovery.img selinux=0
+Nov 19 08:59:34 localhost kairos-immucore[604]: Booting on active/passive/recovery.
+Nov 19 08:59:34 localhost immucore[604]: 2026-11-19T08:59:34Z INF Booting on active/passive/recovery.
+Nov 19 08:59:34 localhost immucore[604]: 2026-11-19T08:59:34Z INF Setting sentinel file to=recovery_mode
+Nov 19 08:59:34 localhost immucore[604]: 2026-11-19T08:59:34Z INF mount done options=["ro"] type=ext4 what=/dev/disk/by-label/COS_RECOVERY where=/sysroot/run/initramfs/cos-state
+Nov 19 08:59:35 localhost immucore[604]: 2026-11-19T08:59:35Z WRN Image is not writable, attaching read-only image=/sysroot/run/initramfs/cos-state/cOS/recovery.img writable="open /sysroot/run/initramfs/cos-state/cOS/recovery.img: read-only file system"
+Nov 19 08:59:35 localhost kairos-immucore[604]: (conditional) Skip 'Skipping stage (if statement error: failed to run [ ! -f "/run/cos/recovery_mode" ] && [ ! -e "/run/cos/uki_install_mode" ] && [ ! -e "/run/cos/autoreset_mode" ]: exit status 1)' stage name: Extra binds for specific distros.Extra layout configuration for active/passive mode (Ubuntu/Debian)
+Nov 19 08:59:35 localhost immucore[604]: 2026-11-19T08:59:35Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ ! -f "/run/cos/recovery_mode" ] && [ ! -e "/run/cos/uki_install_mode" ] && [ ! -e "/run/cos/autoreset_mode" ]: exit status 1)' stage name: Extra binds for specific distros.Extra layout configuration for active/passive mode (Ubuntu/Debian)
+Nov 19 08:59:35 localhost kairos-immucore[604]: (conditional) Skip 'Skipping stage (if statement error: failed to run [ ! -e "/run/cos/recovery_mode" ] && [ ! -e "/run/cos/autoreset_mode" ] && [ ! -e "/run/cos/uki_install_mode" ]: exit status 1)' stage name: Rootfs Layout Settings.Layout configuration for active/passive mode
+Nov 19 08:59:35 localhost immucore[604]: 2026-11-19T08:59:35Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ ! -e "/run/cos/recovery_mode" ] && [ ! -e "/run/cos/autoreset_mode" ] && [ ! -e "/run/cos/uki_install_mode" ]: exit status 1)' stage name: Rootfs Layout Settings.Layout configuration for active/passive mode
+Nov 19 08:59:35 localhost kairos-immucore[604]: Processing stage step 'Rootfs Layout Settings.Layout configuration for recovery/autoreset mode'. ( commands: 0, files: 0, ... )
+Nov 19 08:59:35 localhost immucore[604]: 2026-11-19T08:59:35Z INF Processing stage step 'Rootfs Layout Settings.Layout configuration for recovery/autoreset mode'. ( commands: 0, files: 0, ... )
+Nov 19 08:59:35 localhost kairos-immucore[604]: (conditional) Skip 'Skipping stage (if statement error: failed to run [ -r /run/cos/custom-layout.env ] && [ ! -f "/run/cos/recovery_mode" ] && [ ! -f /run/cos/live_mode ]: exit status 1)' stage name: Rootfs Layout Settings.add custom bind and ephemeral mounts to /run/cos/cos-layout.env
+Nov 19 08:59:35 localhost immucore[604]: 2026-11-19T08:59:35Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -r /run/cos/custom-layout.env ] && [ ! -f "/run/cos/recovery_mode" ] && [ ! -f /run/cos/live_mode ]: exit status 1)' stage name: Rootfs Layout Settings.add custom bind and ephemeral mounts to /run/cos/cos-layout.env
+Nov 19 08:59:35 localhost kairos-immucore[604]: (conditional) Skip 'Skipping stage (if statement error: failed to run [ ! -f /run/cos/recovery_mode ] && [ ! -f /run/cos/live_mode ] && [ ! -f /run/cos/write_protected ]: exit status 1)' stage name: Rootfs Layout Settings.Grow persistent
+END
