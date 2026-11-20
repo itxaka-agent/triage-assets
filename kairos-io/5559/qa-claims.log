@@ -1,0 +1,552 @@
+
+######## 0. context
+2026-11-20T09:04:27+01:00
+PR head : 10292107ef5676fe88f1a38ee772feac63d719b6
+base    : 5cdcdfccb0a7cdfbd14db73749360178625fa8cc  (expected 5cdcdfccb0a7cdfbd14db73749360178625fa8cc)
+kairos v4.4.0 = 6f33334a6a6c88a4a38c0b7ec4df1ab0334b830d
+kairos v4.5.2 = 9f9cfa72ba59fd30857b80bab03943ceca6b59c8
+kairos v4.6.0 = e907b16445b7fd1021fc250b50518c508132cf2a
+kairos upstream/master = 8a5792aec29af0c18a5d88de1926f4183aaf74a2
+
+######## 1. what the PR changes (git diff --stat base..head)
+ docs/architecture/cloud-init.md                          | 1 +
+ versioned_docs/version-v4.4.0/architecture/cloud-init.md | 1 +
+ 2 files changed, 2 insertions(+)
+
+######## 2. base tree has no first-boot row (expect no output, exit 1)
+$ git -C <base worktree> grep -n first-boot -- docs/architecture/cloud-init.md versioned_docs/version-v4.4.0/architecture/cloud-init.md
+exit=1
+$ same grep on the PR head
+docs/architecture/cloud-init.md:70:first-boot
+versioned_docs/version-v4.4.0/architecture/cloud-init.md:70:first-boot
+exit=0
+
+######## 3. markdown stage table: pipes per line (3 = 2 columns), base vs head
+BASE  docs/architecture/cloud-init.md
+   table lines=26; [3 pipes: 26 lines]
+BASE  versioned_docs/version-v4.4.0/architecture/cloud-init.md
+   table lines=26; [3 pipes: 26 lines]
+HEAD  docs/architecture/cloud-init.md
+   table lines=27; [3 pipes: 27 lines]
+HEAD  versioned_docs/version-v4.4.0/architecture/cloud-init.md
+   table lines=27; [3 pipes: 27 lines]
+
+the two changed files are byte-identical in the row (HEAD):
+line 70 identical in both files
+
+######## 4. blob hashes of the files the claims rely on, per ref (same hash = same file)
+file                                                                   v4.4.0    v4.5.2    v4.6.0    master   
+agent/pkg/constants/constants.go                                       04a72787  04a72787  04a72787  04a72787 
+agent/internal/agent/hooks/hook.go                                     02094f98  02094f98  02094f98  02094f98 
+agent/internal/agent/hooks/firstboot.go                                ba577af8  ba577af8  ba577af8  ba577af8 
+agent/internal/agent/agent.go                                          0bbcad56  0bbcad56  0bbcad56  0bbcad56 
+agent/internal/agent/hooks/bundles.go                                  52db3019  52db3019  52db3019  52db3019 
+agent/internal/agent/hooks/gruboptions.go                              be9eeea2  be9eeea2  be9eeea2  be9eeea2 
+agent/internal/agent/hooks/hooks_test.go                               1730e19e  1730e19e  1730e19e  1730e19e 
+sdk/machine/machine.go                                                 ec36157d  ec36157d  ec36157d  ec36157d 
+sdk/bus/events.go                                                      c5394515  c5394515  c5394515  c5394515 
+agent/pkg/utils/runstage.go                                            175e534e  46a46317  46a46317  46a46317 
+kairos-init/pkg/bundled/cloudconfigs/02_agent.yaml                     a7ff92b2  a7ff92b2  a7ff92b2  a7ff92b2 
+kairos-init/pkg/bundled/cloudconfigs/00_rootfs.yaml                    cb5e3a14  cb5e3a14  cb5e3a14  cb5e3a14 
+kairos-init/pkg/bundled/cloudconfigs/09_openrc_services.yaml           e76eea4a  e76eea4a  e76eea4a  e76eea4a 
+immucore/pkg/state/steps_shared.go                                     d67a60ce  488714b1  aa00e2ba  aa00e2ba 
+immucore/README.md                                                     1387d430  4e7e11e2  4e7e11e2  4e7e11e2 
+agent/pkg/config/spec.go                                               e3a4f1f0  4049bb3e  4049bb3e  4049bb3e 
+agent/pkg/action/reset.go                                              68c8ddcb  6377f5cc  6377f5cc  6377f5cc 
+
+######## 5. CLAIM 1: a stage named first-boot exists, and the agent runs it
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/agent/pkg/constants/constants.go#L77-L77
+    77		FirstBootHook                = "first-boot"
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/agent/internal/agent/hooks/firstboot.go#L10-L28
+    10	// FirstBootStage runs the first-boot cloud-config stage. Unlike boot, network or
+    11	// fs, this stage has no systemd unit driving it: the agent fires it once, from
+    12	// the sentinel-gated first boot block, so a cloud-config can hook into the very
+    13	// first boot of a node and never again.
+    14	type FirstBootStage struct{}
+    15	
+    16	func (b FirstBootStage) Run(c sdkConfig.Config, _ sdkSpec.Spec) error {
+    17		c.Logger.Logger.Info().Msgf("Running %s hook", cnst.FirstBootHook)
+    18		// A failure here is logged, not returned. Propagating it would abort the
+    19		// sentinel-gated block before the firstboot sentinel is written, so a node
+    20		// with strict mode on would re-run this hook (and re-install bundles, and
+    21		// rewrite grubenv) on every restart of the agent unit and never publish its
+    22		// bootstrap event. RunStage already logs the details for the operator.
+    23		if err := utils.RunStage(&c, cnst.FirstBootHook); err != nil {
+    24			c.Logger.Logger.Err(err).Msgf("Failed running the %s stage, continuing so the firstboot sentinel still gets written", cnst.FirstBootHook)
+    25		}
+    26		c.Logger.Logger.Info().Msgf("Finish %s hook", cnst.FirstBootHook)
+    27		return nil
+    28	}
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/agent/pkg/utils/runstage.go#L59-L60
+    59		stageBefore := fmt.Sprintf("%s.before", stage)
+    60		stageAfter := fmt.Sprintf("%s.after", stage)
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/agent/pkg/utils/runstage.go#L93-L93
+    93		for _, s := range []string{stageBefore, stage, stageAfter} {
+(v4.5.2 / v4.6.0 / master: constants.go and firstboot.go are the same blobs; runstage.go moved the same lines to 69-70 and 103)
+
+-- https://github.com/kairos-io/kairos/blob/v4.5.2/agent/pkg/utils/runstage.go#L69-L70
+    69		stageBefore := fmt.Sprintf("%s.before", stage)
+    70		stageAfter := fmt.Sprintf("%s.after", stage)
+
+-- https://github.com/kairos-io/kairos/blob/v4.5.2/agent/pkg/utils/runstage.go#L103-L103
+   103		for _, s := range []string{stageBefore, stage, stageAfter} {
+
+######## 6. CLAIM 2+3: sentinel-gated block, hook order, bootstrap event after it (identical blobs at v4.4.0, v4.5.2, v4.6.0, master)
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/agent/internal/agent/hooks/hook.go#L34-L39
+    34	// FirstBoot is a list of hooks that run on the first boot of the node.
+    35	var FirstBoot = []Interface{
+    36		&BundleFirstBoot{},      // Installs bundles
+    37		&GrubFirstBootOptions{}, // Applies grub options
+    38		&FirstBootStage{},       // Runs the first-boot cloud-config stage, last so it sees a fully provisioned node
+    39	}
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/agent/internal/agent/hooks/hook.go#L56-L63
+    56	func Run(c sdkConfig.Config, spec sdkSpec.Spec, hooks ...Interface) error {
+    57		for _, h := range hooks {
+    58			if err := h.Run(c, spec); err != nil {
+    59				return err
+    60			}
+    61		}
+    62		return nil
+    63	}
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/agent/internal/agent/agent.go#L42-L67
+    42		fileName := "/var/log/kairos/agent-provider.log"
+    43	
+    44		if !machine.SentinelExist("firstboot") {
+    45			spec := v1.EmptySpec{}
+    46			if err := hook.Run(*c, &spec, hook.FirstBoot...); err != nil {
+    47				return err
+    48			}
+    49	
+    50			// Re-load providers
+    51			bus.Reload()
+    52			err = machine.CreateSentinel("firstboot")
+    53			if c.FailOnBundleErrors && err != nil {
+    54				return err
+    55			}
+    56	
+    57			// Re-read config files
+    58			c, err = config.Scan(collector.Directories(o.Dir...))
+    59			if err != nil {
+    60				return err
+    61			}
+    62		}
+    63		configStr, err := c.Collector.String()
+    64		if err != nil {
+    65			panic(err)
+    66		}
+    67		_, err = bus.Manager.Publish(events.EventBootstrap, events.BootstrapPayload{APIAddress: o.APIAddress, Config: configStr, Logfile: fileName})
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/sdk/bus/events.go#L19-L20
+    19		// EventBootstrap is issued to run any initial cluster configuration.
+    20		EventBootstrap pluggable.EventType = "agent.bootstrap"
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/agent/internal/agent/hooks/hooks_test.go#L313-L322
+   313			It("runs last in the FirstBoot hook list, after bundles and grub options", func() {
+   314				Expect(hook.FirstBoot).To(HaveLen(3))
+   315				Expect(hook.FirstBoot[0]).To(BeAssignableToTypeOf(&hook.BundleFirstBoot{}))
+   316				Expect(hook.FirstBoot[1]).To(BeAssignableToTypeOf(&hook.GrubFirstBootOptions{}))
+   317				Expect(hook.FirstBoot[2]).To(BeAssignableToTypeOf(&hook.FirstBootStage{}))
+   318			})
+   319	
+   320			It("names the stage first-boot", func() {
+   321				Expect(cnst.FirstBootHook).To(Equal("first-boot"))
+   322			})
+
+######## 7. CLAIM 4: sentinel path and who writes it
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/sdk/machine/machine.go#L94-L103
+    94	func CreateSentinel(f string) error {
+    95		return os.WriteFile(fmt.Sprintf("/usr/local/.kairos/sentinel_%s", f), []byte{}, os.ModePerm)
+    96	}
+    97	
+    98	func SentinelExist(f string) bool {
+    99		if _, err := os.Stat(fmt.Sprintf("/usr/local/.kairos/sentinel_%s", f)); err == nil {
+   100			return true
+   101		}
+   102		return false
+   103	}
+
+every place the firstboot sentinel is written or read (v4.4.0, non-test, non-md):
+v4.4.0:agent/internal/agent/agent.go:44:	if !machine.SentinelExist("firstboot") {
+v4.4.0:agent/internal/agent/agent.go:52:		err = machine.CreateSentinel("firstboot")
+v4.4.0:sdk/machine/machine.go:94:func CreateSentinel(f string) error {
+v4.4.0:sdk/machine/machine.go:95:	return os.WriteFile(fmt.Sprintf("/usr/local/.kairos/sentinel_%s", f), []byte{}, os.ModePerm)
+v4.4.0:sdk/machine/machine.go:98:func SentinelExist(f string) bool {
+v4.4.0:sdk/machine/machine.go:99:	if _, err := os.Stat(fmt.Sprintf("/usr/local/.kairos/sentinel_%s", f)); err == nil {
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/kairos-init/pkg/bundled/cloudconfigs/02_agent.yaml#L1-L25
+     1	name: "Start agent"
+     2	stages:
+     3	  boot:
+     4	    - if: '[ ! -f "/run/cos/recovery_mode" ]'
+     5	      only_service_manager: "systemd"
+     6	      files:
+     7	        - &agent-service
+     8	          path: /etc/systemd/system/kairos-agent.service
+     9	          permissions: 0644
+    10	          owner: 0
+    11	          group: 0
+    12	          content: |
+    13	            [Unit]
+    14	            Description=kairos agent
+    15	            After=cos-setup-network.service
+    16	            Wants=network.target
+    17	            [Service]
+    18	            Restart=on-failure
+    19	            RestartSec=5s
+    20	            ExecStart=/usr/bin/kairos-agent start
+    21	            [Install]
+    22	            WantedBy=multi-user.target
+    23	      commands:
+    24	        - systemctl start --no-block kairos-agent
+    25	        - systemctl enable kairos-agent
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/kairos-init/pkg/bundled/cloudconfigs/00_rootfs.yaml#L11-L17
+    11	    # If not on recovery and not on autoreset and not on UKI installer
+    12	    - if: '[ ! -e "/run/cos/recovery_mode" ] && [ ! -e "/run/cos/autoreset_mode" ] && [ ! -e "/run/cos/uki_install_mode" ]'
+    13	      name: "Layout configuration for active/passive mode"
+    14	      environment_file: /run/cos/cos-layout.env
+    15	      environment:
+    16	        VOLUMES: "LABEL=COS_PERSISTENT:/usr/local"
+    17	        OVERLAY: "tmpfs:25%"
+
+######## 8. CLAIM 5: an error in the stage is logged and does not stop the boot
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/agent/internal/agent/hooks/firstboot.go#L16-L28
+    16	func (b FirstBootStage) Run(c sdkConfig.Config, _ sdkSpec.Spec) error {
+    17		c.Logger.Logger.Info().Msgf("Running %s hook", cnst.FirstBootHook)
+    18		// A failure here is logged, not returned. Propagating it would abort the
+    19		// sentinel-gated block before the firstboot sentinel is written, so a node
+    20		// with strict mode on would re-run this hook (and re-install bundles, and
+    21		// rewrite grubenv) on every restart of the agent unit and never publish its
+    22		// bootstrap event. RunStage already logs the details for the operator.
+    23		if err := utils.RunStage(&c, cnst.FirstBootHook); err != nil {
+    24			c.Logger.Logger.Err(err).Msgf("Failed running the %s stage, continuing so the firstboot sentinel still gets written", cnst.FirstBootHook)
+    25		}
+    26		c.Logger.Logger.Info().Msgf("Finish %s hook", cnst.FirstBootHook)
+    27		return nil
+    28	}
+--- RunStage swallows errors unless strict (v4.4.0 lines 150-159, v4.5.2/v4.6.0/master lines 160-169)
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/agent/pkg/utils/runstage.go#L150-L159
+   150		// We return error here only if we have been running in strict mode.
+   151		// Cloud configs are being loaded and executed on a best-effort, so every step/config
+   152		// gets a chance to be executed and error is being appended and reported.
+   153		if allErrors != nil && !cfg.Strict {
+   154			cfg.Logger.Info("Some errors found but were ignored. Enable --strict mode to fail on those or --debug to see them in the log")
+   155			cfg.Logger.Warn(allErrors)
+   156			return nil
+   157		}
+   158	
+   159		return allErrors
+
+-- https://github.com/kairos-io/kairos/blob/v4.5.2/agent/pkg/utils/runstage.go#L160-L169
+   160		// We return error here only if we have been running in strict mode.
+   161		// Cloud configs are being loaded and executed on a best-effort, so every step/config
+   162		// gets a chance to be executed and error is being appended and reported.
+   163		if allErrors != nil && !cfg.Strict {
+   164			cfg.Logger.Info("Some errors found but were ignored. Enable --strict mode to fail on those or --debug to see them in the log")
+   165			cfg.Logger.Warn(allErrors)
+   166			return nil
+   167		}
+   168	
+   169		return allErrors
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/agent/internal/agent/hooks/hooks_test.go#L268-L311
+   268			It("logs a cloud-init failure in strict mode instead of failing the hook", func() {
+   269				cloudInit.Error = true
+   270				cfg.Strict = true
+   271				stage := hook.FirstBootStage{}
+   272				err = stage.Run(*cfg, nil)
+   273				Expect(err).Should(BeNil())
+   274				// Swallowing the error is what keeps
+   275				// machine.CreateSentinel("firstboot") reachable in agent.Run (not
+   276				// exercised by this suite), so the node is not stuck re-running the
+   277				// first boot block. The log line is the operator's only trace.
+   278				Expect(memLog.String()).To(ContainSubstring("continuing so the firstboot sentinel still gets written"))
+   279				Expect(memLog.String()).To(ContainSubstring("cloud init failure"))
+   280				Expect(memLog.String()).To(ContainSubstring("Finish first-boot hook"))
+   281			})
+   282	
+   283			It("does not fail the hook when strict mode is off, even if the runner errors", func() {
+   284				cloudInit.Error = true
+   285				cfg.Strict = false
+   286				stage := hook.FirstBootStage{}
+   287				err = stage.Run(*cfg, nil)
+   288				Expect(err).Should(BeNil())
+   289				// Non-strict runs never reach the hook's own error branch: RunStage
+   290				// absorbs the failure itself and hands back nil.
+   291				Expect(memLog.String()).ToNot(ContainSubstring("continuing so the firstboot sentinel still gets written"))
+   292				Expect(memLog.String()).To(ContainSubstring("Finish first-boot hook"))
+   293			})
+   294	
+   295			It("keeps the FirstBoot hook chain alive when the stage fails in strict mode", func() {
+   296				// This is the actual failure mode from the bug report: agent.Run
+   297				// walks hook.FirstBoot as a single chain and only reaches
+   298				// machine.CreateSentinel("firstboot") if that chain returns nil.
+   299				// The specs above only exercise FirstBootStage in isolation, so
+   300				// they can't tell us whether hook.Run -- which returns early on
+   301				// the first error, see hook.go -- still makes it past this stage
+   302				// when it's last in line and the node is strict. Drive the real
+   303				// chain to be sure nothing upstream of FirstBootStage regresses
+   304				// that guarantee.
+   305				cloudInit.Error = true
+   306				cfg.Strict = true
+   307				err = hook.Run(*cfg, nil, hook.FirstBoot...)
+   308				Expect(err).Should(BeNil())
+   309				Expect(cloudInit.ExecStages).To(ContainElement(cnst.FirstBootHook))
+   310				Expect(memLog.String()).To(ContainSubstring("continuing so the firstboot sentinel still gets written"))
+   311			})
+
+######## 9. NOTE: wording 'after bundles are installed and grub options applied' - what those hooks do
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/agent/internal/agent/hooks/bundles.go#L120-L135
+   120	// BundleFirstBoot installs bundles during the first boot of the machine
+   121	type BundleFirstBoot struct{}
+   122	
+   123	func (b BundleFirstBoot) Run(c sdkConfig.Config, _ sdkSpec.Spec) error {
+   124		c.Logger.Logger.Debug().Msg("Running BundleFirstBoot hook")
+   125		opts := c.Bundles.Options()
+   126		err := bundles.RunBundles(opts...)
+   127		if err != nil {
+   128			c.Logger.Errorf("could not install the bundles: %s", err)
+   129			if c.FailOnBundleErrors {
+   130				return err
+   131			}
+   132		}
+   133		c.Logger.Logger.Debug().Msg("Finish BundleFirstBoot hook")
+   134		return nil
+   135	}
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/agent/internal/agent/hooks/gruboptions.go#L159-L175
+   159	// GrubFirstBootOptions is a hook that runs on the first boot to add grub options.
+   160	type GrubFirstBootOptions struct{}
+   161	
+   162	func (b GrubFirstBootOptions) Run(c sdkConfig.Config, _ sdkSpec.Spec) error {
+   163		if len(c.GrubOptions) == 0 {
+   164			return nil
+   165		}
+   166		// A UKI boot takes its command line from the signed .cmdline section of
+   167		// the image, so a grubenv written here is read by nobody. Skip for the
+   168		// same reason GrubPostInstallOptions does, and say so, because the key
+   169		// was set on purpose and the user needs to know it did not take effect.
+   170		if isUkiBoot(c) {
+   171			c.Logger.Logger.Warn().Msg("Skipping GrubFirstBootOptions hook in uki mode: grub_options writes a grubenv that a UKI boot never reads, the kernel command line comes from the signed .cmdline s
+   172			return nil
+   173		}
+   174		c.Logger.Logger.Info().Msg("Running GrubOptions hook")
+   175		c.Logger.Debugf("Setting grub options: %s", c.GrubOptions)
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/agent/internal/agent/hooks/gruboptions.go#L191-L210
+   191		if err := grubOptions(c, c.GrubOptions, oemEncrypted); err != nil {
+   192			if errors.Is(err, errOEMUnavailable) {
+   193				// The agent service also runs on live and netboot nodes, where
+   194				// /oem holds the datasource userdata and there is no COS_OEM to
+   195				// write to. Nothing was written, so the protection against
+   196				// putting the options onto the ephemeral root still holds, and
+   197				// there is no broken partition to shout about.
+   198				c.Logger.Logger.Warn().Err(err).Msg("Could not reach the OEM partition, leaving the grub options unwritten")
+   199				return nil
+   200			}
+   201			// Logged, not returned, for the reason FirstBootStage gives: this
+   202			// hook runs inside the sentinel-gated first boot block, so returning
+   203			// here aborts the chain before the firstboot sentinel is written and
+   204			// before the bootstrap event that starts the k3s or k0s provider. The
+   205			// node would then never finish its first boot and would repeat the
+   206			// whole block, bundles included, on every restart of the agent unit.
+   207			// An unwritten grubenv is worth a loud log, not that.
+   208			c.Logger.Logger.Err(err).Msg("Failed setting grub options, continuing so the firstboot sentinel still gets written")
+   209			return nil
+   210		}
+
+######## 10. NOTE: 'of an installed node' - what happens on live media
+10a. agent.Run: the only live/netboot guard is the install.auto early return
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/agent/internal/agent/agent.go#L35-L40
+    35		bf := machine.BootFrom()
+    36		if c.Install != nil && c.Install.Auto && (bf == machine.NetBoot || bf == machine.LiveCDBoot) {
+    37			// Don't go ahead if we are asked to install from a booting live medium
+    38			fmt.Println("Agent run aborted. Installation being performed from live medium")
+    39			return nil
+    40		}
+
+10b. any other place in agent/ or sdk/ that checks for live/netboot boot (non-test):
+v4.4.0:agent/internal/agent/agent.go:35:	bf := machine.BootFrom()
+v4.4.0:agent/internal/agent/agent.go:36:	if c.Install != nil && c.Install.Auto && (bf == machine.NetBoot || bf == machine.LiveCDBoot) {
+v4.4.0:sdk/machine/machine.go:29:	LiveCDBoot   = "liveCD"
+v4.4.0:sdk/machine/machine.go:30:	NetBoot      = "netboot"
+v4.4.0:sdk/machine/machine.go:35:func BootFrom() string {
+v4.4.0:sdk/machine/machine.go:48:		return LiveCDBoot
+v4.4.0:sdk/machine/machine.go:50:		return NetBoot
+
+10c. the kairos-agent unit is only guarded against recovery_mode, not live_mode
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/kairos-init/pkg/bundled/cloudconfigs/02_agent.yaml#L1-L5
+     1	name: "Start agent"
+     2	stages:
+     3	  boot:
+     4	    - if: '[ ! -f "/run/cos/recovery_mode" ]'
+     5	      only_service_manager: "systemd"
+
+10d. maintainers' own comment: the agent service also runs on live and netboot nodes
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/agent/internal/agent/hooks/gruboptions.go#L192-L200
+   192			if errors.Is(err, errOEMUnavailable) {
+   193				// The agent service also runs on live and netboot nodes, where
+   194				// /oem holds the datasource userdata and there is no COS_OEM to
+   195				// write to. Nothing was written, so the protection against
+   196				// putting the options onto the ephemeral root still holds, and
+   197				// there is no broken partition to shout about.
+   198				c.Logger.Logger.Warn().Err(err).Msg("Could not reach the OEM partition, leaving the grub options unwritten")
+   199				return nil
+   200			}
+
+10e. maintainers' own comment on recovery: /usr/local is a tmpfs overlay, so the sentinel is never found and the FirstBoot hooks run on every boot
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/kairos-init/pkg/bundled/cloudconfigs/09_openrc_services.yaml#L81-L89
+    81	    # The agent is the one service recovery must not get. 02_agent.yaml guards
+    82	    # kairos-agent.service with the same condition on systemd, and agent.Run
+    83	    # has no recovery check of its own: in recovery /usr/local is the tmpfs
+    84	    # overlay, so the firstboot sentinel is never found, the FirstBoot hooks
+    85	    # run on every recovery boot, GrubFirstBootOptions rewrites the OEM
+    86	    # grubenv, and the bootstrap event asks the provider to bring up a cluster
+    87	    # on a throwaway rootfs.
+    88	    - name: "Create the OpenRC kairos-agent service"
+    89	      if: '[ ! -f "/run/cos/recovery_mode" ]'
+
+10f. immucore on live media: live_mode sentinel, OEM mount skipped, rootfs+initramfs stages, and no custom-mount step
+     (the custom-mount step is what mounts COS_PERSISTENT at /usr/local on normal boots, from VOLUMES in 00_rootfs.yaml L16)
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/immucore/pkg/state/steps_shared.go#L57-L58
+    57				case state.LiveCD:
+    58					sentinel = "live_mode"
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/immucore/pkg/state/steps_shared.go#L286-L289
+   286					if runtime.BootState == state.LiveCD {
+   287						internalUtils.KLog.Logger.Debug().Msg("Livecd mode detected, won't mount OEM")
+   288						return nil
+   289					}
+
+-- https://github.com/kairos-io/kairos/blob/v4.5.2/immucore/pkg/state/steps_shared.go#L304-L307
+   304					if runtime.BootState == state.LiveCD {
+   305						internalUtils.KLog.Logger.Debug().Msg("Livecd mode detected, won't mount OEM")
+   306						return nil
+   307					}
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/immucore/pkg/dag/dag_live_media.go#L9-L31
+     9	// RegisterLiveMedia registers the dag for booting from live media/netboot
+    10	// This mainly sets the sentinel, mounts oem if it can (failure is not fatal), runs rootfs and initramfs stages
+    11	// And thats it.
+    12	// There is a wait for sysroot to be there, just in case. Not waiting for it, can result in a race condition in which
+    13	// sysroot is not ready when we try to mount oem and run stages
+    14	// We let the actual init system deal with the mounts itself as we like hwo it setup cdrom mounts and such automatically.
+    15	func RegisterLiveMedia(s *state.State, g *herd.Graph) error {
+    16		// Maybe LogIfErrorAndPanic ? If no sentinel, a lot of config files are not going to run
+    17		err := s.LogIfErrorAndReturn(s.WriteSentinelDagStep(g), "write sentinel")
+    18	
+    19		// Waits for sysroot to be there, just in case
+    20		s.LogIfError(s.WaitForSysrootDagStep(g), "Waiting for sysroot")
+    21		// Run rootfs
+    22	
+    23		// Try to mount oem ONLY if we are on recovery squash
+    24		// The check to see if its enabled its on the DAG step itself
+    25		s.LogIfError(s.MountOemDagStep(g, herd.WithDeps(cnst.OpWaitForSysroot)), "oem mount")
+    26	
+    27		s.LogIfError(s.RootfsStageDagStep(g, herd.WithDeps(cnst.OpSentinel, cnst.OpWaitForSysroot), herd.WithWeakDeps(cnst.OpMountOEM)), "rootfs stage")
+    28		// Run initramfs inside the /sysroot chroot!
+    29		s.LogIfError(s.InitramfsStageDagStep(g, herd.WithDeps(cnst.OpSentinel, cnst.OpWaitForSysroot, cnst.OpRootfsHook), herd.WithWeakDeps(cnst.OpMountOEM)), "initramfs stage")
+    30		return err
+    31	}
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/immucore/pkg/dag/dag_normal_boot.go#L83-L104
+    83		// Run yip stage rootfs. Requires root+oem+sentinel to be mounted
+    84		s.LogIfError(s.RootfsStageDagStep(g, herd.WithDeps(cnst.OpMountRoot, cnst.OpMountOEM, cnst.OpSentinel)), "running rootfs stage")
+    85	
+    86		// Populate state bind mounts, overlay mounts, custom-mounts from /run/cos/cos-layout.env
+    87		// Requires stage rootfs to have run, which usually creates the cos-layout.env file
+    88		s.LogIfError(s.LoadEnvLayoutDagStep(g), "loading cos-layout.env")
+    89	
+    90		// Mount base overlay under /run/overlay
+    91		s.LogIfError(s.MountBaseOverlayDagStep(g), "base overlay mount")
+    92	
+    93		// Mount custom overlays loaded from the /run/cos/cos-layout.env file
+    94		s.LogIfError(s.MountCustomOverlayDagStep(g), "custom overlays mount")
+    95	
+    96		// On write-protected media the persistent partition cannot be mounted as
+    97		// it is, so a copy-on-write snapshot is put over it first and the custom
+    98		// mounts wait for that. Registered only in that case, so a writable install
+    99		// keeps exactly the graph it had.
+   100		if s.WriteProtected {
+   101			s.LogIfError(s.MountPersistentSnapshotDagStep(g), "persistent snapshot")
+   102		}
+   103	
+   104		s.LogIfError(s.MountCustomMountsDagStep(g, s.WriteProtectedSnapshotDeps()...), "custom mounts mount")
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/immucore/pkg/dag/dag_in_ram.go#L82-L83
+    82		// Mount custom mounts — this is what mounts COS_PERSISTENT rw at /usr/local.
+    83		s.LogIfError(s.MountCustomMountsDagStep(g, s.WriteProtectedSnapshotDeps()...), "custom mounts mount")
+
+-- https://github.com/kairos-io/kairos/blob/v4.5.2/immucore/pkg/dag/dag_in_ram.go#L96-L97
+    96		// Mount custom mounts — this is what mounts COS_PERSISTENT rw at /usr/local.
+    97		s.LogIfError(s.MountCustomMountsDagStep(g, s.WriteProtectedSnapshotDeps()...), "custom mounts mount")
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/immucore/README.md#L391-L392
+   391	When booting from Netboot/LiveCD/Do nothing (`rd.cos.disable` or `rd.immucore.disable` on the cmdline) the DAG is pretty simple. 
+   392	It proceeds to create a sentinel file under `/run/cos/` with the boot mode (`live_mode`), so cloud configs can identify that they are booting from live media and ends.
+
+-- https://github.com/kairos-io/kairos/blob/v4.5.2/immucore/README.md#L400-L401
+   400	When booting from Netboot/LiveCD/Do nothing (`rd.cos.disable` or `rd.immucore.disable` on the cmdline) the DAG is pretty simple. 
+   401	It proceeds to create a sentinel file under `/run/cos/` with the boot mode (`live_mode`), so cloud configs can identify that they are booting from live media and ends.
+
+blob check for the two DAG files (same blob = same lines at every ref):
+immucore/pkg/dag/dag_live_media.go               4f11ce24 4f11ce24 4f11ce24 4f11ce24
+immucore/pkg/dag/dag_normal_boot.go              e765be35 e765be35 e765be35 e765be35
+custom-mount steps named in the live-media DAG file (expect none):
+exit=1 (1 = none)
+
+######## 11. NOTE: reset formats COS_PERSISTENT by default, which removes the sentinel
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/agent/pkg/config/spec.go#L566-L574
+   566		spec := &spec.ResetSpec{
+   567			Target:           target,
+   568			Partitions:       ep,
+   569			Efi:              efiExists,
+   570			GrubDefEntry:     constants.GrubDefEntry,
+   571			GrubConf:         constants.GrubConf,
+   572			Tty:              constants.DefaultTty,
+   573			FormatPersistent: true,
+   574			Active: sdkImages.Image{
+
+-- https://github.com/kairos-io/kairos/blob/v4.4.0/agent/pkg/action/reset.go#L96-L100
+    96		// Reformat persistent partition
+    97		if r.spec.FormatPersistent {
+    98			persistent := r.spec.Partitions.Persistent
+    99			if persistent != nil {
+   100				// The audit trail is the one thing on the persistent partition a
+
+-- https://github.com/kairos-io/kairos/blob/v4.5.2/agent/pkg/config/spec.go#L577-L577
+   577			FormatPersistent: true,
+
+-- https://github.com/kairos-io/kairos/blob/v4.5.2/agent/pkg/action/reset.go#L98-L99
+    98		if r.spec.FormatPersistent {
+    99			persistent := r.spec.Partitions.Persistent
+
+the only thing reset carries over the persistent format (v4.4.0):
+v4.4.0:agent/pkg/action/reset_audit.go:45:func StashAuditLog(cfg *sdkConfig.Config, persistent *sdkPartitions.Partition) (string, error) {
+v4.4.0:agent/pkg/constants/constants.go:106:	AuditLogPath = "/var/log/audit"
+
+######## 12. when did the stage ship (first-boot cloud-config stage hook)
+56c4fb587 2026-09-10 feat(agent): run a first-boot cloud-config stage (#4591)
+first tags containing it: v4.4.0 v4.4.0-rc1 v4.4.0-rc2 
+v4.3.0: firstboot.go absent
+v4.4.0-rc1: firstboot.go present
+v4.4.0: firstboot.go present
+grep FirstBootHook at v4.3.0 (agent, sdk):
+exit=1 (1 = no match)

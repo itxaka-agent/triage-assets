@@ -1,0 +1,45 @@
+$ git rev-parse HEAD
+10292107ef5676fe88f1a38ee772feac63d719b6
+$ date -Iseconds
+2026-11-20T09:01:36+01:00
+$ docker run --rm --name qa759-grep --user 1000:1000 -v <worktree>/build/docs:/b:ro -v <worktree>-base/build/docs:/base:ro node:24 sh -c set -eu
+# /base = build/docs of the base tree (5cdcdfc), /b = build/docs of the PR head (1029210)
+for side in base b; do
+  [ $side = b ] && label=HEAD || label=BASE
+  for p in architecture/cloud-init v4.4.0/architecture/cloud-init v4.3.0/architecture/cloud-init; do
+    f=/$side/$p/index.html
+    row=$(grep -oP '<tr><td><em>first-boot</em>.*?(?=<tr>|</tbody>)' $f || true)
+    echo "$label /docs/$p/ ($(grep -o 'docs-version-[A-Za-z0-9.]*' $f | head -1)): first-boot rows=$(echo "$row" | grep -c .) cells=$(echo "$row" | grep -o '<td' | wc -l) sentinel_firstboot=$(grep -o 'sentinel_firstboot' $f | wc -l)"
+  done
+done
+echo "--- rendered first-boot row, HEAD, /docs/v4.4.0/architecture/cloud-init/"
+grep -oP '<tr><td><em>first-boot</em>.*?(?=<tr>|</tbody>)' /b/v4.4.0/architecture/cloud-init/index.html | fold -s -w 130
+echo "--- stage table shape (rows, cells per row, what follows reconcile)"
+node -e '
+const fs=require("fs");
+for (const s of ["base","b"]) for (const p of ["architecture/cloud-init","v4.4.0/architecture/cloud-init"]) {
+  const h=fs.readFileSync("/"+s+"/"+p+"/index.html","utf8");
+  const t=h.split("<table").find(x=>x.includes("<em>reconcile</em>"));
+  const rows=t.slice(0,t.indexOf("</table>")).split("<tr").slice(1);
+  const cells=[...new Set(rows.map(r=>(r.match(/<t[dh][ >]/g)||[]).length))];
+  const nm=r=>(r.match(/<em>([^<]*)<\/em>/)||[0,"(header)"])[1];
+  const i=rows.findIndex(r=>r.includes("<em>reconcile</em>"));
+  console.log((s=="b"?"HEAD":"BASE")+" /docs/"+p+"/: rows="+rows.length+" cells-per-row="+JSON.stringify(cells)+" after reconcile: "+nm(rows[i+1])+", "+nm(rows[i+2]));
+}'
+BASE /docs/architecture/cloud-init/ (docs-version-current): first-boot rows=0 cells=0 sentinel_firstboot=0
+BASE /docs/v4.4.0/architecture/cloud-init/ (docs-version-v4.4.0): first-boot rows=0 cells=0 sentinel_firstboot=0
+BASE /docs/v4.3.0/architecture/cloud-init/ (docs-version-v4.3.0): first-boot rows=0 cells=0 sentinel_firstboot=0
+HEAD /docs/architecture/cloud-init/ (docs-version-current): first-boot rows=1 cells=2 sentinel_firstboot=1
+HEAD /docs/v4.4.0/architecture/cloud-init/ (docs-version-v4.4.0): first-boot rows=1 cells=2 sentinel_firstboot=1
+HEAD /docs/v4.3.0/architecture/cloud-init/ (docs-version-v4.3.0): first-boot rows=0 cells=0 sentinel_firstboot=0
+--- rendered first-boot row, HEAD, /docs/v4.4.0/architecture/cloud-init/
+<tr><td><em>first-boot</em><td>This stage is executed once, on the first boot of an installed node, after bundles are installed 
+and grub options applied, and before the node publishes its bootstrap event. It does not run a second time: 
+<code>kairos-agent</code> writes <code>/usr/local/.kairos/sentinel_firstboot</code> once the first boot is done. An error in this 
+stage is logged and does not stop the boot.
+--- stage table shape (rows, cells per row, what follows reconcile)
+BASE /docs/architecture/cloud-init/: rows=25 cells-per-row=[2] after reconcile: kairos-install.pre, kairos-uki-install.pre
+BASE /docs/v4.4.0/architecture/cloud-init/: rows=25 cells-per-row=[2] after reconcile: kairos-install.pre, kairos-uki-install.pre
+HEAD /docs/architecture/cloud-init/: rows=26 cells-per-row=[2] after reconcile: first-boot, kairos-install.pre
+HEAD /docs/v4.4.0/architecture/cloud-init/: rows=26 cells-per-row=[2] after reconcile: first-boot, kairos-install.pre
+exit=0

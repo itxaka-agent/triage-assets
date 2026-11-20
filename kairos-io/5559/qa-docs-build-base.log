@@ -1,0 +1,60 @@
+$ git rev-parse HEAD
+5cdcdfccb0a7cdfbd14db73749360178625fa8cc
+$ date -Iseconds
+2026-11-20T09:00:50+01:00
+$ docker run --rm --name qa759-build-base --user 1000:1000 -e HOME=/tmp -e NODE_OPTIONS=--max-old-space-size=8192 -v <worktree>-base:/src -v <clone>/.git:<clone>/.git:ro -w /src node:24 sh -c git rev-parse --is-inside-work-tree && npm ci --no-audit --no-fund && npm run build
+true
+npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+
+added 1443 packages in 5s
+npm warn install-scripts 2 packages have install scripts not yet covered by allowScripts:
+npm warn install-scripts   @swc/core@1.15.43 (postinstall: node postinstall.js)
+npm warn install-scripts   core-js@3.47.0 (postinstall: node -e "try{require('./postinstall')}catch(e){}")
+npm warn install-scripts
+npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+npm notice
+npm notice New major version of npm available! 11.19.1 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice
+
+> kairos-docs@0.0.0 build
+> docusaurus build
+
+[INFO] [en] Creating an optimized production build...
+Browserslist: browsers data (caniuse-lite) is 11 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[Local Search] [INFO]: Gathering documents
+[Local Search] [INFO]: Parsing documents
+[Local Search] [WARN]: Page has no <main>, therefore no content was indexed for this page. (url: /community/)
+[Local Search] [INFO]: 13 indexes will be created.
+[Local Search] [INFO]: Building index default (274 documents)
+[Local Search] [INFO]: Building index blog_posts_list (63 documents)
+[Local Search] [INFO]: Building index docs-default-v4.2.0 (792 documents)
+[Local Search] [INFO]: Building index docs-default-v4.3.0 (794 documents)
+[Local Search] [INFO]: Building index docs-default-v4.4.0 (873 documents)
+[Local Search] [INFO]: Building index docs-default-current (921 documents)
+[Local Search] [INFO]: Building index docs-hadron-docs-current (58 documents)
+[Local Search] [INFO]: Building index docs-operator-docs-current (131 documents)
+[Local Search] [INFO]: Building index docs-operator-docs-v0.0.7 (54 documents)
+[Local Search] [INFO]: Building index docs-operator-docs-v0.2.2 (123 documents)
+[Local Search] [INFO]: Building index docs-operator-docs-v0.3.0 (131 documents)
+[Local Search] [INFO]: Building index docs-provider-kubernetes-docs-current (105 documents)
+[Local Search] [INFO]: Building index docs-quickstart-current (49 documents)
+[Local Search] [INFO]: Index default written to disk
+[Local Search] [INFO]: Index docs-default-v4.2.0 written to disk
+[Local Search] [INFO]: Index docs-hadron-docs-current written to disk
+[Local Search] [INFO]: Index docs-default-v4.4.0 written to disk
+[Local Search] [INFO]: Index blog_posts_list written to disk
+[Local Search] [INFO]: Index docs-default-v4.3.0 written to disk
+[Local Search] [INFO]: Index docs-operator-docs-v0.0.7 written to disk
+[Local Search] [INFO]: Index docs-operator-docs-current written to disk
+[Local Search] [INFO]: Index docs-operator-docs-v0.2.2 written to disk
+[Local Search] [INFO]: Index docs-operator-docs-v0.3.0 written to disk
+[Local Search] [INFO]: Index docs-default-current written to disk
+[Local Search] [INFO]: Index docs-provider-kubernetes-docs-current written to disk
+[Local Search] [INFO]: Index docs-quickstart-current written to disk
+[SUCCESS] Generated static files in "build".
+[INFO] Use `npm run serve` command to test your build locally.
+exit=0
