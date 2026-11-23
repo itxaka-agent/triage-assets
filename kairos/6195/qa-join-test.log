@@ -1,0 +1,26 @@
+PR kairos-io/kairos#6195 head 3d6f4e090e394f58a85eae06e6049b8a8a9dd5b7
+2026-11-23T13:54:40+01:00
+
+## 1. per-arch push with provenance=mode=max and the PR's pinned SBOM scanner
+amd64 digest sha256:1f3c525faf58aac94c6e5280b9c4107778fda6df745f35af256964fa63aac407
+arm64 digest sha256:1648b5ff0e0e12a29483673356e5235a18ac54d404a987830f4ee9edc75e8d3e
+
+## 2. the PR's own 'Join the per-architecture images' step, extracted from its head
+#1 0.024 pushing sha256:0673ef83570d7f414bde0d9095a547a5e22ec7aa3ec6df8767bfcd448b55f64d to localhost:5000/auroraboot:t
+#1 0.039 pushing sha256:0673ef83570d7f414bde0d9095a547a5e22ec7aa3ec6df8767bfcd448b55f64d to localhost:5000/auroraboot:extra
+#1 DONE 0.0s
+step output: digest=sha256:0673ef83570d7f414bde0d9095a547a5e22ec7aa3ec6df8767bfcd448b55f64d
+registry digest of :t     sha256:0673ef83570d7f414bde0d9095a547a5e22ec7aa3ec6df8767bfcd448b55f64d
+registry digest of :extra sha256:0673ef83570d7f414bde0d9095a547a5e22ec7aa3ec6df8767bfcd448b55f64d
+index members:
+  linux/amd64 sha256:9252fc4e3d3e image
+  unknown/unknown sha256:5bba03639181 attestation-manifest
+  linux/arm64 sha256:39cc59715bc2 image
+  unknown/unknown sha256:e2c1fbc91cd3 attestation-manifest
+
+## 3. bad digest must fail with no output
+::error::bad arm64 digest 'notadigest'
+exit 1, output bytes 0
+
+## 4. actionlint on the changed workflows (runner-label findings ignored, labels unknown to this actionlint)
+actionlint findings other than runner-label: 0
