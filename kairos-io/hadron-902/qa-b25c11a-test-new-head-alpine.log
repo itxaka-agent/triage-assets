@@ -1,0 +1,50 @@
+NAME="Alpine Linux"
+ID=alpine
+ok - the Dockerfile's default MODULE_SIGNING_CERT_FPR is the CI key's fingerprint
+ok - the CI key is a key and its certificate
+ok - the CI certificate has the extensions kbuild's x509.genkey gives
+ok - the CI key is RSA 4096
+ok - cloud-arm64.config signs with certs/hadron_signing_key.pem
+ok - cloud.config signs with certs/hadron_signing_key.pem
+ok - default-arm64.config signs with certs/hadron_signing_key.pem
+ok - default.config signs with certs/hadron_signing_key.pem
+ok - the Dockerfile runs 'install' in the three kernel make steps
+ok - the Dockerfile runs 'remove' in the three kernel make steps
+ok - three kernel steps mount the module-signing-key secret
+ok - select without a key uses the CI key
+ok - select without a key prints the CI fingerprint and copies the CI key
+ok - select fails without a key when one is required
+ok - select fails when the required key is the CI key
+ok - select takes the release key
+ok - select prints the release fingerprint
+ok - select writes the key readable by the owner only
+ok - select rejects a certificate without its key
+ok - select rejects a key without its certificate
+ok - select rejects a key that does not belong to the certificate
+ok - select rejects an encrypted key
+ok - install without a secret installs the CI key
+ok - install wrote the CI key where the config points
+ok - remove deletes the key
+ok - the key is gone after remove
+ok - install treats an empty secret as no secret
+ok - install refuses a secret that does not match the fingerprint
+ok - a refused key is not installed
+ok - install takes a secret that matches the fingerprint
+ok - install wrote the secret
+ok - install refuses the CI key for a release fingerprint
+ok - install does nothing for a config that does not sign
+ok - nothing installed for an unsigned config
+ok - remove does nothing for a config that does not sign
+ok - install refuses the path kbuild overwrites
+ok - modinfo reads the signature of a test module
+ok - check passes a kernel and modules of one key
+ok - check counted both modules, the compressed one too
+ok - check fails a module signed with another key
+ok - check fails a kernel that does not trust the key
+ok - check fails a release build signed with the CI key
+ok - check passes a pull request build signed with the CI key
+ok - check fails an unsigned module
+ok - cloud-riscv64.config does not sign modules
+ok - default-riscv64.config does not sign modules
+ok - workflows pass the key to every kernel build
+47 passed, 0 failed
