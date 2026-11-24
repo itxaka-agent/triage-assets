@@ -1,0 +1,9 @@
+[    0.000000] Linux version 7.3.5-hadron (root@buildkitsandbox) (gcc (GCC) 15.3.0, GNU ld (GNU Binutils) 2.47.20260726) #1 SMP PREEMPT_DYNAMIC Tue Nov 24 12:19:12 UTC 2026
+[    0.217247] Loading compiled-in X.509 certificates
+[    0.224771] Loaded X.509 cert 'Hadron CI module signing key (public, not trusted): 0962b9b52cc186096696bea74e2b0d064dd45331'
+[    1.162326] Loading compiled-in module X.509 certificates
+[    1.162582] Loaded X.509 cert 'Hadron CI module signing key (public, not trusted): 0962b9b52cc186096696bea74e2b0d064dd45331'
+[    1.708862] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+[    1.714058] Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+[    1.714946] Loaded X.509 cert 'wens: 61c038651aabdcf94bd0ac7ff06c7248db18c600'
+kairos-eca1 login: root (automatic login)
