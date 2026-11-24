@@ -1,0 +1,62 @@
+# QA provider-kubernetes#137 2026-11-24T16:41:23+01:00, host Linux 7.3.5-arch1-1 docker, containers run --user 1000:1000
+# head 53c941e1affc59018be568edf2e240305985b90f, base b22d230e44fd788bc851cee605cd7e41e4982fae
+### head 53c941e1affc59018be568edf2e240305985b90f
+## alpine (image-bundler base) busybox sh
+ok: bundle-images.sh retry helper
+exit=0
+## busybox image sh
+ok: bundle-images.sh retry helper
+exit=0
+## dash
+ok: bundle-images.sh retry helper
+exit=0
+## bash --posix
+ok: bundle-images.sh retry helper
+exit=0
+### non-retrying script (base behaviour, single attempt) - busybox sh
+FAIL: flaky 2: exit 1, want 0
+FAIL: flaky 2: 1 calls, want 3
+FAIL: flaky 2: stdout '', want only the digest
+FAIL: flaky 2: want 2 retry notices on stderr
+FAIL: flaky 2: sleeps '', want '5 15 '
+FAIL: always_fail: 1 calls, want 5
+FAIL: always_fail: sleeps '', want '5 15 30 60 '
+FAIL: scale 0: sleeps '', want '0 0 0 0 '
+FAIL: scale x: want non-zero exit before running the command
+9 check(s) failed
+exit=1
+### non-retrying - dash
+FAIL: flaky 2: exit 1, want 0
+FAIL: flaky 2: 1 calls, want 3
+FAIL: flaky 2: stdout '', want only the digest
+FAIL: flaky 2: want 2 retry notices on stderr
+FAIL: flaky 2: sleeps '', want '5 15 '
+FAIL: always_fail: 1 calls, want 5
+FAIL: always_fail: sleeps '', want '5 15 30 60 '
+FAIL: scale 0: sleeps '', want '0 0 0 0 '
+FAIL: scale x: want non-zero exit before running the command
+9 check(s) failed
+exit=1
+### base script as shipped on main (no retry helper)
+sed: base-worktree No such file or directory
+exit=1
+### test vs base script as shipped on main (no retry markers)
+FAIL: no retry() between the BEGIN/END retry markers in /b/build/bundle-images.sh
+exit=1
+### syntax check of head build/bundle-images.sh
+docker: invalid reference format
+
+Run 'docker run --help' for more information
+alpine:3.24@sha256:3f4d6b32e26703c6082839234f43769d5046b3ac7c910033911d1e71d8cd630a sh -n exit=125
+docker: invalid reference format
+
+Run 'docker run --help' for more information
+debian:stable-slim dash -n exit=125
+docker: invalid reference format
+
+Run 'docker run --help' for more information
+debian:stable-slim bash --posix -n exit=125
+### syntax check of head build/bundle-images.sh
+alpine busybox sh -n exit=0
+dash -n exit=0
+bash --posix -n exit=0
