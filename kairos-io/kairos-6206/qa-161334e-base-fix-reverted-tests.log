@@ -1,0 +1,20 @@
+• [FAILED] [0.000 seconds]
+  [FAILED] Expected
+• [FAILED] [0.000 seconds]
+  [FAILED] Expected
+      <*errors.errorString | 0x12de287b2930>: 
+• [FAILED] [0.000 seconds]
+  [FAILED] Expected
+      <*errors.errorString | 0x12de287b3080>: 
+• [FAILED] [0.000 seconds]
+  [FAILED] Expected an error, got nil
+• [FAILED] [0.000 seconds]
+  [FAILED] Expected an error to have occurred.  Got:
+• [FAILED] [0.001 seconds]
+  [FAILED] Expected
+      <*errors.errorString | 0x12de28808310>: 
+  [FAIL] Elemental DumpSource [It] Unpacks a docker image to target with cosign validation [elemental, dump, docker, cosign]
+  [FAIL] Elemental DumpSource [It] Verifies and extracts the digest the tag resolved to, not the tag [elemental, dump, docker, cosign]
+  [FAIL] Elemental DumpSource [It] Keeps the registry and port of the source when pinning [elemental, dump, docker, cosign]
+  [FAIL] Elemental DumpSource [It] Fails without verifying or extracting when the tag does not resolve [elemental, dump, docker, cosign]
+  [FAIL] Elemental DumpSource [It] Fails when the extractor cannot resolve digests [elemental, dump, docker, cosign]
