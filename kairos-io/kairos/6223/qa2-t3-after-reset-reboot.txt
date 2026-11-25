@@ -1,0 +1,5 @@
+image-B-from-ssh-source
+root=LABEL=COS_ACTIVE
+cos-img/filename=/cOS/active.img
+active.img
+passive.img

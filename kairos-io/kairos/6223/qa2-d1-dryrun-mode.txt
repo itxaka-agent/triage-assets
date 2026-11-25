@@ -1,0 +1,14 @@
+--- dry-run
+2026-11-25T10:43:25Z INF Kairos System version=v4.99.0-yip355head
+2026-11-25T10:43:25Z INF Boot Mode boot_mode=active_boot
+2026-11-25T10:43:25Z INF Boot in uki mode result=false
+2026-11-25T10:43:26Z INF Setting image size to 3072MiB
+Upgrade dry run, nothing was changed.
+Not checked: the image layers are not pulled, and the free space on the target partition is not compared with the image size.
+723f5efccb0b
+600 /run/initramfs/cos-state/cOS/active.img
+600 /run/initramfs/cos-state/cOS/passive.img
+--- real upgrade
+rc=0
+600 /run/initramfs/cos-state/cOS/active.img
+600 /run/initramfs/cos-state/cOS/passive.img

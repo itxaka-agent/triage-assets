@@ -1,0 +1,510 @@
+total 4
+drwx------ 2 root admin 1024 Nov 25 10:31 .
+drwxrwx--- 5 root admin 1024 Nov 25 10:31 ..
+-rw------- 1 root admin  399 Nov 25 10:31 id
+-rw------- 1 root admin   91 Nov 25 10:31 known_hosts
+                                  ,:itf1;:.              .,:;i:;:.                                  
+                            .,:itLCCCCCCCCLf1i:.    .,:;i1111tfffft1;:.                             
+                          ,tfCCCCCCCLLLLLCCCCCCLti;i111111111tffffffffft1,                          
+                          :fffffLLLCCCCCCCLfft1111111111111111:ffffffffff:                          
+                          :fff:::fffLLLft11111111111111111111tfffff::ffff:                          
+                          :ffffff:f:ff111111111111111111tffLLCCLLLLffff:f:                          
+                          :ffffffffffft111111111111ffLLCCCCCCCCCCCCCLLLfL:                          
+                      .,:;1:fffffffffft111111i;:,..:itLCCCCCCCCCCCCCCCCCCLti:,                      
+                 .,:;i1111tffffffffffft1i;:,.          .:itfCCCCCCCCCCCCCCCCCCLti;.                 
+               ;1111111111tfffffffffff;.                    .iLLLCCCCCCCCCLLCCCCCCLti               
+              .11111111111tfffffffffff,                      ,f:ffLLLLCCCCCCLLftt1111.              
+              .11111111111fffffff::fff:                      :ffffffffffLftt111111111.              
+              .11111ttfLLCCCCLLLffffff,                      ,fffffff:ffft11111111111.              
+               1fLLCCCCCCCCCCCCCCCLLLL:                      :f:ffffffffft11111111111.              
+               .:itfLCCCCCCCCCCCCCCCCCLf1;,.             .,;i1ffffffffffft111111i;:,.               
+                    .,;1fLCCCCCCCCCCCCCCCCCLf1;:.  ..:;i11111tffffffffffft1i;:,.                    
+                         .;LLLCCCCCCCCCLCCCCCCCLfii1111111111tfffffffffff;.                         
+                          :f:fffLLLCCCCCCLLft11111111111111111ff:ffffffff:                          
+                          :ff:::fffffLftt1111111111111111111tfLfffff::fff:                          
+                          :fffffff::ff11111111111111111ttfLLCCCCLLLffffff:                          
+                          :ffffffffffft1111111111i1fLLCCCCCCCCCCCCCCCCCLf:                          
+                           .,;itfffffft11111ii:,. .,;1tLCCCCCCCCCCCLf1;:.                           
+                                .,:i1:tii:,.            ,;itLCLf1;,.                                
+                                     ..                      ,.                                     
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                  .                        :LGGL;                                                   
+  C0G01     .1G00G1.                       i08801                                                   
+  0@@@t   :f8@@0t,       .:;i11i:. :;;;,    ;ii;    ,;;;: .:ii.     .:;111i;,.        .:;1111;:.    
+  0@@@1 iG@@@C;        1G8@@@@88@@G8@@@f   :@@@@:   f@@@8C@@@@,  :f0@@@@88@@@8C1.   :L8@@0008@@@G;  
+  0@@@08@@@t.        .G@@@0i,.  ,;G@@@@f   :@@@@:   f@@@@Ci::,  t@@@81,.  .;C@@@0,  L@@@G:.  :ttft  
+  0@@@CC@@@Ci.       i@@@@.        0@@@f   :@@@@:   f@@@0      .@@@@i        0@8@L   iLG8@@@8Gf1:   
+  0@@@1 ,f8@@8f:     ,8@@@f,     .1@@@@f   :@@@@:   f@@@G       C@@@C,     .1@@@@i  ;::;,.,:if@@@8, 
+  8@@@t   .iG@@@01,   ,L8@@@0CCC0@@@@@@L   :@@@@:   f@@@0        t0@@@0CLCG@@@8C:   t8@@@CfttC@@@G. 
+  tfff;      :ffLLt,    ,;tLCGCLt;.1fffi   ,ffff,   iffft          :itLCGGCf1;.       :1fCGGGCti:   
+                                                                                                    
+╭────────────────────────────────────────────────────────────────────╮
+│ Welcome to kairos!                                                 │
+│ The node will automatically reset its state in a few.              │
+│                                                                    │
+│ Press any key to abort this process. To restart run 'kairos reset'.│
+│                                                                    │
+│ Starting in 60 seconds...                                          │
+│                                                                    │
+╰──────────────────────────────────────────────────────────── Reset ─╯
+warning: skipping /etc/kairos/kairos-init-init-stage.yaml because it has no valid header
+warning: skipping /etc/kairos/kairos-init-install-stage.yaml because it has no valid header
+WARNING: jsonschema: '/stages/network/2/commands/0' does not validate with https://kairos.io/cloud-config.json#/properties/stages/additionalProperties/items/$ref/properties/commands/items/type: expected string, but got object
+2026-11-25T10:33:33Z INF Kairos Agent version=dev
+2026-11-25T10:33:33Z DBG Kairos Agent go=go1.27.4 version=dev
+2026-11-25T10:33:33Z INF Kairos System version=v4.99.0-yip355head
+2026-11-25T10:33:33Z DBG detecting boot state
+2026-11-25T10:33:33Z INF Boot Mode boot_mode=recovery_boot
+2026-11-25T10:33:33Z INF Boot in uki mode result=false
+2026-11-25T10:33:33Z DBG Loaded config: map[string]interface {}{
+  "collector": map[string]interface {}{
+    "install": map[string]interface {}{
+      "auto": true,
+      "device": "/dev/vda",
+      "poweroff": true,
+    },
+    "reset": map[string]interface {}{
+      "poweroff": false,
+      "reboot": false,
+      "system": map[string]interface {}{
+        "source": "ssh://10.99.0.1",
+      },
+    },
+    "ssh-source": map[string]interface {}{
+      "identity-file": "/oem/ssh6223/id",
+      "known-hosts-file": "/oem/ssh6223/known_hosts",
+      "user": "kairos",
+    },
+    "stages": map[string]interface {}{
+      "network": []interface {}{
+        map[string]interface {}{
+          "commands": []interface {}{
+            "n=$(ip -o link | grep -i 52:54:00:99:00:02 | cut -d: -f2 | tr -d ' ')\nip link set $n up; ip addr add 10.99.0.2/24 dev $n\n",
+          },
+          "name": "second nic",
+        },
+        map[string]interface {}{
+          "commands": []interface {}{
+            "n=$(ip -o link | grep -i 52:54:00:99:00:02 | cut -d: -f2 | tr -d ' ')\nip link set $n up; ip addr add 10.99.0.2/24 dev $n\n",
+          },
+          "name": "second nic",
+        },
+        map[string]interface {}{
+          "commands": []interface {}{
+            map[string]interface {}{
+              "n=$(ip -o link | grep -i 52:54:00:99:00:02 | cut -d": "-f2 | tr -d \" \"); ip link set $n up; ip addr add 10.99.0.2/24 dev $n",
+            },
+          },
+          "name": "second nic",
+        },
+      },
+    },
+    "users": []interface {}{
+      map[string]interface {}{
+        "groups": []interface {}{
+          "admin",
+        },
+        "name": "kairos",
+        "passwd": "<redacted>",
+        "ssh_authorized_keys": []interface {}{
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICFseCfJcpdZJeyki7kkpyHyKBdlzF8BQerLGm1fYFDA itxaka@zeus",
+        },
+      },
+      map[string]interface {}{
+        "groups": []interface {}{
+          "admin",
+        },
+        "name": "kairos",
+        "passwd": "<redacted>",
+        "ssh_authorized_keys": []interface {}{
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICFseCfJcpdZJeyki7kkpyHyKBdlzF8BQerLGm1fYFDA itxaka@zeus",
+        },
+      },
+    },
+  },
+  "config": map[string]interface {}{
+    "arch": "x86_64",
+    "install": map[string]interface {}{
+      "auto": true,
+      "device": "/dev/vda",
+      "poweroff": true,
+    },
+    "squash-no-compression": true,
+    "uki-max-entries": 3,
+  },
+}
+2026-11-25T10:33:33Z DBG Running cmd: 'cat /proc/cmdline'
+2026-11-25T10:33:33Z DBG Running cmd: 'cat /proc/cmdline'
+2026-11-25T10:33:33Z INF Setting image size to 605MiB
+2026-11-25T10:33:33Z INF Setting image size to 605MiB
+2026-11-25T10:33:33Z DBG Loaded reset spec: &spec.ResetSpec{
+  FormatPersistent: true,
+  GrubDefEntry: "Kairos",
+  Tty: "tty1",
+  Active: images.Image{
+    File: "/run/cos/state/cOS/active.img",
+    Label: "COS_ACTIVE",
+    Size: 605,
+    FS: "ext2",
+    Source: &images.ImageSource{
+      source: "10.99.0.1",
+      srcType: "ssh",
+    },
+    MountPoint: "/run/cos/active",
+  },
+  Passive: images.Image{
+    File: "/run/cos/state/cOS/passive.img",
+    Label: "COS_PASSIVE",
+    Size: 605,
+    FS: "ext2",
+    Source: &images.ImageSource{
+      source: "/run/cos/state/cOS/active.img",
+      srcType: "file",
+    },
+  },
+  Partitions: partitions.ElementalPartitions{
+    EFI: &partitions.Partition{
+      Name: "efi",
+      PartitionLabel: "efi",
+      FilesystemLabel: "COS_GRUB",
+      Size: 64,
+      FS: "vfat",
+      UUID: "81444e82-66b3-5ed2-961b-497665f12be2",
+      MountPoint: "/run/cos/efi",
+      Path: "/dev/vda1",
+      Disk: "/dev/vda",
+    },
+    OEM: &partitions.Partition{
+      Name: "vda2",
+      PartitionLabel: "oem",
+      FilesystemLabel: "COS_OEM",
+      Size: 64,
+      FS: "ext4",
+      UUID: "8bfa06f9-ca4f-56dc-90c9-49cf20f4f45e",
+      MountPoint: "/oem",
+      Path: "/dev/vda2",
+      Disk: "/dev/vda",
+    },
+    Recovery: &partitions.Partition{
+      Name: "vda3",
+      PartitionLabel: "recovery",
+      FilesystemLabel: "COS_RECOVERY",
+      Size: 1210,
+      FS: "ext4",
+      UUID: "768fbd69-b2a9-5eab-902c-db8745b4767c",
+      MountPoint: "/run/initramfs/cos-state",
+      Path: "/dev/vda3",
+      Disk: "/dev/vda",
+    },
+    State: &partitions.Partition{
+      Name: "state",
+      PartitionLabel: "state",
+      FilesystemLabel: "COS_STATE",
+      Size: 2515,
+      FS: "ext4",
+      UUID: "843bfe4e-83b2-5b42-ba6d-a47e3ba1262e",
+      MountPoint: "/run/cos/state",
+      Path: "/dev/vda4",
+      Disk: "/dev/vda",
+    },
+    Persistent: &partitions.Partition{
+      Name: "vda5",
+      PartitionLabel: "persistent",
+      FilesystemLabel: "COS_PERSISTENT",
+      Size: 37105,
+      FS: "ext4",
+      UUID: "85c39d0f-4867-5227-8334-f5eec606d9eb",
+      Path: "/dev/vda5",
+      Disk: "/dev/vda",
+    },
+  },
+  Target: "/dev/vda",
+  Efi: true,
+  GrubConf: "/etc/cos/grub.cfg",
+}
+2026-11-25T10:33:33Z DBG Mounting partition COS_PERSISTENT
+2026-11-25T10:33:33Z INF Preserving 827118 bytes of /var/log/audit across the reset
+2026-11-25T10:33:33Z DBG Unmounting partition COS_PERSISTENT
+2026-11-25T10:33:34Z DBG Mounting partition COS_PERSISTENT
+2026-11-25T10:33:34Z DBG Unmounting partition COS_PERSISTENT
+2026-11-25T10:33:34Z DBG Not unmounting partition,  doesn't look like mountpoint
+2026-11-25T10:33:34Z INF Formatting 'COS_PERSISTENT' partition
+2026-11-25T10:33:34Z DBG Running cmd: 'mkfs.ext4 -L COS_PERSISTENT -O ^metadata_csum_seed /dev/vda5'
+2026-11-25T10:33:34Z DBG partition COS_PERSISTENT is not configured for encryption; leaving it plaintext after the format
+2026-11-25T10:33:34Z DBG Mounting partition COS_PERSISTENT
+2026-11-25T10:33:34Z INF Restored /var/log/audit onto the persistent partition
+2026-11-25T10:33:34Z DBG Unmounting partition COS_PERSISTENT
+2026-11-25T10:33:34Z DBG Mounting partition COS_PERSISTENT
+2026-11-25T10:33:34Z DBG Unmounting partition COS_PERSISTENT
+2026-11-25T10:33:34Z INF Running before-reset hook
+2026-11-25T10:33:34Z DBG Cloud-init paths set to [/system/oem /oem/ /usr/local/cloud-config/]
+2026-11-25T10:33:34Z INF Running stage: before-reset.before
+
+2026-11-25T10:33:34Z INF Done executing stage 'before-reset.before'
+
+2026-11-25T10:33:34Z INF Running stage: before-reset
+
+2026-11-25T10:33:34Z INF Done executing stage 'before-reset'
+
+2026-11-25T10:33:34Z INF Running stage: before-reset.after
+
+2026-11-25T10:33:34Z INF Done executing stage 'before-reset.after'
+
+2026-11-25T10:33:34Z INF Running stage: before-reset.before
+
+2026-11-25T10:33:34Z INF Done executing stage 'before-reset.before'
+
+2026-11-25T10:33:34Z INF Running stage: before-reset
+
+2026-11-25T10:33:34Z INF Done executing stage 'before-reset'
+
+2026-11-25T10:33:34Z INF Running stage: before-reset.after
+
+2026-11-25T10:33:34Z INF Done executing stage 'before-reset.after'
+
+2026-11-25T10:33:34Z DBG Mounting partition COS_STATE
+2026-11-25T10:33:34Z INF Copying 10.99.0.1 source to /run/cos/state/cOS/active.img
+2026-11-25T10:33:34Z INF Hashing /run/initramfs/cos-state/cOS/active.img on 10.99.0.1
+2026-11-25T10:33:34Z INF Fetching /run/initramfs/cos-state/cOS/active.img from 10.99.0.1 (505 MiB, sha256 51e8027c0f92071ae277803c984624d674bac96c72afd48abf681abf508fa494)
+2026-11-25T10:33:35Z INF Transferred 50 of 505 MiB (10%)
+2026-11-25T10:33:35Z INF Transferred 101 of 505 MiB (20%)
+2026-11-25T10:33:36Z INF Transferred 151 of 505 MiB (30%)
+2026-11-25T10:33:36Z INF Transferred 202 of 505 MiB (40%)
+2026-11-25T10:33:37Z INF Transferred 252 of 505 MiB (50%)
+2026-11-25T10:33:37Z INF Transferred 303 of 505 MiB (60%)
+2026-11-25T10:33:38Z INF Transferred 353 of 505 MiB (70%)
+2026-11-25T10:33:38Z INF Transferred 404 of 505 MiB (80%)
+2026-11-25T10:33:39Z INF Transferred 454 of 505 MiB (90%)
+2026-11-25T10:33:39Z INF Transferred 505 of 505 MiB (100%)
+2026-11-25T10:33:39Z INF Image from 10.99.0.1 received and verified (sha256 51e8027c0f92071ae277803c984624d674bac96c72afd48abf681abf508fa494)
+2026-11-25T10:33:39Z INF Finished copying 10.99.0.1 into /run/cos/state/cOS/active.img
+2026-11-25T10:33:39Z DBG Running cmd: 'tune2fs -L COS_ACTIVE /run/cos/state/cOS/active.img'
+2026-11-25T10:33:39Z DBG Mounting image COS_ACTIVE
+2026-11-25T10:33:39Z DBG Opening img file image=/run/cos/state/cOS/active.img
+2026-11-25T10:33:39Z DBG Opening loop control device
+2026-11-25T10:33:39Z DBG Getting free loop device
+2026-11-25T10:33:39Z DBG Opening loop device device=/dev/loop1
+2026-11-25T10:33:39Z DBG Setting loop device
+2026-11-25T10:33:39Z DBG Setting loop flags
+2026-11-25T10:33:39Z DBG Attached loop device device=/dev/loop1 image=/run/cos/state/cOS/active.img readOnly=false
+2026-11-25T10:33:40Z DBG Mounting partition COS_GRUB
+2026-11-25T10:33:40Z INF Using grub config dir /run/cos/active/etc/cos/grub.cfg
+2026-11-25T10:33:40Z INF Copying grub contents from /run/cos/active/etc/cos/grub.cfg to /run/cos/state/grub2/grub.cfg
+2026-11-25T10:33:40Z INF Generating grub files for efi on /dev/vda
+2026-11-25T10:33:40Z DBG Copying /run/cos/active/usr/lib/grub/x86_64-efi/loopback.mod to /run/cos/state/grub2/x86_64-efi/loopback.mod
+2026-11-25T10:33:40Z DBG Copying /run/cos/active/usr/lib/grub/x86_64-efi/squash4.mod to /run/cos/state/grub2/x86_64-efi/squash4.mod
+2026-11-25T10:33:40Z DBG Copying /run/cos/active/usr/lib/grub/x86_64-efi/xzio.mod to /run/cos/state/grub2/x86_64-efi/xzio.mod
+2026-11-25T10:33:40Z DBG Copying /run/cos/active/usr/lib/grub/x86_64-efi/gzio.mod to /run/cos/state/grub2/x86_64-efi/gzio.mod
+2026-11-25T10:33:40Z DBG Copying /run/cos/active/usr/lib/grub/x86_64-efi/regexp.mod to /run/cos/state/grub2/x86_64-efi/regexp.mod
+2026-11-25T10:33:40Z DBG Copying /run/cos/active/usr/share/grub/ascii.pf2 to /run/cos/state/grub2/fonts/ascii.pf2
+2026-11-25T10:33:40Z DBG Copying /run/cos/active/usr/share/grub/euro.pf2 to /run/cos/state/grub2/fonts/euro.pf2
+2026-11-25T10:33:40Z DBG Copying /run/cos/active/usr/share/grub/unicode.pf2 to /run/cos/state/grub2/fonts/unicode.pf2
+2026-11-25T10:33:40Z DBG Detected Flavor: hadron
+2026-11-25T10:33:40Z DBG Copying /usr/share/efi/x86_64/shim.efi to /run/cos/efi/EFI/boot/shim.efi
+2026-11-25T10:33:40Z DBG skip copying /run/cos/active/usr/share/efi/x86_64/grub.efi: not found
+2026-11-25T10:33:40Z DBG skip copying /run/cos/active/usr/lib/grub/x86_64-efi-signed/grubx64.efi.signed: not found
+2026-11-25T10:33:40Z DBG skip copying /run/cos/active/boot/efi/EFI/fedora/grubx64.efi: not found
+2026-11-25T10:33:40Z DBG skip copying /run/cos/active/boot/efi/EFI/rocky/grubx64.efi: not found
+2026-11-25T10:33:40Z DBG skip copying /run/cos/active/boot/efi/EFI/redhat/grubx64.efi: not found
+2026-11-25T10:33:40Z DBG skip copying /run/cos/active/boot/efi/EFI/almalinux/grubx64.efi: not found
+2026-11-25T10:33:40Z DBG Copying /usr/lib/grub/x86_64-efi/grubx64.efi to /run/cos/efi/EFI/boot/grubx64.efi
+2026-11-25T10:33:40Z DBG Extra mounts: map[/oem:/oem]
+2026-11-25T10:33:40Z DBG Mounting /dev to chroot
+2026-11-25T10:33:40Z DBG Mounted /dev to /run/cos/active/dev
+2026-11-25T10:33:40Z DBG Mounting /dev/pts to chroot
+2026-11-25T10:33:40Z DBG Mounted /dev/pts to /run/cos/active/dev/pts
+2026-11-25T10:33:40Z DBG Mounting /proc to chroot
+2026-11-25T10:33:40Z DBG Mounted /proc to /run/cos/active/proc
+2026-11-25T10:33:40Z DBG Mounting /sys to chroot
+2026-11-25T10:33:40Z DBG Mounted /sys to /run/cos/active/sys
+2026-11-25T10:33:40Z DBG Mounting /run/systemd/journal/ to chroot
+2026-11-25T10:33:40Z DBG Mounted /run/systemd/journal/ to /run/cos/active/run/systemd/journal/
+2026-11-25T10:33:40Z DBG Mounting /oem to chroot
+2026-11-25T10:33:40Z DBG Mounted /oem to /run/cos/active/oem
+2026-11-25T10:33:40Z DBG No files relabelling as SELinux utilities are not found
+2026-11-25T10:33:40Z DBG Unmounting /run/cos/active/oem from chroot
+2026-11-25T10:33:40Z DBG Unmounting /run/cos/active/run/systemd/journal/ from chroot
+2026-11-25T10:33:40Z DBG Unmounting /run/cos/active/sys from chroot
+2026-11-25T10:33:40Z DBG Unmounting /run/cos/active/proc from chroot
+2026-11-25T10:33:40Z DBG Unmounting /run/cos/active/dev/pts from chroot
+2026-11-25T10:33:40Z DBG Unmounting /run/cos/active/dev from chroot
+2026-11-25T10:33:40Z DBG Extra mounts: map[/oem:/oem]
+2026-11-25T10:33:40Z DBG Mounting /dev to chroot
+2026-11-25T10:33:40Z DBG Mounted /dev to /run/cos/active/dev
+2026-11-25T10:33:40Z DBG Mounting /dev/pts to chroot
+2026-11-25T10:33:40Z DBG Mounted /dev/pts to /run/cos/active/dev/pts
+2026-11-25T10:33:40Z DBG Mounting /proc to chroot
+2026-11-25T10:33:40Z DBG Mounted /proc to /run/cos/active/proc
+2026-11-25T10:33:40Z DBG Mounting /sys to chroot
+2026-11-25T10:33:40Z DBG Mounted /sys to /run/cos/active/sys
+2026-11-25T10:33:40Z DBG Mounting /run/systemd/journal/ to chroot
+2026-11-25T10:33:40Z DBG Mounted /run/systemd/journal/ to /run/cos/active/run/systemd/journal/
+2026-11-25T10:33:40Z DBG Mounting /oem to chroot
+2026-11-25T10:33:40Z DBG Mounted /oem to /run/cos/active/oem
+2026-11-25T10:33:40Z INF Running after-reset-chroot hook
+2026-11-25T10:33:40Z DBG Cloud-init paths set to [/system/oem /oem/ /usr/local/cloud-config/]
+2026-11-25T10:33:40Z INF Running stage: after-reset-chroot.before
+
+2026-11-25T10:33:40Z INF Done executing stage 'after-reset-chroot.before'
+
+2026-11-25T10:33:40Z INF Running stage: after-reset-chroot
+
+2026-11-25T10:33:40Z INF Done executing stage 'after-reset-chroot'
+
+2026-11-25T10:33:40Z INF Running stage: after-reset-chroot.after
+
+2026-11-25T10:33:40Z INF Done executing stage 'after-reset-chroot.after'
+
+2026-11-25T10:33:40Z INF Running stage: after-reset-chroot.before
+
+2026-11-25T10:33:40Z INF Done executing stage 'after-reset-chroot.before'
+
+2026-11-25T10:33:40Z INF Running stage: after-reset-chroot
+
+2026-11-25T10:33:40Z INF Done executing stage 'after-reset-chroot'
+
+2026-11-25T10:33:40Z INF Running stage: after-reset-chroot.after
+
+2026-11-25T10:33:40Z INF Done executing stage 'after-reset-chroot.after'
+
+2026-11-25T10:33:40Z DBG Unmounting /run/cos/active/oem from chroot
+2026-11-25T10:33:40Z DBG Unmounting /run/cos/active/run/systemd/journal/ from chroot
+2026-11-25T10:33:40Z DBG Unmounting /run/cos/active/sys from chroot
+2026-11-25T10:33:40Z DBG Unmounting /run/cos/active/proc from chroot
+2026-11-25T10:33:40Z DBG Unmounting /run/cos/active/dev/pts from chroot
+2026-11-25T10:33:40Z DBG Unmounting /run/cos/active/dev from chroot
+2026-11-25T10:33:40Z INF Setting default grub entry to Kairos
+2026-11-25T10:33:40Z DBG Unmounting image COS_ACTIVE
+2026-11-25T10:33:40Z DBG Opening loop device device=/dev/loop1
+2026-11-25T10:33:40Z DBG Clearing loop device
+2026-11-25T10:33:40Z INF Copying /run/cos/state/cOS/active.img source to /run/cos/state/cOS/passive.img
+2026-11-25T10:33:40Z INF Finished copying /run/cos/state/cOS/active.img into /run/cos/state/cOS/passive.img
+2026-11-25T10:33:40Z DBG Running cmd: 'tune2fs -L COS_PASSIVE /run/cos/state/cOS/passive.img'
+2026-11-25T10:33:40Z DBG Not unmounting image,  doesn't look like mountpoint
+2026-11-25T10:33:40Z INF Running after-reset hook
+2026-11-25T10:33:40Z DBG Cloud-init paths set to [/system/oem /oem/ /usr/local/cloud-config/]
+2026-11-25T10:33:40Z INF Running stage: after-reset.before
+
+2026-11-25T10:33:40Z INF Done executing stage 'after-reset.before'
+
+2026-11-25T10:33:40Z INF Running stage: after-reset
+
+2026-11-25T10:33:40Z DBG Generating op for stage 'Boot assessment and branding.Mount state'
+2026-11-25T10:33:40Z DBG Generating op for stage 'Boot assessment and branding.Hook boot assessment grub configuration'
+2026-11-25T10:33:40Z DBG Generating op for stage 'Boot assessment and branding.Grub branding'
+2026-11-25T10:33:40Z DBG Generating op for stage 'Boot assessment and branding.Add boot assessment grub configuration'
+2026-11-25T10:33:40Z DBG Generating op for stage 'Boot assessment and branding.umount state'
+2026-11-25T10:33:40Z DBG Reading '/system/oem/08_grub.yaml'
+2026-11-25T10:33:40Z DBG Executing stage 'Boot assessment and branding.Mount state'
+2026-11-25T10:33:40Z DBG running command `grep -vq "rd.immucore.uki" /proc/cmdline`
+2026-11-25T10:33:40Z DBG If statement result 
+2026-11-25T10:33:40Z INF Processing stage step 'Boot assessment and branding.Mount state'. ( commands: 1, files: 0, ... )
+2026-11-25T10:33:40Z DBG Stage: schema.Stage{
+  Commands: []string{
+    "STATEDIR=/tmp/mnt/STATE\nSTATE=$(blkid -L COS_STATE || true)\nmkdir -p $STATEDIR || true\nmount ${STATE} $STATEDIR\n",
+  },
+  If: "grep -vq \"rd.immucore.uki\" /proc/cmdline",
+  Name: "Mount state",
+}
+2026-11-25T10:33:40Z DBG running command `STATEDIR=/tmp/mnt/STATE
+STATE=$(blkid -L COS_STATE || true)
+mkdir -p $STATEDIR || true
+mount ${STATE} $STATEDIR
+`
+2026-11-25T10:33:40Z DBG Empty command output
+2026-11-25T10:33:40Z INF Running layout plugin
+2026-11-25T10:33:40Z DBG Device field empty, skipping layout plugin
+2026-11-25T10:33:40Z DBG Reading '/system/oem/08_grub.yaml'
+2026-11-25T10:33:40Z DBG Executing stage 'Boot assessment and branding.Hook boot assessment grub configuration'
+2026-11-25T10:33:40Z DBG running command `! grep -q "grub_boot_assessment" /tmp/mnt/STATE/grubcustom && grep -vq "rd.immucore.uki" /proc/cmdline
+`
+2026-11-25T10:33:40Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run ! grep -q "grub_boot_assessment" /tmp/mnt/STATE/grubcustom && grep -vq "rd.immucore.uki" /proc/cmdline
+: exit status 1)' stage name: Boot assessment and branding.Hook boot assessment grub configuration
+2026-11-25T10:33:40Z DBG Reading '/system/oem/08_grub.yaml'
+2026-11-25T10:33:40Z DBG Executing stage 'Boot assessment and branding.Grub branding'
+2026-11-25T10:33:40Z DBG running command `[ -e "/etc/kairos/branding/grubmenu.cfg" ] && grep -vq "rd.immucore.uki" /proc/cmdline`
+2026-11-25T10:33:40Z DBG If statement result 
+2026-11-25T10:33:40Z INF Processing stage step 'Boot assessment and branding.Grub branding'. ( commands: 1, files: 0, ... )
+2026-11-25T10:33:40Z DBG Stage: schema.Stage{
+  Commands: []string{
+    "cp -rfv /etc/kairos/branding/grubmenu.cfg /tmp/mnt/STATE/grubmenu",
+  },
+  If: "[ -e \"/etc/kairos/branding/grubmenu.cfg\" ] && grep -vq \"rd.immucore.uki\" /proc/cmdline",
+  Name: "Grub branding",
+}
+2026-11-25T10:33:40Z DBG running command `cp -rfv /etc/kairos/branding/grubmenu.cfg /tmp/mnt/STATE/grubmenu`
+2026-11-25T10:33:40Z DBG Command output: '/etc/kairos/branding/grubmenu.cfg' -> '/tmp/mnt/STATE/grubmenu'
+
+2026-11-25T10:33:40Z INF Running layout plugin
+2026-11-25T10:33:40Z DBG Device field empty, skipping layout plugin
+2026-11-25T10:33:40Z DBG Reading '/system/oem/08_grub.yaml'
+2026-11-25T10:33:40Z DBG Executing stage 'Boot assessment and branding.Add boot assessment grub configuration'
+2026-11-25T10:33:40Z DBG running command `grep -vq "rd.immucore.uki" /proc/cmdline`
+2026-11-25T10:33:40Z DBG If statement result 
+2026-11-25T10:33:40Z INF Processing stage step 'Boot assessment and branding.Add boot assessment grub configuration'. ( commands: 0, files: 1, ... )
+2026-11-25T10:33:40Z DBG Stage: schema.Stage{
+  Files: []schema.File{
+    schema.File{
+      Path: "/tmp/mnt/STATE/grub_boot_assessment",
+      Permissions: 384,
+      Content: "set boot_assessment=\"/boot_assessment\"\nsearch --no-floppy --file --set=boot_assessment_blk \"${boot_assessment}\"\nif [ \"${boot_assessment_blk}\" ]; then\n  load_env -f \"(${boot_assessment_blk})${boot_assessment}\"\nfi\nif [ \"${enable_boot_assessment}\" = \"yes\" -o \"${enable_boot_assessment_always}\" = \"yes\" ]; then\n  if [ -z \"${selected_entry}\" ]; then\n    if [ \"${boot_assessment_tentative}\" = \"yes\" ]; then\n      set default=\"fallback\"\n      set extra_passive_cmdline=\"upgrade_failure\"\n    else\n      set boot_assessment_tentative=\"yes\"\n      save_env -f \"(${boot_assessment_blk})${boot_assessment}\" boot_assessment_tentative\n    fi\n  fi\nfi\n",
+    },
+  },
+  If: "grep -vq \"rd.immucore.uki\" /proc/cmdline",
+  Name: "Add boot assessment grub configuration",
+}
+2026-11-25T10:33:40Z DBG Creating file /tmp/mnt/STATE/grub_boot_assessment
+2026-11-25T10:33:40Z INF Running layout plugin
+2026-11-25T10:33:40Z DBG Device field empty, skipping layout plugin
+2026-11-25T10:33:40Z DBG Reading '/system/oem/08_grub.yaml'
+2026-11-25T10:33:40Z DBG Executing stage 'Boot assessment and branding.umount state'
+2026-11-25T10:33:40Z DBG running command `grep -vq "rd.immucore.uki" /proc/cmdline`
+2026-11-25T10:33:40Z DBG If statement result 
+2026-11-25T10:33:40Z INF Processing stage step 'Boot assessment and branding.umount state'. ( commands: 1, files: 0, ... )
+2026-11-25T10:33:40Z DBG Stage: schema.Stage{
+  Commands: []string{
+    "umount /tmp/mnt/STATE",
+  },
+  If: "grep -vq \"rd.immucore.uki\" /proc/cmdline",
+  Name: "umount state",
+}
+2026-11-25T10:33:40Z DBG running command `umount /tmp/mnt/STATE`
+2026-11-25T10:33:40Z DBG Empty command output
+2026-11-25T10:33:40Z INF Running layout plugin
+2026-11-25T10:33:40Z DBG Device field empty, skipping layout plugin
+2026-11-25T10:33:40Z INF Done executing stage 'after-reset'
+
+2026-11-25T10:33:40Z INF Running stage: after-reset.after
+
+2026-11-25T10:33:40Z INF Done executing stage 'after-reset.after'
+
+2026-11-25T10:33:40Z INF Running stage: after-reset.before
+
+2026-11-25T10:33:40Z INF Done executing stage 'after-reset.before'
+
+2026-11-25T10:33:40Z INF Running stage: after-reset
+
+2026-11-25T10:33:40Z INF Done executing stage 'after-reset'
+
+2026-11-25T10:33:40Z INF Running stage: after-reset.after
+
+2026-11-25T10:33:40Z INF Done executing stage 'after-reset.after'
+
+2026-11-25T10:33:40Z DBG Mounting partition COS_PERSISTENT
+2026-11-25T10:33:40Z DBG Unmounting partition COS_PERSISTENT
+2026-11-25T10:33:40Z DBG Unmounting partition COS_GRUB
+2026-11-25T10:33:40Z DBG Not unmounting image, /run/cos/active doesn't look like mountpoint
+2026-11-25T10:33:40Z DBG Unmounting partition COS_STATE
+2026-11-25T10:33:40Z INF Running CopyLogs hook
+2026-11-25T10:33:40Z INF Starting rsync...
+2026-11-25T10:33:40Z DBG Running cmd: 'rsync --progress --partial --human-readable --archive --acls /var/log/ /run/cos/persistent/.state/var-log.bind/'
+2026-11-25T10:33:40Z INF Finished syncing
+2026-11-25T10:33:40Z DBG Logs copied to persistent partition
+2026-11-25T10:33:40Z INF Finish CopyLogs hook
+2026-11-25T10:33:40Z DBG Running Lifecycle hook
+2026-11-25T10:33:40Z DBG Finish Lifecycle hook

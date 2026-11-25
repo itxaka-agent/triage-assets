@@ -1,0 +1,11 @@
+2026-11-25T10:46:27Z INF Hashing /run/initramfs/cos-state/cOS/active.img on 10.99.0.1
+2026-11-25T10:46:27Z INF Fetching /run/initramfs/cos-state/cOS/active.img from 10.99.0.1 (505 MiB, sha256 51e8027c0f92071ae277803c984624d674bac96c72afd48abf681abf508fa494)
+2026-11-25T10:46:28Z INF Transferred 50 of 505 MiB (10%)
+2026-11-25T10:46:29Z INF Transferred 101 of 505 MiB (20%)
+2026-11-25T10:46:30Z INF Transferred 202 of 505 MiB (40%)
+2026-11-25T10:46:30Z WRN Transfer from 10.99.0.1 interrupted at 261 MiB (unexpected EOF), resuming in 2s (1/5)
+2026-11-25T10:46:35Z INF Transferred 505 of 505 MiB (100%)
+2026-11-25T10:46:35Z INF Image from 10.99.0.1 received and verified (sha256 51e8027c0f92071ae277803c984624d674bac96c72afd48abf681abf508fa494)
+2026-11-25T10:46:36Z INF Upgrade completed
+2026-11-25T10:46:36Z WRN Remember that recovery is upgraded separately by passing the --recovery flag to the upgrade command!
+2026-11-25T10:46:36Z WRN Overriding existing grubenv variable key=next_entry newValue=cos oldValue=cos

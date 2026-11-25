@@ -1,0 +1,285 @@
+=================== CASE c1-explicit-active
+--- config:
+    #cloud-config
+    ssh-source:
+      user: kairos
+      identity-file: /usr/local/ssh6223/id
+      known-hosts-file: /usr/local/ssh6223/known_hosts
+    upgrade:
+      system:
+        source: ssh://10.99.0.1/active
+2026-11-25T10:29:03Z INF Hashing /run/initramfs/cos-state/cOS/active.img on 10.99.0.1
+2026-11-25T10:29:03Z INF Fetching /run/initramfs/cos-state/cOS/active.img from 10.99.0.1 (505 MiB, sha256 51e8027c0f92071ae277803c984624d674bac96c72afd48abf681abf508fa494)
+2026-11-25T10:29:08Z INF Image from 10.99.0.1 received and verified (sha256 51e8027c0f92071ae277803c984624d674bac96c72afd48abf681abf508fa494)
+2026-11-25T10:29:09Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -x "/usr/sbin/kairos-jetson-qspi-update" ]
+2026-11-25T10:29:09Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run ! grep -q "grub_boot_assessment" /tmp/mnt/STATE/grubcustom && grep -vq "rd.immucore.uki" /proc/cmdline
+2026-11-25T10:29:09Z INF Upgrade completed
+exit=0
+active.img before=d867363d43cb after=ab3c6b1d3ddd
+=================== CASE c2-explicit-passive
+--- config:
+    #cloud-config
+    ssh-source:
+      user: kairos
+      identity-file: /usr/local/ssh6223/id
+      known-hosts-file: /usr/local/ssh6223/known_hosts
+    upgrade:
+      system:
+        source: ssh://10.99.0.1/passive
+2026-11-25T10:29:10Z INF Hashing /run/initramfs/cos-state/cOS/passive.img on 10.99.0.1
+2026-11-25T10:29:11Z INF Fetching /run/initramfs/cos-state/cOS/passive.img from 10.99.0.1 (505 MiB, sha256 273a900b2279731698a5b7c5cb129d6ec7345a4b33bc8aa44c047d4af2691b6e)
+2026-11-25T10:29:16Z INF Image from 10.99.0.1 received and verified (sha256 273a900b2279731698a5b7c5cb129d6ec7345a4b33bc8aa44c047d4af2691b6e)
+2026-11-25T10:29:16Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -x "/usr/sbin/kairos-jetson-qspi-update" ]
+2026-11-25T10:29:16Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run ! grep -q "grub_boot_assessment" /tmp/mnt/STATE/grubcustom && grep -vq "rd.immucore.uki" /proc/cmdline
+2026-11-25T10:29:16Z INF Upgrade completed
+exit=0
+active.img before=ab3c6b1d3ddd after=e6d7c5865c27
+=================== CASE c3-absolute-path
+--- config:
+    #cloud-config
+    ssh-source:
+      user: kairos
+      identity-file: /usr/local/ssh6223/id
+      known-hosts-file: /usr/local/ssh6223/known_hosts
+    upgrade:
+      system:
+        source: ssh://10.99.0.1/run/initramfs/cos-state/cOS/active.img
+2026-11-25T10:29:17Z INF Hashing /run/initramfs/cos-state/cOS/active.img on 10.99.0.1
+2026-11-25T10:29:18Z INF Fetching /run/initramfs/cos-state/cOS/active.img from 10.99.0.1 (505 MiB, sha256 51e8027c0f92071ae277803c984624d674bac96c72afd48abf681abf508fa494)
+2026-11-25T10:29:23Z INF Image from 10.99.0.1 received and verified (sha256 51e8027c0f92071ae277803c984624d674bac96c72afd48abf681abf508fa494)
+2026-11-25T10:29:23Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -x "/usr/sbin/kairos-jetson-qspi-update" ]
+2026-11-25T10:29:23Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run ! grep -q "grub_boot_assessment" /tmp/mnt/STATE/grubcustom && grep -vq "rd.immucore.uki" /proc/cmdline
+2026-11-25T10:29:23Z INF Upgrade completed
+exit=0
+active.img before=e6d7c5865c27 after=df4347e84faa
+=================== CASE c4-user-in-uri-no-config-user
+--- config:
+    #cloud-config
+    ssh-source:
+      identity-file: /usr/local/ssh6223/id
+      known-hosts-file: /usr/local/ssh6223/known_hosts
+    upgrade:
+      system:
+        source: ssh://kairos@10.99.0.1
+2026-11-25T10:29:25Z INF Hashing /run/initramfs/cos-state/cOS/active.img on 10.99.0.1
+2026-11-25T10:29:25Z INF Fetching /run/initramfs/cos-state/cOS/active.img from 10.99.0.1 (505 MiB, sha256 51e8027c0f92071ae277803c984624d674bac96c72afd48abf681abf508fa494)
+2026-11-25T10:29:30Z INF Image from 10.99.0.1 received and verified (sha256 51e8027c0f92071ae277803c984624d674bac96c72afd48abf681abf508fa494)
+2026-11-25T10:29:31Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -x "/usr/sbin/kairos-jetson-qspi-update" ]
+2026-11-25T10:29:31Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run ! grep -q "grub_boot_assessment" /tmp/mnt/STATE/grubcustom && grep -vq "rd.immucore.uki" /proc/cmdline
+2026-11-25T10:29:31Z INF Upgrade completed
+exit=0
+active.img before=df4347e84faa after=9ff578326399
+=================== CASE c5-action-block-overrides-user-keeps-root-keys
+--- config:
+    #cloud-config
+    ssh-source:
+      user: wronguser
+      identity-file: /usr/local/ssh6223/id
+      known-hosts-file: /usr/local/ssh6223/known_hosts
+    upgrade:
+      system:
+        source: ssh://10.99.0.1
+      ssh-source:
+        user: kairos
+2026-11-25T10:29:32Z INF Hashing /run/initramfs/cos-state/cOS/active.img on 10.99.0.1
+2026-11-25T10:29:33Z INF Fetching /run/initramfs/cos-state/cOS/active.img from 10.99.0.1 (505 MiB, sha256 51e8027c0f92071ae277803c984624d674bac96c72afd48abf681abf508fa494)
+2026-11-25T10:29:38Z INF Image from 10.99.0.1 received and verified (sha256 51e8027c0f92071ae277803c984624d674bac96c72afd48abf681abf508fa494)
+2026-11-25T10:29:38Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -x "/usr/sbin/kairos-jetson-qspi-update" ]
+2026-11-25T10:29:38Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run ! grep -q "grub_boot_assessment" /tmp/mnt/STATE/grubcustom && grep -vq "rd.immucore.uki" /proc/cmdline
+2026-11-25T10:29:38Z INF Upgrade completed
+exit=0
+active.img before=9ff578326399 after=67727fcb640d
+=================== CASE c6-action-block-overrides-known-hosts-wrong
+--- config:
+    #cloud-config
+    ssh-source:
+      user: kairos
+      identity-file: /usr/local/ssh6223/id
+      known-hosts-file: /usr/local/ssh6223/known_hosts
+    upgrade:
+      system:
+        source: ssh://10.99.0.1
+      ssh-source:
+        known-hosts-file: /usr/local/ssh6223/wrong_known_hosts
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+Add correct host key in /usr/local/ssh6223/wrong_known_hosts to get rid of this message.
+Offending ED25519 key in /usr/local/ssh6223/wrong_known_hosts:1
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+Add correct host key in /usr/local/ssh6223/wrong_known_hosts to get rid of this message.
+Offending ED25519 key in /usr/local/ssh6223/wrong_known_hosts:1
+exit=1
+active.img before=67727fcb640d after=67727fcb640d
+=================== CASE c7-user-omitted-everywhere-uses-root
+--- config:
+    #cloud-config
+    ssh-source:
+      identity-file: /usr/local/ssh6223/id
+      known-hosts-file: /usr/local/ssh6223/known_hosts
+    upgrade:
+      system:
+        source: ssh://10.99.0.1
+root@10.99.0.1: Permission denied (publickey,password,keyboard-interactive).
+root@10.99.0.1: Permission denied (publickey,password,keyboard-interactive).
+exit=1
+active.img before=67727fcb640d after=67727fcb640d
+=================== CASE c8-uri-user-beats-config-user
+--- config:
+    #cloud-config
+    ssh-source:
+      user: wronguser
+      identity-file: /usr/local/ssh6223/id
+      known-hosts-file: /usr/local/ssh6223/known_hosts
+    upgrade:
+      system:
+        source: ssh://kairos@10.99.0.1
+2026-11-25T10:29:42Z INF Hashing /run/initramfs/cos-state/cOS/active.img on 10.99.0.1
+2026-11-25T10:29:43Z INF Fetching /run/initramfs/cos-state/cOS/active.img from 10.99.0.1 (505 MiB, sha256 51e8027c0f92071ae277803c984624d674bac96c72afd48abf681abf508fa494)
+2026-11-25T10:29:48Z INF Image from 10.99.0.1 received and verified (sha256 51e8027c0f92071ae277803c984624d674bac96c72afd48abf681abf508fa494)
+2026-11-25T10:29:48Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -x "/usr/sbin/kairos-jetson-qspi-update" ]
+2026-11-25T10:29:48Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run ! grep -q "grub_boot_assessment" /tmp/mnt/STATE/grubcustom && grep -vq "rd.immucore.uki" /proc/cmdline
+2026-11-25T10:29:48Z INF Upgrade completed
+exit=0
+active.img before=67727fcb640d after=1bde90a226a4
+=================== CASE c9-unknown-host-no-known-hosts
+--- config:
+    #cloud-config
+    ssh-source:
+      user: kairos
+      identity-file: /usr/local/ssh6223/id
+    upgrade:
+      system:
+        source: ssh://10.99.0.1
+2026-11-25T10:29:49Z WRN Failed to infer size for images: finding out which image 10.99.0.1 booted from: cat: No ED25519 host key is known for 10.99.0.1 and you have requested strict checking.
+failed initializing spec: failed calculating size: finding out which image 10.99.0.1 booted from: cat: No ED25519 host key is known for 10.99.0.1 and you have requested strict checking.
+exit=1
+active.img before=1bde90a226a4 after=1bde90a226a4
+=================== CASE c10-wrong-known-hosts
+--- config:
+    #cloud-config
+    ssh-source:
+      user: kairos
+      identity-file: /usr/local/ssh6223/id
+      known-hosts-file: /usr/local/ssh6223/wrong_known_hosts
+    upgrade:
+      system:
+        source: ssh://10.99.0.1
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+Add correct host key in /usr/local/ssh6223/wrong_known_hosts to get rid of this message.
+Offending ED25519 key in /usr/local/ssh6223/wrong_known_hosts:1
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+Add correct host key in /usr/local/ssh6223/wrong_known_hosts to get rid of this message.
+Offending ED25519 key in /usr/local/ssh6223/wrong_known_hosts:1
+exit=1
+active.img before=1bde90a226a4 after=1bde90a226a4
+=================== CASE c11-fingerprint-pin-accepted
+--- config:
+    #cloud-config
+    ssh-source:
+      user: kairos
+      identity-file: /usr/local/ssh6223/id
+      host-key-fingerprints:
+      - SHA256:mEilvFoZeI+onrT2bSJAbGMvkfeLoDUGmQGPA0f+H48
+    upgrade:
+      system:
+        source: ssh://10.99.0.1
+2026-11-25T10:29:52Z INF Hashing /run/initramfs/cos-state/cOS/active.img on 10.99.0.1
+2026-11-25T10:29:53Z INF Fetching /run/initramfs/cos-state/cOS/active.img from 10.99.0.1 (505 MiB, sha256 51e8027c0f92071ae277803c984624d674bac96c72afd48abf681abf508fa494)
+2026-11-25T10:29:58Z INF Image from 10.99.0.1 received and verified (sha256 51e8027c0f92071ae277803c984624d674bac96c72afd48abf681abf508fa494)
+2026-11-25T10:29:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -x "/usr/sbin/kairos-jetson-qspi-update" ]
+2026-11-25T10:29:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run ! grep -q "grub_boot_assessment" /tmp/mnt/STATE/grubcustom && grep -vq "rd.immucore.uki" /proc/cmdline
+2026-11-25T10:29:58Z INF Upgrade completed
+exit=0
+active.img before=1bde90a226a4 after=75bc289b3d76
+=================== CASE c12-fingerprint-pin-wrong
+--- config:
+    #cloud-config
+    ssh-source:
+      user: kairos
+      identity-file: /usr/local/ssh6223/id
+      host-key-fingerprints:
+      - SHA256:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    upgrade:
+      system:
+        source: ssh://10.99.0.1
+2026-11-25T10:29:59Z WRN Failed to infer size for images: the host key of 10.99.0.1 (SHA256:6RSBcxfWhd9i+3Txdu0iRnjOz8Fk3lBK3732NMJcmmg, SHA256:iaKu2jivB18nWzZQC4nXSb3O6JNGr+dJn2es9URa3xM, SHA256:mEilvFoZeI+onrT2bSJAbGMvkfeLoDUGmQGPA0f+H48) does not match a configured fingerprint
+failed initializing spec: failed calculating size: the host key of 10.99.0.1 (SHA256:6RSBcxfWhd9i+3Txdu0iRnjOz8Fk3lBK3732NMJcmmg, SHA256:iaKu2jivB18nWzZQC4nXSb3O6JNGr+dJn2es9URa3xM, SHA256:mEilvFoZeI+onrT2bSJAbGMvkfeLoDUGmQGPA0f+H48) does not match a configured fingerprint
+exit=1
+active.img before=75bc289b3d76 after=75bc289b3d76
+=================== CASE c13-identity-file-mode-644
+--- config:
+    #cloud-config
+    ssh-source:
+      user: kairos
+      identity-file: /usr/local/ssh6223/id
+      known-hosts-file: /usr/local/ssh6223/known_hosts
+    upgrade:
+      system:
+        source: ssh://10.99.0.1
+2026-11-25T10:30:00Z WRN Failed to infer size for images: identity file /usr/local/ssh6223/id is readable by other users (mode 0644), chmod 600 it
+failed initializing spec: failed calculating size: identity file /usr/local/ssh6223/id is readable by other users (mode 0644), chmod 600 it
+exit=1
+active.img before=75bc289b3d76 after=75bc289b3d76
+=================== CASE c14-recovery-with-ssh-source
+--- config:
+    #cloud-config
+    ssh-source:
+      user: kairos
+      identity-file: /usr/local/ssh6223/id
+      known-hosts-file: /usr/local/ssh6223/known_hosts
+    upgrade:
+      recovery-system:
+        source: ssh://10.99.0.1
+      system:
+        source: ssh://10.99.0.1
+failed initializing spec: an ssh source can only upgrade the active system, the recovery system is not served
+exit=1
+active.img before=75bc289b3d76 after=75bc289b3d76
+=================== CASE c15-missing-remote-file
+--- config:
+    #cloud-config
+    ssh-source:
+      user: kairos
+      identity-file: /usr/local/ssh6223/id
+      known-hosts-file: /usr/local/ssh6223/known_hosts
+    upgrade:
+      system:
+        source: ssh://10.99.0.1/nonexistent/x.img
+2026-11-25T10:30:03Z WRN Failed to infer size for images: /nonexistent/x.img is not readable on the remote node: stat: #############################################################################
+stat: cannot statx '/nonexistent/x.img': No such file or directory
+failed initializing spec: failed calculating size: /nonexistent/x.img is not readable on the remote node: stat: #############################################################################
+stat: cannot statx '/nonexistent/x.img': No such file or directory
+exit=1
+active.img before=75bc289b3d76 after=75bc289b3d76
+=================== CASE c16-unreachable-host
+--- config:
+    #cloud-config
+    ssh-source:
+      user: kairos
+      identity-file: /usr/local/ssh6223/id
+      known-hosts-file: /usr/local/ssh6223/known_hosts
+    upgrade:
+      system:
+        source: ssh://10.99.0.77
+2026-11-25T10:30:07Z WRN Failed to infer size for images: finding out which image 10.99.0.77 booted from: cat: ssh: connect to host 10.99.0.77 port 22: Host is unreachable
+failed initializing spec: failed calculating size: finding out which image 10.99.0.77 booted from: cat: ssh: connect to host 10.99.0.77 port 22: Host is unreachable
+exit=1
+active.img before=75bc289b3d76 after=75bc289b3d76
+=================== CASE c17-bad-ssh-source-key
+--- config:
+    #cloud-config
+    ssh-source:
+      user: kairos
+      private-key: abc
+      identity-file: /usr/local/ssh6223/id
+      known-hosts-file: /usr/local/ssh6223/known_hosts
+    upgrade:
+      system:
+        source: ssh://10.99.0.1
+WARNING: jsonschema: '/ssh-source' does not validate with https://kairos.io/cloud-config.json#/properties/ssh-source/anyOf/0/$ref/additionalProperties: additionalProperties 'private-key' not allowed
+failed initializing spec: ssh-source must be an object with user, identity-file, known-hosts-file and host-key-fingerprints
+exit=1
+active.img before=75bc289b3d76 after=75bc289b3d76

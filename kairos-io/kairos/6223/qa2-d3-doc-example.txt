@@ -1,0 +1,11 @@
+total 3
+drwx------ 2 root root  1024 Nov 25 10:44 .
+drwxrwx--- 6 root admin 1024 Nov 25 10:44 ..
+-rw------- 1 root root   399 Nov 25 10:44 fleet_upgrade
+2026-11-25T10:44:57Z INF Hashing /run/initramfs/cos-state/cOS/active.img on 10.99.0.1
+2026-11-25T10:44:57Z INF Fetching /run/initramfs/cos-state/cOS/active.img from 10.99.0.1 (505 MiB, sha256 51e8027c0f92071ae277803c984624d674bac96c72afd48abf681abf508fa494)
+2026-11-25T10:45:03Z INF Transferred 505 of 505 MiB (100%)
+2026-11-25T10:45:03Z INF Image from 10.99.0.1 received and verified (sha256 51e8027c0f92071ae277803c984624d674bac96c72afd48abf681abf508fa494)
+2026-11-25T10:45:04Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -x "/usr/sbin/kairos-jetson-qspi-update" ]
+2026-11-25T10:45:04Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run ! grep -q "grub_boot_assessment" /tmp/mnt/STATE/grubcustom && grep -vq "rd.immucore.uki" /proc/cmdline
+2026-11-25T10:45:04Z INF Upgrade completed
