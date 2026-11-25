@@ -1,0 +1,7 @@
+rd.cos.oemlabel=COS_OEM
+root=LABEL=COS_ACTIVE
+cos-img/filename=/cOS/active.img
+image-B-from-ssh-source
+active.img
+passive.img
+4514e5926ed242bf7f94776e5e3870bae8d0181f632d44f43280a9a84679ec0d  /run/initramfs/cos-state/cOS/active.img

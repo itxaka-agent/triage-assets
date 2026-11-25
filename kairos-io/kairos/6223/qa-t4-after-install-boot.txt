@@ -1,0 +1,11 @@
+rd.cos.oemlabel=COS_OEM
+root=LABEL=COS_ACTIVE
+cos-img/filename=/cOS/active.img
+image-B-from-ssh-source
+total 936468
+drwx------ 2 root root      4096 Nov 25 10:01 .
+drwxr-xr-x 5 root root      4096 Nov 25 10:02 ..
+-rw------- 1 root root 529530880 Nov 25 10:01 active.img
+-rw------- 1 root root 529530880 Nov 25 10:01 passive.img
+sentinel_firstboot
+skip-home-directory-ownership-fix

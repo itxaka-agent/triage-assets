@@ -1,0 +1,256 @@
+chmod: cannot access '/oem/ssh6223/*': No such file or directory
+total 4
+drwx------ 2 root root  1024 Nov 25 09:49 .
+drwxrwx--- 5 root admin 1024 Nov 25 09:49 ..
+-rw------- 1 root root   411 Nov 25 09:49 id
+-rw------- 1 root root   127 Nov 25 09:49 known_hosts
+
+2026-11-25T09:49:54Z INF Done executing stage 'before-reset.after'
+
+2026-11-25T09:49:54Z INF Running stage: before-reset.before
+
+2026-11-25T09:49:54Z INF Done executing stage 'before-reset.before'
+
+2026-11-25T09:49:54Z INF Running stage: before-reset
+
+2026-11-25T09:49:54Z INF Done executing stage 'before-reset'
+
+2026-11-25T09:49:54Z INF Running stage: before-reset.after
+
+2026-11-25T09:49:54Z INF Done executing stage 'before-reset.after'
+
+2026-11-25T09:49:54Z DBG Mounting partition COS_STATE
+2026-11-25T09:49:54Z INF Copying 10.99.0.1 source to /run/cos/state/cOS/active.img
+2026-11-25T09:49:54Z INF Hashing /run/initramfs/cos-state/cOS/active.img on 10.99.0.1
+2026-11-25T09:49:55Z INF Fetching /run/initramfs/cos-state/cOS/active.img from 10.99.0.1 (505 MiB, sha256 6c9caa631b41724a71ea175b5788611c510007de90ba21261034c1bc3cc71b23)
+2026-11-25T09:49:55Z INF Transferred 0 of 505 MiB (0%)
+2026-11-25T09:50:00Z INF Image from 10.99.0.1 received and verified (sha256 6c9caa631b41724a71ea175b5788611c510007de90ba21261034c1bc3cc71b23)
+2026-11-25T09:50:00Z INF Finished copying 10.99.0.1 into /run/cos/state/cOS/active.img
+2026-11-25T09:50:00Z DBG Running cmd: 'tune2fs -L COS_ACTIVE /run/cos/state/cOS/active.img'
+2026-11-25T09:50:00Z DBG Mounting image COS_ACTIVE
+2026-11-25T09:50:00Z DBG Opening img file image=/run/cos/state/cOS/active.img
+2026-11-25T09:50:00Z DBG Opening loop control device
+2026-11-25T09:50:00Z DBG Getting free loop device
+2026-11-25T09:50:00Z DBG Opening loop device device=/dev/loop1
+2026-11-25T09:50:00Z DBG Setting loop device
+2026-11-25T09:50:00Z DBG Setting loop flags
+2026-11-25T09:50:00Z DBG Attached loop device device=/dev/loop1 image=/run/cos/state/cOS/active.img readOnly=false
+2026-11-25T09:50:00Z DBG Mounting partition COS_GRUB
+2026-11-25T09:50:00Z INF Using grub config dir /run/cos/active/etc/cos/grub.cfg
+2026-11-25T09:50:00Z INF Copying grub contents from /run/cos/active/etc/cos/grub.cfg to /run/cos/state/grub2/grub.cfg
+2026-11-25T09:50:00Z INF Generating grub files for efi on /dev/vda
+2026-11-25T09:50:00Z DBG Copying /run/cos/active/usr/lib/grub/x86_64-efi/loopback.mod to /run/cos/state/grub2/x86_64-efi/loopback.mod
+2026-11-25T09:50:00Z DBG Copying /run/cos/active/usr/lib/grub/x86_64-efi/squash4.mod to /run/cos/state/grub2/x86_64-efi/squash4.mod
+2026-11-25T09:50:00Z DBG Copying /run/cos/active/usr/lib/grub/x86_64-efi/xzio.mod to /run/cos/state/grub2/x86_64-efi/xzio.mod
+2026-11-25T09:50:00Z DBG Copying /run/cos/active/usr/lib/grub/x86_64-efi/gzio.mod to /run/cos/state/grub2/x86_64-efi/gzio.mod
+2026-11-25T09:50:00Z DBG Copying /run/cos/active/usr/lib/grub/x86_64-efi/regexp.mod to /run/cos/state/grub2/x86_64-efi/regexp.mod
+2026-11-25T09:50:00Z DBG Copying /run/cos/active/usr/share/grub/ascii.pf2 to /run/cos/state/grub2/fonts/ascii.pf2
+2026-11-25T09:50:00Z DBG Copying /run/cos/active/usr/share/grub/euro.pf2 to /run/cos/state/grub2/fonts/euro.pf2
+2026-11-25T09:50:00Z DBG Copying /run/cos/active/usr/share/grub/unicode.pf2 to /run/cos/state/grub2/fonts/unicode.pf2
+2026-11-25T09:50:00Z DBG Detected Flavor: hadron
+2026-11-25T09:50:00Z DBG Copying /usr/share/efi/x86_64/shim.efi to /run/cos/efi/EFI/boot/shim.efi
+2026-11-25T09:50:00Z DBG skip copying /run/cos/active/usr/share/efi/x86_64/grub.efi: not found
+2026-11-25T09:50:00Z DBG skip copying /run/cos/active/usr/lib/grub/x86_64-efi-signed/grubx64.efi.signed: not found
+2026-11-25T09:50:00Z DBG skip copying /run/cos/active/boot/efi/EFI/fedora/grubx64.efi: not found
+2026-11-25T09:50:00Z DBG skip copying /run/cos/active/boot/efi/EFI/rocky/grubx64.efi: not found
+2026-11-25T09:50:00Z DBG skip copying /run/cos/active/boot/efi/EFI/redhat/grubx64.efi: not found
+2026-11-25T09:50:00Z DBG skip copying /run/cos/active/boot/efi/EFI/almalinux/grubx64.efi: not found
+2026-11-25T09:50:00Z DBG Copying /usr/lib/grub/x86_64-efi/grubx64.efi to /run/cos/efi/EFI/boot/grubx64.efi
+2026-11-25T09:50:00Z DBG Extra mounts: map[/oem:/oem]
+2026-11-25T09:50:00Z DBG Mounting /dev to chroot
+2026-11-25T09:50:00Z DBG Mounted /dev to /run/cos/active/dev
+2026-11-25T09:50:00Z DBG Mounting /dev/pts to chroot
+2026-11-25T09:50:00Z DBG Mounted /dev/pts to /run/cos/active/dev/pts
+2026-11-25T09:50:00Z DBG Mounting /proc to chroot
+2026-11-25T09:50:00Z DBG Mounted /proc to /run/cos/active/proc
+2026-11-25T09:50:00Z DBG Mounting /sys to chroot
+2026-11-25T09:50:00Z DBG Mounted /sys to /run/cos/active/sys
+2026-11-25T09:50:00Z DBG Mounting /run/systemd/journal/ to chroot
+2026-11-25T09:50:00Z DBG Mounted /run/systemd/journal/ to /run/cos/active/run/systemd/journal/
+2026-11-25T09:50:00Z DBG Mounting /oem to chroot
+2026-11-25T09:50:00Z DBG Mounted /oem to /run/cos/active/oem
+2026-11-25T09:50:00Z DBG No files relabelling as SELinux utilities are not found
+2026-11-25T09:50:00Z DBG Unmounting /run/cos/active/oem from chroot
+2026-11-25T09:50:00Z DBG Unmounting /run/cos/active/run/systemd/journal/ from chroot
+2026-11-25T09:50:00Z DBG Unmounting /run/cos/active/sys from chroot
+2026-11-25T09:50:00Z DBG Unmounting /run/cos/active/proc from chroot
+2026-11-25T09:50:00Z DBG Unmounting /run/cos/active/dev/pts from chroot
+2026-11-25T09:50:00Z DBG Unmounting /run/cos/active/dev from chroot
+2026-11-25T09:50:00Z DBG Extra mounts: map[/oem:/oem /run/p:/usr/local]
+2026-11-25T09:50:00Z DBG Mounting /dev to chroot
+2026-11-25T09:50:00Z DBG Mounted /dev to /run/cos/active/dev
+2026-11-25T09:50:00Z DBG Mounting /dev/pts to chroot
+2026-11-25T09:50:00Z DBG Mounted /dev/pts to /run/cos/active/dev/pts
+2026-11-25T09:50:00Z DBG Mounting /proc to chroot
+2026-11-25T09:50:00Z DBG Mounted /proc to /run/cos/active/proc
+2026-11-25T09:50:00Z DBG Mounting /sys to chroot
+2026-11-25T09:50:00Z DBG Mounted /sys to /run/cos/active/sys
+2026-11-25T09:50:00Z DBG Mounting /run/systemd/journal/ to chroot
+2026-11-25T09:50:00Z DBG Mounted /run/systemd/journal/ to /run/cos/active/run/systemd/journal/
+2026-11-25T09:50:00Z DBG Mounting /oem to chroot
+2026-11-25T09:50:00Z DBG Mounted /oem to /run/cos/active/oem
+2026-11-25T09:50:00Z DBG Mounting /run/p to chroot
+2026-11-25T09:50:00Z DBG Mounted /run/p to /run/cos/active/usr/local
+2026-11-25T09:50:00Z INF Running after-reset-chroot hook
+2026-11-25T09:50:00Z DBG Cloud-init paths set to [/system/oem /oem/ /usr/local/cloud-config/]
+2026-11-25T09:50:00Z INF Running stage: after-reset-chroot.before
+
+2026-11-25T09:50:00Z INF Done executing stage 'after-reset-chroot.before'
+
+2026-11-25T09:50:00Z INF Running stage: after-reset-chroot
+
+2026-11-25T09:50:00Z INF Done executing stage 'after-reset-chroot'
+
+2026-11-25T09:50:00Z INF Running stage: after-reset-chroot.after
+
+2026-11-25T09:50:00Z INF Done executing stage 'after-reset-chroot.after'
+
+2026-11-25T09:50:00Z INF Running stage: after-reset-chroot.before
+
+2026-11-25T09:50:00Z INF Done executing stage 'after-reset-chroot.before'
+
+2026-11-25T09:50:00Z INF Running stage: after-reset-chroot
+
+2026-11-25T09:50:00Z INF Done executing stage 'after-reset-chroot'
+
+2026-11-25T09:50:00Z INF Running stage: after-reset-chroot.after
+
+2026-11-25T09:50:00Z INF Done executing stage 'after-reset-chroot.after'
+
+2026-11-25T09:50:00Z DBG Unmounting /run/cos/active/usr/local from chroot
+2026-11-25T09:50:00Z DBG Unmounting /run/cos/active/oem from chroot
+2026-11-25T09:50:00Z DBG Unmounting /run/cos/active/run/systemd/journal/ from chroot
+2026-11-25T09:50:00Z DBG Unmounting /run/cos/active/sys from chroot
+2026-11-25T09:50:00Z DBG Unmounting /run/cos/active/proc from chroot
+2026-11-25T09:50:00Z DBG Unmounting /run/cos/active/dev/pts from chroot
+2026-11-25T09:50:00Z DBG Unmounting /run/cos/active/dev from chroot
+2026-11-25T09:50:00Z INF Setting default grub entry to Kairos
+2026-11-25T09:50:00Z DBG Unmounting image COS_ACTIVE
+2026-11-25T09:50:00Z DBG Opening loop device device=/dev/loop1
+2026-11-25T09:50:00Z DBG Clearing loop device
+2026-11-25T09:50:00Z INF Copying /run/cos/state/cOS/active.img source to /run/cos/state/cOS/passive.img
+2026-11-25T09:50:00Z INF Finished copying /run/cos/state/cOS/active.img into /run/cos/state/cOS/passive.img
+2026-11-25T09:50:00Z DBG Running cmd: 'tune2fs -L COS_PASSIVE /run/cos/state/cOS/passive.img'
+2026-11-25T09:50:01Z DBG Not unmounting image,  doesn't look like mountpoint
+2026-11-25T09:50:01Z INF Running after-reset hook
+2026-11-25T09:50:01Z DBG Cloud-init paths set to [/system/oem /oem/ /usr/local/cloud-config/]
+2026-11-25T09:50:01Z INF Running stage: after-reset.before
+
+2026-11-25T09:50:01Z INF Done executing stage 'after-reset.before'
+
+2026-11-25T09:50:01Z INF Running stage: after-reset
+
+2026-11-25T09:50:01Z DBG Generating op for stage 'Boot assessment and branding.Mount state'
+2026-11-25T09:50:01Z DBG Generating op for stage 'Boot assessment and branding.Hook boot assessment grub configuration'
+2026-11-25T09:50:01Z DBG Generating op for stage 'Boot assessment and branding.Grub branding'
+2026-11-25T09:50:01Z DBG Generating op for stage 'Boot assessment and branding.Add boot assessment grub configuration'
+2026-11-25T09:50:01Z DBG Generating op for stage 'Boot assessment and branding.umount state'
+2026-11-25T09:50:01Z DBG Reading '/system/oem/08_grub.yaml'
+2026-11-25T09:50:01Z DBG Executing stage 'Boot assessment and branding.Mount state'
+2026-11-25T09:50:01Z DBG running command `grep -vq "rd.immucore.uki" /proc/cmdline`
+2026-11-25T09:50:01Z DBG If statement result 
+2026-11-25T09:50:01Z INF Processing stage step 'Boot assessment and branding.Mount state'. ( commands: 1, files: 0, ... )
+2026-11-25T09:50:01Z DBG Stage: schema.Stage{
+  Commands: []string{
+    "STATEDIR=/tmp/mnt/STATE\nSTATE=$(blkid -L COS_STATE || true)\nmkdir -p $STATEDIR || true\nmount ${STATE} $STATEDIR\n",
+  },
+  If: "grep -vq \"rd.immucore.uki\" /proc/cmdline",
+  Name: "Mount state",
+}
+2026-11-25T09:50:01Z DBG running command `STATEDIR=/tmp/mnt/STATE
+STATE=$(blkid -L COS_STATE || true)
+mkdir -p $STATEDIR || true
+mount ${STATE} $STATEDIR
+`
+2026-11-25T09:50:01Z DBG Empty command output
+2026-11-25T09:50:01Z INF Running layout plugin
+2026-11-25T09:50:01Z DBG Device field empty, skipping layout plugin
+2026-11-25T09:50:01Z DBG Reading '/system/oem/08_grub.yaml'
+2026-11-25T09:50:01Z DBG Executing stage 'Boot assessment and branding.Hook boot assessment grub configuration'
+2026-11-25T09:50:01Z DBG running command `! grep -q "grub_boot_assessment" /tmp/mnt/STATE/grubcustom && grep -vq "rd.immucore.uki" /proc/cmdline
+`
+2026-11-25T09:50:01Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run ! grep -q "grub_boot_assessment" /tmp/mnt/STATE/grubcustom && grep -vq "rd.immucore.uki" /proc/cmdline
+: exit status 1)' stage name: Boot assessment and branding.Hook boot assessment grub configuration
+2026-11-25T09:50:01Z DBG Reading '/system/oem/08_grub.yaml'
+2026-11-25T09:50:01Z DBG Executing stage 'Boot assessment and branding.Grub branding'
+2026-11-25T09:50:01Z DBG running command `[ -e "/etc/kairos/branding/grubmenu.cfg" ] && grep -vq "rd.immucore.uki" /proc/cmdline`
+2026-11-25T09:50:01Z DBG If statement result 
+2026-11-25T09:50:01Z INF Processing stage step 'Boot assessment and branding.Grub branding'. ( commands: 1, files: 0, ... )
+2026-11-25T09:50:01Z DBG Stage: schema.Stage{
+  Commands: []string{
+    "cp -rfv /etc/kairos/branding/grubmenu.cfg /tmp/mnt/STATE/grubmenu",
+  },
+  If: "[ -e \"/etc/kairos/branding/grubmenu.cfg\" ] && grep -vq \"rd.immucore.uki\" /proc/cmdline",
+  Name: "Grub branding",
+}
+2026-11-25T09:50:01Z DBG running command `cp -rfv /etc/kairos/branding/grubmenu.cfg /tmp/mnt/STATE/grubmenu`
+2026-11-25T09:50:01Z DBG Command output: '/etc/kairos/branding/grubmenu.cfg' -> '/tmp/mnt/STATE/grubmenu'
+
+2026-11-25T09:50:01Z INF Running layout plugin
+2026-11-25T09:50:01Z DBG Device field empty, skipping layout plugin
+2026-11-25T09:50:01Z DBG Reading '/system/oem/08_grub.yaml'
+2026-11-25T09:50:01Z DBG Executing stage 'Boot assessment and branding.Add boot assessment grub configuration'
+2026-11-25T09:50:01Z DBG running command `grep -vq "rd.immucore.uki" /proc/cmdline`
+2026-11-25T09:50:01Z DBG If statement result 
+2026-11-25T09:50:01Z INF Processing stage step 'Boot assessment and branding.Add boot assessment grub configuration'. ( commands: 0, files: 1, ... )
+2026-11-25T09:50:01Z DBG Stage: schema.Stage{
+  Files: []schema.File{
+    schema.File{
+      Path: "/tmp/mnt/STATE/grub_boot_assessment",
+      Permissions: 384,
+      Content: "set boot_assessment=\"/boot_assessment\"\nsearch --no-floppy --file --set=boot_assessment_blk \"${boot_assessment}\"\nif [ \"${boot_assessment_blk}\" ]; then\n  load_env -f \"(${boot_assessment_blk})${boot_assessment}\"\nfi\nif [ \"${enable_boot_assessment}\" = \"yes\" -o \"${enable_boot_assessment_always}\" = \"yes\" ]; then\n  if [ -z \"${selected_entry}\" ]; then\n    if [ \"${boot_assessment_tentative}\" = \"yes\" ]; then\n      set default=\"fallback\"\n      set extra_passive_cmdline=\"upgrade_failure\"\n    else\n      set boot_assessment_tentative=\"yes\"\n      save_env -f \"(${boot_assessment_blk})${boot_assessment}\" boot_assessment_tentative\n    fi\n  fi\nfi\n",
+    },
+  },
+  If: "grep -vq \"rd.immucore.uki\" /proc/cmdline",
+  Name: "Add boot assessment grub configuration",
+}
+2026-11-25T09:50:01Z DBG Creating file /tmp/mnt/STATE/grub_boot_assessment
+2026-11-25T09:50:01Z INF Running layout plugin
+2026-11-25T09:50:01Z DBG Device field empty, skipping layout plugin
+2026-11-25T09:50:01Z DBG Reading '/system/oem/08_grub.yaml'
+2026-11-25T09:50:01Z DBG Executing stage 'Boot assessment and branding.umount state'
+2026-11-25T09:50:01Z DBG running command `grep -vq "rd.immucore.uki" /proc/cmdline`
+2026-11-25T09:50:01Z DBG If statement result 
+2026-11-25T09:50:01Z INF Processing stage step 'Boot assessment and branding.umount state'. ( commands: 1, files: 0, ... )
+2026-11-25T09:50:01Z DBG Stage: schema.Stage{
+  Commands: []string{
+    "umount /tmp/mnt/STATE",
+  },
+  If: "grep -vq \"rd.immucore.uki\" /proc/cmdline",
+  Name: "umount state",
+}
+2026-11-25T09:50:01Z DBG running command `umount /tmp/mnt/STATE`
+2026-11-25T09:50:01Z DBG Empty command output
+2026-11-25T09:50:01Z INF Running layout plugin
+2026-11-25T09:50:01Z DBG Device field empty, skipping layout plugin
+2026-11-25T09:50:01Z INF Done executing stage 'after-reset'
+
+2026-11-25T09:50:01Z INF Running stage: after-reset.after
+
+2026-11-25T09:50:01Z INF Done executing stage 'after-reset.after'
+
+2026-11-25T09:50:01Z INF Running stage: after-reset.before
+
+2026-11-25T09:50:01Z INF Done executing stage 'after-reset.before'
+
+2026-11-25T09:50:01Z INF Running stage: after-reset
+
+2026-11-25T09:50:01Z INF Done executing stage 'after-reset'
+
+2026-11-25T09:50:01Z INF Running stage: after-reset.after
+
+2026-11-25T09:50:01Z INF Done executing stage 'after-reset.after'
+
+2026-11-25T09:50:01Z DBG Mounting partition COS_PERSISTENT
+2026-11-25T09:50:01Z DBG Unmounting partition COS_PERSISTENT
+2026-11-25T09:50:01Z DBG Unmounting partition COS_GRUB
+2026-11-25T09:50:01Z DBG Not unmounting image, /run/cos/active doesn't look like mountpoint
+2026-11-25T09:50:01Z DBG Unmounting partition COS_STATE
+2026-11-25T09:50:01Z INF Running CopyLogs hook
+2026-11-25T09:50:01Z INF Starting rsync...
+2026-11-25T09:50:01Z DBG Running cmd: 'rsync --progress --partial --human-readable --archive --acls /var/log/ /run/cos/persistent/.state/var-log.bind/'
+2026-11-25T09:50:01Z INF Finished syncing
+2026-11-25T09:50:01Z DBG Logs copied to persistent partition
+2026-11-25T09:50:01Z INF Finish CopyLogs hook
+2026-11-25T09:50:01Z DBG Running Lifecycle hook
+2026-11-25T09:50:01Z DBG Finish Lifecycle hook

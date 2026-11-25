@@ -1,0 +1,432 @@
+warning: skipping /etc/kairos/kairos-init-init-stage.yaml because it has no valid header
+warning: skipping /etc/kairos/kairos-init-install-stage.yaml because it has no valid header
+2026-11-25T09:46:39Z INF Kairos Agent version=dev
+2026-11-25T09:46:39Z DBG Kairos Agent go=go1.27.4 version=dev
+2026-11-25T09:46:39Z INF Kairos System version=v4.99.0-yip355head
+2026-11-25T09:46:39Z DBG detecting boot state
+2026-11-25T09:46:39Z INF Boot Mode boot_mode=active_boot
+2026-11-25T09:46:39Z INF Boot in uki mode result=false
+2026-11-25T09:46:39Z DBG Loaded config: map[string]interface {}{
+  "collector": map[string]interface {}{
+    "install": map[string]interface {}{
+      "auto": true,
+      "device": "/dev/vda",
+      "poweroff": true,
+    },
+    "ssh-source": map[string]interface {}{
+      "identity-file": "/usr/local/ssh6223/id",
+      "known-hosts-file": "/usr/local/ssh6223/known_hosts",
+      "user": "kairos",
+    },
+    "stages": map[string]interface {}{
+      "network": []interface {}{
+        map[string]interface {}{
+          "commands": []interface {}{
+            "n=$(ip -o link | grep -i 52:54:00:99:00:02 | cut -d: -f2 | tr -d ' ')\nip link set $n up; ip addr add 10.99.0.2/24 dev $n\n",
+          },
+          "name": "second nic",
+        },
+        map[string]interface {}{
+          "commands": []interface {}{
+            "n=$(ip -o link | grep -i 52:54:00:99:00:02 | cut -d: -f2 | tr -d ' ')\nip link set $n up; ip addr add 10.99.0.2/24 dev $n\n",
+          },
+          "name": "second nic",
+        },
+      },
+    },
+    "upgrade": map[string]interface {}{
+      "recovery-system": map[string]interface {}{},
+      "system": map[string]interface {}{
+        "source": "ssh://10.99.0.1",
+      },
+    },
+    "users": []interface {}{
+      map[string]interface {}{
+        "groups": []interface {}{
+          "admin",
+        },
+        "name": "kairos",
+        "passwd": "[REDACTED]",
+        "ssh_authorized_keys": []interface {}{
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICFseCfJcpdZJeyki7kkpyHyKBdlzF8BQerLGm1fYFDA user@host",
+        },
+      },
+      map[string]interface {}{
+        "groups": []interface {}{
+          "admin",
+        },
+        "name": "kairos",
+        "passwd": "[REDACTED]",
+        "ssh_authorized_keys": []interface {}{
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICFseCfJcpdZJeyki7kkpyHyKBdlzF8BQerLGm1fYFDA user@host",
+        },
+      },
+    },
+  },
+  "config": map[string]interface {}{
+    "arch": "x86_64",
+    "install": map[string]interface {}{
+      "auto": true,
+      "device": "/dev/vda",
+      "poweroff": true,
+    },
+    "squash-no-compression": true,
+    "uki-max-entries": 3,
+  },
+}
+2026-11-25T09:46:39Z DBG Calculated size (605MiB) is less than specified/default size (3072MiB)
+2026-11-25T09:46:39Z INF Setting image size to 3072MiB
+2026-11-25T09:46:39Z DBG Loaded upgrade spec: &spec.UpgradeSpec{
+  Active: images.Image{
+    File: "/run/initramfs/cos-state/cOS/transition.img",
+    Label: "COS_ACTIVE",
+    Size: 3072,
+    FS: "ext2",
+    Source: &images.ImageSource{
+      source: "10.99.0.1",
+      srcType: "ssh",
+    },
+    MountPoint: "/run/cos/transition",
+  },
+  Recovery: images.Image{
+    File: "/run/cos/recovery/cOS/transition.img",
+    Label: "COS_SYSTEM",
+    Size: 3072,
+    FS: "ext2",
+    Source: &images.ImageSource{
+      source: "",
+      srcType: "",
+    },
+    MountPoint: "/run/cos/transition",
+  },
+  Passive: images.Image{
+    File: "/run/initramfs/cos-state/cOS/passive.img",
+    Label: "COS_PASSIVE",
+    Size: 3072,
+    FS: "ext2",
+    Source: &images.ImageSource{
+      source: "/run/initramfs/cos-state/cOS/transition.img",
+      srcType: "file",
+    },
+  },
+  Partitions: partitions.ElementalPartitions{
+    EFI: &partitions.Partition{
+      Name: "vda1",
+      PartitionLabel: "efi",
+      FilesystemLabel: "COS_GRUB",
+      Size: 64,
+      FS: "vfat",
+      UUID: "81444e82-66b3-5ed2-961b-497665f12be2",
+      MountPoint: "/run/cos/efi",
+      Path: "/dev/vda1",
+      Disk: "/dev/vda",
+    },
+    OEM: &partitions.Partition{
+      Name: "vda2",
+      PartitionLabel: "oem",
+      FilesystemLabel: "COS_OEM",
+      Size: 64,
+      FS: "ext4",
+      UUID: "8bfa06f9-ca4f-56dc-90c9-49cf20f4f45e",
+      MountPoint: "/oem",
+      Path: "/dev/vda2",
+      Disk: "/dev/vda",
+    },
+    Recovery: &partitions.Partition{
+      Name: "vda3",
+      PartitionLabel: "recovery",
+      FilesystemLabel: "COS_RECOVERY",
+      Size: 1210,
+      FS: "ext4",
+      UUID: "768fbd69-b2a9-5eab-902c-db8745b4767c",
+      MountPoint: "/run/cos/recovery",
+      Path: "/dev/vda3",
+      Disk: "/dev/vda",
+    },
+    State: &partitions.Partition{
+      Name: "vda4",
+      PartitionLabel: "state",
+      FilesystemLabel: "COS_STATE",
+      Size: 2515,
+      FS: "ext4",
+      UUID: "843bfe4e-83b2-5b42-ba6d-a47e3ba1262e",
+      MountPoint: "/run/initramfs/cos-state",
+      Path: "/dev/vda4",
+      Disk: "/dev/vda",
+    },
+    Persistent: &partitions.Partition{
+      Name: "vda5",
+      PartitionLabel: "persistent",
+      FilesystemLabel: "COS_PERSISTENT",
+      Size: 37105,
+      FS: "ext4",
+      UUID: "85c39d0f-4867-5227-8334-f5eec606d9eb",
+      MountPoint: "/usr/local",
+      Path: "/dev/vda5",
+      Disk: "/dev/vda",
+    },
+  },
+}
+2026-11-25T09:46:39Z DBG Mounting partition COS_STATE
+2026-11-25T09:46:39Z DBG Mounting partition COS_RECOVERY
+2026-11-25T09:46:39Z INF Applying 'before-upgrade' hook
+2026-11-25T09:46:39Z INF Running before-upgrade hook
+2026-11-25T09:46:39Z DBG Cloud-init paths set to [/system/oem /oem/ /usr/local/cloud-config/]
+2026-11-25T09:46:39Z INF Running stage: before-upgrade.before
+
+2026-11-25T09:46:39Z INF Done executing stage 'before-upgrade.before'
+
+2026-11-25T09:46:39Z INF Running stage: before-upgrade
+
+2026-11-25T09:46:39Z INF Done executing stage 'before-upgrade'
+
+2026-11-25T09:46:39Z INF Running stage: before-upgrade.after
+
+2026-11-25T09:46:39Z INF Done executing stage 'before-upgrade.after'
+
+2026-11-25T09:46:39Z INF Running stage: before-upgrade.before
+
+2026-11-25T09:46:39Z INF Done executing stage 'before-upgrade.before'
+
+2026-11-25T09:46:39Z INF Running stage: before-upgrade
+
+2026-11-25T09:46:39Z INF Done executing stage 'before-upgrade'
+
+2026-11-25T09:46:39Z INF Running stage: before-upgrade.after
+
+2026-11-25T09:46:39Z INF Done executing stage 'before-upgrade.after'
+
+2026-11-25T09:46:39Z INF deploying image 10.99.0.1 to /run/initramfs/cos-state/cOS/transition.img
+2026-11-25T09:46:39Z INF Copying 10.99.0.1 source to /run/initramfs/cos-state/cOS/transition.img
+2026-11-25T09:46:39Z INF Hashing /run/initramfs/cos-state/cOS/active.img on 10.99.0.1
+2026-11-25T09:46:40Z INF Fetching /run/initramfs/cos-state/cOS/active.img from 10.99.0.1 (505 MiB, sha256 6c9caa631b41724a71ea175b5788611c510007de90ba21261034c1bc3cc71b23)
+2026-11-25T09:46:40Z INF Transferred 0 of 505 MiB (0%)
+2026-11-25T09:46:46Z INF Image from 10.99.0.1 received and verified (sha256 6c9caa631b41724a71ea175b5788611c510007de90ba21261034c1bc3cc71b23)
+2026-11-25T09:46:46Z INF Finished copying 10.99.0.1 into /run/initramfs/cos-state/cOS/transition.img
+2026-11-25T09:46:46Z DBG Running cmd: 'tune2fs -L COS_ACTIVE /run/initramfs/cos-state/cOS/transition.img'
+2026-11-25T09:46:46Z DBG Mounting image COS_ACTIVE
+2026-11-25T09:46:46Z DBG Opening img file image=/run/initramfs/cos-state/cOS/transition.img
+2026-11-25T09:46:46Z DBG Opening loop control device
+2026-11-25T09:46:46Z DBG Getting free loop device
+2026-11-25T09:46:46Z DBG Opening loop device device=/dev/loop1
+2026-11-25T09:46:46Z DBG Setting loop device
+2026-11-25T09:46:46Z DBG Setting loop flags
+2026-11-25T09:46:46Z DBG Attached loop device device=/dev/loop1 image=/run/initramfs/cos-state/cOS/transition.img readOnly=false
+2026-11-25T09:46:46Z DBG Extra mounts: [{/run/initramfs/cos-state /host/run/initramfs/cos-state} {/run/cos/recovery /host/run/cos/recovery} {/oem /host/oem} {/oem /oem} {/usr/local /host/usr/local} {/usr/local /usr/local}]
+2026-11-25T09:46:46Z DBG Mounting /dev to chroot
+2026-11-25T09:46:46Z DBG Mounted /dev to /run/cos/transition/dev
+2026-11-25T09:46:46Z DBG Mounting /dev/pts to chroot
+2026-11-25T09:46:46Z DBG Mounted /dev/pts to /run/cos/transition/dev/pts
+2026-11-25T09:46:46Z DBG Mounting /proc to chroot
+2026-11-25T09:46:46Z DBG Mounted /proc to /run/cos/transition/proc
+2026-11-25T09:46:46Z DBG Mounting /sys to chroot
+2026-11-25T09:46:46Z DBG Mounted /sys to /run/cos/transition/sys
+2026-11-25T09:46:46Z DBG Mounting /run/systemd/journal/ to chroot
+2026-11-25T09:46:46Z DBG Mounted /run/systemd/journal/ to /run/cos/transition/run/systemd/journal/
+2026-11-25T09:46:46Z DBG Mounting /run/initramfs/cos-state to chroot
+2026-11-25T09:46:46Z DBG Mounted /run/initramfs/cos-state to /run/cos/transition/host/run/initramfs/cos-state
+2026-11-25T09:46:46Z DBG Mounting /run/cos/recovery to chroot
+2026-11-25T09:46:46Z DBG Mounted /run/cos/recovery to /run/cos/transition/host/run/cos/recovery
+2026-11-25T09:46:46Z DBG Mounting /oem to chroot
+2026-11-25T09:46:46Z DBG Mounted /oem to /run/cos/transition/host/oem
+2026-11-25T09:46:46Z DBG Mounting /oem to chroot
+2026-11-25T09:46:46Z DBG Mounted /oem to /run/cos/transition/oem
+2026-11-25T09:46:46Z DBG Mounting /usr/local to chroot
+2026-11-25T09:46:46Z DBG Mounted /usr/local to /run/cos/transition/host/usr/local
+2026-11-25T09:46:46Z DBG Mounting /usr/local to chroot
+2026-11-25T09:46:46Z DBG Mounted /usr/local to /run/cos/transition/usr/local
+2026-11-25T09:46:46Z INF Handing off upgrade finalize to target kairos-agent (/usr/bin/kairos-agent)
+2026-11-25T09:46:46Z DBG Running cmd: '/usr/bin/kairos-agent upgrade-finalize --context-file /tmp/kairos-upgrade-finalize.json'
+2026-11-25T09:46:46Z INF upgrade-finalize output: 2026-11-25T09:46:46Z INF Applying 'after-upgrade-chroot' hook
+2026-11-25T09:46:46Z INF Running after-upgrade-chroot hook
+2026-11-25T09:46:46Z INF Running stage: after-upgrade-chroot.before
+
+2026-11-25T09:46:46Z INF Done executing stage 'after-upgrade-chroot.before'
+
+2026-11-25T09:46:46Z INF Running stage: after-upgrade-chroot
+
+2026-11-25T09:46:46Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -x "/usr/sbin/kairos-jetson-qspi-update" ]
+: exit status 1)' stage name: Nvidia Jetson QSPI firmware check.Check and stage QSPI firmware update
+2026-11-25T09:46:46Z INF Done executing stage 'after-upgrade-chroot'
+
+2026-11-25T09:46:46Z INF Running stage: after-upgrade-chroot.after
+
+2026-11-25T09:46:46Z INF Done executing stage 'after-upgrade-chroot.after'
+
+2026-11-25T09:46:46Z INF Running stage: after-upgrade-chroot.before
+
+2026-11-25T09:46:46Z INF Done executing stage 'after-upgrade-chroot.before'
+
+2026-11-25T09:46:46Z INF Running stage: after-upgrade-chroot
+
+2026-11-25T09:46:46Z INF Done executing stage 'after-upgrade-chroot'
+
+2026-11-25T09:46:46Z INF Running stage: after-upgrade-chroot.after
+
+2026-11-25T09:46:46Z INF Done executing stage 'after-upgrade-chroot.after'
+
+2026-11-25T09:46:46Z INF rebranding
+2026-11-25T09:46:46Z INF Copied grub.cfg from /etc/cos/grub.cfg to /host/run/initramfs/cos-state/grub2/grub.cfg
+2026-11-25T09:46:46Z INF Refreshed grub.cfg on the state partition and shim, grub and grub.cfg on the EFI partition from /
+
+2026-11-25T09:46:46Z DBG Unmounting /run/cos/transition/usr/local from chroot
+2026-11-25T09:46:46Z DBG Unmounting /run/cos/transition/host/usr/local from chroot
+2026-11-25T09:46:46Z DBG Unmounting /run/cos/transition/oem from chroot
+2026-11-25T09:46:46Z DBG Unmounting /run/cos/transition/host/oem from chroot
+2026-11-25T09:46:46Z DBG Unmounting /run/cos/transition/host/run/cos/recovery from chroot
+2026-11-25T09:46:46Z DBG Unmounting /run/cos/transition/host/run/initramfs/cos-state from chroot
+2026-11-25T09:46:46Z DBG Unmounting /run/cos/transition/run/systemd/journal/ from chroot
+2026-11-25T09:46:46Z DBG Unmounting /run/cos/transition/sys from chroot
+2026-11-25T09:46:46Z DBG Unmounting /run/cos/transition/proc from chroot
+2026-11-25T09:46:46Z DBG Unmounting /run/cos/transition/dev/pts from chroot
+2026-11-25T09:46:46Z DBG Unmounting /run/cos/transition/dev from chroot
+2026-11-25T09:46:46Z DBG Unmounting image COS_ACTIVE
+2026-11-25T09:46:46Z DBG Opening loop device device=/dev/loop1
+2026-11-25T09:46:46Z DBG Clearing loop device
+2026-11-25T09:46:46Z INF Backing up current active image
+2026-11-25T09:46:46Z INF Moving /run/initramfs/cos-state/cOS/active.img to /run/initramfs/cos-state/cOS/passive.img
+2026-11-25T09:46:46Z INF Finished moving /run/initramfs/cos-state/cOS/active.img to /run/initramfs/cos-state/cOS/passive.img
+2026-11-25T09:46:46Z DBG Running cmd: 'tune2fs -L COS_PASSIVE /run/initramfs/cos-state/cOS/passive.img'
+2026-11-25T09:46:46Z INF Moving /run/initramfs/cos-state/cOS/transition.img to /run/initramfs/cos-state/cOS/active.img
+2026-11-25T09:46:46Z INF Finished moving /run/initramfs/cos-state/cOS/transition.img to /run/initramfs/cos-state/cOS/active.img
+2026-11-25T09:46:46Z INF Applying 'after-upgrade' hook
+2026-11-25T09:46:46Z INF Running after-upgrade hook
+2026-11-25T09:46:46Z DBG Cloud-init paths set to [/system/oem /oem/ /usr/local/cloud-config/]
+2026-11-25T09:46:46Z INF Running stage: after-upgrade.before
+
+2026-11-25T09:46:46Z INF Done executing stage 'after-upgrade.before'
+
+2026-11-25T09:46:46Z INF Running stage: after-upgrade
+
+2026-11-25T09:46:46Z DBG Generating op for stage 'Boot assessment and branding.Mount state'
+2026-11-25T09:46:46Z DBG Generating op for stage 'Boot assessment and branding.Set upgrade sentinel'
+2026-11-25T09:46:46Z DBG Generating op for stage 'Boot assessment and branding.Hook boot assessment grub configuration'
+2026-11-25T09:46:46Z DBG Generating op for stage 'Boot assessment and branding.Grub branding'
+2026-11-25T09:46:46Z DBG Generating op for stage 'Boot assessment and branding.Add boot assessment grub configuration'
+2026-11-25T09:46:46Z DBG Generating op for stage 'Boot assessment and branding.umount state'
+2026-11-25T09:46:46Z DBG Reading '/system/oem/08_grub.yaml'
+2026-11-25T09:46:46Z DBG Executing stage 'Boot assessment and branding.Mount state'
+2026-11-25T09:46:46Z DBG running command `grep -vq "rd.immucore.uki" /proc/cmdline`
+2026-11-25T09:46:46Z DBG If statement result 
+2026-11-25T09:46:46Z INF Processing stage step 'Boot assessment and branding.Mount state'. ( commands: 1, files: 0, ... )
+2026-11-25T09:46:46Z DBG Stage: schema.Stage{
+  Commands: []string{
+    "STATEDIR=/tmp/mnt/STATE\nSTATE=$(blkid -L COS_STATE || true)\nmkdir -p $STATEDIR || true\nmount ${STATE} $STATEDIR\n",
+  },
+  If: "grep -vq \"rd.immucore.uki\" /proc/cmdline",
+  Name: "Mount state",
+}
+2026-11-25T09:46:46Z DBG running command `STATEDIR=/tmp/mnt/STATE
+STATE=$(blkid -L COS_STATE || true)
+mkdir -p $STATEDIR || true
+mount ${STATE} $STATEDIR
+`
+2026-11-25T09:46:46Z DBG Empty command output
+2026-11-25T09:46:46Z INF Running layout plugin
+2026-11-25T09:46:46Z DBG Device field empty, skipping layout plugin
+2026-11-25T09:46:46Z DBG Reading '/system/oem/08_grub.yaml'
+2026-11-25T09:46:46Z DBG Executing stage 'Boot assessment and branding.Set upgrade sentinel'
+2026-11-25T09:46:46Z DBG running command `grep -vq "rd.immucore.uki" /proc/cmdline`
+2026-11-25T09:46:46Z DBG If statement result 
+2026-11-25T09:46:46Z INF Processing stage step 'Boot assessment and branding.Set upgrade sentinel'. ( commands: 1, files: 0, ... )
+2026-11-25T09:46:46Z DBG Stage: schema.Stage{
+  Commands: []string{
+    "grub2-editenv /tmp/mnt/STATE/boot_assessment set enable_boot_assessment=yes\ngrub2-editenv /tmp/mnt/STATE/boot_assessment set boot_assessment_tentative=\n",
+  },
+  If: "grep -vq \"rd.immucore.uki\" /proc/cmdline",
+  Name: "Set upgrade sentinel",
+}
+2026-11-25T09:46:46Z DBG running command `grub2-editenv /tmp/mnt/STATE/boot_assessment set enable_boot_assessment=yes
+grub2-editenv /tmp/mnt/STATE/boot_assessment set boot_assessment_tentative=
+`
+2026-11-25T09:46:46Z DBG Empty command output
+2026-11-25T09:46:46Z INF Running layout plugin
+2026-11-25T09:46:46Z DBG Device field empty, skipping layout plugin
+2026-11-25T09:46:46Z DBG Reading '/system/oem/08_grub.yaml'
+2026-11-25T09:46:46Z DBG Executing stage 'Boot assessment and branding.Hook boot assessment grub configuration'
+2026-11-25T09:46:46Z DBG running command `! grep -q "grub_boot_assessment" /tmp/mnt/STATE/grubcustom && grep -vq "rd.immucore.uki" /proc/cmdline
+`
+2026-11-25T09:46:46Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run ! grep -q "grub_boot_assessment" /tmp/mnt/STATE/grubcustom && grep -vq "rd.immucore.uki" /proc/cmdline
+: exit status 1)' stage name: Boot assessment and branding.Hook boot assessment grub configuration
+2026-11-25T09:46:46Z DBG Reading '/system/oem/08_grub.yaml'
+2026-11-25T09:46:46Z DBG Executing stage 'Boot assessment and branding.Grub branding'
+2026-11-25T09:46:46Z DBG running command `[ -e "/etc/kairos/branding/grubmenu.cfg" ] && grep -vq "rd.immucore.uki" /proc/cmdline`
+2026-11-25T09:46:46Z DBG If statement result 
+2026-11-25T09:46:46Z INF Processing stage step 'Boot assessment and branding.Grub branding'. ( commands: 1, files: 0, ... )
+2026-11-25T09:46:46Z DBG Stage: schema.Stage{
+  Commands: []string{
+    "cp -rfv /etc/kairos/branding/grubmenu.cfg /tmp/mnt/STATE/grubmenu",
+  },
+  If: "[ -e \"/etc/kairos/branding/grubmenu.cfg\" ] && grep -vq \"rd.immucore.uki\" /proc/cmdline",
+  Name: "Grub branding",
+}
+2026-11-25T09:46:46Z DBG running command `cp -rfv /etc/kairos/branding/grubmenu.cfg /tmp/mnt/STATE/grubmenu`
+2026-11-25T09:46:46Z DBG Command output: '/etc/kairos/branding/grubmenu.cfg' -> '/tmp/mnt/STATE/grubmenu'
+
+2026-11-25T09:46:46Z INF Running layout plugin
+2026-11-25T09:46:46Z DBG Device field empty, skipping layout plugin
+2026-11-25T09:46:46Z DBG Reading '/system/oem/08_grub.yaml'
+2026-11-25T09:46:46Z DBG Executing stage 'Boot assessment and branding.Add boot assessment grub configuration'
+2026-11-25T09:46:46Z DBG running command `grep -vq "rd.immucore.uki" /proc/cmdline`
+2026-11-25T09:46:46Z DBG If statement result 
+2026-11-25T09:46:46Z INF Processing stage step 'Boot assessment and branding.Add boot assessment grub configuration'. ( commands: 0, files: 1, ... )
+2026-11-25T09:46:46Z DBG Stage: schema.Stage{
+  Files: []schema.File{
+    schema.File{
+      Path: "/tmp/mnt/STATE/grub_boot_assessment",
+      Permissions: 384,
+      Content: "set boot_assessment=\"/boot_assessment\"\nsearch --no-floppy --file --set=boot_assessment_blk \"${boot_assessment}\"\nif [ \"${boot_assessment_blk}\" ]; then\n  load_env -f \"(${boot_assessment_blk})${boot_assessment}\"\nfi\nif [ \"${enable_boot_assessment}\" = \"yes\" -o \"${enable_boot_assessment_always}\" = \"yes\" ]; then\n  if [ -z \"${selected_entry}\" ]; then\n    if [ \"${boot_assessment_tentative}\" = \"yes\" ]; then\n      set default=\"fallback\"\n      set extra_passive_cmdline=\"upgrade_failure\"\n    else\n      set boot_assessment_tentative=\"yes\"\n      save_env -f \"(${boot_assessment_blk})${boot_assessment}\" boot_assessment_tentative\n    fi\n  fi\nfi\n",
+    },
+  },
+  If: "grep -vq \"rd.immucore.uki\" /proc/cmdline",
+  Name: "Add boot assessment grub configuration",
+}
+2026-11-25T09:46:46Z DBG Creating file /tmp/mnt/STATE/grub_boot_assessment
+2026-11-25T09:46:46Z INF Running layout plugin
+2026-11-25T09:46:46Z DBG Device field empty, skipping layout plugin
+2026-11-25T09:46:46Z DBG Reading '/system/oem/08_grub.yaml'
+2026-11-25T09:46:46Z DBG Executing stage 'Boot assessment and branding.umount state'
+2026-11-25T09:46:46Z DBG running command `grep -vq "rd.immucore.uki" /proc/cmdline`
+2026-11-25T09:46:46Z DBG If statement result 
+2026-11-25T09:46:46Z INF Processing stage step 'Boot assessment and branding.umount state'. ( commands: 1, files: 0, ... )
+2026-11-25T09:46:46Z DBG Stage: schema.Stage{
+  Commands: []string{
+    "umount /tmp/mnt/STATE",
+  },
+  If: "grep -vq \"rd.immucore.uki\" /proc/cmdline",
+  Name: "umount state",
+}
+2026-11-25T09:46:46Z DBG running command `umount /tmp/mnt/STATE`
+2026-11-25T09:46:46Z DBG Empty command output
+2026-11-25T09:46:46Z INF Running layout plugin
+2026-11-25T09:46:46Z DBG Device field empty, skipping layout plugin
+2026-11-25T09:46:46Z INF Done executing stage 'after-upgrade'
+
+2026-11-25T09:46:46Z INF Running stage: after-upgrade.after
+
+2026-11-25T09:46:46Z INF Done executing stage 'after-upgrade.after'
+
+2026-11-25T09:46:46Z INF Running stage: after-upgrade.before
+
+2026-11-25T09:46:46Z INF Done executing stage 'after-upgrade.before'
+
+2026-11-25T09:46:46Z INF Running stage: after-upgrade
+
+2026-11-25T09:46:46Z INF Done executing stage 'after-upgrade'
+
+2026-11-25T09:46:46Z INF Running stage: after-upgrade.after
+
+2026-11-25T09:46:46Z INF Done executing stage 'after-upgrade.after'
+
+2026-11-25T09:46:46Z INF Upgrade completed
+2026-11-25T09:46:46Z WRN Remember that recovery is upgraded separately by passing the --recovery flag to the upgrade command!
+See more info about this on https://kairos.io/docs/upgrade/
+2026-11-25T09:46:46Z INF Setting default boot entry to cos
+2026-11-25T09:46:46Z DBG Existing grubenv variables existingVars={"next_entry":"cos"}
+2026-11-25T09:46:46Z WRN Overriding existing grubenv variable key=next_entry newValue=cos oldValue=cos
+2026-11-25T09:46:46Z INF Default boot entry set to cos
+2026-11-25T09:46:46Z DBG Not unmounting image, /run/cos/transition doesn't look like mountpoint
+2026-11-25T09:46:46Z DBG Unmounting partition COS_RECOVERY
+2026-11-25T09:46:46Z DBG Remounting partition COS_STATE as read-only
+2026-11-25T09:46:46Z DBG Running Lifecycle hook
+2026-11-25T09:46:46Z DBG Finish Lifecycle hook

@@ -1,0 +1,7 @@
+image-B-from-ssh-source
+rd.cos.oemlabel=COS_OEM
+root=LABEL=COS_ACTIVE
+cos-img/filename=/cOS/active.img
+    filesystemlabel: COS_PERSISTENT
+    filesystemlabel: COS_RECOVERY
+    filesystemlabel: COS_OEM
