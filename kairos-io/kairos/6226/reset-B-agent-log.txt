@@ -1,0 +1,23 @@
+117:2026-11-25T17:19:01Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -d /oem/userdata ] && [ ! -d /oem/95_userdata ] && [ ! -f /run/cos/write_protected ]: exit status 1)' stage name: Datasource handling.Move old datasource to new location
+118:2026-11-25T17:19:01Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -d /oem/userdata ] && [ -d /oem/95_userdata ] && [ ! -f /run/cos/write_protected ]: exit status 1)' stage name: Datasource handling.Remove old userdata
+119:2026-11-25T17:19:01Z INF Processing stage step 'Datasource handling.Pull data from provider'. ( commands: 0, files: 0, ... )
+120:2026-11-25T17:19:01Z ERR Error on file /system/oem/00_datasource.yaml on stage Pull data from provider: no metadata/userdata found
+122:2026-11-25T17:19:01Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -e /oem/95_userdata ] && [ -f /run/.userdata_load ]: exit status 1)' stage name: Datasource handling.Run stages if userdata is found
+123:2026-11-25T17:19:01Z INF Processing stage step 'Datasource handling.Remove userdata sentinel'. ( commands: 1, files: 0, ... )
+201:2026-11-25T17:19:01Z INF p2p: binding to 10.77.0.2
+231:2026-11-25T17:19:01Z INF Copying 10.77.0.1:42069,10.77.0.3:42069/active?pin=d3329f3a1f0f19c5606f08b37380cf76776b4a8e3cb57ba400b16b7fea6c46d2 source to /run/cos/state/cOS/active.img
+232:2026-11-25T17:19:01Z WRN The p2p image source is EXPERIMENTAL: fetching p2p://10.77.0.1:42069,10.77.0.3:42069/active?pin=d3329f3a1f0f19c5606f08b37380cf76776b4a8e3cb57ba400b16b7fea6c46d2
+233:2026-11-25T17:19:01Z INF p2p: binding to 10.77.0.2
+234:2026-11-25T17:19:01Z INF p2p: using the active manifest d3329f3a1f0f19c5606f08b37380cf76776b4a8e3cb57ba400b16b7fea6c46d2 (3221225472 bytes in 768 chunks, image checked against: manifest pin), from 2 peer(s)
+266:2026-11-25T17:19:33Z INF p2p: 10.77.0.1 served 1614807040 bytes in 385 chunks
+267:2026-11-25T17:19:33Z INF p2p: 10.77.0.3 served 1606418432 bytes in 383 chunks
+268:2026-11-25T17:19:33Z INF p2p: image downloaded, sha256 780132ec02104f34052b7af79fd8f68efa1026579f6419625eec4f95f004b97b, the manifest was authenticated by: manifest pin
+271:2026-11-25T17:19:33Z INF Copying grub contents from /run/cos/active/etc/cos/grub.cfg to /run/cos/state/grub2/grub.cfg
+299:2026-11-25T17:19:34Z INF Copying /run/cos/state/cOS/active.img source to /run/cos/state/cOS/passive.img
+454:2026-11-25T17:22:04Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -d /oem/userdata ] && [ ! -d /oem/95_userdata ] && [ ! -f /run/cos/write_protected ]: exit status 1)' stage name: Datasource handling.Move old datasource to new location
+455:2026-11-25T17:22:04Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -d /oem/userdata ] && [ -d /oem/95_userdata ] && [ ! -f /run/cos/write_protected ]: exit status 1)' stage name: Datasource handling.Remove old userdata
+456:2026-11-25T17:22:04Z INF Processing stage step 'Datasource handling.Pull data from provider'. ( commands: 0, files: 0, ... )
+457:2026-11-25T17:22:04Z ERR Error on file /system/oem/00_datasource.yaml on stage Pull data from provider: no metadata/userdata found
+459:2026-11-25T17:22:04Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -e /oem/95_userdata ] && [ -f /run/.userdata_load ]: exit status 1)' stage name: Datasource handling.Run stages if userdata is found
+460:2026-11-25T17:22:04Z INF Processing stage step 'Datasource handling.Remove userdata sentinel'. ( commands: 1, files: 0, ... )
+[rc=0]

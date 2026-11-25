@@ -1,0 +1,135 @@
+warning: skipping /etc/kairos/kairos-init-init-stage.yaml because it has no valid header
+warning: skipping /etc/kairos/kairos-init-install-stage.yaml because it has no valid header
+2026-11-25T17:08:33Z INF Kairos Agent version=v4.7.1-dev.43+g0ae646cfc
+2026-11-25T17:08:33Z INF Kairos System version=v4.7.0-43-g0ae646cfc
+2026-11-25T17:08:33Z INF Boot Mode boot_mode=active_boot
+2026-11-25T17:08:33Z INF Boot in uki mode result=false
+2026-11-25T17:08:33Z INF p2p: binding to 10.77.0.2
+2026-11-25T17:08:33Z INF p2p: ignoring the manifest of 10.77.0.3:42069: status 0, Get "http://10.77.0.3:42069/passive/manifest": read tcp 10.77.0.2:58583->10.77.0.3:42069: read: connection reset by peer
+2026-11-25T17:08:33Z INF Setting image size to 3172MiB
+2026-11-25T17:08:33Z INF Applying 'before-upgrade' hook
+2026-11-25T17:08:33Z INF Running before-upgrade hook
+2026-11-25T17:08:33Z INF Running stage: before-upgrade.before
+
+2026-11-25T17:08:33Z INF Done executing stage 'before-upgrade.before'
+
+2026-11-25T17:08:33Z INF Running stage: before-upgrade
+
+2026-11-25T17:08:33Z INF Done executing stage 'before-upgrade'
+
+2026-11-25T17:08:33Z INF Running stage: before-upgrade.after
+
+2026-11-25T17:08:33Z INF Done executing stage 'before-upgrade.after'
+
+2026-11-25T17:08:33Z INF Running stage: before-upgrade.before
+
+2026-11-25T17:08:33Z INF Done executing stage 'before-upgrade.before'
+
+2026-11-25T17:08:33Z INF Running stage: before-upgrade
+
+2026-11-25T17:08:33Z INF Done executing stage 'before-upgrade'
+
+2026-11-25T17:08:33Z INF Running stage: before-upgrade.after
+
+2026-11-25T17:08:33Z INF Done executing stage 'before-upgrade.after'
+
+2026-11-25T17:08:33Z INF deploying image 10.77.0.1:42069,10.77.0.3:42069,10.77.0.4:42069/passive?pin=b94bc49f0a5818fd604e44ab9fb98f35ccef47c2cd05c6b374d2c748a4ee0291 to /run/initramfs/cos-state/cOS/transition.img
+2026-11-25T17:08:33Z INF Copying 10.77.0.1:42069,10.77.0.3:42069,10.77.0.4:42069/passive?pin=b94bc49f0a5818fd604e44ab9fb98f35ccef47c2cd05c6b374d2c748a4ee0291 source to /run/initramfs/cos-state/cOS/transition.img
+2026-11-25T17:08:33Z WRN The p2p image source is EXPERIMENTAL: fetching p2p://10.77.0.1:42069,10.77.0.3:42069,10.77.0.4:42069/passive?pin=b94bc49f0a5818fd604e44ab9fb98f35ccef47c2cd05c6b374d2c748a4ee0291
+2026-11-25T17:08:33Z INF p2p: binding to 10.77.0.2
+2026-11-25T17:08:33Z INF p2p: ignoring the manifest of 10.77.0.3:42069: status 0, Get "http://10.77.0.3:42069/passive/manifest": EOF
+2026-11-25T17:08:33Z INF p2p: using the passive manifest b94bc49f0a5818fd604e44ab9fb98f35ccef47c2cd05c6b374d2c748a4ee0291 (3221225472 bytes in 768 chunks, image checked against: manifest pin), from 2 peer(s)
+2026-11-25T17:08:33Z INF p2p: chunk 541 from 10.77.0.4:42069 does not match the manifest, trying another peer
+2026-11-25T17:08:33Z INF p2p: chunk 126 from 10.77.0.4:42069 does not match the manifest, trying another peer
+2026-11-25T17:08:33Z INF p2p: dropping peer 10.77.0.4:42069: served bad chunks
+2026-11-25T17:08:34Z INF p2p: chunk 561 from 10.77.0.4:42069 does not match the manifest, trying another peer
+2026-11-25T17:08:34Z INF p2p: chunk 157 from 10.77.0.4:42069 does not match the manifest, trying another peer
+2026-11-25T17:08:34Z INF p2p: chunk 21 from 10.77.0.4:42069 does not match the manifest, trying another peer
+2026-11-25T17:09:23Z INF p2p: 10.77.0.1 served 3221225472 bytes in 768 chunks
+2026-11-25T17:09:23Z INF p2p: 10.77.0.4 served 0 bytes in 0 chunks
+2026-11-25T17:09:23Z INF p2p: image downloaded, sha256 df07836f32c3564f9a480263155d875b3cb284036e4c1e3304cfb3f18f96b887, the manifest was authenticated by: manifest pin
+2026-11-25T17:09:23Z INF Finished copying 10.77.0.1:42069,10.77.0.3:42069,10.77.0.4:42069/passive?pin=b94bc49f0a5818fd604e44ab9fb98f35ccef47c2cd05c6b374d2c748a4ee0291 into /run/initramfs/cos-state/cOS/transition.img
+2026-11-25T17:09:23Z INF Handing off upgrade finalize to target kairos-agent (/usr/bin/kairos-agent)
+2026-11-25T17:09:24Z INF upgrade-finalize output: 2026-11-25T17:09:23Z INF Applying 'after-upgrade-chroot' hook
+2026-11-25T17:09:23Z INF Running after-upgrade-chroot hook
+2026-11-25T17:09:23Z INF Running stage: after-upgrade-chroot.before
+
+2026-11-25T17:09:23Z INF Done executing stage 'after-upgrade-chroot.before'
+
+2026-11-25T17:09:23Z INF Running stage: after-upgrade-chroot
+
+2026-11-25T17:09:23Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -x "/usr/sbin/kairos-jetson-qspi-update" ]
+: exit status 1)' stage name: Nvidia Jetson QSPI firmware check.Check and stage QSPI firmware update
+2026-11-25T17:09:23Z INF Done executing stage 'after-upgrade-chroot'
+
+2026-11-25T17:09:23Z INF Running stage: after-upgrade-chroot.after
+
+2026-11-25T17:09:23Z INF Done executing stage 'after-upgrade-chroot.after'
+
+2026-11-25T17:09:23Z INF Running stage: after-upgrade-chroot.before
+
+2026-11-25T17:09:23Z INF Done executing stage 'after-upgrade-chroot.before'
+
+2026-11-25T17:09:23Z INF Running stage: after-upgrade-chroot
+
+2026-11-25T17:09:24Z INF Done executing stage 'after-upgrade-chroot'
+
+2026-11-25T17:09:24Z INF Running stage: after-upgrade-chroot.after
+
+2026-11-25T17:09:24Z INF Done executing stage 'after-upgrade-chroot.after'
+
+2026-11-25T17:09:24Z INF rebranding
+2026-11-25T17:09:24Z INF Copied grub.cfg from /etc/cos/grub.cfg to /host/run/initramfs/cos-state/grub2/grub.cfg
+2026-11-25T17:09:24Z INF Refreshed grub.cfg on the state partition and shim, grub and grub.cfg on the EFI partition from /
+
+2026-11-25T17:09:24Z INF Backing up current active image
+2026-11-25T17:09:24Z INF Moving /run/initramfs/cos-state/cOS/active.img to /run/initramfs/cos-state/cOS/passive.img
+2026-11-25T17:09:24Z INF Finished moving /run/initramfs/cos-state/cOS/active.img to /run/initramfs/cos-state/cOS/passive.img
+2026-11-25T17:09:24Z INF Moving /run/initramfs/cos-state/cOS/transition.img to /run/initramfs/cos-state/cOS/active.img
+2026-11-25T17:09:24Z INF Finished moving /run/initramfs/cos-state/cOS/transition.img to /run/initramfs/cos-state/cOS/active.img
+2026-11-25T17:09:24Z INF Applying 'after-upgrade' hook
+2026-11-25T17:09:24Z INF Running after-upgrade hook
+2026-11-25T17:09:24Z INF Running stage: after-upgrade.before
+
+2026-11-25T17:09:24Z INF Done executing stage 'after-upgrade.before'
+
+2026-11-25T17:09:24Z INF Running stage: after-upgrade
+
+2026-11-25T17:09:24Z INF Processing stage step 'Boot assessment and branding.Mount state'. ( commands: 1, files: 0, ... )
+2026-11-25T17:09:24Z INF Running layout plugin
+2026-11-25T17:09:24Z INF Processing stage step 'Boot assessment and branding.Set upgrade sentinel'. ( commands: 1, files: 0, ... )
+2026-11-25T17:09:24Z INF Running layout plugin
+2026-11-25T17:09:24Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run ! grep -q "grub_boot_assessment" /tmp/mnt/STATE/grubcustom && grep -vq "rd.immucore.uki" /proc/cmdline
+: exit status 1)' stage name: Boot assessment and branding.Hook boot assessment grub configuration
+2026-11-25T17:09:24Z INF Processing stage step 'Boot assessment and branding.Grub branding'. ( commands: 1, files: 0, ... )
+2026-11-25T17:09:24Z INF Running layout plugin
+2026-11-25T17:09:24Z INF Processing stage step 'Boot assessment and branding.Add boot assessment grub configuration'. ( commands: 0, files: 1, ... )
+2026-11-25T17:09:24Z INF Running layout plugin
+2026-11-25T17:09:24Z INF Processing stage step 'Boot assessment and branding.umount state'. ( commands: 1, files: 0, ... )
+2026-11-25T17:09:24Z INF Running layout plugin
+2026-11-25T17:09:24Z INF Done executing stage 'after-upgrade'
+
+2026-11-25T17:09:24Z INF Running stage: after-upgrade.after
+
+2026-11-25T17:09:24Z INF Done executing stage 'after-upgrade.after'
+
+2026-11-25T17:09:24Z INF Running stage: after-upgrade.before
+
+2026-11-25T17:09:24Z INF Done executing stage 'after-upgrade.before'
+
+2026-11-25T17:09:24Z INF Running stage: after-upgrade
+
+2026-11-25T17:09:24Z INF Done executing stage 'after-upgrade'
+
+2026-11-25T17:09:24Z INF Running stage: after-upgrade.after
+
+2026-11-25T17:09:24Z INF Done executing stage 'after-upgrade.after'
+
+2026-11-25T17:09:24Z INF Upgrade completed
+2026-11-25T17:09:24Z WRN Remember that recovery is upgraded separately by passing the --recovery flag to the upgrade command!
+See more info about this on https://kairos.io/docs/upgrade/
+2026-11-25T17:09:24Z INF Setting default boot entry to cos
+2026-11-25T17:09:24Z WRN Overriding existing grubenv variable key=next_entry newValue=cos oldValue=
+2026-11-25T17:09:24Z INF Default boot entry set to cos
+rc=0
+[rc=0]

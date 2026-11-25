@@ -1,0 +1,5 @@
+> > > > > > > # > > > > > 2026-11-25T17:24:56Z INF Boot in uki mode result=false
+failed initializing spec: the p2p image source is EXPERIMENTAL and disabled by default: set p2p-source.experimental: true in the cloud-config, pass --experimental, or set KAIROS_P2P_EXPERIMENTAL=1
+---
+# failed initializing spec: the p2p image source is EXPERIMENTAL and disabled by default: set p2p-source.experimental: true in the cloud-config, pass --experimental, or set KAIROS_P2P_EXPERIMENTAL=1
+[rc=0]

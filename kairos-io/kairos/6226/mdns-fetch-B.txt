@@ -1,0 +1,9 @@
+p2p: binding to 10.77.0.2
+p2p: allowing the local subnet [10.77.0.0/24]
+p2p: discovering peers with mDNS (5s)
+p2p: discovered [10.77.0.1:42069 10.77.0.3:42069]
+p2p: using the active manifest d3329f3a1f0f19c5606f08b37380cf76776b4a8e3cb57ba400b16b7fea6c46d2 (3221225472 bytes in 768 chunks, image checked against: manifest pin), from 2 peer(s)
+downloaded sha256 780132ec02104f34052b7af79fd8f68efa1026579f6419625eec4f95f004b97b (3221225472 bytes, 0 chunks resumed), checked against: manifest pin
+  served by 10.77.0.1       1623195648 bytes   387 chunks  0 failures
+  served by 10.77.0.3       1598029824 bytes   381 chunks  0 failures
+[rc=0]

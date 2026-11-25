@@ -1,0 +1,26 @@
+ok  	github.com/kairos-io/kairos/v4/agent/pkg/p2p	60.179s
+ok  	github.com/kairos-io/kairos/v4/agent/pkg/config	16.301s
+ok  	github.com/kairos-io/kairos/v4/agent/pkg/elemental	12.955s
+ok  	github.com/kairos-io/kairos/v4/agent/pkg/cmd	0.464s
+ok  	github.com/kairos-io/kairos/v4/agent/internal/agent	6.366s
+ok  	github.com/kairos-io/kairos/v4/agent/internal/agent/hooks	1.118s
+ok  	github.com/kairos-io/kairos/v4/agent/internal/bus	0.051s
+?   	github.com/kairos-io/kairos/v4/agent/internal/cmd	[no test files]
+ok  	github.com/kairos-io/kairos/v4/agent/internal/phonehome	5.983s
+?   	github.com/kairos-io/kairos/v4/sdk/types/bundles	[no test files]
+?   	github.com/kairos-io/kairos/v4/sdk/types/certs	[no test files]
+?   	github.com/kairos-io/kairos/v4/sdk/types/cloudinitrunner	[no test files]
+?   	github.com/kairos-io/kairos/v4/sdk/types/config	[no test files]
+ok  	github.com/kairos-io/kairos/v4/sdk/types/extensions	0.017s
+?   	github.com/kairos-io/kairos/v4/sdk/types/fs	[no test files]
+?   	github.com/kairos-io/kairos/v4/sdk/types/http	[no test files]
+ok  	github.com/kairos-io/kairos/v4/sdk/types/images	0.032s
+ok  	github.com/kairos-io/kairos/v4/sdk/types/install	0.020s
+ok  	github.com/kairos-io/kairos/v4/sdk/types/logger	0.020s
+?   	github.com/kairos-io/kairos/v4/sdk/types/logs	[no test files]
+ok  	github.com/kairos-io/kairos/v4/sdk/types/partitions	0.020s
+ok  	github.com/kairos-io/kairos/v4/sdk/types/platform	0.027s
+?   	github.com/kairos-io/kairos/v4/sdk/types/runner	[no test files]
+?   	github.com/kairos-io/kairos/v4/sdk/types/spec	[no test files]
+?   	github.com/kairos-io/kairos/v4/sdk/types/syscall	[no test files]
+ok  	github.com/kairos-io/kairos/v4/sdk/schema	9.702s

@@ -1,0 +1,15 @@
+bin
+boot
+dev
+2026-11-25T17:23:21Z INF Copying /run/pm source to /run/cos/transition
+2026-11-25T17:23:24Z INF Finished copying /run/pm into /run/cos/transition
+2026-11-25T17:23:24Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -x "/usr/sbin/kairos-jetson-qspi-update" ]
+2026-11-25T17:23:24Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run ! grep -q "grub_boot_assessment" /tmp/mnt/STATE/grubcustom && grep -vq "rd.immucore.uki" /proc/cmdline
+2026-11-25T17:23:24Z INF Upgrade completed
+rc=0
+2026-11-25T17:23:25Z INF Copying /usr/local/m1.img source to /run/initramfs/cos-state/cOS/transition.img
+2026-11-25T17:23:26Z INF Finished copying /usr/local/m1.img into /run/initramfs/cos-state/cOS/transition.img
+2026-11-25T17:23:26Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -x "/usr/sbin/kairos-jetson-qspi-update" ]
+2026-11-25T17:23:27Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run ! grep -q "grub_boot_assessment" /tmp/mnt/STATE/grubcustom && grep -vq "rd.immucore.uki" /proc/cmdline
+2026-11-25T17:23:27Z INF Upgrade completed
+[rc=0]

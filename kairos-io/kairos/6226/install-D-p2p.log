@@ -1,0 +1,179 @@
+2026-11-25T17:14:20Z INF Kairos Agent version=v4.7.1-dev.43+g0ae646cfc
+2026-11-25T17:14:20Z INF Kairos System version=v4.7.0-43-g0ae646cfc
+2026-11-25T17:14:20Z INF Boot Mode boot_mode=livecd_boot
+2026-11-25T17:14:20Z INF Boot in uki mode result=false
+2026-11-25T17:14:20Z INF p2p: binding to 10.77.0.5
+2026-11-25T17:14:20Z INF Setting image size to 3172MiB
+2026-11-25T17:14:20Z INF Setting OEM partition size to 64MiB
+2026-11-25T17:14:20Z INF Setting recovery partition size to 6344MiB
+2026-11-25T17:14:20Z INF Setting state partition size to 10216MiB
+2026-11-25T17:14:20Z INF Setting persistent partition size to 0MiB
+2026-11-25T17:14:20Z INF Running stage: kairos-install.pre.before
+
+2026-11-25T17:14:20Z INF Done executing stage 'kairos-install.pre.before'
+
+2026-11-25T17:14:20Z INF Running stage: kairos-install.pre
+
+2026-11-25T17:14:20Z INF Done executing stage 'kairos-install.pre'
+
+2026-11-25T17:14:20Z INF Running stage: kairos-install.pre.after
+
+2026-11-25T17:14:20Z INF Done executing stage 'kairos-install.pre.after'
+
+2026-11-25T17:14:20Z INF Running stage: kairos-install.pre.before
+
+2026-11-25T17:14:20Z INF Done executing stage 'kairos-install.pre.before'
+
+2026-11-25T17:14:20Z INF Running stage: kairos-install.pre
+
+2026-11-25T17:14:20Z INF Done executing stage 'kairos-install.pre'
+
+2026-11-25T17:14:20Z INF Running stage: kairos-install.pre.after
+
+2026-11-25T17:14:20Z INF Done executing stage 'kairos-install.pre.after'
+
+2026-11-25T17:14:20Z INF Partitioning device...
+2026-11-25T17:14:20Z INF Creating partition table for partition type gpt
+2026-11-25T17:14:20Z INF Created partition table for partition type gpt
+2026-11-25T17:14:20Z INF Mounting disk partitions
+2026-11-25T17:14:22Z INF Running before-install hook
+2026-11-25T17:14:22Z INF Running stage: before-install.before
+
+2026-11-25T17:14:22Z INF Done executing stage 'before-install.before'
+
+2026-11-25T17:14:22Z INF Running stage: before-install
+
+2026-11-25T17:14:22Z INF Done executing stage 'before-install'
+
+2026-11-25T17:14:22Z INF Running stage: before-install.after
+
+2026-11-25T17:14:22Z INF Done executing stage 'before-install.after'
+
+2026-11-25T17:14:22Z INF Running stage: before-install.before
+
+2026-11-25T17:14:22Z INF Done executing stage 'before-install.before'
+
+2026-11-25T17:14:22Z INF Running stage: before-install
+
+2026-11-25T17:14:22Z INF Done executing stage 'before-install'
+
+2026-11-25T17:14:22Z INF Running stage: before-install.after
+
+2026-11-25T17:14:22Z INF Done executing stage 'before-install.after'
+
+2026-11-25T17:14:22Z INF Copying 10.77.0.1:42069,10.77.0.3:42069/active?pin=d3329f3a1f0f19c5606f08b37380cf76776b4a8e3cb57ba400b16b7fea6c46d2 source to /run/cos/state/cOS/active.img
+2026-11-25T17:14:22Z WRN The p2p image source is EXPERIMENTAL: fetching p2p://10.77.0.1:42069,10.77.0.3:42069/active?pin=d3329f3a1f0f19c5606f08b37380cf76776b4a8e3cb57ba400b16b7fea6c46d2
+2026-11-25T17:14:22Z INF p2p: binding to 10.77.0.5
+2026-11-25T17:14:22Z INF p2p: using the active manifest d3329f3a1f0f19c5606f08b37380cf76776b4a8e3cb57ba400b16b7fea6c46d2 (3221225472 bytes in 768 chunks, image checked against: manifest pin), from 2 peer(s)
+2026-11-25T17:14:57Z INF p2p: 10.77.0.1 served 1631584256 bytes in 389 chunks
+2026-11-25T17:14:57Z INF p2p: 10.77.0.3 served 1589641216 bytes in 379 chunks
+2026-11-25T17:14:57Z INF p2p: image downloaded, sha256 780132ec02104f34052b7af79fd8f68efa1026579f6419625eec4f95f004b97b, the manifest was authenticated by: manifest pin
+2026-11-25T17:14:57Z INF Finished copying 10.77.0.1:42069,10.77.0.3:42069/active?pin=d3329f3a1f0f19c5606f08b37380cf76776b4a8e3cb57ba400b16b7fea6c46d2 into /run/cos/state/cOS/active.img
+2026-11-25T17:14:58Z INF List of cloud inits to copy: [/tmp/kairos-install-config-xxx.yaml208079365]
+
+2026-11-25T17:14:58Z INF Starting copying cloud config file /tmp/kairos-install-config-xxx.yaml208079365 to /run/cos/oem/90_custom.yaml
+2026-11-25T17:14:58Z INF Finished copying cloud config file /tmp/kairos-install-config-xxx.yaml208079365 to /run/cos/oem/90_custom.yaml
+2026-11-25T17:14:58Z INF Using grub config dir /run/cos/active/etc/cos/grub.cfg
+2026-11-25T17:14:58Z INF Copying grub contents from /run/cos/active/etc/cos/grub.cfg to /run/cos/state/grub2/grub.cfg
+2026-11-25T17:14:58Z INF Generating grub files for efi on /dev/vda
+2026-11-25T17:14:58Z INF UEFI boot entry: Boot000A "Kairos": /dev/vda partition 1 \EFI\BOOT\BOOTX64.EFI, first in BootOrder
+2026-11-25T17:14:58Z INF Running after-install-chroot hook
+2026-11-25T17:14:58Z INF Running stage: after-install-chroot.before
+
+2026-11-25T17:14:58Z INF Done executing stage 'after-install-chroot.before'
+
+2026-11-25T17:14:58Z INF Running stage: after-install-chroot
+
+2026-11-25T17:14:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -x "/usr/sbin/kairos-jetson-qspi-update" ]
+: exit status 1)' stage name: Nvidia Jetson QSPI firmware check.Check and stage QSPI firmware update
+2026-11-25T17:14:58Z INF Done executing stage 'after-install-chroot'
+
+2026-11-25T17:14:58Z INF Running stage: after-install-chroot.after
+
+2026-11-25T17:14:58Z INF Done executing stage 'after-install-chroot.after'
+
+2026-11-25T17:14:58Z INF Running stage: after-install-chroot.before
+
+2026-11-25T17:14:58Z INF Done executing stage 'after-install-chroot.before'
+
+2026-11-25T17:14:58Z INF Running stage: after-install-chroot
+
+2026-11-25T17:14:58Z INF Done executing stage 'after-install-chroot'
+
+2026-11-25T17:14:58Z INF Running stage: after-install-chroot.after
+
+2026-11-25T17:14:58Z INF Done executing stage 'after-install-chroot.after'
+
+2026-11-25T17:14:58Z INF Copying /run/cos/state/cOS/active.img source to /run/cos/recovery/cOS/recovery.img
+2026-11-25T17:15:00Z INF Finished copying /run/cos/state/cOS/active.img into /run/cos/recovery/cOS/recovery.img
+2026-11-25T17:15:00Z INF Copying /run/cos/state/cOS/active.img source to /run/cos/state/cOS/passive.img
+2026-11-25T17:15:02Z INF Finished copying /run/cos/state/cOS/active.img into /run/cos/state/cOS/passive.img
+2026-11-25T17:15:02Z INF Starting unified encryption flow
+2026-11-25T17:15:02Z INF No partitions to encrypt
+2026-11-25T17:15:02Z INF No bundles to run in BundlePostInstall hook
+2026-11-25T17:15:02Z INF Running CopyLogs hook
+2026-11-25T17:15:02Z INF Starting rsync...
+2026-11-25T17:15:03Z INF Finished syncing
+2026-11-25T17:15:03Z INF Finish CopyLogs hook
+2026-11-25T17:15:03Z INF Running after-install hook
+2026-11-25T17:15:03Z INF Running stage: after-install.before
+
+2026-11-25T17:15:03Z INF Done executing stage 'after-install.before'
+
+2026-11-25T17:15:03Z INF Running stage: after-install
+
+2026-11-25T17:15:03Z INF Processing stage step 'Boot assessment and branding.Mount state'. ( commands: 1, files: 0, ... )
+2026-11-25T17:15:03Z INF Running layout plugin
+2026-11-25T17:15:03Z INF Processing stage step 'Boot assessment and branding.Hook boot assessment grub configuration'. ( commands: 1, files: 0, ... )
+2026-11-25T17:15:03Z INF Running layout plugin
+2026-11-25T17:15:03Z INF Processing stage step 'Boot assessment and branding.Add boot assessment grub configuration'. ( commands: 0, files: 1, ... )
+2026-11-25T17:15:03Z INF Running layout plugin
+2026-11-25T17:15:03Z INF Processing stage step 'Boot assessment and branding.Grub branding'. ( commands: 1, files: 0, ... )
+2026-11-25T17:15:03Z INF Running layout plugin
+2026-11-25T17:15:03Z INF Processing stage step 'Boot assessment and branding.umount state'. ( commands: 1, files: 0, ... )
+2026-11-25T17:15:03Z INF Running layout plugin
+2026-11-25T17:15:03Z INF Done executing stage 'after-install'
+
+2026-11-25T17:15:03Z INF Running stage: after-install.after
+
+2026-11-25T17:15:03Z INF Done executing stage 'after-install.after'
+
+2026-11-25T17:15:03Z INF Running stage: after-install.before
+
+2026-11-25T17:15:03Z INF Done executing stage 'after-install.before'
+
+2026-11-25T17:15:03Z INF Running stage: after-install
+
+2026-11-25T17:15:03Z INF Done executing stage 'after-install'
+
+2026-11-25T17:15:03Z INF Running stage: after-install.after
+
+2026-11-25T17:15:03Z INF Done executing stage 'after-install.after'
+
+2026-11-25T17:15:03Z INF Unmounting disk partitions
+2026-11-25T17:15:03Z INF Running stage: kairos-install.after.before
+
+2026-11-25T17:15:03Z INF Done executing stage 'kairos-install.after.before'
+
+2026-11-25T17:15:03Z INF Running stage: kairos-install.after
+
+2026-11-25T17:15:03Z INF Done executing stage 'kairos-install.after'
+
+2026-11-25T17:15:03Z INF Running stage: kairos-install.after.after
+
+2026-11-25T17:15:03Z INF Done executing stage 'kairos-install.after.after'
+
+2026-11-25T17:15:03Z INF Running stage: kairos-install.after.before
+
+2026-11-25T17:15:03Z INF Done executing stage 'kairos-install.after.before'
+
+2026-11-25T17:15:03Z INF Running stage: kairos-install.after
+
+2026-11-25T17:15:03Z INF Done executing stage 'kairos-install.after'
+
+2026-11-25T17:15:03Z INF Running stage: kairos-install.after.after
+
+2026-11-25T17:15:03Z INF Done executing stage 'kairos-install.after.after'
+
+rc=0
+[rc=0]

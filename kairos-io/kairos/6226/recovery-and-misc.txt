@@ -1,0 +1,9 @@
+recovery manifest http 404
+persistent http 404
+traversal http 404
+2026-11-25T17:23:36Z INF Boot in uki mode result=false
+failed initializing spec: the recovery system can only be deployed from the recovery image of a node: use p2p://.../recovery
+2026-11-25T17:23:36Z WRN Failed to infer size for images: no peer served an acceptable recovery manifest: 10.77.0.1:42069: status 404, <nil>
+failed initializing spec: failed calculating size: no peer served an acceptable recovery manifest: 10.77.0.1:42069: status 404, <nil>
+p2p://10.77.0.2/active?pin=3b009405c9ddec307dae4b33ad11545c6a188352e706aee78f545b3a73c4f873
+[rc=0]

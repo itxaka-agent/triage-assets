@@ -1,0 +1,107 @@
+Nov 25 16:52:49 kairos-3130 systemd[1]: Started Kairos Agent p2p image seeder (EXPERIMENTAL).
+Nov 25 16:52:49 kairos-3130 kairos-agent[1460]: no usable IPv4 interface found, set p2p-source.bind
+Nov 25 16:52:49 kairos-3130 systemd[1]: kairos-agent-p2p.service: Main process exited, code=exited, status=1/FAILURE
+Nov 25 16:52:49 kairos-3130 systemd[1]: kairos-agent-p2p.service: Failed with result 'exit-code'.
+Nov 25 16:52:59 kairos-3130 systemd[1]: kairos-agent-p2p.service: Scheduled restart job, restart counter is at 1.
+Nov 25 16:52:59 kairos-3130 systemd[1]: Started Kairos Agent p2p image seeder (EXPERIMENTAL).
+Nov 25 16:52:59 kairos-3130 kairos-agent[1473]: no usable IPv4 interface found, set p2p-source.bind
+Nov 25 16:52:59 kairos-3130 systemd[1]: kairos-agent-p2p.service: Main process exited, code=exited, status=1/FAILURE
+Nov 25 16:52:59 kairos-3130 systemd[1]: kairos-agent-p2p.service: Failed with result 'exit-code'.
+Nov 25 16:53:10 kairos-3130 systemd[1]: kairos-agent-p2p.service: Scheduled restart job, restart counter is at 2.
+Nov 25 16:53:10 kairos-3130 systemd[1]: Started Kairos Agent p2p image seeder (EXPERIMENTAL).
+Nov 25 16:53:10 kairos-3130 kairos-agent[1484]: no usable IPv4 interface found, set p2p-source.bind
+Nov 25 16:53:10 kairos-3130 systemd[1]: kairos-agent-p2p.service: Main process exited, code=exited, status=1/FAILURE
+Nov 25 16:53:10 kairos-3130 systemd[1]: kairos-agent-p2p.service: Failed with result 'exit-code'.
+Nov 25 16:53:20 kairos-3130 systemd[1]: kairos-agent-p2p.service: Scheduled restart job, restart counter is at 3.
+Nov 25 16:53:20 kairos-3130 systemd[1]: Started Kairos Agent p2p image seeder (EXPERIMENTAL).
+Nov 25 16:53:20 kairos-3130 kairos-agent[1495]: no usable IPv4 interface found, set p2p-source.bind
+Nov 25 16:53:20 kairos-3130 systemd[1]: kairos-agent-p2p.service: Main process exited, code=exited, status=1/FAILURE
+Nov 25 16:53:20 kairos-3130 systemd[1]: kairos-agent-p2p.service: Failed with result 'exit-code'.
+Nov 25 16:53:30 kairos-3130 systemd[1]: kairos-agent-p2p.service: Scheduled restart job, restart counter is at 4.
+Nov 25 16:53:30 kairos-3130 systemd[1]: Started Kairos Agent p2p image seeder (EXPERIMENTAL).
+Nov 25 16:53:30 kairos-3130 kairos-agent[1506]: no usable IPv4 interface found, set p2p-source.bind
+Nov 25 16:53:30 kairos-3130 systemd[1]: kairos-agent-p2p.service: Main process exited, code=exited, status=1/FAILURE
+Nov 25 16:53:30 kairos-3130 systemd[1]: kairos-agent-p2p.service: Failed with result 'exit-code'.
+Nov 25 16:53:40 kairos-3130 systemd[1]: kairos-agent-p2p.service: Scheduled restart job, restart counter is at 5.
+Nov 25 16:53:40 kairos-3130 systemd[1]: Started Kairos Agent p2p image seeder (EXPERIMENTAL).
+Nov 25 16:53:40 kairos-3130 kairos-agent[1518]: no usable IPv4 interface found, set p2p-source.bind
+Nov 25 16:53:40 kairos-3130 systemd[1]: kairos-agent-p2p.service: Main process exited, code=exited, status=1/FAILURE
+Nov 25 16:53:40 kairos-3130 systemd[1]: kairos-agent-p2p.service: Failed with result 'exit-code'.
+Nov 25 16:53:51 kairos-3130 systemd[1]: kairos-agent-p2p.service: Scheduled restart job, restart counter is at 6.
+Nov 25 16:53:51 kairos-3130 systemd[1]: Started Kairos Agent p2p image seeder (EXPERIMENTAL).
+Nov 25 16:53:51 kairos-3130 kairos-agent[1529]: no usable IPv4 interface found, set p2p-source.bind
+Nov 25 16:53:51 kairos-3130 systemd[1]: kairos-agent-p2p.service: Main process exited, code=exited, status=1/FAILURE
+Nov 25 16:53:51 kairos-3130 systemd[1]: kairos-agent-p2p.service: Failed with result 'exit-code'.
+Nov 25 16:54:01 kairos-3130 systemd[1]: kairos-agent-p2p.service: Scheduled restart job, restart counter is at 7.
+Nov 25 16:54:01 kairos-3130 systemd[1]: Started Kairos Agent p2p image seeder (EXPERIMENTAL).
+Nov 25 16:54:01 kairos-3130 kairos-agent[1540]: no usable IPv4 interface found, set p2p-source.bind
+Nov 25 16:54:01 kairos-3130 systemd[1]: kairos-agent-p2p.service: Main process exited, code=exited, status=1/FAILURE
+Nov 25 16:54:01 kairos-3130 systemd[1]: kairos-agent-p2p.service: Failed with result 'exit-code'.
+Nov 25 16:54:11 kairos-3130 systemd[1]: kairos-agent-p2p.service: Scheduled restart job, restart counter is at 8.
+Nov 25 16:54:11 kairos-3130 systemd[1]: Started Kairos Agent p2p image seeder (EXPERIMENTAL).
+Nov 25 16:54:11 kairos-3130 kairos-agent[1551]: no usable IPv4 interface found, set p2p-source.bind
+Nov 25 16:54:11 kairos-3130 systemd[1]: kairos-agent-p2p.service: Main process exited, code=exited, status=1/FAILURE
+Nov 25 16:54:11 kairos-3130 systemd[1]: kairos-agent-p2p.service: Failed with result 'exit-code'.
+Nov 25 16:54:21 kairos-3130 systemd[1]: kairos-agent-p2p.service: Scheduled restart job, restart counter is at 9.
+Nov 25 16:54:21 kairos-3130 systemd[1]: Started Kairos Agent p2p image seeder (EXPERIMENTAL).
+Nov 25 16:54:21 kairos-3130 kairos-agent[1564]: no usable IPv4 interface found, set p2p-source.bind
+Nov 25 16:54:21 kairos-3130 systemd[1]: kairos-agent-p2p.service: Main process exited, code=exited, status=1/FAILURE
+Nov 25 16:54:21 kairos-3130 systemd[1]: kairos-agent-p2p.service: Failed with result 'exit-code'.
+Nov 25 16:54:32 kairos-3130 systemd[1]: kairos-agent-p2p.service: Scheduled restart job, restart counter is at 10.
+Nov 25 16:54:32 kairos-3130 systemd[1]: Started Kairos Agent p2p image seeder (EXPERIMENTAL).
+Nov 25 16:54:32 kairos-3130 kairos-agent[1633]: p2p: no allowlist configured, allowing the local subnet [10.77.0.0/24]
+Nov 25 16:54:32 kairos-3130 kairos-agent[1633]: EXPERIMENTAL: kairos agent p2p is alpha software, opt-in, and only meant for isolated, trusted networks.
+Nov 25 16:54:35 kairos-3130 kairos-agent[1633]: p2p: serving active sha256 780132ec02104f34052b7af79fd8f68efa1026579f6419625eec4f95f004b97b (768 chunks of 4194304 bytes)
+Nov 25 16:54:39 kairos-3130 kairos-agent[1633]: p2p: serving passive sha256 df07836f32c3564f9a480263155d875b3cb284036e4c1e3304cfb3f18f96b887 (768 chunks of 4194304 bytes)
+Nov 25 16:54:39 kairos-3130 kairos-agent[1633]: p2p seeder listening on 10.77.0.1:42069, serving [active passive]
+Nov 25 16:54:39 kairos-3130 kairos-agent[1633]: use these sources on the other nodes (the ?pin= is the hash of the image's manifest, the strongest pin; prefer it to ?sha256=):
+Nov 25 16:54:39 kairos-3130 kairos-agent[1633]:   p2p://10.77.0.1/active?pin=d3329f3a1f0f19c5606f08b37380cf76776b4a8e3cb57ba400b16b7fea6c46d2
+Nov 25 16:54:39 kairos-3130 kairos-agent[1633]:   p2p://10.77.0.1/passive?pin=b94bc49f0a5818fd604e44ab9fb98f35ccef47c2cd05c6b374d2c748a4ee0291
+[Unit]
+Description=Kairos Agent p2p image seeder (EXPERIMENTAL)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/kairos-agent p2p seed
+Restart=on-failure
+RestartSec=10
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+ProtectProc=invisible
+ProcSubset=pid
+UMask=0077
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+# AF_NETLINK: the seeder lists the network interfaces
+RestrictAddressFamilies=AF_INET AF_UNIX AF_NETLINK
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged
+CapabilityBoundingSet=
+AmbientCapabilities=
+ReadOnlyPaths=-/run/initramfs -/oem -/usr/local/cloud-config -/etc/kairos
+ReadWritePaths=/usr/local/.kairos/p2p-cache
+LimitNOFILE=4096
+TasksMax=256
+MemoryMax=512M
+
+[Install]
+WantedBy=multi-user.target
+ActiveState=active
+ProtectSystem=strict
+NoNewPrivileges=yes
+[rc=0]
