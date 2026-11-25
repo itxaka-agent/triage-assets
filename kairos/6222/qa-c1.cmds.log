@@ -1,0 +1,51 @@
+$ echo C1 mismatch disk verify=none default; cat /proc/cmdline; D=/run/initramfs/cos-state/cOS; stat -c "%n size=%s mtime=%.9Y" $D/active.img; cat $D/active.img.sha256; sha256sum $D/active.img
+C1 mismatch disk verify=none default
+BOOT_IMAGE=(loop0)/boot/vmlinuz console=ttyS0 console=tty1 splash net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=5 rd.emergency=reboot rd.shell=0 systemd.crash_reboot=yes quiet root=LABEL=COS_ACTIVE cos-img/filename=/cOS/active.img selinux=0
+/run/initramfs/cos-state/cOS/active.img size=506462208 mtime=1795600054.010521266
+32dfec13ebb9e561c23d416bafffd4ade27d511be8cf3ef12c40e2d36a8c26b0  active.img
+# size=506462208 mtime_ns=1795600054010521266
+fc868633c920f1c803be6595de6419cf5b2e0f91cbaee2fcc5356fc571142b91  /run/initramfs/cos-state/cOS/active.img
+#
+[exit 0]
+
+$ kairos-agent verify-images 2>&1 | tail -14; echo rc=${PIPESTATUS[0]}
+[90m2026-11-25T09:53:44Z[0m [32mINF[0m [1mKairos System[0m [36mversion=[0mv4.7.0-36-g59dce92b9
+[90m2026-11-25T09:53:44Z[0m [32mINF[0m [1mBoot Mode[0m [36mboot_mode=[0mactive_boot
+[90m2026-11-25T09:53:44Z[0m [32mINF[0m [1mBoot in uki mode[0m [36mresult=[0mfalse
+/run/initramfs/cos-state/cOS/active.img
+  result:   MISMATCH, the image is not what was written
+  expected: 32dfec13ebb9e561c23d416bafffd4ade27d511be8cf3ef12c40e2d36a8c26b0
+  actual:   fc868633c920f1c803be6595de6419cf5b2e0f91cbaee2fcc5356fc571142b91
+/run/initramfs/cos-state/cOS/passive.img
+  result:   OK
+  expected: 42f615af53e7d714622f74f276153991b809ab454bb4a028ec89d9bd6991478f
+  actual:   42f615af53e7d714622f74f276153991b809ab454bb4a028ec89d9bd6991478f
+
+2 image(s) checked, 1 failed
+1 of 2 OS images failed the checksum check
+rc=1
+#
+[exit 0]
+
+$ kairos-agent verify-images >/dev/null 2>&1; echo verify-images rc=$?; grep -i -E "checksum|imagesum|sha256" /run/immucore/immucore.log; echo grep-rc=$?
+verify-images rc=1
+grep-rc=1
+#
+[exit 0]
+
+$ echo C verify=warn via GRUB cmdline on mismatch disk; cat /proc/cmdline; grep -i -E "checksum|imagesum|sha256" /run/immucore/immucore.log; echo grep-rc=$?; mount | grep -E "cos-state| / "
+C verify=warn via GRUB cmdline on mismatch disk
+BOOT_IMAGE=(loop0)/boot/vmlinuz console=ttyS0 console=tty1 splash net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=5 rd.emergency=reboot rd.shell=0 systemd.crash_reboot=yes quiet root=LABEL=COS_ACTIVE cos-img/filename=/cOS/active.img selinux=0 image-checksum.verify=warn
+2026-11-25T09:54:29Z ERR OS image checksum check failed action=warn actual=fc868633c920f1c803be6595de6419cf5b2e0f91cbaee2fcc5356fc571142b91 expected=32dfec13ebb9e561c23d416bafffd4ade27d511be8cf3ef12c40e2d36a8c26b0 image=/sysroot/run/initramfs/cos-state/cOS/active.img problem="checksum mismatch: the image is not what was written"
+grep-rc=0
+/dev/loop0 on / type ext2 (ro,relatime)
+/dev/vda4 on /run/initramfs/cos-state type ext4 (ro,relatime)
+#
+[exit 0]
+
+$ journalctl -b --no-pager -u immucore | grep -i -E "checksum" | head
+Nov 25 09:54:29 localhost kairos-immucore[578]: OS image checksum check failed
+Nov 25 09:54:29 localhost immucore[578]: 2026-11-25T09:54:29Z ERR OS image checksum check failed action=warn actual=fc868633c920f1c803be6595de6419cf5b2e0f91cbaee2fcc5356fc571142b91 expected=32dfec13ebb9e561c23d416bafffd4ade27d511be8cf3ef12c40e2d36a8c26b0 image=/sysroot/run/initramfs/cos-state/cOS/active.img problem="checksum mismatch: the image is not what was written"
+#
+[exit 0]
+

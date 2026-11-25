@@ -1,0 +1,84 @@
+$ echo SCENARIO B create=true; cat /oem/90_custom.yaml | tail -5; D=/run/initramfs/cos-state/cOS; ls -la --time-style=full-iso $D; for f in $D/*.sha256; do echo "--- $f"; cat $f; done; echo ---; sha256sum $D/active.img $D/passive.img; cat $D/image-checksum.conf; echo conf-rc=$?
+SCENARIO B create=true
+users:
+    - groups:
+        - admin
+      name: kairos
+      passwd: <redacted>
+total 850592
+drwxr-xr-x 2 root root      4096 2026-11-25 09:47:35.416521266 +0000 .
+drwxr-xr-x 5 root root      4096 2026-11-25 09:48:00.130985077 +0000 ..
+-rw-r--r-- 1 root root 506462208 2026-11-25 09:47:34.010521266 +0000 active.img
+-rw-r--r-- 1 root root       123 2026-11-25 09:47:34.296120925 +0000 active.img.sha256
+-rw-r--r-- 1 root root 506462208 2026-11-25 09:47:35.164521266 +0000 passive.img
+-rw-r--r-- 1 root root       124 2026-11-25 09:47:35.414521266 +0000 passive.img.sha256
+--- /run/initramfs/cos-state/cOS/active.img.sha256
+32dfec13ebb9e561c23d416bafffd4ade27d511be8cf3ef12c40e2d36a8c26b0  active.img
+# size=506462208 mtime_ns=1795600054010521266
+--- /run/initramfs/cos-state/cOS/passive.img.sha256
+42f615af53e7d714622f74f276153991b809ab454bb4a028ec89d9bd6991478f  passive.img
+# size=506462208 mtime_ns=1795600055164521266
+---
+32dfec13ebb9e561c23d416bafffd4ade27d511be8cf3ef12c40e2d36a8c26b0  /run/initramfs/cos-state/cOS/active.img
+42f615af53e7d714622f74f276153991b809ab454bb4a028ec89d9bd6991478f  /run/initramfs/cos-state/cOS/passive.img
+cat: /run/initramfs/cos-state/cOS/image-checksum.conf: No such file or directory
+conf-rc=1
+#
+[exit 0]
+
+$ mkdir -p /run/rec; mount -o ro /dev/disk/by-label/COS_RECOVERY /run/rec; ls -la --time-style=full-iso /run/rec/cOS; cat /run/rec/cOS/*.sha256; sha256sum /run/rec/cOS/recovery.img; umount /run/rec
+total 494608
+drwxr-xr-x 2 root root      4096 2026-11-25 09:47:34.874521266 +0000 .
+drwxr-xr-x 4 root root      4096 2026-11-25 09:47:34.299521266 +0000 ..
+-rw-r--r-- 1 root root 506462208 2026-11-25 09:47:34.620521266 +0000 recovery.img
+-rw-r--r-- 1 root root       125 2026-11-25 09:47:34.871521266 +0000 recovery.img.sha256
+78d375ca1c631275e8c51649d3d32cd656c52e60df5bda47f9e2520ffb2a7ec1  recovery.img
+# size=506462208 mtime_ns=1795600054620521266
+78d375ca1c631275e8c51649d3d32cd656c52e60df5bda47f9e2520ffb2a7ec1  /run/rec/cOS/recovery.img
+#
+[exit 0]
+
+$ kairos-agent verify-images; echo rc=$?
+[90m2026-11-25T09:51:14Z[0m [32mINF[0m [1mKairos Agent[0m [36mversion=[0mv4.7.1-dev.36+g59dce92b9
+[90m2026-11-25T09:51:14Z[0m [32mINF[0m [1mKairos System[0m [36mversion=[0mv4.7.0-36-g59dce92b9
+[90m2026-11-25T09:51:14Z[0m [32mINF[0m [1mBoot Mode[0m [36mboot_mode=[0mactive_boot
+[90m2026-11-25T09:51:14Z[0m [32mINF[0m [1mBoot in uki mode[0m [36mresult=[0mfalse
+/run/initramfs/cos-state/cOS/active.img
+  result:   OK
+  expected: 32dfec13ebb9e561c23d416bafffd4ade27d511be8cf3ef12c40e2d36a8c26b0
+  actual:   32dfec13ebb9e561c23d416bafffd4ade27d511be8cf3ef12c40e2d36a8c26b0
+/run/initramfs/cos-state/cOS/passive.img
+  result:   OK
+  expected: 42f615af53e7d714622f74f276153991b809ab454bb4a028ec89d9bd6991478f
+  actual:   42f615af53e7d714622f74f276153991b809ab454bb4a028ec89d9bd6991478f
+
+2 image(s) checked, 0 failed
+rc=0
+#
+[exit 0]
+
+$ cat /proc/cmdline; grep -i -E "checksum|imagesum|sha256" /run/immucore/immucore.log; echo grep-rc=$?
+BOOT_IMAGE=(loop0)/boot/vmlinuz console=ttyS0 console=tty1 splash net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=5 rd.emergency=reboot rd.shell=0 systemd.crash_reboot=yes quiet root=LABEL=COS_ACTIVE cos-img/filename=/cOS/active.img selinux=0
+grep-rc=1
+#
+[exit 0]
+
+$ echo CORRUPT MISMATCH PATH: flip one byte in place, restore mtime to the ns; F=/run/initramfs/cos-state/cOS/active.img; mount -o remount,rw /run/initramfs/cos-state && echo remounted-rw; touch -r $F /run/ref; echo BEFORE; stat -c "%n size=%s mtime=%.9Y" $F; sha256sum $F; O=200000000; B=$(dd if=$F bs=1 skip=$O count=1 2>/dev/null | od -An -tu1 | tr -d " "); N=$(( B ^ 255 )); echo "offset=$O byte=$B -> $N"; printf "$(printf "\\\\%03o" $N)" | dd of=$F bs=1 seek=$O conv=notrunc 2>/dev/null; touch -r /run/ref $F; sync; echo AFTER; stat -c "%n size=%s mtime=%.9Y" $F; cat $F.sha256
+CORRUPT MISMATCH PATH: flip one byte in place, restore mtime to the ns
+remounted-rw
+BEFORE
+/run/initramfs/cos-state/cOS/active.img size=506462208 mtime=1795600054.010521266
+32dfec13ebb9e561c23d416bafffd4ade27d511be8cf3ef12c40e2d36a8c26b0  /run/initramfs/cos-state/cOS/active.img
+offset=200000000 byte=97 -> 158
+AFTER
+/run/initramfs/cos-state/cOS/active.img size=506462208 mtime=1795600054.010521266
+32dfec13ebb9e561c23d416bafffd4ade27d511be8cf3ef12c40e2d36a8c26b0  active.img
+# size=506462208 mtime_ns=1795600054010521266
+#
+[exit 0]
+
+$ sync; mount -o remount,ro /run/initramfs/cos-state; echo ok
+ok
+#
+[exit 0]
+

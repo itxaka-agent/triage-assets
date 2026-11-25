@@ -1,0 +1,65 @@
+$ echo RD0ke0Q6LS9ydW4vaW5pdHJhbWZzL2Nvcy1zdGF0ZS9jT1N9CmZvciBuIGluIGFjdGl2ZSBwYXNzaXZlOyBkbwpmPSRELyRuLmltZwplY2hvICI9PSAkbiI7IGxzIC1sYSAtLXRpbWUtc3R5bGU9ZnVsbC1pc28gJEQvJG4uaW1nKgpbIC1mICRmLnNoYTI1NiBdIHx8IHsgZWNobyAiTk8gU0lERUNBUiBmb3IgJG4iOyBjb250aW51ZTsgfQpjYXQgJGYuc2hhMjU2CndhbnQ9JChoZWFkIC0xICRmLnNoYTI1NiB8IGN1dCAtZCcgJyAtZjEpCmdvdD0kKHNoYTI1NnN1bSAkZiB8IGN1dCAtZCcgJyAtZjEpClsgIiR3YW50IiA9ICIkZ290IiBdICYmIGVjaG8gIkhBU0ggTUFUQ0ggJGdvdCIgfHwgZWNobyAiSEFTSCBESUZGIHdhbnQ9JHdhbnQgZ290PSRnb3QiCnN0PSIjIHNpemU9JChzdGF0IC1jICVzICRmKSBtdGltZV9ucz0kKHN0YXQgLWMgJS45WSAkZiB8IHRyIC1kIC4pIgplY2hvICJzdGF0IGxpbmU6ICRzdCIKWyAiJHN0IiA9ICIkKHNlZCAtbiAycCAkZi5zaGEyNTYpIiBdICYmIGVjaG8gIlNUQVQgTUFUQ0giIHx8IGVjaG8gIlNUQVQgRElGRiIKZG9uZQo= | base64 -d > /run/chk.sh
+#
+[exit 0]
+
+$ echo I install via ISO cmdline create=true only, cidata A has no image-checksum; cat /proc/cmdline | tr " " "\n" | grep -E "COS_|image"; grep -c image-checksum /oem/90_custom.yaml; ls -la /oem; sh /run/chk.sh; ls /run/initramfs/cos-state/cOS; mkdir -p /run/rec; mount -o ro /dev/disk/by-label/COS_RECOVERY /run/rec; ls -la /run/rec/cOS; cat /run/rec/cOS/recovery.img.sha256; sha256sum /run/rec/cOS/recovery.img; umount /run/rec
+I install via ISO cmdline create=true only, cidata A has no image-checksum
+rd.cos.oemlabel=COS_OEM
+root=LABEL=COS_ACTIVE
+1
+total 16
+drwxrwx---  4 root admin  1024 Nov 25 10:19 .
+drwxr-xr-x 18 root root   1024 Nov 25 10:18 ..
+-rw-r-----  1 root admin   257 Nov 25 10:18 90_custom.yaml
+drwxr--r--  2 root admin  1024 Nov 25 10:19 95_userdata
+drwx------  2 root admin 12288 Nov 25 10:18 lost+found
+== active
+-rw-r--r-- 1 root root 506462208 2026-11-25 10:18:49.120110045 +0000 /run/initramfs/cos-state/cOS/active.img
+-rw-r--r-- 1 root root       123 2026-11-25 10:18:49.394110045 +0000 /run/initramfs/cos-state/cOS/active.img.sha256
+22f5ab3a4e05d78c3a404aae6f155cfcdfe376a8f594fc6cb5e3c1f10816933a  active.img
+# size=506462208 mtime_ns=1795601929120110045
+HASH MATCH 22f5ab3a4e05d78c3a404aae6f155cfcdfe376a8f594fc6cb5e3c1f10816933a
+stat line: # size=506462208 mtime_ns=1795601929120110045
+STAT MATCH
+== passive
+-rw-r--r-- 1 root root 506462208 2026-11-25 10:18:50.318110045 +0000 /run/initramfs/cos-state/cOS/passive.img
+-rw-r--r-- 1 root root       124 2026-11-25 10:18:50.571110045 +0000 /run/initramfs/cos-state/cOS/passive.img.sha256
+4df24d2f48163771c2c85066b4df1536c7cbec3bd0260836eed39a5b7d3203c1  passive.img
+# size=506462208 mtime_ns=1795601930318110045
+HASH MATCH 4df24d2f48163771c2c85066b4df1536c7cbec3bd0260836eed39a5b7d3203c1
+stat line: # size=506462208 mtime_ns=1795601930318110045
+STAT MATCH
+active.img  active.img.sha256  passive.img  passive.img.sha256
+total 494608
+drwxr-xr-x 2 root root      4096 Nov 25 10:18 .
+drwxr-xr-x 4 root root      4096 Nov 25 10:18 ..
+-rw-r--r-- 1 root root 506462208 Nov 25 10:18 recovery.img
+-rw-r--r-- 1 root root       125 Nov 25 10:18 recovery.img.sha256
+a68c73a6cdfbaf4c15227b8339e55ce91f0c1410f7bb357dd4bc1d03c6b12f6b  recovery.img
+# size=506462208 mtime_ns=1795601929690110045
+a68c73a6cdfbaf4c15227b8339e55ce91f0c1410f7bb357dd4bc1d03c6b12f6b  /run/rec/cOS/recovery.img
+#
+[exit 0]
+
+$ cat /oem/90_custom.yaml
+#cloud-config
+
+# Sources:
+# - /oem/95_userdata/userdata.yaml
+# - reader
+# - cmdline
+
+image-checksum:
+    create: true
+install:
+    auto: true
+    device: /dev/vda
+    reboot: true
+users:
+    - groups:
+        - admin
+      name: kairos
+      passwd: <redacted>
+#
+[exit 0]
+

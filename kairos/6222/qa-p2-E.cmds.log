@@ -1,0 +1,364 @@
+$ ls -la /run/initramfs/cos-state/cOS/; cat /run/initramfs/cos-state/cOS/*.sha256; cat /oem/image-checksum.conf; kairos-agent version; cat /proc/cmdline
+total 850592
+drwxr-xr-x 2 root root      4096 Nov 25 09:47 .
+drwxr-xr-x 5 root root      4096 Nov 25 09:48 ..
+-rw-r--r-- 1 root root 506462208 Nov 25 09:47 active.img
+-rw-r--r-- 1 root root       123 Nov 25 09:47 active.img.sha256
+-rw-r--r-- 1 root root 506462208 Nov 25 09:47 passive.img
+-rw-r--r-- 1 root root       124 Nov 25 09:47 passive.img.sha256
+32dfec13ebb9e561c23d416bafffd4ade27d511be8cf3ef12c40e2d36a8c26b0  active.img
+# size=506462208 mtime_ns=1795600054010521266
+42f615af53e7d714622f74f276153991b809ab454bb4a028ec89d9bd6991478f  passive.img
+# size=506462208 mtime_ns=1795600055164521266
+cat: /oem/image-checksum.conf: No such file or directory
+kairos v4.7.1-dev.36+g59dce92b9
+BOOT_IMAGE=(loop0)/boot/vmlinuz console=ttyS0 console=tty1 splash net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=5 rd.emergency=reboot rd.shell=0 systemd.crash_reboot=yes quiet root=LABEL=COS_ACTIVE cos-img/filename=/cOS/active.img selinux=0
+#
+[exit 0]
+
+$ tail -6 /oem/90_custom.yaml; mkdir -p /run/ss; D=/run/initramfs/cos-state/cOS; stat -c "%n size=%s mtime=%.9Y mtime_ns=%X" $D/*.img; ls -la /oem; kairos-agent upgrade --help | head -40
+    reboot: true
+users:
+    - groups:
+        - admin
+      name: kairos
+      passwd: <redacted>
+/run/initramfs/cos-state/cOS/active.img size=506462208 mtime=1795600054.010521266 mtime_ns=1795600054
+/run/initramfs/cos-state/cOS/passive.img size=506462208 mtime=1795600055.164521266 mtime_ns=1795600055
+total 16
+drwxrwx---  4 root admin  1024 Nov 25 09:47 .
+drwxr-xr-x 18 root root   1024 Nov 25 09:47 ..
+-rw-r-----  1 root admin   257 Nov 25 09:47 90_custom.yaml
+drwxr--r--  2 root admin  1024 Nov 25 09:47 95_userdata
+drwx------  2 root admin 12288 Nov 25 09:47 lost+found
+
+Manually upgrade a kairos node Active image. Does not upgrade the passive image. It upgrades the recovery image when the --recovery flag is passed.
+
+To specify a version, pass it as argument using the --source flag. Passing just the Kairos version as the first argument is no longer supported. If you speficy a positional argument, it will be treated
+as a value for the --source flag. Flags go before it: anything after the positional argument is refused.
+
+You can also specify the upgrade image by setting "upgrade.system.uri" for the active image or "upgrade.recovery-system.uri" for the recovery image, in the cloud config.
+
+To pull from a registry served over plain HTTP or presenting an untrusted/self-signed TLS certificate, pass the --allow-insecure-registries flag (or set "upgrade.allow-insecure-registries: true" in the cloud config).
+
+To check what an upgrade would do before running it, pass the --dry-run flag. It resolves the source (including the cloud config), the image size and where the transition image would be written, checks that the image manifest can be fetched from the registry, prints a summary and exits without changing the system.
+
+To retrieve all the available versions, use "kairos agent upgrade list-releases". Use the --registry flag to specify a custom registry to retrieve the versions from, otherwise it will default to quay.io/kairos.
+
+$ kairos agent upgrade list-releases
+
+See https://kairos.io/docs/upgrade/manual/ for documentation.
+
+Usage:
+  kairos agent upgrade [flags]
+  kairos agent upgrade [command]
+
+Available Commands:
+  list-releases List all available releases versions
+
+Flags:
+      --allow-insecure-registries[=true|false]   Pull the image from a registry served over plain HTTP or presenting an untrusted/self-signed TLS certificate. Can also be set in the cloud config via "install.allow-insecure-registries" or "upgrade.allow-insecure-registries".
+      --boot-entry string                        Specify a systemd-boot entry to upgrade (other than active/passive/recovery). The value should match the name of the '.efi' file.
+      --dry-run[=true|false]                     Resolve the upgrade and print a summary of what would be done, without changing the system
+      --exclude-path strings                     Path in the new image to leave out of the upgrade, from the image root, e.g. /var/lib/foo or etc/*.conf. A leading / is optional, an excluded directory drops its contents, and * and ? are globs that do not cross /. Can be specified multiple times.
+  -h, --help[=true|false]                        help for upgrade
+      --image string                             [DEPRECATED] Specify a full image reference, e.g.: quay.io/some/image:tag
+      --recovery[=true|false]                    Upgrade recovery
+      --source type:address                      Source for upgrade. Composed of type:address. Accepts `file:`,`dir:` `oci:`,or `ocifile:` for the type of source.
+                                                 For example `ocifile:/var/share/myimage.tar`, `dir:/tmp/extracted` or `oci:repo/image:tag`
+
+Global Flags:
+      --debug[=true|false]               enable debug output [$KAIROS_AGENT_DEBUG]
+      --strict-validation[=true|false]   Fail instead of warn on validation errors. [$STRICT_VALIDATIONS]
+
+#
+[exit 0]
+
+$ echo RD0ke0Q6LS9ydW4vaW5pdHJhbWZzL2Nvcy1zdGF0ZS9jT1N9CmZvciBuIGluIGFjdGl2ZSBwYXNzaXZlOyBkbwpmPSRELyRuLmltZwplY2hvICI9PSAkbiI7IGxzIC1sYSAtLXRpbWUtc3R5bGU9ZnVsbC1pc28gJEQvJG4uaW1nKgpbIC1mICRmLnNoYTI1NiBdIHx8IHsgZWNobyAiTk8gU0lERUNBUiBmb3IgJG4iOyBjb250aW51ZTsgfQpjYXQgJGYuc2hhMjU2CndhbnQ9JChoZWFkIC0xICRmLnNoYTI1NiB8IGN1dCAtZCcgJyAtZjEpCmdvdD0kKHNoYTI1NnN1bSAkZiB8IGN1dCAtZCcgJyAtZjEpClsgIiR3YW50IiA9ICIkZ290IiBdICYmIGVjaG8gIkhBU0ggTUFUQ0ggJGdvdCIgfHwgZWNobyAiSEFTSCBESUZGIHdhbnQ9JHdhbnQgZ290PSRnb3QiCnN0PSIjIHNpemU9JChzdGF0IC1jICVzICRmKSBtdGltZV9ucz0kKHN0YXQgLWMgJS45WSAkZiB8IHRyIC1kIC4pIgplY2hvICJzdGF0IGxpbmU6ICRzdCIKWyAiJHN0IiA9ICIkKHNlZCAtbiAycCAkZi5zaGEyNTYpIiBdICYmIGVjaG8gIlNUQVQgTUFUQ0giIHx8IGVjaG8gIlNUQVQgRElGRiIKZG9uZQo= | base64 -d > /run/chk.sh; sh /run/chk.sh
+== active
+-rw-r--r-- 1 root root 506462208 2026-11-25 09:47:34.010521266 +0000 /run/initramfs/cos-state/cOS/active.img
+-rw-r--r-- 1 root root       123 2026-11-25 09:47:34.296120925 +0000 /run/initramfs/cos-state/cOS/active.img.sha256
+32dfec13ebb9e561c23d416bafffd4ade27d511be8cf3ef12c40e2d36a8c26b0  active.img
+# size=506462208 mtime_ns=1795600054010521266
+HASH MATCH 32dfec13ebb9e561c23d416bafffd4ade27d511be8cf3ef12c40e2d36a8c26b0
+stat line: # size=506462208 mtime_ns=1795600054010521266
+STAT MATCH
+== passive
+-rw-r--r-- 1 root root 506462208 2026-11-25 09:47:35.164521266 +0000 /run/initramfs/cos-state/cOS/passive.img
+-rw-r--r-- 1 root root       124 2026-11-25 09:47:35.414521266 +0000 /run/initramfs/cos-state/cOS/passive.img.sha256
+42f615af53e7d714622f74f276153991b809ab454bb4a028ec89d9bd6991478f  passive.img
+# size=506462208 mtime_ns=1795600055164521266
+HASH MATCH 42f615af53e7d714622f74f276153991b809ab454bb4a028ec89d9bd6991478f
+stat line: # size=506462208 mtime_ns=1795600055164521266
+STAT MATCH
+#
+[exit 0]
+
+$ kairos-agent upgrade --debug --allow-insecure-registries --source oci:10.0.2.2:55222/k6222-os:v2 2>&1 | tail -60
+[90m2026-11-25T10:05:50Z[0m DBG If statement result 
+[90m2026-11-25T10:05:50Z[0m [32mINF[0m [1mProcessing stage step 'Boot assessment and branding.Add boot assessment grub configuration'. ( commands: 0, files: 1, ... )[0m
+[90m2026-11-25T10:05:50Z[0m DBG Stage: schema.Stage{
+  Files: []schema.File{
+    schema.File{
+      Path: "/tmp/mnt/STATE/grub_boot_assessment",
+      Permissions: 384,
+      Content: "set boot_assessment=\"/boot_assessment\"\nsearch --no-floppy --file --set=boot_assessment_blk \"${boot_assessment}\"\nif [ \"${boot_assessment_blk}\" ]; then\n  load_env -f \"(${boot_assessment_blk})${boot_assessment}\"\nfi\nif [ \"${enable_boot_assessment}\" = \"yes\" -o \"${enable_boot_assessment_always}\" = \"yes\" ]; then\n  if [ -z \"${selected_entry}\" ]; then\n    if [ \"${boot_assessment_tentative}\" = \"yes\" ]; then\n      set default=\"fallback\"\n      set extra_passive_cmdline=\"upgrade_failure\"\n    else\n      set boot_assessment_tentative=\"yes\"\n      save_env -f \"(${boot_assessment_blk})${boot_assessment}\" boot_assessment_tentative\n    fi\n  fi\nfi\n",
+    },
+  },
+  If: "grep -vq \"rd.immucore.uki\" /proc/cmdline",
+  Name: "Add boot assessment grub configuration",
+}
+[90m2026-11-25T10:05:50Z[0m DBG Creating file /tmp/mnt/STATE/grub_boot_assessment
+[90m2026-11-25T10:05:50Z[0m [32mINF[0m [1mRunning layout plugin[0m
+[90m2026-11-25T10:05:50Z[0m DBG Device field empty, skipping layout plugin
+[90m2026-11-25T10:05:50Z[0m DBG Reading '/system/oem/08_grub.yaml'
+[90m2026-11-25T10:05:50Z[0m DBG Executing stage 'Boot assessment and branding.umount state'
+[90m2026-11-25T10:05:50Z[0m DBG running command `grep -vq "rd.immucore.uki" /proc/cmdline`
+[90m2026-11-25T10:05:50Z[0m DBG If statement result 
+[90m2026-11-25T10:05:50Z[0m [32mINF[0m [1mProcessing stage step 'Boot assessment and branding.umount state'. ( commands: 1, files: 0, ... )[0m
+[90m2026-11-25T10:05:50Z[0m DBG Stage: schema.Stage{
+  Commands: []string{
+    "umount /tmp/mnt/STATE",
+  },
+  If: "grep -vq \"rd.immucore.uki\" /proc/cmdline",
+  Name: "umount state",
+}
+[90m2026-11-25T10:05:50Z[0m DBG running command `umount /tmp/mnt/STATE`
+[90m2026-11-25T10:05:50Z[0m DBG Empty command output
+[90m2026-11-25T10:05:50Z[0m [32mINF[0m [1mRunning layout plugin[0m
+[90m2026-11-25T10:05:50Z[0m DBG Device field empty, skipping layout plugin
+[90m2026-11-25T10:05:50Z[0m [32mINF[0m [1mDone executing stage 'after-upgrade'
+[0m
+[90m2026-11-25T10:05:50Z[0m [32mINF[0m [1mRunning stage: after-upgrade.after
+[0m
+[90m2026-11-25T10:05:50Z[0m [32mINF[0m [1mDone executing stage 'after-upgrade.after'
+[0m
+[90m2026-11-25T10:05:50Z[0m [32mINF[0m [1mRunning stage: after-upgrade.before
+[0m
+[90m2026-11-25T10:05:50Z[0m [32mINF[0m [1mDone executing stage 'after-upgrade.before'
+[0m
+[90m2026-11-25T10:05:50Z[0m [32mINF[0m [1mRunning stage: after-upgrade
+[0m
+[90m2026-11-25T10:05:50Z[0m [32mINF[0m [1mDone executing stage 'after-upgrade'
+[0m
+[90m2026-11-25T10:05:50Z[0m [32mINF[0m [1mRunning stage: after-upgrade.after
+[0m
+[90m2026-11-25T10:05:50Z[0m [32mINF[0m [1mDone executing stage 'after-upgrade.after'
+[0m
+[90m2026-11-25T10:05:50Z[0m [32mINF[0m [1mUpgrade completed[0m
+[90m2026-11-25T10:05:50Z[0m [33mWRN[0m [1mRemember that recovery is upgraded separately by passing the --recovery flag to the upgrade command!
+See more info about this on https://kairos.io/docs/upgrade/[0m
+[90m2026-11-25T10:05:50Z[0m [32mINF[0m [1mSetting default boot entry to cos[0m
+[90m2026-11-25T10:05:50Z[0m [32mINF[0m [1mDefault boot entry set to cos[0m
+[90m2026-11-25T10:05:50Z[0m DBG Not unmounting image, /run/cos/transition doesn't look like mountpoint
+[90m2026-11-25T10:05:50Z[0m DBG Unmounting partition COS_RECOVERY
+[90m2026-11-25T10:05:50Z[0m DBG Remounting partition COS_STATE as read-only
+[90m2026-11-25T10:05:50Z[0m DBG Running Lifecycle hook
+[90m2026-11-25T10:05:50Z[0m DBG Finish Lifecycle hook
+#
+[exit 0]
+
+$ sh /run/chk.sh; ls -la /run/initramfs/cos-state/cOS/; ls -la /run/cos/ 2>&1 | head
+== active
+-rw-r----- 1 root root 3221225472 2026-11-25 10:05:48.574835240 +0000 /run/initramfs/cos-state/cOS/active.img
+-rw-r----- 1 root root        124 2026-11-25 10:05:50.812871789 +0000 /run/initramfs/cos-state/cOS/active.img.sha256
+9a754de5acb96a901f0fdf9edaa658f28fb17fbcd72800f964948eb1835125b2  active.img
+# size=3221225472 mtime_ns=1795601148574835240
+HASH MATCH 9a754de5acb96a901f0fdf9edaa658f28fb17fbcd72800f964948eb1835125b2
+stat line: # size=3221225472 mtime_ns=1795601148574835240
+STAT MATCH
+== passive
+-rw-r--r-- 1 root root 506462208 2026-11-25 10:05:50.493857415 +0000 /run/initramfs/cos-state/cOS/passive.img
+-rw-r----- 1 root root       124 2026-11-25 10:05:50.805871474 +0000 /run/initramfs/cos-state/cOS/passive.img.sha256
+d0b9f485c9b2c54948c0065bae34ca0125e348e2c8d30959d4da669a95594731  passive.img
+# size=506462208 mtime_ns=1795601150493857415
+HASH MATCH d0b9f485c9b2c54948c0065bae34ca0125e348e2c8d30959d4da669a95594731
+stat line: # size=506462208 mtime_ns=1795601150493857415
+STAT MATCH
+total 724356
+drwxr-xr-x 2 root root       4096 Nov 25 10:05 .
+drwxr-xr-x 5 root root       4096 Nov 25 09:48 ..
+-rw-r----- 1 root root 3221225472 Nov 25 10:05 active.img
+-rw-r----- 1 root root        124 Nov 25 10:05 active.img.sha256
+-rw-r--r-- 1 root root  506462208 Nov 25 10:05 passive.img
+-rw-r----- 1 root root        124 Nov 25 10:05 passive.img.sha256
+total 8
+drwxr-xr-x  4 root root 120 Nov 25 10:05 .
+drwxr-xr-x 26 root root 620 Nov 25 10:05 ..
+-rwxr-xr-x  1 root root   1 Nov 25 10:05 active_mode
+-rw-r--r--  1 root root 677 Nov 25 10:05 cos-layout.env
+drwxr-x---  2 root root  40 Nov 25 10:05 recovery
+drwxr-x---  2 root root  40 Nov 25 10:05 transition
+#
+[exit 0]
+
+$ sync; cat /run/initramfs/cos-state/cOS/image-checksum.conf 2>&1
+cat: /run/initramfs/cos-state/cOS/image-checksum.conf: No such file or directory
+#
+[exit 1]
+
+$ cat /proc/cmdline; cat /etc/qa-upgrade-marker; grep -i checksum /run/immucore/immucore.log; ls -la /run/immucore* | head; sh /run/chk.sh 2>&1 | head -3
+BOOT_IMAGE=(loop0)/boot/vmlinuz console=ttyS0 console=tty1 splash net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=5 rd.emergency=reboot rd.shell=0 systemd.crash_reboot=yes quiet root=LABEL=COS_ACTIVE cos-img/filename=/cOS/active.img selinux=0 image-checksum.verify=fail
+qa-upgrade-marker
+2026-11-25T10:06:23Z INF Image checksum verified image=/sysroot/run/initramfs/cos-state/cOS/active.img sha256=9a754de5acb96a901f0fdf9edaa658f28fb17fbcd72800f964948eb1835125b2 took=1.845s
+total 32
+drwxr-xr-x  2 root root    80 Nov 25 10:06 .
+drwxr-xr-x 25 root root   580 Nov 25 10:06 ..
+-rw-r--r--  1 root root  1343 Nov 25 10:06 boot-timeline.json
+-rw-r-----  1 root root 26644 Nov 25 10:06 immucore.log
+sh: /run/chk.sh: No such file or directory
+#
+[exit 0]
+
+$ cat /proc/cmdline; ls /etc/qa-upgrade-marker; cat /etc/os-release | head -3; grep -i checksum /run/immucore/immucore.log
+BOOT_IMAGE=(loop0)/boot/vmlinuz console=ttyS0 console=tty1 splash net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=5 rd.emergency=reboot rd.shell=0 systemd.crash_reboot=yes quiet root=LABEL=COS_PASSIVE cos-img/filename=/cOS/passive.img selinux=0 image-checksum.verify=fail
+ls: cannot access '/etc/qa-upgrade-marker': No such file or directory
+NAME="Hadron Linux"
+PRETTY_NAME="Hadron Linux"
+ID=hadron
+2026-11-25T10:07:12Z INF Image checksum verified image=/sysroot/run/initramfs/cos-state/cOS/passive.img sha256=d0b9f485c9b2c54948c0065bae34ca0125e348e2c8d30959d4da669a95594731 took=312ms
+#
+[exit 0]
+
+$ echo RD0ke0Q6LS9ydW4vaW5pdHJhbWZzL2Nvcy1zdGF0ZS9jT1N9CmZvciBuIGluIGFjdGl2ZSBwYXNzaXZlOyBkbwpmPSRELyRuLmltZwplY2hvICI9PSAkbiI7IGxzIC1sYSAtLXRpbWUtc3R5bGU9ZnVsbC1pc28gJEQvJG4uaW1nKgpbIC1mICRmLnNoYTI1NiBdIHx8IHsgZWNobyAiTk8gU0lERUNBUiBmb3IgJG4iOyBjb250aW51ZTsgfQpjYXQgJGYuc2hhMjU2CndhbnQ9JChoZWFkIC0xICRmLnNoYTI1NiB8IGN1dCAtZCcgJyAtZjEpCmdvdD0kKHNoYTI1NnN1bSAkZiB8IGN1dCAtZCcgJyAtZjEpClsgIiR3YW50IiA9ICIkZ290IiBdICYmIGVjaG8gIkhBU0ggTUFUQ0ggJGdvdCIgfHwgZWNobyAiSEFTSCBESUZGIHdhbnQ9JHdhbnQgZ290PSRnb3QiCnN0PSIjIHNpemU9JChzdGF0IC1jICVzICRmKSBtdGltZV9ucz0kKHN0YXQgLWMgJS45WSAkZiB8IHRyIC1kIC4pIgplY2hvICJzdGF0IGxpbmU6ICRzdCIKWyAiJHN0IiA9ICIkKHNlZCAtbiAycCAkZi5zaGEyNTYpIiBdICYmIGVjaG8gIlNUQVQgTUFUQ0giIHx8IGVjaG8gIlNUQVQgRElGRiIKZG9uZQo= | base64 -d > /run/chk.sh; cat /proc/cmdline; ls /etc/qa-upgrade-marker; sh /run/chk.sh | grep -E '==|MATCH|DIFF|NO SIDE'; ls /run/initramfs/cos-state/cOS/; printf 'image-checksum:\n  create: true\n  verify: fail\n' > /oem/91_qa.yaml; cat /oem/91_qa.yaml
+BOOT_IMAGE=(loop0)/boot/vmlinuz console=ttyS0 console=tty1 splash net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=5 rd.emergency=reboot rd.shell=0 systemd.crash_reboot=yes quiet root=LABEL=COS_ACTIVE cos-img/filename=/cOS/active.img selinux=0
+/etc/qa-upgrade-marker
+== active
+HASH MATCH 9a754de5acb96a901f0fdf9edaa658f28fb17fbcd72800f964948eb1835125b2
+STAT MATCH
+== passive
+HASH MATCH d0b9f485c9b2c54948c0065bae34ca0125e348e2c8d30959d4da669a95594731
+STAT MATCH
+active.img  active.img.sha256  passive.img  passive.img.sha256
+image-checksum:
+  create: true
+  verify: fail
+#
+[exit 0]
+
+$ kairos-agent upgrade --allow-insecure-registries --source oci:10.0.2.2:55222/k6222-os:v2 > /run/up2.log 2>&1; echo upgrade-rc=$?; tail -5 /run/up2.log
+upgrade-rc=0
+[90m2026-11-25T10:08:22Z[0m [33mWRN[0m [1mRemember that recovery is upgraded separately by passing the --recovery flag to the upgrade command!
+See more info about this on https://kairos.io/docs/upgrade/[0m
+[90m2026-11-25T10:08:22Z[0m [32mINF[0m [1mSetting default boot entry to cos[0m
+[90m2026-11-25T10:08:22Z[0m [33mWRN[0m [1mOverriding existing grubenv variable[0m [36mkey=[0mnext_entry [36mnewValue=[0mcos [36moldValue=[0m
+[90m2026-11-25T10:08:22Z[0m [32mINF[0m [1mDefault boot entry set to cos[0m
+#
+[exit 0]
+
+$ sh /run/chk.sh; ls -la --time-style=full-iso /run/initramfs/cos-state/cOS; cat /run/initramfs/cos-state/cOS/image-checksum.conf; grep -i -E 'sha256|checksum' /run/up2.log | head
+== active
+-rw-r----- 1 root root 3221225472 2026-11-25 10:08:19.215000000 +0000 /run/initramfs/cos-state/cOS/active.img
+-rw-r----- 1 root root        124 2026-11-25 10:08:22.725000000 +0000 /run/initramfs/cos-state/cOS/active.img.sha256
+a9376fc65ada69188b17d6473b276ab9a31f1cd7f85a9fac5d7d649f03d16dcf  active.img
+# size=3221225472 mtime_ns=1795601299215000000
+HASH MATCH a9376fc65ada69188b17d6473b276ab9a31f1cd7f85a9fac5d7d649f03d16dcf
+stat line: # size=3221225472 mtime_ns=1795601299215000000
+STAT MATCH
+== passive
+-rw-r----- 1 root root 3221225472 2026-11-25 10:08:21.061000000 +0000 /run/initramfs/cos-state/cOS/passive.img
+-rw-r----- 1 root root        125 2026-11-25 10:08:22.703000000 +0000 /run/initramfs/cos-state/cOS/passive.img.sha256
+48ded784d75cc1fd1b04f81b8d9ffa5952d9e6fa2eaabc06bf830a0f34dd6353  passive.img
+# size=3221225472 mtime_ns=1795601301061000000
+HASH MATCH 48ded784d75cc1fd1b04f81b8d9ffa5952d9e6fa2eaabc06bf830a0f34dd6353
+stat line: # size=3221225472 mtime_ns=1795601301061000000
+STAT MATCH
+total 736728
+drwxr-xr-x 2 root root       4096 2026-11-25 10:08:22.730000000 +0000 .
+drwxr-xr-x 5 root root       4096 2026-11-25 09:48:00.130985077 +0000 ..
+-rw-r----- 1 root root 3221225472 2026-11-25 10:08:19.215000000 +0000 active.img
+-rw-r----- 1 root root        124 2026-11-25 10:08:22.725000000 +0000 active.img.sha256
+-rw-r----- 1 root root 3221225472 2026-11-25 10:08:21.061000000 +0000 passive.img
+-rw-r----- 1 root root        125 2026-11-25 10:08:22.703000000 +0000 passive.img.sha256
+cat: /run/initramfs/cos-state/cOS/image-checksum.conf: No such file or directory
+[90m2026-11-25T10:08:22Z[0m [32mINF[0m [1mRecorded sha256 of /run/initramfs/cos-state/cOS/passive.img: 48ded784d75cc1fd1b04f81b8d9ffa5952d9e6fa2eaabc06bf830a0f34dd6353[0m
+[90m2026-11-25T10:08:22Z[0m [32mINF[0m [1mRecorded sha256 of /run/initramfs/cos-state/cOS/active.img: a9376fc65ada69188b17d6473b276ab9a31f1cd7f85a9fac5d7d649f03d16dcf[0m
+#
+[exit 0]
+
+$ head -3 /oem/90_custom.yaml; printf '#cloud-config\nimage-checksum:\n  create: true\n  verify: fail\n' > /oem/91_qa.yaml; cat /oem/91_qa.yaml; kairos-agent upgrade --allow-insecure-registries --source oci:10.0.2.2:55222/k6222-os:v2 > /run/up3.log 2>&1; echo upgrade-rc=$?; cat /run/initramfs/cos-state/cOS/image-checksum.conf; echo conf-rc=$?; sh /run/chk.sh | grep -E '==|MATCH|DIFF|NO SIDE'; ls -la /run/initramfs/cos-state/cOS
+#cloud-config
+
+# Sources:
+#cloud-config
+image-checksum:
+  create: true
+  verify: fail
+upgrade-rc=0
+verify: fail
+conf-rc=0
+== active
+HASH MATCH 966f4a800e5cde5b3d6e29bab60328cbf7db467be3e73608d4c0fc66e994dd12
+STAT MATCH
+== passive
+HASH MATCH f2f0522fb1abfc83805117fbc9e5040c2936daa3632c41c2cbf54f909cd9ea46
+STAT MATCH
+total 736732
+drwxr-xr-x 2 root root       4096 Nov 25 10:08 .
+drwxr-xr-x 5 root root       4096 Nov 25 09:48 ..
+-rw-r----- 1 root root 3221225472 Nov 25 10:08 active.img
+-rw-r----- 1 root root        124 Nov 25 10:08 active.img.sha256
+-rw-r----- 1 root root         13 Nov 25 10:08 image-checksum.conf
+-rw-r----- 1 root root 3221225472 Nov 25 10:08 passive.img
+-rw-r----- 1 root root        125 Nov 25 10:08 passive.img.sha256
+#
+[exit 0]
+
+$ sync
+#
+[exit 0]
+
+$ cat /proc/cmdline; ls /etc/qa-upgrade-marker; grep -i checksum /run/immucore/immucore.log
+BOOT_IMAGE=(loop0)/boot/vmlinuz console=ttyS0 console=tty1 splash net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=5 rd.emergency=reboot rd.shell=0 systemd.crash_reboot=yes quiet root=LABEL=COS_ACTIVE cos-img/filename=/cOS/active.img selinux=0
+/etc/qa-upgrade-marker
+2026-11-25T10:09:06Z INF Image checksum verified image=/sysroot/run/initramfs/cos-state/cOS/active.img sha256=966f4a800e5cde5b3d6e29bab60328cbf7db467be3e73608d4c0fc66e994dd12 took=1.828s
+#
+[exit 0]
+
+$ cat /proc/cmdline; sh /run/chk.sh 2>&1 | head -3
+BOOT_IMAGE=(loop0)/boot/vmlinuz console=ttyS0 console=tty1 splash net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=5 rd.emergency=reboot rd.shell=0 systemd.crash_reboot=yes quiet root=LABEL=COS_ACTIVE cos-img/filename=/cOS/active.img selinux=0 image-checksum.create=false
+sh: /run/chk.sh: No such file or directory
+#
+[exit 0]
+
+$ echo RD0ke0Q6LS9ydW4vaW5pdHJhbWZzL2Nvcy1zdGF0ZS9jT1N9CmZvciBuIGluIGFjdGl2ZSBwYXNzaXZlOyBkbwpmPSRELyRuLmltZwplY2hvICI9PSAkbiI7IGxzIC1sYSAtLXRpbWUtc3R5bGU9ZnVsbC1pc28gJEQvJG4uaW1nKgpbIC1mICRmLnNoYTI1NiBdIHx8IHsgZWNobyAiTk8gU0lERUNBUiBmb3IgJG4iOyBjb250aW51ZTsgfQpjYXQgJGYuc2hhMjU2CndhbnQ9JChoZWFkIC0xICRmLnNoYTI1NiB8IGN1dCAtZCcgJyAtZjEpCmdvdD0kKHNoYTI1NnN1bSAkZiB8IGN1dCAtZCcgJyAtZjEpClsgIiR3YW50IiA9ICIkZ290IiBdICYmIGVjaG8gIkhBU0ggTUFUQ0ggJGdvdCIgfHwgZWNobyAiSEFTSCBESUZGIHdhbnQ9JHdhbnQgZ290PSRnb3QiCnN0PSIjIHNpemU9JChzdGF0IC1jICVzICRmKSBtdGltZV9ucz0kKHN0YXQgLWMgJS45WSAkZiB8IHRyIC1kIC4pIgplY2hvICJzdGF0IGxpbmU6ICRzdCIKWyAiJHN0IiA9ICIkKHNlZCAtbiAycCAkZi5zaGEyNTYpIiBdICYmIGVjaG8gIlNUQVQgTUFUQ0giIHx8IGVjaG8gIlNUQVQgRElGRiIKZG9uZQo= | base64 -d > /run/chk.sh
+#
+[exit 0]
+
+$ echo BEFORE create=false upgrade; sh /run/chk.sh | grep -E '==|MATCH|DIFF|NO SIDE'; ls /run/initramfs/cos-state/cOS; kairos-agent upgrade --allow-insecure-registries --source oci:10.0.2.2:55222/k6222-os:v2 > /run/up4.log 2>&1; echo upgrade-rc=$?; echo AFTER; ls -la /run/initramfs/cos-state/cOS; cat /run/initramfs/cos-state/cOS/image-checksum.conf; sh /run/chk.sh | grep -E '==|MATCH|DIFF|NO SIDE'; grep -ci sha256 /run/up4.log
+BEFORE create=false upgrade
+== active
+HASH MATCH 966f4a800e5cde5b3d6e29bab60328cbf7db467be3e73608d4c0fc66e994dd12
+STAT MATCH
+== passive
+HASH MATCH f2f0522fb1abfc83805117fbc9e5040c2936daa3632c41c2cbf54f909cd9ea46
+STAT MATCH
+active.img	   image-checksum.conf	passive.img.sha256
+active.img.sha256  passive.img
+upgrade-rc=0
+AFTER
+total 736724
+drwxr-xr-x 2 root root       4096 Nov 25 10:10 .
+drwxr-xr-x 5 root root       4096 Nov 25 09:48 ..
+-rw-r----- 1 root root 3221225472 Nov 25 10:10 active.img
+-rw-r----- 1 root root         13 Nov 25 10:10 image-checksum.conf
+-rw-r----- 1 root root 3221225472 Nov 25 10:10 passive.img
+verify: fail
+== active
+NO SIDECAR for active
+== passive
+NO SIDECAR for passive
+0
+#
+[exit 1]
+
+$ sync
+#
+[exit 0]
+
+$ ls /etc/qa-upgrade-marker; grep -i checksum /run/immucore/immucore.log
+/etc/qa-upgrade-marker
+2026-11-25T10:10:27Z WRN No checksum recorded for the image, not verifying it (it predates checksums, or image-checksum.create was off when it was written) image=/sysroot/run/initramfs/cos-state/cOS/active.img
+#
+[exit 0]
+

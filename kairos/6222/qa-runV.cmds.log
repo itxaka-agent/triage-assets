@@ -1,0 +1,48 @@
+$ echo SCENARIO V create=true verify=fail in install config; tail -4 /oem/90_custom.yaml; D=/run/initramfs/cos-state/cOS; ls -la --time-style=full-iso $D; echo "--- conf:"; cat $D/image-checksum.conf; cat $D/active.img.sha256; mkdir -p /run/rec; mount -o ro /dev/disk/by-label/COS_RECOVERY /run/rec; ls /run/rec/cOS; cat /run/rec/cOS/image-checksum.conf; umount /run/rec
+SCENARIO V create=true verify=fail in install config
+    - groups:
+        - admin
+      name: kairos
+      passwd: <redacted>
+total 850496
+drwxr-xr-x 2 root root      4096 2026-11-25 09:47:34.536000000 +0000 .
+drwxr-xr-x 5 root root      4096 2026-11-25 09:47:59.654000000 +0000 ..
+-rw-r--r-- 1 root root 506462208 2026-11-25 09:47:33.021000000 +0000 active.img
+-rw-r--r-- 1 root root       123 2026-11-25 09:47:33.333000000 +0000 active.img.sha256
+-rw-r--r-- 1 root root        13 2026-11-25 09:47:34.534000000 +0000 image-checksum.conf
+-rw-r--r-- 1 root root 506462208 2026-11-25 09:47:34.281000000 +0000 passive.img
+-rw-r--r-- 1 root root       124 2026-11-25 09:47:34.531000000 +0000 passive.img.sha256
+--- conf:
+verify: fail
+4021da9542eea442b872196eb56ffac5d5f8b592459bc79571d0c9365e3df9c8  active.img
+# size=506462208 mtime_ns=1795600053021000000
+image-checksum.conf  recovery.img  recovery.img.sha256
+verify: fail
+#
+[exit 0]
+
+$ cat /proc/cmdline; grep -i -E "checksum|imagesum|sha256" /run/immucore/immucore.log; echo grep-rc=$?; kairos-agent verify-images 2>&1 | tail -12; echo rc=$?
+BOOT_IMAGE=(loop0)/boot/vmlinuz console=ttyS0 console=tty1 splash net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=5 rd.emergency=reboot rd.shell=0 systemd.crash_reboot=yes quiet root=LABEL=COS_ACTIVE cos-img/filename=/cOS/active.img selinux=0
+2026-11-25T09:50:19Z INF Image checksum verified image=/sysroot/run/initramfs/cos-state/cOS/active.img sha256=4021da9542eea442b872196eb56ffac5d5f8b592459bc79571d0c9365e3df9c8 took=316ms
+grep-rc=0
+[90m2026-11-25T09:51:41Z[0m [32mINF[0m [1mBoot Mode[0m [36mboot_mode=[0mactive_boot
+[90m2026-11-25T09:51:41Z[0m [32mINF[0m [1mBoot in uki mode[0m [36mresult=[0mfalse
+/run/initramfs/cos-state/cOS/active.img
+  result:   OK
+  expected: 4021da9542eea442b872196eb56ffac5d5f8b592459bc79571d0c9365e3df9c8
+  actual:   4021da9542eea442b872196eb56ffac5d5f8b592459bc79571d0c9365e3df9c8
+/run/initramfs/cos-state/cOS/passive.img
+  result:   OK
+  expected: e1973e0dfbef0fa8303f1aa03a7263862ea50bf59512552142f37bc90d520cce
+  actual:   e1973e0dfbef0fa8303f1aa03a7263862ea50bf59512552142f37bc90d520cce
+
+2 image(s) checked, 0 failed
+rc=0
+#
+[exit 0]
+
+$ echo CORRUPT (config verify=fail disk): flip byte, restore mtime; F=/run/initramfs/cos-state/cOS/active.img; mount -o remount,rw /run/initramfs/cos-state; touch -r $F /run/ref; stat -c "BEFORE %n size=%s mtime=%.9Y" $F; O=200000000; B=$(dd if=$F bs=1 skip=$O count=1 2>/dev/null | od -An -tu1 | tr -d " "); N=$(( B ^ 255 )); echo "offset=$O byte=$B -> $N"; printf "$(printf "\\\\%03o" $N)" | dd of=$F bs=1 seek=$O conv=notrunc 2>/dev/null; touch -r /run/ref $F; sync; stat -c "AFTER %n size=%s mtime=%.9Y" $F; cat $F.sha256 /run/initramfs/cos-state/cOS/image-checksum.conf; mount -o remount,ro /run/initramfs/cos-state
+-bash: syntax error near unexpected token `('
+#
+[exit 2]
+

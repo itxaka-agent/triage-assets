@@ -1,0 +1,104 @@
+$ cat /proc/cmdline; ls -la /run/initramfs/cos-state/cOS; grep -i checksum /run/immucore/immucore.log; kairos-agent verify-images; echo vi-rc=$?
+BOOT_IMAGE=(loop0)/boot/vmlinuz console=ttyS0 console=tty1 splash net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=5 rd.emergency=reboot rd.shell=0 systemd.crash_reboot=yes quiet root=LABEL=COS_ACTIVE cos-img/filename=/cOS/active.img selinux=0 image-checksum.verify=fail
+total 850640
+drwxr-xr-x 2 root root      4096 Nov 25 09:47 .
+drwxr-xr-x 5 root root      4096 Nov 25 09:47 ..
+-rw-r--r-- 1 root root 506462208 Nov 25 09:47 active.img
+-rw-r--r-- 1 root root 506462208 Nov 25 09:47 passive.img
+2026-11-25T10:11:02Z WRN No checksum recorded for the image, not verifying it (it predates checksums, or image-checksum.create was off when it was written) image=/sysroot/run/initramfs/cos-state/cOS/active.img
+[90m2026-11-25T10:11:23Z[0m [32mINF[0m [1mKairos Agent[0m [36mversion=[0mv4.7.1-dev.36+g59dce92b9
+[90m2026-11-25T10:11:23Z[0m [32mINF[0m [1mKairos System[0m [36mversion=[0mv4.7.0-36-g59dce92b9
+[90m2026-11-25T10:11:23Z[0m [32mINF[0m [1mBoot Mode[0m [36mboot_mode=[0mactive_boot
+[90m2026-11-25T10:11:23Z[0m [32mINF[0m [1mBoot in uki mode[0m [36mresult=[0mfalse
+/run/initramfs/cos-state/cOS/active.img
+  result:   NO CHECKSUM, skipped (image-checksum.require is off)
+  expected: (no active.img.sha256)
+  actual:   (not computed)
+/run/initramfs/cos-state/cOS/passive.img
+  result:   NO CHECKSUM, skipped (image-checksum.require is off)
+  expected: (no passive.img.sha256)
+  actual:   (not computed)
+
+2 image(s) checked, 0 failed
+vi-rc=0
+#
+[exit 0]
+
+$ sync
+#
+[exit 0]
+
+$ echo RD0ke0Q6LS9ydW4vaW5pdHJhbWZzL2Nvcy1zdGF0ZS9jT1N9CmZvciBuIGluIGFjdGl2ZSBwYXNzaXZlOyBkbwpmPSRELyRuLmltZwplY2hvICI9PSAkbiI7IGxzIC1sYSAtLXRpbWUtc3R5bGU9ZnVsbC1pc28gJEQvJG4uaW1nKgpbIC1mICRmLnNoYTI1NiBdIHx8IHsgZWNobyAiTk8gU0lERUNBUiBmb3IgJG4iOyBjb250aW51ZTsgfQpjYXQgJGYuc2hhMjU2CndhbnQ9JChoZWFkIC0xICRmLnNoYTI1NiB8IGN1dCAtZCcgJyAtZjEpCmdvdD0kKHNoYTI1NnN1bSAkZiB8IGN1dCAtZCcgJyAtZjEpClsgIiR3YW50IiA9ICIkZ290IiBdICYmIGVjaG8gIkhBU0ggTUFUQ0ggJGdvdCIgfHwgZWNobyAiSEFTSCBESUZGIHdhbnQ9JHdhbnQgZ290PSRnb3QiCnN0PSIjIHNpemU9JChzdGF0IC1jICVzICRmKSBtdGltZV9ucz0kKHN0YXQgLWMgJS45WSAkZiB8IHRyIC1kIC4pIgplY2hvICJzdGF0IGxpbmU6ICRzdCIKWyAiJHN0IiA9ICIkKHNlZCAtbiAycCAkZi5zaGEyNTYpIiBdICYmIGVjaG8gIlNUQVQgTUFUQ0giIHx8IGVjaG8gIlNUQVQgRElGRiIKZG9uZQo= | base64 -d > /run/chk.sh
+#
+[exit 0]
+
+$ printf '#cloud-config\nimage-checksum:\n  create: true\n' > /oem/91_qa.yaml; echo BEFORE; ls /run/initramfs/cos-state/cOS; kairos-agent upgrade --allow-insecure-registries --source oci:10.0.2.2:55222/k6222-os:v2 > /run/upg.log 2>&1; echo upgrade-rc=$?; echo AFTER; ls -la /run/initramfs/cos-state/cOS; sh /run/chk.sh | grep -E '==|MATCH|DIFF|NO SIDE|^#|^[0-9a-f]{64}'
+BEFORE
+active.img  passive.img
+upgrade-rc=0
+AFTER
+total 724408
+drwxr-xr-x 2 root root       4096 Nov 25 10:13 .
+drwxr-xr-x 5 root root       4096 Nov 25 09:47 ..
+-rw-r----- 1 root root 3221225472 Nov 25 10:13 active.img
+-rw-r----- 1 root root        124 Nov 25 10:13 active.img.sha256
+-rw-r--r-- 1 root root  506462208 Nov 25 10:13 passive.img
+-rw-r----- 1 root root        124 Nov 25 10:13 passive.img.sha256
+== active
+c5476eb90ce733ed40c823591be8ef417e9850c5b0468ff32ba7256e516e78ac  active.img
+# size=3221225472 mtime_ns=1795601587891664099
+HASH MATCH c5476eb90ce733ed40c823591be8ef417e9850c5b0468ff32ba7256e516e78ac
+STAT MATCH
+== passive
+235ab06927181ccc25ada80171b78e8c44028a15ddca80ce90023f1272da5725  passive.img
+# size=506462208 mtime_ns=1795601589791664099
+HASH MATCH 235ab06927181ccc25ada80171b78e8c44028a15ddca80ce90023f1272da5725
+STAT MATCH
+#
+[exit 0]
+
+$ sync
+#
+[exit 0]
+
+$ cat /proc/cmdline | tr " " "\n" | grep image; ls /etc/qa-upgrade-marker; grep -i checksum /run/immucore/immucore.log
+image-checksum.verify=fail
+image-checksum.require=true
+/etc/qa-upgrade-marker
+2026-11-25T10:13:36Z INF Image checksum verified image=/sysroot/run/initramfs/cos-state/cOS/active.img sha256=c5476eb90ce733ed40c823591be8ef417e9850c5b0468ff32ba7256e516e78ac took=1.823s
+#
+[exit 0]
+
+$ echo H CORRUPT PASSIVE only; F=/run/initramfs/cos-state/cOS/passive.img; mount -o remount,rw /run/initramfs/cos-state; touch -r $F /run/ref; stat -c "BEFORE %n size=%s mtime=%.9Y" $F; O=200000000; B=$(dd if=$F bs=1 skip=$O count=1 2>/dev/null | od -An -tu1 | tr -d " "); N=$(( B ^ 255 )); echo "offset=$O byte=$B -> $N"; printf "$(printf "\\\\%03o" $N)" | dd of=$F bs=1 seek=$O conv=notrunc 2>/dev/null; touch -r /run/ref $F; sync; stat -c "AFTER %n size=%s mtime=%.9Y" $F; mount -o remount,ro /run/initramfs/cos-state; sh /run/chk.sh | grep -E "==|MATCH|DIFF"; kairos-agent verify-images; echo vi-rc=$?
+H CORRUPT PASSIVE only
+BEFORE /run/initramfs/cos-state/cOS/passive.img size=506462208 mtime=1795601589.791664099
+offset=200000000 byte=2 -> 253
+AFTER /run/initramfs/cos-state/cOS/passive.img size=506462208 mtime=1795601589.791664099
+sh: /run/chk.sh: No such file or directory
+[90m2026-11-25T10:14:04Z[0m [32mINF[0m [1mKairos Agent[0m [36mversion=[0mv4.7.1-dev.36+g59dce92b9
+[90m2026-11-25T10:14:04Z[0m [32mINF[0m [1mKairos System[0m [36mversion=[0mv4.7.0-36-g59dce92b9
+[90m2026-11-25T10:14:04Z[0m [32mINF[0m [1mBoot Mode[0m [36mboot_mode=[0mactive_boot
+[90m2026-11-25T10:14:04Z[0m [32mINF[0m [1mBoot in uki mode[0m [36mresult=[0mfalse
+/run/initramfs/cos-state/cOS/active.img
+  result:   OK
+  expected: c5476eb90ce733ed40c823591be8ef417e9850c5b0468ff32ba7256e516e78ac
+  actual:   c5476eb90ce733ed40c823591be8ef417e9850c5b0468ff32ba7256e516e78ac
+/run/initramfs/cos-state/cOS/passive.img
+  result:   MISMATCH, the image is not what was written
+  expected: 235ab06927181ccc25ada80171b78e8c44028a15ddca80ce90023f1272da5725
+  actual:   17d9e2c91b8fac15b5d2866732b44d800cc1b1f4ba6b0d7105ed1c80d15fd7c9
+
+2 image(s) checked, 1 failed
+1 of 2 OS images failed the checksum check
+vi-rc=1
+#
+[exit 0]
+
+$ cat /proc/cmdline | tr " " "\n" | grep -E "image|COS_"; grep -i checksum /run/immucore/immucore.log
+rd.cos.oemlabel=COS_OEM
+root=LABEL=COS_ACTIVE
+image-checksum.verify=fail
+2026-11-25T10:14:24Z INF Image checksum verified image=/sysroot/run/initramfs/cos-state/cOS/active.img sha256=c5476eb90ce733ed40c823591be8ef417e9850c5b0468ff32ba7256e516e78ac took=1.854s
+#
+[exit 0]
+

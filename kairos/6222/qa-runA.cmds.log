@@ -1,0 +1,96 @@
+$ echo SCENARIO A default install nothing set; cat /oem/90_custom.yaml; ls -la /run/initramfs/cos-state/cOS/; find /run/initramfs/cos-state /run/cos -name "*.sha256" -o -name "image-checksum.conf"; echo find-done
+SCENARIO A default install nothing set
+#cloud-config
+
+# Sources:
+# - /oem/95_userdata/userdata.yaml
+# - reader
+# - cmdline
+
+install:
+    auto: true
+    device: /dev/vda
+    reboot: true
+users:
+    - groups:
+        - admin
+      name: kairos
+      passwd: <redacted>
+total 850640
+drwxr-xr-x 2 root root      4096 Nov 25 09:47 .
+drwxr-xr-x 5 root root      4096 Nov 25 09:47 ..
+-rw-r--r-- 1 root root 506462208 Nov 25 09:47 active.img
+-rw-r--r-- 1 root root 506462208 Nov 25 09:47 passive.img
+find-done
+#
+[exit 0]
+
+$ lsblk -o NAME,LABEL,SIZE | head -8; mkdir -p /mnt/rec; mount -o ro /dev/disk/by-label/COS_RECOVERY /mnt/rec && ls -la /mnt/rec/cOS; umount /mnt/rec
+[   33.835137] I/O error, dev fd0, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+NAME   LABEL           SIZE
+fd0                      4K
+loop0  COS_ACTIVE      483M
+sr0                   1024M
+vda                     20G
+├─vda1 COS_GRUB         64M
+├─vda2 COS_OEM          64M
+├─vda3 COS_RECOVERY    1.1G
+mkdir: cannot create directory ‘/mnt’: Read-only file system
+mount: /mnt/rec: mount point does not exist.
+       dmesg(1) may have more information after failed mount system call.
+umount: /mnt/rec: no mount point specified.
+#
+[exit 32]
+
+$ kairos-agent verify-images; echo rc=$?
+[90m2026-11-25T09:50:52Z[0m [32mINF[0m [1mKairos Agent[0m [36mversion=[0mv4.7.1-dev.36+g59dce92b9
+[90m2026-11-25T09:50:52Z[0m [32mINF[0m [1mKairos System[0m [36mversion=[0mv4.7.0-36-g59dce92b9
+[90m2026-11-25T09:50:52Z[0m [32mINF[0m [1mBoot Mode[0m [36mboot_mode=[0mactive_boot
+[90m2026-11-25T09:50:52Z[0m [32mINF[0m [1mBoot in uki mode[0m [36mresult=[0mfalse
+/run/initramfs/cos-state/cOS/active.img
+  result:   NO CHECKSUM, skipped (image-checksum.require is off)
+  expected: (no active.img.sha256)
+  actual:   (not computed)
+/run/initramfs/cos-state/cOS/passive.img
+  result:   NO CHECKSUM, skipped (image-checksum.require is off)
+  expected: (no passive.img.sha256)
+  actual:   (not computed)
+
+2 image(s) checked, 0 failed
+rc=0
+#
+[exit 0]
+
+$ grep -i -E "checksum|imagesum|sha256" /run/immucore/immucore.log; echo grep-rc=$?
+grep-rc=1
+#
+[exit 0]
+
+$ journalctl -b --no-pager | grep -i -E "checksum|imagesum" ; echo grep-rc=$?
+Nov 25 09:50:18 localhost kernel: ACPI: Early table checksum verification disabled
+Nov 25 09:50:18 localhost kernel: xor: automatically using best checksumming function   avx       
+grep-rc=0
+#
+[exit 0]
+
+$ mkdir -p /run/rec; mount -o ro /dev/disk/by-label/COS_RECOVERY /run/rec && ls -laR /run/rec | head -20; umount /run/rec
+/run/rec:
+total 24
+drwxr-xr-x  4 root root  4096 Nov 25 09:47 .
+drwxr-xr-x 26 root root   600 Nov 25 09:50 ..
+drwxr-xr-x  2 root root  4096 Nov 25 09:47 cOS
+drwx------  2 root root 16384 Nov 25 09:47 lost+found
+
+/run/rec/cOS:
+total 494604
+drwxr-xr-x 2 root root      4096 Nov 25 09:47 .
+drwxr-xr-x 4 root root      4096 Nov 25 09:47 ..
+-rw-r--r-- 1 root root 506462208 Nov 25 09:47 recovery.img
+
+/run/rec/lost+found:
+total 20
+drwx------ 2 root root 16384 Nov 25 09:47 .
+drwxr-xr-x 4 root root  4096 Nov 25 09:47 ..
+#
+[exit 0]
+

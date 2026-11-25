@@ -1,0 +1,42 @@
+$ echo C STALE: active.img mtime changed, passive.img size changed, verify=fail, require unset; tail -c 40 /proc/cmdline; echo; grep -i -E "checksum" /run/immucore/immucore.log; kairos-agent verify-images 2>&1 | tail -12; kairos-agent verify-images >/dev/null 2>&1; echo verify-images rc=$?
+C STALE: active.img mtime changed, passive.img size changed, verify=fail, require unset
+mg selinux=0 image-checksum.verify=fail
+
+2026-11-25T09:59:33Z WRN Image changed since its checksum was recorded (replaced by an agent that does not update checksums?), checksum ignored expected=32dfec13ebb9e561c23d416bafffd4ade27d511be8cf3ef12c40e2d36a8c26b0 image=/sysroot/run/initramfs/cos-state/cOS/active.img
+[90m2026-11-25T09:59:48Z[0m [32mINF[0m [1mBoot Mode[0m [36mboot_mode=[0mactive_boot
+[90m2026-11-25T09:59:48Z[0m [32mINF[0m [1mBoot in uki mode[0m [36mresult=[0mfalse
+/run/initramfs/cos-state/cOS/active.img
+  result:   STALE, the image changed since its checksum was written (replaced by an agent that does not update checksums), skipped (image-checksum.require is off)
+  expected: 32dfec13ebb9e561c23d416bafffd4ade27d511be8cf3ef12c40e2d36a8c26b0
+  actual:   (not computed)
+/run/initramfs/cos-state/cOS/passive.img
+  result:   STALE, the image changed since its checksum was written (replaced by an agent that does not update checksums), skipped (image-checksum.require is off)
+  expected: 42f615af53e7d714622f74f276153991b809ab454bb4a028ec89d9bd6991478f
+  actual:   (not computed)
+
+2 image(s) checked, 0 failed
+verify-images rc=0
+#
+[exit 0]
+
+$ echo C STALE with require=true cmdline plus warn; tail -c 70 /proc/cmdline; echo; grep -i -E "checksum" /run/immucore/immucore.log; kairos-agent verify-images 2>&1 | tail -12; kairos-agent verify-images >/dev/null 2>&1; echo verify-images rc=$?
+C STALE with require=true cmdline plus warn
+.img selinux=0 image-checksum.verify=warn image-checksum.require=true
+
+2026-11-25T10:01:14Z ERR OS image checksum check failed action=warn actual= expected=32dfec13ebb9e561c23d416bafffd4ade27d511be8cf3ef12c40e2d36a8c26b0 image=/sysroot/run/initramfs/cos-state/cOS/active.img problem="stale checksum: the image changed since it was recorded"
+[90m2026-11-25T10:01:28Z[0m [32mINF[0m [1mBoot in uki mode[0m [36mresult=[0mfalse
+/run/initramfs/cos-state/cOS/active.img
+  result:   STALE, the image changed since its checksum was written (replaced by an agent that does not update checksums), FAILED because image-checksum.require is on
+  expected: 32dfec13ebb9e561c23d416bafffd4ade27d511be8cf3ef12c40e2d36a8c26b0
+  actual:   (not computed)
+/run/initramfs/cos-state/cOS/passive.img
+  result:   STALE, the image changed since its checksum was written (replaced by an agent that does not update checksums), FAILED because image-checksum.require is on
+  expected: 42f615af53e7d714622f74f276153991b809ab454bb4a028ec89d9bd6991478f
+  actual:   (not computed)
+
+2 image(s) checked, 2 failed
+2 of 2 OS images failed the checksum check
+verify-images rc=1
+#
+[exit 0]
+

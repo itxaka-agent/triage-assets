@@ -1,0 +1,132 @@
+$ cat /proc/cmdline | tr " " "\n" | grep -E "image|COS_|rd.cos"; grep -i -E "checksum" /run/immucore/immucore.log; cat /proc/cmdline | grep -o "cos-img[^ ]*"; kairos-agent reset --help | head -30
+rd.cos.oemlabel=COS_OEM
+rd.cos.oemtimeout=10
+root=LABEL=COS_SYSTEM
+image-checksum.verify=fail
+2026-11-25T10:16:39Z INF Image checksum verified image=/sysroot/run/initramfs/cos-state/cOS/recovery.img sha256=78d375ca1c631275e8c51649d3d32cd656c52e60df5bda47f9e2520ffb2a7ec1 took=290ms
+cos-img/filename=/cOS/recovery.img
+
+Starts kairos reset mode, it will nuke completely the node data and restart fresh.
+Attention ! this will delete any persistent data on the node. It is equivalent to re-init the node right after the installation.
+
+Note: the audit trail in /var/log/audit is copied off the persistent partition into a staging directory under /run and put back after the format. It is skipped, with a warning, unless the trail fits in half the free space of /run.
+
+In reset mode a the node will automatically reset
+
+See also https://kairos.io/after_install/reset_mode/ for documentation.
+
+This command is meant to be used from the boot GRUB menu, but can likely be used standalone
+
+Usage:
+  kairos agent reset [flags]
+
+Flags:
+  -h, --help[=true|false]         help for reset
+      --reboot[=true|false]       Enable automated reboot after reset. Has precedence over any config in the system.
+      --reset-oem[=true|false]    Reset the OEM partition. Warning: this will delete any persistent data on the OEM partition.
+      --unattended[=true|false]   Do not wait for user input and provide ttys after reset. Also sets the fast mode (do not wait 60 seconds before reset)
+
+Global Flags:
+      --debug[=true|false]               enable debug output [$KAIROS_AGENT_DEBUG]
+      --strict-validation[=true|false]   Fail instead of warn on validation errors. [$STRICT_VALIDATIONS]
+#
+[exit 0]
+
+$ mount | grep -E "COS|cos" | head; lsblk -o NAME,LABEL,SIZE; ls -la /run/initramfs/cos-state/cOS /run/initramfs/cos-state 2>&1 | head -20; ls /oem; tail -3 /oem/90_custom.yaml; grep -A2 image-checksum /oem/*.yaml
+/dev/vda3 on /run/initramfs/cos-state type ext4 (ro,relatime)
+[   27.515818] I/O error, dev fd0, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+NAME   LABEL           SIZE
+fd0                      4K
+loop0  COS_SYSTEM      483M
+sr0                   1024M
+vda                     20G
+├─vda1 COS_GRUB         64M
+├─vda2 COS_OEM          64M
+├─vda3 COS_RECOVERY    1.1G
+├─vda4 COS_STATE       2.4G
+└─vda5 COS_PERSISTENT 16.3G
+/run/initramfs/cos-state:
+total 24
+drwxr-xr-x 4 root root  4096 Nov 25 09:47 .
+drwxr-xr-x 7 root root   140 Nov 25 10:16 ..
+drwxr-xr-x 2 root root  4096 Nov 25 09:47 cOS
+drwx------ 2 root root 16384 Nov 25 09:47 lost+found
+
+/run/initramfs/cos-state/cOS:
+total 494608
+drwxr-xr-x 2 root root      4096 Nov 25 09:47 .
+drwxr-xr-x 4 root root      4096 Nov 25 09:47 ..
+-rw-r--r-- 1 root root 506462208 Nov 25 09:47 recovery.img
+-rw-r--r-- 1 root root       125 Nov 25 09:47 recovery.img.sha256
+90_custom.yaml	95_userdata  lost+found
+        - admin
+      name: kairos
+      passwd: <redacted>
+image-checksum:
+    create: true
+install:
+#
+[exit 0]
+
+$ kairos-agent reset --unattended --reboot=false > /run/reset.log 2>&1; echo reset-rc=$?; grep -i -E "sha256|checksum|error|ERR" /run/reset.log | head; tail -5 /run/reset.log
+reset-rc=0
+[90m2026-11-25T10:17:10Z[0m [32mINF[0m [1mRecorded sha256 of /run/cos/state/cOS/active.img: 7207ea783905cc3f636ea9e960ce3bba126f477b8a9902357237abd6f948ea5b[0m
+[90m2026-11-25T10:17:11Z[0m [32mINF[0m [1mRecorded sha256 of /run/cos/state/cOS/passive.img: 6e34b14741151355f8396530be771b36df7f17248258a431f042594a1a8840cf[0m
+[90m2026-11-25T10:17:11Z[0m [33mWRN[0m [1m(conditional) Skip 'Skipping stage (if statement error: failed to run ! grep -q "grub_boot_assessment" /tmp/mnt/STATE/grubcustom && grep -vq "rd.immucore.uki" /proc/cmdline
+[0m
+[90m2026-11-25T10:17:11Z[0m [32mINF[0m [1mRunning CopyLogs hook[0m
+[90m2026-11-25T10:17:11Z[0m [32mINF[0m [1mStarting rsync...[0m
+[90m2026-11-25T10:17:11Z[0m [32mINF[0m [1mFinished syncing[0m
+[90m2026-11-25T10:17:11Z[0m [32mINF[0m [1mFinish CopyLogs hook[0m
+#
+[exit 0]
+
+$ echo RD0ke0Q6LS9ydW4vaW5pdHJhbWZzL2Nvcy1zdGF0ZS9jT1N9CmZvciBuIGluIGFjdGl2ZSBwYXNzaXZlOyBkbwpmPSRELyRuLmltZwplY2hvICI9PSAkbiI7IGxzIC1sYSAtLXRpbWUtc3R5bGU9ZnVsbC1pc28gJEQvJG4uaW1nKgpbIC1mICRmLnNoYTI1NiBdIHx8IHsgZWNobyAiTk8gU0lERUNBUiBmb3IgJG4iOyBjb250aW51ZTsgfQpjYXQgJGYuc2hhMjU2CndhbnQ9JChoZWFkIC0xICRmLnNoYTI1NiB8IGN1dCAtZCcgJyAtZjEpCmdvdD0kKHNoYTI1NnN1bSAkZiB8IGN1dCAtZCcgJyAtZjEpClsgIiR3YW50IiA9ICIkZ290IiBdICYmIGVjaG8gIkhBU0ggTUFUQ0ggJGdvdCIgfHwgZWNobyAiSEFTSCBESUZGIHdhbnQ9JHdhbnQgZ290PSRnb3QiCnN0PSIjIHNpemU9JChzdGF0IC1jICVzICRmKSBtdGltZV9ucz0kKHN0YXQgLWMgJS45WSAkZiB8IHRyIC1kIC4pIgplY2hvICJzdGF0IGxpbmU6ICRzdCIKWyAiJHN0IiA9ICIkKHNlZCAtbiAycCAkZi5zaGEyNTYpIiBdICYmIGVjaG8gIlNUQVQgTUFUQ0giIHx8IGVjaG8gIlNUQVQgRElGRiIKZG9uZQo= | base64 -d > /run/chk.sh
+#
+[exit 0]
+
+$ mkdir -p /run/st; mount -o ro /dev/disk/by-label/COS_STATE /run/st; ls -la --time-style=full-iso /run/st/cOS; D=/run/st/cOS sh /run/chk.sh; cat /run/st/cOS/image-checksum.conf 2>&1; umount /run/st
+total 989212
+drwxr-xr-x 2 root root      4096 2026-11-25 10:17:11.008360356 +0000 .
+drwxr-xr-x 5 root root      4096 2026-11-25 10:17:10.096360356 +0000 ..
+-rw-r--r-- 1 root root 506462208 2026-11-25 10:17:10.114360356 +0000 active.img
+-rw-r----- 1 root root       123 2026-11-25 10:17:10.376360356 +0000 active.img.sha256
+-rw-r----- 1 root root        13 2026-11-25 10:17:11.006360356 +0000 image-checksum.conf
+-rw-r--r-- 1 root root 506462208 2026-11-25 10:17:10.725360356 +0000 passive.img
+-rw-r----- 1 root root       124 2026-11-25 10:17:11.002360356 +0000 passive.img.sha256
+== active
+-rw-r--r-- 1 root root 506462208 2026-11-25 10:17:10.114360356 +0000 /run/st/cOS/active.img
+-rw-r----- 1 root root       123 2026-11-25 10:17:10.376360356 +0000 /run/st/cOS/active.img.sha256
+7207ea783905cc3f636ea9e960ce3bba126f477b8a9902357237abd6f948ea5b  active.img
+# size=506462208 mtime_ns=1795601830114360356
+HASH MATCH 7207ea783905cc3f636ea9e960ce3bba126f477b8a9902357237abd6f948ea5b
+stat line: # size=506462208 mtime_ns=1795601830114360356
+STAT MATCH
+== passive
+-rw-r--r-- 1 root root 506462208 2026-11-25 10:17:10.725360356 +0000 /run/st/cOS/passive.img
+-rw-r----- 1 root root       124 2026-11-25 10:17:11.002360356 +0000 /run/st/cOS/passive.img.sha256
+6e34b14741151355f8396530be771b36df7f17248258a431f042594a1a8840cf  passive.img
+# size=506462208 mtime_ns=1795601830725360356
+HASH MATCH 6e34b14741151355f8396530be771b36df7f17248258a431f042594a1a8840cf
+stat line: # size=506462208 mtime_ns=1795601830725360356
+STAT MATCH
+verify: fail
+#
+[exit 0]
+
+$ sync
+#
+[exit 0]
+
+$ cat /proc/cmdline | tr " " "\n" | grep -E "image|COS_"; grep -i checksum /run/immucore/immucore.log; kairos-agent verify-images | grep -E "img|result"
+rd.cos.oemlabel=COS_OEM
+root=LABEL=COS_ACTIVE
+2026-11-25T10:17:38Z INF Image checksum verified image=/sysroot/run/initramfs/cos-state/cOS/active.img sha256=7207ea783905cc3f636ea9e960ce3bba126f477b8a9902357237abd6f948ea5b took=274ms
+[90m2026-11-25T10:17:59Z[0m [32mINF[0m [1mBoot in uki mode[0m [36mresult=[0mfalse
+/run/initramfs/cos-state/cOS/active.img
+  result:   OK
+/run/initramfs/cos-state/cOS/passive.img
+  result:   OK
+#
+[exit 0]
+
