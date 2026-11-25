@@ -1,0 +1,381 @@
+[    1.234] [2J[001;001H[=3h[2J[001;001H[2J[001;001H[8;042;160t[2J[001;001HBdsDxe: loading Boot0002 "UEFI Misc Device" from PciRoot(0x0)/Pci(0x4,0x0)
+[    1.236] BdsDxe: starting Boot0002 "UEFI Misc Device" from PciRoot(0x0)/Pci(0x4,0x0)
+[    1.338] [0m[30m[40m[2J[001;001Herror: commands/search.c:grub_search_fs_file:371:no such device: /grubenv.
+[    1.342] error: commands/search.c:grub_search_fs_file:371:no such device: /grub_oem_env.
+[    1.358] [0m[30m[40m[2J[001;001H[0m[37m[40m[002;070HGNU GRUB  version 2.14
+[    1.358] 
+[    1.378] [004;002H������──────────────────────────────────────────────────��������──────────────────────────────────────────────────────────────────────────────��������������������������������─────────────┐││���[006;159H���[007;002H│[007;159H│[008;002H���[008;159H���[009;002H���[009;159H���[010;002H���[010;159H���[011;002H���[011;159H���[012;002H���[012;159H���[013;002H���[013;159H���[014;002H���[014;159H���[015;002H���[015;159H│[016;002H���[016;159H���[017;002H���[017;159H���[018;002H││││││││││││││││││││││[029;002H���[029;159H│││││││││││││└───────────────────────────────────��������������������������������────────────────────────────�����������─────────────────────────────────────────────────────────�����������������������������─���������������������������������[037;002H[038;002H     Use the ��� and ��� keys to select which entry is highlighted.                                                                                          
+[   11.461]       Press enter to boot the selected OS, `e' to edit the commands before booting or `c' for a command-line. ESC to return previous menu.                [005;160H [0m[30m[47m[005;003H*Kairos                                                                                                                                                     [0m[37m[40m[005;158H[006;003H Kairos (fallback)                                                                                                                                          [006;158H[007;003H Kairos recovery                                                                                                                                            [007;158H[008;003H Kairos state reset (auto)                                                                                                                                  [008;158H[009;003H                                                                                                                                                            [009;158H[010;003H                                                                                                                                                            [010;158H[011;003H                                                                                                                                                            [011;158H[012;003H                                                                                                                                                            [012;158H[013;003H                                                                                                                                                            [013;158H[014;003H                                                                                                                                                            [014;158H[015;003H                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                [018;158H[019;003H                                                                                                                                                            [019;158H[020;003H                                                                                                                                                            [020;158H[021;003H                                                                                                                                                            [021;158H[022;003H                                                                                                                                                            [022;158H[023;003H                                                                                                                                                            [023;158H[024;003H                                                                                                                                                            [024;158H[025;003H                                                                                                                                                            [025;158H[026;003H                                                                                                                                                            [026;158H[027;003H                                                                                                                                                            [027;158H[028;003H                                                                                                                                                            [028;158H[029;003H                                                                                                                                                            [029;158H[030;003H                                                                                                                                                            [030;158H[031;003H                                                                                                                                                            [031;158H[032;003H                                                                                                                                                            [032;158H[033;003H                                                                                                                                                            [033;158H[034;003H                                                                                                                                                            [034;158H[035;003H                                                                                                                                                            [035;158H[035;160H [005;158H[040;001H   The highlighted entry will be executed automatically in 10s.                                                                                                [005;158H[040;001H   The highlighted entry will be executed automatically in 9s.                                                                                                 [005;158H   The highlighted entry will be executed automatically in 8s.                                                                                                 [040;001H   The highlighted entry will be executed automatically in 7s.                                                                                                 [005;158H[040;001H   The highlighted entry will be executed automatically in 6s.                                                                                                 [040;001H   The highlighted entry will be executed automatically in 5s.                                                                                                 [040;001H   The highlighted entry will be executed automatically in 4s.                                                                                                 [040;001H   The highlighted entry will be executed automatically in 3s.                                                                                                 [005;158H[040;001H   The highlighted entry will be executed automatically in 2s.                                                                                                 [040;001H   The highlighted entry will be executed automatically in 1s.                                                                                                 [005;158H[040;001H   The highlighted entry will be executed automatically in 0s.                                                                                                 [005;158H[0m[30m[40m[2J[001;001H  Booting `Kairos'
+[   11.461] 
+[   30.379] [!p[0m[?7h[1G[0J7[32766;32766H[6n[!p]104\[0m[?7h[1G[0J7[32766;32766H[6n8]3008;start=909af1d0a2514542bc34f3dab22273b5;user=root;hostname=kairos-1788;machineid=178865c166ce45fd95e8dae38c290ec5;bootid=ad68fe50cff049859f1f6c8003cca723;pid=1298;pidfdid=4670;comm=(agetty);servicename=serial-getty@ttyS0.service;invocationid=678ed8a0bc2042ae9ba47ccce6e4969a;type=service\P+q6E616D65\
+[   30.379] kairos-1788 login:
+[   32.595]  kairos
+[   32.628] Password:
+[   33.141]  
+[   33.362] ]3008;start=377723bc5bce4c2a8b34956f634b26ae;user=root;hostname=kairos-1788;machineid=178865c166ce45fd95e8dae38c290ec5;bootid=ad68fe50cff049859f1f6c8003cca723;pid=1298;pidfdid=4670;comm=login;targetuser=kairos;sessionid=1;type=session\Welcome to Kairos!
+[   33.362] 
+[   33.362] Refer to https://kairos.io for documentation.
+[   35.641] ]3008;start=a04afb464bab47f8af74f4723a1ab84e;user=root;hostname=kairos-1788;machineid=178865c166ce45fd95e8dae38c290ec5;bootid=ad68fe50cff049859f1f6c8003cca723;pid=1298;pidfdid=4670;comm=login;targetuser=kairos;sessionid=1;type=session\]3008;start=06e28f16-4cc8-48d0-a653-06bce15dadf2;type=shell;machineid=178865c166ce45fd95e8dae38c290ec5;user=kairos;hostname=kairos-1788;bootid=ad68fe50-cff0-4985-9f1f-6c8003cca723;pid=1410;cwd=/home/kairos\[kairos@kairos-1788 ~]$ sudo -i
+[   37.143] ]3008;start=80728d27-c6c1-45a4-95f0-f3292f2eb879;type=command;machineid=178865c166ce45fd95e8dae38c290ec5;user=kairos;hostname=kairos-1788;bootid=ad68fe50-cff0-4985-9f1f-6c8003cca723;pid=1410;cwd=/home/kairos\]3008;start=006d72f0-3b78-48eb-8310-ff46e93a550d;type=shell;machineid=178865c166ce45fd95e8dae38c290ec5;user=root;hostname=kairos-1788;bootid=ad68fe50-cff0-4985-9f1f-6c8003cca723;pid=1421;cwd=/root\[root@kairos-1788 ~]# stty -echo; export PS1='# '; echo RDY_$((1+1))
+[   37.146] ]3008;start=4b7d40d9-4746-4a6f-91fe-7d7f8935ba52;type=command;machineid=178865c166ce45fd95e8dae38c290ec5;user=root;hostname=kairos-1788;bootid=ad68fe50-cff0-4985-9f1f-6c8003cca723;pid=1421;cwd=/root\RDY_2
+[   37.198] ]3008;end=4b7d40d9-4746-4a6f-91fe-7d7f8935ba52;exit=success\]3008;start=006d72f0-3b78-48eb-8310-ff46e93a550d;type=shell;machineid=178865c166ce45fd95e8dae38c290ec5;user=root;hostname=kairos-1788;bootid=ad68fe50-cff0-4985-9f1f-6c8003cca723;pid=1421;cwd=/root\# ]3008;start=3902507a-63b2-453f-a1d1-e0c5df732950;type=command;machineid=178865c166ce45fd95e8dae38c290ec5;user=root;hostname=kairos-1788;bootid=ad68fe50-cff0-4985-9f1f-6c8003cca723;pid=1421;cwd=/root\BOOT_IMAGE=(loop0)/boot/vmlinuz console=ttyS0 console=tty1 splash net.ifnames=1 rd.cos.oemlabel=COS_OEM rd.cos.oemtimeout=10 panic=5 rd.emergency=reboot rd.shell=0 systemd.crash_reboot=yes quiet root=LABEL=COS_ACTIVE cos-img/filename=/cOS/active.img selinux=0
+[   37.198] __DONE_M1noneflipped1_0
+[   37.246] ]3008;end=3902507a-63b2-453f-a1d1-e0c5df732950;exit=success\]3008;start=006d72f0-3b78-48eb-8310-ff46e93a550d;type=shell;machineid=178865c166ce45fd95e8dae38c290ec5;user=root;hostname=kairos-1788;bootid=ad68fe50-cff0-4985-9f1f-6c8003cca723;pid=1421;cwd=/root\# ]3008;start=2b8efa56-fe6f-4c54-84cc-a2d2c1c0cbb2;type=command;machineid=178865c166ce45fd95e8dae38c290ec5;user=root;hostname=kairos-1788;bootid=ad68fe50-cff0-4985-9f1f-6c8003cca723;pid=1421;cwd=/root\25.08
+[   37.247] __DONE_M1noneflipped2_0
+[   37.297] ]3008;end=2b8efa56-fe6f-4c54-84cc-a2d2c1c0cbb2;exit=success\]3008;start=006d72f0-3b78-48eb-8310-ff46e93a550d;type=shell;machineid=178865c166ce45fd95e8dae38c290ec5;user=root;hostname=kairos-1788;bootid=ad68fe50-cff0-4985-9f1f-6c8003cca723;pid=1421;cwd=/root\# ]3008;start=c7d69856-f9e0-4203-ac5f-b700ce07d4dd;type=command;machineid=178865c166ce45fd95e8dae38c290ec5;user=root;hostname=kairos-1788;bootid=ad68fe50-cff0-4985-9f1f-6c8003cca723;pid=1421;cwd=/root\2026-11-25T16:56:51Z INF Immucore go=go1.27.4 version=v4.2.1-dev.6466+gc3f23def
+[   37.298] 2026-11-25T16:56:51Z INF Booting on active/passive/recovery.
+[   37.298] 2026-11-25T16:56:51Z INF Checking OEM encryption status oem_encrypted=false
+[   37.299] 2026-11-25T16:56:51Z INF OEM is NOT encrypted: OEM mount will run before kcrypt unlock
+[   37.299] 2026-11-25T16:56:51Z INF 1.
+[   37.299]  <init> (background: false) (weak: false) (run: false)
+[   37.299] 2.
+[   37.300]  <create-sentinel> (background: false) (weak: false) (run: false)
+[   37.300]  <lvm-activation> (background: false) (weak: false) (run: false)
+[   37.300]  <mount-state> (background: false) (weak: false) (run: false)
+[   37.301]  <mount-tmpfs> (background: false) (weak: false) (run: false)
+[   37.301] 3.
+[   37.301]  <upgrade-kcrypt> (background: false) (weak: false) (run: false)
+[   37.302]  <discover-state> (background: false) (weak: false) (run: false)
+[   37.302] 4.
+[   37.302]  <mount-root> (background: false) (weak: false) (run: false)
+[   37.302] 5.
+[   37.302]  <mount-oem> (background: false) (weak: false) (run: false)
+[   37.303] 6.
+[   37.303]  <rootfs-hook> (background: false) (weak: false) (run: false)
+[   37.303]  <encrypt-pending> (background: false) (weak: false) (run: false)
+[   37.303] 7.
+[   37.304]  <load-config> (background: false) (weak: false) (run: false)
+[   37.304]  <unlock-all> (background: false) (weak: false) (run: false)
+[   37.304] 8.
+[   37.305]  <custom-mount> (background: false) (weak: false) (run: false)
+[   37.305]  <mount-base-overlay> (background: false) (weak: false) (run: false)
+[   37.305] 9.
+[   37.305]  <overlay-mount> (background: false) (weak: false) (run: false)
+[   37.305] 10.
+[   37.306]  <mount-bind> (background: false) (weak: false) (run: false)
+[   37.306] 11.
+[   37.306]  <quarantine-stale-units> (background: false) (weak: false) (run: false)
+[   37.307]  <write-fstab> (background: false) (weak: false) (run: false)
+[   37.307]  <enable-sysext-confext> (background: false) (weak: false) (run: false)
+[   37.307] 12.
+[   37.308]  <initramfs-hook> (background: false) (weak: false) (run: false)
+[   37.308] 
+[   37.308] 2026-11-25T16:56:51Z INF mount done options=["rw","nosuid","nodev","noexec"] type=tmpfs what=tmpfs where=/tmp
+[   37.309] 2026-11-25T16:56:51Z INF Setting sentinel file to=active_mode
+[   37.310] 2026-11-25T16:56:51Z INF mount done options=["ro"] type=ext4 what=/dev/disk/by-label/COS_STATE where=/sysroot/run/initramfs/cos-state
+[   37.311] 2026-11-25T16:56:51Z WRN Image is not writable, attaching read-only image=/sysroot/run/initramfs/cos-state/cOS/active.img writable="open /sysroot/run/initramfs/cos-state/cOS/active.img: read-only file system"
+[   37.312] 2026-11-25T16:56:51Z INF Skipping fsck: the kernel reports this device as read-only, and fsck would write to it what=/dev/disk/by-label/COS_ACTIVE
+[   37.313] 2026-11-25T16:56:51Z INF mount done options=["ro","suid","dev","exec","async"] type=ext4 what=/dev/disk/by-label/COS_ACTIVE where=/sysroot
+[   37.313] 2026-11-25T16:56:51Z INF mount done options=["rw","suid","dev","exec","async"] type=ext4 what=/dev/vda2 where=/sysroot/oem
+[   37.314] 2026-11-25T16:56:51Z INF Running rootfs stage
+[   37.314] 2026-11-25T16:56:51Z INF Running stage: rootfs.before
+[   37.314] 
+[   37.316] 2026-11-25T16:56:51Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -d /oem/userdata ] && [ ! -d /oem/95_userdata ] && [ ! -f /run/cos/write_protected ]: exit status 1)' stage name: Datasource handling.Move old datasource to new location
+[   37.317] 2026-11-25T16:56:51Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -d /oem/userdata ] && [ -d /oem/95_userdata ] && [ ! -f /run/cos/write_protected ]: exit status 1)' stage name: Datasource handling.Remove old userdata
+[   37.318] 2026-11-25T16:56:51Z INF Processing stage step 'Datasource handling.Pull data from provider'. ( commands: 0, files: 0, ... )
+[   37.319] 2026-11-25T16:56:53Z ERR Error on file /system/oem/00_datasource.yaml on stage Pull data from provider: no metadata/userdata found
+[   37.319] 2026-11-25T16:56:53Z INF Running layout plugin
+[   37.320] 2026-11-25T16:56:53Z INF Processing stage step 'Datasource handling.Sentinel file for userdata'. ( commands: 0, files: 1, ... )
+[   37.320] 2026-11-25T16:56:53Z INF Running layout plugin
+[   37.321] 2026-11-25T16:56:53Z INF Processing stage step 'Default network configuration.Enable systemd-network config files for DHCP'. ( commands: 0, files: 2, ... )
+[   37.322] 2026-11-25T16:56:53Z INF Running layout plugin
+[   37.322] 2026-11-25T16:56:53Z INF Done executing stage 'rootfs.before'
+[   37.322] 
+[   37.322] 2026-11-25T16:56:53Z INF Running stage: rootfs
+[   37.322] 
+[   37.323] 2026-11-25T16:56:53Z INF Processing stage step 'Rootfs Layout Settings.Layout configuration for active/passive mode'. ( commands: 0, files: 0, ... )
+[   37.324] 2026-11-25T16:56:53Z INF Running layout plugin
+[   37.325] 2026-11-25T16:56:53Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -e "/run/cos/recovery_mode" ] || [ -e "/run/cos/autoreset_mode" ]: exit status 1)' stage name: Rootfs Layout Settings.Layout configuration for recovery/autoreset mode
+[   37.327] 2026-11-25T16:56:53Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -e "/run/cos/uki_install_mode" ]: exit status 1)' stage name: Rootfs Layout Settings.Layout configuration for UKI installer
+[   37.328] 2026-11-25T16:56:53Z INF Processing stage step 'Rootfs Layout Settings.Mask the commit service to avoid systemd messing with machine-id'. ( commands: 0, files: 0, ... )
+[   37.328] 2026-11-25T16:56:54Z INF Running layout plugin
+[   37.330] 2026-11-25T16:56:54Z WRN (conditional) Skip 'OnlyIfOs regex (Ubuntu.*|Debian.*) doesn't match os name Hadron Linux dracut-112 (Initramfs)' stage name: Extra binds for specific distros.Extra layout configuration for active/passive mode (Ubuntu/Debian)
+[   37.330] 2026-11-25T16:56:54Z INF Done executing stage 'rootfs'
+[   37.330] 
+[   37.330] 2026-11-25T16:56:54Z INF Running stage: rootfs.after
+[   37.330] 
+[   37.332] 2026-11-25T16:56:54Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -r /run/cos/custom-layout.env ] && [ ! -f "/run/cos/recovery_mode" ] && [ ! -f /run/cos/live_mode ]: exit status 1)' stage name: Rootfs Layout Settings.add custom bind and ephemeral mounts to /run/cos/cos-layout.env
+[   37.333] 2026-11-25T16:56:54Z INF Processing stage step 'Rootfs Layout Settings.Grow persistent'. ( commands: 0, files: 0, ... )
+[   37.333] 2026-11-25T16:56:54Z INF Running layout plugin
+[   37.333] 2026-11-25T16:56:54Z INF Done executing stage 'rootfs.after'
+[   37.334] 
+[   37.334] 2026-11-25T16:56:54Z INF Running stage: rootfs.before
+[   37.334] 
+[   37.334] 2026-11-25T16:56:54Z INF Done executing stage 'rootfs.before'
+[   37.334] 
+[   37.335] 2026-11-25T16:56:54Z INF Running stage: rootfs
+[   37.335] 
+[   37.335] 2026-11-25T16:56:54Z INF Done executing stage 'rootfs'
+[   37.335] 
+[   37.335] 2026-11-25T16:56:54Z INF Running stage: rootfs.after
+[   37.335] 
+[   37.336] 2026-11-25T16:56:54Z INF Done executing stage 'rootfs.after'
+[   37.336] 
+[   37.336] 2026-11-25T16:56:54Z WRN stage completed with errors error="1 error occurred:\n\t* no metadata/userdata found\n\n" stage=rootfs
+[   37.337] 2026-11-25T16:56:54Z INF mount done options=["rw"] type=ext4 what=/dev/vda5 where=/sysroot/usr/local
+[   37.337] 2026-11-25T16:56:56Z INF Running initramfs stage
+[   37.338] 2026-11-25T16:56:56Z INF Running stage: initramfs.before
+[   37.338] 
+[   37.339] 2026-11-25T16:56:56Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -d /oem/userdata ] && [ ! -d /oem/95_userdata ] && [ ! -f /run/cos/write_protected ]: exit status 1)' stage name: Datasource handling.Move old datasource to new location
+[   37.341] 2026-11-25T16:56:56Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -d /oem/userdata ] && [ -d /oem/95_userdata ] && [ ! -f /run/cos/write_protected ]: exit status 1)' stage name: Datasource handling.Remove old userdata
+[   37.342] 2026-11-25T16:56:56Z INF Processing stage step 'Datasource handling.Pull data from provider'. ( commands: 0, files: 0, ... )
+[   37.342] 2026-11-25T16:56:58Z ERR Error on file /system/oem/00_datasource.yaml on stage Pull data from provider: no metadata/userdata found
+[   37.343] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.343] 2026-11-25T16:56:58Z INF Processing stage step 'Datasource handling.3'. ( commands: 0, files: 1, ... )
+[   37.344] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.345] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -f "/proc/device-tree/model" ] && grep -i "Raspberry Pi" "/proc/device-tree/model": exit status 1)' stage name: RPI configs.Set a safe date before user creation for RPI without hardware clocks
+[   37.347] 2026-11-25T16:56:58Z WRN (conditional) Skip 'service manager doesn't match openrc' stage name: /system/oem/29_blacklist.yaml.Blacklist bpfilter on Alpine ( bug: https://github.com/kairos-io/kairos/issues/277 )
+[   37.348] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -f "/proc/device-tree/model" ] && grep -i "Orin NX" "/proc/device-tree/model": exit status 1)' stage name: L4T RootFS Prep for Orin NX.Apply NVIDIA binaries
+[   37.349] 2026-11-25T16:56:58Z INF Done executing stage 'initramfs.before'
+[   37.349] 
+[   37.349] 2026-11-25T16:56:58Z INF Running stage: initramfs
+[   37.349] 
+[   37.350] 2026-11-25T16:56:58Z INF Processing stage step 'Rootfs Layout Settings.Create journalctl /var/log/journal dir'. ( commands: 0, files: 0, ... )
+[   37.350] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.351] 2026-11-25T16:56:58Z INF Processing stage step 'Rootfs Layout Settings.Restore /etc/machine-id for systemd systems'. ( commands: 1, files: 0, ... )
+[   37.352] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.352] 2026-11-25T16:56:58Z INF Processing stage step 'Rootfs Layout Settings.Ensure /etc/machine-id for systemd systems'. ( commands: 1, files: 0, ... )
+[   37.353] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.354] 2026-11-25T16:56:58Z WRN (conditional) Skip 'service manager doesn't match openrc' stage name: Rootfs Layout Settings.Ensure /etc/machine-id for openrc systems
+[   37.356] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -x /usr/bin/update-ca-trust ] && [ -n "$(ls -A /etc/pki/ca-trust/source/anchors 2>/dev/null)" ]: exit status 1)' stage name: Re-extract the CA trust store from the persisted anchors.Re-extract the Red Hat CA trust store
+[   37.358] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -x /usr/sbin/update-ca-certificates ] && [ -n "$(ls -A /etc/pki/trust/anchors 2>/dev/null)" ]: exit status 1)' stage name: Re-extract the CA trust store from the persisted anchors.Re-extract the SUSE CA trust store
+[   37.359] 2026-11-25T16:56:58Z INF Processing stage step 'Restrict /etc/ssl/private.Restrict /etc/ssl/private to root'. ( commands: 1, files: 0, ... )
+[   37.359] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.359] 2026-11-25T16:56:58Z INF Processing stage step 'Start agent.0'. ( commands: 1, files: 1, ... )
+[   37.360] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.361] 2026-11-25T16:56:58Z INF Processing stage step 'Notify Kairos Plugins of Elemental Events.0'. ( commands: 1, files: 0, ... )
+[   37.361] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.362] 2026-11-25T16:56:58Z INF Processing stage step 'Default network configuration.Enable systemd-network config files for DHCP'. ( commands: 1, files: 2, ... )
+[   37.362] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.363] 2026-11-25T16:56:58Z WRN (conditional) Skip 'OnlyIfOs regex ([Oo]penSUSE.*|SUSE.*) doesn't match os name Hadron Linux dracut-112 (Initramfs)' stage name: Default network configuration.Disable NetworkManager and wicked
+[   37.364] 2026-11-25T16:56:58Z INF Processing stage step 'Default network configuration.Link /etc/resolv.conf to systemd resolv.conf'. ( commands: 1, files: 0, ... )
+[   37.365] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.366] 2026-11-25T16:56:58Z WRN (conditional) Skip 'OnlyIfOs regex (Fedora.*|CentOS.*|Rocky.*|AlmaLinux.*|Oracle.*Linux.*|Red.*Hat.*) doesn't match os name Hadron Linux dracut-112 (Initramfs)' stage name: Default network configuration.Enable systemd-networkd on the Red Hat family if available
+[   37.368] 2026-11-25T16:56:58Z WRN (conditional) Skip 'OnlyIfOs regex (Fedora.*|CentOS.*|Rocky.*|AlmaLinux.*|Oracle.*Linux.*|Red.*Hat.*) doesn't match os name Hadron Linux dracut-112 (Initramfs)' stage name: Default network configuration.Enable systemd-resolved on the Red Hat family if available
+[   37.370] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -e "/run/cos/uki_boot_mode" ]: exit status 1)' stage name: Enable EFI assessment.Override systemd-boot services to enable RW on /efi partition
+[   37.371] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -e "/run/cos/uki_boot_mode" ]: exit status 1)' stage name: Enable EFI assessment.Enable boot assessment
+[   37.372] 2026-11-25T16:56:58Z INF Processing stage step 'Default config.Generate host keys'. ( commands: 2, files: 0, ... )
+[   37.372] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.373] 2026-11-25T16:56:58Z WRN (conditional) Skip 'service manager doesn't match openrc' stage name: Create openrc services.Create OpenRC services
+[   37.374] 2026-11-25T16:56:58Z WRN (conditional) Skip 'service manager doesn't match openrc' stage name: Create openrc services.Enable OpenRC services
+[   37.375] 2026-11-25T16:56:58Z WRN (conditional) Skip 'service manager doesn't match openrc' stage name: Create openrc services.Create the OpenRC kairos-agent service
+[   37.376] 2026-11-25T16:56:58Z WRN (conditional) Skip 'service manager doesn't match openrc' stage name: Create openrc services.Enable the OpenRC kairos-agent service
+[   37.376] 2026-11-25T16:56:58Z INF Processing stage step 'Default config.Default systemd config'. ( commands: 1, files: 0, ... )
+[   37.377] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.378] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -f /usr/lib/systemd/system/logrotate.timer ]: exit status 1)' stage name: Default config.Enable logrotate timer where the unit exists
+[   37.379] 2026-11-25T16:56:58Z INF Processing stage step 'Default config.Create systemd services'. ( commands: 0, files: 5, ... )
+[   37.379] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.381] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -e "/run/cos/uki_boot_mode" ]: exit status 1)' stage name: Default config.Override systemd-tpm2-setup/systemd-pcrproduct with temporary RW under /efi
+[   37.381] 2026-11-25T16:56:58Z INF Processing stage step 'Default config.Enable systemd services'. ( commands: 4, files: 0, ... )
+[   37.382] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.382] 2026-11-25T16:56:58Z INF Processing stage step 'Default user, permissions and serial login.Setup groups.0'. ( commands: 0, files: 0, ... )
+[   37.383] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.384] 2026-11-25T16:56:58Z INF Processing stage step 'Default user, permissions and serial login.Setup users.1'. ( commands: 0, files: 0, ... )
+[   37.384] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.386] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -e /run/cos/live_mode ] || [ -e /run/cos/uki_install_mode ]: exit status 1)' stage name: Default user, permissions and serial login.Set user password if running in live or uki.2
+[   37.386] 2026-11-25T16:56:58Z INF Processing stage step 'Default user, permissions and serial login.Setup sudo.3'. ( commands: 1, files: 1, ... )
+[   37.387] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.388] 2026-11-25T16:56:58Z INF Processing stage step 'Default user, permissions and serial login.Ensure runtime permission.4'. ( commands: 2, files: 0, ... )
+[   37.388] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.389] 2026-11-25T16:56:58Z INF Processing stage step 'Default user, permissions and serial login.Ensure runtime permission.5'. ( commands: 2, files: 0, ... )
+[   37.389] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.390] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -f "/sys/firmware/devicetree/base/model" ] && grep -i jetson "/sys/firmware/devicetree/base/model"
+[   37.391] : exit status 1)' stage name: Nvidia jetson specific files.Create files
+[   37.392] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run ([ -f /run/cos/live_mode ] || [ -f /run/cos/uki_install_mode ])
+[   37.392] : exit status 1)' stage name: Root autologin.0
+[   37.393] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -f /run/cos/live_mode ]
+[   37.393] : exit status 1)' stage name: Root autologin.Autologin on livecd for OpenRC
+[   37.395] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ ! -f "/run/cos/recovery_mode" ] && [ ! -f "/run/cos/autoreset_mode" ] && grep -q "selinux=1" /proc/cmdline: exit status 1)' stage name: SELinux.SELinux relabel unit
+[   37.397] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ ! -f "/run/cos/recovery_mode" ] && [ ! -f "/run/cos/autoreset_mode" ] && grep -q "selinux=1" /proc/cmdline: exit status 1)' stage name: SELinux.file_contexts.subs from state bind mounts
+[   37.397] 2026-11-25T16:56:58Z INF Processing stage step 'SELinux.Align /etc/selinux/config with active SELinux state'. ( commands: 1, files: 1, ... )
+[   37.398] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.399] 2026-11-25T16:56:58Z INF Processing stage step '/system/oem/31_hosts.yaml.Ensure persistent /etc/ directory'. ( commands: 0, files: 0, ... )
+[   37.399] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.401] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ ! -f "/run/cos/recovery_mode" ] && [ ! -e "/usr/local/etc/hosts" ]: exit status 1)' stage name: /system/oem/31_hosts.yaml.Seed the persistent hosts file
+[   37.401] 2026-11-25T16:56:58Z INF Processing stage step '/system/oem/31_hosts.yaml.Ensure persistent hosts file'. ( commands: 2, files: 0, ... )
+[   37.402] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.402] 2026-11-25T16:56:58Z INF Processing stage step '/system/oem/31_hosts.yaml.Restore the saved hostname'. ( commands: 1, files: 0, ... )
+[   37.403] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.404] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ ! -f "/run/cos/recovery_mode" ] && [ ! -s "/usr/local/etc/hostname" ]: exit status 1)' stage name: /system/oem/31_hosts.yaml.Seed a generated hostname
+[   37.405] 2026-11-25T16:56:58Z INF Processing stage step '/system/oem/31_hosts.yaml.Install the hostname save script'. ( commands: 0, files: 1, ... )
+[   37.405] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.406] 2026-11-25T16:56:58Z INF Processing stage step '/system/oem/31_hosts.yaml.Save the hostname on the persistent partition'. ( commands: 1, files: 0, ... )
+[   37.407] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.408] 2026-11-25T16:56:58Z INF Processing stage step '/system/oem/31_hosts.yaml.Create the hostname persistence units'. ( commands: 2, files: 2, ... )
+[   37.408] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.409] 2026-11-25T16:56:58Z WRN (conditional) Skip 'service manager doesn't match openrc' stage name: /system/oem/31_hosts.yaml.Create the OpenRC hostname persistence service
+[   37.410] 2026-11-25T16:56:58Z INF Processing stage step 'Profile extensions.Set KUBECONFIG to access k9s and kubectl'. ( commands: 0, files: 1, ... )
+[   37.410] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.411] 2026-11-25T16:56:58Z INF Processing stage step '/system/oem/34_cis_faillock_reset.yaml.0'. ( commands: 0, files: 0, ... )
+[   37.411] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.412] 2026-11-25T16:56:58Z INF Processing stage step '/system/oem/35_cis_boot.yaml.0'. ( commands: 0, files: 0, ... )
+[   37.412] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.413] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run grep -q "kairos.remote_recovery_mode" /proc/cmdline
+[   37.414] : exit status 1)' stage name: Start recovery on tty1.Starts kairos-recovery and generate a temporary pass
+[   37.415] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run grep -q "kairos.remote_recovery_mode" /proc/cmdline: exit status 1)' stage name: Start recovery on tty1.Starts kairos-recovery for openRC based systems
+[   37.416] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run (grep -q "kairos.reset" /proc/cmdline || [ -f /run/cos/autoreset_mode ])
+[   37.417] : exit status 1)' stage name: Start reset on tty1.Starts kairos-reset for systemd based systems
+[   37.418] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run grep -q "kairos.reset" /proc/cmdline: exit status 1)' stage name: Start reset on tty1.Starts kairos-reset for openRC-based systems
+[   37.419] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -f /run/cos/install_mode ]
+[   37.419] : exit status 1)' stage name: Start installer on tty1..0
+[   37.420] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -f /run/cos/install_mode ]
+[   37.420] : exit status 1)' stage name: Start installer on tty1..1
+[   37.421] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -f /run/cos/install_mode_interactive ]
+[   37.421] : exit status 1)' stage name: Start installer on tty1..2
+[   37.422] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -f /run/cos/install_mode_interactive ]
+[   37.423] : exit status 1)' stage name: Start installer on tty1..3
+[   37.424] 2026-11-25T16:56:58Z WRN (conditional) Skip 'Skipping stage (if statement error: failed to run [ -e "/run/cos/uki_boot_mode" ] && [ ! -e "/run/cos/recovery_mode" ] && [ ! -e "/run/cos/autoreset_mode" ]: exit status 1)' stage name: sysext and confext configuration.systemd-sysext/confext uki config
+[   37.425] 2026-11-25T16:56:58Z INF Processing stage step 'sysext and confext configuration.systemd-sysext/confext config'. ( commands: 0, files: 2, ... )
+[   37.426] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.427] 2026-11-25T16:56:58Z INF Processing stage step 'sysext and confext configuration.systemd-sysext set hierarchy system-wide'. ( commands: 0, files: 1, ... )
+[   37.427] 2026-11-25T16:56:58Z INF Running layout plugin
+[   37.428] 2026-11-25T16:56:58Z INF Processing stage step 'sysext and confext configuration.systemd-sysext initramfs settings'. ( commands: 0, files: 0, ... )
+[   37.428] 2026-11-25T16:56:59Z INF Running layout plugin
+[   37.429] 2026-11-25T16:56:59Z INF Processing stage step 'sysext and confext configuration.systemd-confext initramfs settings'. ( commands: 0, files: 0, ... )
+[   37.429] 2026-11-25T16:56:59Z INF Running layout plugin
+[   37.430] 2026-11-25T16:56:59Z INF Processing stage step '/oem/90_custom.yaml.0'. ( commands: 0, files: 0, ... )
+[   37.430] 2026-11-25T16:56:59Z INF Running layout plugin
+[   37.431] 2026-11-25T16:56:59Z INF Done executing stage 'initramfs'
+[   37.431] 
+[   37.431] 2026-11-25T16:56:59Z INF Running stage: initramfs.after
+[   37.431] 
+[   37.432] 2026-11-25T16:56:59Z WRN (conditional) Skip 'OnlyIfOs regex (Ubuntu.*|Debian.*) doesn't match os name Hadron Linux dracut-112 (Initramfs)' stage name: Fonts fix for ubuntu QR code display.setup console fonts
+[   37.433] 2026-11-25T16:56:59Z WRN (conditional) Skip 'service manager doesn't match openrc' stage name: Default user, permissions and serial login.Enable serial login for alpine
+[   37.434] 2026-11-25T16:56:59Z INF Done executing stage 'initramfs.after'
+[   37.434] 
+[   37.434] 2026-11-25T16:56:59Z INF Running stage: initramfs.before
+[   37.434] 
+[   37.434] 2026-11-25T16:56:59Z INF Done executing stage 'initramfs.before'
+[   37.434] 
+[   37.435] 2026-11-25T16:56:59Z INF Running stage: initramfs
+[   37.435] 
+[   37.435] 2026-11-25T16:56:59Z INF Done executing stage 'initramfs'
+[   37.435] 
+[   37.435] 2026-11-25T16:56:59Z INF Running stage: initramfs.after
+[   37.435] 
+[   37.436] 2026-11-25T16:56:59Z INF Done executing stage 'initramfs.after'
+[   37.436] 
+[   37.437] 2026-11-25T16:56:59Z WRN stage completed with errors error="1 error occurred:\n\t* no metadata/userdata found\n\n" stage=initramfs
+[   37.437] 2026-11-25T16:56:59Z INF 1.
+[   37.437]  <init> (background: false) (weak: false) (run: false)
+[   37.437] 2.
+[   37.438]  <mount-tmpfs> (background: false) (weak: false) (run: true)
+[   37.438]  <mount-state> (background: false) (weak: false) (run: true)
+[   37.438]  <lvm-activation> (background: false) (weak: false) (run: true)
+[   37.439]  <create-sentinel> (background: false) (weak: false) (run: true)
+[   37.439] 3.
+[   37.439]  <discover-state> (background: false) (weak: false) (run: true)
+[   37.439]  <upgrade-kcrypt> (background: false) (weak: false) (run: true)
+[   37.440] 4.
+[   37.440]  <mount-root> (background: false) (weak: false) (run: true)
+[   37.440] 5.
+[   37.440]  <mount-oem> (background: false) (weak: false) (run: true)
+[   37.440] 6.
+[   37.441]  <rootfs-hook> (background: false) (weak: false) (run: true)
+[   37.441]  <encrypt-pending> (background: false) (weak: false) (run: true)
+[   37.441] 7.
+[   37.441]  <unlock-all> (background: false) (weak: false) (run: true)
+[   37.442]  <load-config> (background: false) (weak: false) (run: true)
+[   37.442] 8.
+[   37.442]  <custom-mount> (background: false) (weak: false) (run: true)
+[   37.443]  <mount-base-overlay> (background: false) (weak: false) (run: true)
+[   37.443] 9.
+[   37.443]  <overlay-mount> (background: false) (weak: false) (run: true)
+[   37.443] 10.
+[   37.443]  <mount-bind> (background: false) (weak: false) (run: true)
+[   37.444] 11.
+[   37.444]  <enable-sysext-confext> (background: false) (weak: false) (run: true)
+[   37.444]  <write-fstab> (background: false) (weak: false) (run: true)
+[   37.445]  <quarantine-stale-units> (background: false) (weak: false) (run: true)
+[   37.445] 12.
+[   37.445]  <initramfs-hook> (background: false) (weak: false) (run: true)
+[   37.445] 
+[   37.446] 2026-11-25T16:56:59Z INF Boot timeline (slowest first):
+[   37.446] 1. <initramfs-hook> 2.553s (ok)
+[   37.446] 2. <mount-bind> 2.337s (ok)
+[   37.446] 3. <rootfs-hook> 2.236s (ok)
+[   37.446] 4. <lvm-activation> 237ms (ok)
+[   37.446] 5. <mount-oem> 108ms (ok)
+[   37.447] 6. <discover-state> 106ms (ok)
+[   37.447] 7. <mount-state> 77ms (ok)
+[   37.447] 8. <custom-mount> 56ms (ok)
+[   37.447] 9. <enable-sysext-confext> 23ms (ok)
+[   37.447] 10. <mount-base-overlay> 11ms (ok)
+[   37.448] 11. <quarantine-stale-units> 10ms (ok)
+[   37.448] 12. <create-sentinel> 10ms (ok)
+[   37.448] 13. <overlay-mount> 9ms (ok)
+[   37.448] 14. <mount-root> 9ms (ok)
+[   37.448] 15. <encrypt-pending> 4ms (ok)
+[   37.449] 16. <unlock-all> 2ms (ok)
+[   37.449] 17. <write-fstab> 1ms (ok)
+[   37.449] 18. <upgrade-kcrypt> 1ms (ok)
+[   37.449] 19. <mount-tmpfs> 0s (ok)
+[   37.449] 20. <load-config> 0s (ok)
+[   37.449] 
+[   37.450] 2026-11-25T16:56:59Z INF Boot timeline step duration=2553.137933 rank=1 step=initramfs-hook
+[   37.450] 2026-11-25T16:56:59Z INF Boot timeline step duration=2337.034331 rank=2 step=mount-bind
+[   37.451] 2026-11-25T16:56:59Z INF Boot timeline step duration=2236.293226 rank=3 step=rootfs-hook
+[   37.451] 2026-11-25T16:56:59Z INF Boot timeline step duration=237.459504 rank=4 step=lvm-activation
+[   37.452] 2026-11-25T16:56:59Z INF Boot timeline step duration=108.283473 rank=5 step=mount-oem
+[   37.453] 2026-11-25T16:56:59Z INF Boot timeline step duration=106.06917 rank=6 step=discover-state
+[   37.453] 2026-11-25T16:56:59Z INF Boot timeline step duration=77.162713 rank=7 step=mount-state
+[   37.454] 2026-11-25T16:56:59Z INF Boot timeline step duration=55.516688 rank=8 step=custom-mount
+[   37.454] 2026-11-25T16:56:59Z INF Boot timeline step duration=22.655742 rank=9 step=enable-sysext-confext
+[   37.455] 2026-11-25T16:56:59Z INF Boot timeline step duration=10.6521 rank=10 step=mount-base-overlay
+[   37.455] 2026-11-25T16:56:59Z INF Boot timeline step duration=10.440971 rank=11 step=quarantine-stale-units
+[   37.456] 2026-11-25T16:56:59Z INF Boot timeline step duration=9.968656 rank=12 step=create-sentinel
+[   37.456] 2026-11-25T16:56:59Z INF Boot timeline step duration=9.49078 rank=13 step=overlay-mount
+[   37.457] 2026-11-25T16:56:59Z INF Boot timeline step duration=8.653651 rank=14 step=mount-root
+[   37.458] 2026-11-25T16:56:59Z INF Boot timeline step duration=3.878716 rank=15 step=encrypt-pending
+[   37.458] 2026-11-25T16:56:59Z INF Boot timeline step duration=1.818991 rank=16 step=unlock-all
+[   37.459] 2026-11-25T16:56:59Z INF Boot timeline step duration=1.130365 rank=17 step=write-fstab
+[   37.459] 2026-11-25T16:56:59Z INF Boot timeline step duration=0.841279 rank=18 step=upgrade-kcrypt
+[   37.460] 2026-11-25T16:56:59Z INF Boot timeline step duration=0.234176 rank=19 step=mount-tmpfs
+[   37.460] 2026-11-25T16:56:59Z INF Boot timeline step duration=0.12327 rank=20 step=load-config
+[   37.461] 2026-11-25T16:56:59Z INF Wrote boot timeline trace path=/run/immucore/boot-timeline.json
+[   37.461] __DONE_M1noneflipped3_0
+[   37.536] ]3008;end=c7d69856-f9e0-4203-ac5f-b700ce07d4dd;exit=success\]3008;start=006d72f0-3b78-48eb-8310-ff46e93a550d;type=shell;machineid=178865c166ce45fd95e8dae38c290ec5;user=root;hostname=kairos-1788;bootid=ad68fe50-cff0-4985-9f1f-6c8003cca723;pid=1421;cwd=/root\# ]3008;start=ebb13a0e-65b6-4242-8294-60fabee3be7c;type=command;machineid=178865c166ce45fd95e8dae38c290ec5;user=root;hostname=kairos-1788;bootid=ad68fe50-cff0-4985-9f1f-6c8003cca723;pid=1421;cwd=/root\[90m2026-11-25T16:57:13Z[0m [32mINF[0m [1mKairos Agent[0m [36mversion=[0mv4.2.1-dev.6466+gc3f23def
+[   37.537] 2026-11-25T16:57:13Z [32mINF[0m [1mKairos System[0m [36mversion=[0mv4.2.0-6466-gc3f23def
+[   37.543] [90m2026-11-25T16:57:13Z[0m [32mINF[0m [1mBoot Mode[0m [36mboot_mode=[0mactive_boot
+[   37.544] [90m2026-11-25T16:57:13Z[0m [32mINF[0m [1mBoot in uki mode[0m [36mresult=[0mfalse
+[   37.891] /run/initramfs/cos-state/cOS/active.img
+[   37.892]   result:   MISMATCH, the image is not what was written
+[   37.892]   expected: fb868208d29bbd110048e09557719803b62807d82977543841942d3e3b443b85
+[   37.893]   actual:   9a2b91dad93472ec4eccf274745df47f157860fd013725b0d65f2e9df7102eec
+[   38.203] /run/initramfs/cos-state/cOS/passive.img
+[   38.203]   result:   OK
+[   38.204]   expected: bd5c78e99a6587b5c62798956a7914eee776fb174fbbc1bcbc2e26fea05f2353
+[   38.204]   actual:   bd5c78e99a6587b5c62798956a7914eee776fb174fbbc1bcbc2e26fea05f2353
+[   38.204] 
+[   38.204] 2 image(s) checked, 1 failed
+[   38.205] 1 of 2 OS images failed the checksum check
+[   38.205] rc=1
+[   38.205] __DONE_M1noneflipped4_0
+[   38.268] ]3008;end=ebb13a0e-65b6-4242-8294-60fabee3be7c;exit=success\]3008;start=006d72f0-3b78-48eb-8310-ff46e93a550d;type=shell;machineid=178865c166ce45fd95e8dae38c290ec5;user=root;hostname=kairos-1788;bootid=ad68fe50-cff0-4985-9f1f-6c8003cca723;pid=1421;cwd=/root\# ]3008;start=96f11bb1-80b9-4a05-8b1d-31aa42652c27;type=command;machineid=178865c166ce45fd95e8dae38c290ec5;user=root;hostname=kairos-1788;bootid=ad68fe50-cff0-4985-9f1f-6c8003cca723;pid=1421;cwd=/root\uuid: 178865c166ce45fd95e8dae38c290ec5-kairos-1788
+[   38.268] persistent:
+[   38.268]     mounted: true
+[   38.268]     name: /dev/vda5
+[   38.268]     label: persistent
+[   38.268]     filesystemlabel: COS_PERSISTENT
+[   38.268]     mount_point: /usr/local
+[   38.269]     size_bytes: 17548951040
+[   38.269]     type: ext4
+[   38.269]     read_only: false
+[   38.269]     found: true
+[   38.269]     uuid: 85c39d0f-4867-5227-8334-f5eec606d9eb
+[   38.269] recovery:
+[   38.270]     mounted: false
+[   38.270]     name: /dev/vda3
+[   38.270]     label: recovery
+[   38.270]     filesystemlabel: COS_RECOVERY
+[   38.270]     mount_point: ""
+[   38.270]     size_bytes: 1222639616
+[   38.270]     type: ext4
+[   38.272] total 850600
+[   38.272] drwxr-x--- 2 root root      4096 Nov 25 16:46 .
+[   38.273] drwxr-xr-x 5 root root      4096 Nov 25 16:56 ..
+[   38.273] -rw-r----- 1 root root 506462208 Nov 25 16:46 active.img
+[   38.273] -rw-r----- 1 root root       123 Nov 25 16:46 active.img.sha256
+[   38.274] -rw-r----- 1 root root 506462208 Nov 25 16:46 passive.img
+[   38.274] -rw-r----- 1 root root       124 Nov 25 16:46 passive.img.sha256
+[   38.274] __DONE_M1noneflipped5_0

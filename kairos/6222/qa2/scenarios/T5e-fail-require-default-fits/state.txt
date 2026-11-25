@@ -1,0 +1,28 @@
+uuid: 0c62044d2a4b4254b040a51745373a93-kairos-0c62
+persistent:
+    mounted: true
+    name: /dev/vda5
+    label: persistent
+    filesystemlabel: COS_PERSISTENT
+    mount_point: /usr/local
+    size_bytes: 11491327488
+    type: ext4
+    read_only: false
+    found: true
+    uuid: 85c39d0f-4867-5227-8334-f5eec606d9eb
+recovery:
+    mounted: false
+    name: /dev/vda3
+    label: recovery
+    filesystemlabel: COS_RECOVERY
+    mount_point: ""
+    size_bytes: 8799649792
+    type: ext4
+total 7945540
+drwxr-x--- 2 root root       4096 Nov 25 17:13 .
+drwxr-xr-x 5 root root       4096 Nov 25 17:13 ..
+-rw-r----- 1 root root 4294967296 Nov 25 16:49 active.img
+-rw-r----- 1 root root        124 Nov 25 16:49 active.img.sha256
+-rw-r----- 1 root root         27 Nov 25 17:13 image-checksum.conf
+-rw-r----- 1 root root 4294967296 Nov 25 16:50 passive.img
+-rw-r----- 1 root root        125 Nov 25 16:50 passive.img.sha256

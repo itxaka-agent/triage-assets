@@ -1,0 +1,4 @@
+T5-fail-require-t5-conf|d4|d2-hdd100-seq|verify: fail\nrequire: true\nverify-timeout: 5\n|-|-|-
+M4-fail-flipped-cmdline|d0|-|-|image-checksum.verify=fail|FLIP|-
+P1-cmdline-fail-beats-conf-none|d0|-|verify: none\n|image-checksum.verify=fail|FLIP|-
+Q4-fail-stale-require|d0|-|verify: fail\nrequire: true\n|-|touch /run/initramfs/cos-state/cOS/active.img|-

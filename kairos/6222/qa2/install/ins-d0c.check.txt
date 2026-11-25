@@ -1,0 +1,44 @@
+kairos v4.2.1-dev.6466+gc3f23def
+rc=0
+    "image-checksum": map[string]interface {}{
+    "image-checksum": map[string]interface {}{
+2026-11-25T16:48:07Z DBG sha256 of /run/cos/state/cOS/active.img computed in 296ms
+2026-11-25T16:48:07Z INF Recorded sha256 of /run/cos/state/cOS/active.img: 35af745b0dd3df8083f24847628b287cb9e69191cba5a6fa6bb0f1a2bdc50878
+2026-11-25T16:48:08Z DBG sha256 of /run/cos/recovery/cOS/recovery.img computed in 256ms
+2026-11-25T16:48:08Z INF Recorded sha256 of /run/cos/recovery/cOS/recovery.img: 6a0e4b70863168a720ae3970432cc3098ef77589df8b051a6a56ca1e53f8cfb4
+2026-11-25T16:48:08Z DBG sha256 of /run/cos/state/cOS/passive.img computed in 254ms
+2026-11-25T16:48:08Z INF Recorded sha256 of /run/cos/state/cOS/passive.img: bb3c588d7cb60e88c0f7d3b1172ed3cda313b7465fe69f495877e5e149651c91
+/run/rc/cOS:
+total 494612
+drwxr-x--- 2 root root      4096 Nov 25 16:48 .
+drwxr-xr-x 4 root root      4096 Nov 25 16:48 ..
+-rw-r----- 1 root root        46 Nov 25 16:48 image-checksum.conf
+-rw-r----- 1 root root 506462208 Nov 25 16:48 recovery.img
+-rw-r----- 1 root root       125 Nov 25 16:48 recovery.img.sha256
+
+/run/st/cOS:
+total 850620
+drwxr-x--- 2 root root      4096 Nov 25 16:48 .
+drwxr-xr-x 5 root root      4096 Nov 25 16:48 ..
+-rw-r----- 1 root root 506462208 Nov 25 16:48 active.img
+-rw-r----- 1 root root       123 Nov 25 16:48 active.img.sha256
+-rw-r----- 1 root root        46 Nov 25 16:48 image-checksum.conf
+-rw-r----- 1 root root 506462208 Nov 25 16:48 passive.img
+-rw-r----- 1 root root       124 Nov 25 16:48 passive.img.sha256
+== /run/st/cOS/image-checksum.conf
+verify: fail
+require: true
+verify-timeout: 45
+== /run/rc/cOS/image-checksum.conf
+verify: fail
+require: true
+verify-timeout: 45
+35af745b0dd3df8083f24847628b287cb9e69191cba5a6fa6bb0f1a2bdc50878  active.img
+bb3c588d7cb60e88c0f7d3b1172ed3cda313b7465fe69f495877e5e149651c91  passive.img
+35af745b0dd3df8083f24847628b287cb9e69191cba5a6fa6bb0f1a2bdc50878  active.img
+# size=506462208 mtime_ns=1795625287497289870
+bb3c588d7cb60e88c0f7d3b1172ed3cda313b7465fe69f495877e5e149651c91  passive.img
+# size=506462208 mtime_ns=1795625288483289870
+6a0e4b70863168a720ae3970432cc3098ef77589df8b051a6a56ca1e53f8cfb4  recovery.img
+6a0e4b70863168a720ae3970432cc3098ef77589df8b051a6a56ca1e53f8cfb4  recovery.img
+# size=506462208 mtime_ns=1795625288025289870

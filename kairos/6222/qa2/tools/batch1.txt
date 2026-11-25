@@ -1,0 +1,15 @@
+R1-default|d0|-|-|-|-|-
+R2-warn-good|d0|-|verify: warn\n|-|-|cat /run/initramfs/cos-state/cOS/image-checksum.conf; kairos-agent verify-images; echo rc=$?
+R3-fail-good|d0|-|verify: fail\n|-|-|-
+M1-none-flipped|d0|-|-|-|FLIP|kairos-agent verify-images; echo rc=$?
+M2-warn-flipped|d0|-|verify: warn\n|-|FLIP|kairos-agent verify-images; echo rc=$?
+M3-fail-flipped-conf|d0|-|verify: fail\n|-|FLIP|-
+M4-fail-flipped-cmdline|d0|-|-|image-checksum.verify=fail|FLIP|-
+M5-warn-flipped-cmdline|d0|-|-|image-checksum.verify=warn|FLIP|-
+P1-cmdline-fail-beats-conf-none|d0|-|verify: none\n|image-checksum.verify=fail|FLIP|-
+P2-cmdline-none-beats-conf-fail|d0|-|verify: fail\n|image-checksum.verify=none|FLIP|-
+Q1-fail-missing-norequire|d0|-|verify: fail\n|-|rm /run/initramfs/cos-state/cOS/active.img.sha256|-
+Q2-fail-missing-require|d0|-|verify: fail\nrequire: true\n|-|rm /run/initramfs/cos-state/cOS/active.img.sha256|-
+Q3-fail-stale-norequire|d0|-|verify: fail\n|-|touch /run/initramfs/cos-state/cOS/active.img|-
+Q4-fail-stale-require|d0|-|verify: fail\nrequire: true\n|-|touch /run/initramfs/cos-state/cOS/active.img|-
+Q5-warn-missing-require-cmdline|d0|-|-|image-checksum.verify=warn image-checksum.require=true|rm /run/initramfs/cos-state/cOS/active.img.sha256|kairos-agent verify-images; echo rc=$?

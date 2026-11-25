@@ -1,0 +1,57 @@
+R1-default | booted login 34.1 up 27.41 post_rc None reboots 0 oot False
+Q3-fail-stale-norequire | booted login 30.0 up 24.50 post_rc None reboots 0 oot False
+     2026-11-25T16:50:49Z WRN Image changed since its checksum was recorded (replaced by an agent that does not update checksums?), checksum ignored expected=fb868208d29bbd110048e09557719803b62807d82977543841942d3e3b443b85 image=/sysroot/run/initramfs/cos-state/cOS/active.img
+R2-warn-good | booted login 29.1 up 23.69 post_rc 0 reboots 0 oot False
+     2026-11-25T16:51:28Z INF Image checksum verified image=/sysroot/run/initramfs/cos-state/cOS/active.img sha256=fb868208d29bbd110048e09557719803b62807d82977543841942d3e3b443b85 took=368ms
+M5-warn-flipped-cmdline | booted login 31.1 up 25.04 post_rc None reboots 0 oot False
+     2026-11-25T16:56:51Z ERR OS image checksum check failed action=warn actual=9a2b91dad93472ec4eccf274745df47f157860fd013725b0d65f2e9df7102eec expected=fb868208d29bbd110048e09557719803b62807d82977543841942d3e3b443b85 image=/sysroot/run/initramfs/cos-state/cOS/active.img problem="checksum mismatch: the image is not what was written"
+R3-fail-good | booted login 29.1 up 23.84 post_rc None reboots 0 oot False
+     2026-11-25T16:52:45Z INF Image checksum verified image=/sysroot/run/initramfs/cos-state/cOS/active.img sha256=fb868208d29bbd110048e09557719803b62807d82977543841942d3e3b443b85 took=362ms
+Q4-fail-stale-require | FAILURE SCREEN at 18.0s login None up None post_rc None reboots 0 oot False
+P1-cmdline-fail-beats-conf-none | FAILURE SCREEN at 17.0s login None up None post_rc None reboots 0 oot False
+Q5-warn-missing-require-cmdline | booted login 31.1 up 25.68 post_rc 0 reboots 0 oot False
+     2026-11-25T16:54:30Z ERR OS image checksum check failed action=warn actual= expected= image=/sysroot/run/initramfs/cos-state/cOS/active.img problem="no checksum recorded for this image"
+T0-unthrottled-warn-default | booted login 33.1 up 27.31 post_rc 0 reboots 0 oot False
+     2026-11-25T16:54:42Z INF Image checksum verified image=/sysroot/run/initramfs/cos-state/cOS/active.img sha256=815a1742f6fb57754bd13bad0a1576fada27589f941b0c3397a90cafced92742 took=2.742s
+M1-none-flipped | booted login 31.1 up 25.08 post_rc 0 reboots 0 oot False
+Q1-fail-missing-norequire | booted login 31.1 up 25.06 post_rc None reboots 0 oot False
+     2026-11-25T16:56:50Z WRN No checksum recorded for the image, not verifying it (it predates checksums, or image-checksum.create was off when it was written) image=/sysroot/run/initramfs/cos-state/cOS/active.img
+T1-slow15-warn-default | booted login 106.1 up 96.38 post_rc None reboots 0 oot False
+     2026-11-25T16:57:11Z WRN Image checksum check skipped: hashing ran out of its time budget (disk too slow for the image size), the image was not verified. Raise image-checksum.verify-timeout (and rd.retry) or set it to 0 for no limit bytes_hashed=932184064 image=/sysroot/run/initramfs/cos-state/cOS/active.img timeout_source=default took=1m0.103s verify_timeout=1m0s
+M2-warn-flipped | booted login 31.1 up 25.24 post_rc 0 reboots 0 oot False
+     2026-11-25T16:58:11Z ERR OS image checksum check failed action=warn actual=9a2b91dad93472ec4eccf274745df47f157860fd013725b0d65f2e9df7102eec expected=fb868208d29bbd110048e09557719803b62807d82977543841942d3e3b443b85 image=/sysroot/run/initramfs/cos-state/cOS/active.img problem="checksum mismatch: the image is not what was written"
+Q2-fail-missing-require | FAILURE SCREEN at 17.1s login None up None post_rc None reboots 0 oot False
+T3e-d2-default-verified | booted login 68.1 up 62.42 post_rc None reboots 0 oot False
+     2026-11-25T16:59:27Z INF Image checksum verified image=/sysroot/run/initramfs/cos-state/cOS/active.img sha256=815a1742f6fb57754bd13bad0a1576fada27589f941b0c3397a90cafced92742 took=38.426s
+T1b-slow15-fail-default | booted login 107.1 up 97.29 post_rc None reboots 0 oot False
+     2026-11-25T16:59:47Z WRN Image checksum check skipped: hashing ran out of its time budget (disk too slow for the image size), the image was not verified. Raise image-checksum.verify-timeout (and rd.retry) or set it to 0 for no limit bytes_hashed=932184064 image=/sysroot/run/initramfs/cos-state/cOS/active.img timeout_source=default took=1m0.109s verify_timeout=1m0s
+P2-cmdline-none-beats-conf-fail | booted login 30.1 up 24.40 post_rc None reboots 0 oot False
+M3-fail-flipped-conf | FAILURE SCREEN at 18.1s login None up None post_rc None reboots 0 oot False
+T3a-conf5 | booted login 35.1 up 29.13 post_rc None reboots 0 oot False
+     2026-11-25T17:00:51Z WRN Image checksum check skipped: hashing ran out of its time budget (disk too slow for the image size), the image was not verified. Raise image-checksum.verify-timeout (and rd.retry) or set it to 0 for no limit bytes_hashed=529530880 image=/sysroot/run/initramfs/cos-state/cOS/active.img timeout_source="image-checksum.conf on the state partition" took=5.005s verify_timeout=5s
+T4a-bad-abc-conf5 | booted login 35.1 up 29.30 post_rc None reboots 0 oot False
+     2026-11-25T17:00:48Z WRN Ignoring an image checksum setting on the cmdline arg="image-checksum.verify-timeout=abc: want a number of seconds, 0 or more"
+     2026-11-25T17:00:53Z WRN Image checksum check skipped: hashing ran out of its time budget (disk too slow for the image size), the image was not verified. Raise image-checksum.verify-timeout (and rd.retry) or set it to 0 for no limit bytes_hashed=529530880 image=/sysroot/run/initramfs/cos-state/cOS/active.img timeout_source="image-checksum.conf on the state partition" took=5.026s verify_timeout=5s
+T2-slow15-warn-timeout0 | BOOT LOOP (2 reboots) login None up None post_rc None reboots 2 oot False
+T3b-conf5-cmdline20 | booted login 50.0 up 44.41 post_rc None reboots 0 oot False
+     2026-11-25T17:02:29Z WRN Image checksum check skipped: hashing ran out of its time budget (disk too slow for the image size), the image was not verified. Raise image-checksum.verify-timeout (and rd.retry) or set it to 0 for no limit bytes_hashed=2073034752 image=/sysroot/run/initramfs/cos-state/cOS/active.img timeout_source="kernel cmdline" took=20.064s verify_timeout=20s
+T4b-bad-neg-default | booted login 67.1 up 61.44 post_rc None reboots 0 oot False
+     2026-11-25T17:02:10Z WRN Ignoring an image checksum setting on the cmdline arg="image-checksum.verify-timeout=-5: want a number of seconds, 0 or more"
+     2026-11-25T17:02:48Z INF Image checksum verified image=/sysroot/run/initramfs/cos-state/cOS/active.img sha256=815a1742f6fb57754bd13bad0a1576fada27589f941b0c3397a90cafced92742 took=38.434s
+M4-fail-flipped-cmdline | FAILURE SCREEN at 17.0s login None up None post_rc None reboots 0 oot False
+T3c-conf5-cmdline0 | booted login 67.0 up 61.46 post_rc None reboots 0 oot False
+     2026-11-25T17:04:24Z INF Image checksum verified image=/sysroot/run/initramfs/cos-state/cOS/active.img sha256=815a1742f6fb57754bd13bad0a1576fada27589f941b0c3397a90cafced92742 took=38.405s
+T6-slow15-failrequire-default | FAILURE SCREEN at 85.1s login None up None post_rc None reboots 0 oot True
+T4c-bad-float-default | booted login 67.0 up 61.51 post_rc None reboots 0 oot False
+     2026-11-25T17:04:04Z WRN Ignoring an image checksum setting on the cmdline arg="image-checksum.verify-timeout=1.5: want a number of seconds, 0 or more"
+     2026-11-25T17:04:42Z INF Image checksum verified image=/sysroot/run/initramfs/cos-state/cOS/active.img sha256=815a1742f6fb57754bd13bad0a1576fada27589f941b0c3397a90cafced92742 took=38.457s
+T3d-conf0-cmdline5 | booted login 34.0 up 28.47 post_rc None reboots 0 oot False
+     2026-11-25T17:05:45Z WRN Image checksum check skipped: hashing ran out of its time budget (disk too slow for the image size), the image was not verified. Raise image-checksum.verify-timeout (and rd.retry) or set it to 0 for no limit bytes_hashed=529530880 image=/sysroot/run/initramfs/cos-state/cOS/active.img timeout_source="kernel cmdline" took=5.036s verify_timeout=5s
+T5-fail-require-t5-conf | FAILURE SCREEN at 23.0s login None up None post_rc None reboots 0 oot True
+T5b-fail-require-t5-cmdline | FAILURE SCREEN at 23.1s login None up None post_rc None reboots 0 oot True
+T5c-fail-norequire-t5 | booted login 35.0 up 29.51 post_rc None reboots 0 oot False
+     2026-11-25T17:11:20Z WRN Image checksum check skipped: hashing ran out of its time budget (disk too slow for the image size), the image was not verified. Raise image-checksum.verify-timeout (and rd.retry) or set it to 0 for no limit bytes_hashed=529530880 image=/sysroot/run/initramfs/cos-state/cOS/active.img timeout_source="image-checksum.conf on the state partition" took=5.035s verify_timeout=5s
+T5d-warn-require-t5 | booted login 36.1 up 29.96 post_rc None reboots 0 oot False
+     2026-11-25T17:12:45Z WRN Image checksum check skipped: hashing ran out of its time budget (disk too slow for the image size), the image was not verified. Raise image-checksum.verify-timeout (and rd.retry) or set it to 0 for no limit bytes_hashed=529530880 image=/sysroot/run/initramfs/cos-state/cOS/active.img timeout_source="image-checksum.conf on the state partition" took=5.027s verify_timeout=5s
+T5e-fail-require-default-fits | booted login 68.1 up 62.44 post_rc None reboots 0 oot False
+     2026-11-25T17:14:39Z INF Image checksum verified image=/sysroot/run/initramfs/cos-state/cOS/active.img sha256=815a1742f6fb57754bd13bad0a1576fada27589f941b0c3397a90cafced92742 took=38.41s

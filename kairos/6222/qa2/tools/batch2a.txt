@@ -1,0 +1,4 @@
+T0-unthrottled-warn-default|d4|-|verify: warn\n|-|-|kairos-agent verify-images; echo rc=$?
+T1-slow15-warn-default|d4|e-slowsd15|verify: warn\n|-|-|-
+T1b-slow15-fail-default|d4|e-slowsd15|verify: fail\n|-|-|-
+T6-slow15-failrequire-default|d4|e-slowsd15|verify: fail\nrequire: true\n|-|-|-

@@ -1,0 +1,17 @@
+# QEMU: qemu-system-x86_64 -enable-kvm -cpu host -m 4096 -smp 2 -drive if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/x64/OVMF_CODE.4m.fd -drive if=pflash,format=raw,file=/run/user/1000/qa6222b/Q3-fail-stale-norequire-cfg.vars.fd -display none -vga std -nodefaults -netdev user,id=n0 -device virtio-net-pci,netdev=n0 -chardev socket,id=ser0,path=/run/user/1000/qa6222b/Q3-fail-stale-norequire-cfg.ser,server=on,wait=off -serial chardev:ser0 -qmp unix:/run/user/1000/qa6222b/Q3-fail-stale-norequire-cfg.qmp,server,nowait -pidfile /run/user/1000/qa6222b/Q3-fail-stale-norequire-cfg.pid -daemonize -drive if=none,id=hd0,file=/home/itxaka/projects/kairos-triage-agent/workspace/.scratch/qa6222b/lanes/Q3-fail-stale-norequire.qcow2,format=qcow2,cache=none,aio=threads -device virtio-blk-pci,drive=hd0,serial=T6222
+$ mount -o remount,rw /run/initramfs/cos-state
+
+[exit 0, 0.05s]
+
+$ cp /run/conf.txt /run/initramfs/cos-state/cOS/image-checksum.conf; cat /run/initramfs/cos-state/cOS/image-checksum.conf
+verify: fail
+[exit 0, 0.05s]
+
+$ touch /run/initramfs/cos-state/cOS/active.img
+
+[exit 0, 0.05s]
+
+$ sync; mount -o remount,ro /run/initramfs/cos-state; sync
+
+[exit 0, 0.45s]
+

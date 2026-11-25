@@ -1,0 +1,38 @@
+kairos v4.2.1-dev.6466+gc3f23def
+rc=0
+    "image-checksum": map[string]interface {}{
+    "image-checksum": map[string]interface {}{
+2026-11-25T16:46:17Z DBG sha256 of /run/cos/state/cOS/active.img computed in 301ms
+2026-11-25T16:46:17Z INF Recorded sha256 of /run/cos/state/cOS/active.img: fb868208d29bbd110048e09557719803b62807d82977543841942d3e3b443b85
+2026-11-25T16:46:18Z DBG sha256 of /run/cos/recovery/cOS/recovery.img computed in 252ms
+2026-11-25T16:46:18Z INF Recorded sha256 of /run/cos/recovery/cOS/recovery.img: 5f7a3f78be62d2a6fe0be3535b07176a28cdfb7bac9589dc030b28a0fdfe6849
+2026-11-25T16:46:18Z DBG sha256 of /run/cos/state/cOS/passive.img computed in 261ms
+2026-11-25T16:46:18Z INF Recorded sha256 of /run/cos/state/cOS/passive.img: bd5c78e99a6587b5c62798956a7914eee776fb174fbbc1bcbc2e26fea05f2353
+/run/rc/cOS:
+total 494608
+drwxr-x--- 2 root root      4096 Nov 25 16:46 .
+drwxr-xr-x 4 root root      4096 Nov 25 16:46 ..
+-rw-r----- 1 root root 506462208 Nov 25 16:46 recovery.img
+-rw-r----- 1 root root       125 Nov 25 16:46 recovery.img.sha256
+
+/run/st/cOS:
+total 850596
+drwxr-x--- 2 root root      4096 Nov 25 16:46 .
+drwxr-xr-x 5 root root      4096 Nov 25 16:46 ..
+-rw-r----- 1 root root 506462208 Nov 25 16:46 active.img
+-rw-r----- 1 root root       123 Nov 25 16:46 active.img.sha256
+-rw-r----- 1 root root 506462208 Nov 25 16:46 passive.img
+-rw-r----- 1 root root       124 Nov 25 16:46 passive.img.sha256
+== /run/st/cOS/image-checksum.conf
+cat: /run/st/cOS/image-checksum.conf: No such file or directory
+== /run/rc/cOS/image-checksum.conf
+cat: /run/rc/cOS/image-checksum.conf: No such file or directory
+fb868208d29bbd110048e09557719803b62807d82977543841942d3e3b443b85  active.img
+bd5c78e99a6587b5c62798956a7914eee776fb174fbbc1bcbc2e26fea05f2353  passive.img
+fb868208d29bbd110048e09557719803b62807d82977543841942d3e3b443b85  active.img
+# size=506462208 mtime_ns=1795625177175697124
+bd5c78e99a6587b5c62798956a7914eee776fb174fbbc1bcbc2e26fea05f2353  passive.img
+# size=506462208 mtime_ns=1795625178329697124
+5f7a3f78be62d2a6fe0be3535b07176a28cdfb7bac9589dc030b28a0fdfe6849  recovery.img
+5f7a3f78be62d2a6fe0be3535b07176a28cdfb7bac9589dc030b28a0fdfe6849  recovery.img
+# size=506462208 mtime_ns=1795625177780697124

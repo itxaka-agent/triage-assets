@@ -1,0 +1,20 @@
+# QEMU: qemu-system-x86_64 -enable-kvm -cpu host -m 4096 -smp 2 -drive if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/x64/OVMF_CODE.4m.fd -drive if=pflash,format=raw,file=/run/user/1000/qa6222b/Q5-warn-missing-require-cmdline-cfg.vars.fd -display none -vga std -nodefaults -netdev user,id=n0 -device virtio-net-pci,netdev=n0 -chardev socket,id=ser0,path=/run/user/1000/qa6222b/Q5-warn-missing-require-cmdline-cfg.ser,server=on,wait=off -serial chardev:ser0 -qmp unix:/run/user/1000/qa6222b/Q5-warn-missing-require-cmdline-cfg.qmp,server,nowait -pidfile /run/user/1000/qa6222b/Q5-warn-missing-require-cmdline-cfg.pid -daemonize -drive if=none,id=hd0,file=/home/itxaka/projects/kairos-triage-agent/workspace/.scratch/qa6222b/lanes/Q5-warn-missing-require-cmdline.qcow2,format=qcow2,cache=none,aio=threads -device virtio-blk-pci,drive=hd0,serial=T6222
+$ mount -o remount,rw /run/initramfs/cos-state
+
+[exit 0, 0.05s]
+
+$ rm /run/initramfs/cos-state/cOS/active.img.sha256
+
+[exit 0, 0.05s]
+
+$ kairos-agent grubedit set extra_active_cmdline='image-checksum.verify=warn image-checksum.require=true' 2>&1 | tail -3; cat /oem/grubenv 2>/dev/null | grep -a extra
+2026-11-25T16:54:12Z INF Boot Mode boot_mode=active_boot
+2026-11-25T16:54:12Z INF Boot in uki mode result=false
+2026-11-25T16:54:12Z INF Set grub variable extra_active_cmdline=image-checksum.verify=warn image-checksum.require=true in /oem/grubenv
+extra_active_cmdline=image-checksum.verify=warn image-checksum.require=true
+[exit 0, 0.10s]
+
+$ sync; mount -o remount,ro /run/initramfs/cos-state; sync
+
+[exit 0, 0.10s]
+

@@ -1,0 +1,15 @@
+go: downloading github.com/jezek/xgb v1.1.0
+go: downloading github.com/atotto/clipboard v0.1.4
+go: downloading github.com/charmbracelet/x/windows v0.2.2
+go: downloading github.com/charmbracelet/x/termios v0.1.1
+go: downloading github.com/disintegration/imaging v1.6.2
+go: downloading golang.org/x/image v0.45.0
+go: downloading golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da
+# ./agent/config/...
+pattern ./agent/config/...: lstat ./agent/config/: no such file or directory
+FAIL	./agent/config/... [setup failed]
+ok  	github.com/kairos-io/kairos/v4/agent/pkg/action	11.072s
+ok  	github.com/kairos-io/kairos/v4/agent/internal/agent	4.071s
+ok  	github.com/kairos-io/kairos/v4/agent/internal/agent/hooks	0.392s
+ok  	github.com/kairos-io/kairos/v4/sdk/schema	2.881s
+FAIL

@@ -1,0 +1,8 @@
+T4a-bad-abc-conf5|d4|d2-hdd100-seq|verify: warn\nverify-timeout: 5\n|image-checksum.verify-timeout=abc|-|-
+T4b-bad-neg-default|d4|d2-hdd100-seq|verify: warn\n|image-checksum.verify-timeout=-5|-|-
+T4c-bad-float-default|d4|d2-hdd100-seq|verify: warn\n|image-checksum.verify-timeout=1.5|-|-
+
+T5b-fail-require-t5-cmdline|d4|d2-hdd100-seq|-|image-checksum.verify=fail image-checksum.require=true image-checksum.verify-timeout=5|-|-
+T5c-fail-norequire-t5|d4|d2-hdd100-seq|verify: fail\nverify-timeout: 5\n|-|-|-
+T5d-warn-require-t5|d4|d2-hdd100-seq|verify: warn\nrequire: true\nverify-timeout: 5\n|-|-|-
+T5e-fail-require-default-fits|d4|d2-hdd100-seq|verify: fail\nrequire: true\n|-|-|-

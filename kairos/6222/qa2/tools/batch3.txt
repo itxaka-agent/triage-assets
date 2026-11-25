@@ -1,0 +1,4 @@
+T5-fail-require-t5-conf|d4|d2-hdd100-seq|verify: fail\nrequire: true\nverify-timeout: 5\n|-|-|-
+T6-slow15-failrequire-default|d4|e-slowsd15|verify: fail\nrequire: true\n|-|-|-
+M3-fail-flipped-conf|d0|-|verify: fail\n|-|FLIP|-
+Q2-fail-missing-require|d0|-|verify: fail\nrequire: true\n|-|rm /run/initramfs/cos-state/cOS/active.img.sha256|-

@@ -1,0 +1,14 @@
+[38;5;10m[1mSUCCESS![0m -- [38;5;10m[1m56 Passed[0m | [38;5;9m[1m0 Failed[0m | [38;5;11m[1m0 Pending[0m | [38;5;14m[1m0 Skipped[0m
+--- PASS: TestImageSum (0.29s)
+PASS
+ok  	github.com/kairos-io/kairos/v4/sdk/imagesum	0.297s
+[38;5;10m[1mSUCCESS![0m -- [38;5;10m[1m321 Passed[0m | [38;5;9m[1m0 Failed[0m | [38;5;11m[1m0 Pending[0m | [38;5;14m[1m5 Skipped[0m
+--- PASS: TestSuite (2.04s)
+PASS
+ok  	github.com/kairos-io/kairos/v4/immucore/internal/utils	2.043s
+--- PASS: TestLabelFromByLabelPath (0.00s)
+--- PASS: TestResolveMountSource (0.00s)
+[38;5;10m[1mSUCCESS![0m -- [38;5;10m[1m222 Passed[0m | [38;5;9m[1m0 Failed[0m | [38;5;11m[1m0 Pending[0m | [38;5;14m[1m2 Skipped[0m
+--- PASS: TestSuite (4.00s)
+PASS
+ok  	github.com/kairos-io/kairos/v4/immucore/pkg/state	4.012s

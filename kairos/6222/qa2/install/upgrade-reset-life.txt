@@ -1,0 +1,88 @@
+== boot1 state
+uuid: 67cc495f427e40d78d5a34aa48ce4a14-kairos-67cc
+persistent:
+    mounted: true
+    name: /dev/vda5
+    label: persistent
+== upgrade
+up_rc=0
+2026-11-25T17:09:39Z DBG sha256 of /run/initramfs/cos-state/cOS/transition.img computed in 2.094s
+2026-11-25T17:09:39Z DBG sha256 of /run/initramfs/cos-state/cOS/passive.img computed in 348ms
+2026-11-25T17:09:39Z INF Recorded sha256 of /run/initramfs/cos-state/cOS/passive.img: fb95318a0dd0adf54cb20b4384a2a9b8d4a64113953db498f61750c958a33e0c
+2026-11-25T17:09:39Z INF Recorded sha256 of /run/initramfs/cos-state/cOS/active.img: d6c6f8bb5d5a444d537abd914ee57e0409f8e01d024f60f54883f4d971ec7bd9
+2026-11-25T17:09:39Z DBG Remounting partition COS_STATE as read-only
+2026-11-25T17:09:39Z DBG Running Lifecycle hook
+2026-11-25T17:09:39Z DBG Finish Lifecycle hook
+== after upgrade
+total 724392
+drwxr-x--- 2 root root       4096 Nov 25 17:09 .
+drwxr-xr-x 5 root root       4096 Nov 25 17:09 ..
+-rw-r----- 1 root root 3221225472 Nov 25 17:09 active.img
+-rw-r----- 1 root root        124 Nov 25 17:09 active.img.sha256
+-rw-r----- 1 root root         32 Nov 25 17:09 image-checksum.conf
+-rw-r----- 1 root root  506462208 Nov 25 17:09 passive.img
+-rw-r----- 1 root root        124 Nov 25 17:09 passive.img.sha256
+active
+d6c6f8bb5d5a444d537abd914ee57e0409f8e01d024f60f54883f4d971ec7bd9  active.img
+d6c6f8bb5d5a444d537abd914ee57e0409f8e01d024f60f54883f4d971ec7bd9  active.img
+passive
+fb95318a0dd0adf54cb20b4384a2a9b8d4a64113953db498f61750c958a33e0c  passive.img
+fb95318a0dd0adf54cb20b4384a2a9b8d4a64113953db498f61750c958a33e0c  passive.img
+CONF
+verify: warn
+verify-timeout: 30
+2026-11-25T17:09:41Z INF Boot Mode boot_mode=active_boot
+2026-11-25T17:09:41Z INF Boot in uki mode result=false
+/run/initramfs/cos-state/cOS/active.img
+  result:   OK
+  expected: d6c6f8bb5d5a444d537abd914ee57e0409f8e01d024f60f54883f4d971ec7bd9
+  actual:   d6c6f8bb5d5a444d537abd914ee57e0409f8e01d024f60f54883f4d971ec7bd9
+/run/initramfs/cos-state/cOS/passive.img
+  result:   OK
+  expected: fb95318a0dd0adf54cb20b4384a2a9b8d4a64113953db498f61750c958a33e0c
+  actual:   fb95318a0dd0adf54cb20b4384a2a9b8d4a64113953db498f61750c958a33e0c
+
+2 image(s) checked, 0 failed
+vi_rc=0
+== boot after upgrade
+/etc/qa6222-upgrade-marker
+2026-11-25T17:10:01Z INF Image checksum verified image=/sysroot/run/initramfs/cos-state/cOS/active.img sha256=d6c6f8bb5d5a444d537abd914ee57e0409f8e01d024f60f54883f4d971ec7bd9 took=2.086s
+== recovery boot
+cos-img/filename=/cOS/recovery.img
+== reset
+rs_rc=0
+2026-11-25T17:11:02Z DBG sha256 of /run/cos/state/cOS/active.img computed in 261ms
+2026-11-25T17:11:02Z INF Recorded sha256 of /run/cos/state/cOS/active.img: 2d235a7a8bc7133f16617c58dff0176789970f084438dd99144311053f5d7eed
+2026-11-25T17:11:03Z DBG sha256 of /run/cos/state/cOS/passive.img computed in 257ms
+2026-11-25T17:11:03Z INF Recorded sha256 of /run/cos/state/cOS/passive.img: 85f60323c609c493f58b41a005c6c74161fd135d65b331dbe1868e49443cda21
+total 989212
+drwxr-x--- 2 root root      4096 Nov 25 17:11 .
+drwxr-xr-x 5 root root      4096 Nov 25 17:11 ..
+-rw-r----- 1 root root 506462208 Nov 25 17:11 active.img
+-rw-r----- 1 root root       123 Nov 25 17:11 active.img.sha256
+-rw-r----- 1 root root        32 Nov 25 17:11 image-checksum.conf
+-rw-r----- 1 root root 506462208 Nov 25 17:11 passive.img
+-rw-r----- 1 root root       124 Nov 25 17:11 passive.img.sha256
+active
+2d235a7a8bc7133f16617c58dff0176789970f084438dd99144311053f5d7eed  active.img
+2d235a7a8bc7133f16617c58dff0176789970f084438dd99144311053f5d7eed  active.img
+passive
+85f60323c609c493f58b41a005c6c74161fd135d65b331dbe1868e49443cda21  passive.img
+85f60323c609c493f58b41a005c6c74161fd135d65b331dbe1868e49443cda21  passive.img
+CONF
+verify: warn
+verify-timeout: 30
+2026-11-25T17:11:04Z INF Kairos Agent version=v4.2.1-dev.6466+gc3f23def
+2026-11-25T17:11:04Z INF Kairos System version=v4.2.0-6466-gc3f23def
+2026-11-25T17:11:04Z INF Boot Mode boot_mode=recovery_boot
+2026-11-25T17:11:04Z INF Boot in uki mode result=false
+/run/initramfs/cos-state/cOS/recovery.img
+  result:   OK
+  expected: 5f7a3f78be62d2a6fe0be3535b07176a28cdfb7bac9589dc030b28a0fdfe6849
+  actual:   5f7a3f78be62d2a6fe0be3535b07176a28cdfb7bac9589dc030b28a0fdfe6849
+
+1 image(s) checked, 0 failed
+vi_rc=0
+== boot after reset
+cos-img/filename=/cOS/active.img
+2026-11-25T17:11:20Z INF Image checksum verified image=/sysroot/run/initramfs/cos-state/cOS/active.img sha256=2d235a7a8bc7133f16617c58dff0176789970f084438dd99144311053f5d7eed took=301ms

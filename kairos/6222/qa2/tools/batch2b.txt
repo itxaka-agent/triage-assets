@@ -1,0 +1,5 @@
+T3e-d2-default-verified|d4|d2-hdd100-seq|verify: warn\n|-|-|-
+T3a-conf5|d4|d2-hdd100-seq|verify: warn\nverify-timeout: 5\n|-|-|-
+T3b-conf5-cmdline20|d4|d2-hdd100-seq|verify: warn\nverify-timeout: 5\n|image-checksum.verify-timeout=20|-|-
+T3c-conf5-cmdline0|d4|d2-hdd100-seq|verify: warn\nverify-timeout: 5\n|image-checksum.verify-timeout=0|-|-
+T3d-conf0-cmdline5|d4|d2-hdd100-seq|verify: warn\nverify-timeout: 0\n|image-checksum.verify-timeout=5|-|-

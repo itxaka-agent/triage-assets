@@ -1,0 +1,17 @@
+rc=0
+verify: warn
+2026-11-25T16:51:49Z INF Kairos Agent version=v4.2.1-dev.6466+gc3f23def
+2026-11-25T16:51:49Z INF Kairos System version=v4.2.0-6466-gc3f23def
+2026-11-25T16:51:49Z INF Boot Mode boot_mode=active_boot
+2026-11-25T16:51:49Z INF Boot in uki mode result=false
+/run/initramfs/cos-state/cOS/active.img
+  result:   OK
+  expected: fb868208d29bbd110048e09557719803b62807d82977543841942d3e3b443b85
+  actual:   fb868208d29bbd110048e09557719803b62807d82977543841942d3e3b443b85
+/run/initramfs/cos-state/cOS/passive.img
+  result:   OK
+  expected: bd5c78e99a6587b5c62798956a7914eee776fb174fbbc1bcbc2e26fea05f2353
+  actual:   bd5c78e99a6587b5c62798956a7914eee776fb174fbbc1bcbc2e26fea05f2353
+
+2 image(s) checked, 0 failed
+rc=0
