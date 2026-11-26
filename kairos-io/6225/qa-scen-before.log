@@ -1,0 +1,71 @@
+### version
+kairos v4.7.1-dev.35+gfe7958d1f
+### S1 success path (STATE not mounted on /run/cos/state beforehand)
+pre:  0 mounts on /run/cos/state
+2026-11-26T09:38:34Z INF Kairos Agent version=v4.7.1-dev.35+gfe7958d1f
+2026-11-26T09:38:34Z DBG Kairos Agent go=go1.27.4 version=v4.7.1-dev.35+gfe7958d1f
+2026-11-26T09:38:34Z INF Kairos System version=v4.7.0-35-gfe7958d1f
+2026-11-26T09:38:34Z DBG detecting boot state
+2026-11-26T09:38:34Z INF Boot Mode boot_mode=active_boot
+2026-11-26T09:38:34Z INF Boot in uki mode result=false
+2026-11-26T09:38:34Z DBG Loaded config: map[string]interface {}{
+2026-11-26T09:38:34Z INF Setting default boot entry to recovery
+2026-11-26T09:38:34Z DBG OEM is encrypted, writing to STATE partition's grubenv
+2026-11-26T09:38:34Z DBG Running cmd: 'udevadm trigger'
+2026-11-26T09:38:35Z DBG Running cmd: 'udevadm settle'
+2026-11-26T09:38:35Z DBG Successfully set next_entry in STATE grubenv
+2026-11-26T09:38:35Z INF Default boot entry set to recovery
+exit=0
+post: 1 mounts on /run/cos/state
+/dev/vda4 on /run/initramfs/cos-state type ext4 (ro,relatime)
+/dev/vda4 on /run/cos/state type ext4 (ro,relatime)
+grubenv on STATE (via /run/initramfs/cos-state):
+next_entry=recovery
+### S2 mount fails (shim mount returns 32 for the STATE device)
+2026-11-26T09:38:35Z INF Kairos Agent version=v4.7.1-dev.35+gfe7958d1f
+2026-11-26T09:38:35Z DBG Kairos Agent go=go1.27.4 version=v4.7.1-dev.35+gfe7958d1f
+2026-11-26T09:38:35Z INF Kairos System version=v4.7.0-35-gfe7958d1f
+2026-11-26T09:38:35Z DBG detecting boot state
+2026-11-26T09:38:35Z INF Boot Mode boot_mode=active_boot
+2026-11-26T09:38:35Z INF Boot in uki mode result=false
+2026-11-26T09:38:35Z DBG Loaded config: map[string]interface {}{
+2026-11-26T09:38:35Z INF Setting default boot entry to fallback
+2026-11-26T09:38:35Z DBG OEM is encrypted, writing to STATE partition's grubenv
+2026-11-26T09:38:35Z DBG Running cmd: 'udevadm trigger'
+2026-11-26T09:38:35Z DBG Running cmd: 'udevadm settle'
+2026-11-26T09:38:35Z DBG Could not remount STATE partition as RW: mount failed: exit status 32
+2026-11-26T09:38:35Z DBG Successfully set next_entry in STATE grubenv
+2026-11-26T09:38:35Z INF Default boot entry set to fallback
+exit=0
+mounts on /run/cos/state: 0
+stray grubenv in tmpfs dir:
+total 4
+drwx------ 2 root root   60 Nov 26 09:38 .
+drwxr-xr-x 3 root root  100 Nov 26 09:38 ..
+-rw------- 1 root root 1024 Nov 26 09:38 grubenv
+# GRUB Environment Block
+next_entry=fallback
+real STATE grubenv still:
+next_entry=recovery
+### S3 already mounted beforehand
+mount: /run/cos/state: WARNING: source write-protected, mounted read-only.
+pre:  1
+2026-11-26T09:38:35Z INF Kairos Agent version=v4.7.1-dev.35+gfe7958d1f
+2026-11-26T09:38:35Z DBG Kairos Agent go=go1.27.4 version=v4.7.1-dev.35+gfe7958d1f
+2026-11-26T09:38:35Z INF Kairos System version=v4.7.0-35-gfe7958d1f
+2026-11-26T09:38:35Z DBG detecting boot state
+2026-11-26T09:38:35Z INF Boot Mode boot_mode=active_boot
+2026-11-26T09:38:35Z INF Boot in uki mode result=false
+2026-11-26T09:38:35Z DBG Loaded config: map[string]interface {}{
+2026-11-26T09:38:35Z INF Setting default boot entry to recovery
+2026-11-26T09:38:35Z DBG OEM is encrypted, writing to STATE partition's grubenv
+2026-11-26T09:38:35Z DBG Running cmd: 'udevadm trigger'
+2026-11-26T09:38:36Z DBG Running cmd: 'udevadm settle'
+2026-11-26T09:38:36Z DBG Existing grubenv variables existingVars={"next_entry":"recovery"}
+2026-11-26T09:38:36Z DBG Successfully set next_entry in STATE grubenv
+2026-11-26T09:38:36Z INF Default boot entry set to recovery
+exit=0
+post: 2
+/dev/vda4 on /run/initramfs/cos-state type ext4 (ro,relatime)
+/dev/vda4 on /run/cos/state type ext4 (ro,relatime)
+/dev/vda4 on /run/cos/state type ext4 (ro,relatime)
