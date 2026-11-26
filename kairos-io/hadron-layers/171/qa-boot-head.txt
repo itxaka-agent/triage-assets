@@ -1,0 +1,32 @@
+Refer to https://kairos.io for documentation.
+[root@kairos-62b9 ~]# tailscaled --version
+1.106.1
+  long version: 1.106.1
+  go version: go1.27.4
+[root@kairos-62b9 ~]# ls -l /usr/bin/tailscale /usr/sbin/tailscaled
+-rwxr-xr-x 1 root root 23810208 Nov 26 12:16 /usr/bin/tailscale
+-rwxr-xr-x 1 root root 30601376 Nov 26 12:16 /usr/sbin/tailscaled
+[root@kairos-62b9 ~]# <d/system/multi-user.target.wants/tailscaled.service
+lrwxrwxrwx 1 root root 21 Nov 26 12:16 /usr/lib/systemd/system/multi-user.target.wants/tailscaled.service -> ../tailscaled.service
+[root@kairos-62b9 ~]# systemctl is-enabled tailscaled
+disabled
+[root@kairos-62b9 ~]# systemctl is-active tailscaled
+active
+[root@kairos-62b9 ~]# tailscale status | head -3
+Logged out.
+[root@kairos-62b9 ~]# <ilscaled.sock status --json | grep -m1 BackendState
+  "BackendState": "NeedsLogin",
+[root@kairos-62b9 ~]# journalctl -u tailscaled --no-pager | tail -8
+Nov 26 12:19:40 kairos-62b9 tailscaled[1201]: magicsock: SetNetworkUp(true)
+Nov 26 12:19:40 kairos-62b9 tailscaled[1201]: Rebind; defIf="ens3", ips=[10.0.2.15/24 fe80::5054:ff:fe12:3456/64 fec0::5054:ff:fe12:3456/64]
+Nov 26 12:19:40 kairos-62b9 tailscaled[1201]: magicsock: 0 active derp conns
+Nov 26 12:19:40 kairos-62b9 tailscaled[1201]: router: portUpdate(port=41641, network=udp6)
+Nov 26 12:19:40 kairos-62b9 tailscaled[1201]: router: portUpdate(port=41641, network=udp4)
+Nov 26 12:19:40 kairos-62b9 tailscaled[1201]: monitor: gateway and self IP changed: gw=10.0.2.2 self=10.0.2.15
+Nov 26 12:19:41 kairos-62b9 tailscaled[1201]: monitor: RTM_NEWROUTE: src=, dst=fec0::5054:ff:fe12:3456/128, gw=, outif=2, table=255
+Nov 26 12:20:12 kairos-62b9 tailscaled[1201]: logtail: upload succeeded after 1 failures and 34s
+[root@kairos-62b9 ~]# echo END_"X"
+END_X
+[root@kairos-62b9 ~]# echo DONE_""MARK
+DONE_MARK
+[root@kairos-62b9 ~]# 
