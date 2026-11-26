@@ -1,0 +1,22 @@
+== base
+runtime   org.freedesktop.fwupd         2.1.10
+compile   org.freedesktop.fwupd         2.1.10
+/usr/lib/libffi.so.8.5.1
+/usr/lib/libglib-2.0.so.0.9000.1
+libffi.so
+libffi.so.8
+libffi.so.8.5.1
+libglib-2.0.so
+libglib-2.0.so.0
+libglib-2.0.so.0.9000.1
+== head
+runtime   org.freedesktop.fwupd         2.1.10
+compile   org.freedesktop.fwupd         2.1.10
+/usr/lib/libffi.so.8.5.2
+/usr/lib/libglib-2.0.so.0.9000.2
+libffi.so
+libffi.so.8
+libffi.so.8.5.2
+libglib-2.0.so
+libglib-2.0.so.0
+libglib-2.0.so.0.9000.2

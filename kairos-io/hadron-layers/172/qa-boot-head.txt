@@ -1,0 +1,19 @@
+[root@kairos-3d9c ~]# 
+[root@kairos-3d9c ~]# fwupdtool --version
+runtime   org.freedesktop.fwupd         2.1.10
+runtime   com.hughsie.libxmlb           0.3.30
+compile   com.hughsie.libxmlb           0.3.30
+runtime   org.kernel                    7.3.0-hadron
+compile   info.libusb                   1.0.30
+compile   org.freedesktop.fwupd         2.1.10
+
+[root@kairos-3d9c ~]# ls -l /usr/lib/libglib-2.0.so.0* /usr/lib/libffi.so.8*
+lrwxrwxrwx 1 root root     15 Nov 26 12:51 /usr/lib/libffi.so.8 -> libffi.so.8.5.2
+-rwxr-xr-x 1 root root  68424 Nov 26 12:46 /usr/lib/libffi.so.8.5.2
+lrwxrwxrwx 1 root root     23 Nov 26 12:51 /usr/lib/libglib-2.0.so.0 -> libglib-2.0.so.0.9000.2
+-rwxr-xr-x 1 root root 935512 Nov 26 12:47 /usr/lib/libglib-2.0.so.0.9000.2
+[root@kairos-3d9c ~]# <et-plugins --json >/dev/null; echo GETPLUGINS_RC=$?
+GETPLUGINS_RC=0
+[root@kairos-3d9c ~]# echo DONE_""MARK
+DONE_MARK
+[root@kairos-3d9c ~]# 
