@@ -1,0 +1,16 @@
+BEGIN_X
+[root@kairos-fac3 ~]# uname -r
+7.3.0-hadron
+[root@kairos-fac3 ~]# drbdadm --version 2>&1 | head -20; echo RC=$?
+DRBD kernel driver version 8.4 detected.
+This drbdadm was built without support for drbd kernel code 8.4.
+Consider to upgrade your DRBD kernel driver. Or rebuild your user land tools
+and configure --with-84support ...
+RC=0
+[root@kairos-fac3 ~]# < '9\.36\.[0-9]+' /usr/sbin/drbdadm | sort | uniq -c
+      3 9.36.1
+[root@kairos-fac3 ~]# drbdadm --version 2>&1 | grep -c VERSION
+0
+[root@kairos-fac3 ~]# echo END_"X"
+END_X
+[root@kairos-fac3 ~]# 

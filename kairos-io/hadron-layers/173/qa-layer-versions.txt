@@ -1,0 +1,44 @@
+== base
+-rwxr-xr-x 1 itxaka itxaka 235936 nov 27 10:49 ~/projects/kairos-triage-agent/workspace/.scratch/hadron-layers-173-20261127T094514Z-B/layer-base/usr/sbin/drbdadm
+-rwxr-xr-x 1 itxaka itxaka 176304 nov 27 10:49 ~/projects/kairos-triage-agent/workspace/.scratch/hadron-layers-173-20261127T094514Z-B/layer-base/usr/sbin/drbdsetup
+-rwxr-xr-x 1 itxaka itxaka 131048 nov 27 10:49 ~/projects/kairos-triage-agent/workspace/.scratch/hadron-layers-173-20261127T094514Z-B/layer-base/usr/sbin/drbdmeta
+9.36.0
+DRBDADM_VERSION_CODE=0x%06x
+DRBDADM_VERSION=%s
+== head
+-rwxr-xr-x 1 itxaka itxaka 235936 nov 27 10:49 ~/projects/kairos-triage-agent/workspace/.scratch/hadron-layers-173-20261127T094514Z-B/layer-head/usr/sbin/drbdadm
+-rwxr-xr-x 1 itxaka itxaka 176304 nov 27 10:49 ~/projects/kairos-triage-agent/workspace/.scratch/hadron-layers-173-20261127T094514Z-B/layer-head/usr/sbin/drbdsetup
+-rwxr-xr-x 1 itxaka itxaka 131048 nov 27 10:49 ~/projects/kairos-triage-agent/workspace/.scratch/hadron-layers-173-20261127T094514Z-B/layer-head/usr/sbin/drbdmeta
+9.36.1
+DRBDADM_VERSION_CODE=0x%06x
+DRBDADM_VERSION=%s
+Unable to find image 'kairos-local/drbd173-baseest:latest' locally
+docker: Error response from daemon: pull access denied for kairos-local/drbd173-baseest, repository does not exist or may require 'docker login'
+
+Run 'docker run --help' for more information
+Unable to find image 'kairos-local/drbd173-headest:latest' locally
+docker: Error response from daemon: pull access denied for kairos-local/drbd173-headest, repository does not exist or may require 'docker login'
+
+Run 'docker run --help' for more information
+modinfo: ERROR: Module drbd not found.
+DRBDADM_BUILDTAG=GIT-hash:\ e25b7d4d17e53811c6fd57f3ae7add0b9028cced\ build\ by\ @buildkitsandbox\,\ 2026-11-27\ 09:49:24
+modinfo: ERROR: Module drbd not found.
+modinfo: ERROR: Module drbd not found.
+DRBDADM_API_VERSION=2
+DRBD_KERNEL_VERSION_CODE=0x000000
+DRBD_KERNEL_VERSION=0
+DRBDADM_VERSION_CODE=0x092400
+DRBDADM_VERSION=9.36.0
+-rwxr-xr-x 1 root root 131048 Nov 27 09:49 /usr/sbin/drbdmeta
+-rwxr-xr-x 1 root root 176304 Nov 27 09:49 /usr/sbin/drbdsetup
+modinfo: ERROR: Module drbd not found.
+DRBDADM_BUILDTAG=GIT-hash:\ 1089386bd64e03d7ea16b4040b5cf8b08d7680f3\ build\ by\ @buildkitsandbox\,\ 2026-11-27\ 09:49:24
+modinfo: ERROR: Module drbd not found.
+modinfo: ERROR: Module drbd not found.
+DRBDADM_API_VERSION=2
+DRBD_KERNEL_VERSION_CODE=0x000000
+DRBD_KERNEL_VERSION=0
+DRBDADM_VERSION_CODE=0x092401
+DRBDADM_VERSION=9.36.1
+-rwxr-xr-x 1 root root 131048 Nov 27 09:49 /usr/sbin/drbdmeta
+-rwxr-xr-x 1 root root 176304 Nov 27 09:49 /usr/sbin/drbdsetup
