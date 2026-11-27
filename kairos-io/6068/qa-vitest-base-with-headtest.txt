@@ -1,0 +1,51 @@
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - `__dirname` (vitest.config.ts:12:25). Use `import.meta.dirname` instead
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+
+ RUN  v5.1.0 /src
+
+ ❯ src/lib/cloudConfigPreview.test.ts (14 tests | 1 failed) 20ms
+   ❯ buildCloudConfigPreview (10)
+     ✓ emits k3s.enabled for standard variant 7ms
+     ✓ merges extra k3s config instead of duplicating the top-level key 1ms
+     ✓ lets extra YAML override kubernetes enabled when present 1ms
+     ✓ omits k3s for core variant 1ms
+     ✓ merges extra stages under the canonical stages key 1ms
+     ✓ ignores prototype-pollution keys in extra YAML 1ms
+     ✓ falls back to placeholders when no real registration values are given 1ms
+     × shows the group ID in phonehome.group, as the built image carries it 3ms
+     ✓ uses the real url and token when provided 1ms
+     ✓ keeps showing real values after the extra YAML is edited 1ms
+   ✓ stripPhonehome (4)
+     ✓ removes the phonehome block from a baked cloud config 1ms
+     ✓ leaves config without a phonehome block untouched 0ms
+     ✓ returns the input unchanged when it is not valid YAML 1ms
+     ✓ returns empty input unchanged 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/lib/cloudConfigPreview.test.ts > buildCloudConfigPreview > shows the group ID in phonehome.group, as the built image carries it
+AssertionError: expected undefined to be 'grp-1' // Object.is equality
+
+- Expected:
+"grp-1"
+
++ Received:
+undefined
+
+ ❯ src/lib/cloudConfigPreview.test.ts:102:29
+    100|     const doc = docBody(buildCloudConfigPreview(base));
+    101|     const phonehome = doc.phonehome as Record<string, unknown>;
+    102|     expect(phonehome.group).toBe("grp-1");
+       |                             ^
+    103|   });
+    104|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 13 passed (14)
+   Start at  08:21:58
+   Duration  399ms (environment 75%, transform 8%, setup 6%, tests 6%, import 4%, worker 1%)
+
