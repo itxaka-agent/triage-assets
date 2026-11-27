@@ -1,0 +1,2180 @@
+go: downloading github.com/google/go-containerregistry v0.22.1
+go: downloading github.com/diskfs/go-diskfs v1.9.4
+go: downloading github.com/gofrs/uuid v4.4.0+incompatible
+go: downloading github.com/containerd/containerd/v2 v2.4.2
+go: downloading github.com/onsi/ginkgo/v2 v2.34.0
+go: downloading github.com/onsi/gomega v1.44.0
+go: downloading github.com/sanity-io/litter v1.5.8
+go: downloading github.com/twpayne/go-vfs/v5 v5.0.5
+go: downloading golang.org/x/sys v0.50.0
+go: downloading github.com/Masterminds/semver/v3 v3.5.0
+go: downloading github.com/Masterminds/sprig/v3 v3.3.0
+go: downloading github.com/erikgeiser/promptkit v0.12.0
+go: downloading github.com/foxboron/go-uefi v0.0.0-20261004203234-c7f1f57bdc6e
+go: downloading github.com/joho/godotenv v1.5.1
+go: downloading github.com/kairos-io/tpm-helpers v0.0.0-20261118100530-3e9e02ba538e
+go: downloading gopkg.in/yaml.v3 v3.0.1
+go: downloading github.com/mudler/yip v1.27.1
+go: downloading k8s.io/mount-utils v0.37.2
+go: downloading github.com/distribution/reference v0.6.0
+go: downloading github.com/hashicorp/go-multierror v1.1.1
+go: downloading github.com/moby/moby/api v1.56.1
+go: downloading github.com/rs/zerolog v1.35.1
+go: downloading github.com/go-viper/mapstructure/v2 v2.5.0
+go: downloading github.com/spf13/viper v1.21.0
+go: downloading github.com/sirupsen/logrus v1.10.2
+go: downloading github.com/mudler/go-pluggable v0.0.0-20230126220627-7710299a0ae5
+go: downloading github.com/anatol/luks.go v0.0.0-20260615185044-2658459c8ca5
+go: downloading github.com/itchyny/gojq v0.12.20
+go: downloading github.com/jaypipes/ghw v0.27.0
+go: downloading github.com/zcalusic/sysinfo v1.2.3
+go: downloading github.com/google/certificate-transparency-go v1.1.4
+go: downloading github.com/google/go-attestation v0.6.4
+go: downloading github.com/google/go-tpm-tools v0.4.7
+go: downloading github.com/google/go-tpm v0.9.8
+go: downloading github.com/gorilla/websocket v1.5.4-0.20250319132907-e064f32e3674
+go: downloading github.com/pkg/errors v0.9.1
+go: downloading github.com/denisbrodbeck/machineid v1.0.1
+go: downloading dario.cat/mergo v1.0.2
+go: downloading github.com/Masterminds/goutils v1.1.1
+go: downloading github.com/google/uuid v1.6.0
+go: downloading github.com/huandu/xstrings v1.5.0
+go: downloading github.com/mitchellh/copystructure v1.2.0
+go: downloading github.com/shopspring/decimal v1.4.0
+go: downloading github.com/spf13/cast v1.10.0
+go: downloading golang.org/x/crypto v0.59.0
+go: downloading github.com/google/go-cmp v0.7.0
+go: downloading github.com/twpayne/go-vfs/v4 v4.3.0
+go: downloading github.com/pterm/pterm v0.12.84
+go: downloading github.com/qeesung/image2ascii v1.0.1
+go: downloading github.com/moby/sys/mountinfo v0.7.3
+go: downloading k8s.io/klog/v2 v2.140.0
+go: downloading k8s.io/utils v0.0.0-20260626114624-be93311217bd
+go: downloading github.com/opencontainers/go-digest v1.0.0
+go: downloading github.com/hashicorp/errwrap v1.1.0
+go: downloading github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510
+go: downloading charm.land/bubbles/v2 v2.1.0
+go: downloading charm.land/bubbletea/v2 v2.0.2
+go: downloading github.com/muesli/termenv v0.16.0
+go: downloading charm.land/lipgloss/v2 v2.0.2
+go: downloading golang.org/x/term v0.48.0
+go: downloading github.com/go-logr/logr v1.4.4
+go: downloading github.com/mattn/go-colorable v0.1.15
+go: downloading github.com/coreos/go-systemd/v22 v22.7.0
+go: downloading github.com/cavaliergopher/grab/v3 v3.0.1
+go: downloading github.com/go-git/go-git/v5 v5.19.3
+go: downloading github.com/mauromorales/xpasswd v0.5.0
+go: downloading github.com/mudler/entities v0.8.3
+go: downloading github.com/satori/go.uuid v1.2.1-0.20181028125025-b2ce2384e17b
+go: downloading gopkg.in/ini.v1 v1.68.0
+go: downloading pault.ag/go/modprobe v0.2.0
+go: downloading github.com/santhosh-tekuri/jsonschema/v5 v5.3.1
+go: downloading github.com/swaggest/jsonschema-go v0.3.79
+go: downloading golang.org/x/sync v0.25.0
+go: downloading github.com/docker/cli v29.7.2+incompatible
+go: downloading github.com/moby/docker-image-spec v1.3.1
+go: downloading github.com/moby/moby/client v0.6.2
+go: downloading github.com/edsrzf/mmap-go v1.2.0
+go: downloading github.com/saferwall/pe v1.6.5
+go: downloading github.com/fsnotify/fsnotify v1.10.1
+go: downloading github.com/sagikazarmark/locafero v0.11.0
+go: downloading github.com/spf13/afero v1.15.0
+go: downloading github.com/spf13/pflag v1.1.0
+go: downloading github.com/chuckpreslar/emission v0.0.0-20170206194824-a7ddd980baf9
+go: downloading github.com/anatol/devmapper.go v0.0.0-20250316020617-2671eefd35d7
+go: downloading github.com/dgryski/go-camellia v0.0.0-20191119043421-69a8a13fb23d
+go: downloading github.com/jzelinskie/whirlpool v0.0.0-20201016144138-0675e54bb004
+go: downloading golang.org/x/net v0.62.0
+go: downloading github.com/itchyny/timefmt-go v0.1.9
+go: downloading github.com/mitchellh/reflectwalk v1.0.2
+go: downloading go.yaml.in/yaml/v3 v3.0.5
+go: downloading github.com/spectrocloud-labs/herd v0.4.2
+go: downloading github.com/opencontainers/image-spec v1.1.1
+go: downloading github.com/muesli/reflow v0.3.0
+go: downloading github.com/containerd/continuity v0.5.0
+go: downloading github.com/containerd/log v0.2.0
+go: downloading github.com/moby/sys/userns v0.2.1
+go: downloading github.com/charmbracelet/colorprofile v0.4.3
+go: downloading github.com/charmbracelet/ultraviolet v0.0.0-20260316091819-b93f6a3b8502
+go: downloading github.com/charmbracelet/x/ansi v0.11.6
+go: downloading github.com/charmbracelet/x/term v0.2.2
+go: downloading github.com/lucasb-eyer/go-colorful v1.4.0
+go: downloading github.com/muesli/cancelreader v0.2.2
+go: downloading github.com/atotto/clipboard v0.1.4
+go: downloading github.com/mattn/go-runewidth v0.0.31
+go: downloading github.com/rivo/uniseg v0.4.7
+go: downloading github.com/mattn/go-isatty v0.0.24
+go: downloading github.com/vmware/vmw-guestinfo v0.0.0-20220317130741-510905f0efa3
+go: downloading github.com/clipperhouse/displaywidth v0.11.0
+go: downloading golang.org/x/text v0.44.0
+go: downloading github.com/klauspost/compress v1.20.4
+go: downloading atomicgo.dev/cursor v0.2.0
+go: downloading atomicgo.dev/keyboard v0.2.10
+go: downloading atomicgo.dev/schedule v0.1.0
+go: downloading github.com/lithammer/fuzzysearch v1.1.8
+go: downloading github.com/gofrs/flock v0.13.0
+go: downloading github.com/phayes/permbits v0.0.0-20190612203442-39d7c581d2ee
+go: downloading github.com/tredoe/osutil v1.5.0
+go: downloading github.com/aymanbagabas/go-osc52/v2 v2.0.1
+go: downloading github.com/pierrec/lz4 v2.6.1+incompatible
+go: downloading github.com/xi2/xz v0.0.0-20171230120015-48954b6210f8
+go: downloading pault.ag/go/topsort v0.1.1
+go: downloading github.com/swaggest/refl v1.4.0
+go: downloading github.com/subosito/gotenv v1.6.0
+go: downloading github.com/pelletier/go-toml/v2 v2.4.3
+go: downloading github.com/sourcegraph/conc v0.3.1-0.20240121214520-5f936abd7ae8
+go: downloading github.com/containerd/errdefs v1.0.0
+go: downloading github.com/containerd/errdefs/pkg v0.3.0
+go: downloading github.com/docker/go-connections v0.8.2
+go: downloading go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.71.0
+go: downloading go.opentelemetry.io/otel/trace v1.47.0
+go: downloading github.com/jaypipes/pcidb v1.1.1
+go: downloading github.com/kendru/darwin/go/depgraph v0.0.0-20230809052043-4d1c7e9d1767
+go: downloading github.com/samber/lo v1.53.0
+go: downloading github.com/ProtonMail/go-crypto v1.4.1
+go: downloading go.opentelemetry.io/otel v1.47.0
+go: downloading github.com/go-git/go-billy/v5 v5.9.2
+go: downloading github.com/sergi/go-diff v1.4.0
+go: downloading github.com/golang/groupcache v0.0.0-20241129210726-2c02b8208cf8
+go: downloading github.com/kevinburke/ssh_config v1.2.0
+go: downloading github.com/skeema/knownhosts v1.3.1
+go: downloading github.com/xanzy/ssh-agent v0.3.3
+go: downloading golang.org/x/tools v0.52.0
+go: downloading github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e
+go: downloading github.com/charmbracelet/x/termios v0.1.1
+go: downloading github.com/charmbracelet/x/windows v0.2.2
+go: downloading github.com/clipperhouse/uax29/v2 v2.7.0
+go: downloading github.com/containerd/console v1.0.5
+go: downloading github.com/docker/go-units v0.5.0
+go: downloading github.com/felixge/httpsnoop v1.1.0
+go: downloading go.opentelemetry.io/otel/metric v1.47.0
+go: downloading github.com/pjbgf/sha1cd v0.7.0
+go: downloading github.com/go-git/gcfg v1.5.1-0.20230307220236-3a3c6141e376
+go: downloading github.com/emirpasic/gods v1.18.1
+go: downloading github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99
+go: downloading github.com/cyphar/filepath-securejoin v0.7.0
+go: downloading github.com/docker/docker-credential-helpers v0.9.3
+go: downloading github.com/cloudflare/circl v1.6.3
+go: downloading go.opentelemetry.io/otel/log v1.47.0
+go: downloading gopkg.in/warnings.v0 v0.1.2
+go: downloading golang.org/x/mod v0.43.0
+go: downloading github.com/cespare/xxhash/v2 v2.3.0
+go: downloading github.com/go-logr/stdr v1.2.2
+go: downloading go.opentelemetry.io/auto/sdk v1.2.1
+go: downloading github.com/elliotwutingfeng/asciiset v0.0.0-20260129054604-cfde2086bc57
+go: downloading github.com/ulikunitz/xz v0.5.15
+go: downloading github.com/pierrec/lz4/v4 v4.1.26
+go: downloading github.com/pkg/xattr v0.4.12
+go: downloading github.com/djherbis/times v1.6.0
+go: downloading github.com/anchore/go-lzo v0.1.0
+go: downloading github.com/wayneashleyberry/terminal-dimensions v1.1.0
+go: downloading github.com/aybabtme/rgbterm v0.0.0-20170906152045-cc83f3b3ce59
+go: downloading github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
+go: downloading github.com/ayoubfaouzi/pkcs7 v0.2.3
+=== RUN   TestActionSuite
+Running Suite: Actions test suite - /src/agent/pkg/action
+=========================================================
+Random Seed: 1795769700
+Will run 379 of 379 specs
+------------------------------
+The audit trail across a reset carries the audit trail over the format [reset]
+/src/agent/pkg/action/reset_audit_test.go:68
+• [0.001 seconds]
+------------------------------
+The audit trail across a reset restores the directory root-only [reset]
+/src/agent/pkg/action/reset_audit_test.go:89
+• [0.000 seconds]
+------------------------------
+The audit trail across a reset cleans the staging directory up [reset]
+/src/agent/pkg/action/reset_audit_test.go:103
+• [0.000 seconds]
+------------------------------
+The audit trail across a reset stages the trail on /run [reset]
+/src/agent/pkg/action/reset_audit_test.go:117
+• [0.000 seconds]
+------------------------------
+The audit trail across a reset reports the failure to unmount the persistent partition [reset]
+/src/agent/pkg/action/reset_audit_test.go:130
+• [0.001 seconds]
+------------------------------
+The audit trail across a reset names the path it looked at when there is no trail [reset]
+/src/agent/pkg/action/reset_audit_test.go:147
+• [0.000 seconds]
+------------------------------
+The audit trail across a reset has nothing to preserve on a node that never ran auditd [reset]
+/src/agent/pkg/action/reset_audit_test.go:157
+• [0.000 seconds]
+------------------------------
+The audit trail across a reset has nothing to preserve when the audit trail is empty [reset]
+/src/agent/pkg/action/reset_audit_test.go:169
+• [0.000 seconds]
+------------------------------
+The audit trail across a reset does nothing when there is no persistent partition [reset]
+/src/agent/pkg/action/reset_audit_test.go:178
+• [0.000 seconds]
+------------------------------
+The audit trail across a reset leaves the mount state as it found it [reset]
+/src/agent/pkg/action/reset_audit_test.go:186
+• [0.000 seconds]
+------------------------------
+mountpointsForDevice lists every mountpoint of the device, bind mounts included
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:477
+• [0.000 seconds]
+------------------------------
+mountpointsForDevice reports an unmounted device as having no mountpoints
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:484
+• [0.000 seconds]
+------------------------------
+mountpointsForDevice unescapes spaces in mountpoints
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:489
+• [0.000 seconds]
+------------------------------
+mountpointsForDevice fails closed when the mount table cannot be read
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:494
+• [0.000 seconds]
+------------------------------
+Common action tests createExtraDirsInRootfs creates the dirs
+/src/agent/pkg/action/common_test.go:69
+• [0.000 seconds]
+------------------------------
+Common action tests createExtraDirsInRootfs doesnt create the dirs if they already exists
+/src/agent/pkg/action/common_test.go:81
+• [0.000 seconds]
+------------------------------
+Common action tests createExtraDirsInRootfs Crates dirs with subdirs
+/src/agent/pkg/action/common_test.go:98
+• [0.000 seconds]
+------------------------------
+Common action tests createExtraDirsInRootfs Doesnt nothing with an empty target
+/src/agent/pkg/action/common_test.go:110
+• [0.000 seconds]
+------------------------------
+Common action tests createExtraDirsInRootfs Fails with a non valid rootdir
+/src/agent/pkg/action/common_test.go:117
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Extension type returns the name as string [sysext]
+/src/agent/pkg/action/sysext_test.go:73
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Installing catalog extensions installs an exact version for the configured platform [sysext]
+/src/agent/pkg/action/sysext_test.go:89
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Installing catalog extensions installs the latest version for the requested platform [sysext]
+/src/agent/pkg/action/sysext_test.go:97
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Installing catalog extensions does not extract when catalog resolution fails [sysext]
+/src/agent/pkg/action/sysext_test.go:105
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Invalid extension type should fail to list extensions with an invalid extension type [sysext]
+/src/agent/pkg/action/sysext_test.go:113
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Getting extensions should fail on a name that is not installed [sysext]
+/src/agent/pkg/action/sysext_test.go:120
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Getting extensions should fail when listing the extensions fails [sysext]
+/src/agent/pkg/action/sysext_test.go:126
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Resolving an extension by name resolves a bare name to its own image, not to a longer one [sysext]
+/src/agent/pkg/action/sysext_test.go:142
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Resolving an extension by name removes only the extension that was named [sysext]
+/src/agent/pkg/action/sysext_test.go:148
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Resolving an extension by name resolves a name that holds a regular expression metacharacter [sysext]
+/src/agent/pkg/action/sysext_test.go:156
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Resolving an extension by name does not resolve a name that is only a substring of an image [sysext]
+/src/agent/pkg/action/sysext_test.go:163
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Resolving an extension by name On an image with the two-part catalog suffix resolves the bare name [sysext]
+/src/agent/pkg/action/sysext_test.go:176
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Resolving an extension by name On an image with the two-part catalog suffix enables the bare name the fleet server sends [sysext]
+/src/agent/pkg/action/sysext_test.go:182
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Resolving an extension by name On an image with the two-part catalog suffix writes a link that resolves from the initramfs mount at /sysroot [sysext]
+/src/agent/pkg/action/sysext_test.go:189
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Resolving an extension by name On an image with the two-part catalog suffix keeps its link when enabled twice [sysext]
+/src/agent/pkg/action/sysext_test.go:196
+• [0.009 seconds]
+------------------------------
+Sysext Actions test Resolving an extension by name On an image with the two-part catalog suffix replaces an absolute link left by an older agent [sysext]
+/src/agent/pkg/action/sysext_test.go:204
+• [0.001 seconds]
+------------------------------
+Sysext Actions test Resolving an extension by name On an image with the two-part catalog suffix does not resolve a name that does not end on a dot boundary [sysext]
+/src/agent/pkg/action/sysext_test.go:214
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Listing extensions should NOT fail if the bootstate is not valid [sysext]
+/src/agent/pkg/action/sysext_test.go:224
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Listing extensions With no dir should return no extensions for installed extensions [sysext]
+/src/agent/pkg/action/sysext_test.go:237
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Listing extensions With no dir should return no extensions for active enabled extensions [sysext]
+/src/agent/pkg/action/sysext_test.go:243
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Listing extensions With no dir should return no extensions for passive enabled extensions [sysext]
+/src/agent/pkg/action/sysext_test.go:249
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Listing extensions With no dir should return no extensions for recovery enabled extensions [sysext]
+/src/agent/pkg/action/sysext_test.go:255
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Listing extensions With no dir should return no extensions for common enabled extensions [sysext]
+/src/agent/pkg/action/sysext_test.go:261
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Listing extensions With empty dir should return no extensions [sysext]
+/src/agent/pkg/action/sysext_test.go:269
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Listing extensions With empty dir should return no extensions for active enabled extensions [sysext]
+/src/agent/pkg/action/sysext_test.go:274
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Listing extensions With empty dir should return no extensions for passive enabled extensions [sysext]
+/src/agent/pkg/action/sysext_test.go:279
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Listing extensions With empty dir should return no extensions for recovery enabled extensions [sysext]
+/src/agent/pkg/action/sysext_test.go:284
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Listing extensions With empty dir should return no extensions for common enabled extensions [sysext]
+/src/agent/pkg/action/sysext_test.go:289
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Listing extensions With dir with files should not return files that are not valid extensions [sysext]
+/src/agent/pkg/action/sysext_test.go:296
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Listing extensions With dir with files should return files that are valid extensions [sysext]
+/src/agent/pkg/action/sysext_test.go:303
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Listing extensions With dir with files should ONLY return files that are valid extensions [sysext]
+/src/agent/pkg/action/sysext_test.go:315
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Enabling extensions should enable an installed extension [sysext]
+/src/agent/pkg/action/sysext_test.go:333
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Enabling extensions should enable an installed extension and reload the system with it [sysext]
+/src/agent/pkg/action/sysext_test.go:395
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Enabling extensions should enable an installed extension and reload the system with it if its a common one [sysext]
+/src/agent/pkg/action/sysext_test.go:436
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Enabling extensions should enable an installed extension and NOT reload the system with it if we are on the wrong boot state [sysext]
+/src/agent/pkg/action/sysext_test.go:473
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Enabling extensions should fail to enable a missing extension [sysext]
+/src/agent/pkg/action/sysext_test.go:505
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Enabling extensions should merge an extension that is already enabled when enabling it again with now [sysext]
+/src/agent/pkg/action/sysext_test.go:522
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Enabling extensions should not fail when enabling an extension with now twice [sysext]
+/src/agent/pkg/action/sysext_test.go:539
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Enabling extensions should replace a dangling enable link instead of reporting it already enabled [sysext]
+/src/agent/pkg/action/sysext_test.go:551
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Enabling extensions should replace a dangling run link when enabling with now [sysext]
+/src/agent/pkg/action/sysext_test.go:562
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Enabling extensions should not fail if the extension is already enabled [sysext]
+/src/agent/pkg/action/sysext_test.go:574
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Disabling extensions should disable an enabled extension [sysext]
+/src/agent/pkg/action/sysext_test.go:605
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Disabling extensions should not fail to disable a not enabled extension [sysext]
+/src/agent/pkg/action/sysext_test.go:629
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Disabling extensions With now, booted in active enables with now in active an extension already merged from common [sysext]
+/src/agent/pkg/action/sysext_test.go:664
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Disabling extensions With now, booted in active keeps the extension merged when disabling active while common still enables it [sysext]
+/src/agent/pkg/action/sysext_test.go:671
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Disabling extensions With now, booted in active keeps the extension merged when disabling common while active still enables it [sysext]
+/src/agent/pkg/action/sysext_test.go:686
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Disabling extensions With now, booted in active unmerges the extension when no other boot state enables it [sysext]
+/src/agent/pkg/action/sysext_test.go:694
+• [0.014 seconds]
+------------------------------
+Sysext Actions test Disabling extensions With now, booted in active unmerges the extension when only a state not booted enables it [sysext]
+/src/agent/pkg/action/sysext_test.go:704
+• [0.001 seconds]
+------------------------------
+Sysext Actions test Installing extensions With a file source should install a extension [sysext]
+/src/agent/pkg/action/sysext_test.go:715
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Installing extensions With a file source should preserve file permissions when streaming [sysext]
+/src/agent/pkg/action/sysext_test.go:733
+• [0.001 seconds]
+------------------------------
+Sysext Actions test Installing extensions With a file source should fail to install a missing extension [sysext]
+/src/agent/pkg/action/sysext_test.go:751
+• [0.001 seconds]
+------------------------------
+Sysext Actions test Installing extensions with a docker source should install a extension [sysext]
+/src/agent/pkg/action/sysext_test.go:764
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Installing extensions with a docker source should fail to install a missing extension [sysext]
+/src/agent/pkg/action/sysext_test.go:770
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Installing extensions with a http source should install a extension [sysext]
+/src/agent/pkg/action/sysext_test.go:781
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Installing extensions with a http source should fail to install a missing extension [sysext]
+/src/agent/pkg/action/sysext_test.go:790
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Removing extensions should remove an installed extension [sysext]
+/src/agent/pkg/action/sysext_test.go:799
+• [0.001 seconds]
+------------------------------
+Sysext Actions test Removing extensions should disable and remove an enabled extension [sysext]
+/src/agent/pkg/action/sysext_test.go:816
+• [0.001 seconds]
+------------------------------
+Sysext Actions test Removing extensions should fail to remove a missing extension [sysext]
+/src/agent/pkg/action/sysext_test.go:848
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Removing extensions should remove an extension and refresh the system if it was active [sysext]
+/src/agent/pkg/action/sysext_test.go:862
+• [0.001 seconds]
+------------------------------
+Sysext Actions test Removing extensions should fail to remove an active extension if the refresh fails [sysext]
+/src/agent/pkg/action/sysext_test.go:888
+• [0.001 seconds]
+------------------------------
+Sysext Actions test Removing extensions should remove an extension without refreshing if it was not merged [sysext]
+/src/agent/pkg/action/sysext_test.go:905
+• [0.001 seconds]
+------------------------------
+Sysext Actions test Disabling extensions with immediate refresh should fail to disable if the target dir does not exist [sysext]
+/src/agent/pkg/action/sysext_test.go:926
+• [0.001 seconds]
+------------------------------
+Sysext Actions test Disabling extensions with immediate refresh should disable and refresh an enabled and merged extension [sysext]
+/src/agent/pkg/action/sysext_test.go:931
+• [0.001 seconds]
+------------------------------
+Sysext Actions test Disabling extensions with immediate refresh should fail to disable a merged extension if the refresh fails [sysext]
+/src/agent/pkg/action/sysext_test.go:953
+• [0.001 seconds]
+------------------------------
+Sysext Actions test Disabling extensions with immediate refresh should disable without refreshing if the extension was not merged [sysext]
+/src/agent/pkg/action/sysext_test.go:967
+• [0.001 seconds]
+------------------------------
+Sysext Actions test Disabling extensions with immediate refresh should disable but not refresh if booted in a different boot state [sysext]
+/src/agent/pkg/action/sysext_test.go:978
+• [0.001 seconds]
+------------------------------
+Sysext Actions test Enabling extensions with immediate refresh failures should fail to enable an extension if the refresh fails [sysext]
+/src/agent/pkg/action/sysext_test.go:994
+• [0.001 seconds]
+------------------------------
+Sysext Actions test Enabling extensions with immediate refresh failures should fail to enable an extension if the symlink cannot be created [sysext]
+/src/agent/pkg/action/sysext_test.go:1006
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Confext extensions should list and enable confexts in all boot states [sysext]
+/src/agent/pkg/action/sysext_test.go:1024
+• [0.001 seconds]
+------------------------------
+Sysext Actions test Confext extensions should enable and merge a common confext immediately [sysext]
+/src/agent/pkg/action/sysext_test.go:1046
+• [0.001 seconds]
+------------------------------
+Sysext Actions test Confext extensions should disable and refresh a merged confext [sysext]
+/src/agent/pkg/action/sysext_test.go:1055
+• [0.001 seconds]
+------------------------------
+Sysext Actions test Confext extensions should remove a merged confext and refresh [sysext]
+/src/agent/pkg/action/sysext_test.go:1067
+• [0.001 seconds]
+------------------------------
+Sysext Actions test Confext extensions should install a confext from a file source [sysext]
+/src/agent/pkg/action/sysext_test.go:1080
+• [0.001 seconds]
+------------------------------
+Sysext Actions test Installing extensions URI parsing should fail with an invalid URI [sysext]
+/src/agent/pkg/action/sysext_test.go:1094
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Installing extensions URI parsing should fail with an unsupported scheme [sysext]
+/src/agent/pkg/action/sysext_test.go:1098
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Installing extensions URI parsing should fail with an invalid image reference [sysext]
+/src/agent/pkg/action/sysext_test.go:1103
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Installing extensions URI parsing should append the latest tag to name-only image references [sysext]
+/src/agent/pkg/action/sysext_test.go:1108
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Installing extensions URI parsing should create the target dir if it does not exist [sysext]
+/src/agent/pkg/action/sysext_test.go:1114
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Installing extensions URI parsing should fail if the target dir cannot be created [sysext]
+/src/agent/pkg/action/sysext_test.go:1129
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Installing extensions URI parsing should fail if the file cannot be written to the target dir [sysext]
+/src/agent/pkg/action/sysext_test.go:1139
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Read only filesystem failures should fail to install when the target dir cannot be created [sysext]
+/src/agent/pkg/action/sysext_test.go:1153
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Read only filesystem failures should fail to list extensions when the dir cannot be created [sysext]
+/src/agent/pkg/action/sysext_test.go:1160
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Read only filesystem failures should fail to enable an extension when the target dir cannot be created [sysext]
+/src/agent/pkg/action/sysext_test.go:1166
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Read only filesystem failures should fail to disable an extension when the symlink cannot be removed [sysext]
+/src/agent/pkg/action/sysext_test.go:1172
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Read only filesystem failures should fail to remove an enabled extension when the symlink cannot be removed [sysext]
+/src/agent/pkg/action/sysext_test.go:1180
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Read only filesystem failures should fail to remove an extension when the file cannot be removed [sysext]
+/src/agent/pkg/action/sysext_test.go:1188
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Enabling extensions when the run dir is missing should fail to enable with immediate refresh if the run dir does not exist [sysext]
+/src/agent/pkg/action/sysext_test.go:1196
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Installing extensions on a node that has none yet creates the sysext dir on the first install [sysext]
+/src/agent/pkg/action/sysext_test.go:1215
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Installing extensions on a node that has none yet creates the confext dir on the first install [sysext]
+/src/agent/pkg/action/sysext_test.go:1224
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Installing extensions on a node that has none yet creates the boot-state dir on the first install [sysext]
+/src/agent/pkg/action/sysext_test.go:1233
+• [0.000 seconds]
+------------------------------
+Sysext Actions test Installing extensions on a node that has none yet lists no extensions rather than failing [sysext]
+/src/agent/pkg/action/sysext_test.go:1243
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt KcryptEncrypt refuses to run without labels
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:107
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt KcryptEncrypt refuses the partitions the running system depends on OEM
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:120
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt KcryptEncrypt refuses the partitions the running system depends on state
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:121
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt KcryptEncrypt refuses the partitions the running system depends on recovery
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:122
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt KcryptEncrypt refuses the partitions the running system depends on EFI
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:123
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt KcryptEncrypt refuses a renamed OEM read from the cmdline
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:126
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt KcryptEncrypt skips a partition that is already a LUKS container
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:137
+Partition COS_PERSISTENT is already encrypted; skipping.
+Nothing to encrypt.
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt KcryptEncrypt fails closed on a label that cannot be found
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:144
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt KcryptEncrypt refuses a mounted partition
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:152
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt KcryptEncrypt refuses when whether the partition is mounted cannot be determined
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:160
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt KcryptEncrypt refuses a partition mounted while the confirmation prompt was open
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:170
+WARNING: encrypting a partition DESTROYS ALL DATA on it.
+WARNING: this action cannot be undone.
+Partitions to encrypt: COS_PERSISTENT
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt KcryptEncrypt does nothing when the prompt is declined
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:190
+WARNING: encrypting a partition DESTROYS ALL DATA on it.
+WARNING: this action cannot be undone.
+Partitions to encrypt: COS_PERSISTENT
+Encryption cancelled.
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt KcryptEncrypt does not prompt when the confirmation is waived
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:198
+Encrypted: COS_PERSISTENT
+The partitions are locked. They unlock on the next boot, or run 'kairos-agent kcrypt unlock-all'.
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt KcryptEncrypt encrypts only the pending labels and verifies the result
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:205
+Partition MYAPP_DATA is already encrypted; skipping.
+Encrypted: COS_PERSISTENT
+The partitions are locked. They unlock on the next boot, or run 'kairos-agent kcrypt unlock-all'.
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt KcryptEncrypt errors when the result does not verify as encrypted
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:230
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt KcryptEncrypt propagates an encryption failure
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:241
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt EncryptFormattedPartition is a no-op when nothing is configured for encryption
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:264
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt EncryptFormattedPartition is a no-op on a nil partition
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:272
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt EncryptFormattedPartition is a no-op when the format preserved the LUKS container
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:279
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt EncryptFormattedPartition encrypts, unlocks and repoints the spec at the mapper
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:287
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt EncryptFormattedPartition fails the reset when encryption fails
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:296
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt EncryptFormattedPartition fails the reset when the unlock after encryption fails
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:305
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt EncryptFormattedPartition fails the reset when the partition cannot be classified
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:313
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt EncryptFormattedPartition applies the UKI default when no partitions are listed
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:322
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt EncryptFormattedPartition encrypts a freshly formatted OEM partition when it is listed
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:330
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt EncryptFormattedPartition applies the UKI default to OEM as well
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:346
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt PreflightResetFormat passes a partition on its mapper without probing it
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:372
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt PreflightResetFormat refuses a raw LUKS container, configured or not
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:381
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt PreflightResetFormat passes a plaintext partition nothing asks to encrypt
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:390
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt PreflightResetFormat refuses before any format when the encryptor cannot be validated
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:399
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt PreflightResetFormat fails closed when the filesystem of a configured partition cannot be determined
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:409
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt PreflightResetFormat keeps an unconfigured reset going when the probe fails
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:416
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt PreflightResetFormat refuses remote KMS re-encryption when OEM is formatted too
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:422
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt PreflightResetFormat refuses passphrase re-encryption before any format when the passphrase file is unusable
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:433
+• [0.000 seconds]
+------------------------------
+kcrypt encrypt PreflightResetFormat allows local TPM re-encryption when OEM is formatted too
+/src/agent/pkg/action/kcrypt_encrypt_internal_test.go:463
+• [0.000 seconds]
+------------------------------
+UEFI boot entry writes the entry for the ESP and puts it first in BootOrder [efibootentry]
+/src/agent/pkg/action/efibootentry_test.go:99
+• [0.000 seconds]
+------------------------------
+UEFI boot entry changes nothing when it runs again [efibootentry]
+/src/agent/pkg/action/efibootentry_test.go:131
+• [0.001 seconds]
+------------------------------
+UEFI boot entry replaces its own entry for a partition that is gone, and keeps one that still exists [efibootentry]
+/src/agent/pkg/action/efibootentry_test.go:143
+• [0.001 seconds]
+------------------------------
+UEFI boot entry refuses on a system that did not boot with UEFI [efibootentry]
+/src/agent/pkg/action/efibootentry_test.go:161
+• [0.001 seconds]
+------------------------------
+UEFI boot entry writes nothing for a device that is not a GPT partition [efibootentry]
+/src/agent/pkg/action/efibootentry_test.go:168
+• [0.000 seconds]
+------------------------------
+UEFI boot entry formats a GPT GUID the way udev names it [efibootentry]
+/src/agent/pkg/action/efibootentry_test.go:176
+• [0.000 seconds]
+------------------------------
+UEFI boot entry names the loader the GRUB install writes [efibootentry]
+/src/agent/pkg/action/efibootentry_test.go:181
+• [0.000 seconds]
+------------------------------
+UEFI boot entry efiBootEntryName uses the configured GRUB entry name first [efibootentry]
+/src/agent/pkg/action/efibootentry_test.go:198
+• [0.000 seconds]
+------------------------------
+UEFI boot entry efiBootEntryName reads GRUB_ENTRY_NAME from the image [efibootentry]
+/src/agent/pkg/action/efibootentry_test.go:201
+• [0.000 seconds]
+------------------------------
+UEFI boot entry efiBootEntryName falls back to the default GRUB entry name [efibootentry]
+/src/agent/pkg/action/efibootentry_test.go:207
+• [0.000 seconds]
+------------------------------
+Kcrypt actions resolveNVIndexAndDevice prefers the explicit flags over everything [kcrypt]
+/src/agent/pkg/action/kcrypt_test.go:54
+• [0.001 seconds]
+------------------------------
+Kcrypt actions resolveNVIndexAndDevice falls back to the config values when no flags are given [kcrypt]
+/src/agent/pkg/action/kcrypt_test.go:65
+• [0.001 seconds]
+------------------------------
+Kcrypt actions resolveNVIndexAndDevice uses the default NV index and empty device when nothing is set [kcrypt]
+/src/agent/pkg/action/kcrypt_test.go:76
+• [0.001 seconds]
+------------------------------
+Kcrypt actions resolveNVIndexAndDevice ignores non-string config values [kcrypt]
+/src/agent/pkg/action/kcrypt_test.go:81
+• [0.001 seconds]
+------------------------------
+Kcrypt actions resolveCIndex prefers the explicit flag [kcrypt]
+/src/agent/pkg/action/kcrypt_test.go:100
+• [0.001 seconds]
+------------------------------
+Kcrypt actions resolveCIndex falls back to the config value [kcrypt]
+/src/agent/pkg/action/kcrypt_test.go:108
+• [0.001 seconds]
+------------------------------
+Kcrypt actions resolveCIndex returns empty when there is no kcrypt config [kcrypt]
+/src/agent/pkg/action/kcrypt_test.go:116
+• [0.001 seconds]
+------------------------------
+Kcrypt actions resolveCIndex returns empty when the kcrypt block declares no c_index [kcrypt]
+/src/agent/pkg/action/kcrypt_test.go:119
+• [0.001 seconds]
+------------------------------
+Kcrypt actions resolving against a scanned cloud-config stores the kcrypt block as collector.ConfigValues [kcrypt]
+/src/agent/pkg/action/kcrypt_test.go:147
+• [0.034 seconds]
+------------------------------
+Kcrypt actions resolving against a scanned cloud-config reads the configured NV index and TPM device [kcrypt]
+/src/agent/pkg/action/kcrypt_test.go:152
+• [0.032 seconds]
+------------------------------
+Kcrypt actions resolving against a scanned cloud-config reads the configured C index [kcrypt]
+/src/agent/pkg/action/kcrypt_test.go:158
+• [0.042 seconds]
+------------------------------
+Kcrypt actions resolving against a scanned cloud-config still prefers the explicit flags [kcrypt]
+/src/agent/pkg/action/kcrypt_test.go:162
+• [0.034 seconds]
+------------------------------
+Kcrypt actions KcryptReadNV fails when the TPM device is not available [kcrypt]
+/src/agent/pkg/action/kcrypt_test.go:171
+• [0.004 seconds]
+------------------------------
+Kcrypt actions KcryptReadNV fails when the NV index is not parseable [kcrypt]
+/src/agent/pkg/action/kcrypt_test.go:176
+• [0.004 seconds]
+------------------------------
+Kcrypt actions KcryptCheckNV fails when the TPM device is not available [kcrypt]
+/src/agent/pkg/action/kcrypt_test.go:183
+• [0.004 seconds]
+------------------------------
+Kcrypt actions KcryptCleanup does nothing when the NV index can not be read [kcrypt]
+/src/agent/pkg/action/kcrypt_test.go:191
+NV index 0x1500000 appears to be empty or does not exist
+• [0.004 seconds]
+------------------------------
+FinalizeContext round-trips through JSON on disk
+/src/agent/pkg/action/upgrade_finalize_test.go:27
+• [0.001 seconds]
+------------------------------
+FinalizeContext rewrites host-side paths under the handoff prefix
+/src/agent/pkg/action/upgrade_finalize_test.go:61
+• [0.000 seconds]
+------------------------------
+FinalizeContext omits empty optional fields in the marshaled JSON
+/src/agent/pkg/action/upgrade_finalize_test.go:90
+• [0.001 seconds]
+------------------------------
+Reset action tests Reset Action With EFI Successfully resets on non-squashfs recovery [reset]
+/src/agent/pkg/action/reset_test.go:191
+• [0.011 seconds]
+------------------------------
+Reset action tests Reset Action With EFI Successfully resets on non-squashfs recovery including persistent data [reset]
+/src/agent/pkg/action/reset_test.go:194
+• [0.010 seconds]
+------------------------------
+Reset action tests Reset Action With EFI Successfully resets from a squashfs recovery image [reset, channel]
+/src/agent/pkg/action/reset_test.go:199
+• [0.022 seconds]
+------------------------------
+Reset action tests Reset Action With EFI Successfully resets despite having errors on hooks [reset]
+/src/agent/pkg/action/reset_test.go:205
+• [0.005 seconds]
+------------------------------
+Reset action tests Reset Action With EFI Successfully resets from a docker image [reset, docker]
+/src/agent/pkg/action/reset_test.go:209
+• [0.008 seconds]
+------------------------------
+Reset action tests Reset Action With EFI Fails formatting state partition [reset]
+/src/agent/pkg/action/reset_test.go:214
+• [0.002 seconds]
+------------------------------
+Reset action tests Reset Action With EFI Fails setting the active label on non-squashfs recovery [reset]
+/src/agent/pkg/action/reset_test.go:219
+• [0.004 seconds]
+------------------------------
+Reset action tests Reset Action With EFI Fails setting the passive label on squashfs recovery [reset]
+/src/agent/pkg/action/reset_test.go:223
+• [0.004 seconds]
+------------------------------
+Reset action tests Reset Action With EFI Fails mounting partitions [reset]
+/src/agent/pkg/action/reset_test.go:228
+• [0.003 seconds]
+------------------------------
+Reset action tests Reset Action With EFI Fails unmounting partitions [reset]
+/src/agent/pkg/action/reset_test.go:232
+• [0.002 seconds]
+------------------------------
+Reset action tests Reset Action With EFI Fails unpacking docker image  [reset]
+/src/agent/pkg/action/reset_test.go:236
+• [0.002 seconds]
+------------------------------
+Reset action tests Reset Action With EFI Fails if some hook fails and strict is set [reset]
+/src/agent/pkg/action/reset_test.go:243
+• [0.002 seconds]
+------------------------------
+Reset action tests Reset Action With EFI re-encryption after the format runs for every formatted partition [reset]
+/src/agent/pkg/action/reset_test.go:261
+• [0.004 seconds]
+------------------------------
+Reset action tests Reset Action With EFI re-encryption after the format does not run for partitions the reset does not format [reset]
+/src/agent/pkg/action/reset_test.go:268
+• [0.003 seconds]
+------------------------------
+Reset action tests Reset Action With EFI re-encryption after the format fails the reset when re-encrypting OEM fails [reset]
+/src/agent/pkg/action/reset_test.go:275
+• [0.003 seconds]
+------------------------------
+Reset action tests Reset Action With EFI re-encryption after the format formats nothing when the preflight refuses [reset]
+/src/agent/pkg/action/reset_test.go:283
+• [0.002 seconds]
+------------------------------
+Reset action tests Reset Action With EFI re-encryption after the format fails the reset when re-encrypting persistent fails [reset]
+/src/agent/pkg/action/reset_test.go:303
+• [0.004 seconds]
+------------------------------
+Reset action tests Reset Action With EFI Fails formatting the persistent partition [reset]
+/src/agent/pkg/action/reset_test.go:312
+• [0.004 seconds]
+------------------------------
+Reset action tests Reset Action With EFI Fails unmounting the persistent partition [reset]
+/src/agent/pkg/action/reset_test.go:318
+• [0.003 seconds]
+------------------------------
+Reset action tests Reset Action With EFI Fails formatting the OEM partition [reset]
+/src/agent/pkg/action/reset_test.go:325
+• [0.003 seconds]
+------------------------------
+Reset action tests Reset Action With EFI Fails unmounting the OEM partition [reset]
+/src/agent/pkg/action/reset_test.go:332
+• [0.003 seconds]
+------------------------------
+Reset action tests Reset Action With EFI Fails mounting back the OEM partition [reset]
+/src/agent/pkg/action/reset_test.go:338
+• [0.003 seconds]
+------------------------------
+Reset action tests Reset Action With EFI Fails installing grub [reset]
+/src/agent/pkg/action/reset_test.go:343
+• [0.004 seconds]
+------------------------------
+Reset action tests Reset Action With EFI Successfully resets with mounted persistent and OEM partitions [reset]
+/src/agent/pkg/action/reset_test.go:348
+• [0.005 seconds]
+------------------------------
+Reset action tests Reset Action With EFI Fails on the after-reset-chroot hook when strict [reset]
+/src/agent/pkg/action/reset_test.go:356
+• [0.004 seconds]
+------------------------------
+Reset action tests Reset Action With EFI Fails on the after-reset hook when strict [reset]
+/src/agent/pkg/action/reset_test.go:364
+• [0.003 seconds]
+------------------------------
+Reset action tests Reset Action With EFI the state file mounts persistent at the default mount point to record the reset [reset]
+/src/agent/pkg/action/reset_test.go:373
+• [0.005 seconds]
+------------------------------
+Reset action tests Reset Action With EFI the state file keeps first-install across a formatting reset [reset]
+/src/agent/pkg/action/reset_test.go:392
+• [0.006 seconds]
+------------------------------
+Reset action tests Reset Action With EFI Fails to set the default grub entry [reset]
+/src/agent/pkg/action/reset_test.go:428
+• [0.006 seconds]
+------------------------------
+Install action tests Install Action Successfully installs [install]
+/src/agent/pkg/action/install_test.go:229
+• [0.554 seconds]
+------------------------------
+Install action tests Install Action Sets the executable /run/cos/ejectcd so systemd can eject the cd on restart [install]
+/src/agent/pkg/action/install_test.go:234
+• [0.180 seconds]
+------------------------------
+Install action tests Install Action Warns when the eject script cannot be written [install]
+/src/agent/pkg/action/install_test.go:252
+• [0.189 seconds]
+------------------------------
+Install action tests Install Action Successfully installs without formatting picking the pre-configured device [install, no-format, disk]
+/src/agent/pkg/action/install_test.go:266
+• [0.116 seconds]
+------------------------------
+Install action tests Install Action ejectcd does nothing if we are not booting from cd [install]
+/src/agent/pkg/action/install_test.go:276
+• [0.178 seconds]
+------------------------------
+Install action tests Install Action Successfully installs despite hooks failure [install, hooks]
+/src/agent/pkg/action/install_test.go:287
+• [0.164 seconds]
+------------------------------
+Install action tests Install Action Successfully installs without formatting despite detecting a previous installation [install, no-format, disk]
+/src/agent/pkg/action/install_test.go:293
+• [0.102 seconds]
+------------------------------
+Install action tests Install Action Successfully installs a docker image [install, docker]
+/src/agent/pkg/action/install_test.go:300
+• [0.147 seconds]
+------------------------------
+Install action tests Install Action Successfully installs and adds remote cloud-config [install, cloud-config]
+/src/agent/pkg/action/install_test.go:306
+• [0.179 seconds]
+------------------------------
+Install action tests Install Action Fails if disk doesn't exist [install, disk]
+/src/agent/pkg/action/install_test.go:316
+• [0.005 seconds]
+------------------------------
+Install action tests Install Action Fails if some hook fails and strict is set [install, strict]
+/src/agent/pkg/action/install_test.go:321
+• [0.083 seconds]
+------------------------------
+Install action tests Install Action Fails on the after-install-chroot hook when strict [install, strict]
+/src/agent/pkg/action/install_test.go:328
+• [0.107 seconds]
+------------------------------
+Install action tests Install Action Fails on the after-install hook when strict [install, strict]
+/src/agent/pkg/action/install_test.go:338
+• [0.183 seconds]
+------------------------------
+Install action tests Install Action Fails to set the default grub entry [install, grub]
+/src/agent/pkg/action/install_test.go:348
+• [0.065 seconds]
+------------------------------
+Install action tests Install Action Fails to install from ISO if the ISO is not found [install, iso]
+/src/agent/pkg/action/install_test.go:356
+• [0.003 seconds]
+------------------------------
+Install action tests Install Action Fails to install from ISO as rsync can't find the temporary root tree [install, iso]
+/src/agent/pkg/action/install_test.go:377
+• [0.391 seconds]
+------------------------------
+Install action tests Install Action Unmounts the downloaded ISO and its rootfs after installing from ISO [install, iso]
+/src/agent/pkg/action/install_test.go:388
+• [0.340 seconds]
+------------------------------
+Install action tests Install Action Removes the downloaded ISO temp dir even when unmounting it fails [install, iso]
+/src/agent/pkg/action/install_test.go:402
+• [0.121 seconds]
+------------------------------
+Install action tests Install Action Sizes the images and partitions from the downloaded ISO before partitioning [install, iso]
+/src/agent/pkg/action/install_test.go:415
+• [0.367 seconds]
+------------------------------
+Install action tests Install Action Keeps the sizes set in the config as minimums when installing from ISO [install, iso]
+/src/agent/pkg/action/install_test.go:436
+• [0.417 seconds]
+------------------------------
+Install action tests Install Action Stops before partitioning if the sizes from the downloaded ISO do not fit the disk [install, iso]
+/src/agent/pkg/action/install_test.go:456
+• [0.006 seconds]
+------------------------------
+Install action tests Install Action Stops before partitioning if the downloaded ISO cannot be measured [install, iso]
+/src/agent/pkg/action/install_test.go:475
+• [0.002 seconds]
+------------------------------
+Install action tests Install Action Without formatting, the existing partitions are checked against the images installs when the partitions have room [install, no-format, disk]
+/src/agent/pkg/action/install_test.go:517
+• [1.245 seconds]
+------------------------------
+Install action tests Install Action Without formatting, the existing partitions are checked against the images stops before writing anything when the state partition is smaller than active and passive [install, no-format, disk]
+/src/agent/pkg/action/install_test.go:521
+• [0.006 seconds]
+------------------------------
+Install action tests Install Action Without formatting, the existing partitions are checked against the images stops when the partitions are big enough but have no free space left [install, no-format, disk]
+/src/agent/pkg/action/install_test.go:529
+• [0.006 seconds]
+------------------------------
+Install action tests Install Action Without formatting, the existing partitions are checked against the images counts the images it replaces as free space [install, no-format, disk]
+/src/agent/pkg/action/install_test.go:538
+• [1.156 seconds]
+------------------------------
+Install action tests Install Action Without formatting, the existing partitions are checked against the images installs a partition that only fits the current images [install, no-format, disk]
+/src/agent/pkg/action/install_test.go:545
+• [1.168 seconds]
+------------------------------
+Install action tests Install Action Without formatting, the existing partitions are checked against the images lets the install go on when a partition cannot be measured [install, no-format, disk]
+/src/agent/pkg/action/install_test.go:551
+• [1.146 seconds]
+------------------------------
+Install action tests Install Action Fails to install without formatting if a previous install is detected [install, no-format, disk]
+/src/agent/pkg/action/install_test.go:562
+• [0.003 seconds]
+------------------------------
+Install action tests Install Action Fails to mount partitions [install, disk, mount]
+/src/agent/pkg/action/install_test.go:569
+• [0.032 seconds]
+------------------------------
+Install action tests Install Action Fails on blkdeactivate errors [install, disk, partitions]
+/src/agent/pkg/action/install_test.go:575
+• [0.006 seconds]
+------------------------------
+Install action tests Install Action Fails to unmount partitions [install, disk, partitions]
+/src/agent/pkg/action/install_test.go:581
+• [0.059 seconds]
+------------------------------
+Install action tests Install Action Fails to create a filesystem image [install, disk, image]
+/src/agent/pkg/action/install_test.go:587
+• [0.037 seconds]
+------------------------------
+Install action tests Install Action Fails if luet fails to unpack image [install, image, luet, unpack]
+/src/agent/pkg/action/install_test.go:593
+• [0.042 seconds]
+------------------------------
+Install action tests Install Action Fails if requested remote cloud config can't be downloaded [install, cloud-config]
+/src/agent/pkg/action/install_test.go:602
+• [0.052 seconds]
+------------------------------
+Install action tests Install Action Fails to find grub2-install [install, grub]
+/src/agent/pkg/action/install_test.go:610
+• [0.073 seconds]
+------------------------------
+Install action tests Install Action Runs grub-install chrooted into the source rootfs with relative paths [install, grub, chroot]
+/src/agent/pkg/action/install_test.go:620
+• [0.141 seconds]
+------------------------------
+Install action tests Install Action Fails copying Passive image [install, copy, active]
+/src/agent/pkg/action/install_test.go:638
+• [0.091 seconds]
+------------------------------
+Install action tests Install Action Fails if there is no grub2 artifacts [install, grub]
+/src/agent/pkg/action/install_test.go:644
+• [0.059 seconds]
+------------------------------
+RunFinalize ESP refresh writes the grub.cfg of the upgrade image to the state partition along with grub on the ESP [upgrade, grub, efi]
+/src/agent/pkg/action/upgrade_finalize_test.go:459
+• [0.003 seconds]
+------------------------------
+RunFinalize ESP refresh puts both partitions back as they were when the ESP refresh fails late [upgrade, grub, efi]
+/src/agent/pkg/action/upgrade_finalize_test.go:470
+• [0.003 seconds]
+------------------------------
+RunFinalize ESP refresh leaves the grub.cfg on the state partition alone when the ESP refresh is skipped [upgrade, grub, efi]
+/src/agent/pkg/action/upgrade_finalize_test.go:494
+• [0.001 seconds]
+------------------------------
+RunFinalize ESP refresh leaves the grub.cfg on the state partition alone on a recovery upgrade [upgrade, grub, efi]
+/src/agent/pkg/action/upgrade_finalize_test.go:504
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under Uki ListBootEntries fails to list the boot entries when there is no loader.conf [bootentry]
+/src/agent/pkg/action/bootentries_test.go:116
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under Uki ListBootEntries fails to list the boot entries when the EFI partition is missing [bootentry]
+/src/agent/pkg/action/bootentries_test.go:120
+• [0.002 seconds]
+------------------------------
+Bootentries tests Under Uki ListBootEntries fails to list the boot entries when the EFI partition cannot be mounted [bootentry]
+/src/agent/pkg/action/bootentries_test.go:125
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under Uki ListBootEntries defaults to the EFI dir when the EFI partition has no mountpoint [bootentry]
+/src/agent/pkg/action/bootentries_test.go:131
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under Uki ListSystemdEntries lists the boot entries if there is any [bootentry]
+/src/agent/pkg/action/bootentries_test.go:156
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under Uki ListSystemdEntries list empty boot entries if there is none [bootentry]
+/src/agent/pkg/action/bootentries_test.go:177
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under Uki SelectBootEntry fails to select the boot entry if it doesnt exist [bootentry]
+/src/agent/pkg/action/bootentries_test.go:184
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under Uki SelectBootEntry works without boot assessment [bootentry]
+/src/agent/pkg/action/bootentries_test.go:189
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under Uki SelectBootEntry selects the boot entry in a default installation [bootentry]
+/src/agent/pkg/action/bootentries_test.go:203
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under Uki SelectBootEntry selects the boot entry in a extend-cmdline installation with boot branding [bootentry]
+/src/agent/pkg/action/bootentries_test.go:242
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under Uki SelectBootEntry selects an extra-cmdline entry when the system has exactly four entries [bootentry]
+/src/agent/pkg/action/bootentries_test.go:282
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under Uki SelectBootEntry selects the boot entry in a extra-cmdline installation [bootentry]
+/src/agent/pkg/action/bootentries_test.go:326
+• [0.002 seconds]
+------------------------------
+Bootentries tests Under Uki SelectBootEntry refuses to guess when a bare role matches more than one entry [bootentry]
+/src/agent/pkg/action/bootentries_test.go:398
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under Uki SelectBootEntry fails when the EFI partition cannot be found [bootentry]
+/src/agent/pkg/action/bootentries_test.go:416
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under Uki SelectBootEntry fails when the efi var cannot be written [bootentry]
+/src/agent/pkg/action/bootentries_test.go:422
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under Uki SelectBootEntry systemd-boot 256 workaround includes the assessment suffix in the EFI var for a default installation [bootentry]
+/src/agent/pkg/action/bootentries_test.go:440
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under Uki SelectBootEntry systemd-boot 256 workaround fails when multiple assessment files match the selected entry [bootentry]
+/src/agent/pkg/action/bootentries_test.go:473
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under Uki SelectBootEntry systemd-boot 256 workaround includes the assessment suffix in the EFI var for an extra-cmdline installation [bootentry]
+/src/agent/pkg/action/bootentries_test.go:487
+• [0.001 seconds]
+------------------------------
+Bootentries tests conf name conversions systemdConfToBootName fails for non conf files [bootentry]
+/src/agent/pkg/action/bootentries_test.go:538
+• [0.001 seconds]
+------------------------------
+Bootentries tests conf name conversions systemdConfToBootName converts conf files to boot names [bootentry]
+/src/agent/pkg/action/bootentries_test.go:544
+• [0.001 seconds]
+------------------------------
+Bootentries tests conf name conversions bootNameToSystemdConf converts boot names to conf names [bootentry]
+/src/agent/pkg/action/bootentries_test.go:556
+• [0.001 seconds]
+------------------------------
+Bootentries tests efi variables ReadOneShotEfiVar fails when the variable does not exist [bootentry]
+/src/agent/pkg/action/bootentries_test.go:572
+• [0.001 seconds]
+------------------------------
+Bootentries tests efi variables WriteOneShotEfiVar fails when the efivars dir does not exist [bootentry]
+/src/agent/pkg/action/bootentries_test.go:577
+• [0.001 seconds]
+------------------------------
+Bootentries tests efi variables encodes and decodes UTF16 LE strings with NUL terminators [bootentry]
+/src/agent/pkg/action/bootentries_test.go:583
+• [0.001 seconds]
+------------------------------
+Bootentries tests getSystemdBootMajorVersion returns 0 when the systemd-boot binary cannot be read [bootentry]
+/src/agent/pkg/action/bootentries_test.go:590
+• [0.001 seconds]
+------------------------------
+Bootentries tests clearImmutable does nothing for non existing files [bootentry]
+/src/agent/pkg/action/bootentries_test.go:596
+• [0.001 seconds]
+------------------------------
+Bootentries tests clearImmutable returns an error when the file cannot be opened [bootentry]
+/src/agent/pkg/action/bootentries_test.go:599
+  [SKIPPED] in [It] - /src/agent/pkg/action/bootentries_test.go:601 @ 11/27/26 08:55:10.288
+S [SKIPPED] [0.001 seconds]
+Bootentries tests clearImmutable [It] returns an error when the file cannot be opened [bootentry]
+/src/agent/pkg/action/bootentries_test.go:599
+  [SKIPPED] running as root, permissions are not enforced
+  In [It] at: /src/agent/pkg/action/bootentries_test.go:601 @ 11/27/26 08:55:10.288
+------------------------------
+Bootentries tests clearImmutable does nothing for files without the immutable flag [bootentry]
+/src/agent/pkg/action/bootentries_test.go:612
+• [0.001 seconds]
+------------------------------
+Bootentries tests listSystemdEntries edge cases returns no entries when the entries dir does not exist [bootentry]
+/src/agent/pkg/action/bootentries_test.go:625
+• [0.001 seconds]
+------------------------------
+Bootentries tests listSystemdEntries edge cases skips dirs and non conf files [bootentry]
+/src/agent/pkg/action/bootentries_test.go:630
+• [0.001 seconds]
+------------------------------
+Bootentries tests findEntryWithAssessment returns the base name unchanged when no assessment file exists [bootentry]
+/src/agent/pkg/action/bootentries_test.go:645
+• [0.001 seconds]
+------------------------------
+Bootentries tests findEntryWithAssessment returns the name with assessment when the file exists [bootentry]
+/src/agent/pkg/action/bootentries_test.go:652
+• [0.001 seconds]
+------------------------------
+Bootentries tests findEntryWithAssessment returns the name with compound assessment (N-M) when the file exists [bootentry]
+/src/agent/pkg/action/bootentries_test.go:659
+• [0.001 seconds]
+------------------------------
+Bootentries tests findEntryWithAssessment does not match a file with a different base name [bootentry]
+/src/agent/pkg/action/bootentries_test.go:666
+• [0.001 seconds]
+------------------------------
+Bootentries tests findEntryWithAssessment returns an error when the entries dir cannot be read [bootentry]
+/src/agent/pkg/action/bootentries_test.go:673
+• [0.001 seconds]
+------------------------------
+Bootentries tests findEntryWithAssessment returns an error when multiple assessment files match the same base name [bootentry]
+/src/agent/pkg/action/bootentries_test.go:680
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under grub ListBootEntries fails to list the boot entries when there is no grub files [bootentry]
+/src/agent/pkg/action/bootentries_test.go:694
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under grub ListBootEntries fails on the interactive prompt when there is no terminal [bootentry]
+/src/agent/pkg/action/bootentries_test.go:698
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under grub ListGrubEntries lists double-quoted grubcustom entries without an explicit id [bootentry]
+/src/agent/pkg/action/bootentries_test.go:707
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under grub ListGrubEntries lists grubcustom entries without an explicit id [bootentry]
+/src/agent/pkg/action/bootentries_test.go:716
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under grub ListGrubEntries uses the explicit id instead of also listing the menuentry title [bootentry]
+/src/agent/pkg/action/bootentries_test.go:725
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under grub ListGrubEntries lists the boot entries if there is any [bootentry]
+/src/agent/pkg/action/bootentries_test.go:734
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under grub ListGrubEntries list empty boot entries if there is none [bootentry]
+/src/agent/pkg/action/bootentries_test.go:750
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under grub SelectBootEntry fails to select the boot entry if it doesnt exist [bootentry]
+/src/agent/pkg/action/bootentries_test.go:766
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under grub SelectBootEntry selects the boot entry [bootentry]
+/src/agent/pkg/action/bootentries_test.go:777
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under grub SelectBootEntry fails to select the boot entry if there is no grub config [bootentry]
+/src/agent/pkg/action/bootentries_test.go:793
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under grub SelectBootEntry fails to select the boot entry if the grubenv cannot be written [bootentry]
+/src/agent/pkg/action/bootentries_test.go:798
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under grub SelectBootEntry with encrypted OEM writes the next entry to the STATE grubenv [bootentry]
+/src/agent/pkg/action/bootentries_test.go:812
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under grub SelectBootEntry with encrypted OEM fails when the STATE grubenv cannot be written [bootentry]
+/src/agent/pkg/action/bootentries_test.go:851
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under grub SelectBootEntry with encrypted OEM puts the STATE partition back read only when the grubenv write fails [bootentry]
+/src/agent/pkg/action/bootentries_test.go:875
+• [0.001 seconds]
+------------------------------
+Bootentries tests Under grub SelectBootEntry with encrypted OEM fails when the STATE device cannot be found [bootentry]
+/src/agent/pkg/action/bootentries_test.go:904
+• [3.005 seconds]
+------------------------------
+Bootentries tests Under grub SelectBootEntry with encrypted OEM warns when the STATE partition cannot be remounted RW [bootentry]
+/src/agent/pkg/action/bootentries_test.go:911
+• [0.004 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE Fails if some hook fails and strict is set [upgrade, active_label]
+/src/agent/pkg/action/upgrade_test.go:240
+• [0.001 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE free space on the state partition fails before downloading anything when the transition image does not fit [upgrade, active_label, state-space]
+/src/agent/pkg/action/upgrade_test.go:269
+• [0.010 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE free space on the state partition adds why when the node has no recovery partition [upgrade, active_label, state-space]
+/src/agent/pkg/action/upgrade_test.go:283
+• [0.009 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE free space on the state partition does not run the before-upgrade hook when it fails [upgrade, active_label, state-space]
+/src/agent/pkg/action/upgrade_test.go:296
+• [0.005 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE free space on the state partition upgrades when the transition image fits [upgrade, active_label, state-space]
+/src/agent/pkg/action/upgrade_test.go:304
+• [0.026 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE free space on the state partition counts a transition image left by an earlier failed upgrade as free [upgrade, active_label, state-space]
+/src/agent/pkg/action/upgrade_test.go:311
+• [0.023 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE free space on the state partition does not stop an upgrade it cannot measure [upgrade, active_label, state-space]
+/src/agent/pkg/action/upgrade_test.go:319
+• [0.024 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE Successfully upgrades a machine with no recovery partition [upgrade, active_label, docker]
+/src/agent/pkg/action/upgrade_test.go:329
+• [0.020 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE Successfully upgrades from docker image [upgrade, active_label, docker]
+/src/agent/pkg/action/upgrade_test.go:346
+• [0.018 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE Passes the excluded paths to the image extractor [upgrade, active_label, docker]
+/src/agent/pkg/action/upgrade_test.go:376
+  [FAILED] in [It] - /src/agent/pkg/action/upgrade_test.go:384 @ 11/27/26 08:55:13.468
+• [FAILED] [0.019 seconds]
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE [It] Passes the excluded paths to the image extractor [upgrade, active_label, docker]
+/src/agent/pkg/action/upgrade_test.go:376
+  [FAILED] Expected
+      <[]string | len:0, cap:0>: nil
+  to equal
+      <[]string | len:2, cap:2>: ["/var/lib/foo", "/home"]
+  In [It] at: /src/agent/pkg/action/upgrade_test.go:384 @ 11/27/26 08:55:13.468
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE Successfully reboots after upgrade from docker image [upgrade, active_label, docker]
+/src/agent/pkg/action/upgrade_test.go:386
+  STEP: Upgrading @ 11/27/26 08:55:13.473
+  STEP: Checking the log @ 11/27/26 08:55:13.485
+  STEP: checking active image @ 11/27/26 08:55:13.485
+  STEP: Checking passive image @ 11/27/26 08:55:13.485
+  STEP: checking transition image @ 11/27/26 08:55:13.485
+  STEP: checking it called reboot @ 11/27/26 08:55:13.485
+• [0.017 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE Successfully powers off after upgrade from docker image [upgrade, active_label, docker]
+/src/agent/pkg/action/upgrade_test.go:420
+• [0.016 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE Logs with the action helpers [upgrade, active_label]
+/src/agent/pkg/action/upgrade_test.go:450
+• [0.003 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE Fails if the state partition cannot be remounted RW [upgrade, active_label]
+/src/agent/pkg/action/upgrade_test.go:459
+• [0.002 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE Fails if deploying the image fails [upgrade, active_label, docker]
+/src/agent/pkg/action/upgrade_test.go:468
+• [0.002 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE Fails if labeling the passive image fails [upgrade, active_label, docker]
+/src/agent/pkg/action/upgrade_test.go:478
+• [0.008 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE Restores the active image if the new image cannot be moved into place [upgrade, active_label, docker]
+/src/agent/pkg/action/upgrade_test.go:496
+• [0.014 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE Fails if the active image cannot be backed up [upgrade, active_label, docker]
+/src/agent/pkg/action/upgrade_test.go:517
+• [0.002 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE Fails on the after-upgrade hook when strict [upgrade, active_label, docker]
+/src/agent/pkg/action/upgrade_test.go:527
+• [0.013 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE Fails relabeling when umounting the chroot binds fails [upgrade, active_label, docker]
+/src/agent/pkg/action/upgrade_test.go:536
+• [0.002 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE Warns but does not fail when cleanup fails [upgrade, active_label, docker]
+/src/agent/pkg/action/upgrade_test.go:543
+• [0.016 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE Successfully upgrades with persistent and OEM partitions [upgrade, active_label, docker]
+/src/agent/pkg/action/upgrade_test.go:551
+• [0.022 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE Successfully upgrades from directory [upgrade, active_label, directory]
+/src/agent/pkg/action/upgrade_test.go:579
+• [0.022 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_ACTIVE Sets next_entry to cos after a system upgrade [upgrade, active_label, bootentry]
+/src/agent/pkg/action/upgrade_test.go:618
+• [0.019 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_PASSIVE does not backup active img to passive [upgrade, passive_label, docker]
+/src/agent/pkg/action/upgrade_test.go:688
+• [0.011 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_PASSIVE Fails moving the transition image to active [upgrade, passive_label, docker]
+/src/agent/pkg/action/upgrade_test.go:718
+• [0.004 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_PASSIVE Sets next_entry to cos when upgrading from passive so the new active is tried on reboot [upgrade, passive_label, bootentry]
+/src/agent/pkg/action/upgrade_test.go:728
+• [0.009 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_RECOVERY Using squashfs Successfully upgrades recovery from docker image [upgrade, recovery_label, squashfs, docker]
+/src/agent/pkg/action/upgrade_test.go:803
+• [0.009 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_RECOVERY Using squashfs Successfully upgrades recovery from directory [upgrade, recovery_label, squashfs, directory]
+/src/agent/pkg/action/upgrade_test.go:832
+• [0.025 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_RECOVERY Using squashfs runs finalize on the unpacked recovery tree before building the squashfs [upgrade, recovery_label, squashfs, docker, bug-5619]
+/src/agent/pkg/action/upgrade_test.go:854
+• [0.013 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_RECOVERY Using squashfs drops the unpacked recovery tree without building the squashfs when finalize fails [upgrade, recovery_label, squashfs, docker, bug-5619]
+/src/agent/pkg/action/upgrade_test.go:910
+• [0.004 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_RECOVERY Not using squashfs Successfully upgrades recovery from docker image [upgrade, recovery_label, non-squashfs, docker]
+/src/agent/pkg/action/upgrade_test.go:984
+• [0.013 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_RECOVERY Not using squashfs Successfully upgrades recovery from directory [upgrade, recovery_label, non-squashfs, directory]
+/src/agent/pkg/action/upgrade_test.go:1013
+• [0.015 seconds]
+------------------------------
+Upgrade Actions test Upgrade Action Booting from COS_RECOVERY Not using squashfs Does not touch next_entry when only recovery is upgraded [upgrade, recovery_label, non-squashfs, bootentry]
+/src/agent/pkg/action/upgrade_test.go:1035
+• [0.014 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade allows an upgrade to the same or a newer KAIROS_INIT_VERSION same tag
+/src/agent/pkg/action/version_gate_test.go:15
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade allows an upgrade to the same or a newer KAIROS_INIT_VERSION newer tag
+/src/agent/pkg/action/version_gate_test.go:16
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade allows an upgrade to the same or a newer KAIROS_INIT_VERSION commits past the current tag
+/src/agent/pkg/action/version_gate_test.go:19
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade allows an upgrade to the same or a newer KAIROS_INIT_VERSION more commits past the same tag
+/src/agent/pkg/action/version_gate_test.go:20
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade allows an upgrade to the same or a newer KAIROS_INIT_VERSION dirty build past the current tag
+/src/agent/pkg/action/version_gate_test.go:21
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade allows an upgrade to the same or a newer KAIROS_INIT_VERSION commits past a release candidate
+/src/agent/pkg/action/version_gate_test.go:22
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade allows an upgrade to the same or a newer KAIROS_INIT_VERSION next tag after a between-tags build
+/src/agent/pkg/action/version_gate_test.go:23
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade allows an upgrade to the same or a newer KAIROS_INIT_VERSION dev build past the current tag
+/src/agent/pkg/action/version_gate_test.go:25
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade allows an upgrade to the same or a newer KAIROS_INIT_VERSION more commits past the same tag, dev form
+/src/agent/pkg/action/version_gate_test.go:26
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade allows an upgrade to the same or a newer KAIROS_INIT_VERSION describe form to dev form
+/src/agent/pkg/action/version_gate_test.go:27
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade allows an upgrade to the same or a newer KAIROS_INIT_VERSION dev build to the next patch tag
+/src/agent/pkg/action/version_gate_test.go:28
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade allows an upgrade to the same or a newer KAIROS_INIT_VERSION dev build to the next minor tag
+/src/agent/pkg/action/version_gate_test.go:29
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade allows an upgrade to the same or a newer KAIROS_INIT_VERSION dirty tagged build
+/src/agent/pkg/action/version_gate_test.go:30
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade plain semver ranks BINARY_VERSION builds in build order tag before a dev build
+/src/agent/pkg/action/version_gate_test.go:40
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade plain semver ranks BINARY_VERSION builds in build order fewer commits first
+/src/agent/pkg/action/version_gate_test.go:41
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade plain semver ranks BINARY_VERSION builds in build order commit count is numeric
+/src/agent/pkg/action/version_gate_test.go:42
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade plain semver ranks BINARY_VERSION builds in build order dev build before the next patch
+/src/agent/pkg/action/version_gate_test.go:43
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade plain semver ranks BINARY_VERSION builds in build order dev build before the next minor
+/src/agent/pkg/action/version_gate_test.go:44
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade plain semver ranks BINARY_VERSION builds in build order release candidate before its dev build
+/src/agent/pkg/action/version_gate_test.go:45
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade plain semver ranks BINARY_VERSION builds in build order release candidate dev build before the next candidate
+/src/agent/pkg/action/version_gate_test.go:46
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade refuses an older KAIROS_INIT_VERSION older tag
+/src/agent/pkg/action/version_gate_test.go:55
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade refuses an older KAIROS_INIT_VERSION the tag a between-tags build came from
+/src/agent/pkg/action/version_gate_test.go:56
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade refuses an older KAIROS_INIT_VERSION fewer commits past the same tag
+/src/agent/pkg/action/version_gate_test.go:57
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade refuses an older KAIROS_INIT_VERSION a build past an older tag
+/src/agent/pkg/action/version_gate_test.go:58
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade refuses an older KAIROS_INIT_VERSION fewer commits past the same tag, dev form
+/src/agent/pkg/action/version_gate_test.go:59
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade refuses an older KAIROS_INIT_VERSION the tag a dev build came from
+/src/agent/pkg/action/version_gate_test.go:60
+• [0.000 seconds]
+------------------------------
+RefuseIfTargetIsDowngrade refuses a version it cannot parse
+/src/agent/pkg/action/version_gate_test.go:63
+• [0.000 seconds]
+------------------------------
+Upgrade finalize handoff execs the target's kairos-agent upgrade-finalize when target KAIROS_INIT_VERSION >= current [upgrade, handoff]
+/src/agent/pkg/action/upgrade_finalize_test.go:215
+• [0.015 seconds]
+------------------------------
+Upgrade finalize handoff binds mounted OEM and persistent both under /host and at their standard paths in the target chroot [upgrade, handoff]
+/src/agent/pkg/action/upgrade_finalize_test.go:241
+• [0.018 seconds]
+------------------------------
+Upgrade finalize handoff refuses the upgrade and leaves active.img untouched when target KAIROS_INIT_VERSION < current [upgrade, handoff]
+/src/agent/pkg/action/upgrade_finalize_test.go:272
+• [0.005 seconds]
+------------------------------
+Upgrade finalize handoff reads the node's KAIROS_INIT_VERSION under HOST_DIR when running under Kubernetes [upgrade, handoff]
+/src/agent/pkg/action/upgrade_finalize_test.go:302
+• [0.004 seconds]
+------------------------------
+Upgrade finalize handoff reads the node's own KAIROS_INIT_VERSION when chrooted into the node under Kubernetes [upgrade, handoff]
+/src/agent/pkg/action/upgrade_finalize_test.go:329
+• [0.003 seconds]
+------------------------------
+Upgrade finalize handoff refuses when the target image carries no KAIROS_INIT_VERSION at all [upgrade, handoff]
+/src/agent/pkg/action/upgrade_finalize_test.go:352
+• [0.002 seconds]
+------------------------------
+Upgrade finalize handoff accepts a target whose KAIROS_VERSION rolls backwards as long as KAIROS_INIT_VERSION does not [upgrade, handoff]
+/src/agent/pkg/action/upgrade_finalize_test.go:368
+• [0.013 seconds]
+------------------------------
+Single image node IsSingleImageNode is true when there is no recovery partition [single-image]
+/src/agent/pkg/action/single_image_test.go:14
+• [0.000 seconds]
+------------------------------
+Single image node IsSingleImageNode is false on a node with a recovery partition [single-image]
+/src/agent/pkg/action/single_image_test.go:17
+• [0.000 seconds]
+------------------------------
+Single image node CheckResetSupported refuses reset when there is no recovery partition [single-image]
+/src/agent/pkg/action/single_image_test.go:23
+• [0.000 seconds]
+------------------------------
+Single image node CheckResetSupported allows reset on a node with a recovery partition [single-image]
+/src/agent/pkg/action/single_image_test.go:28
+• [0.000 seconds]
+------------------------------
+ExtensionDirFromBootState resolves the persistent scope directory sysext active [sysext]
+/src/agent/pkg/action/sysext_dirs_test.go:13
+• [0.000 seconds]
+------------------------------
+ExtensionDirFromBootState resolves the persistent scope directory sysext common [sysext]
+/src/agent/pkg/action/sysext_dirs_test.go:14
+• [0.000 seconds]
+------------------------------
+ExtensionDirFromBootState resolves the persistent scope directory confext recovery [sysext]
+/src/agent/pkg/action/sysext_dirs_test.go:15
+• [0.000 seconds]
+------------------------------
+ExtensionDirFromBootState resolves the persistent scope directory sysext with no boot state falls back to the base dir [sysext]
+/src/agent/pkg/action/sysext_dirs_test.go:16
+• [0.000 seconds]
+------------------------------
+ExtensionDirFromBootState resolves the persistent scope directory unknown extension type yields nothing [sysext]
+/src/agent/pkg/action/sysext_dirs_test.go:17
+• [0.000 seconds]
+------------------------------
+RenderTemplate action test renders the template with config and state
+/src/agent/pkg/action/render_template_test.go:18
+• [0.028 seconds]
+------------------------------
+RenderTemplate action test fails when the template file does not exist
+/src/agent/pkg/action/render_template_test.go:41
+• [0.030 seconds]
+------------------------------
+RenderTemplate action test fails when the template cannot be parsed
+/src/agent/pkg/action/render_template_test.go:51
+• [0.030 seconds]
+------------------------------
+RenderTemplate action test fails when the template execution fails
+/src/agent/pkg/action/render_template_test.go:64
+• [0.029 seconds]
+------------------------------
+Summarizing 1 Failure:
+  [FAIL] Upgrade Actions test Upgrade Action Booting from COS_ACTIVE [It] Passes the excluded paths to the image extractor [upgrade, active_label, docker]
+  /src/agent/pkg/action/upgrade_test.go:384
+Ran 378 of 379 Specs in 13.277 seconds
+FAIL! -- 377 Passed | 1 Failed | 0 Pending | 1 Skipped
+--- FAIL: TestActionSuite (13.28s)
+FAIL
+FAIL	github.com/kairos-io/kairos/v4/agent/pkg/action	13.296s
+=== RUN   TestElementalSuite
+Running Suite: Elemental test suite - /src/agent/pkg/elemental
+==============================================================
+Random Seed: 1795769700
+Will run 103 of 103 specs
+------------------------------
+Elemental MountRWPartition Mounts and umounts a partition with RW [elemental, mount]
+/src/agent/pkg/elemental/elemental_test.go:168
+• [0.000 seconds]
+------------------------------
+Elemental MountRWPartition Remounts a partition with RW [elemental, mount]
+/src/agent/pkg/elemental/elemental_test.go:179
+• [0.000 seconds]
+------------------------------
+Elemental MountRWPartition Fails to mount a partition [elemental, mount]
+/src/agent/pkg/elemental/elemental_test.go:196
+• [0.000 seconds]
+------------------------------
+Elemental MountRWPartition Fails to remount a partition [elemental, mount]
+/src/agent/pkg/elemental/elemental_test.go:201
+• [0.000 seconds]
+------------------------------
+Elemental MountPartitions Mounts disk partitions [elemental, MountPartitions, disk, partition, mount]
+/src/agent/pkg/elemental/elemental_test.go:234
+• [0.000 seconds]
+------------------------------
+Elemental MountPartitions Mounts disk partitions excluding recovery [elemental, MountPartitions, disk, partition, mount]
+/src/agent/pkg/elemental/elemental_test.go:241
+• [0.000 seconds]
+------------------------------
+Elemental MountPartitions Fails if some partition resists to mount  [elemental, MountPartitions, disk, partition, mount]
+/src/agent/pkg/elemental/elemental_test.go:250
+• [0.000 seconds]
+------------------------------
+Elemental MountPartitions Fails if oem partition is not found  [elemental, MountPartitions, disk, partition, mount]
+/src/agent/pkg/elemental/elemental_test.go:256
+• [10.022 seconds]
+------------------------------
+Elemental UnmountPartitions Unmounts disk partitions [elemental, UnmountPartitions, disk, partition, unmount]
+/src/agent/pkg/elemental/elemental_test.go:284
+• [0.001 seconds]
+------------------------------
+Elemental UnmountPartitions Fails to unmount disk partitions [elemental, UnmountPartitions, disk, partition, unmount]
+/src/agent/pkg/elemental/elemental_test.go:291
+• [0.001 seconds]
+------------------------------
+Elemental MountImage Mounts file system image [elemental, MountImage, mount, image]
+/src/agent/pkg/elemental/elemental_test.go:306
+• [0.000 seconds]
+------------------------------
+Elemental MountImage Fails to set a loop device [elemental, MountImage, mount, image, loop]
+/src/agent/pkg/elemental/elemental_test.go:312
+• [0.000 seconds]
+------------------------------
+Elemental MountImage Fails to mount a loop device [elemental, MountImage, mount, image, loop]
+/src/agent/pkg/elemental/elemental_test.go:319
+• [0.000 seconds]
+------------------------------
+Elemental MountImage Reports mount and loop cleanup errors [elemental, MountImage, mount, image, loop]
+/src/agent/pkg/elemental/elemental_test.go:336
+• [0.000 seconds]
+------------------------------
+Elemental UnmountImage Unmounts file system image [elemental, UnmountImage, mount, image]
+/src/agent/pkg/elemental/elemental_test.go:368
+• [0.000 seconds]
+------------------------------
+Elemental UnmountImage Fails to unmount a mountpoint [elemental, UnmountImage, mount, image]
+/src/agent/pkg/elemental/elemental_test.go:373
+• [0.000 seconds]
+------------------------------
+Elemental UnmountImage Fails to unset a loop device [elemental, UnmountImage, mount, image, loop]
+/src/agent/pkg/elemental/elemental_test.go:378
+• [0.000 seconds]
+------------------------------
+Elemental CreateFileSystemImage Creates a new file system image [elemental, CreateFileSystemImage, image]
+/src/agent/pkg/elemental/elemental_test.go:399
+• [0.000 seconds]
+------------------------------
+Elemental CreateFileSystemImage Fails formatting a file system image [elemental, CreateFileSystemImage, image, format]
+/src/agent/pkg/elemental/elemental_test.go:409
+• [0.000 seconds]
+------------------------------
+Elemental FormatPartition Reformats an already existing partition [elemental, FormatPartition, partition, format]
+/src/agent/pkg/elemental/elemental_test.go:420
+• [0.000 seconds]
+------------------------------
+Elemental PartitionAndFormatDevice Successfully creates partitions and formats them, EFI boot [elemental, PartitionAndFormatDevice, partition, format]
+/src/agent/pkg/elemental/elemental_test.go:458
+• [0.044 seconds]
+------------------------------
+Elemental PartitionAndFormatDevice EFI system partition check fails when the formatted ESP is FAT32 with too few clusters for UEFI [elemental, PartitionAndFormatDevice, partition, format]
+/src/agent/pkg/elemental/elemental_test.go:503
+• [0.034 seconds]
+------------------------------
+Elemental PartitionAndFormatDevice EFI system partition check succeeds when the formatted ESP is a FAT32 volume UEFI accepts [elemental, PartitionAndFormatDevice, partition, format]
+/src/agent/pkg/elemental/elemental_test.go:515
+• [0.038 seconds]
+------------------------------
+Elemental PartitionAndFormatDevice EFI system partition check does not check an extra partition named efi that is not FAT [elemental, PartitionAndFormatDevice, partition, format]
+/src/agent/pkg/elemental/elemental_test.go:524
+• [0.029 seconds]
+------------------------------
+Elemental PartitionAndFormatDevice EFI system partition check does not check a FAT extra partition with another name [elemental, PartitionAndFormatDevice, partition, format]
+/src/agent/pkg/elemental/elemental_test.go:537
+• [0.045 seconds]
+------------------------------
+Elemental PartitionAndFormatDevice Preserves PARTLABEL on an extra partition when persistent has a fixed size (kairos-io/kairos#4257) [elemental, PartitionAndFormatDevice, partition, format]
+/src/agent/pkg/elemental/elemental_test.go:550
+• [0.032 seconds]
+------------------------------
+Elemental PartitionAndFormatDevice Refuses config when persistent + extras exceed target disk size [elemental, PartitionAndFormatDevice, partition, format]
+/src/agent/pkg/elemental/elemental_test.go:612
+• [0.001 seconds]
+------------------------------
+Elemental PartitionAndFormatDevice Writes a partition-fit-checkable disk when persistent + extras fit [elemental, PartitionAndFormatDevice, partition, format]
+/src/agent/pkg/elemental/elemental_test.go:664
+• [0.032 seconds]
+------------------------------
+Elemental PartitionAndFormatDevice Successfully creates partitions and formats them, BIOS boot [elemental, PartitionAndFormatDevice, partition, format]
+/src/agent/pkg/elemental/elemental_test.go:688
+• [0.047 seconds]
+------------------------------
+Elemental PartitionAndFormatDevice defaults an extra partition with no fs set to ext2 [elemental, PartitionAndFormatDevice, partition, format]
+/src/agent/pkg/elemental/elemental_test.go:722
+• [0.032 seconds]
+------------------------------
+Elemental PartitionAndFormatDevice leaves extra partitions with noformat filesystem values unformatted [elemental, PartitionAndFormatDevice, partition, format]
+/src/agent/pkg/elemental/elemental_test.go:750
+• [0.032 seconds]
+------------------------------
+Elemental PartitionAndFormatDevice does not leak the disk file descriptor when NewPartitionTable fails (kairos-io/kairos#4610) [elemental, PartitionAndFormatDevice, partition, format]
+/src/agent/pkg/elemental/elemental_test.go:766
+• [0.003 seconds]
+------------------------------
+Elemental DeployImage Deploys an image from a directory and leaves it mounted [elemental, DeployImage]
+/src/agent/pkg/elemental/elemental_test.go:816
+  Command mkfs.ext2 called but we dont catch it
+  Command rsync called but we dont catch it
+• [0.002 seconds]
+------------------------------
+Elemental DeployImage Deploys an image from a directory and leaves it unmounted [elemental, DeployImage]
+/src/agent/pkg/elemental/elemental_test.go:819
+  Command mkfs.ext2 called but we dont catch it
+  Command rsync called but we dont catch it
+• [0.002 seconds]
+------------------------------
+Elemental DeployImage Passes the excludes to the image extractor for a docker source [elemental, DeployImage, docker]
+/src/agent/pkg/elemental/elemental_test.go:822
+  Command mkfs.ext2 called but we dont catch it
+• [0.001 seconds]
+------------------------------
+Elemental DeployImage Deploys an squashfs image from a directory [elemental, DeployImage]
+/src/agent/pkg/elemental/elemental_test.go:833
+  Command rsync called but we dont catch it
+  Command mksquashfs called but we dont catch it
+• [0.002 seconds]
+------------------------------
+Elemental DeployImage Keeps the squashfs tree until UnmountImage when left mounted [elemental, DeployImage]
+/src/agent/pkg/elemental/elemental_test.go:841
+  Command rsync called but we dont catch it
+• [0.002 seconds]
+------------------------------
+Elemental DeployImage Drops the squashfs tree without building it on DiscardImage [elemental, DeployImage]
+/src/agent/pkg/elemental/elemental_test.go:869
+  Command rsync called but we dont catch it
+• [0.002 seconds]
+------------------------------
+Elemental DeployImage Unmounts a mounted image on DiscardImage [elemental, DeployImage]
+/src/agent/pkg/elemental/elemental_test.go:887
+  Command mkfs.ext2 called but we dont catch it
+  Command rsync called but we dont catch it
+• [0.001 seconds]
+------------------------------
+Elemental DeployImage Removes the squashfs tree when building it on UnmountImage fails [elemental, DeployImage]
+/src/agent/pkg/elemental/elemental_test.go:899
+  Command rsync called but we dont catch it
+• [0.001 seconds]
+------------------------------
+Elemental DeployImage Removes the squashfs tree when deploying it fails [elemental, DeployImage]
+/src/agent/pkg/elemental/elemental_test.go:909
+• [0.000 seconds]
+------------------------------
+Elemental DeployImage Deploys a file image and mounts it [elemental, DeployImage]
+/src/agent/pkg/elemental/elemental_test.go:929
+  Command tune2fs called but we dont catch it
+• [0.000 seconds]
+------------------------------
+Elemental DeployImage Deploys a file image and fails to mount it [elemental, DeployImage]
+/src/agent/pkg/elemental/elemental_test.go:939
+  Command tune2fs called but we dont catch it
+• [0.000 seconds]
+------------------------------
+Elemental DeployImage Deploys a file image and fails to label it [elemental, DeployImage]
+/src/agent/pkg/elemental/elemental_test.go:951
+• [0.000 seconds]
+------------------------------
+Elemental DeployImage Fails creating the squashfs filesystem [elemental, DeployImage]
+/src/agent/pkg/elemental/elemental_test.go:963
+  Command rsync called but we dont catch it
+• [0.001 seconds]
+------------------------------
+Elemental DeployImage Fails formatting the image [elemental, DeployImage]
+/src/agent/pkg/elemental/elemental_test.go:970
+• [0.000 seconds]
+------------------------------
+Elemental DeployImage Fails mounting the image [elemental, DeployImage]
+/src/agent/pkg/elemental/elemental_test.go:975
+  Command mkfs.ext2 called but we dont catch it
+• [0.000 seconds]
+------------------------------
+Elemental DeployImage Fails unmounting the image after copying [elemental, DeployImage]
+/src/agent/pkg/elemental/elemental_test.go:980
+  Command mkfs.ext2 called but we dont catch it
+  Command rsync called but we dont catch it
+• [0.000 seconds]
+------------------------------
+Elemental DumpSource Copies files from a directory source [elemental, dump]
+/src/agent/pkg/elemental/elemental_test.go:995
+• [0.000 seconds]
+------------------------------
+Elemental DumpSource Unpacks a docker image to target [elemental, dump, docker]
+/src/agent/pkg/elemental/elemental_test.go:1014
+• [0.000 seconds]
+------------------------------
+Elemental DumpSource Unpacks a docker image to target with cosign validation [elemental, dump, docker, cosign]
+/src/agent/pkg/elemental/elemental_test.go:1018
+• [0.000 seconds]
+------------------------------
+Elemental DumpSource Verifies and extracts the digest the tag resolved to, not the tag [elemental, dump, docker, cosign]
+/src/agent/pkg/elemental/elemental_test.go:1024
+• [0.000 seconds]
+------------------------------
+Elemental DumpSource Keeps the registry and port of the source when pinning [elemental, dump, docker, cosign]
+/src/agent/pkg/elemental/elemental_test.go:1033
+• [0.000 seconds]
+------------------------------
+Elemental DumpSource Does not resolve the tag when cosign is off [elemental, dump, docker]
+/src/agent/pkg/elemental/elemental_test.go:1041
+• [0.000 seconds]
+------------------------------
+Elemental DumpSource Verifies a reference that already is a digest as given [elemental, dump, docker, cosign]
+/src/agent/pkg/elemental/elemental_test.go:1047
+• [0.000 seconds]
+------------------------------
+Elemental DumpSource Fails without verifying or extracting when the tag does not resolve [elemental, dump, docker, cosign]
+/src/agent/pkg/elemental/elemental_test.go:1056
+• [0.000 seconds]
+------------------------------
+Elemental DumpSource Fails when the extractor cannot resolve digests [elemental, dump, docker, cosign]
+/src/agent/pkg/elemental/elemental_test.go:1064
+• [0.000 seconds]
+------------------------------
+Elemental DumpSource Fails cosign validation [elemental, dump, cosign]
+/src/agent/pkg/elemental/elemental_test.go:1072
+• [0.001 seconds]
+------------------------------
+Elemental DumpSource Unpacks a docker save archive to target [elemental, dump, docker]
+/src/agent/pkg/elemental/elemental_test.go:1080
+• [0.002 seconds]
+------------------------------
+Elemental DumpSource Refuses a docker save archive built for another platform, and leaves the target alone [elemental, dump, docker]
+/src/agent/pkg/elemental/elemental_test.go:1092
+• [0.003 seconds]
+------------------------------
+Elemental DumpSource Unpacks a docker save archive built for this run's platform [elemental, dump, docker]
+/src/agent/pkg/elemental/elemental_test.go:1113
+• [0.004 seconds]
+------------------------------
+Elemental DumpSource Unpacks an OCI layout archive to target [elemental, dump, docker]
+/src/agent/pkg/elemental/elemental_test.go:1132
+• [0.009 seconds]
+------------------------------
+Elemental DumpSource Applies --exclude-path to an OCI archive the same way as to a registry image /var/lib/foo [elemental, dump, docker]
+/src/agent/pkg/elemental/elemental_test.go:1164
+• [0.013 seconds]
+------------------------------
+Elemental DumpSource Applies --exclude-path to an OCI archive the same way as to a registry image var/lib/foo [elemental, dump, docker]
+/src/agent/pkg/elemental/elemental_test.go:1166
+• [0.013 seconds]
+------------------------------
+Elemental DumpSource Applies --exclude-path to an OCI archive the same way as to a registry image etc/* [elemental, dump, docker]
+/src/agent/pkg/elemental/elemental_test.go:1168
+• [0.008 seconds]
+------------------------------
+Elemental DumpSource Applies --exclude-path to an OCI archive the same way as to a registry image /etc/a.conf [elemental, dump, docker]
+/src/agent/pkg/elemental/elemental_test.go:1170
+• [0.010 seconds]
+------------------------------
+Elemental DumpSource Anchors --exclude-path to the source root for a directory source [elemental, dump]
+/src/agent/pkg/elemental/elemental_test.go:1174
+• [0.001 seconds]
+------------------------------
+Elemental DumpSource Refuses an archive that holds no image, and leaves the target alone [elemental, dump, docker]
+/src/agent/pkg/elemental/elemental_test.go:1188
+• [0.005 seconds]
+------------------------------
+Elemental DumpSource Picks the image built for this run's platform out of a multi-architecture layout [elemental, dump, docker]
+/src/agent/pkg/elemental/elemental_test.go:1204
+• [0.012 seconds]
+------------------------------
+Elemental DumpSource Refuses a layout whose only image is for another platform [elemental, dump, docker]
+/src/agent/pkg/elemental/elemental_test.go:1225
+• [0.011 seconds]
+------------------------------
+Elemental DumpSource Unpacks a layout that lists one image under two tags [elemental, dump, docker]
+/src/agent/pkg/elemental/elemental_test.go:1245
+• [0.011 seconds]
+------------------------------
+Elemental DumpSource Copies image file to target [elemental, dump]
+/src/agent/pkg/elemental/elemental_test.go:1275
+• [0.001 seconds]
+------------------------------
+Elemental DumpSource Fails to copy, source file is not present [elemental, dump]
+/src/agent/pkg/elemental/elemental_test.go:1289
+• [0.001 seconds]
+------------------------------
+Elemental CheckActiveDeployment deployment found [elemental, check]
+/src/agent/pkg/elemental/elemental_test.go:1295
+• [0.002 seconds]
+------------------------------
+Elemental CheckActiveDeployment Should not error out [elemental, check]
+/src/agent/pkg/elemental/elemental_test.go:1318
+• [2.006 seconds]
+------------------------------
+Elemental SelinuxRelabel does nothing if the context file is not found [elemental, SelinuxRelabel, selinux]
+/src/agent/pkg/elemental/elemental_test.go:1357
+• [0.001 seconds]
+------------------------------
+Elemental SelinuxRelabel does nothing if the policy file is not found [elemental, SelinuxRelabel, selinux]
+/src/agent/pkg/elemental/elemental_test.go:1365
+• [0.001 seconds]
+------------------------------
+Elemental SelinuxRelabel relabels the current root [elemental, SelinuxRelabel, selinux]
+/src/agent/pkg/elemental/elemental_test.go:1373
+• [0.001 seconds]
+------------------------------
+Elemental SelinuxRelabel fails to relabel the current root [elemental, SelinuxRelabel, selinux]
+/src/agent/pkg/elemental/elemental_test.go:1382
+• [0.001 seconds]
+------------------------------
+Elemental SelinuxRelabel ignores relabel failures [elemental, SelinuxRelabel, selinux]
+/src/agent/pkg/elemental/elemental_test.go:1388
+• [0.000 seconds]
+------------------------------
+Elemental SelinuxRelabel relabels the given root-tree path [elemental, SelinuxRelabel, selinux]
+/src/agent/pkg/elemental/elemental_test.go:1394
+• [0.001 seconds]
+------------------------------
+Elemental LabelStateImage labels a state image as boot_t [elemental, LabelStateImage, selinux]
+/src/agent/pkg/elemental/elemental_test.go:1442
+• [0.000 seconds]
+------------------------------
+Elemental LabelStateImage does nothing if the image does not exist [elemental, LabelStateImage, selinux]
+/src/agent/pkg/elemental/elemental_test.go:1453
+• [0.000 seconds]
+------------------------------
+Elemental LabelStateImage does nothing if chcon is not available [elemental, LabelStateImage, selinux]
+/src/agent/pkg/elemental/elemental_test.go:1458
+• [0.000 seconds]
+------------------------------
+Elemental LabelStateImage does not raise on chcon failure [elemental, LabelStateImage, selinux]
+/src/agent/pkg/elemental/elemental_test.go:1469
+• [0.001 seconds]
+------------------------------
+Elemental GetIso Gets the iso and returns the temporary where it is stored [elemental, GetIso, iso]
+/src/agent/pkg/elemental/elemental_test.go:1487
+• [0.001 seconds]
+------------------------------
+Elemental GetIso Fails if it cant find the iso [elemental, GetIso, iso]
+/src/agent/pkg/elemental/elemental_test.go:1498
+• [0.000 seconds]
+------------------------------
+Elemental GetIso Fails if it cannot mount the iso [elemental, GetIso, iso]
+/src/agent/pkg/elemental/elemental_test.go:1505
+• [0.000 seconds]
+------------------------------
+Elemental UpdateSourcesFormDownloadedISO updates active image [elemental, iso]
+/src/agent/pkg/elemental/elemental_test.go:1524
+• [0.000 seconds]
+------------------------------
+Elemental UpdateSourcesFormDownloadedISO updates active and recovery image [elemental, iso]
+/src/agent/pkg/elemental/elemental_test.go:1532
+• [0.012 seconds]
+------------------------------
+Elemental UpdateSourcesFormDownloadedISO updates recovery only image [elemental, iso]
+/src/agent/pkg/elemental/elemental_test.go:1543
+• [0.001 seconds]
+------------------------------
+Elemental UpdateSourcesFormDownloadedISO fails to update recovery from active file [elemental, iso]
+/src/agent/pkg/elemental/elemental_test.go:1557
+• [0.000 seconds]
+------------------------------
+Elemental CloudConfig Copies the cloud config file [elemental, CloudConfig, cloud-config]
+/src/agent/pkg/elemental/elemental_test.go:1568
+• [0.000 seconds]
+------------------------------
+Elemental CloudConfig names the last cloud config so it sorts last with ten or more entries [elemental, CloudConfig, cloud-config]
+/src/agent/pkg/elemental/elemental_test.go:1586
+• [0.001 seconds]
+------------------------------
+Elemental CloudConfig Doesnt do anything if the config file is not set [elemental, CloudConfig, cloud-config]
+/src/agent/pkg/elemental/elemental_test.go:1608
+• [0.000 seconds]
+------------------------------
+Elemental SetDefaultGrubEntry Sets the default grub entry without issues [elemental, SetDefaultGrubEntry, grub]
+/src/agent/pkg/elemental/elemental_test.go:1614
+• [0.000 seconds]
+------------------------------
+Elemental SetDefaultGrubEntry does nothing on empty default entry and no /etc/kairos-release [elemental, SetDefaultGrubEntry, grub]
+/src/agent/pkg/elemental/elemental_test.go:1622
+• [0.001 seconds]
+------------------------------
+Elemental SetDefaultGrubEntry loads /etc/kairos-release on empty default entry [elemental, SetDefaultGrubEntry, grub]
+/src/agent/pkg/elemental/elemental_test.go:1632
+• [0.001 seconds]
+------------------------------
+Elemental SetDefaultGrubEntry Fails setting grubenv [elemental, SetDefaultGrubEntry, grub]
+/src/agent/pkg/elemental/elemental_test.go:1646
+• [0.000 seconds]
+------------------------------
+Elemental FindKernelInitrd finds kernel and initrd files [elemental, find]
+/src/agent/pkg/elemental/elemental_test.go:1656
+• [0.000 seconds]
+------------------------------
+Elemental FindKernelInitrd fails if no initrd is found [elemental, find]
+/src/agent/pkg/elemental/elemental_test.go:1669
+• [0.000 seconds]
+------------------------------
+Elemental FindKernelInitrd fails if no kernel is found [elemental, find]
+/src/agent/pkg/elemental/elemental_test.go:1677
+• [0.000 seconds]
+------------------------------
+Elemental DeactivateDevices calls blkdeactivat [elemental, blkdeactivate]
+/src/agent/pkg/elemental/elemental_test.go:1687
+• [0.000 seconds]
+------------------------------
+Ran 103 of 103 Specs in 12.556 seconds
+SUCCESS! -- 103 Passed | 0 Failed | 0 Pending | 0 Skipped
+--- PASS: TestElementalSuite (12.56s)
+PASS
+ok  	github.com/kairos-io/kairos/v4/agent/pkg/elemental	12.569s
+FAIL
+exit=1
