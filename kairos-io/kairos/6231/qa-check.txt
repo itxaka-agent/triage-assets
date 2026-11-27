@@ -1,0 +1,12 @@
+# QA 6231 head 344a73fe, 2026-11-27T09:23:29+00:00
+$ git ls-remote https://github.com/anchore/scan-action v7.4.3 "v7.4.3^{}"
+82049099348cd4edcc94d22cafd8f1e9f8493321	refs/tags/v7.4.3
+11983a512817154c80a9db660c1a184be7513ed6	refs/tags/v7.4.3^{}
+
+$ docker buildx imagetools inspect gcr.io/distroless/static:nonroot | grep Digest
+Digest:    sha256:8ce6dd87e9823c5b48dcfb2c8604714ccb351ce59607327bcc4957448da279b5
+
+$ docker build --platform linux/amd64 --build-arg TARGETARCH=amd64 -t qa6231:new -f cmd/kcrypt-challenger/Dockerfile (stub binary)
+build exit: ok
+$ docker image inspect qa6231:new --format "{{.Config.User}} {{.Config.Entrypoint}}"
+65532:65532 [/manager]
